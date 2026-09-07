@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Analiza la distribución de una cartera y estudia empresas cotizadas con las herramientas de NUVIA.">
+
+<!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/cartera.html -->
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/cartera.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Cartera y analítica">
+<meta property="og:description" content="Analiza la distribución de una cartera y estudia empresas cotizadas con las herramientas de NUVIA.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/cartera.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Cartera y analítica">
+<meta name="twitter:description" content="Analiza la distribución de una cartera y estudia empresas cotizadas con las herramientas de NUVIA.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Cartera y analítica</title>
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260823-5">
+
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+<body>
+<x-dc>
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+
+<div>
+
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="nuvia-page nuvia-analysis-page">
+      <section class="nuvia-analysis-hero" data-screen-label="Cabecera Analítica de cartera" aria-labelledby="analysis-title">
+        <div class="nuvia-analysis-hero__inner">
+          <div>
+            <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+              <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="mercados.html">Economía y Finanzas</a></li><li><span id="analysis-current" aria-current="page">Mi cartera</span></li></ol>
+            </nav>
+            <p class="nuvia-analysis-eyebrow"><span aria-hidden="true"></span>Analítica NUVIA</p>
+            <h1 id="analysis-title">Mi cartera</h1>
+            <p id="analysis-lead" class="nuvia-analysis-lead">Explora la composición, el riesgo y los escenarios de una cartera. Añade posiciones del catálogo y consulta los cálculos junto a sus fuentes y límites.</p>
+            <p class="nuvia-analysis-availability">Alfa en abierto y sin cuentas. Cartera y fundamentales consultan la base propia. En empresas se identifica cualquier respaldo local, que puede estar desactualizado. Los datos no son en tiempo real. NUVIA muestra información y cálculos, no determina qué inversión elegir.</p>
+            <nav class="nuvia-analysis-tabs" aria-label="Vistas de analítica de cartera">
+              <a id="vista-portfolio" href="cartera.html?vista=portfolio#laboratorio" aria-current="page">Mi cartera</a>
+              <a id="vista-models" href="cartera.html?vista=models#carteras-modelo">Carteras modelo</a>
+              <a id="vista-companies" href="cartera.html?vista=companies#suite-nuvia">Análisis y valoración de empresas</a>
+            </nav>
+            <div class="nuvia-analysis-hero__divider" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="nuvia-analysis-content">
+
+        <section id="laboratorio" class="nuvia-lab" aria-label="Laboratorio de cartera">
+
+          <div class="nv-portada-grupo">
+            <nav class="nv-atajos" aria-label="Secciones del laboratorio">
+              <a class="nv-atajos__enlace" href="#fase-01">Tu cartera</a>
+              <a class="nv-atajos__enlace" data-result-anchor aria-disabled="true" href="#fase-02">Qué tienes</a>
+              <a class="nv-atajos__enlace" data-result-anchor aria-disabled="true" href="#fase-03">Cuánto se mueve</a>
+              <a class="nv-atajos__enlace" data-result-anchor aria-disabled="true" href="#fase-04">Solapamientos</a>
+              <a class="nv-atajos__enlace" data-result-anchor aria-disabled="true" href="#fase-05">Escenarios</a>
+            </nav>
+          </div>
+
+
+
+          <div id="aviso-alfa" class="nv-note nv-aviso-alfa" role="note">
+            <p><strong>Versión alfa de NUVIA.</strong> Los datos de mercado cubren un universo limitado de instrumentos en euros. Las carteras se guardan solo en este navegador. Nada de lo que ves es una recomendación.</p>
+            <p id="datos-a-fecha" class="nv-aviso-alfa__fecha">Datos a fecha: consultando la base de datos NUVIA…</p>
+          </div>
+
+          <section id="fase-01" class="nv-lab-fase" aria-labelledby="fase-01-title">
+            <header class="nv-lab-fase__cabecera">
+              <span class="nv-lab-fase__numero" aria-hidden="true">01</span>
+              <div><p class="nv-lab-fase__pregunta">¿Qué cartera quieres analizar?</p><h2 id="fase-01-title">Tu cartera</h2></div>
+            </header>
+            <article class="nv-lab-caja nv-lab-caja--principal">
+              <div class="nv-lab-caja__intro">
+                <h3 id="constructor-title">Posiciones y pesos</h3>
+                <p>Añade activos reales del catálogo. Los pesos se normalizan al 100 % y el análisis se recalcula con el historial común de los últimos tres años.</p>
+              </div>
+              <div class="nv-lab-herramientas">
+                <h4 id="buscador-title">Añadir posiciones desde el catálogo</h4>
+                <p>Busca por nombre, ticker o ISIN entre los instrumentos disponibles en la alfa. Los datos proceden de la base NUVIA, de solo lectura.</p>
+                <div id="buscador" class="nv-buscador" aria-labelledby="buscador-title">
+                  <div class="nv-note"><p>El buscador necesita JavaScript y conexión.</p></div>
+                </div>
+              </div>
+              <div id="constructor" class="nv-cons" aria-labelledby="constructor-title">
+                <div class="nv-note"><p>El constructor necesita JavaScript y conexión.</p></div>
+              </div>
+            </article>
+          </section>
+
+          <div id="analisis-dinamico" class="nv-lab-analisis-dinamico" aria-label="Análisis de la cartera elegida"></div>
+
+          <!-- Alfa (02-09-2026): sin cuentas ni datos de usuarios. La ventana «Tu cuenta»
+               vuelve en la fase de cuentas con su propia ficha regulatoria. -->
+
+            <div class="nv-portada-lab" role="presentation">
+              <div class="nv-portada-lab__texto">
+                <p class="nv-portada-lab__marca">NUVIA</p>
+                <p class="nv-portada-lab__seccion">Laboratorio de cartera</p>
+                <p class="nv-portada-lab__lema">Estudia cómo cambian el riesgo y la rentabilidad estimada de una cartera cuando cambia su reparto entre clases de activo, con una lectura clara y ordenada.</p>
+                <i class="nv-portada-lab__raya" aria-hidden="true"></i>
+              </div>
+            </div>
+
+          <p class="nv-lab-tesis">Primero vemos qué contiene la cartera. Después, cuánto se movió, dónde se solapan sus posiciones y qué escenarios ayudan a entenderla. Cada gráfico responde a una sola pregunta y muestra su fuente.</p>
+          <section class="nv-lab-fase" aria-label="Herramientas y fuentes del laboratorio">
+            <details class="nv-lab-caja nv-lab-despliegue">
+              <summary id="sim-title">Banco de pruebas: mover el reparto por clases</summary>
+              <p>Este simulador genérico no describe tu cartera. Sirve para aislar el efecto de mover el peso entre las cuatro clases.</p>
+              <div id="simulador" class="nuvia-lab__simulador" aria-labelledby="sim-title">
+                <div class="nv-note"><p>El simulador interactivo necesita JavaScript.</p></div>
+              </div>
+            </details>
+
+            <article class="nv-lab-caja">
+              <h3 id="fuentes-title">Fuentes y límites</h3>
+              <p>El banco de pruebas usa supuestos internos de largo plazo: son estimaciones, no previsiones, y están pendientes de validación profesional. El buscador y la cartera consultan la base de datos NUVIA, de solo lectura, y declaran la fecha del último cierre. En esta versión alfa los fondos no traen desglose por sectores ni regiones y los ETF muestran sus diez mayores posiciones: cuando falta el dato, se dice.</p>
+              <p>Los cálculos se ejecutan en tu navegador. Cuando falta un dato aparece «—»: nunca se inventa. Todo describe la cartera actual y su historial; no es una previsión. Este contenido no constituye asesoramiento financiero personalizado.</p>
+            </article>
+          </section>
+
+        </section>
+
+        <section id="carteras-modelo" class="nuvia-lab nuvia-modelos-vista" aria-label="Carteras modelo" hidden>
+          <div class="nv-portada-grupo">
+            <div class="nv-portada-lab nv-portada-lab--modelos" role="presentation">
+              <div class="nv-portada-lab__texto">
+                <p class="nv-portada-lab__marca">NUVIA</p>
+                <p class="nv-portada-lab__seccion">Carteras modelo</p>
+                <p class="nv-portada-lab__lema">Composiciones fijas publicadas por el portal, analizadas con el mismo recorrido y las mismas fuentes que una cartera propia.</p>
+                <i class="nv-portada-lab__raya" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+
+          <p class="nv-lab-tesis">Elige una composición para ver qué contiene, cómo se movió, cuánto riesgo aportó cada posición, dónde se repiten apuestas y qué muestran sus escenarios.</p>
+
+          <section id="modelos-fase-01" class="nv-lab-fase" aria-labelledby="modelos-fase-01-title">
+            <header class="nv-lab-fase__cabecera">
+              <span class="nv-lab-fase__numero" aria-hidden="true">01</span>
+              <div><p class="nv-lab-fase__pregunta">¿Qué composición quieres estudiar?</p><h2 id="modelos-fase-01-title">Elige una cartera modelo</h2></div>
+            </header>
+            <article class="nv-lab-caja nv-lab-caja--principal">
+              <div id="modelos" class="nv-modelos" aria-labelledby="modelos-fase-01-title">
+                <div class="nv-note"><p>Las carteras modelo necesitan JavaScript y conexión.</p></div>
+              </div>
+            </article>
+          </section>
+
+          <section id="modelo-seleccionado" class="nv-modelo-seleccionado" aria-live="polite" hidden>
+            <article class="nv-lab-caja nv-modelo-seleccionado__cabecera">
+              <p class="nv-lab-fase__pregunta">Cartera modelo seleccionada</p>
+              <h2 id="modelo-seleccionado-nombre"></h2>
+              <p id="modelo-seleccionado-criterio"></p>
+              <div id="modelo-motor" class="nv-cons nv-cons--modelo" aria-label="Estado del análisis de la cartera modelo"></div>
+            </article>
+            <div id="modelo-analisis-dinamico" class="nv-lab-analisis-dinamico" aria-label="Análisis de la cartera modelo elegida"></div>
+          </section>
+        </section>
+
+        <section id="suite-nuvia" class="nuvia-suite-shell nuvia-suite-shell--companies" aria-label="Análisis y valoración de empresas" hidden>
+          <iframe id="nuvia-company-frame" class="nuvia-company-frame" title="Análisis fundamental de empresas · NUVIA" data-src="company-analysis/index.html" referrerpolicy="same-origin"></iframe>
+          <p><a href="company-analysis/index.html" target="_blank" rel="noopener">Abrir el análisis fundamental en una pestaña independiente ↗</a></p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const SUITE_TABS = ['portfolio', 'models', 'companies'];
+    const requestedRaw = new URLSearchParams(window.location.search).get('vista');
+    const requested = ['technical', 'fundamental'].includes(requestedRaw) ? 'companies' : requestedRaw;
+    const vistaInicial = SUITE_TABS.indexOf(requested) >= 0 ? requested : 'portfolio';
+    if (requestedRaw !== requested && requested === 'companies') {
+      const canonicalUrl = new URL(window.location.href);
+      canonicalUrl.searchParams.set('vista', 'companies');
+      window.history.replaceState(null, '', canonicalUrl);
+    }
+    const lab = document.getElementById('laboratorio');
+    const modelosVista = document.getElementById('carteras-modelo');
+    const shell = document.getElementById('suite-nuvia');
+    if (!lab || !modelosVista || !shell) return;
+    const companyFrame = document.getElementById('nuvia-company-frame');
+    this._onCompanyHeight = (event) => {
+      if (event.origin !== window.location.origin || event.source !== companyFrame?.contentWindow || event.data?.type !== 'nuvia-company-height') return;
+      const height = event.data.height;
+      if (typeof height === 'number' && Number.isFinite(height) && height > 0 && height < 100000) companyFrame.style.height = Math.max(720, Math.ceil(height)) + 'px';
+    };
+    window.addEventListener('message', this._onCompanyHeight);
+
+    const activaVista = (vista, actualizaUrl = false) => {
+      const alias = ['technical', 'fundamental'].includes(vista) ? 'companies' : vista;
+      const elegida = SUITE_TABS.includes(alias) ? alias : 'portfolio';
+      document.body.dataset.suiteVista = elegida;
+      const etiquetas = { portfolio: 'Mi cartera', models: 'Carteras modelo', companies: 'Análisis y valoración de empresas' };
+      document.getElementById('analysis-title').textContent = etiquetas[elegida];
+      document.getElementById('analysis-current').textContent = etiquetas[elegida];
+      document.getElementById('analysis-lead').textContent = {
+        portfolio: 'Explora la composición, el riesgo y los escenarios de una cartera. Añade posiciones del catálogo y consulta los cálculos junto a sus fuentes y límites.',
+        models: 'Explora composiciones publicadas por NUVIA con el mismo método de análisis de cartera. Compara su composición, comportamiento histórico y escenarios.',
+        companies: 'Consulta la actividad, los fundamentales, el análisis técnico y los métodos de valoración de una empresa. Cada dato mantiene su fuente, fecha y límites de interpretación.'
+      }[elegida];
+      lab.hidden = elegida !== 'portfolio';
+      modelosVista.hidden = elegida !== 'models';
+      shell.hidden = elegida !== 'companies';
+      if (elegida === 'companies' && companyFrame && !companyFrame.getAttribute('src')) companyFrame.src = companyFrame.dataset.src;
+      SUITE_TABS.forEach((tab) => {
+        const boton = document.getElementById('vista-' + tab);
+        if (boton) boton.setAttribute('aria-current', tab === elegida ? 'page' : 'false');
+      });
+      document.title = elegida === 'models'
+        ? 'Carteras modelo | NUVIA'
+        : elegida === 'companies'
+          ? 'Análisis y valoración de empresas | NUVIA'
+          : 'Mi cartera | NUVIA';
+      if (actualizaUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('vista', elegida);
+        url.hash = elegida === 'models' ? 'carteras-modelo' : elegida === 'companies' ? 'suite-nuvia' : 'laboratorio';
+        window.history.pushState({ vista: elegida }, '', url);
+      }
+    };
+    activaVista(vistaInicial);
+    SUITE_TABS.forEach((tab) => {
+      const boton = document.getElementById('vista-' + tab);
+      boton?.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        activaVista(tab, true);
+      });
+    });
+    this._onPop = () => activaVista(new URLSearchParams(window.location.search).get('vista'));
+    window.addEventListener('popstate', this._onPop);
+    import('./js/nuvia-simulador.js?v=20260823-2')
+      .then((m) => { const sim = document.getElementById('simulador'); if (sim) m.montaSimulador(sim); })
+      .catch(() => {});
+    import('./js/nuvia-buscador.js')
+      .then((m) => { const nodo = document.getElementById('buscador'); if (nodo) m.montaBuscador(nodo); })
+      .catch(() => {});
+    Promise.all([
+      import('./js/nuvia-constructor.js?v=20260823-9'),
+      import('./js/nuvia-modelos.js?v=20260823-4'),
+    ])
+      .then(([constructor, modelos]) => {
+        const nodo = document.getElementById('constructor');
+        if (nodo) constructor.montaConstructor(nodo);
+        const raizModelos = document.getElementById('modelos');
+        const seleccionado = document.getElementById('modelo-seleccionado');
+        const nombre = document.getElementById('modelo-seleccionado-nombre');
+        const criterio = document.getElementById('modelo-seleccionado-criterio');
+        const motorRaiz = document.getElementById('modelo-motor');
+        const analisisRaiz = document.getElementById('modelo-analisis-dinamico');
+        let motorModelo = null;
+        if (raizModelos && seleccionado && nombre && criterio && motorRaiz && analisisRaiz) {
+          modelos.montaModelos(raizModelos, {
+            alSeleccionar: ({ modelo, posiciones }) => {
+              seleccionado.hidden = false;
+              nombre.textContent = modelo.nombre;
+              criterio.textContent = modelo.criterio;
+              if (!motorModelo) {
+                motorModelo = constructor.montaConstructor(motorRaiz, {
+                  posicionesIniciales: posiciones,
+                  editable: false,
+                  destinoAnalisis: analisisRaiz,
+                  prefijoId: 'modelo',
+                  nivelAnalisis: 'registrada',
+                });
+              } else motorModelo.cargaPosiciones(posiciones);
+              seleccionado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            },
+          });
+        }
+      })
+      .catch((error) => { console.error('No se ha podido iniciar el análisis de carteras.', error); });
+    /* Alfa: sin cuenta ni ventana de cuenta (docs/PENDIENTE_ALFA_NUVIA_20260902.md §5.2).
+       La fecha de los datos sale del manifiesto del catálogo de la base propia. */
+    import('./js/nuvia-datos.js')
+      .then(async (m) => {
+        const nodo = document.getElementById('datos-a-fecha');
+        if (!nodo) return;
+        try {
+          const manifiesto = await m.maestra().manifiesto();
+          const fecha = manifiesto?.prices_last_date;
+          nodo.textContent = fecha
+            ? `Datos a fecha ${fecha} · universo de la alfa: ${manifiesto.total} instrumentos en euros.`
+            : 'Datos de la alfa sin fecha declarada.';
+        } catch {
+          nodo.textContent = 'La base de datos de la alfa no responde ahora mismo; el laboratorio no puede consultar el catálogo.';
+        }
+      })
+      .catch(() => {});
+  }
+  componentWillUnmount() {
+    if (this._onCompanyHeight) window.removeEventListener('message', this._onCompanyHeight);
+    if (this._onPop) window.removeEventListener('popstate', this._onPop);
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

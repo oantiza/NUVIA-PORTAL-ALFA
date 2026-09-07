@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Calcula una cuota de vivienda sostenible y compara escenarios de financiación con la herramienta de NUVIA.">
+
+<!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/vivienda.html -->
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/vivienda.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Vivienda y coste de vida">
+<meta property="og:description" content="Calcula una cuota de vivienda sostenible y compara escenarios de financiación con la herramienta de NUVIA.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/vivienda.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Vivienda y coste de vida">
+<meta name="twitter:description" content="Calcula una cuota de vivienda sostenible y compara escenarios de financiación con la herramienta de NUVIA.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Vivienda y coste de vida</title>
+
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+
+<body class="nuvia-design-lab">
+<x-dc>
+
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+<div class="nuvia-page">
+
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+<main id="contenido">
+    <section id="vivienda" data-screen-label="Cabecera vivienda" class="nv-hero nv-hero--institutional viv-hero">
+      <div class="nv-container">
+        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="temas.html">Patrimonio</a></li><li><span aria-current="page">Vivienda y coste de vida</span></li></ol>
+        </nav>
+        <div class="nv-hero__inner"><div>
+        <span class="nv-eyebrow nv-eyebrow--on-dark">Tema clave · Vivienda y coste de vida</span>
+        <h1>La casa que encaja también en tu vida</h1>
+        <p class="nv-hero__lead">Calcula, compara y somete la decisión a escenarios exigentes antes de comprometer el presupuesto familiar.</p>
+        <div class="nv-hero__actions"><a class="nv-btn nv-btn--accent" href="#simulador-vivienda">Ir al simulador</a><a class="nv-btn nv-btn--soft" href="#como-funciona-vivienda">Cómo funciona</a></div>
+        <div class="viv-hero__rule"></div>
+        <nav aria-label="Herramientas de vivienda" class="viv-tabs">
+          <sc-for list="{{ pestanas }}" as="t" hint-placeholder-count="5">
+            <button type="button" onClick="{{ t.abrir }}" aria-pressed="{{ t.pressed }}" class="{{ t.clase }}">{{ t.label }}</button>
+          </sc-for>
+        </nav>
+        </div></div>
+      </div>
+    </section>
+
+    <div id="simulador-vivienda" class="nv-container viv-scenario-toolbar">
+      <p>Escenario de vivienda <span>· Guardado local</span></p>
+        <div class="viv-scenario-toolbar__actions">
+          <button type="button" onClick="{{ guardar }}" class="nv-btn nv-btn--accent">Guardar escenario</button>
+          <button type="button" onClick="{{ recuperar }}" class="nv-btn nv-btn--outline">Recuperar</button>
+          <span role="status" class="viv-hero__status">{{ mensaje }}</span>
+        </div>
+    </div>
+
+    <sc-if value="{{ tabHipoteca }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Calculadora de hipoteca" class="nv-container viv-section">
+        <div class="viv-card">
+          <div class="viv-card__head">
+            <p class="viv-result__kicker">Calculadora de hipoteca</p>
+            <h2 class="viv-card__title">Una cuota que refleja el tipo de préstamo</h2>
+            <p class="viv-card__lead">Distingue entre tipo fijo, variable y mixto. En los dos últimos casos, el tipo variable resulta de sumar el índice de referencia y el diferencial.</p>
+          </div>
+          <div class="viv-card__split">
+            <div class="viv-card__form">
+              <div class="nv-fields">
+                <div class="nv-field"><label>Precio de la vivienda</label><div class="nv-field__box"><input name="purchasePrice" type="number" step="5000" defaultValue="{{ v.purchasePrice }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+                <div class="nv-field"><label>Entrada prevista</label><div class="nv-field__box"><input name="downPayment" type="number" step="5000" defaultValue="{{ v.downPayment }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+                <div class="nv-field"><label>Impuestos de compra</label><div class="nv-field__box"><input name="purchaseTaxPercent" type="number" step="0.5" max="20" defaultValue="{{ v.purchaseTaxPercent }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div><p class="nv-field__note">Dependen de vivienda nueva/usada y del territorio.</p></div><div class="nv-field"><label>Notaría y otros gastos</label><div class="nv-field__box"><input name="purchaseOtherCosts" type="number" step="100" defaultValue="{{ v.purchaseOtherCosts }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+                <div class="nv-field"><label>Tasación</label><div class="nv-field__box"><input name="appraisalCost" type="number" step="50" defaultValue="{{ v.appraisalCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+                <div class="nv-field"><label>Plazo</label><div class="nv-field__box"><input name="years" type="number" min="1" max="40" defaultValue="{{ v.years }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div></div>
+                <div class="nv-field--wide">
+                  <p class="viv-section-label">Modalidad</p>
+                  <div class="viv-pill-row">
+                    <sc-for list="{{ modalidades }}" as="m" hint-placeholder-count="3">
+                      <button type="button" onClick="{{ m.abrir }}" aria-pressed="{{ m.pressed }}" class="{{ m.clase }}">{{ m.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <sc-if value="{{ noEsVariable }}" hint-placeholder-val="{{ true }}">
+                  <div class="nv-field"><label>{{ etiquetaTinFijo }}</label><div class="nv-field__box"><input name="fixedRate" type="number" step="0.05" max="20" defaultValue="{{ v.fixedRate }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
+                </sc-if>
+                <sc-if value="{{ esMixta }}" hint-placeholder-val="{{ true }}">
+                  <div class="nv-field"><label>Duración del tramo fijo</label><div class="nv-field__box"><input name="fixedYears" type="number" min="1" max="40" defaultValue="{{ v.fixedYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div></div>
+                </sc-if>
+                <sc-if value="{{ noEsFija }}" hint-placeholder-val="{{ true }}">
+                  <div class="nv-field"><label>Índice de referencia</label><div class="nv-field__box"><input name="referenceRate" type="number" step="0.05" max="20" defaultValue="{{ v.referenceRate }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div><p class="nv-field__note">Introduce el valor de referencia que quieras simular.</p></div><div class="nv-field"><label>Diferencial</label><div class="nv-field__box"><input name="spread" type="number" step="0.05" max="10" defaultValue="{{ v.spread }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
+                </sc-if>
+                <div class="nv-field"><label>Ingresos netos del hogar</label><div class="nv-field__box"><input name="annualHouseholdIncome" type="number" step="1000" defaultValue="{{ v.annualHouseholdIncome }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
+                <div class="nv-field"><label>Otras cuotas de deuda</label><div class="nv-field__box"><input name="monthlyOtherDebt" type="number" step="25" defaultValue="{{ v.monthlyOtherDebt }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              </div>
+              <p class="viv-figure">La entrada, impuestos, compraventa y tasación se pagan con recursos propios. Conserva además un colchón separado. La revisión variable se representa con un índice constante: es un escenario, no una predicción.</p>
+            </div>
+            <div class="viv-card__aside">
+              <p class="viv-result__kicker">Resultado estimado</p>
+              <p class="viv-result__title">Tu escenario de compra</p>
+              <div class="viv-result-grid">
+                <div class="viv-figure"><p class="viv-figure__label">Cuota inicial</p><p class="viv-figure__value">{{ rCuota }}</p><p class="viv-figure__note">{{ rCuotaNota }}</p></div>
+                <div class="viv-figure"><p class="viv-figure__label">Préstamo</p><p class="viv-figure__value">{{ rPrestamo }}</p><p class="viv-figure__note">{{ rLtv }}</p></div>
+                <sc-if value="{{ esMixta }}" hint-placeholder-val="{{ true }}">
+                  <div class="viv-figure"><p class="viv-figure__label">{{ rCuotaTrasLabel }}</p><p class="viv-figure__value">{{ rCuotaTras }}</p><p class="viv-figure__note">{{ rCuotaTrasNota }}</p></div>
+                </sc-if>
+                <div class="viv-figure"><p class="viv-figure__label">Intereses estimados</p><p class="viv-figure__value">{{ rIntereses }}</p><p class="viv-figure__note">Con los tipos introducidos</p></div>
+                <div class="viv-figure"><p class="viv-figure__label">Efectivo inicial</p><p class="viv-figure__value">{{ rEfectivo }}</p><p class="viv-figure__note">Entrada + impuestos + gastos + tasación</p></div>
+                <div class="viv-figure"><p class="viv-figure__label">Tipo variable simulado</p><p class="viv-figure__value">{{ rTipoVar }}</p><p class="viv-figure__note">{{ rTipoVarNota }}</p></div>
+              </div>
+              <div class="viv-budget-total">
+                <div class="viv-effort__row">
+                  <div><p class="viv-figure__label">Esfuerzo mensual inicial</p><p class="viv-figure__value viv-figure__value--xl">{{ rEsfuerzo }}</p></div>
+                  <span class="{{ rEsfuerzoClase }}">{{ rEsfuerzoBadge }}</span>
+                </div>
+                <p class="viv-card__disclaimer">Hipoteca y otras deudas sobre ingresos netos. Es una referencia orientativa, no un criterio de concesión.</p>
+              </div>
+              <div class="viv-effort">
+                <p class="viv-figure__label">{{ rEstresTitulo }}</p>
+                <div class="viv-stress__row">
+                  <p class="viv-figure__value viv-figure__value--xl">{{ rEstresCuota }}<span class="viv-figure__note"> /mes</span></p>
+                  <p class="viv-figure__value viv-figure__value--sm">{{ rEstresEsfuerzo }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="viv-table">
+            <p id="viv-amortizacion-title" class="viv-table__title">Tabla anual de amortización</p>
+            <p id="viv-amortizacion-help" class="nv-table-scroll__hint">Importes en euros y tipo medio en porcentaje. Si no cabe completa, desplaza la tabla; con teclado, enfócala y usa las flechas.</p>
+            <div class="nv-table-scroll viv-table__scroll" role="region" tabindex="0" aria-labelledby="viv-amortizacion-title" aria-describedby="viv-amortizacion-help">
+            <div class="viv-table__data" role="table" aria-labelledby="viv-amortizacion-title">
+            <div class="viv-table__head" role="row">
+              <span class="viv-figure__label" role="columnheader">Año</span>
+              <span class="viv-figure__label" role="columnheader">Saldo inicial</span>
+              <span class="viv-figure__label" role="columnheader">Capital amortizado</span>
+              <span class="viv-figure__label" role="columnheader">Intereses</span>
+              <span class="viv-figure__label" role="columnheader">Saldo final</span>
+              <span class="viv-figure__label" role="columnheader">Tipo medio</span>
+            </div>
+            <div class="viv-table__body" role="rowgroup">
+              <sc-for list="{{ filas }}" as="f" hint-placeholder-count="10">
+                <div class="viv-table__row" role="row">
+                  <span class="viv-budget-line__value" role="rowheader">{{ f.year }}</span>
+                  <span class="viv-budget-line__value" role="cell">{{ f.inicial }}</span>
+                  <span class="viv-budget-line__value" role="cell">{{ f.capital }}</span>
+                  <span class="viv-budget-line__value" role="cell">{{ f.intereses }}</span>
+                  <span class="viv-budget-line__value" role="cell">{{ f.final }}</span>
+                  <span class="viv-budget-line__value" role="cell">{{ f.tipo }}</span>
+                </div>
+              </sc-for>
+            </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ tabOfertas }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Comparador de ofertas" class="nv-container viv-section">
+        <div class="viv-panel">
+          <div class="nv-section-heading">
+            <div>
+              <p class="viv-result__kicker">Comparador de hipotecas</p>
+              <h2 class="viv-card__title">Copia las condiciones completas de cada FEIN</h2>
+              <p class="viv-card__lead">{{ ofertasIntro }}</p>
+            </div>
+            <a href="https://clientebancario.bde.es/pcb/es/menu-horizontal/actualidadeducac/educacion-financiera/comparadores-y-simuladores/" target="_blank" rel="noopener noreferrer" class="nv-btn nv-btn--soft">Comparadores oficiales ↗</a>
+          </div>
+          <div class="viv-offers">
+            <sc-for list="{{ ofertas }}" as="o" hint-placeholder-count="3">
+              <article class="{{ o.claseCard }}">
+                <div class="viv-offer__head">
+                  <div class="viv-offer__id">
+                    <span class="viv-offer__num">{{ o.num }}</span>
+                    <span class="viv-offer__name">{{ o.name }}</span>
+                  </div>
+                  <span class="{{ o.claseBadge }}">{{ o.badge }}</span>
+                </div>
+                <div class="viv-result-grid">
+                  <div class="nv-field nv-field--wide"><label>Modalidad</label><div class="nv-field__box"><select class="nv-select" name="{{ o.campoKind }}" value="{{ o.kind }}" onChange="{{ setOfertaStr }}" ><option value="Fija">Fija</option><option value="Variable">Variable</option><option value="Mixta">Mixta</option></select></div></div>
+                  <div class="nv-field"><label>TIN fijo</label><div class="nv-field__box"><input name="{{ o.campoFixedRate }}" type="number" step="0.05" defaultValue="{{ o.fixedRate }}" onChange="{{ setOferta }}"><span class="nv-field__unit">%</span></div></div>
+                  <div class="nv-field"><label>Tramo fijo</label><div class="nv-field__box"><input name="{{ o.campoFixedYears }}" type="number" min="0" max="40" defaultValue="{{ o.fixedYears }}" onChange="{{ setOferta }}"><span class="nv-field__unit">años</span></div></div>
+                  <div class="nv-field"><label>Índice</label><div class="nv-field__box"><input name="{{ o.campoReferenceRate }}" type="number" step="0.05" defaultValue="{{ o.referenceRate }}" onChange="{{ setOferta }}"><span class="nv-field__unit">%</span></div></div>
+                  <div class="nv-field"><label>Diferencial</label><div class="nv-field__box"><input name="{{ o.campoSpread }}" type="number" step="0.05" defaultValue="{{ o.spread }}" onChange="{{ setOferta }}"><span class="nv-field__unit">%</span></div></div>
+                  <div class="nv-field"><label>TAE</label><div class="nv-field__box"><input name="{{ o.campoTae }}" type="number" step="0.05" defaultValue="{{ o.tae }}" onChange="{{ setOferta }}"><span class="nv-field__unit">%</span></div></div>
+                  <div class="nv-field"><label>Plazo</label><div class="nv-field__box"><input name="{{ o.campoYears }}" type="number" min="1" max="40" defaultValue="{{ o.years }}" onChange="{{ setOferta }}"><span class="nv-field__unit">años</span></div></div>
+                  <div class="nv-field"><label>Apertura</label><div class="nv-field__box"><input name="{{ o.campoOpeningFee }}" type="number" step="100" defaultValue="{{ o.openingFee }}" onChange="{{ setOferta }}"><span class="nv-field__unit">€</span></div></div>
+                  <div class="nv-field"><label>Tasación</label><div class="nv-field__box"><input name="{{ o.campoAppraisalCost }}" type="number" step="50" defaultValue="{{ o.appraisalCost }}" onChange="{{ setOferta }}"><span class="nv-field__unit">€</span></div></div>
+                  <div class="nv-field"><label>Productos</label><div class="nv-field__box"><input name="{{ o.campoAnnualProductsCost }}" type="number" step="50" defaultValue="{{ o.annualProductsCost }}" onChange="{{ setOferta }}"><span class="nv-field__unit">€/año</span></div></div>
+                </div>
+                <div class="viv-offer__result">
+                  <div class="viv-offer__result-grid">
+                    <div><p class="viv-table__headcell">Cuota inicial</p><p class="viv-figure__value">{{ o.rCuota }}</p></div>
+                    <div><p class="viv-table__headcell">Coste conocido</p><p class="viv-figure__value">{{ o.rCoste }}</p></div>
+                  </div>
+                  <p class="viv-offer__total"><span>Desembolso conocido</span><strong class="viv-budget-line__value">{{ o.rDesembolso }}</strong></p>
+                </div>
+                <div class="viv-offer__chips">
+                  <span class="{{ o.claseChipTae }}">{{ o.chipTae }}</span>
+                  <span class="{{ o.claseChipVar }}">{{ o.chipVar }}</span>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <p class="viv-stress"><strong class="viv-budget-line__value">Alcance:</strong> la TAE sigue siendo la referencia contractual principal. Las comisiones por amortización son contingentes y no se suman al coste conocido. NUVIA no presenta los ejemplos como ofertas comerciales vigentes.</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ tabCompra }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Compra o alquiler" class="nv-container viv-section">
+        <div class="viv-card viv-card__split">
+          <div class="viv-card__form">
+            <p class="viv-result__kicker">Compra o alquiler</p>
+            <h2 class="viv-card__title">Compara patrimonio, no solo mensualidades</h2>
+            <p class="viv-card__lead">El modelo asigna al alquiler la entrada y los gastos que no desembolsa, e invierte cada mes la diferencia de coste. La compra acumula la revalorización de la vivienda y el capital amortizado.</p>
+            <div class="nv-fields">
+              <div class="nv-field"><label>Alquiler comparable</label><div class="nv-field__box"><input name="monthlyRent" type="number" step="50" defaultValue="{{ v.monthlyRent }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              <div class="nv-field"><label>Horizonte</label><div class="nv-field__box"><input name="comparisonYears" type="number" min="1" max="30" defaultValue="{{ v.comparisonYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div></div>
+              <div class="nv-field"><label>Revalorización vivienda</label><div class="nv-field__box"><input name="homeAppreciation" type="number" step="0.25" max="15" defaultValue="{{ v.homeAppreciation }}" onChange="{{ setNum }}"><span class="nv-field__unit">% anual</span></div></div>
+              <div class="nv-field"><label>Crecimiento alquiler</label><div class="nv-field__box"><input name="rentGrowth" type="number" step="0.25" max="15" defaultValue="{{ v.rentGrowth }}" onChange="{{ setNum }}"><span class="nv-field__unit">% anual</span></div></div>
+              <div class="nv-field"><label>Rentabilidad alternativa</label><div class="nv-field__box"><input name="investmentReturn" type="number" step="0.25" max="20" defaultValue="{{ v.investmentReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">% anual</span></div></div>
+              <div class="nv-field"><label>Costes de venta</label><div class="nv-field__box"><input name="saleCostsPercent" type="number" step="0.25" max="15" defaultValue="{{ v.saleCostsPercent }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
+            </div>
+            <p class="viv-card__disclaimer">La hipoteca, la entrada y los costes de propietario se toman de las pestañas Hipoteca y Presupuesto.</p>
+          </div>
+          <div class="viv-card__aside">
+            <p class="viv-figure__label">{{ bvResultadoLabel }}</p>
+            <h3 class="viv-intro__title">{{ bvTitulo }}</h3>
+            <div class="viv-result-grid">
+              <div class="viv-figure"><p class="viv-figure__label">Patrimonio comprando</p><p class="viv-figure__value">{{ bvComprando }}</p><p class="viv-figure__note">{{ bvComprandoNota }}</p></div>
+              <div class="viv-figure"><p class="viv-figure__label">Patrimonio alquilando</p><p class="viv-figure__value">{{ bvAlquilando }}</p><p class="viv-figure__note">Entrada, gastos y diferencias mensuales invertidas</p></div>
+            </div>
+            <div class="viv-budget-total">
+              <p class="viv-result__kicker">Diferencia patrimonial</p>
+              <p class="viv-figure__value viv-figure__value--xl">{{ bvDiferencia }}</p>
+              <p class="viv-card__disclaimer">Resultado sensible a revalorización, alquiler, rentabilidad, costes de propietario y venta. No incluye fiscalidad individual.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ tabAmort }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Amortización anticipada" class="nv-container viv-section">
+        <div class="viv-panel">
+          <p class="viv-result__kicker">Amortización anticipada</p>
+          <h2 class="viv-card__title">Reducir cuota o terminar antes</h2>
+          <p class="viv-card__lead">Simula una aportación extraordinaria sobre una hipoteca existente y descuenta la compensación indicada en tu contrato.</p>
+          <div class="viv-card__split">
+            <div class="nv-fields">
+              <div class="nv-field"><label>Capital pendiente</label><div class="nv-field__box"><input name="repaymentBalance" type="number" step="5000" defaultValue="{{ v.repaymentBalance }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+              <div class="nv-field"><label>TIN actual</label><div class="nv-field__box"><input name="repaymentRate" type="number" step="0.05" defaultValue="{{ v.repaymentRate }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
+              <div class="nv-field"><label>Plazo restante</label><div class="nv-field__box"><input name="repaymentYears" type="number" min="1" max="40" defaultValue="{{ v.repaymentYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div></div>
+              <div class="nv-field"><label>Importe a amortizar</label><div class="nv-field__box"><input name="repaymentAmount" type="number" step="1000" defaultValue="{{ v.repaymentAmount }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div></div>
+              <div class="nv-field"><label>Compensación aplicable</label><div class="nv-field__box"><input name="repaymentFee" type="number" step="0.05" defaultValue="{{ v.repaymentFee }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
+              <div>
+                <p class="viv-section-label">Objetivo</p>
+                <div class="viv-pill-row">
+                  <sc-for list="{{ modosAmort }}" as="m" hint-placeholder-count="2">
+                    <button type="button" onClick="{{ m.abrir }}" aria-pressed="{{ m.pressed }}" class="{{ m.clase }}">{{ m.label }}</button>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <div class="viv-card__aside">
+              <p class="viv-figure__label">Resultado estimado</p>
+              <div class="viv-result-grid">
+                <div class="viv-figure"><p class="viv-figure__label">Cuota actual</p><p class="viv-figure__value">{{ arCuotaActual }}</p></div>
+                <div class="viv-figure"><p class="viv-figure__label">Nueva cuota</p><p class="viv-figure__value">{{ arNuevaCuota }}</p><p class="viv-figure__note">{{ arNuevaCuotaNota }}</p></div>
+                <div class="viv-figure"><p class="viv-figure__label">Nuevo plazo</p><p class="viv-figure__value">{{ arNuevoPlazo }}</p></div>
+                <div class="viv-budget-total"><p class="viv-figure__label">Ahorro neto</p><p class="viv-figure__value">{{ arAhorroNeto }}</p><p class="viv-figure__note">{{ arAhorroNota }}</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ tabPresupuesto }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Presupuesto mensual" class="nv-container viv-section">
+        <div class="viv-card viv-card__split">
+          <div class="viv-card__form">
+            <p class="viv-result__kicker">Presupuesto del hogar</p>
+            <h2 class="viv-card__title">Lo que queda después de la casa</h2>
+            <p class="viv-card__lead">Los ingresos, la cuota y otras deudas se toman de la pestaña Hipoteca. Añade aquí los costes de propietario y de vida diaria.</p>
+            <p class="viv-figure__label">Costes de propietario</p>
+            <div class="nv-fields">
+              <div class="nv-field"><label>Comunidad</label><div class="nv-field__box"><input name="communityFees" type="number" step="10" defaultValue="{{ v.communityFees }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              <div class="nv-field"><label>IBI</label><div class="nv-field__box"><input name="propertyTaxAnnual" type="number" step="50" defaultValue="{{ v.propertyTaxAnnual }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
+              <div class="nv-field"><label>Seguro de hogar</label><div class="nv-field__box"><input name="homeInsuranceAnnual" type="number" step="50" defaultValue="{{ v.homeInsuranceAnnual }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
+              <div class="nv-field"><label>Mantenimiento</label><div class="nv-field__box"><input name="maintenanceAnnual" type="number" step="100" defaultValue="{{ v.maintenanceAnnual }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
+            </div>
+            <p class="viv-figure__label">Gastos de vida diaria</p>
+            <div class="nv-fields">
+              <div class="nv-field"><label>Alimentación y suministros</label><div class="nv-field__box"><input name="essentials" type="number" step="25" defaultValue="{{ v.essentials }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              <div class="nv-field"><label>Transporte</label><div class="nv-field__box"><input name="transport" type="number" step="25" defaultValue="{{ v.transport }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              <div class="nv-field"><label>Seguros y cuidados</label><div class="nv-field__box"><input name="insuranceCare" type="number" step="25" defaultValue="{{ v.insuranceCare }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+              <div class="nv-field"><label>Ocio y otros</label><div class="nv-field__box"><input name="leisureOther" type="number" step="25" defaultValue="{{ v.leisureOther }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+            </div>
+          </div>
+          <div class="viv-card__aside">
+            <p class="viv-result__kicker">Cada mes, con la casa incluida</p>
+            <div class="viv-budget-lines">
+              <p class="viv-budget-line"><span>Ingresos netos</span><strong class="viv-budget-line__value">{{ pIngresos }}</strong></p>
+              <p class="viv-budget-line"><span>Cuota hipotecaria y otras deudas</span><strong class="viv-budget-line__value">−{{ pHipoteca }}</strong></p>
+              <p class="viv-budget-line"><span>Costes de propietario</span><strong class="viv-budget-line__value">−{{ pCostesProp }}</strong></p>
+              <p class="viv-budget-line"><span>Gastos de vida diaria</span><strong class="viv-budget-line__value">−{{ pVida }}</strong></p>
+            </div>
+            <div class="viv-budget-total">
+              <p class="viv-result__kicker">Margen mensual disponible</p>
+              <p class="viv-figure__value viv-figure__value--xl {{ pMargenClase }}">{{ pMargen }}</p>
+              <p class="viv-card__disclaimer">{{ pCapacidad }}</p>
+            </div>
+            <p class="viv-card__disclaimer">Un margen estable permite sostener ahorro, objetivos e imprevistos sin renunciar a la casa elegida.</p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+    <section id="como-funciona-vivienda" data-screen-label="Intro de herramienta" class="nv-container viv-section viv-section--tight">
+      <div class="viv-intro">
+        <div class="viv-intro__lead">
+          <p class="viv-result__kicker">Antes de empezar</p>
+          <h2 class="viv-intro__title">{{ tabTitulo }}</h2>
+          <p class="viv-intro__steptext">{{ tabResumen }}</p>
+          <div aria-label="Datos necesarios" class="viv-intro__chips">
+            <sc-for list="{{ tabChips }}" as="c" hint-placeholder-count="3">
+              <span class="nv-tag">{{ c }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div class="viv-intro__steps">
+          <article>
+            <span class="viv-step-num">1</span>
+            <h3 class="viv-intro__steptitle">Qué es</h3>
+            <p class="viv-intro__steptext">{{ tabQue }}</p>
+          </article>
+          <article>
+            <span class="viv-step-num">2</span>
+            <h3 class="viv-intro__steptitle">Cómo funciona</h3>
+            <p class="viv-intro__steptext">{{ tabComo }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = { tab: 'mortgage', s: null, ofertas: null, msg: '' };
+  defaults() {
+    return { purchasePrice:350000, downPayment:70000, purchaseTaxPercent:8, purchaseOtherCosts:2500, appraisalCost:350,
+      mortgageKind:'Mixta', fixedRate:2.45, fixedYears:5, referenceRate:2.25, spread:0.75, years:25,
+      annualHouseholdIncome:65000, monthlyOtherDebt:0,
+      communityFees:110, propertyTaxAnnual:650, homeInsuranceAnnual:300, maintenanceAnnual:2500,
+      essentials:750, transport:300, insuranceCare:350, leisureOther:450,
+      monthlyRent:1250, comparisonYears:10, homeAppreciation:2, rentGrowth:2, investmentReturn:4, saleCostsPercent:3,
+      repaymentBalance:200000, repaymentRate:3, repaymentYears:20, repaymentAmount:20000, repaymentFee:0, repaymentMode:'term' };
+  }
+  ofertasDefault() {
+    return [
+      { id:'offer-a', name:'Oferta A', kind:'Fija', fixedRate:2.8, fixedYears:25, referenceRate:0, spread:0, tae:3.12, years:25, openingFee:0, appraisalCost:350, switchingCosts:0, annualProductsCost:420 },
+      { id:'offer-b', name:'Oferta B', kind:'Variable', fixedRate:0, fixedYears:0, referenceRate:2.25, spread:0.65, tae:3.18, years:25, openingFee:500, appraisalCost:300, switchingCosts:0, annualProductsCost:120 },
+      { id:'offer-c', name:'Oferta C', kind:'Mixta', fixedRate:2.45, fixedYears:5, referenceRate:2.25, spread:0.75, tae:3.26, years:30, openingFee:0, appraisalCost:400, switchingCosts:0, annualProductsCost:540 },
+    ];
+  }
+  // Motor portado sin cambios funcionales desde housingCalculations.ts
+  motor() {
+    if (this._eng) return this._eng;
+    const safePositive=(v)=>Number.isFinite(v)?Math.max(0,v):0;
+    const round=(v)=>Math.round(v*100)/100;
+    const clampRate=(v)=>Math.max(0,Number.isFinite(v)?v:0);
+    function paymentForBalance(principal,annualRate,months){const p=safePositive(principal);const m=Math.max(1,Math.round(safePositive(months)));const r=clampRate(annualRate)/100/12;if(r===0)return p/m;return p*(r*Math.pow(1+r,m))/(Math.pow(1+r,m)-1);}
+    function calculateMortgage({principal,annualRate,years}){const p=safePositive(principal);const months=Math.max(1,Math.round(safePositive(years)*12));const monthlyPayment=paymentForBalance(p,annualRate,months);const totalPayment=monthlyPayment*months;return{monthlyPayment:round(monthlyPayment),totalPayment:round(totalPayment),totalInterest:round(Math.max(0,totalPayment-p))};}
+    function calculateMortgageProfile(input){const principal=safePositive(input.principal);const months=Math.max(1,Math.round(safePositive(input.years)*12));const fixedMonths=input.kind==='Mixta'?Math.min(months,Math.max(1,Math.round(safePositive(input.fixedYears||0)*12))):input.kind==='Fija'?months:0;const variableRate=input.kind==='Fija'?0:clampRate(safePositive(input.referenceRate||0)+safePositive(input.spread||0)+(Number.isFinite(input.referenceShift)?input.referenceShift||0:0));
+      let balance=principal,currentPayment=0,previousRate=-1,totalPayment=0,totalInterest=0,firstMonthlyPayment=0,paymentAfterFixedPeriod=0;const years=new Map();
+      for(let month=0;month<months&&balance>0.005;month+=1){const rate=input.kind==='Fija'||(input.kind==='Mixta'&&month<fixedMonths)?clampRate(input.fixedRate):variableRate;const remainingMonths=months-month;
+        if(month===0||Math.abs(rate-previousRate)>0.000001){currentPayment=paymentForBalance(balance,rate,remainingMonths);previousRate=rate;}
+        if(month===0)firstMonthlyPayment=currentPayment;
+        if(input.kind==='Mixta'&&month===fixedMonths)paymentAfterFixedPeriod=currentPayment;
+        if(input.kind!=='Mixta')paymentAfterFixedPeriod=currentPayment;
+        const monthlyRate=rate/100/12;const interest=balance*monthlyRate;const principalPaid=Math.min(balance,Math.max(0,currentPayment-interest));const actualPayment=interest+principalPaid;const yearNumber=Math.floor(month/12)+1;const year=years.get(yearNumber)||{opening:balance,principal:0,interest:0,closing:balance,rateTotal:0,months:0};
+        balance=Math.max(0,balance-principalPaid);totalPayment+=actualPayment;totalInterest+=interest;year.principal+=principalPaid;year.interest+=interest;year.closing=balance;year.rateTotal+=rate;year.months+=1;years.set(yearNumber,year);}
+      return{firstMonthlyPayment:round(firstMonthlyPayment),paymentAfterFixedPeriod:round(paymentAfterFixedPeriod||firstMonthlyPayment),totalPayment:round(totalPayment),totalInterest:round(totalInterest),variableRate:round(variableRate),schedule:[...years.entries()].map(([year,v])=>({year,openingBalance:round(v.opening),principalPaid:round(v.principal),interestPaid:round(v.interest),closingBalance:round(v.closing),averageRate:round(v.rateTotal/v.months)}))};}
+    function calculatePurchaseScenario(input){const purchasePrice=safePositive(input.purchasePrice);const downPayment=Math.min(purchasePrice,safePositive(input.downPayment));const loanAmount=Math.max(0,purchasePrice-downPayment);const purchaseTaxes=purchasePrice*safePositive(input.purchaseTaxPercent)/100;const mortgage=calculateMortgageProfile(Object.assign({},input.mortgage,{principal:loanAmount}));const stressedMortgage=calculateMortgageProfile(Object.assign({},input.mortgage,{principal:loanAmount,referenceShift:input.mortgage.kind==='Fija'?0:2}));const monthlyIncome=safePositive(input.annualHouseholdIncome)/12;const monthlyOtherDebt=safePositive(input.monthlyOtherDebt);const stressedPayment=input.mortgage.kind==='Mixta'?stressedMortgage.paymentAfterFixedPeriod:stressedMortgage.firstMonthlyPayment;
+      return Object.assign({},mortgage,{loanAmount:round(loanAmount),purchaseTaxes:round(purchaseTaxes),initialCashNeeded:round(downPayment+purchaseTaxes+safePositive(input.purchaseOtherCosts)+safePositive(input.appraisalCost)),loanToValue:purchasePrice>0?round((loanAmount/purchasePrice)*100):0,monthlyIncome:round(monthlyIncome),effortRate:monthlyIncome>0?round(((mortgage.firstMonthlyPayment+monthlyOtherDebt)/monthlyIncome)*100):0,stressedMonthlyPayment:stressedPayment,stressedEffortRate:monthlyIncome>0?round(((stressedPayment+monthlyOtherDebt)/monthlyIncome)*100):0});}
+    function calculateMortgageOffer(principal,input){const mortgage=calculateMortgageProfile({principal,years:input.years,kind:input.kind,fixedRate:input.fixedRate,fixedYears:input.fixedYears,referenceRate:input.referenceRate,spread:input.spread});const extras=safePositive(input.openingFee)+safePositive(input.appraisalCost)+safePositive(input.switchingCosts)+safePositive(input.annualProductsCost)*safePositive(input.years);const knownTotalOutlay=mortgage.totalPayment+extras;return Object.assign({},mortgage,{monthlyPayment:mortgage.firstMonthlyPayment,knownTotalOutlay:round(knownTotalOutlay),knownOfferCost:round(Math.max(0,knownTotalOutlay-safePositive(principal)))});}
+    function calculateEarlyRepayment(input){const principal=safePositive(input.principal);const lumpSum=Math.min(principal,safePositive(input.lumpSum));const remainingPrincipal=principal-lumpSum;const original=calculateMortgage({principal,annualRate:input.annualRate,years:input.remainingYears});const originalMonths=Math.max(1,Math.round(safePositive(input.remainingYears)*12));const fee=lumpSum*safePositive(input.feePercent)/100;
+      let newPayment=original.monthlyPayment,newMonths=originalMonths,newInterest=0;
+      if(input.mode==='payment'){const revised=calculateMortgage({principal:remainingPrincipal,annualRate:input.annualRate,years:input.remainingYears});newPayment=revised.monthlyPayment;newInterest=revised.totalInterest;}
+      else{const monthlyRate=clampRate(input.annualRate)/100/12;let balance=remainingPrincipal;newMonths=0;
+        while(balance>0.005&&newMonths<originalMonths){const interest=balance*monthlyRate;const principalPaid=Math.min(balance,Math.max(0,original.monthlyPayment-interest));if(principalPaid<=0)break;balance-=principalPaid;newInterest+=interest;newMonths+=1;}}
+      const interestSaved=Math.max(0,original.totalInterest-newInterest);
+      return{originalPayment:original.monthlyPayment,newPayment:round(newPayment),originalMonths,newMonths,interestSaved:round(interestSaved),fee:round(fee),netSavings:round(Math.max(0,interestSaved-fee))};}
+    function calculateBuyVsRent(input){const horizonMonths=Math.max(1,Math.round(safePositive(input.horizonYears)*12));const mortgageMonths=Math.max(1,Math.round(safePositive(input.mortgageYears)*12));const fixedMonths=input.mortgageKind==='Mixta'?Math.min(mortgageMonths,Math.round(safePositive(input.fixedYears)*12)):input.mortgageKind==='Fija'?mortgageMonths:0;
+      const homeMonthlyGrowth=Math.pow(1+safePositive(input.homeAppreciationRate)/100,1/12)-1;const rentMonthlyGrowth=Math.pow(1+safePositive(input.rentGrowthRate)/100,1/12)-1;const investmentMonthlyReturn=Math.pow(1+safePositive(input.investmentReturnRate)/100,1/12)-1;
+      let homeValue=safePositive(input.purchasePrice),mortgageBalance=safePositive(input.mortgagePrincipal),rent=safePositive(input.monthlyRent),buyerInvestment=0,renterInvestment=safePositive(input.downPayment)+safePositive(input.purchaseCosts),mortgagePayment=0,previousMortgageRate=-1;
+      for(let month=0;month<horizonMonths;month+=1){homeValue*=1+homeMonthlyGrowth;rent*=1+rentMonthlyGrowth;buyerInvestment*=1+investmentMonthlyReturn;renterInvestment*=1+investmentMonthlyReturn;
+        let actualMortgagePayment=0;
+        if(mortgageBalance>0.005&&month<mortgageMonths){const mortgageRate=input.mortgageKind==='Fija'||(input.mortgageKind==='Mixta'&&month<fixedMonths)?clampRate(input.fixedRate):clampRate(safePositive(input.referenceRate)+safePositive(input.spread));
+          if(month===0||Math.abs(mortgageRate-previousMortgageRate)>0.000001){mortgagePayment=paymentForBalance(mortgageBalance,mortgageRate,mortgageMonths-month);previousMortgageRate=mortgageRate;}
+          const mortgageMonthlyRate=mortgageRate/100/12;const interest=mortgageBalance*mortgageMonthlyRate;const principalPaid=Math.min(mortgageBalance,Math.max(0,mortgagePayment-interest));mortgageBalance-=principalPaid;actualMortgagePayment=interest+principalPaid;}
+        const buyerHousingCost=actualMortgagePayment+safePositive(input.ownerMonthlyCosts);
+        if(buyerHousingCost>rent){renterInvestment+=buyerHousingCost-rent;}else{buyerInvestment+=rent-buyerHousingCost;}}
+      const saleCosts=homeValue*safePositive(input.saleCostsPercent)/100;const buyerNetWorth=homeValue-saleCosts-mortgageBalance+buyerInvestment;const renterNetWorth=renterInvestment;const difference=buyerNetWorth-renterNetWorth;
+      return{buyerNetWorth:round(buyerNetWorth),renterNetWorth:round(renterNetWorth),difference:round(Math.abs(difference)),winner:Math.abs(difference)<1?'tie':difference>0?'buy':'rent',finalHomeValue:round(homeValue),remainingMortgage:round(mortgageBalance)};}
+    this._eng = { calculatePurchaseScenario, calculateMortgageOffer, calculateEarlyRepayment, calculateBuyVsRent };
+    return this._eng;
+  }
+  componentDidMount() { document.title = 'Vivienda y coste de vida | NUVIA'; }
+  s() { return this.state.s || this.defaults(); }
+  ofs() { return this.state.ofertas || this.ofertasDefault(); }
+  upd(k, val) { this.setState({ s: Object.assign({}, this.s(), { [k]: val }) }); }
+  tabs() {
+    return [
+      { id:'mortgage', label:'Hipoteca', title:'Calcula una cuota que puedas sostener', summary:'Empieza aquí para saber cuánto tendrías que pedir, qué efectivo necesitas al principio y cómo encajaría la cuota en los ingresos del hogar.', what:'Una hipoteca es un préstamo a largo plazo para financiar parte de la vivienda. La cuota devuelve cada mes una parte del capital y paga intereses.', how:'Introduce el precio, la entrada, los gastos, el plazo y el tipo. La calculadora estima la cuota, los intereses, el esfuerzo mensual y un escenario con tipos más altos.', chips:['Precio y entrada','Tipo y plazo','Ingresos y otras deudas'] },
+      { id:'offers', label:'Ofertas', title:'Compara hipotecas con la misma regla', summary:'Pasa de mirar solo la cuota a entender qué propuesta tiene el coste completo más competitivo y qué compromisos exige.', what:'El comparador coloca hasta tres propuestas bancarias una junto a otra. Así puedes revisar TIN, TAE, comisiones, productos vinculados y coste estimado en euros.', how:'Copia las condiciones de cada FEIN en su columna. NUVIA calcula todas sobre el mismo préstamo y destaca la menor TAE y el menor desembolso conocido.', chips:['FEIN de cada banco','TAE y comisiones','Seguros y vinculaciones'] },
+      { id:'buy-rent', label:'Compra o alquiler', title:'Compara las dos opciones a largo plazo', summary:'La mensualidad no cuenta toda la historia: esta vista compara el patrimonio que podrías acumular comprando o alquilando e invirtiendo la diferencia.', what:'Comprar crea patrimonio al amortizar deuda y puede beneficiarse de la revalorización. Alquilar conserva la entrada y los gastos de compra para otros objetivos o inversiones.', how:'Elige un horizonte y plantea supuestos para vivienda, alquiler e inversión. El resultado muestra el patrimonio estimado de cada opción y la diferencia entre ambas.', chips:['Alquiler comparable','Años previstos en la vivienda','Supuestos de evolución'] },
+      { id:'repayment', label:'Amortización', title:'Descubre si compensa adelantar capital', summary:'Simula qué ocurre al utilizar ahorro para reducir una hipoteca que ya está en marcha.', what:'Amortizar anticipadamente significa devolver una parte del préstamo antes de la fecha prevista. Puedes usarlo para pagar menos cada mes o para terminar antes.', how:'Indica el capital pendiente, el tipo, el plazo, la cantidad que aportarías y la posible comisión. Después elige si prefieres reducir cuota o reducir plazo.', chips:['Capital y plazo pendientes','Importe disponible','Comisión del contrato'] },
+      { id:'budget', label:'Presupuesto', title:'Comprueba lo que queda después de la casa', summary:'Convierte la decisión de vivienda en un presupuesto mensual completo, incluyendo costes que no aparecen en la cuota hipotecaria.', what:'El coste de vivir en una casa incluye hipoteca, comunidad, impuestos, seguro, mantenimiento y los gastos habituales del hogar.', how:'Añade los costes de propietario y de vida diaria. NUVIA los resta de los ingresos y muestra el margen mensual disponible para ahorro, objetivos e imprevistos.', chips:['Costes de la vivienda','Gastos de vida diaria','Ingresos del hogar'] },
+    ];
+  }
+  renderVals() {
+    const s = this.s();
+    const ofertas = this.ofs();
+    const eng = this.motor();
+    const euro = (x) => new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(Math.round(x)) + ' €';
+    const euroP = (x) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(x) + ' €';
+    const pct = (x) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 2 }).format(x);
+    const tab = this.tabs().find(t => t.id === this.state.tab) || this.tabs()[0];
+    const pill = (on) => 'viv-pill viv-pill--dark' + (on ? ' is-active' : '');
+    const pillClaro = (on) => 'viv-pill' + (on ? ' is-active' : '');
+    const scenario = eng.calculatePurchaseScenario({
+      purchasePrice: s.purchasePrice, downPayment: s.downPayment, purchaseTaxPercent: s.purchaseTaxPercent,
+      purchaseOtherCosts: s.purchaseOtherCosts, appraisalCost: s.appraisalCost,
+      annualHouseholdIncome: s.annualHouseholdIncome, monthlyOtherDebt: s.monthlyOtherDebt,
+      mortgage: { years: s.years, kind: s.mortgageKind, fixedRate: s.fixedRate, fixedYears: s.fixedYears, referenceRate: s.referenceRate, spread: s.spread },
+    });
+    const efecto = scenario.effortRate <= 30 ? { label: 'Margen amplio', clase: 'holgado' }
+      : scenario.effortRate <= 35 ? { label: 'Margen ajustado', clase: 'ajustado' }
+      : { label: 'Esfuerzo elevado', clase: 'elevado' };
+    const ownerMonthly = s.communityFees + s.propertyTaxAnnual / 12 + s.homeInsuranceAnnual / 12 + s.maintenanceAnnual / 12;
+    const living = s.essentials + s.transport + s.insuranceCare + s.leisureOther;
+    const margen = scenario.monthlyIncome - scenario.firstMonthlyPayment - s.monthlyOtherDebt - living - ownerMonthly;
+    const capacidad = scenario.monthlyIncome > 0 ? margen / scenario.monthlyIncome * 100 : 0;
+    const resultados = ofertas.map(o => ({ o, r: eng.calculateMortgageOffer(scenario.loanAmount, Object.assign({ earlyRepaymentFeePercent: 0 }, o)) }));
+    const menorCoste = Math.min(...resultados.map(x => x.r.knownTotalOutlay));
+    const menorTae = Math.min(...ofertas.map(o => o.tae));
+    const bv = eng.calculateBuyVsRent({
+      purchasePrice: s.purchasePrice, downPayment: s.downPayment, purchaseCosts: scenario.initialCashNeeded - s.downPayment,
+      mortgagePrincipal: scenario.loanAmount, mortgageYears: s.years, mortgageKind: s.mortgageKind,
+      fixedRate: s.fixedRate, fixedYears: s.fixedYears, referenceRate: s.referenceRate, spread: s.spread,
+      ownerMonthlyCosts: ownerMonthly, monthlyRent: s.monthlyRent, horizonYears: s.comparisonYears,
+      homeAppreciationRate: s.homeAppreciation, rentGrowthRate: s.rentGrowth, investmentReturnRate: s.investmentReturn, saleCostsPercent: s.saleCostsPercent,
+    });
+    const ar = eng.calculateEarlyRepayment({ principal: s.repaymentBalance, annualRate: s.repaymentRate, remainingYears: s.repaymentYears, lumpSum: s.repaymentAmount, feePercent: s.repaymentFee, mode: s.repaymentMode });
+    const camposOferta = {};
+    ['Kind','FixedRate','FixedYears','ReferenceRate','Spread','Tae','Years','OpeningFee','AppraisalCost','AnnualProductsCost'].forEach(c => { camposOferta[c] = c.charAt(0).toLowerCase() + c.slice(1); });
+    return {
+      v: s,
+      mensaje: this.state.msg,
+      setNum: (e) => this.upd(e.target.name, Number(e.target.value) || 0),
+      guardar: () => { try { window.localStorage.setItem('nuvia-vivienda-maqueta-v1', JSON.stringify({ s, ofertas })); this.setState({ msg: 'Escenario guardado en este dispositivo' }); } catch (err) { this.setState({ msg: 'No se pudo guardar' }); } },
+      recuperar: () => { try { const raw = window.localStorage.getItem('nuvia-vivienda-maqueta-v1'); if (!raw) { this.setState({ msg: 'No hay ningún escenario guardado' }); return; } const d = JSON.parse(raw); this.setState({ s: Object.assign(this.defaults(), d.s || {}), ofertas: Array.isArray(d.ofertas) && d.ofertas.length === 3 ? d.ofertas : this.ofs(), msg: 'Escenario recuperado' }); } catch (err) { this.setState({ msg: 'No se pudo recuperar el escenario' }); } },
+      pestanas: this.tabs().map(t => ({ label: t.label, pressed: t.id === this.state.tab, abrir: () => this.setState({ tab: t.id }), clase: pill(t.id === this.state.tab) })),
+      tabTitulo: tab.title, tabResumen: tab.summary, tabQue: tab.what, tabComo: tab.how, tabChips: tab.chips,
+      tabHipoteca: tab.id === 'mortgage', tabOfertas: tab.id === 'offers', tabCompra: tab.id === 'buy-rent', tabAmort: tab.id === 'repayment', tabPresupuesto: tab.id === 'budget',
+      modalidades: ['Fija','Variable','Mixta'].map(k => ({ label: k, pressed: s.mortgageKind === k, abrir: () => this.upd('mortgageKind', k), clase: pillClaro(s.mortgageKind === k) })),
+      noEsVariable: s.mortgageKind !== 'Variable', noEsFija: s.mortgageKind !== 'Fija', esMixta: s.mortgageKind === 'Mixta',
+      etiquetaTinFijo: s.mortgageKind === 'Mixta' ? 'TIN del tramo fijo' : 'TIN fijo',
+      rCuota: euroP(scenario.firstMonthlyPayment), rCuotaNota: (s.years * 12) + ' mensualidades máximas',
+      rPrestamo: euro(scenario.loanAmount), rLtv: pct(scenario.loanToValue) + ' % del precio',
+      rCuotaTrasLabel: 'Cuota desde año ' + (s.fixedYears + 1), rCuotaTras: euroP(scenario.paymentAfterFixedPeriod), rCuotaTrasNota: 'Con tipo variable del ' + pct(scenario.variableRate) + ' %',
+      rIntereses: euro(scenario.totalInterest), rEfectivo: euro(scenario.initialCashNeeded),
+      rTipoVar: pct(scenario.variableRate) + ' %', rTipoVarNota: s.mortgageKind === 'Fija' ? 'No aplica a esta modalidad' : 'Índice + diferencial',
+      rEsfuerzo: pct(scenario.effortRate) + ' %',
+      rEsfuerzoBadge: efecto.label,
+      rEsfuerzoClase: 'viv-badge viv-badge--' + efecto.clase,
+      rEstresTitulo: s.mortgageKind === 'Fija' ? 'Tipo fijo · cuota protegida frente a revisiones' : 'Escenario de tensión · referencia +2 puntos',
+      rEstresCuota: euroP(scenario.stressedMonthlyPayment), rEstresEsfuerzo: pct(scenario.stressedEffortRate) + ' %',
+      filas: scenario.schedule.map(f => ({ year: f.year, inicial: euro(f.openingBalance), capital: euro(f.principalPaid), intereses: euro(f.interestPaid), final: euro(f.closingBalance), tipo: pct(f.averageRate) + ' %' })),
+      ofertasIntro: 'Las tres ofertas se calculan sobre el mismo préstamo de ' + euro(scenario.loanAmount) + '. La TAE se compara como dato contractual; el coste conocido en euros se estima con los campos introducidos.',
+      setOferta: (e) => { const [id, campo] = e.target.name.split('|'); this.setState({ ofertas: this.ofs().map(o => o.id === id ? Object.assign({}, o, { [campo]: Number(e.target.value) || 0 }) : o) }); },
+      setOfertaStr: (e) => { const [id, campo] = e.target.name.split('|'); this.setState({ ofertas: this.ofs().map(o => o.id === id ? Object.assign({}, o, { [campo]: e.target.value }) : o) }); },
+      ofertas: resultados.map(({ o, r }, i) => {
+        const esMenor = r.knownTotalOutlay === menorCoste;
+        return Object.assign({}, o, {
+          num: i + 1,
+          campoKind: o.id + '|kind', campoFixedRate: o.id + '|fixedRate', campoFixedYears: o.id + '|fixedYears',
+          campoReferenceRate: o.id + '|referenceRate', campoSpread: o.id + '|spread', campoTae: o.id + '|tae',
+          campoYears: o.id + '|years', campoOpeningFee: o.id + '|openingFee', campoAppraisalCost: o.id + '|appraisalCost',
+          campoAnnualProductsCost: o.id + '|annualProductsCost',
+          claseCard: 'viv-offer' + (esMenor ? ' is-best' : ''),
+          badge: esMenor ? 'Menor coste conocido' : '',
+          claseBadge: 'viv-offer__badge',
+          rCuota: euroP(r.firstMonthlyPayment), rCoste: euro(r.knownOfferCost), rDesembolso: euro(r.knownTotalOutlay),
+          chipTae: o.tae === menorTae ? 'Menor TAE' : '',
+          claseChipTae: 'viv-chip viv-chip--tae' + (o.tae === menorTae ? '' : ' is-hidden'),
+          chipVar: o.kind !== 'Fija' ? 'Cuota revisable' : '',
+          claseChipVar: 'viv-chip viv-chip--var' + (o.kind !== 'Fija' ? '' : ' is-hidden'),
+        });
+      }),
+      bvResultadoLabel: 'Resultado a ' + s.comparisonYears + ' años',
+      bvTitulo: bv.winner === 'tie' ? 'Escenarios muy próximos' : bv.winner === 'buy' ? 'Comprar acumula más patrimonio' : 'Alquilar e invertir acumula más',
+      bvComprando: euro(bv.buyerNetWorth), bvComprandoNota: 'Vivienda ' + euro(bv.finalHomeValue) + ' · deuda ' + euro(bv.remainingMortgage),
+      bvAlquilando: euro(bv.renterNetWorth), bvDiferencia: euro(bv.difference),
+      modosAmort: [['term','Reducir plazo'],['payment','Reducir cuota']].map(([m, label]) => ({ label, pressed: s.repaymentMode === m, abrir: () => this.upd('repaymentMode', m), clase: pillClaro(s.repaymentMode === m) })),
+      arCuotaActual: euroP(ar.originalPayment), arNuevaCuota: euroP(ar.newPayment),
+      arNuevaCuotaNota: s.repaymentMode === 'term' ? 'Se mantiene aproximadamente' : 'Manteniendo el plazo',
+      arNuevoPlazo: Math.floor(ar.newMonths / 12) + ' años ' + (ar.newMonths % 12) + ' meses',
+      arAhorroNeto: euro(ar.netSavings), arAhorroNota: 'Intereses ahorrados ' + euro(ar.interestSaved) + ' · compensación ' + euro(ar.fee),
+      pIngresos: euro(scenario.monthlyIncome), pHipoteca: euro(scenario.firstMonthlyPayment + s.monthlyOtherDebt),
+      pCostesProp: euro(ownerMonthly), pVida: euro(living),
+      pMargen: (margen < 0 ? '−' : '') + euro(Math.abs(margen)),
+      pMargenClase: margen < 0 ? 'is-negative' : '',
+      pCapacidad: 'Capacidad de ahorro estimada: ' + pct(capacidad) + ' % de los ingresos netos.',
+    };
+  }
+}
+</script>
+</body>
+</html>

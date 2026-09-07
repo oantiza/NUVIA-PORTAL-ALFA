@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Academia NUVIA: cursos, conceptos esenciales, activos financieros, interés compuesto y glosario para entender el dinero con criterio.">
+
+<!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/academia.html -->
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/academia.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Academia NUVIA">
+<meta property="og:description" content="Academia NUVIA: cursos, conceptos esenciales, activos financieros, interés compuesto y glosario para entender el dinero con criterio.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/academia.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Academia NUVIA">
+<meta name="twitter:description" content="Academia NUVIA: cursos, conceptos esenciales, activos financieros, interés compuesto y glosario para entender el dinero con criterio.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Academia NUVIA</title>
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+<body class="nuvia-design-lab">
+<x-dc>
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+<div class="nuvia-page">
+
+  <!-- ============ HEADER ============ -->
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ============ CABECERA ============ -->
+    <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="nv-hero nv-hero--institutional gu-hero" aria-labelledby="academy-title">
+      <div class="nv-container gu-section">
+<nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Academia NUVIA</span></li></ol></nav>
+        <span class="ac-x02"><span aria-hidden="true"></span>Academia NUVIA</span>
+        <h1 id="academy-title" class="ac-x03">Saber es patrimonio</h1>
+        <p class="gu-lead">El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.</p>
+        <nav aria-label="Áreas de Academia NUVIA" class="ac-x04">
+          <sc-for list="{{ pestanas }}" as="p" hint-placeholder-count="2">
+            <button type="button" onClick="{{ p.abrir }}" aria-current="{{ p.ariaCurrent }}" class="{{ p.clase }}"><span>{{ p.label }}</span><span aria-hidden="true" class="ac-x05">{{ p.sufijo }}</span></button>
+          </sc-for>
+        </nav>
+      </div>
+    </section>
+
+    <sc-if value="{{ mostrarRegreso }}" hint-placeholder-val="{{ false }}">
+      <nav class="nv-container ac-learning-back" aria-label="Volver a Academia">
+        <a href="academia.html#ruta-aprendizaje">← Volver a la ruta de aprendizaje</a>
+      </nav>
+    </sc-if>
+
+    <!-- ============ PORTADA ACADEMY ============ -->
+    <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Áreas de Academia NUVIA" class="nv-container gu-section">
+        <div class="gu-lead">
+          <p class="gu-kicker">Elige cómo quieres aprender</p>
+          <h2 class="ac-strong">Dos formas de avanzar con criterio</h2>
+          <p class="gu-text">Consulta un tema concreto en Conocimientos esenciales o sigue las cinco clases de Dinero con criterio en Cursos. Puedes entrar directamente donde te interese.</p>
+        </div>
+        <div class="gu-grid-2">
+          <button type="button" onClick="{{ irEsenciales }}" class="ac-x06">
+            <span aria-hidden="true" class="ac-x07">01</span>
+            <span class="ac-x08">
+              <span class="ac-x09">Consulta y comprende</span>
+              <strong class="ac-x10">Conocimientos esenciales</strong>
+              <span class="ac-x11">Guías, conceptos, activos financieros, interés compuesto y glosario para desenvolverte en el mundo de la inversión.</span>
+              <span class="ac-x12">Explorar conocimientos <span aria-hidden="true">→</span></span>
+            </span>
+          </button>
+          <button type="button" onClick="{{ irCursos }}" class="ac-x13">
+            <span aria-hidden="true" class="ac-x14">02</span>
+            <span class="ac-x08">
+              <span class="ac-x15">Aprende paso a paso</span>
+              <strong class="ac-x16">Cursos</strong>
+              <span class="ac-x17">Dinero con criterio: un curso de nivel inicial con cinco capítulos, vídeos y apuntes para aprender a tu ritmo.</span>
+              <span class="ac-x18">Ver cursos <span aria-hidden="true">→</span></span>
+            </span>
+          </button>
+        </div>
+        <section id="ruta-aprendizaje" class="ac-learning-route" aria-labelledby="ruta-aprendizaje-titulo">
+          <p class="gu-kicker">Si no sabes por dónde empezar</p>
+          <h2 id="ruta-aprendizaje-titulo">Un recorrido por los conocimientos esenciales</h2>
+          <p class="gu-text">Tres pasos de lectura y práctica, sin orden obligatorio ni prueba de nivel. Elige un tema o recórrelos en esta secuencia.</p>
+          <ol class="ac-learning-steps">
+            <li class="ac-learning-step">
+              <p class="gu-kicker">01 · Comprender</p>
+              <h3>Los fundamentos</h3>
+              <p>Empieza por el tiempo, la inflación y el riesgo con explicaciones, gráficos y un vídeo de apoyo.</p>
+              <a href="academia.html?tab=fundamentos">Abrir fundamentos <span aria-hidden="true">→</span></a>
+            </li>
+            <li class="ac-learning-step">
+              <p class="gu-kicker">02 · Explorar</p>
+              <h3>Los activos financieros</h3>
+              <p>Conoce sus características en las fichas y vídeos de cada grupo, sin seleccionar inversiones para ti.</p>
+              <a href="academia.html?tab=activos">Explorar activos <span aria-hidden="true">→</span></a>
+            </li>
+            <li class="ac-learning-step">
+              <p class="gu-kicker">03 · Practicar</p>
+              <h3>El interés compuesto</h3>
+              <p>Cambia los supuestos del simulador y observa cómo varía un ejemplo de acumulación a lo largo del tiempo.</p>
+              <a href="academia.html?tab=calculadora">Abrir el simulador <span aria-hidden="true">→</span></a>
+            </li>
+          </ol>
+          <div class="ac-learning-reference">
+            <p><strong>El glosario, siempre a mano.</strong> Si un término te frena, consulta su significado y vuelve al recorrido cuando quieras.</p>
+            <a href="academia.html?tab=glosario">Consultar el glosario <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="ac-learning-availability">Las guías, los vídeos y las herramientas son formatos de aprendizaje dentro de estos contenidos. Los vídeos se abren al elegir reproducirlos y su disponibilidad depende del servicio externo.</p>
+        </section>
+      </section>
+    </sc-if>
+
+    <!-- ============ CURSOS ============ -->
+    <sc-if value="{{ esCursos }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Cursos de Academia NUVIA" class="nv-container gu-section">
+        <div class="ac-x19">
+          <div>
+            <p class="gu-kicker">Academia NUVIA</p>
+            <h2 class="ac-strong">Cursos</h2>
+            <p class="gu-text">Por ahora tienes un curso de nivel inicial: Dinero con criterio. Cinco capítulos con vídeos y apuntes, abiertos para consultar a tu ritmo.</p>
+          </div>
+          <button type="button" onClick="{{ irInicio }}" class="ac-x20">← Volver a la portada</button>
+        </div>
+        <article class="ac-x21">
+          <div class="ac-x22">
+            <span class="ac-x23">Curso disponible · Nivel inicial</span>
+            <h3 class="gu-title-hero">Dinero con criterio</h3>
+            <p class="gu-lead">Cinco clases breves para ordenar tu dinero, ahorrar con propósito, invertir sin apostar y entender cómo la economía llega hasta tu bolsillo.</p>
+            <div class="ac-x24">
+              <span class="ac-chip-outline">5 capítulos</span>
+              <span class="ac-chip-outline">Vídeos y materiales</span>
+              <span class="ac-chip-outline">A tu ritmo</span>
+            </div>
+            <a href="curso.html" class="ac-x25">Entrar en el curso <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="ac-x26">
+            <p class="ac-x27">Programa · Cinco capítulos</p>
+            <div class="ac-x28">
+              <div class="ac-def ac-def--icon"><span class="gu-accent">01</span><span class="ac-navy">Pon orden a tu dinero</span></div>
+              <div class="ac-def ac-def--icon"><span class="gu-accent">02</span><span class="ac-navy">Ahorrar con propósito</span></div>
+              <div class="ac-def ac-def--icon"><span class="gu-accent">03</span><span class="ac-navy">Invertir sin apostar</span></div>
+              <div class="ac-def ac-def--icon"><span class="gu-accent">04</span><span class="ac-navy">La economía en tu día a día</span></div>
+              <div class="ac-x29"><span class="gu-accent">05</span><span class="ac-navy">Construye tu plan</span></div>
+            </div>
+          </div>
+        </article>
+        <p class="ac-learning-availability">El capítulo 1 incluye actividades interactivas; los capítulos 2 a 5 ofrecen vídeos y apuntes. Las marcas de actividad son temporales: se reinician al recargar o cambiar de capítulo. No hay guardado de progreso ni certificados.</p>
+      </section>
+    </sc-if>
+
+    <!-- ============ CONOCIMIENTOS ESENCIALES ============ -->
+    <sc-if value="{{ esEsenciales }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Conocimientos esenciales" class="nv-container gu-section">
+        <div class="ac-x19">
+          <div>
+            <p class="gu-kicker">Guía del inversor</p>
+            <h2 class="ac-strong">Conocimientos esenciales</h2>
+            <p class="gu-text">Conceptos y herramientas para entender cómo funciona una inversión y tomar decisiones con mayor criterio.</p>
+          </div>
+          <button type="button" onClick="{{ irInicio }}" class="ac-x20">← Volver a la portada</button>
+        </div>
+        <div class="gu-grid-2 ac-essentials-grid">
+          <button type="button" onClick="{{ irFundamentos }}" class="ac-def ac-def--wide ac-essential-card">
+            <span class="ac-x30">01</span>
+            <span><strong class="ac-term">Fundamentos de inversión</strong><span class="ac-def-text">Cómo han crecido los principales activos y qué papel desempeñan la inflación, el riesgo y la fiscalidad.</span></span>
+            <span aria-hidden="true" class="gu-accent">→</span>
+          </button>
+          <button type="button" onClick="{{ irActivos }}" class="ac-def ac-def--wide ac-essential-card">
+            <span class="ac-x31">02</span>
+            <span><strong class="ac-term">Activos financieros</strong><span class="ac-def-text">Las principales alternativas de inversión y la función que pueden cumplir dentro del patrimonio.</span></span>
+            <span aria-hidden="true" class="gu-accent">→</span>
+          </button>
+          <button type="button" onClick="{{ irCalculadora }}" class="ac-def ac-def--wide ac-essential-card">
+            <span class="ac-x32">03</span>
+            <span><strong class="ac-term">Interés compuesto</strong><span class="ac-def-text">Una explicación visual del crecimiento acumulado con su simulador interactivo.</span></span>
+            <span aria-hidden="true" class="gu-accent">→</span>
+          </button>
+          <button type="button" onClick="{{ irGlosario }}" class="ac-def ac-def--wide ac-essential-card">
+            <span class="ac-x33">04</span>
+            <span><strong class="ac-term">Glosario financiero</strong><span class="ac-def-text">Conceptos e indicadores financieros explicados en un lenguaje claro.</span></span>
+            <span aria-hidden="true" class="gu-accent">→</span>
+          </button>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ============ FUNDAMENTOS ============ -->
+    <sc-if value="{{ esFundamentos }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Fundamentos de inversión" class="nv-container gu-section">
+        <div class="ac-card">
+          <div class="ac-x34">
+            <div>
+              <p class="gu-accent">Guía de inversión · En lenguaje claro</p>
+              <h2 class="ac-strong">Dónde crece más<br>el <span class="gu-accent">dinero</span></h2>
+              <p class="gu-text">Una lectura visual sobre cómo se han comportado históricamente los principales activos: bolsa, bonos, liquidez, oro y vivienda. Qué ha protegido mejor el patrimonio, qué riesgos ha asumido y qué impacto tienen inflación e impuestos.</p>
+              <div class="ac-x35"></div>
+            </div>
+            <div class="ac-x36">
+              <div class="ac-def"><span class="ac-icon">01</span><span class="ac-text ac-text--md">Cuánto ha crecido cada activo en casi un siglo</span></div>
+              <div class="ac-def"><span class="ac-icon">02</span><span class="ac-text ac-text--md">Nominal frente a real: el efecto de la inflación</span></div>
+              <div class="ac-def"><span class="ac-icon">03</span><span class="ac-text ac-text--md">Cuánto sube y baja cada uno, década a década</span></div>
+              <div class="ac-def"><span class="ac-icon">04</span><span class="ac-text ac-text--md">Qué impuestos se pagan en España (2026)</span></div>
+              <div class="ac-def"><span class="ac-icon">05</span><span class="ac-text ac-text--md">Bolsa: fondos, acciones o ETFs</span></div>
+              <div class="ac-x37"><span class="ac-icon">06</span><span class="ac-text ac-text--md">Cómo interpretar esta comparación</span></div>
+            </div>
+          </div>
+
+          <div class="gu-stack">
+            <section class="ac-x38">
+              <div>
+                <p class="ac-x39">Vídeo introductorio · Dinero con criterio</p>
+                <h3 class="ac-x40">Entender antes de invertir</h3>
+                <p class="ac-x41">Invertir no consiste en perseguir el activo que más sube, sino en comprender qué papel cumple cada inversión, qué riesgo puede asumir una familia y cuánto tiempo podrá mantener su estrategia.</p>
+                <div class="ac-x42">
+                  <span class="ac-chip-dark">Rentabilidad y riesgo</span>
+                  <span class="ac-chip-dark">Inflación</span>
+                  <span class="ac-chip-dark">Largo plazo</span>
+                </div>
+              </div>
+              <div class="ac-x43">
+                <div class="ac-x44 nv-external-content nv-external-content--dark" data-nuvia-external-frame
+                     data-src="https://www.youtube-nocookie.com/embed/iqAv3WXCthY?autoplay=1&amp;rel=0"
+                     data-title="Vídeo: fundamentos de inversión y dinero con criterio">
+                  <div class="nv-external-content__placeholder nv-external-content__placeholder--dark">
+                    <span class="nv-external-content__eyebrow">Vídeo externo · YouTube</span>
+                    <p>El vídeo se conecta con YouTube solo cuando eliges reproducirlo.</p>
+                    <div class="nv-external-content__actions">
+                      <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+                      <a class="nv-btn nv-btn--secondary" href="https://www.youtube.com/watch?v=iqAv3WXCthY" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+                    </div>
+                    <small data-nuvia-external-status aria-live="polite">No se establece conexión mientras el vídeo permanece cerrado.</small>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- 01 -->
+            <section class="ac-tint">
+              <div class="ac-x45">
+                <div class="ac-baseline"><span class="gu-accent">01</span><h3 class="ac-title">Cuánto ha crecido cada activo en casi un siglo</h3></div>
+                <span class="gu-kicker">100 $ en 1928</span>
+              </div>
+              <p class="gu-text">Imagina que en 1928 alguien guardó 100 dólares y no los tocó hasta finales de 2025. ¿Cuánto tendría hoy según dónde los pusiera? Es el periodo más largo del que existen datos fiables, casi un siglo, y la respuesta cambia muchísimo de un activo a otro.</p>
+              <div class="ac-x46">
+                <div>
+                  <div class="gu-stack">
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Bolsa</span><div class="ac-bar"><div class="ac-x47"></div><span class="ac-x48">1,16 M$</span></div></div>
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Bonos empresa</span><div class="ac-bar"><div class="ac-x49"></div><span class="ac-bar__label">53.952 $</span></div></div>
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Oro</span><div class="ac-bar"><div class="ac-x50"></div><span class="ac-bar__label">21.025 $</span></div></div>
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Deuda pública</span><div class="ac-bar"><div class="ac-x51"></div><span class="ac-bar__label">7.753 $</span></div></div>
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Vivienda</span><div class="ac-bar"><div class="ac-x52"></div><span class="ac-bar__label">5.626 $</span></div></div>
+                    <div class="ac-bar-row"><span class="ac-cell--soft">Dinero banco</span><div class="ac-bar"><div class="ac-x53"></div><span class="ac-bar__label">2.578 $</span></div></div>
+                  </div>
+                  <div class="ac-x54">
+                    <p class="gu-text">La gran ganadora</p>
+                    <p class="ac-x55">La bolsa ×11.500</p>
+                    <p class="gu-text">Convierte 100 $ en 1,16 millones. Ese es el interés compuesto: ganar también sobre lo ya ganado.</p>
+                  </div>
+                </div>
+                <div class="ac-tint">
+                  <p id="ac-history-help" class="nv-table-scroll__hint">Gráfico histórico en dólares, con escala logarítmica. Si no cabe, desplázalo; con teclado, enfoca el gráfico y usa las flechas.</p>
+                  <div class="nv-chart-scroll" role="region" tabindex="0" aria-label="Gráfico histórico de activos" aria-describedby="ac-history-help">
+                  <svg viewBox="-16 0 736 350" class="ac-x56 ac-history-chart" role="img" aria-label="Evolución histórica de los activos desde 1928">
+                    <rect x="8" y="24" width="16" height="270" fill="rgba(194,69,58,.10)" opacity=".45"></rect><text x="8" y="16" fill="#C2453A" font-size="9" font-weight="700">Gran Depresión</text>
+                    <rect x="315" y="24" width="10" height="270" fill="rgba(194,69,58,.10)" opacity=".45"></rect><text x="290" y="16" fill="#C2453A" font-size="9" font-weight="700">Crisis petróleo</text>
+                    <rect x="520" y="24" width="18" height="270" fill="rgba(194,69,58,.10)" opacity=".45"></rect><text x="482" y="16" fill="#C2453A" font-size="9" font-weight="700">Crisis financiera</text>
+                    <rect x="620" y="24" width="18" height="270" fill="rgba(194,69,58,.10)" opacity=".45"></rect><text x="600" y="16" fill="#C2453A" font-size="9" font-weight="700">COVID + tipos</text>
+                    <line x1="62" x2="682" y1="294" y2="294" stroke="#cbd5e1"></line><text x="-8" y="298" fill="#6b7686" font-size="11">$100</text>
+                    <line x1="62" x2="682" y1="226.5" y2="226.5" stroke="#cbd5e1"></line><text x="-8" y="230" fill="#6b7686" font-size="11">$1.000</text>
+                    <line x1="62" x2="682" y1="159" y2="159" stroke="#cbd5e1"></line><text x="-8" y="163" fill="#6b7686" font-size="11">$10.000</text>
+                    <line x1="62" x2="682" y1="91.5" y2="91.5" stroke="#cbd5e1"></line><text x="-8" y="95" fill="#6b7686" font-size="11">$100.000</text>
+                    <line x1="62" x2="682" y1="24" y2="24" stroke="#cbd5e1"></line><text x="-8" y="28" fill="#6b7686" font-size="11">$1.000.000</text>
+                    <text x="50" y="330" fill="#6b7686" font-size="11">1928</text><text x="330" y="330" fill="#6b7686" font-size="11">1975</text><text x="650" y="330" fill="#6b7686" font-size="11">2025</text>
+                    <polyline sc-camel-points="{{ lineaDinero }}" fill="none" stroke="#6b7686" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <polyline sc-camel-points="{{ lineaVivienda }}" fill="none" stroke="#C05621" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <polyline sc-camel-points="{{ lineaDeuda }}" fill="none" stroke="#3C9A69" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <polyline sc-camel-points="{{ lineaOro }}" fill="none" stroke="#946E29" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <polyline sc-camel-points="{{ lineaBonos }}" fill="none" stroke="#2568A9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <polyline sc-camel-points="{{ lineaBolsa }}" fill="none" stroke="#3B5BC4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                    <g transform="translate(72 44)">
+                      <line x1="0" x2="18" y1="0" y2="0" stroke="#3B5BC4" stroke-width="3"></line><text x="24" y="4" fill="#0B2347" font-size="11">Bolsa</text>
+                      <line x1="0" x2="18" y1="18" y2="18" stroke="#2568A9" stroke-width="3"></line><text x="24" y="22" fill="#0B2347" font-size="11">Bonos empresa</text>
+                      <line x1="0" x2="18" y1="36" y2="36" stroke="#946E29" stroke-width="3"></line><text x="24" y="40" fill="#0B2347" font-size="11">Oro</text>
+                      <line x1="0" x2="18" y1="54" y2="54" stroke="#3C9A69" stroke-width="3"></line><text x="24" y="58" fill="#0B2347" font-size="11">Deuda pública</text>
+                      <line x1="0" x2="18" y1="72" y2="72" stroke="#C05621" stroke-width="3"></line><text x="24" y="76" fill="#0B2347" font-size="11">Vivienda</text>
+                      <line x1="0" x2="18" y1="90" y2="90" stroke="#6b7686" stroke-width="3"></line><text x="24" y="94" fill="#0B2347" font-size="11">Dinero banco</text>
+                    </g>
+                  </svg>
+                  </div>
+                  <p class="gu-muted">Escala especial: cada marca vertical multiplica por diez. Las franjas rosadas señalan las grandes crisis.</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 02 -->
+            <section class="gu-grid-2">
+              <article class="ac-tint">
+                <div class="ac-baseline"><span class="gu-accent">02</span><h3 class="ac-strong">Nominal frente a real</h3></div>
+                <p class="gu-text">Pero hay una trampa: el dinero pierde valor con los años por la subida de los precios. Un dólar de 1928 compraba mucho más que uno de hoy. El valor real muestra lo que de verdad podrías comprar con ese dinero.</p>
+                <div class="ac-x57">
+                  <div class="ac-cols-3"><span>Activo</span><span class="ac-cell--plain">Sube al año</span><span class="ac-cell--plain">Sin inflación</span></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Renta variable (S&amp;P 500)</span><span class="ac-cell--soft">10,02%</span><strong class="ac-cell--text">6,74%</strong></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Bonos corp. Baa</span><span class="ac-cell--soft">6,63%</span><strong class="ac-cell--text">3,45%</strong></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Oro</span><span class="ac-cell--soft">5,61%</span><strong class="ac-cell--text">2,46%</strong></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Renta fija (T-Bond 10a)</span><span class="ac-cell--soft">4,54%</span><strong class="ac-cell--text">1,43%</strong></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Inmuebles (precio vivienda)</span><span class="ac-cell--soft">4,20%</span><strong class="ac-cell--text">1,09%</strong></div>
+                  <div class="ac-cols-3"><span class="ac-cell--name">Monetario (Letras 3m)</span><span class="ac-cell--soft">3,37%</span><strong class="ac-cell--text">0,29%</strong></div>
+                </div>
+              </article>
+              <article class="ac-x64">
+                <p class="gu-kicker">Poder adquisitivo real</p>
+                <h3 class="ac-strong">Quién te hace más rico de verdad</h3>
+                <div class="gu-stack">
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Bolsa</span><span class="ac-strong">6,74%</span></div><div class="ac-meter"><div class="ac-x65"></div></div></div>
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Bonos empresa</span><span class="ac-strong">3,45%</span></div><div class="ac-meter"><div class="ac-x66"></div></div></div>
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Oro</span><span class="ac-strong">2,46%</span></div><div class="ac-meter"><div class="ac-x67"></div></div></div>
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Deuda pública</span><span class="ac-strong">1,43%</span></div><div class="ac-meter"><div class="ac-x68"></div></div></div>
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Vivienda</span><span class="ac-strong">1,09%</span></div><div class="ac-meter"><div class="ac-x69"></div></div></div>
+                  <div class="ac-input"><div class="ac-meter-head"><span class="ac-strong">Dinero banco</span><span class="ac-strong">0,29%</span></div><div class="ac-meter"><div class="ac-x70"></div></div></div>
+                </div>
+              </article>
+            </section>
+
+            <!-- 03 -->
+            <section class="ac-tint">
+              <div class="ac-x45">
+                <div class="ac-baseline"><span class="gu-accent">03</span><h3 class="ac-title">Cuánto sube y baja cada uno, década a década</h3></div>
+                <span class="gu-kicker">Nadie gana siempre</span>
+              </div>
+              <p class="gu-text">Las líneas de antes, vistas de lejos, parecen subir tranquilas. Pero el camino real está lleno de baches. Década a década se ve la verdadera cara de cada activo: cuánto sube en sus buenos tiempos y cuánto sufre en los malos. En rojo, las décadas en las que se perdió dinero.</p>
+              <p id="ac-decades-help" class="nv-table-scroll__hint">Si no caben todas las décadas, desplaza la tabla; con teclado, enfócala y usa las flechas.</p>
+              <div class="ac-x71" role="region" tabindex="0" aria-label="Comparación histórica por décadas" aria-describedby="ac-decades-help">
+                <div class="ac-x72"><span>Activo</span><span class="ac-cell--plain">30s</span><span class="ac-cell--plain">40s</span><span class="ac-cell--plain">50s</span><span class="ac-cell--plain">60s</span><span class="ac-cell--plain">70s</span><span class="ac-cell--plain">80s</span><span class="ac-cell--plain">90s</span><span class="ac-cell--plain">00s</span><span class="ac-cell--plain">10s</span><span class="ac-cell--plain">20s</span></div>
+                <div class="ac-x73"><span class="ac-strong">Renta variable</span><span class="ac-cell--neg">−0,9</span><span class="ac-cell">+8,5</span><span class="ac-cell">+19,5</span><span class="ac-cell">+7,7</span><span class="ac-cell">+5,9</span><span class="ac-cell">+17,3</span><span class="ac-cell">+18,0</span><span class="ac-cell--neg">−1,0</span><span class="ac-cell">+13,4</span><span class="ac-cell">+14,9</span></div>
+                <div class="ac-x74"><span class="ac-strong">Bonos corp. Baa</span><span class="ac-cell">+7,2</span><span class="ac-cell">+5,2</span><span class="ac-cell">+2,3</span><span class="ac-cell">+3,2</span><span class="ac-cell">+7,1</span><span class="ac-cell">+14,1</span><span class="ac-cell">+9,5</span><span class="ac-cell">+8,3</span><span class="ac-cell">+7,0</span><span class="ac-cell">+1,9</span></div>
+                <div class="ac-x73"><span class="ac-strong">Oro</span><span class="ac-cell">+5,3</span><span class="ac-cell--neg">−0,8</span><span class="ac-cell">+1,0</span><span class="ac-cell">+1,6</span><span class="ac-cell">+28,6</span><span class="ac-cell--neg">−2,5</span><span class="ac-cell--neg">−3,1</span><span class="ac-cell">+14,1</span><span class="ac-cell">+3,4</span><span class="ac-cell">+19,1</span></div>
+                <div class="ac-x74"><span class="ac-strong">Renta fija (T-Bond)</span><span class="ac-cell">+4,0</span><span class="ac-cell">+2,5</span><span class="ac-cell">+0,8</span><span class="ac-cell">+2,4</span><span class="ac-cell">+5,4</span><span class="ac-cell">+12,0</span><span class="ac-cell">+7,4</span><span class="ac-cell">+6,3</span><span class="ac-cell">+4,1</span><span class="ac-cell--neg">−0,5</span></div>
+                <div class="ac-x73"><span class="ac-strong">Inmuebles</span><span class="ac-cell--neg">−1,2</span><span class="ac-cell">+8,1</span><span class="ac-cell">+3,0</span><span class="ac-cell">+2,2</span><span class="ac-cell">+8,7</span><span class="ac-cell">+5,9</span><span class="ac-cell">+2,7</span><span class="ac-cell">+4,0</span><span class="ac-cell">+3,8</span><span class="ac-cell">+7,5</span></div>
+                <div class="ac-x75"><span class="ac-strong">Monetario</span><span class="ac-cell">+1,0</span><span class="ac-cell">+0,5</span><span class="ac-cell">+2,0</span><span class="ac-cell">+4,0</span><span class="ac-cell">+6,3</span><span class="ac-cell">+9,0</span><span class="ac-cell">+5,0</span><span class="ac-cell">+2,7</span><span class="ac-cell">+0,6</span><span class="ac-cell">+2,8</span></div>
+              </div>
+              <div class="ac-x76">
+                <p class="gu-kicker">Lo que nos enseña esta tabla</p>
+                <p class="ac-x77">El primero de la clase cambia todo el tiempo. El oro fue el gran ganador de los años 70 y el peor de los 90. La bolsa brilló en los 50 y los 90, pero perdió en los 30 y en la primera década de los 2000.</p>
+              </div>
+            </section>
+
+            <!-- 04 + 05 -->
+            <section class="ac-x78">
+              <article class="ac-tint">
+                <div class="ac-x79"><div class="ac-baseline"><span class="gu-accent">04</span><h3 class="ac-strong">Qué impuestos se pagan en España</h3></div><span class="gu-kicker">2026</span></div>
+                <p class="gu-text">Saber cuánto rinde algo es solo la mitad del cuento. La otra mitad es cuánto te quedas tú después de Hacienda. En casi todos estos activos solo pagas cuando vendes y ganas dinero.</p>
+                <div class="ac-x57">
+                  <div class="ac-x80"><span>Si tu ganancia es...</span><span>Pagas...</span></div>
+                  <div class="ac-x81"><span class="gu-text">Hasta 6.000 €</span><span class="gu-accent">19%</span></div>
+                  <div class="ac-x82"><span class="gu-text">De 6.000 a 50.000 €</span><span class="gu-accent">21%</span></div>
+                  <div class="ac-x81"><span class="gu-text">De 50.000 a 200.000 €</span><span class="gu-accent">23%</span></div>
+                  <div class="ac-x82"><span class="gu-text">De 200.000 a 300.000 €</span><span class="gu-accent">27%</span></div>
+                  <div class="ac-x83"><span class="gu-text">Más de 300.000 €</span><span class="gu-accent">30%</span></div>
+                </div>
+              </article>
+              <article class="ac-x64">
+                <div class="ac-x79"><div class="ac-baseline"><span class="gu-accent">05</span><h3 class="ac-strong">Bolsa: fondos, acciones o ETFs</h3></div><span class="gu-kicker">Vehículo fiscal</span></div>
+                <p class="gu-text">Las tres formas pagan lo mismo cuando vendes. La diferencia que de verdad importa con los años es una sola: si puedes cambiar de producto sin pagar impuestos por el camino.</p>
+                <div class="gu-grid-3">
+                  <div class="ac-x84"><span class="ac-x85">Traspaso libre</span><h4 class="ac-x86">Fondos</h4><p class="ac-x87">Puedes mover tu dinero de un fondo a otro sin pagar nada a Hacienda mientras no pase por tu cuenta. El impuesto queda aplazado.</p></div>
+                  <div class="ac-x88"><span class="ac-x85">Sin traspaso</span><h4 class="ac-x86">Acciones</h4><p class="ac-x87">Cada vez que vendes con ganancia, pagas ese año. A cambio, tienes control directo y puedes compensar pérdidas con otras ganancias.</p></div>
+                  <div class="ac-x89"><span class="ac-x85">Sin traspaso desde 2022</span><h4 class="ac-x86">ETFs</h4><p class="ac-x87">Baratos y transparentes, pero en España ya no permiten cambiar de ETF a ETF sin tributar. Fiscalmente se parecen más a las acciones.</p></div>
+                </div>
+              </article>
+            </section>
+
+            <!-- 06 -->
+            <section class="ac-x90">
+              <p class="gu-kicker">Cómo interpretar esta comparación</p>
+              <p class="ac-strong">La evolución histórica y la fiscalidad describen aspectos distintos; no determinan qué activo debe elegir una persona.</p>
+              <p class="gu-text">Lee cada comparación con su periodo, sus supuestos y sus límites. Los resultados pasados no garantizan resultados futuros. NUVIA informa y explica; la decisión no la toma esta tabla.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ============ ACTIVOS FINANCIEROS ============ -->
+    <sc-if value="{{ esActivos }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Los principales activos financieros" class="nv-container gu-section">
+        <div class="ac-card">
+          <div class="ac-x91">
+            <div>
+              <p class="gu-accent">Guía esencial · Construcción de patrimonio</p>
+              <h2 class="ac-strong">Los principales activos financieros</h2>
+              <p class="gu-text">Invertir significa destinar una parte del dinero a activos que pueden conservar su valor, generar rentas o crecer con el tiempo. Cada uno funciona de manera diferente: algunos ofrecen estabilidad y disponibilidad; otros permiten prestar dinero a un Estado o una empresa; y otros hacen posible participar en el crecimiento de compañías o acceder a activos reales.</p>
+              <p class="gu-text">No existe un activo adecuado para todas las necesidades. Su utilidad depende del objetivo, el plazo, la liquidez necesaria y el riesgo que podamos asumir. Esta guía reúne las principales alternativas al alcance del inversor particular y las ordena según la función que pueden cumplir dentro del patrimonio.</p>
+            </div>
+            <aside class="ac-x92">
+              <p class="ac-x93">Una misma guía · Tres perspectivas</p>
+              <div class="gu-stack">
+                <div class="ac-x94"><span class="ac-x95">01</span><div><h3 class="ac-x96">Seguridad y estabilidad</h3><p class="ac-x97">Efectivo, depósitos, letras y bonos.</p></div></div>
+                <div class="ac-x94"><span class="ac-x98">02</span><div><h3 class="ac-x96">Crecimiento y diversificación</h3><p class="ac-x97">Acciones, fondos de inversión y ETF.</p></div></div>
+                <div class="ac-x99"><span class="ac-x100">03</span><div><h3 class="ac-x96">Activos complementarios</h3><p class="ac-x97">Inmobiliario, oro, pensiones y activos de riesgo elevado.</p></div></div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="ac-x101">
+            <div>
+              <p class="gu-accent">Una distinción importante</p>
+              <h3 class="ac-strong">Activos y vehículos de inversión</h3>
+              <p class="gu-text">Un <strong>activo</strong> es aquello en lo que realmente está invertido el dinero: una acción, un bono, un inmueble o el oro.</p>
+              <p class="gu-text">Un <strong>vehículo</strong> es la estructura utilizada para acceder a uno o varios activos. Los fondos, los ETF y los planes de pensiones pueden contener acciones, bonos, liquidez u otras inversiones.</p>
+            </div>
+            <div>
+              <p class="gu-accent">Cómo compararlos</p>
+              <div class="gu-grid-2">
+                <article class="ac-outline"><h4 class="ac-strong">Rentabilidad esperada</h4><p class="gu-text">Qué puede generar y de dónde procede el rendimiento.</p></article>
+                <article class="ac-outline"><h4 class="ac-strong">Riesgo</h4><p class="gu-text">Cuánto puede fluctuar y qué pérdidas pueden producirse.</p></article>
+                <article class="ac-outline"><h4 class="ac-strong">Liquidez</h4><p class="gu-text">Con qué facilidad puede volver a convertirse en dinero.</p></article>
+                <article class="ac-outline"><h4 class="ac-strong">Horizonte temporal</h4><p class="gu-text">Durante cuánto tiempo puede mantenerse la inversión.</p></article>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div role="tablist" aria-label="Grupos de activos financieros" class="gu-grid-3">
+          <sc-for list="{{ activosTabs }}" as="t" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{ t.selected }}" onClick="{{ t.abrir }}" class="{{ t.clase }}"><span class="ac-x102">{{ t.numero }}</span><span class="ac-x103">{{ t.label }}</span><span class="ac-x104">{{ t.resumen }}</span></button>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ esActivoSeguridad }}" hint-placeholder-val="{{ true }}">
+          <section role="tabpanel" data-screen-label="Seguridad y estabilidad" class="gu-stack">
+            <div class="ac-card">
+              <div class="ac-x105">
+                <div>
+                  <p class="gu-accent">Apartado 01 · Preservar y disponer</p>
+                  <h3 class="ac-strong">Seguridad y estabilidad</h3>
+                  <p class="gu-text">Antes de buscar crecimiento debemos decidir qué parte del patrimonio necesita permanecer estable y disponible. El fondo de emergencia, los gastos próximos y determinados objetivos de corto o medio plazo no deberían depender de que los mercados atraviesen un buen momento.</p>
+                  <p class="gu-text">Efectivo, depósitos, letras y bonos pueden aportar distintos grados de liquidez y previsibilidad. Sin embargo, ninguno está completamente libre de riesgo: la inflación, los tipos de interés, la solvencia del emisor y una venta anticipada pueden cambiar el resultado.</p>
+                  <div class="ac-x106"><span class="ac-pill">Efectivo y cuentas</span><span class="ac-pill">Depósitos</span><span class="ac-pill">Renta fija a corto plazo</span><span class="ac-pill">Bonos</span></div>
+                </div>
+                <div class="ac-x107">
+                  <button type="button" onClick="{{ reproducirVideo1 }}" aria-label="Reproducir Activos financieros 1 · Seguridad y estabilidad" class="ac-x108"><img src="src/assets/education/nuvia-academy/activos-financieros-video-01.jpg" alt="Portada del vídeo Activos financieros 1: seguridad y estabilidad" class="ac-x109" loading="lazy" width="1280" height="720"><span aria-hidden="true" class="ac-x110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ac-x111"><path d="M8 5v14l11-7z"></path></svg></span></button>
+                </div>
+              </div>
+              <p class="ac-x112">Más seguridad suele significar una menor rentabilidad esperada. La clave es que el plazo y la liquidez del activo encajen con el objetivo.</p>
+            </div>
+
+            <section class="gu-card">
+              <div class="ac-head-row"><div><p class="gu-accent">Cuatro alternativas</p><h3 class="ac-title">Qué son y para qué sirven</h3></div><p class="gu-text">Las categorías están ordenadas desde la mayor disponibilidad inmediata hasta activos cuyo precio puede fluctuar más y que suelen necesitar un horizonte superior.</p></div>
+              <div class="gu-grid-2">
+                <article class="ac-outline ac-outline--paper"><div class="ac-row-head"><span class="ac-x113">01</span><h4 class="ac-title ac-title--sm">Efectivo y cuentas</h4></div><p class="gu-text">Dinero disponible en cuentas corrientes o remuneradas. Su función principal es permitir afrontar imprevistos y pagos cercanos sin depender del precio de mercado.</p><div class="gu-grid-3"><span class="nv-chip nv-chip--liquidez">Liquidez<br>Muy alta</span><span class="nv-chip nv-chip--liquidez">Plazo<br>Inmediato</span><span class="nv-chip nv-chip--liquidez">Función<br>Disponibilidad</span></div><p class="ac-foot"><strong class="ac-strong">Fiscalidad:</strong> los intereses son rendimientos del capital mobiliario integrados en la base del ahorro.</p></article>
+                <article class="ac-outline ac-outline--paper"><div class="ac-row-head"><span class="ac-x114">02</span><h4 class="ac-title ac-title--sm">Depósitos</h4></div><p class="gu-text">Dinero cedido al banco durante un plazo pactado, normalmente a cambio de un interés conocido. Para el ahorrador, la obligación de devolución corresponde al banco: no es un préstamo directo a los clientes financiados por la entidad.</p><p class="gu-muted">Conviene revisar la TAE, la duración y las condiciones de cancelación anticipada.</p><div class="gu-grid-3"><span class="nv-chip nv-chip--verde">Liquidez<br>Media</span><span class="nv-chip nv-chip--verde">Plazo<br>Corto</span><span class="nv-chip nv-chip--verde">Función<br>Previsibilidad</span></div><p class="ac-foot"><strong class="ac-strong">Protección:</strong> con carácter general, el FGD cubre hasta 100.000 € por titular y entidad adherida.</p></article>
+                <article class="ac-outline ac-outline--paper"><div class="ac-row-head"><span class="ac-x113">03</span><h4 class="ac-title ac-title--sm">Renta fija a corto plazo</h4></div><p class="gu-text">Instrumentos utilizados por Estados, entidades financieras y empresas para obtener financiación durante periodos breves. Entre los más habituales se encuentran las <strong class="ac-strong">Letras del Tesoro</strong>, los <strong class="ac-strong">pagarés de empresa</strong> y los <strong class="ac-strong">repos</strong>.</p><p class="gu-muted">Los fondos monetarios y algunos fondos de renta fija a corto plazo son vehículos que invierten en una cartera diversificada de estos activos. El riesgo depende del emisor, el vencimiento, las garantías y la liquidez de cada instrumento.</p><div class="gu-grid-3"><span class="nv-chip nv-chip--liquidez">Liquidez<br>Media-alta</span><span class="nv-chip nv-chip--liquidez">Plazo<br>Corto</span><span class="nv-chip nv-chip--liquidez">Función<br>Preservar</span></div><p class="ac-foot"><strong class="ac-strong">Fiscalidad:</strong> los intereses y rendimientos obtenidos se consideran generalmente rendimientos del capital mobiliario.</p></article>
+                <article class="ac-outline ac-outline--paper"><div class="ac-row-head"><span class="ac-x114">04</span><h4 class="ac-title ac-title--sm">Bonos</h4></div><p class="gu-text">Préstamos a un Estado o a una empresa, normalmente a medio o largo plazo. El emisor se compromete a devolver el capital en una fecha determinada y puede pagar cupones periódicos.</p><p class="gu-muted">El riesgo depende de quién recibe el dinero: no ofrece la misma solvencia un Estado que una empresa, ni todas las empresas presentan la misma capacidad de pago.</p><div class="gu-grid-3"><span class="nv-chip nv-chip--verde">Liquidez<br>Media</span><span class="nv-chip nv-chip--verde">Plazo<br>Medio y largo</span><span class="nv-chip nv-chip--verde">Función<br>Estabilidad</span></div><p class="ac-foot"><strong class="ac-strong">Fiscalidad:</strong> cupones y rendimientos de transmisión o amortización tributan como capital mobiliario.</p></article>
+              </div>
+            </section>
+
+            <section class="ac-card">
+              <div class="ac-x115"><div><p class="gu-accent">Infografía</p><h3 class="ac-title">Dónde colocar el dinero según el plazo</h3></div><p class="gu-text">Una comparación visual de liquidez, horizonte, función y riesgos principales.</p></div>
+              <div class="ac-x116"><img src="src/assets/education/nuvia-academy/activos-seguridad-estabilidad-infografia.webp" alt="Infografía comparativa sobre efectivo y cuentas, depósitos, renta fija a corto plazo y bonos, con su liquidez, horizonte y función" class="ac-x117" loading="lazy" width="1536" height="1024"></div>
+            </section>
+
+            <section class="ac-x118">
+              <div class="ac-x119"><p class="ac-x120">La pregunta adecuada</p><h3 class="ac-hero__title">¿Cuándo voy a necesitar el dinero?</h3><p class="ac-x121">El plazo del objetivo debe decidirse antes que el producto. El dinero que puede necesitarse mañana no debería asumir el mismo riesgo que el destinado a varios años.</p></div>
+              <div class="gu-card"><p class="gu-accent">Los riesgos que no se ven</p><div class="gu-grid-2"><article><h4 class="ac-title--xs">Inflación</h4><p class="ac-text">El saldo puede mantenerse mientras disminuye su capacidad de compra.</p></article><article><h4 class="ac-title--xs">Tipos de interés</h4><p class="ac-text">Una subida de tipos suele reducir el precio de los bonos ya emitidos.</p></article><article><h4 class="ac-title--xs">Solvencia</h4><p class="ac-text">La capacidad de pago del banco, Estado o empresa condiciona el riesgo.</p></article><article><h4 class="ac-title--xs">Venta anticipada</h4><p class="ac-text">Recuperar el dinero antes del vencimiento puede ocasionar costes o pérdidas.</p></article></div></div>
+            </section>
+
+            <p class="ac-x122"><strong>Información educativa.</strong> Las categorías y niveles de liquidez son orientativos: dependen del producto concreto, su vencimiento y las condiciones de contratación. La fiscalidad indicada se refiere, con carácter general, a personas físicas residentes en España y puede cambiar.</p>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ esActivoCrecimiento }}" hint-placeholder-val="{{ false }}">
+          <section role="tabpanel" data-screen-label="Crecimiento y diversificación" class="gu-stack">
+            <div class="ac-card">
+              <div class="ac-x105">
+                <div>
+                  <p class="ac-x123">Apartado 02 · Participar y diversificar</p>
+                  <h3 class="ac-strong">Crecimiento y diversificación</h3>
+                  <p class="gu-text">El patrimonio destinado al largo plazo puede participar en el crecimiento de empresas y mercados. Las acciones permiten hacerlo de forma directa; los fondos de inversión y los ETF permiten reunir muchas inversiones dentro de una misma cartera.</p>
+                  <p class="gu-text">La posibilidad de obtener una rentabilidad mayor exige aceptar fluctuaciones, periodos de pérdidas y resultados inciertos. Diversificar reduce la dependencia de una única empresa o mercado, pero no evita que el conjunto pueda caer.</p>
+                  <div class="ac-x106"><span class="ac-x124">Acciones</span><span class="ac-x125">Fondos de inversión</span><span class="ac-x126">ETF</span></div>
+                </div>
+                <div class="ac-x107">
+                  <button type="button" onClick="{{ reproducirVideo2 }}" aria-label="Reproducir Activos financieros 2 · Crecimiento y diversificación" class="ac-x108"><img src="src/assets/education/nuvia-academy/activos-financieros-video-02.jpg" alt="Portada del vídeo Activos financieros 2: crecimiento y diversificación" class="ac-x109" loading="lazy" width="1280" height="720"><span aria-hidden="true" class="ac-x110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ac-x111"><path d="M8 5v14l11-7z"></path></svg></span></button>
+                </div>
+              </div>
+              <p class="ac-x127">La acción es el activo. El fondo o el ETF son vehículos para acceder a una cartera de activos. Primero decidimos en qué queremos invertir; después, cómo hacerlo.</p>
+            </div>
+
+            <section class="ac-x128">
+              <div class="ac-x119"><p class="ac-x129">Una distinción esencial</p><h3 class="ac-hero__title">Activo y vehículo no son lo mismo</h3><p class="ac-x121">Una acción representa una parte de una empresa. Un fondo o un ETF puede contener decenas, cientos o incluso miles de acciones, bonos u otros activos. Su riesgo depende de lo que haya dentro.</p></div>
+              <div class="gu-card"><p class="ac-x130">Dos decisiones diferentes</p><div class="gu-grid-2"><article class="ac-x131"><span class="ac-x132">01 · Exposición</span><h4 class="ac-strong">¿Qué queremos tener?</h4><p class="ac-text">Empresas, sectores, países o mercados completos.</p></article><article class="ac-x133"><span class="ac-x134">02 · Vehículo</span><h4 class="ac-strong">¿Cómo queremos acceder?</h4><p class="ac-text">Compra directa, fondo gestionado o ETF negociado en bolsa.</p></article></div></div>
+            </section>
+
+            <section class="gu-card">
+              <div class="ac-head-row"><div><p class="ac-x135">Tres formas de participar</p><h3 class="ac-title">Qué son y para qué sirven</h3></div><p class="gu-text">No existe una opción superior en todos los casos. La elección depende de la diversificación buscada, el control deseado, los costes, la operativa y la fiscalidad.</p></div>
+              <div class="gu-grid-3">
+                <article class="ac-x136"><div class="ac-row-head"><span class="ac-x137">01</span><h4 class="ac-title ac-title--sm">Acciones</h4></div><p class="gu-text">Cada acción representa una pequeña participación en una empresa. El inversor se beneficia si el negocio crea valor, distribuye dividendos o aumenta su valoración.</p><p class="gu-text">Permiten elegir compañías concretas, pero concentran el resultado en menos decisiones y exigen analizar el negocio y el precio pagado.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--crecimiento">Diversificación<br>Depende de la cartera</span><span class="nv-chip nv-chip--crecimiento">Control<br>Alto</span><span class="nv-chip nv-chip--crecimiento">Liquidez<br>Habitualmente alta</span><span class="nv-chip nv-chip--crecimiento">Horizonte<br>Largo</span></div><p class="ac-x138"><strong class="ac-strong">Fiscalidad:</strong> los dividendos son capital mobiliario; la venta puede generar una ganancia o pérdida patrimonial.</p></article>
+                <article class="ac-x139"><div class="ac-row-head"><span class="ac-x140">02</span><h4 class="ac-title ac-title--sm">Fondos</h4></div><p class="gu-text">Reúnen el dinero de muchos partícipes y lo invierten siguiendo una política definida. Pueden contener acciones, bonos, liquidez o una combinación.</p><p class="gu-text">Facilitan la diversificación y la gestión de una cartera, pero deben revisarse los activos, el nivel de riesgo, los costes y la estrategia.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--seguridad">Diversificación<br>Potencialmente amplia</span><span class="nv-chip nv-chip--seguridad">Gestión<br>Activa o indexada</span><span class="nv-chip nv-chip--seguridad">Operativa<br>Valor liquidativo</span><span class="nv-chip nv-chip--seguridad">Horizonte<br>Según la cartera</span></div><p class="ac-x141"><strong class="ac-strong">Fiscalidad:</strong> se tributa normalmente al reembolsar; los traspasos pueden diferir la tributación si se cumplen los requisitos legales.</p></article>
+                <article class="ac-x142"><div class="ac-row-head"><span class="ac-x143">03</span><h4 class="ac-title ac-title--sm">ETF</h4></div><p class="gu-text">Son fondos cuyas participaciones cotizan en bolsa y se compran o venden durante la sesión. Muchos replican índices, sectores o mercados completos.</p><p class="gu-text">Pueden ofrecer diversificación, transparencia y costes reducidos. También incorporan gastos de compraventa, diferencia entre precios y posible riesgo de divisa.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--complementario">Diversificación<br>Depende del índice</span><span class="nv-chip nv-chip--complementario">Gestión<br>Frecuentemente indexada</span><span class="nv-chip nv-chip--complementario">Operativa<br>Durante la sesión</span><span class="nv-chip nv-chip--complementario">Horizonte<br>Según la cartera</span></div><p class="ac-x144"><strong class="ac-strong">Fiscalidad:</strong> la venta genera una ganancia o pérdida patrimonial; no se aplica el diferimiento por traspaso de los fondos tradicionales.</p></article>
+              </div>
+            </section>
+
+            <section class="ac-card">
+              <div class="ac-x115"><div><p class="ac-x135">Infografía 2</p><h3 class="ac-title">Una empresa, tres formas de acceder</h3></div><p class="gu-text">Una comparación visual de propiedad, diversificación, gestión, operativa, costes y fiscalidad.</p></div>
+              <div class="ac-x116"><img src="src/assets/education/nuvia-academy/activos-crecimiento-diversificacion-infografia.webp" alt="Infografía comparativa sobre acciones, fondos de inversión y ETF, con su diversificación, gestión, operativa, fiscalidad y riesgos" class="ac-x117" loading="lazy" width="1536" height="1024"></div>
+            </section>
+
+            <section class="ac-card">
+              <div class="ac-x145"><p class="ac-x135">Comparación práctica</p><h3 class="ac-title">Qué cambia al elegir el vehículo</h3></div>
+              <div class="ac-x146"><div class="ac-x147"><div class="ac-x148"><span>Aspecto</span><span>Acciones</span><span>Fondos</span><span>ETF</span></div><div class="ac-x149"><strong class="ac-strong">Qué se adquiere</strong><span>Una empresa concreta</span><span>Participaciones de una cartera</span><span>Participaciones cotizadas de una cartera</span></div><div class="ac-x150"><strong class="ac-strong">Diversificación</strong><span>Debe construirse</span><span>Puede ser amplia</span><span>Depende del índice o estrategia</span></div><div class="ac-x149"><strong class="ac-strong">Precio y operativa</strong><span>Cotización en mercado</span><span>Valor liquidativo</span><span>Cotización durante la sesión</span></div><div class="ac-x150"><strong class="ac-strong">Decisiones del inversor</strong><span>Selección y seguimiento</span><span>Elegir política y gestor o índice</span><span>Elegir índice y ejecutar compras</span></div><div class="ac-x149"><strong class="ac-strong">Costes relevantes</strong><span>Compraventa y custodia</span><span>Comisión total del fondo</span><span>Gestión, compraventa y diferencial</span></div><div class="ac-x151"><strong class="ac-strong">Traspaso con diferimiento</strong><span>No</span><span>Posible si cumple requisitos</span><span>No</span></div></div></div>
+            </section>
+
+            <section class="ac-x152">
+              <div class="gu-card"><p class="ac-x153">Los riesgos que acompañan al crecimiento</p><div class="gu-grid-2"><article class="ac-x154"><h4 class="ac-title--xs">Volatilidad</h4><p class="ac-text">El precio puede caer con fuerza aunque el horizonte previsto sea largo.</p></article><article class="ac-x155"><h4 class="ac-title--xs">Concentración</h4><p class="ac-text">Depender de pocas empresas, sectores o países aumenta el impacto de un error.</p></article><article class="ac-x156"><h4 class="ac-title--xs">Valoración y mercado</h4><p class="ac-text">Una buena empresa o un buen mercado pueden ser una mala inversión si se paga demasiado.</p></article><article class="ac-x157"><h4 class="ac-title--xs">Costes, divisa y conducta</h4><p class="ac-text">Los costes reducen el resultado; la divisa puede añadir oscilación y operar demasiado puede perjudicar la estrategia.</p></article></div></div>
+              <div class="ac-x158"><p class="ac-x129">La pregunta adecuada</p><h3 class="ac-hero__title">¿Puedo mantener la inversión durante una caída?</h3><p class="ac-x121">El horizonte largo solo ayuda si no necesitamos vender y podemos sostener la estrategia cuando el mercado atraviesa pérdidas.</p></div>
+            </section>
+
+            <p class="ac-x159"><strong>Información educativa.</strong> La diversificación no garantiza beneficios ni evita pérdidas. La fiscalidad indicada se refiere, con carácter general, a personas físicas residentes en España; depende del producto, de que se cumplan los requisitos legales y de las circunstancias personales. La normativa puede cambiar.</p>
+          </section>
+        </sc-if>
+
+        <sc-if value="{{ esActivoComplementarios }}" hint-placeholder-val="{{ false }}">
+          <section role="tabpanel" data-screen-label="Activos complementarios y largo plazo" class="ac-x160">
+            <section class="ac-card">
+              <div class="ac-x161">
+                <div><p class="ac-x162">Apartado 03 · Completar con criterio</p><h3 class="ac-strong">Activos complementarios</h3><p class="gu-text">Una cartera puede incorporar activos reales, vehículos destinados a la jubilación y alternativas con un comportamiento distinto al de las acciones o los bonos. Su utilidad no procede de ser más sofisticados, sino de cumplir una función concreta.</p><p class="gu-text">Cada opción añade riesgos propios: falta de liquidez, costes de mantenimiento, dependencia de un sector, ausencia de rentas o pérdidas muy elevadas. Antes de incorporarla conviene entender qué aporta y qué puede salir mal.</p><div class="ac-x163"><span class="ac-x164">Inmueble directo</span><span class="ac-x125">SOCIMI</span><span class="ac-x126">Oro</span><span class="ac-x124">Pensiones</span><span class="ac-x165">Criptoactivos</span></div></div>
+                <div class="ac-x166"><button type="button" onClick="{{ reproducirVideo3 }}" aria-label="Reproducir Activos financieros 3 · Activos complementarios" class="ac-x108"><img src="src/assets/education/nuvia-academy/activos-financieros-video-03.jpg" alt="Portada del vídeo Activos financieros 3: activos complementarios" class="ac-x109" loading="lazy" width="1280" height="720"><span aria-hidden="true" class="ac-x110"><svg viewBox="0 0 24 24" aria-hidden="true" class="ac-x111"><path d="M8 5v14l11-7z"></path></svg></span></button></div>
+              </div>
+              <div class="ac-x167"><strong>Complementar no significa acumular productos.</strong> Solo tiene sentido añadir una inversión cuando mejora la función de la cartera y podemos explicar con claridad su riesgo, su coste, su liquidez y su fiscalidad.</div>
+            </section>
+
+            <section class="ac-x168">
+              <div class="ac-x169"><p class="ac-x170">Una distinción esencial</p><h3 class="ac-x171">Activo, vehículo y finalidad</h3><p class="ac-x172">El inmueble y el oro son activos reales. Una SOCIMI es una sociedad cotizada que permite acceder al negocio inmobiliario mediante acciones.</p><p class="ac-x173">Un plan de pensiones es un vehículo de ahorro: su resultado depende de los activos que contenga. La jubilación es su finalidad, no una clase de activo.</p></div>
+              <div class="gu-card"><p class="ac-x174">Tres preguntas antes de añadirlos</p><div class="gu-grid-3"><article class="ac-x175"><span class="ac-x176">01 · FUNCIÓN</span><h4 class="ac-strong">¿Qué aporta?</h4><p class="gu-text">Rentas, diversificación, protección o una finalidad futura.</p></article><article class="ac-x177"><span class="ac-x178">02 · SALIDA</span><h4 class="ac-strong">¿Cómo recupero el dinero?</h4><p class="gu-text">Venta en mercado, transmisión del activo o rescate sujeto a condiciones.</p></article><article class="ac-x179"><span class="ac-x180">03 · PÉRDIDA</span><h4 class="ac-strong">¿Qué puede fallar?</h4><p class="gu-text">Precio, liquidez, costes, regulación, custodia o concentración.</p></article></div></div>
+            </section>
+
+            <section class="gu-card">
+              <div class="ac-head-row"><div><p class="ac-x181">Activos reales y exposición inmobiliaria</p><h3 class="ac-title">Tres formas de diversificar</h3></div><p class="gu-text">Pueden comportarse de forma diferente a la cartera financiera tradicional, pero no garantizan protección ni rentabilidad.</p></div>
+              <div class="gu-grid-3">
+                <article class="ac-x182"><div class="ac-row-head"><span class="ac-x183">01</span><h4 class="ac-strong">Inmueble directo</h4></div><p class="gu-text">Propiedad física que puede utilizarse, alquilarse o venderse. Puede generar rentas y conservar valor a largo plazo, pero exige un capital elevado y concentra la inversión en una ubicación y un activo concretos.</p><p class="gu-text">Hay que considerar mantenimiento, impuestos, periodos sin inquilino, financiación y el tiempo necesario para vender.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--neutro">Liquidez<br>Baja</span><span class="nv-chip nv-chip--neutro">Gestión<br>Directa o delegada</span><span class="nv-chip nv-chip--neutro">Rentas<br>Alquiler</span><span class="nv-chip nv-chip--neutro">Horizonte<br>Largo</span></div><p class="ac-x184"><strong class="ac-strong">Fiscalidad:</strong> el alquiler suele generar rendimientos del capital inmobiliario; la venta puede producir una ganancia o pérdida patrimonial. También existen tributos y gastos ligados a la compra y la propiedad.</p></article>
+                <article class="ac-x185"><div class="ac-row-head"><span class="ac-x140">02</span><h4 class="ac-strong">SOCIMI</h4></div><p class="gu-text">Sociedad cotizada dedicada principalmente a inmuebles en alquiler. Permite acceder a una cartera inmobiliaria comprando acciones, con una inversión inicial menor y una salida normalmente más sencilla que en un inmueble directo.</p><p class="gu-text">Su precio fluctúa en bolsa y depende de la ocupación, las rentas, la deuda, los tipos de interés y la calidad de los activos y de la gestión.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--seguridad">Liquidez<br>De mercado</span><span class="nv-chip nv-chip--seguridad">Gestión<br>Profesional</span><span class="nv-chip nv-chip--seguridad">Rentas<br>Dividendos</span><span class="nv-chip nv-chip--seguridad">Horizonte<br>Medio y largo</span></div><p class="ac-x141"><strong class="ac-strong">Fiscalidad:</strong> para el inversor particular, los dividendos son capital mobiliario y la venta de las acciones puede generar una ganancia o pérdida patrimonial.</p></article>
+                <article class="ac-x186"><div class="ac-row-head"><span class="ac-x143">03</span><h4 class="ac-strong">Oro</h4></div><p class="gu-text">Activo real escaso que no representa una deuda ni una empresa. Se utiliza para diversificar y como posible refugio en determinados periodos de incertidumbre o pérdida de confianza monetaria.</p><p class="gu-text">No genera intereses, dividendos ni alquileres. Su resultado depende del precio de venta y pueden existir costes de compra, custodia, seguro o del vehículo utilizado.</p><div class="gu-grid-2"><span class="nv-chip nv-chip--complementario">Liquidez<br>Según el formato</span><span class="nv-chip nv-chip--complementario">Rentas<br>No genera</span><span class="nv-chip nv-chip--complementario">Función<br>Diversificación</span><span class="nv-chip nv-chip--complementario">Horizonte<br>Medio y largo</span></div><p class="ac-x144"><strong class="ac-strong">Fiscalidad:</strong> la venta puede generar una ganancia o pérdida patrimonial. El oro que cumple la definición legal de oro de inversión dispone de un régimen específico de IVA.</p></article>
+              </div>
+            </section>
+
+            <section class="gu-card">
+              <div class="ac-head-row"><div><p class="ac-x187">Finalidad futura y riesgo elevado</p><h3 class="ac-title">Dos categorías que no deben confundirse</h3></div><p class="gu-text">El plan de pensiones ordena ahorro para una finalidad. El criptoactivo es una inversión digital de riesgo elevado. Ni su función ni su protección son equivalentes.</p></div>
+              <div class="gu-grid-2">
+                <article class="ac-x188"><div><div class="ac-row-head"><span class="ac-x137">04</span><h4 class="ac-strong">Planes de pensiones</h4></div><p class="gu-text">Vehículos de ahorro destinados principalmente a la jubilación. Invierten en una cartera que puede incluir renta fija, acciones u otros activos; por eso su riesgo depende de la política del plan.</p><p class="gu-text">Tienen liquidez limitada a las contingencias y supuestos previstos legalmente. Deben revisarse el horizonte, los costes y la forma futura de cobro.</p></div><div class="ac-x189"><div class="gu-grid-2"><span class="nv-chip nv-chip--crecimiento">Es un<br>Vehículo</span><span class="nv-chip nv-chip--crecimiento">Liquidez<br>Limitada</span><span class="nv-chip nv-chip--crecimiento">Finalidad<br>Jubilación</span><span class="nv-chip nv-chip--crecimiento">Riesgo<br>Según la cartera</span></div><p class="ac-x138"><strong class="ac-strong">Fiscalidad:</strong> las aportaciones pueden reducir la base imponible dentro de los límites legales. Las prestaciones cobradas tributan, con carácter general, como rendimientos del trabajo.</p></div></article>
+                <article class="ac-x190"><div><div class="ac-row-head"><span class="ac-x191">05</span><h4 class="ac-strong">Criptoactivos</h4></div><p class="gu-text">Representaciones digitales de valor o derechos basadas normalmente en tecnologías de registro distribuido. Existen categorías muy distintas y no todas ofrecen los mismos derechos ni tienen un activo que las respalde.</p><p class="gu-text">Pueden sufrir caídas extremas, pérdida total, fraudes, fallos tecnológicos o problemas de custodia. Solo deberían considerarse después de comprender el activo y el proveedor utilizado.</p></div><div class="ac-x189"><div class="gu-grid-2"><span class="nv-chip nv-chip--riesgo">Volatilidad<br>Muy alta</span><span class="nv-chip nv-chip--riesgo">Pérdida total<br>Posible</span><span class="nv-chip nv-chip--riesgo">Custodia<br>Crítica</span><span class="nv-chip nv-chip--riesgo">Función<br>Especulativa</span></div><p class="ac-x192"><strong class="ac-strong">Fiscalidad:</strong> la venta o permuta puede generar una ganancia o pérdida patrimonial integrada, con carácter general, en la base del ahorro. Intercambiar un criptoactivo por otro también puede tener efecto fiscal.</p></div></article>
+              </div>
+            </section>
+
+            <section class="ac-card">
+              <div class="ac-x115"><div><p class="ac-x181">Infografía 3 · Mapa de función y riesgo</p><h3 class="ac-title">No todos completan la cartera de la misma forma</h3></div><p class="gu-text">La función patrimonial debe decidirse antes que el producto. El riesgo aumenta cuando disminuye la liquidez, crece la concentración o resulta más difícil valorar y custodiar la inversión.</p></div>
+              <div class="ac-x116"><img src="src/assets/education/nuvia-academy/activos-complementarios-infografia.webp" alt="Infografía comparativa sobre inmueble directo, SOCIMI, oro, planes de pensiones y criptoactivos, con su función, liquidez y riesgos" class="ac-x117" loading="lazy" width="1536" height="1024"></div>
+            </section>
+
+            <section class="ac-card">
+              <div class="ac-x193"><p class="ac-x181">Comparación práctica</p><h3 class="ac-title">Qué cambia entre las alternativas</h3></div>
+              <div class="ac-x146"><div class="ac-x147"><div class="ac-x194"><span>Aspecto</span><span>Inmueble</span><span>SOCIMI</span><span>Oro</span><span>Pensiones</span><span>Cripto</span></div><div class="ac-x195"><strong class="ac-strong">Qué se adquiere</strong><span>Propiedad física</span><span>Acciones inmobiliarias</span><span>Metal o exposición</span><span>Participación en un plan</span><span>Activo digital</span></div><div class="ac-x196"><strong class="ac-strong">Liquidez</strong><span>Baja</span><span>De mercado</span><span>Según formato</span><span>Limitada por ley</span><span>Variable</span></div><div class="ac-x195"><strong class="ac-strong">Genera rentas</strong><span>Puede generar alquiler</span><span>Puede repartir dividendos</span><span>No</span><span>Depende de la cartera</span><span>No necesariamente</span></div><div class="ac-x196"><strong class="ac-strong">Riesgo dominante</strong><span>Concentración y costes</span><span>Mercado y deuda</span><span>Precio y custodia</span><span>Cartera y liquidez</span><span>Volatilidad y pérdida total</span></div><div class="ac-x197"><strong class="ac-strong">Función posible</strong><span>Uso, renta y patrimonio real</span><span>Exposición inmobiliaria</span><span>Diversificación</span><span>Jubilación</span><span>Posición especulativa</span></div></div></div>
+            </section>
+
+            <section class="ac-x198">
+              <div class="gu-card"><p class="ac-x153">Riesgos que conviene separar</p><div class="gu-grid-2"><article class="ac-x199"><h4 class="ac-title--xs">Iliquidez</h4><p class="ac-text">Vender un inmueble o rescatar un vehículo restringido puede requerir tiempo o condiciones.</p></article><article class="ac-x200"><h4 class="ac-title--xs">Concentración</h4><p class="ac-text">Un solo inmueble, sector, emisor o activo digital puede dominar el resultado.</p></article><article class="ac-x157"><h4 class="ac-title--xs">Costes y ausencia de rentas</h4><p class="ac-text">Mantenimiento, custodia y comisiones reducen el resultado; algunos activos no generan flujo alguno.</p></article><article class="ac-x154"><h4 class="ac-title--xs">Complejidad y custodia</h4><p class="ac-text">No comprender la estructura, el proveedor o la forma de conservar el activo añade riesgo.</p></article></div></div>
+              <div class="ac-x201"><p class="ac-x202">La pregunta adecuada</p><h3 class="ac-hero__title">¿Qué función aporta y qué riesgo añade?</h3><p class="ac-x203">Si no podemos responder ambas preguntas con sencillez, probablemente todavía no comprendemos lo suficiente la inversión.</p></div>
+            </section>
+
+            <p class="ac-x159"><strong>Información educativa.</strong> Las categorías y características indicadas son generales y pueden variar según el producto, el mercado y la forma de contratación. La fiscalidad se refiere, con carácter general, a personas físicas residentes en España y depende de las circunstancias personales. La normativa puede cambiar. Los criptoactivos pueden implicar la pérdida total del dinero invertido.</p>
+          </section>
+        </sc-if>
+      </section>
+    </sc-if>
+
+    <!-- ============ INTERÉS COMPUESTO Y SIMULADOR ============ -->
+    <sc-if value="{{ esCalculadora }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="El poder del interés compuesto" class="nv-container gu-section">
+        <div class="ac-card">
+          <div class="ac-x204">
+            <div>
+              <p class="gu-accent">Concepto esencial · Inversión a largo plazo</p>
+              <h2 class="ac-strong">El poder del interés compuesto</h2>
+              <p class="gu-text">El interés compuesto significa que tu dinero genera rentabilidad no solo sobre el capital que aportaste, sino también sobre las ganancias que se van acumulando. Cuando esas ganancias permanecen invertidas, se incorporan a la base que puede producir la siguiente rentabilidad: el crecimiento empieza a generar nuevo crecimiento.</p>
+              <p class="gu-text">Por ejemplo, 10.000 € invertidos durante 30 años a una rentabilidad anual constante del 6 % crecerían hasta unos 57.400 €, antes de costes e impuestos y sin añadir nuevas aportaciones. No es una promesa de resultado: muestra por qué reinvertir, mantener la disciplina y disponer de tiempo puede cambiar la escala del patrimonio.</p>
+              <p class="ac-x205">La idea clave no es buscar una rentabilidad extraordinaria cada año, sino dar tiempo a una estrategia razonable para que las ganancias acumuladas también puedan trabajar.</p>
+            </div>
+            <div>
+              <div class="ac-x206">
+                <div class="ac-x44 nv-external-content nv-external-content--dark" data-nuvia-external-frame
+                     data-src="https://www.youtube-nocookie.com/embed/N2MQm0Hvji4?autoplay=1&amp;rel=0"
+                     data-title="Vídeo: el poder del interés compuesto">
+                  <div class="nv-external-content__placeholder nv-external-content__placeholder--dark">
+                    <span class="nv-external-content__eyebrow">Vídeo externo · YouTube</span>
+                    <p>El vídeo se conecta con YouTube solo cuando eliges reproducirlo.</p>
+                    <div class="nv-external-content__actions">
+                      <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+                      <a class="nv-btn nv-btn--secondary" href="https://www.youtube.com/watch?v=N2MQm0Hvji4" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+                    </div>
+                    <small data-nuvia-external-status aria-live="polite">No se establece conexión mientras el vídeo permanece cerrado.</small>
+                  </div>
+                </div>
+              </div>
+              <p class="gu-muted">En este vídeo se explica por qué el tiempo y la reinversión son dos de los factores más importantes para construir patrimonio.</p>
+            </div>
+          </div>
+          <div class="gu-grid-3">
+            <article class="ac-outline ac-outline--paper"><span class="ac-x207">01</span><h3 class="ac-strong">Capital inicial</h3><p class="gu-text">Es la base con la que empiezas. Ayuda, pero no determina por sí sola el resultado: una cantidad modesta puede crecer si dispone de plazo y constancia.</p></article>
+            <article class="ac-outline ac-outline--paper"><span class="ac-x95">02</span><h3 class="ac-strong">Aportaciones periódicas</h3><p class="gu-text">Añadir dinero de forma recurrente aumenta la base invertida y convierte el ahorro en un hábito. La regularidad suele ser más controlable que intentar acertar el mejor momento.</p></article>
+            <article class="ac-outline ac-outline--paper"><span class="ac-x98">03</span><h3 class="ac-strong">Tiempo y reinversión</h3><p class="gu-text">Son el verdadero multiplicador. Cuantos más ciclos de reinversión se completan, mayor puede ser la diferencia entre lo aportado y el patrimonio acumulado.</p></article>
+          </div>
+        </div>
+
+        <div class="ac-x208">
+          <div>
+            <p class="gu-accent">Simulador interactivo</p>
+            <h3 class="ac-title">Comprueba cómo cambia el resultado</h3>
+          </div>
+          <p class="gu-text">Modifica capital, aportaciones, plazo y rentabilidad para distinguir cuánto procede de tu ahorro y cuánto del efecto acumulado. Añade inflación y fiscalidad para obtener una lectura más realista.</p>
+        </div>
+
+        <div class="ac-x209">
+          <div class="gu-card">
+            <p class="ac-x210">Parámetros básicos</p>
+            <div class="gu-stack">
+              <div><label class="ac-label" for="ac-initialCapital">Capital inicial</label><div class="nv-field__box"><input id="ac-initialCapital" name="initialCapital" type="number" step="1000" defaultValue="{{ v.initialCapital }}" onChange="{{ setNum }}"><span class="gu-muted">€</span></div></div>
+              <div class="ac-x211">
+                <div><label class="ac-label" for="ac-periodicContribution">Aportación</label><div class="nv-field__box"><input id="ac-periodicContribution" name="periodicContribution" type="number" step="50" defaultValue="{{ v.periodicContribution }}" onChange="{{ setNum }}"><span class="gu-muted">€</span></div></div>
+                <div><label class="ac-label" for="ac-contributionFrequency">Frecuencia</label><select class="nv-select ac-x212" id="ac-contributionFrequency" name="contributionFrequency" value="{{ v.contributionFrequency }}" onChange="{{ setStr }}"><option value="monthly">Mensual</option><option value="yearly">Anual</option></select></div>
+              </div>
+              <div>
+                <div class="ac-x213"><label class="gu-text" for="ac-years">Horizonte temporal</label><span class="gu-accent">{{ v.years }} años</span></div>
+                <input id="ac-years" name="years" type="range" min="1" max="50" defaultValue="{{ v.years }}" onChange="{{ setNum }}" class="ac-x214">
+              </div>
+              <div><label class="ac-label" for="ac-expectedReturn">Tasa de retorno anual esperada</label><div class="nv-field__box"><input id="ac-expectedReturn" name="expectedReturn" type="number" step="0.1" defaultValue="{{ v.expectedReturn }}" onChange="{{ setNum }}"><span class="gu-muted">%</span></div></div>
+            </div>
+            <p class="ac-x215">Ajustes avanzados</p>
+            <div class="gu-stack">
+              <div><label class="ac-label" for="ac-inflationRate">Inflación anual estimada</label><div class="nv-field__box"><input id="ac-inflationRate" name="inflationRate" type="number" step="0.1" defaultValue="{{ v.inflationRate }}" onChange="{{ setNum }}"><span class="gu-muted">%</span></div></div>
+              <div><label class="ac-label" for="ac-taxRate">Impuestos sobre beneficios</label><div class="nv-field__box"><input id="ac-taxRate" name="taxRate" type="number" step="0.1" defaultValue="{{ v.taxRate }}" onChange="{{ setNum }}"><span class="gu-muted">%</span></div></div>
+              <div><label class="ac-label" for="ac-annualIncrease">Incremento anual de aportaciones</label><div class="nv-field__box"><input id="ac-annualIncrease" name="annualIncrease" type="number" step="0.1" defaultValue="{{ v.annualIncrease }}" onChange="{{ setNum }}"><span class="gu-muted">%</span></div></div>
+            </div>
+          </div>
+          <div class="gu-stack">
+            <div class="gu-grid-3">
+              <div class="ac-x216"><p class="gu-text">Capital final bruto</p><p class="ac-strong">{{ rBruto }}</p><span class="ac-x217">Sin descontar impuestos</span></div>
+              <div class="gu-card"><p class="gu-muted">Total aportado</p><p class="ac-strong">{{ rAportado }}</p><p class="ac-x218">Esfuerzo de ahorro real</p></div>
+              <div class="gu-card"><p class="gu-muted">Intereses generados</p><p class="gu-accent">+{{ rIntereses }}</p><p class="ac-x218">El trabajo del tiempo</p></div>
+            </div>
+            <div class="gu-card">
+              <h3 class="ac-strong">Evolución del patrimonio</h3>
+              <p class="gu-muted">El gráfico muestra la diferencia entre lo que tú aportas y lo que se genera por el efecto acumulado de la rentabilidad.</p>
+              <div class="ac-compound-chart">
+                <div class="ac-compound-chart__plot">
+                  <span class="ac-compound-chart__y ac-compound-chart__y--max">{{ chartMax }}</span>
+                  <span class="ac-compound-chart__y ac-compound-chart__y--mid">{{ chartMid }}</span>
+                  <span class="ac-compound-chart__y ac-compound-chart__y--zero">0 €</span>
+                  <span class="ac-compound-chart__x ac-compound-chart__x--start">Año 1</span>
+                  <span class="ac-compound-chart__x ac-compound-chart__x--end">{{ chartFin }}</span>
+              <svg viewBox="0 0 640 240" class="ac-x56" role="img" aria-label="Evolución de aportaciones e intereses" aria-describedby="ac-compound-help">
+                <line x1="52" y1="10" x2="52" y2="204" stroke="#cbd5e1"></line>
+                <line x1="52" y1="204" x2="632" y2="204" stroke="#cbd5e1"></line>
+                <line x1="52" y1="107" x2="632" y2="107" stroke="#edf1f6"></line>
+                <line x1="52" y1="10" x2="632" y2="10" stroke="#edf1f6"></line>
+                <polygon sc-camel-points="{{ areaBruto }}" fill="rgba(124,154,68,.28)"></polygon>
+                <polygon sc-camel-points="{{ areaAportado }}" fill="rgba(100,116,139,.22)"></polygon>
+                <polyline sc-camel-points="{{ lineaBruto }}" fill="none" stroke="#7C9A44" stroke-width="2.4" stroke-linecap="round"></polyline>
+                <polyline sc-camel-points="{{ lineaAportado }}" fill="none" stroke="#6b7686" stroke-width="2" stroke-linecap="round"></polyline>
+              </svg>
+                </div>
+              </div>
+              <p id="ac-compound-help" class="nv-table-scroll__hint">Importes en euros y plazo en años. La línea discontinua muestra las aportaciones; la continua incluye los intereses del supuesto elegido.</p>
+              <div class="ac-x219">
+                <span class="ac-x220"><span class="ac-x221"></span>Aportaciones</span>
+                <span class="ac-x220"><span class="ac-x222"></span>Aportaciones + intereses</span>
+              </div>
+            </div>
+            <div class="ac-x223">
+              <p class="ac-x224"><span class="ac-x225">◆</span>Valor real y fiscalidad</p>
+              <p class="gu-text">{{ notaFiscal }}</p>
+              <p class="gu-text">{{ notaInflacion }}</p>
+            </div>
+            <p class="gu-card">Simulación orientativa basada en los datos introducidos. No constituye asesoramiento financiero, fiscal ni una recomendación personalizada de inversión.</p>
+            <div class="nv-btn-row">
+              <a class="nv-btn nv-btn--soft" href="src/assets/education/interes-compuesto-guia.pdf" download>⤓ Descargar la guía del interés compuesto (PDF)</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- ============ GLOSARIO ============ -->
+    <sc-if value="{{ esGlosario }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Glosario financiero" class="nv-container gu-section">
+        <div class="gu-stack">
+          <div class="ac-x226">
+            <h2 class="gu-title gu-accent">Glosario financiero</h2>
+            <div role="tablist" aria-label="Secciones del glosario" class="ac-x227">
+              <sc-for list="{{ subTabs }}" as="t" hint-placeholder-count="2">
+                <button type="button" role="tab" aria-selected="{{ t.selected }}" onClick="{{ t.abrir }}" class="{{ t.clase }}">{{ t.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <sc-for list="{{ terminos }}" as="g" hint-placeholder-count="6">
+              <div class="ac-x228">
+                <button type="button" aria-expanded="{{ g.abierto }}" onClick="{{ g.alternar }}" class="ac-x229">
+                  <span class="ac-x230">
+                    <span class="ac-x231">{{ g.titulo }}</span>
+                    <span class="ac-x232">{{ g.subtitulo }}</span>
+                  </span>
+                  <span aria-hidden="true" class="{{ g.flecha }}">▾</span>
+                </button>
+                <div class="{{ g.cuerpo }}">
+                  <div class="ac-x233">
+                    <p class="gu-kicker">{{ g.etiqueta1 }}</p>
+                    <p class="gu-text">{{ g.texto1 }}</p>
+                  </div>
+                  <div class="{{ g.bloque2 }}">
+                    <p class="gu-kicker">Por qué es importante</p>
+                    <p class="gu-text">{{ g.texto2 }}</p>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = { tab: 'inicio', activosSub: 'seguridad', sub: 'conceptos', abiertos: {}, c: null };
+  cDefaults() { return { initialCapital: 10000, periodicContribution: 300, contributionFrequency: 'monthly', years: 20, expectedReturn: 6.5, inflationRate: 2, taxRate: 21, annualIncrease: 0 }; }
+  componentDidMount() {
+    document.title = 'NUVIA · Academia NUVIA';
+    const raw = new URLSearchParams(window.location.search).get('tab');
+    const p = raw === 'interes' ? 'calculadora' : raw;
+    const hash = window.location.hash.replace('#', '');
+    if (p && ['inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario'].includes(p)) this.setState({ tab: p });
+    else if (hash === 'glosario') this.setState({ tab: 'glosario' });
+    // El montaje del componente reemplaza el ancla inicial del HTML.
+    // Recuperar el destino después del render, sin mover el interior del hero.
+    if (hash === 'ruta-aprendizaje' && (!p || p === 'inicio')) {
+      requestAnimationFrame(() => document.getElementById('ruta-aprendizaje')?.scrollIntoView({ block: 'start' }));
+    }
+  }
+  abrirTab(tab) {
+    const url = new URL(window.location.href);
+    if (tab === 'inicio') url.searchParams.delete('tab');
+    else url.searchParams.set('tab', tab);
+    url.hash = '';
+    window.history.replaceState({}, '', url.pathname + url.search);
+    this.setState({ tab });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  reproducirVideo(evento, id, titulo) {
+    const boton = evento && evento.currentTarget;
+    if (!boton) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+    iframe.title = titulo;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    iframe.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; border:0';
+    boton.replaceWith(iframe);
+  }
+  // Series históricas (100 $ en 1928) — datos de SavingsInvestmentGuide.tsx
+  historia() {
+    if (this._h) return this._h;
+    const paths = {
+      lineaBolsa: [100,58,110,95,190,420,1100,2500,4300,3800,7800,18500,42000,98000,160000,120000,185000,410000,680000,1157599],
+      lineaBonos: [100,145,230,290,340,410,520,670,850,980,1320,2100,3600,6200,9800,14500,20500,33000,52000,53952],
+      lineaOro: [100,105,120,110,125,132,145,155,180,2600,1200,2300,1100,1000,1600,5400,3800,6800,9200,21025],
+      lineaDeuda: [100,116,150,168,182,205,250,300,350,480,420,780,1150,1900,2700,3500,4600,6100,8200,7753],
+      lineaVivienda: [100,92,130,230,305,370,450,560,760,1180,1400,1800,2200,2500,2750,3200,3900,4400,5000,5626],
+      lineaDinero: [100,105,110,118,132,150,170,210,280,370,520,780,1100,1500,1800,1980,2140,2250,2380,2578],
+    };
+    const minLog = Math.log10(80), maxLog = Math.log10(1200000);
+    const out = {};
+    Object.keys(paths).forEach(k => {
+      out[k] = paths[k].map((v, i) => {
+        const x = 62 + (i / (paths[k].length - 1)) * 620;
+        const y = 24 + 270 - ((Math.log10(v) - minLog) / (maxLog - minLog)) * 270;
+        return x.toFixed(1) + ',' + y.toFixed(1);
+      }).join(' ');
+    });
+    this._h = out;
+    return out;
+  }
+  glosario() {
+    if (this._g) return this._g;
+    this._g = {
+      conceptos: [
+        { title: 'Interés compuesto', subtitle: 'El crecimiento sobre el crecimiento - ¿Cómo trabaja el tiempo a favor del dinero?', definition: 'Es el efecto por el cual los beneficios generados por una inversión se reinvierten y, a su vez, generan nuevos beneficios. No solo crece el capital inicial, también crecen los rendimientos acumulados.', importance: 'Es uno de los motores más poderosos de la inversión a largo plazo. Cuanto mayor es el horizonte temporal, más relevante se vuelve. Ayuda a entender por qué empezar pronto y mantener la disciplina puede tener un impacto muy significativo en el patrimonio final.' },
+        { title: 'Rentabilidad', subtitle: 'El resultado de la inversión - ¿Cuánto ha generado mi dinero?', definition: 'La rentabilidad mide la ganancia o pérdida obtenida por una inversión en relación con el capital invertido. Puede expresarse en porcentaje y calcularse para distintos periodos: mensual, anual o acumulado.', importance: 'Permite comparar inversiones y valorar si el capital está creciendo de forma adecuada. No debe analizarse de forma aislada: una rentabilidad alta puede ir acompañada de un riesgo elevado.' },
+        { title: 'Riesgo', subtitle: 'La incertidumbre del resultado - ¿Qué puede salir diferente a lo esperado?', definition: 'El riesgo es la posibilidad de que una inversión no obtenga el resultado previsto, fluctúe de forma relevante o incluso genere pérdidas. No significa necesariamente perder dinero, sino convivir con incertidumbre.', importance: 'Ayuda a elegir inversiones coherentes con el perfil del inversor. Una buena cartera no busca eliminar totalmente el riesgo, sino asumir un nivel razonable y compensado por la rentabilidad esperada.' },
+        { title: 'Volatilidad', subtitle: 'El movimiento del valor - ¿Cuánto sube y baja una inversión?', definition: 'La volatilidad mide la intensidad de las oscilaciones del precio o valor de una inversión. Una volatilidad alta implica movimientos más fuertes; una volatilidad baja indica un comportamiento más estable.', importance: 'Ayuda a entender la estabilidad de una cartera. Dos inversiones pueden tener una rentabilidad parecida, pero comportarse de manera muy distinta durante el camino. La volatilidad influye mucho en la tranquilidad del inversor.' },
+        { title: 'Diversificación', subtitle: 'No concentrarlo todo - ¿Cómo se reparte el riesgo?', definition: 'Diversificar consiste en repartir el capital entre distintos activos, regiones, sectores o estilos de inversión para reducir la dependencia de una única fuente de rentabilidad.', importance: 'Una cartera diversificada puede resistir mejor escenarios adversos. No garantiza beneficios ni elimina pérdidas, pero reduce el impacto de que una sola inversión o mercado tenga un mal comportamiento.' },
+        { title: 'Horizonte temporal', subtitle: 'El plazo de la inversión - ¿Cuándo necesitaré el dinero?', definition: 'El horizonte temporal es el periodo durante el cual se espera mantener una inversión antes de necesitar el capital. Puede ser corto, medio o largo plazo.', importance: 'Determina qué nivel de riesgo puede ser razonable. A mayor plazo, normalmente hay más capacidad para asumir oscilaciones; a menor plazo, suele ser más importante proteger el capital y mantener liquidez.' },
+        { title: 'Inflación', subtitle: 'La pérdida de poder adquisitivo - ¿Cuánto vale realmente mi dinero?', definition: 'La inflación es el aumento generalizado de los precios. Cuando los precios suben, el dinero pierde capacidad de compra si no crece al mismo ritmo.', importance: 'Una inversión debe analizarse en términos reales, no solo nominales. Ganar un 3% cuando la inflación es del 4% implica perder poder adquisitivo. Por eso el objetivo no es solo conservar dinero, sino proteger su valor real.' },
+        { title: 'Liquidez', subtitle: 'La facilidad de convertir en dinero - ¿Puedo disponer del capital cuando lo necesite?', definition: 'La liquidez mide la facilidad y rapidez con la que una inversión puede convertirse en efectivo sin sufrir una pérdida significativa de valor.', importance: 'Es clave para planificar imprevistos y necesidades de corto plazo. Una cartera puede ser rentable, pero si no tiene liquidez suficiente, puede obligar a vender en un mal momento.' },
+        { title: 'Fondo de inversión', subtitle: 'Invertir de forma colectiva - ¿Cómo accedo a una cartera gestionada?', definition: 'Un fondo de inversión agrupa el dinero de muchos inversores para invertirlo en una cartera de activos gestionada por profesionales, siguiendo una política de inversión concreta.', importance: 'Permite acceder a carteras diversificadas y gestión profesional con importes relativamente bajos. Es importante revisar sus costes, estrategia, riesgo y consistencia con los objetivos del inversor.' },
+        { title: 'ETF', subtitle: 'Un fondo que cotiza en bolsa - ¿Cómo invertir de forma indexada o flexible?', definition: 'Un ETF es un fondo cotizado que se compra y vende en mercado como una acción. Normalmente replica un índice, sector, región o clase de activo.', importance: 'Suele ofrecer diversificación, costes bajos y operativa flexible. Puede ser útil para construir carteras eficientes, aunque también exige entender su índice, liquidez, divisa y riesgo de mercado.' },
+        { title: 'Renta fija', subtitle: 'Prestar dinero a cambio de intereses - ¿Qué papel juega la estabilidad?', definition: 'La renta fija incluye activos como bonos, obligaciones o letras, en los que el inversor presta dinero a un emisor a cambio de pagos de intereses y devolución del principal en una fecha determinada.', importance: 'Puede aportar estabilidad, ingresos periódicos y menor volatilidad que la renta variable. Aun así, no está libre de riesgo: influyen los tipos de interés, la inflación, el plazo y la solvencia del emisor.' },
+        { title: 'Renta variable', subtitle: 'Participar en empresas - ¿Cómo capturo crecimiento?', definition: 'La renta variable representa la inversión en acciones o participaciones de empresas. Su valor depende de la evolución del negocio, los beneficios, las expectativas y las condiciones de mercado.', importance: 'Es una de las principales fuentes de crecimiento patrimonial a largo plazo, pero también puede sufrir caídas importantes. Requiere horizonte temporal, diversificación y tolerancia a la volatilidad.' },
+        { title: 'Perfil de riesgo', subtitle: 'La medida personal de tolerancia - ¿Qué nivel de oscilación puedo asumir?', definition: 'El perfil de riesgo refleja la capacidad y disposición de una persona para asumir fluctuaciones o pérdidas temporales en sus inversiones. Depende de factores financieros, emocionales y temporales.', importance: 'Es la base para construir una cartera adecuada. Una inversión puede ser buena en abstracto, pero inadecuada para una persona concreta si no encaja con su situación, objetivos o tolerancia a las caídas.' },
+      ],
+      indicadores: [
+        { title: 'Volatilidad', subtitle: 'El indicador de estabilidad - ¿Cuánto se mueve?', interpretation: 'A menudo se asocia erróneamente con “pérdida”, pero técnicamente mide la incertidumbre. Una volatilidad baja refleja un comportamiento estable y tranquilo; una volatilidad alta implica oscilaciones más fuertes en el corto plazo. El objetivo es mantenerla dentro del nivel de confort definido por el inversor.' },
+        { title: 'Ratio de Sharpe', subtitle: 'La calidad de la rentabilidad - ¿Vale la pena el riesgo?', interpretation: 'Indica cuánta rentabilidad extra se obtiene por cada unidad de riesgo asumida. Un ratio alto suele ser señal de una gestión eficiente: significa que los beneficios se logran mediante decisiones inteligentes y no simplemente exponiendo el capital a riesgos innecesarios.' },
+        { title: 'Max Drawdown / Caída máxima', subtitle: 'La prueba de resistencia - ¿Cuál es el peor escenario?', interpretation: 'Representa la máxima caída acumulada que ha registrado una cartera desde un máximo anterior hasta su recuperación. Un dato controlado indica que la cartera tiene buenos mecanismos de defensa y solidez para proteger el patrimonio en ciclos bajistas.' },
+        { title: 'Frontera eficiente', subtitle: 'El estándar de optimización - ¿Es eficiente mi cartera?', interpretation: 'Cualquier punto situado sobre esta línea indica que la cartera está obteniendo la máxima rentabilidad posible para ese nivel de riesgo. Estar en la frontera eficiente significa que el dinero está trabajando a su máximo potencial; estar muy por debajo puede indicar que sería posible obtener más retorno sin asumir más riesgo.' },
+        { title: 'Mapa de riesgo-retorno', subtitle: 'El contexto visual - ¿Dónde estoy situado?', interpretation: 'El eje horizontal representa el riesgo o volatilidad, y el eje vertical el retorno o rentabilidad. Hacia la derecha: mayor riesgo o movimiento. Hacia arriba: mayor ganancia esperada. La posición en este mapa permite ver de un vistazo cómo se comporta la cartera en comparación con el mercado o con otros perfiles.' },
+      ],
+    };
+    return this._g;
+  }
+  // Matemática portada de InvestmentCalculator.tsx
+  proyectar(p) {
+    let balance = Math.max(p.initialCapital, 0);
+    let aportado = Math.max(p.initialCapital, 0);
+    let cuota = Math.max(p.periodicContribution, 0);
+    const anual = p.expectedReturn / 100;
+    const filas = [];
+    const n = Math.max(Math.round(p.years), 0);
+    for (let year = 1; year <= n; year += 1) {
+      if (p.contributionFrequency === 'monthly') {
+        const rm = anual / 12;
+        for (let m = 1; m <= 12; m += 1) { balance += cuota; aportado += cuota; balance += balance * rm; }
+      } else { balance += cuota; aportado += cuota; balance += balance * anual; }
+      cuota *= 1 + p.annualIncrease / 100;
+      const beneficio = Math.max(0, balance - aportado);
+      const neto = balance - beneficio * (p.taxRate / 100);
+      const real = neto / Math.pow(1 + p.inflationRate / 100, year);
+      filas.push({ year, aportaciones: Math.round(aportado), bruto: Math.round(balance), neto: Math.round(neto), real: Math.round(real) });
+    }
+    const f = filas[filas.length - 1] || { aportaciones: Math.round(Math.max(p.initialCapital, 0)), bruto: Math.round(Math.max(p.initialCapital, 0)), neto: Math.round(Math.max(p.initialCapital, 0)), real: Math.round(Math.max(p.initialCapital, 0)) };
+    return { filas, aportado: f.aportaciones, bruto: f.bruto, intereses: f.bruto - f.aportaciones, neto: f.neto, real: f.real };
+  }
+  c() { return this.state.c || this.cDefaults(); }
+  renderVals() {
+    const fmt = (x) => new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(Math.round(x)) + ' €';
+    const tab = this.state.tab;
+    const base = 'display:inline-flex; align-items:center; gap:9px; border-radius:999px; cursor:pointer; white-space:nowrap; font-family:var(--font-body); font-size:13.5px; font-weight:500; padding:9px 18px; transition:background .25s ease, color .25s ease, border-color .25s ease; ';
+    const pill = (on) => 'viv-pill viv-pill--dark' + (on ? ' is-active' : '');
+    const defs = [['esenciales', 'Conocimientos esenciales', ''], ['cursos', 'Cursos', '']];
+    const c = this.c();
+    const pr = this.proyectar(c);
+    const maxY = Math.max(1, ...pr.filas.map(f => f.bruto));
+    const px = (i) => (52 + (pr.filas.length > 1 ? (i / (pr.filas.length - 1)) * 580 : 0)).toFixed(1);
+    const py = (v) => (204 - (v / maxY) * 194).toFixed(1);
+    const lineaDe = (campo) => pr.filas.map((f, i) => px(i) + ',' + py(f[campo])).join(' ');
+    const areaDe = (campo) => pr.filas.length ? '52,204 ' + lineaDe(campo) + ' ' + px(pr.filas.length - 1) + ',204' : '';
+    const g = this.glosario();
+    const lista = this.state.sub === 'conceptos' ? g.conceptos : g.indicadores;
+    const vals = {
+      pestanas: defs.map(([id, label, sufijo]) => ({
+        label, sufijo,
+        ariaCurrent: (id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario'].includes(tab))) ? 'page' : undefined,
+        abrir: () => this.abrirTab(id),
+        clase: pill(id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario'].includes(tab))),
+      })),
+      esInicio: tab === 'inicio', esCursos: tab === 'cursos', esEsenciales: tab === 'esenciales', mostrarRegreso: tab !== 'inicio',
+      esFundamentos: tab === 'fundamentos', esActivos: tab === 'activos', esCalculadora: tab === 'calculadora', esGlosario: tab === 'glosario',
+      irInicio: () => this.abrirTab('inicio'),
+      irCursos: () => this.abrirTab('cursos'),
+      irEsenciales: () => this.abrirTab('esenciales'),
+      irFundamentos: () => this.abrirTab('fundamentos'),
+      irActivos: () => this.abrirTab('activos'),
+      irCalculadora: () => this.abrirTab('calculadora'),
+      irGlosario: () => this.abrirTab('glosario'),
+      activosTabs: [
+        ['seguridad', '01', 'Seguridad y estabilidad', 'Efectivo, depósitos, letras y bonos'],
+        ['crecimiento', '02', 'Crecimiento y diversificación', 'Acciones, fondos de inversión y ETF'],
+        ['complementarios', '03', 'Activos complementarios', 'Inmobiliario, oro, pensiones y otros activos'],
+      ].map(([id, numero, label, resumen]) => ({
+        numero, label, resumen,
+        selected: this.state.activosSub === id,
+        abrir: () => this.setState({ activosSub: id }),
+        clase: 'ac-subtab' + (this.state.activosSub === id ? ' is-active' : ''),
+      })),
+      esActivoSeguridad: this.state.activosSub === 'seguridad',
+      esActivoCrecimiento: this.state.activosSub === 'crecimiento',
+      esActivoComplementarios: this.state.activosSub === 'complementarios',
+      reproducirVideo1: (e) => this.reproducirVideo(e, '_XTYZmvLedM', 'Activos financieros 1 · Seguridad y estabilidad'),
+      reproducirVideo2: (e) => this.reproducirVideo(e, 'RYUq1aVzESs', 'Activos financieros 2 · Crecimiento y diversificación'),
+      reproducirVideo3: (e) => this.reproducirVideo(e, 'o0uxi170qxE', 'Activos financieros 3 · Activos complementarios'),
+      v: c,
+      setNum: (e) => this.setState({ c: Object.assign({}, c, { [e.target.name]: Number(e.target.value) || 0 }) }),
+      setStr: (e) => this.setState({ c: Object.assign({}, c, { [e.target.name]: e.target.value }) }),
+      rBruto: fmt(pr.bruto), rAportado: fmt(pr.aportado), rIntereses: fmt(pr.intereses),
+      chartMax: fmt(maxY), chartMid: fmt(maxY / 2), chartFin: 'Año ' + c.years,
+      lineaBruto: lineaDe('bruto'), lineaAportado: lineaDe('aportaciones'),
+      areaBruto: areaDe('bruto'), areaAportado: areaDe('aportaciones'),
+      notaFiscal: 'Si decidieras rescatar el fondo el año ' + c.years + ', tras pagar un ' + c.taxRate + ' % de impuestos sobre las plusvalías, te quedarían ' + fmt(pr.neto) + ' netos.',
+      notaInflacion: c.inflationRate > 0 ? 'Ajustado a una inflación del ' + c.inflationRate + ' %, ese dinero tendría el poder adquisitivo equivalente a ' + fmt(pr.real) + ' de hoy.' : 'Sin inflación estimada, el valor neto coincide con el poder adquisitivo actual.',
+      subTabs: [['conceptos', 'Conceptos básicos'], ['indicadores', 'Indicadores de cartera']].map(([id, label]) => ({
+        label, selected: this.state.sub === id,
+        abrir: () => this.setState({ sub: id, abiertos: {} }),
+        clase: 'ac-tab' + (this.state.sub === id ? ' is-active' : ''),
+      })),
+      terminos: lista.map((item, i) => {
+        const abierto = !!this.state.abiertos[this.state.sub + i];
+        return {
+          titulo: item.title, subtitulo: item.subtitle, abierto,
+          alternar: () => { const a = Object.assign({}, this.state.abiertos); a[this.state.sub + i] = !abierto; this.setState({ abiertos: a }); },
+          flecha: 'ac-chevron' + (abierto ? ' is-open' : ''),
+          cuerpo: 'ac-accordion__body' + (abierto ? '' : ' is-closed'),
+          etiqueta1: item.definition ? 'Definición' : 'Interpretación',
+          texto1: item.definition || item.interpretation,
+          bloque2: 'ac-tint' + (item.importance ? '' : ' is-hidden'),
+          texto2: item.importance || '',
+        };
+      }),
+    };
+    Object.assign(vals, this.historia());
+    return vals;
+  }
+}
+</script>
+</body>
+</html>

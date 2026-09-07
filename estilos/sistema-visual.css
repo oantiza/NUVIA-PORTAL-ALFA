@@ -1,0 +1,301 @@
+/* ══ SISTEMA VISUAL · sólo escaparate ═══════════════════════════════════
+   Las clases que existen únicamente para MOSTRAR el sistema: muestras de
+   color, filas de tipografía, previsualizaciones de cabecera y pie.
+   Los componentes reales viven en nuvia-components.css; esta página los
+   consume, no los duplica.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.nv-system,
+.nv-system *,
+.nv-system *::before,
+.nv-system *::after {
+  box-sizing: border-box;
+}
+.nv-system {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--nv-surface-page);
+  color: var(--nv-ink);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-body);
+  line-height: 1.65;
+}
+.nv-system img {
+  display: block;
+  max-width: 100%;
+}
+/* Esta regla existe para que los enlaces de las muestras no salgan en verde
+   de enlace. Pero con (0,1,1) le gana a .nv-btn--primary (0,1,0), y los
+   botones primarios de esta página heredaban el color del contenedor: tinta
+   sobre tinta. El texto del botón no se veía. */
+.nv-system a:not([class*="nv-btn"]) {
+  color: inherit;
+}
+/* Controles y foco se heredan del sistema real, sin reiniciar su tipografía. */
+/* Contenedores, secciones y sus encabezados se consumen directamente de
+   nuvia-components.css, también en tableta: no se redefinen en la muestra. */
+/* El verde criterio es de fondo, filete e icono; nunca de texto: lo dice el
+   comentario del propio token. Aquí iba a 2,96:1 sobre crema, y precisamente
+   en la página que fija la regla. */
+.nv-eyebrow {
+  display: inline-flex;
+  gap: var(--nv-space-3);
+  align-items: center;
+  color: var(--nv-text-link);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.nv-eyebrow::before {
+  width: 38px;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+.nv-header-preview {
+  border-bottom: 1px solid var(--nv-line);
+  background: rgba(255, 255, 255, .94);
+}
+.nv-header-preview__inner {
+  display: flex;
+  min-height: 72px;
+  gap: var(--nv-space-10);
+  align-items: center;
+  justify-content: space-between;
+}
+.nv-header-preview__logo {
+  width: 158px;
+}
+.nv-header-preview__nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  color: var(--nv-copy);
+  font-size: var(--nv-body-sm);
+}
+.nv-header-preview__nav a {
+  text-decoration: none;
+}
+.nv-header-preview__nav a[aria-current="page"] {
+  color: var(--nv-green-600);
+}
+@media (max-width: 860px) {
+  .nv-header-preview__inner {
+    flex-wrap: wrap;
+    gap: var(--nv-space-3) var(--nv-space-6);
+    padding-block: var(--nv-space-3);
+  }
+  .nv-header-preview__nav {
+    order: 3;
+    width: 100%;
+    gap: var(--nv-space-6);
+    justify-content: space-between;
+  }
+}
+.nv-phase-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--nv-green-300);
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-green-100);
+  color: var(--nv-green-700);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .12em;
+  padding: 7px 12px;
+  text-transform: uppercase;
+}
+.nv-guide-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--nv-surface-institutional);
+  color: var(--nv-text-on-dark);
+}
+
+/* El antetítulo del héroe va sobre azul oscuro, así que necesita el verde
+   claro, no el de enlace: sobre este fondo daba 2,34:1. */
+.nv-guide-hero .nv-eyebrow { color: var(--nv-green-300); }
+.nv-guide-hero::after {
+  position: absolute;
+  right: -180px;
+  bottom: -310px;
+  width: 740px;
+  height: 520px;
+  border: 1px solid var(--nv-line-institutional);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(-12deg);
+}
+.nv-guide-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, .55fr);
+  gap: var(--nv-space-16);
+  align-items: end;
+  min-height: 520px;
+  padding-block: var(--nv-space-20);
+}
+.nv-guide-hero h1 {
+  max-width: 880px;
+  margin: var(--nv-space-6) 0;
+  font-size: var(--nv-display-lg);
+  font-weight: var(--nv-weight-title);
+  letter-spacing: -.045em;
+  line-height: 1.02;
+}
+.nv-guide-hero__lead {
+  max-width: 680px;
+  margin: 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: var(--nv-body-lg);
+}
+.nv-guide-hero__aside {
+  border-top: 2px solid var(--nv-bronze-500);
+  background: rgba(6, 23, 47, .38);
+  padding: var(--nv-space-8);
+}
+.nv-guide-hero__aside strong {
+  display: block;
+  margin-top: var(--nv-space-4);
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: var(--nv-weight-title);
+}
+.nv-guide-hero__aside p {
+  margin: var(--nv-space-3) 0 0;
+  color: rgba(255, 255, 255, .64);
+  font-size: var(--nv-body-sm);
+}
+.nv-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--nv-space-4);
+}
+.nv-swatch {
+  overflow: hidden;
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-white);
+  box-shadow: var(--nv-shadow-sm);
+}
+.nv-swatch__color {
+  min-height: 120px;
+}
+.nv-swatch--navy .nv-swatch__color { background: var(--nv-navy-900); }
+.nv-swatch--green .nv-swatch__color { background: var(--nv-green-500); }
+.nv-swatch--paper .nv-swatch__color { background: var(--nv-paper); }
+.nv-swatch--bronze .nv-swatch__color { background: var(--nv-bronze-500); }
+.nv-swatch--cloud .nv-swatch__color { background: var(--nv-cloud); }
+.nv-swatch--white .nv-swatch__color { background: var(--nv-white); }
+.nv-swatch--copy .nv-swatch__color { background: var(--nv-copy); }
+.nv-swatch--deep .nv-swatch__color { background: var(--nv-navy-950); }
+.nv-swatch__caption {
+  padding: 18px 20px;
+}
+.nv-swatch__caption strong,
+.nv-swatch__caption span {
+  display: block;
+}
+.nv-swatch__caption strong {
+  font-size: var(--nv-body-sm);
+}
+.nv-swatch__caption span {
+  margin-top: 3px;
+  color: var(--nv-muted);
+  font-size: var(--nv-label);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+/* Los <h3> de las muestras de tipografía y de héroe no tenían regla propia y
+   salían a los 18,72 px por defecto del navegador, en la página que enseña
+   la escala. */
+.nv-type-panel h3,
+.nv-hero-sample h3 { margin: 0; font-size: var(--nv-title-sm); line-height: 1.2; }
+
+.nv-type-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: var(--nv-space-5);
+  align-items: baseline;
+}
+.nv-type-row > span {
+  color: var(--nv-text-muted);
+  font-size: var(--nv-label);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.nv-type-row strong {
+  font-weight: var(--nv-weight-title);
+  line-height: 1.15;
+}
+/* Las muestras enseñaban 44, 32, 22 y 16 px con los rótulos «Display 44-72»
+   y «Título 32-36». Ni el 44 ni el 32 existen en la escala. Ahora cada
+   muestra usa el token que dice su rótulo. */
+.nv-type-row:nth-child(1) strong { font-size: var(--nv-display-lg); }
+.nv-type-row:nth-child(2) strong { font-size: var(--nv-title-lg); }
+.nv-type-row:nth-child(3) strong { font-size: var(--nv-title-sm); }
+.nv-type-row:nth-child(4) strong { font-size: var(--nv-body); }
+.nv-rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--nv-space-5);
+}
+.nv-rule {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: var(--nv-space-4);
+  border-top: 1px solid var(--nv-line);
+  padding-top: var(--nv-space-5);
+}
+.nv-rule__icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--nv-green-100);
+  color: var(--nv-green-700);
+  font-weight: var(--nv-weight-label);
+}
+.nv-rule strong {
+  display: block;
+  font-size: var(--nv-body);
+}
+.nv-rule p {
+  margin: 5px 0 0;
+  color: var(--nv-muted);
+  font-size: var(--nv-body-sm);
+}
+.nv-footer-preview {
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  background: var(--nv-navy-950);
+  color: rgba(255, 255, 255, .68);
+  padding-block: var(--nv-space-10);
+}
+.nv-footer-preview__inner {
+  display: flex;
+  gap: var(--nv-space-8);
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--nv-label);
+}
+.nv-footer-preview img {
+  width: 124px;
+  filter: brightness(0) invert(1);
+  opacity: .84;
+}
+
+.nv-control-samples {
+  margin-block: var(--nv-space-8);
+  padding: var(--nv-space-6);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-lg);
+  background: var(--nv-surface);
+}
+.nv-control-samples h3 { margin-top: 0; font-size: var(--nv-title-sm); }
+.nv-control-samples > p { font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
+.nv-control-samples .nv-btn-row { margin-top: var(--nv-space-6); }
+.nv-table-reference { min-width: var(--nv-table-reading-width); }
+.nv-notice-samples { display: grid; gap: var(--nv-space-4); grid-template-columns: repeat(2, minmax(0, 1fr)); }

@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Recursos y guías de NUVIA para comprender la fiscalidad personal y tomar decisiones informadas según tu territorio fiscal.">
+
+<!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/fiscalidad.html -->
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/fiscalidad.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Mis impuestos">
+<meta property="og:description" content="Recursos y guías de NUVIA para comprender la fiscalidad personal y tomar decisiones informadas según tu territorio fiscal.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/fiscalidad.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Mis impuestos">
+<meta name="twitter:description" content="Recursos y guías de NUVIA para comprender la fiscalidad personal y tomar decisiones informadas según tu territorio fiscal.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Mis impuestos</title>
+
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+
+<!-- Hojas en el <head>, no dentro de <helmet>: elimina el parpadeo. -->
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+
+<body class="nuvia-design-lab">
+<x-dc>
+
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+<div class="nuvia-page">
+
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ══ HÉROE INSTITUCIONAL ═══════════════════════════════════════════════
+         El selector de territorio ocupa el panel lateral: es la decisión que
+         condiciona todo lo demás, así que va antes que cualquier contenido.
+         ═══════════════════════════════════════════════════════════════════ -->
+    <section id="tema" data-screen-label="Cabecera Mis impuestos" class="nv-hero nv-hero--institutional">
+      <div class="nv-container">
+        <div class="nv-hero__inner">
+
+          <div>
+<nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+              <ol>
+                <li><a href="index.html" data-main-menu-return>Inicio</a></li>
+                <li><a href="temas.html">Patrimonio</a></li>
+                <li><span aria-current="page">Mis impuestos</span></li>
+              </ol>
+            </nav>
+
+            <p class="nv-eyebrow nv-eyebrow--on-dark">Tema clave · Fiscalidad</p>
+
+            <h1>Mis impuestos</h1>
+
+            <p class="nv-hero__lead">
+              Fiscalidad personal y familiar aplicada al ahorro, la inversión,
+              el patrimonio y las decisiones sucesorias.
+            </p>
+          </div>
+
+          <aside class="fiscal-selector">
+            <label class="fiscal-selector__label" for="residencia-fiscal">
+              ¿Dónde tienes tu residencia fiscal?
+            </label>
+
+            <div class="fiscal-selector__field">
+              <!-- data-dc-value no enlaza nada: el runtime lo pasa tal cual como
+                   atributo data-. El selector se quedaba en la primera opción no
+                   deshabilitada —Bizkaia— aunque hubiera otro territorio guardado,
+                   así que la página decía «Gipuzkoa» y el desplegable «Bizkaia». -->
+              <select id="residencia-fiscal"
+                      value="{{ seleccion }}"
+                      onChange="{{ cambiarTerritorio }}"
+                      aria-describedby="ayuda-residencia">
+                <option value="sin-seleccion" disabled="{{ true }}">Selecciona tu territorio</option>
+                <option value="bizkaia">Bizkaia</option>
+                <option value="araba">Araba / Álava</option>
+                <option value="gipuzkoa">Gipuzkoa</option>
+                <option value="navarra">Navarra</option>
+                <option value="common-territory">Territorio común</option>
+                <option value="unsure">No estoy seguro</option>
+              </select>
+            </div>
+
+            <div class="fiscal-selector__status" id="ayuda-residencia" aria-live="polite">
+              <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}">
+                <span class="fiscal-selector__mark" aria-hidden="true">◆</span>
+                <div>
+                  <span class="fiscal-selector__regime">{{ regimen }}</span>
+                  <span class="fiscal-selector__authority">{{ autoridad }}</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sinTerritorio }}" hint-placeholder-val="{{ false }}">
+                <span class="fiscal-selector__mark" aria-hidden="true">?</span>
+                <p class="fiscal-selector__help">{{ ayudaSinTerritorio }}</p>
+              </sc-if>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ ESTADO 1 · SIN TERRITORIO ═════════════════════════════════════════ -->
+    <sc-if value="{{ estadoVacio }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Primer paso" class="nv-section" aria-labelledby="primer-paso">
+        <div class="nv-container">
+          <div class="fiscal-paso">
+            <span class="fiscal-paso__icon" aria-hidden="true">§</span>
+            <p class="nv-eyebrow">Primer paso</p>
+            <h2 id="primer-paso">Sitúa tu territorio fiscal</h2>
+            <p>
+              Las fechas, modelos y reglas cambian según la administración
+              competente. Selecciona una opción para evitar que se muestre
+              normativa de otro territorio.
+            </p>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+
+    <!-- ══ ESTADO 2 · NO ESTOY SEGURO ════════════════════════════════════════ -->
+    <sc-if value="{{ estadoInseguro }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Antes de continuar" class="nv-section" aria-labelledby="antes-de-continuar">
+        <div class="nv-container">
+          <div class="fiscal-paso fiscal-paso--ancho">
+            <span class="fiscal-paso__icon" aria-hidden="true">?</span>
+            <div>
+              <p class="nv-eyebrow">Antes de continuar</p>
+              <h2 id="antes-de-continuar">Confirma qué Hacienda es competente</h2>
+              <p>
+                La residencia fiscal no depende únicamente del domicilio.
+                También pueden influir la permanencia, el centro de intereses
+                económicos y la situación familiar.
+              </p>
+              <p>
+                No mostraremos contenido territorial hasta que puedas
+                identificarlo. Si existen dudas, confirma tu situación con la
+                Hacienda correspondiente o con un profesional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+
+    <!-- ══ ESTADO 3 · CON TERRITORIO ═════════════════════════════════════════ -->
+    <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}">
+
+      <section data-screen-label="Marco de referencia" class="fiscal-marco" aria-labelledby="marco-referencia">
+        <div class="nv-container">
+          <div class="fiscal-marco__inner">
+            <div>
+              <p class="nv-eyebrow">Tu marco de referencia</p>
+              <h2 id="marco-referencia">{{ nombre }}</h2>
+            </div>
+            <p class="fiscal-marco__intro" aria-live="polite">{{ intro }}</p>
+            <a class="fiscal-marco__source"
+               href="{{ fuenteHref }}" target="_blank" rel="noopener noreferrer">{{ fuenteLabel }} ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="guias" data-screen-label="Guías del territorio" class="nv-section" aria-labelledby="guias-territorio">
+        <div class="nv-container">
+          <h2 id="guias-territorio" class="nv-visually-hidden">Guías de tu territorio fiscal</h2>
+
+          <div class="nv-card-grid">
+            <sc-for list="{{ tarjetas }}" as="tarjeta" hint-placeholder-count="3">
+              <article class="nv-card fiscal-guia">
+
+                <div class="fiscal-guia__head">
+                  <span class="nv-card__icon" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24">
+                      <path sc-camel-d="{{ tarjeta.icono }}" fill="none" stroke="currentColor"
+                            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </span>
+                  <span class="fiscal-guia__ref">{{ tarjeta.eyebrow }}</span>
+                </div>
+
+                <h3>{{ tarjeta.titulo }}</h3>
+                <p>{{ tarjeta.descripcion }}</p>
+
+                <dl class="fiscal-guia__datos">
+                  <sc-for list="{{ tarjeta.datos }}" as="dato" hint-placeholder-count="3">
+                    <div class="fiscal-dato">
+                      <dt>{{ dato.etiqueta }}</dt>
+                      <dd>{{ dato.valor }}</dd>
+                    </div>
+                  </sc-for>
+                </dl>
+
+                <p class="fiscal-guia__nota">{{ tarjeta.nota }}</p>
+
+                <div class="fiscal-guia__acciones">
+                  <a class="nv-btn nv-btn--primary" href="{{ tarjeta.guia }}">Abrir guía →</a>
+                  <a class="fiscal-guia__fuente"
+                     href="{{ tarjeta.fuenteHref }}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a>
+                </div>
+
+              </article>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section data-screen-label="Nota editorial" class="nv-section nv-section--tight">
+        <div class="nv-container">
+          <div class="fiscal-nota-editorial">
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3 L20 6 V11 C20 16 16.5 19.5 12 21 C7.5 19.5 4 16 4 11 V6 Z M8.5 11.5 L11 14 L15.5 9.5"
+                    fill="none" stroke="currentColor" stroke-width="1.7"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <div>
+              <p>{{ notaOrientativa }}</p>
+              <p><strong>Estado editorial: pendiente de revisión fiscal independiente.</strong></p>
+              <p>
+                La selección personaliza el contenido, pero no determina
+                jurídicamente tu residencia fiscal ni sustituye asesoramiento
+                individual.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </sc-if>
+
+  </main>
+
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;territorioInicial&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;bizkaia&quot;, &quot;options&quot;: [&quot;bizkaia&quot;, &quot;araba&quot;, &quot;gipuzkoa&quot;, &quot;navarra&quot;, &quot;common-territory&quot;, &quot;sin-seleccion&quot;, &quot;unsure&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Territorio&quot;}}">
+class Component extends DCLogic {
+  state = { seleccion: null };
+  datos() {
+    const IC = {
+      calendar: 'M7 3 V6 M17 3 V6 M4 5 H20 V21 H4 Z M4 9 H20 M8 13 H10 M14 13 H16 M8 17 H10',
+      savings: 'M4 18 L9.5 12.5 L13.5 15.5 L20 7.5 M15 7.5 H20 V12.5',
+      inheritance: 'M4 21 H20 M5 9.5 H19 M6.5 9.5 V17.5 M10.2 9.5 V17.5 M13.8 9.5 V17.5 M17.5 9.5 V17.5 M12 3 L19.5 8 H4.5 Z M5 19 H19',
+    };
+    const t = (id, et, v) => ({ etiqueta: et, valor: v, _k: id });
+    return {
+      'bizkaia': {
+        nombre: 'Bizkaia', regimen: 'Normativa foral', autoridad: 'Hacienda Foral de Bizkaia',
+        intro: 'Tu punto de partida es la normativa foral vizcaína. Los modelos, los plazos y la tributación del ahorro no deben tomarse del calendario estatal sin comprobar antes la competencia foral.',
+        fuenteLabel: 'Portal tributario de Bizkaia', fuenteHref: 'https://www.bizkaia.eus/es/hacienda-y-finanzas',
+        tarjetas: [
+          { icono: IC.calendar, eyebrow: '01 · Agenda 2026', titulo: 'Calendario fiscal', descripcion: 'Ordena tus obligaciones ante la Hacienda Foral y separa los vencimientos de las decisiones que conviene anticipar.', datos: [t(1,'Renta 2025','15 abril — 30 junio 2026'), t(2,'Autónomos · modelo 130','Enero, abril, julio y octubre'), t(3,'Punto de control','La domiciliación puede cerrar antes')], nota: 'El calendario foral permite consultar los modelos y descargar fechas para la agenda.', fuenteHref: 'https://www.bizkaia.eus/es/renta-bizkaia' },
+          { icono: IC.savings, eyebrow: '02 · Inversión', titulo: 'Fiscalidad del ahorro', descripcion: 'Intereses, dividendos y ganancias por transmisiones se integran en la base del ahorro conforme al IRPF foral.', datos: [t(1,'Renta 2025 · campaña 2026','Cinco tramos: del 20 % al 25 %'), t(2,'Operaciones de 2026','Nueve tramos: del 19 % al 28 %'), t(3,'Antes de vender','Revisar pérdidas y fechas de adquisición')], nota: 'La nueva tarifa rige desde el 1 de enero de 2026 y se declarará por primera vez en la campaña de 2027.', fuenteHref: 'https://www.bizkaia.eus/es/normativa-tributaria/normativa-vigente/irpf' },
+          { icono: IC.inheritance, eyebrow: '03 · Patrimonio familiar', titulo: 'Sucesiones y donaciones', descripcion: 'Antes de transmitir, confirma parentesco, residencia, valor de los bienes y si la operación queda bajo competencia de Bizkaia.', datos: [t(1,'Herencia · modelo 650','Plazo general en Bizkaia: un año'), t(2,'Donación · modelo 651','30 días hábiles'), t(3,'Familia directa','Revisar reducción y tipo foral aplicables')], nota: 'Donar inmuebles o valores también puede generar una ganancia en el IRPF de quien dona.', fuenteHref: 'https://www.bizkaia.eus/es/normativa-tributaria/normativa-vigente/sucesiones-y-donaciones' },
+        ],
+      },
+      'araba': {
+        nombre: 'Araba / Álava', regimen: 'Normativa foral', autoridad: 'Hacienda Foral de Álava',
+        intro: 'La normativa y el calendario de la Hacienda Foral de Álava tienen fechas y procedimientos propios. Confirma la competencia territorial y no reutilices automáticamente los plazos de otro territorio foral.',
+        fuenteLabel: 'Portal tributario de Álava', fuenteHref: 'https://web.araba.eus/es/hacienda',
+        tarjetas: [
+          { icono: IC.calendar, eyebrow: '01 · Agenda 2026', titulo: 'Calendario fiscal', descripcion: 'Distingue los plazos generales de Renta de las fechas específicas de cada modalidad y de los pagos fraccionados alaveses.', datos: [t(1,'Renta 2025','7 abril — 25 junio 2026'), t(2,'Autónomos · modelo 130','Febrero, mayo, agosto y noviembre'), t(3,'Domiciliación de Renta','Puede finalizar el 17 de junio')], nota: 'El plazo concreto de Renta depende de la modalidad, del resultado y de la forma de pago elegida.', fuenteHref: 'https://web.araba.eus/es/hacienda/calendario-fiscal' },
+          { icono: IC.savings, eyebrow: '02 · Inversión', titulo: 'Fiscalidad del ahorro', descripcion: 'Intereses, dividendos y ganancias por transmisiones se integran conforme al IRPF foral alavés y a sus reglas de compensación.', datos: [t(1,'Renta 2025 · campaña 2026','Cinco tramos: del 20 % al 25 %'), t(2,'Operaciones de 2026','Nueve tramos: del 19 % al 28 %'), t(3,'Antes de vender','Revisar pérdidas y fechas de adquisición')], nota: 'La escala de nueve tramos rige desde el 1 de enero de 2026 y se declarará por primera vez en la campaña de 2027.', fuenteHref: 'https://web.araba.eus/documents/d/araba/indice_norma-foral_irpf_cas-4-pdf' },
+          { icono: IC.inheritance, eyebrow: '03 · Patrimonio familiar', titulo: 'Sucesiones y donaciones', descripcion: 'Antes de transmitir, confirma parentesco, residencia, localización de los bienes, valoración y competencia de la Hacienda alavesa.', datos: [t(1,'Herencia · modelo 650','Plazo ordinario: seis meses'), t(2,'Prórroga ordinaria','Otros seis meses, con intereses'), t(3,'Donación · modelo 651','30 días hábiles')], nota: 'La prórroga ordinaria de sucesiones es automática, pero genera intereses desde el fin del plazo ordinario.', fuenteHref: 'https://web.araba.eus/es/hacienda/sucesiones-y-donaciones' },
+        ],
+      },
+      'gipuzkoa': {
+        nombre: 'Gipuzkoa', regimen: 'Normativa foral', autoridad: 'Hacienda Foral de Gipuzkoa',
+        intro: 'Gipuzkoa aplica normativa, campaña de Renta y procedimientos propios. Comprueba la competencia de la Hacienda Foral y utiliza sus fechas, modelos y canales antes de actuar.',
+        fuenteLabel: 'Sede electrónica de Gipuzkoa', fuenteHref: 'https://egoitza.gipuzkoa.eus/es/',
+        tarjetas: [
+          { icono: IC.calendar, eyebrow: '01 · Agenda 2026', titulo: 'Calendario fiscal', descripcion: 'Combina la campaña guipuzcoana de Renta con los pagos fraccionados y las decisiones patrimoniales que conviene preparar.', datos: [t(1,'Renta 2025','7 abril — 2 julio 2026'), t(2,'Autónomos · modelo 130','Febrero, mayo, agosto y noviembre'), t(3,'Pago de Renta','3 julio; segundo plazo 10 noviembre')], nota: 'Las propuestas, la presentación telemática y las modalidades asistidas tienen hitos propios dentro de la campaña.', fuenteHref: 'https://egoitza.gipuzkoa.eus/documents/39465/862574/Errenta_zk2025-es.pdf' },
+          { icono: IC.savings, eyebrow: '02 · Inversión', titulo: 'Fiscalidad del ahorro', descripcion: 'Intereses, dividendos y ganancias por transmisiones se integran conforme al IRPF foral guipuzcoano y sus reglas de compensación.', datos: [t(1,'Renta 2025 · campaña 2026','Cinco tramos: del 20 % al 25 %'), t(2,'Operaciones de 2026','Nueve tramos: del 19 % al 28 %'), t(3,'Antes de vender','Revisar pérdidas y fechas de adquisición')], nota: 'La nueva escala rige desde el 1 de enero de 2026 y se declarará por primera vez en la campaña de 2027.', fuenteHref: 'https://egoitza.gipuzkoa.eus/es/bog' },
+          { icono: IC.inheritance, eyebrow: '03 · Patrimonio familiar', titulo: 'Sucesiones y donaciones', descripcion: 'Antes de transmitir, confirma parentesco, residencia, localización y valoración de los bienes, además de la competencia territorial.', datos: [t(1,'Herencia · modelo 670','Un año desde el fallecimiento'), t(2,'Prórroga','No existe'), t(3,'Donación · modelo 671','30 días hábiles')], nota: 'El plazo de un año se aplica a devengos desde el 21 de febrero de 2019. Gipuzkoa utiliza los modelos 670, 671 y 672.', fuenteHref: 'https://egoitza.gipuzkoa.eus/es/listado-tramites/-/tramiteak/xehetasuna/3006' },
+        ],
+      },
+      'navarra': {
+        nombre: 'Navarra', regimen: 'Normativa foral navarra', autoridad: 'Hacienda Foral de Navarra',
+        intro: 'Navarra cuenta con normativa, modelos y calendario propios. Utiliza la información de la Hacienda Foral de Navarra y confirma su competencia antes de aplicar fechas o reglas de otros territorios.',
+        fuenteLabel: 'Portal de la Hacienda de Navarra', fuenteHref: 'https://www.navarra.es/es/hacienda',
+        tarjetas: [
+          { icono: IC.calendar, eyebrow: '01 · Agenda 2026', titulo: 'Calendario fiscal', descripcion: 'Reúne la campaña navarra de Renta y Patrimonio, los pagos fraccionados y las revisiones que conviene anticipar.', datos: [t(1,'Renta 2025','9 abril — 25 junio 2026'), t(2,'Autónomos · modelo 130','Febrero, abril, agosto y octubre'), t(3,'Pago de Renta','3 julio; segundo plazo 20 noviembre')], nota: 'La presentación termina el 25 de junio, mientras que el ingreso general puede vencer posteriormente.', fuenteHref: 'https://www.navarra.es/es/hacienda/renta-y-patrimonio' },
+          { icono: IC.savings, eyebrow: '02 · Inversión', titulo: 'Fiscalidad del ahorro', descripcion: 'Intereses, dividendos e incrementos patrimoniales se integran conforme al IRPF navarro y a sus reglas de compensación.', datos: [t(1,'Escala del ahorro','Seis tramos progresivos'), t(2,'Tipos marginales','Del 20 % al 28 %'), t(3,'Antes de vender','Revisar pérdidas y fechas de adquisición')], nota: 'El artículo 60 del texto refundido establece una escala propia distinta de la foral vasca y de la estatal.', fuenteHref: 'https://www.navarra.es/es/web/normativa-hacienda/-/texto-refundido-de-la-ley-foral-del-impuesto-sobre-la-renta-de-las-personas-f%C3%ADsicas-dfl-4/2008-de-2-de-junio-' },
+          { icono: IC.inheritance, eyebrow: '03 · Patrimonio familiar', titulo: 'Sucesiones y donaciones', descripcion: 'Antes de transmitir, confirma competencia, parentesco, residencia, localización y valoración de los bienes.', datos: [t(1,'Herencia · modelo 660','Plazo general: seis meses'), t(2,'Fallecimiento fuera de España','Plazo general: diez meses'), t(3,'Donación','Plazo general: dos meses')], nota: 'La solicitud de prórroga sucesoria debe presentarse dentro de los cinco primeros meses del plazo ordinario.', fuenteHref: 'https://www.navarra.es/es/hacienda/sucesiones-y-donaciones' },
+        ],
+      },
+      'common-territory': {
+        nombre: 'Territorio común', regimen: 'Normativa estatal y autonómica', autoridad: 'Agencia Estatal de Administración Tributaria (AEAT)',
+        intro: 'La AEAT gestiona el IRPF estatal y su calendario general. En Sucesiones y Donaciones, la normativa, los beneficios y la administración competente dependen de la comunidad autónoma y de los puntos de conexión de cada operación.',
+        fuenteLabel: 'Sede electrónica de la AEAT', fuenteHref: 'https://sede.agenciatributaria.gob.es/',
+        tarjetas: [
+          { icono: IC.calendar, eyebrow: '01 · Agenda 2026', titulo: 'Calendario fiscal', descripcion: 'Reúne la campaña estatal de Renta y Patrimonio, los pagos fraccionados y las revisiones patrimoniales que conviene anticipar.', datos: [t(1,'Renta 2025','8 abril — 30 junio 2026'), t(2,'Autónomos · modelo 130','Enero, abril, julio y octubre'), t(3,'Domiciliación de Renta','Hasta el 25 de junio')], nota: 'El plazo de domiciliación termina antes que la campaña general; el segundo plazo del fraccionamiento vence el 5 de noviembre.', fuenteHref: 'https://sede.agenciatributaria.gob.es/Sede/ayuda/calendario-contribuyente/calendario-contribuyente-2026/recuerde/fechas-campana-renta-patrimonio.html' },
+          { icono: IC.savings, eyebrow: '02 · Inversión', titulo: 'Fiscalidad del ahorro', descripcion: 'Intereses, dividendos y ganancias por transmisiones se integran en la base del ahorro estatal conforme a sus reglas de compensación.', datos: [t(1,'Escala del ahorro','Cinco tramos progresivos'), t(2,'Tipos estatal + autonómico','Del 19 % al 30 %'), t(3,'Antes de vender','Revisar pérdidas y fechas de adquisición')], nota: 'La escala conjunta estatal y autonómica alcanza el 30 % a partir de 300.000 euros de base liquidable del ahorro.', fuenteHref: 'https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-ayuda-presentacion/irpf-2025/8-cumplimentacion-irpf/8_4-cuota-integra/8_4_4-gravamen-base-liquidable-ahorro.html' },
+          { icono: IC.inheritance, eyebrow: '03 · Patrimonio familiar', titulo: 'Sucesiones y donaciones', descripcion: 'Primero identifica la comunidad autónoma competente: de ella dependen la gestión, los modelos, las reducciones, las bonificaciones y la cuota final.', datos: [t(1,'Herencia · marco general','Seis meses'), t(2,'Donación · marco general','30 días hábiles'), t(3,'Competencia','Confirmar comunidad autónoma')], nota: 'No existe un régimen único de Sucesiones y Donaciones para todo el territorio común. Los plazos indicados son referencias estatales.', fuenteHref: 'https://sede.agenciatributaria.gob.es/Sede/no-residentes/impuesto-sobre-sucesiones-donaciones/delimitacion-competencias-estado-comunidades-autonomas.html' },
+        ],
+      },
+    };
+  }
+  territorioGuardado() {
+    try {
+      const preference = JSON.parse(window.localStorage.getItem('nuvia-tax-preference') || 'null');
+      const allowed = ['bizkaia', 'araba', 'gipuzkoa', 'navarra', 'common-territory', 'unsure'];
+      return preference && preference.version === '1' && preference.taxYear === 2026 && allowed.includes(preference.jurisdiction)
+        ? preference.jurisdiction
+        : null;
+    } catch (error) {
+      return null;
+    }
+  }
+  guardarTerritorio(jurisdiction) {
+    const allowed = ['bizkaia', 'araba', 'gipuzkoa', 'navarra', 'common-territory', 'unsure'];
+    if (!allowed.includes(jurisdiction)) return;
+    try {
+      window.localStorage.setItem('nuvia-tax-preference', JSON.stringify({
+        jurisdiction,
+        taxYear: 2026,
+        selectedAt: new Date().toISOString(),
+        version: '1',
+      }));
+    } catch (error) { /* La guía seguirá disponible para volver a seleccionar el territorio. */ }
+  }
+  componentDidMount() {
+    document.title = 'Mis impuestos | NUVIA';
+    const current = this.state.seleccion ?? this.props.territorioInicial ?? 'bizkaia';
+    const stored = this.territorioGuardado();
+    if (stored && stored !== current) this.setState({ seleccion: stored });
+    else this.guardarTerritorio(current);
+  }
+  renderVals() {
+    const jur = this.datos();
+    /* Cada guía es ya una página del sitio, con su propio <h1> en el HTML
+       publicado. Antes las tres compartían guia-impuestos.html y se distinguían
+       por un parámetro. */
+    const guideByTitle = {
+      'Calendario fiscal': 'guia-calendario.html',
+      'Fiscalidad del ahorro': 'guia-ahorro.html',
+      'Sucesiones y donaciones': 'guia-sucesiones.html',
+    };
+    const seleccion = this.state.seleccion ?? this.props.territorioInicial ?? 'bizkaia';
+    const t = jur[seleccion] || null;
+    const estadoVacio = seleccion === 'sin-seleccion';
+    const estadoInseguro = seleccion === 'unsure';
+    return {
+      seleccion,
+      cambiarTerritorio: (e) => {
+        const jurisdiction = e.target.value;
+        this.guardarTerritorio(jurisdiction);
+        this.setState({ seleccion: jurisdiction });
+      },
+      hayTerritorio: !!t,
+      sinTerritorio: !t,
+      estadoVacio,
+      estadoInseguro,
+      ayudaSinTerritorio: estadoInseguro
+        ? 'Te ayudamos a identificar el territorio antes de mostrar contenido fiscal.'
+        : 'La selección adapta el contenido, las fechas y las fuentes oficiales.',
+      nombre: t ? t.nombre : '',
+      regimen: t ? t.regimen : '',
+      autoridad: t ? t.autoridad : '',
+      intro: t ? t.intro : '',
+      fuenteLabel: t ? t.fuenteLabel : '',
+      fuenteHref: t ? t.fuenteHref : '#',
+      tarjetas: t ? t.tarjetas.map((tarjeta) => ({ ...tarjeta, guia: guideByTitle[tarjeta.titulo] })) : [],
+      notaOrientativa: t ? 'Contenido orientativo para ' + t.nombre + ' · Ejercicio 2026 · Actualizado el 3 de agosto de 2026.' : '',
+    };
+  }
+}
+</script>
+</body>
+</html>

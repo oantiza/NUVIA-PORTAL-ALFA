@@ -1,0 +1,639 @@
+/* ============================================================================
+   NUVIA · TOKENS
+   ----------------------------------------------------------------------------
+   FUENTE ÚNICA DE VERDAD. Este es el único fichero del repositorio donde puede
+   aparecer un color hexadecimal. Todo lo demás usa var(--nv-*).
+
+   Sustituye a:  tema-claro.css  +  la mitad de tokens de nuvia-design-system.css
+   Orden de carga:  nuvia-tokens.css → nuvia-components.css → nuvia-pages.css
+
+   Es un reemplazo directo: conserva todos los nombres de variable que ya usan
+   las 13 páginas, así que nada se rompe al cambiarlo. Lo que cambia son cuatro
+   valores de color que no llegaban a WCAG AA (ver §3).
+   ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   FUENTES AUTOALOJADAS (22-08-2026)
+   Antes venían por @import de fonts.googleapis.com. Eso metía tres viajes en
+   serie —HTML → este fichero → CSS de Google → woff2— y mandaba la IP de cada
+   visitante a un tercero. Ahora los woff2 viven en estilos/fuentes/ y se piden
+   en cuanto se analiza esta hoja.
+
+   Son los MISMOS ficheros que servía Google (woff2, subsets latin y latin-ext,
+   uno variable por familia y subset), y las declaraciones están calcadas de su
+   CSS: mismos pesos, mismo font-display, mismos unicode-range. Por eso el
+   render no cambia ni un píxel.
+
+   El unicode-range hace que un lector en castellano descargue solo los dos
+   ficheros «latin» (112,8 KB); los «latin-ext» solo bajan si aparece un
+   carácter que los necesite.
+
+   Para actualizar: pedir a Google el CSS con un User-Agent de Chrome moderno,
+   quedarse con los bloques latin y latin-ext, bajar los woff2 y reescribir las
+   url() a fuentes/. Comprobar después con la red de Google bloqueada.
+   -------------------------------------------------------------------------- */
+/* Fraunces · 400 · latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fraunces · 400 · latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Fraunces · 500 · latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fraunces · 500 · latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Fraunces · 600 · latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Fraunces · 600 · latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fuentes/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter · 400 · latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fuentes/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter · 400 · latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fuentes/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter · 500 · latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fuentes/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter · 500 · latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fuentes/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter · 600 · latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fuentes/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter · 600 · latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fuentes/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Inter · 700 · latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fuentes/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Inter · 700 · latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fuentes/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+/* ============================================================================
+   1 · PALETA DE MARCA
+   Estos son los colores de NUVIA. No se tocan: son identidad.
+   Uso restringido a superficies, fondos, filetes e iconos decorativos.
+   Para TEXTO, usar siempre los roles de la sección 3.
+   ========================================================================== */
+
+:root {
+  /* Azules — identidad y presencia */
+  --nv-navy-950: #06172f;
+  --nv-navy-900: #0b2347;   /* Azul NUVIA */
+  --nv-navy-800: #15365f;
+  --nv-navy-700: #284c75;
+
+  /* Verdes — acción, estado y progreso */
+  --nv-green-900: #2c3817;
+  --nv-green-800: #3f501e;
+  --nv-green-700: #4a5d23;
+  --nv-green-600: #5f7a2c;
+  --nv-green-500: #7c9a44;   /* Verde criterio · SOLO fondo/filete/icono */
+  --nv-green-300: #b9cc8b;
+  --nv-green-100: #eef3df;
+
+  /* Bronce — detalle editorial */
+  --nv-bronze-800: #6e5322;
+  --nv-bronze-700: #7a5c27;
+  --nv-bronze-600: #9f7940;
+  --nv-bronze-500: #b69152;   /* SOLO filete/icono, nunca texto */
+  --nv-bronze-200: #dcc59c;
+
+  /* Superficies */
+  --nv-cloud: #f4f6f9;        /* superficie clara secundaria */
+  --nv-white: #ffffff;        /* tarjetas y superficies */
+  --nv-paper: #f3eedf;        /* papel cálido editorial */
+  --nv-paper-light: #faf7ee;
+  --nv-mist: #e8edf3;         /* fondo general azul frío */
+
+  /* Tinta y filetes */
+  --nv-ink: #0b2347;
+  --nv-copy: #40506a;
+  --nv-muted: #5b6472;        /* ← era #697587 (3,9:1). Ahora 5,8:1 */
+  --nv-line: rgba(11, 35, 71, .14);
+  --nv-line-strong: rgba(11, 35, 71, .24);
+
+  /* Estado */
+  --nv-positive: #2f6b3d;
+  --nv-negative: #9c2f2f;
+  --nv-warning: #8a6414;
+
+  /* Dirección de un indicador: sube, baja o se mantiene.
+     Sobre fondo azul oscuro, así que son claros a propósito. */
+  --nv-trend-up: #e4bd67;
+  --nv-trend-down: #72c99a;
+  --nv-trend-flat: #b9c7d8;
+
+  /* Familias de activo en Academia. Verificados sobre blanco:
+     teal 5,4:1 · morado 6,3:1 · ámbar 4,9:1 */
+  --nv-cat-teal: #1f625c;
+  --nv-cat-purple: #5b4487;
+  --nv-cat-amber: #7a5c12;
+  --nv-cat-cyan: #0b5a6b;
+  --nv-cat-slate: #3d5670;
+  --nv-cat-clay: #8d4236;
+
+  /* Series del Laboratorio de cartera. Los nombres expresan orden visual,
+     no significado financiero: la semántica la aporta siempre la leyenda. */
+  --nv-serie-1: var(--nv-cat-teal);
+  --nv-serie-2: var(--nv-cat-purple);
+  --nv-serie-3: var(--nv-cat-amber);
+  --nv-serie-4: var(--nv-cat-cyan);
+  --nv-serie-5: var(--nv-cat-clay);
+  --nv-serie-6: var(--nv-cat-slate);
+  --nv-lab-tinte: var(--nv-paper-light);
+  --nv-lab-tinte-frio: var(--nv-mist);
+
+  /* Tintes de fondo de Academia. Casi todos son superficies, pero unos pocos
+     llevan texto encima (numeros de orden en blanco) y estan ajustados a 4,5:1.
+     Pendiente de consolidar en la paleta cuando se rediseñe la sección. */
+  --nv-tint-01: #208271;   /* oscurecido desde #218675: lleva el numero 02 en blanco, 4,44 -> 4,67:1 */
+  --nv-tint-02: #3B5BC4;
+  --nv-tint-03: #65723D;
+  --nv-tint-04: #74263C;
+  --nv-tint-05: #C05621;
+  --nv-tint-06: #be513b;   /* oscurecido desde #C7604B: lleva el numero 05 en blanco, 4,04 -> 4,74:1 */
+  --nv-tint-07: #C79718;
+  --nv-tint-08: #CAE3DD;
+  --nv-tint-09: #D8DEC8;
+  --nv-tint-10: #DDD4EB;
+  --nv-tint-11: #E6F1F2;
+  --nv-tint-12: #E8233A;
+  --nv-tint-13: #E8F4F1;
+  --nv-tint-14: #E9DDB8;
+  --nv-tint-15: #E9F4F8;
+  --nv-tint-16: #EAF0F5;
+  --nv-tint-17: #EEF3F7;
+  --nv-tint-18: #EFCFC5;
+  --nv-tint-19: #F0E7EB;
+  --nv-tint-20: #F2F4E6;
+  --nv-tint-21: #F3EEF8;
+  --nv-tint-22: #FBE9E2;
+  --nv-tint-23: #FFF4D9;
+  --nv-tint-24: #dbe7c2;
+  --nv-tint-25: #e8d8b9;
+}
+
+
+/* ============================================================================
+   2 · TIPOGRAFÍA, ESPACIADO Y FORMA
+   ========================================================================== */
+
+:root {
+  /* Dos familias, dos trabajos.
+     Inter    → navegación, interfaz, formularios, cifras, títulos institucionales
+     Fraunces → SOLO Lecturas, informes y contenido editorial */
+  --nv-font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --nv-font-serif: "Fraunces", Georgia, "Times New Roman", serif;
+
+  /* Aperturas grandes: se conserva la identidad de la portada.
+     Aperturas compactas y secciones: peldaños comunes (ver ajustes abajo). */
+  --nv-display-xl: clamp(52px, 5vw, 72px);
+  --nv-display-lg: clamp(44px, 4vw, 60px);
+  --nv-display-md: 44px;
+  --nv-section-title: var(--nv-title-lg);
+  --nv-title-lg: 36px;
+  --nv-title-md: 28px;
+  --nv-title-sm: 22px;
+  --nv-body-lg: 18px;
+  --nv-body: 16px;
+  --nv-body-sm: 14px;
+  --nv-label: 12px;
+
+  /* Pesos. 400 texto · 500 títulos · 600 acciones · 700 solo etiquetas. */
+  --nv-weight-body: 400;
+  --nv-weight-title: 500;
+  --nv-weight-action: 600;
+  --nv-weight-label: 700;
+
+  /* Ritmo vertical. Escala de 8 px: no se usa ningún padding fuera de aquí. */
+  --nv-space-1: 4px;
+  --nv-space-2: 8px;
+  --nv-space-3: 12px;
+  --nv-space-4: 16px;
+  --nv-space-5: 20px;
+  --nv-space-6: 24px;
+  --nv-space-7: 28px;
+  --nv-space-8: 32px;
+  --nv-space-10: 40px;
+  --nv-space-12: 48px;
+  --nv-space-16: 64px;
+  --nv-space-20: 80px;
+
+  /* Forma */
+  --nv-radius-sm: 6px;
+  --nv-radius-md: 12px;
+  --nv-radius-lg: 20px;
+  --nv-radius-pill: 999px;
+
+  /* Controles de formulario y acciones: mínimo común, no altura fija. */
+  --nv-control-height: 44px;
+  --nv-control-font: var(--nv-body-sm);
+  --nv-control-line-height: 1.5;
+  --nv-control-radius: var(--nv-radius-md);
+  --nv-button-radius: var(--nv-radius-sm);
+
+  /* Datos: columnas comparables y cifras de resultados por densidad. */
+  --nv-table-text: var(--nv-body-sm);
+  --nv-table-label: var(--nv-label);
+  --nv-table-line-height: 1.5;
+  --nv-table-cell-y: var(--nv-space-3);
+  --nv-table-cell-x: var(--nv-space-4);
+  --nv-table-reading-width: 720px;
+  /* KPI independientes de los títulos: no crecen con el hero ni la pantalla. */
+  --nv-result-value: var(--nv-title-sm);
+  --nv-result-value-compact: var(--nv-body-lg);
+  --nv-result-label: var(--nv-body-sm);
+  --nv-result-weight: var(--nv-weight-title);
+  --nv-result-padding: var(--nv-space-3) var(--nv-space-4);
+  --nv-result-line-height: 1.2;
+
+  --nv-shadow-sm: 0 1px 2px rgba(6, 23, 47, .06), 0 0 0 1px rgba(11, 35, 71, .06);
+  --nv-shadow-md: 0 18px 48px -30px rgba(6, 23, 47, .38), 0 0 0 1px rgba(11, 35, 71, .07);
+  --nv-shadow-lg: 0 34px 84px -42px rgba(6, 23, 47, .52), 0 0 0 1px rgba(11, 35, 71, .08);
+
+  /* Medida */
+  --nv-container: 1240px;
+  --nv-reading: 760px;
+  --nv-page-gutter: var(--nv-space-12);
+  --nv-header-gutter: var(--nv-page-gutter);
+  --nv-section-space: var(--nv-space-20);
+  --nv-section-space-compact: var(--nv-space-12);
+  --nv-header-height: 88px;
+  --nv-logo-height: 68px;
+}
+
+
+/* La cabecera pasa a disposición compacta a 1319 px. Las aperturas interiores
+   siguen ese mismo umbral; no generan tamaños intermedios fuera de escala. */
+@media (max-width: 1319px) {
+  :root {
+    --nv-display-md: var(--nv-title-lg);
+    --nv-header-gutter: var(--nv-space-7);
+  }
+}
+
+/* El sistema de componentes se reorganiza a 1120 px. */
+@media (max-width: 1120px) {
+  :root {
+    --nv-section-title: var(--nv-title-md);
+    --nv-page-gutter: var(--nv-space-7);
+    --nv-section-space: var(--nv-space-16);
+  }
+}
+
+/* ============================================================================
+   3 · ROLES SEMÁNTICOS
+   Aquí es donde se arreglan los contrastes. Los componentes leen SIEMPRE de
+   estos roles, nunca de la paleta directa. Cambiar un rol cambia todo el sitio.
+   ========================================================================== */
+
+:root {
+  /* Texto — todos verificados ≥ 4,5:1 sobre su fondo */
+  --nv-text: var(--nv-ink);              /* 14,4:1 sobre nube      */
+  --nv-text-soft: var(--nv-copy);        /*  7,5:1 sobre nube      */
+  --nv-text-muted: var(--nv-muted);      /*  5,8:1 sobre blanco    */
+  --nv-text-link: var(--nv-green-700);   /*  6,7:1 · era 2,32:1 ❌ */
+  --nv-text-link-hover: var(--nv-green-800);
+  --nv-text-editorial: var(--nv-bronze-700);  /* 5,3:1 · era 2,53:1 ❌ */
+  --nv-text-on-dark: rgba(255, 255, 255, .92);
+  --nv-text-on-dark-soft: rgba(255, 255, 255, .68);
+
+  /* Superficies y filetes sobre fondo oscuro. En nuvia-pages.css conviven 34
+     alfas de blanco distintos para hacer estas tres cosas; estos son los que
+     usan las piezas ya migradas y a los que hay que ir llevando el resto. */
+  --nv-surface-on-dark: rgba(255, 255, 255, .08);
+  --nv-line-on-dark: rgba(255, 255, 255, .14);
+  --nv-line-on-dark-strong: rgba(255, 255, 255, .25);
+
+  /* El filete de un control sobre oscuro tiene tres estados, y los tres
+     estaban escritos a mano en cada sitio con valores distintos: las
+     pastillas de vivienda usaban .3/.6/.9, la llamada de Academia .35/.7 y
+     las pestañas de mercados .22/.25. Reposo es --nv-line-on-dark-strong,
+     activo es --nv-white, y este es el de en medio. */
+  --nv-line-on-dark-hover: rgba(255, 255, 255, .55);
+
+  /* Superficies por función: no codifican mérito financiero.
+     Página: lienzo; surface: contenido; technical: área de herramientas;
+     editorial: lectura; editorial-strong: énfasis cálido; deep: contraste.
+     Las cubiertas fotográficas y el manifiesto conservan sus composiciones. */
+  --nv-surface-page: var(--nv-cloud);
+  --nv-surface: var(--nv-white);
+  --nv-surface-technical: var(--nv-mist);
+  --nv-surface-editorial: var(--nv-paper-light);
+  --nv-surface-editorial-strong: var(--nv-paper);
+  --nv-surface-deep: var(--nv-navy-900);
+  --nv-surface-institutional:
+    radial-gradient(circle at 88% 8%, rgba(124, 154, 68, .18), transparent 28rem),
+    linear-gradient(135deg, var(--nv-navy-950), var(--nv-navy-800));
+  --nv-line-institutional: rgba(220, 197, 156, .18);
+  --nv-bg: var(--nv-mist);
+
+  /* Acción */
+  --nv-action-primary-bg: var(--nv-navy-900);
+  --nv-action-primary-bg-hover: var(--nv-navy-800);
+  --nv-action-primary-text: #ffffff;          /* 15,6:1 */
+  --nv-action-secondary-border: var(--nv-green-600);
+  --nv-action-secondary-text: var(--nv-green-700);
+  --nv-action-secondary-bg-hover: var(--nv-green-100);
+  --nv-action-accent-bg: var(--nv-green-600);  /* 4,9:1 con blanco · era 3,2:1 ❌ */
+  --nv-action-accent-text: #ffffff;
+
+  /* Estados de interfaz, nunca juicios sobre resultados financieros. */
+  --nv-control-bg: var(--nv-surface);
+  --nv-control-border: var(--nv-text-muted);
+  --nv-control-border-hover: var(--nv-text-soft);
+  --nv-control-error: var(--nv-negative);
+  --nv-control-disabled-bg: var(--nv-mist);
+  --nv-control-disabled-text: var(--nv-text-muted);
+
+  /* Avisos: el texto nombra el estado; el filete solo lo acompaña. */
+  --nv-notice-bg: var(--nv-surface-technical);
+  --nv-notice-border: var(--nv-navy-700);
+  --nv-notice-warning-bg: var(--nv-surface-editorial);
+  --nv-notice-warning-border: var(--nv-warning);
+  --nv-notice-error-border: var(--nv-negative);
+  --nv-notice-text: var(--nv-body-sm);
+  --nv-notice-line-height: 1.6;
+
+  /* Foco — un solo anillo en todo el sitio */
+  --nv-focus-ring: 0 0 0 3px var(--nv-white), 0 0 0 5px var(--nv-green-700);
+}
+
+
+/* ============================================================================
+   4 · PUENTE DE COMPATIBILIDAD
+   Las 13 páginas actuales usan --color-*. Se mantienen, pero ahora derivan de
+   los tokens de arriba: un solo origen para cada valor.
+   Al migrar cada página a var(--nv-*), esta sección se va vaciando sola.
+   ========================================================================== */
+
+:root {
+  --color-bg: var(--nv-bg);
+  --color-surface: var(--nv-surface);
+  --color-text: var(--nv-text);
+  --color-accent: var(--nv-green-500);
+  --color-accent-2: var(--nv-green-600);
+  --color-divider: var(--nv-line);
+  --color-section: var(--nv-paper);
+  --color-section-glow: var(--nv-paper-light);
+  --color-section-ghost: var(--nv-bronze-200);
+
+  --font-heading: var(--nv-font-sans);
+  --font-heading-weight: var(--nv-weight-title);
+  --font-body: var(--nv-font-sans);
+
+  --radius-sm: var(--nv-radius-sm);
+  --radius-md: var(--nv-radius-md);
+  --radius-lg: var(--nv-radius-lg);
+  --shadow-sm: var(--nv-shadow-sm);
+  --shadow-md: var(--nv-shadow-md);
+  --shadow-lg: var(--nv-shadow-lg);
+
+  /* Rampa neutra — 100 tinta oscura → 900 tinte pálido */
+  --color-neutral-100: #1b2432;
+  --color-neutral-200: #2a3646;
+  --color-neutral-300: var(--nv-copy);
+  --color-neutral-400: var(--nv-muted);
+  --color-neutral-500: #6b7382;   /* ← era #75798c, ahora 4,9:1 */
+  --color-neutral-600: #7d8697;   /* solo filetes e iconos */
+  --color-neutral-700: #b3bcc9;
+  --color-neutral-800: #dbe2ec;
+  --color-neutral-900: #edf1f6;
+
+  /* Rampa de acento.
+     ATENCIÓN: --color-accent-600 es el color de los enlaces del cuerpo
+     (`a { color: var(--color-accent-600) }` en el <style> de cada página).
+     Estaba en #94ad58 = 2,32:1, muy por debajo de AA. Se oscurece aquí y con
+     eso quedan corregidos los enlaces de las 13 páginas de golpe.
+     El verde claro sigue disponible como --color-accent-tint para fondos. */
+  --color-accent-100: var(--nv-green-900);
+  --color-accent-200: var(--nv-green-800);
+  --color-accent-300: var(--nv-green-700);
+  --color-accent-400: var(--nv-green-600);
+  --color-accent-500: var(--nv-green-500);
+  --color-accent-600: var(--nv-text-link);   /* 6,7:1 ✅ */
+  --color-accent-700: var(--nv-green-300);
+  --color-accent-800: #e2ebc9;
+  --color-accent-900: var(--nv-green-100);
+  --color-accent-tint: #94ad58;              /* solo fondo/filete */
+
+  /* accent-2 era un duplicado exacto de accent. Se alía. */
+  --color-accent-2-100: var(--color-accent-100);
+  --color-accent-2-200: var(--color-accent-200);
+  --color-accent-2-300: var(--color-accent-300);
+  --color-accent-2-400: var(--color-accent-400);
+  --color-accent-2-500: var(--color-accent-500);
+  --color-accent-2-600: var(--color-accent-600);
+  --color-accent-2-700: var(--color-accent-700);
+  --color-accent-2-800: var(--color-accent-800);
+  --color-accent-2-900: var(--color-accent-900);
+}
+
+
+/* ============================================================================
+   5 · BASE
+   Suelo mínimo del sitio. Sin !important: si algo necesita ganar aquí, es que
+   el orden de carga está mal, no la especificidad.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nv-header-offset, var(--nv-header-height)) + var(--nv-space-4));
+}
+
+body {
+  margin: 0;
+  background: var(--nv-bg);
+  color: var(--nv-text);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-body);
+  font-synthesis: none;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--nv-weight-title);
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* Fraunces solo donde toca. Se activa con .nv-editorial en un ancestro o con
+   .nv-title-serif en el propio título — nunca por defecto. */
+.nv-editorial h1,
+.nv-editorial h2,
+.nv-editorial h3,
+.nv-title-serif {
+  font-family: var(--nv-font-serif);
+  font-weight: var(--nv-weight-title);
+  letter-spacing: -.025em;
+}
+
+a {
+  color: var(--nv-text-link);
+  text-underline-offset: .18em;
+}
+
+a:hover {
+  color: var(--nv-text-link-hover);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea,
+optgroup {
+  font: inherit;
+  font-family: var(--nv-font-sans);
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+select option {
+  background: var(--nv-surface);
+  color: var(--nv-text);
+}
+
+/* Foco visible y coherente en todo el sitio. */
+:focus-visible {
+  /* La banda blanca se distingue sobre fondos oscuros; el aro verde exterior,
+     sobre superficies claras. !important evita que la sombra decorativa de
+     una tarjeta o pestaña oculte el foco de teclado. */
+  outline: 2px solid var(--nv-white);
+  outline-offset: 2px;
+  border-radius: var(--nv-radius-sm);
+  box-shadow: var(--nv-focus-ring) !important;
+}
+
+::selection {
+  background: var(--nv-green-100);
+  color: var(--nv-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Curso Dinero con criterio de Academia NUVIA para ordenar las finanzas personales y construir decisiones sostenibles.">
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/curso.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Dinero con criterio">
+<meta property="og:description" content="Curso Dinero con criterio de Academia NUVIA para ordenar las finanzas personales y construir decisiones sostenibles.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/curso.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Dinero con criterio">
+<meta name="twitter:description" content="Curso Dinero con criterio de Academia NUVIA para ordenar las finanzas personales y construir decisiones sostenibles.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Dinero con criterio</title>
+
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+
+<body class="nuvia-design-lab">
+<x-dc>
+
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+<div class="nuvia-page curso-page">
+
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ══ CABECERA DEL CURSO ════════════════════════════════════════════════
+         Antes era una sección suelta con h1 blanco sobre el fondo general — el
+         texto sólo se leía porque el bundle Nocturne pintaba el fondo oscuro.
+         Ahora usa el héroe institucional del sistema, que trae su propio fondo.
+         ═══════════════════════════════════════════════════════════════════ -->
+    <section id="curso" data-screen-label="Cabecera del curso" class="nv-hero nv-hero--institutional curso-hero">
+      <div class="nv-container">
+        <div class="nv-hero__inner">
+          <div>
+<nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+              <ol>
+                <li><a href="index.html" data-main-menu-return>Inicio</a></li>
+                <li><a href="academia.html">Academia NUVIA</a></li>
+                <li><span aria-current="page">Dinero con criterio</span></li>
+              </ol>
+            </nav>
+
+            <p class="nv-eyebrow nv-eyebrow--on-dark">Educación financiera</p>
+
+            <h1>Dinero con criterio</h1>
+
+            <p class="nv-hero__lead">
+              Cinco clases breves para ordenar tu dinero, ahorrar con propósito,
+              invertir sin apostar y entender cómo la economía llega hasta tu bolsillo.
+            </p>
+
+            <div class="curso-ruta" aria-label="Ruta del curso">
+              <a class="curso-ruta__volver" href="academia.html?tab=cursos">← Volver a Cursos</a>
+              <span class="curso-ruta__actual">Dinero con criterio</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ PROGRAMA ══════════════════════════════════════════════════════════ -->
+    <section data-screen-label="Programa del curso" class="nv-section nv-section--tight" aria-label="Programa del curso">
+      <div class="nv-container">
+        <div class="curso-programa">
+          <sc-for list="{{ capitulos }}" as="cap" hint-placeholder-count="5">
+            <button type="button" onClick="{{ cap.abrir }}" aria-current="{{ cap.ariaCurrent }}" class="{{ cap.claseTab }}">
+              <span class="curso-tab__num">{{ cap.numero }}</span>
+              <span class="curso-tab__body">
+                <strong>{{ cap.titulo }}</strong>
+                <small>{{ cap.estado }}</small>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ CABECERA DEL CAPÍTULO ═════════════════════════════════════════════ -->
+    <section data-screen-label="Hero del capítulo" class="nv-section nv-section--tight">
+      <div class="nv-container">
+
+        <div class="curso-cap">
+          <span class="curso-cap__ghost" aria-hidden="true">{{ numeroCapitulo }}</span>
+          <div class="curso-cap__body">
+            <p class="curso-cap__kicker">✦ Dinero con criterio · {{ metaCapitulo }} · Nivel inicial</p>
+            <h2>{{ tituloCapitulo }}</h2>
+            <p class="curso-cap__intro">{{ introCapitulo }}</p>
+
+            <div class="curso-cap__actions">
+              <a class="nv-btn nv-btn--secondary" href="#leccion-video">Empezar la clase →</a>
+              <span class="curso-cap__note">{{ notaSeguimiento }}</span>
+            </div>
+
+            <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+            <div class="curso-progreso">
+              <span class="curso-progreso__label">Actividades de este capítulo</span>
+              <div class="curso-progreso__track">
+                <span class="curso-progreso__fill" style="width:{{ progresoAncho }}"></span>
+              </div>
+              <strong>{{ progresoTexto }}</strong>
+            </div>
+            </sc-if>
+          </div>
+        </div>
+
+        <nav class="curso-pasos" aria-label="Contenido del capítulo">
+          <sc-for list="{{ pasos }}" as="paso" hint-placeholder-count="5">
+            <a class="curso-paso" href="{{ paso.destino }}">
+              <span class="{{ paso.claseCheck }}">{{ paso.marca }}</span>
+              <b>{{ paso.etiqueta }}</b>
+            </a>
+          </sc-for>
+        </nav>
+
+      </div>
+    </section>
+
+
+    <!-- ══ INFOGRAFÍA ════════════════════════════════════════════════════════ -->
+    <section class="nv-section nv-section--tight">
+      <div class="nv-container">
+        <figure class="curso-figura" data-screen-label="Infografía">
+          <div class="curso-figura__img">{{ infografiaImg }}</div>
+          <figcaption>
+            <div>
+              <span class="curso-figura__kicker">{{ infografiaKicker }}</span>
+              <strong>{{ tituloCapitulo }}</strong>
+            </div>
+            <div class="nv-btn-row">
+              <a class="curso-btn-outline" href="{{ infografiaSrc }}" target="_blank" rel="noopener noreferrer">Ver a tamaño completo ↗</a>
+              <a class="curso-btn-outline" href="{{ descargaHref }}" download>⤓ Descargar apuntes</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+    <!-- ══ 01 · VÍDEO ════════════════════════════════════════════════════════ -->
+    <section id="leccion-video" data-screen-label="01 Vídeo" class="nv-section curso-leccion" aria-labelledby="titulo-video">
+      <div class="nv-container">
+        <span class="curso-leccion__kicker">01 · Introducción en vídeo</span>
+        <h2 id="titulo-video">{{ videoTitulo }}</h2>
+        <p class="curso-leccion__lead">{{ videoDescripcion }}</p>
+
+        <div class="curso-video nv-external-content nv-external-content--dark" data-nuvia-external-frame
+             data-src="{{ videoSrc }}" data-title="{{ videoTitulo }}">
+          <div class="nv-external-content__placeholder nv-external-content__placeholder--dark">
+            <span class="nv-external-content__eyebrow">Vídeo externo · YouTube</span>
+            <p>El vídeo se conecta con YouTube solo cuando eliges reproducirlo.</p>
+            <div class="nv-external-content__actions">
+              <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+              <a class="nv-btn nv-btn--secondary" href="{{ videoHref }}" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+            </div>
+            <small data-nuvia-external-status aria-live="polite">No se establece conexión mientras el vídeo permanece cerrado.</small>
+          </div>
+        </div>
+
+        <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+          <button type="button" onClick="{{ marcarVideo }}" class="{{ claseBotonVideo }}">{{ textoBotonVideo }}</button>
+        </sc-if>
+      </div>
+    </section>
+
+
+    <!-- ══ 02 · APUNTES ══════════════════════════════════════════════════════ -->
+    <section id="apuntes" data-screen-label="02 Apuntes" class="nv-section curso-leccion" aria-labelledby="titulo-apuntes">
+      <div class="nv-container">
+
+        <div class="curso-leccion__split">
+          <div>
+            <span class="curso-leccion__kicker">{{ apuntesKicker }}</span>
+            <h2 id="titulo-apuntes">{{ tituloCapitulo }}</h2>
+          </div>
+          <p>{{ subtituloCapitulo }}. Lee los apuntes a tu ritmo y conserva el informe para consultarlo cuando lo necesites.</p>
+        </div>
+
+        <div class="curso-contexto">
+          <span class="curso-icon" aria-hidden="true">i</span>
+          <div>
+            <span class="curso-label">Contexto de la clase</span>
+            <p>{{ introCapitulo }}</p>
+          </div>
+        </div>
+
+        <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+        <div class="curso-notas">
+          <sc-for list="{{ apuntes }}" as="nota" hint-placeholder-count="4">
+            <details class="curso-nota" open="{{ nota.abierta }}">
+              <summary>
+                <span class="curso-icon">{{ nota.numero }}</span>
+                <span class="curso-nota__title">
+                  <strong>{{ nota.titulo }}</strong>
+                  <small>{{ nota.resumen }}</small>
+                </span>
+                <span class="curso-chevron" aria-hidden="true">▾</span>
+              </summary>
+              <div class="curso-nota__body">
+                <sc-for list="{{ nota.parrafos }}" as="parrafo" hint-placeholder-count="2">
+                  <p>{{ parrafo.texto }}</p>
+                </sc-for>
+                <sc-if value="{{ nota.tieneVinetas }}" hint-placeholder-val="{{ false }}">
+                  <ul>
+                    <sc-for list="{{ nota.vinetas }}" as="vineta" hint-placeholder-count="2">
+                      <li>{{ vineta.texto }}</li>
+                    </sc-for>
+                  </ul>
+                </sc-if>
+                <sc-if value="{{ nota.tieneFormula }}" hint-placeholder-val="{{ false }}">
+                  <p class="curso-formula">{{ nota.formula }}</p>
+                </sc-if>
+                <sc-if value="{{ nota.tieneApunte }}" hint-placeholder-val="{{ false }}">
+                  <aside class="curso-apunte">
+                    <strong>{{ nota.apunteTitulo }}</strong>
+                    <p>{{ nota.apunte }}</p>
+                  </aside>
+                </sc-if>
+              </div>
+            </details>
+          </sc-for>
+        </div>
+
+        <div class="curso-directrices">
+          <span class="curso-label">Apuntes del capítulo</span>
+          <h3>Cinco directrices de criterio</h3>
+          <ol>
+            <sc-for list="{{ directrices }}" as="directriz" hint-placeholder-count="5">
+              <li><span>{{ directriz.numero }}</span><span>{{ directriz.texto }}</span></li>
+            </sc-for>
+          </ol>
+        </div>
+
+        </sc-if>
+        <sc-if value="{{ noEsCapituloUno }}" hint-placeholder-val="{{ false }}">
+          <p class="curso-apuntes-disponibles">Los apuntes de este capítulo están disponibles en su PDF descargable. No hay un desarrollo de estos apuntes en la página.</p>
+        </sc-if>
+
+        <div class="curso-acciones">
+          <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+            <button type="button" onClick="{{ marcarApuntes }}" class="{{ claseBotonApuntes }}">{{ textoBotonApuntes }}</button>
+          </sc-if>
+          <a class="curso-btn-outline" href="{{ descargaHref }}" download>⤓ {{ descargaTexto }}</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+
+    <!-- ══ 03 · HERRAMIENTA ══════════════════════════════════════════════════ -->
+    <section id="leccion-mapa" data-screen-label="03 Herramienta" class="nv-section curso-leccion" aria-labelledby="titulo-mapa">
+      <div class="nv-container">
+        <span class="curso-leccion__kicker">03 · Herramienta práctica</span>
+        <h2 id="titulo-mapa">Diagnostica tus cuatro pilares</h2>
+        <p class="curso-leccion__lead">Introduce cifras aproximadas para revisar flujo de caja, deseos, patrimonio y fondo de emergencia. Los datos permanecen en tu dispositivo.</p>
+
+        <div class="curso-tool">
+
+          <div class="curso-panel">
+            <span class="curso-panel__title">◍ Flujo mensual</span>
+            <div class="curso-campos">
+              <sc-for list="{{ camposFlujo }}" as="campo" hint-placeholder-count="4">
+                <label class="curso-campo">
+                  <span><b>{{ campo.etiqueta }}</b><small>{{ campo.ayuda }}</small></span>
+                  <span class="curso-campo__input">
+                    <input type="number" min="0" step="50" defaultValue="{{ campo.valor }}" onChange="{{ campo.cambiar }}">
+                    <span class="curso-campo__unit">€</span>
+                  </span>
+                </label>
+              </sc-for>
+            </div>
+
+            <span class="curso-panel__title">▣ Tu fotografía</span>
+            <div class="curso-campos">
+              <sc-for list="{{ camposFoto }}" as="campo" hint-placeholder-count="3">
+                <label class="curso-campo">
+                  <span><b>{{ campo.etiqueta }}</b><small>{{ campo.ayuda }}</small></span>
+                  <span class="curso-campo__input">
+                    <input type="number" min="0" step="100" defaultValue="{{ campo.valor }}" onChange="{{ campo.cambiar }}">
+                    <span class="curso-campo__unit">€</span>
+                  </span>
+                </label>
+              </sc-for>
+            </div>
+
+            <button type="button" onClick="{{ calcularMapa }}" class="curso-btn-calcular">Calcular mi mapa →</button>
+          </div>
+
+          <div class="curso-panel" aria-live="polite">
+            <span class="curso-label">Tu punto de partida</span>
+            <h3>{{ mapaTitulo }}</h3>
+            <p class="curso-leccion__lead">{{ mapaDescripcion }}</p>
+
+            <div class="curso-resultados">
+              <sc-for list="{{ resultados }}" as="res" hint-placeholder-count="4">
+                <div class="curso-resultado">
+                  <span>{{ res.etiqueta }}</span>
+                  <strong>{{ res.valor }}</strong>
+                  <small>{{ res.ayuda }}</small>
+                </div>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ mapaCalculado }}" hint-placeholder-val="{{ false }}">
+              <div class="curso-prioridad">
+                <span aria-hidden="true">◎</span>
+                <div>
+                  <span class="curso-label">Primera prioridad orientativa</span>
+                  <strong>{{ prioridad }}</strong>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ 04 · CASO PRÁCTICO ════════════════════════════════════════════════ -->
+    <section id="leccion-caso" data-screen-label="04 Caso práctico" class="nv-section curso-leccion" aria-labelledby="titulo-caso">
+      <div class="nv-container">
+        <span class="curso-leccion__kicker">04 · Caso práctico</span>
+        <h2 id="titulo-caso">Elena y Marcos: cuatro pilares, una prioridad</h2>
+        <p class="curso-leccion__lead">Lee su diagnóstico y decide cómo deberían ordenar el siguiente euro.</p>
+
+        <div class="curso-tool">
+
+          <article class="curso-caso">
+            <span class="curso-label">Diagnóstico familiar</span>
+            <h3>Ingresan 3.400 € al mes</h3>
+            <div class="curso-cifras">
+              <sc-for list="{{ cifrasCaso }}" as="cifra" hint-placeholder-count="6">
+                <div class="curso-cifra">
+                  <small>{{ cifra.etiqueta }}</small>
+                  <strong>{{ cifra.valor }}</strong>
+                </div>
+              </sc-for>
+            </div>
+            <p>Además del ahorro tienen otros activos por 20.000 € y una deuda total de 18.000 €, parte de ella en una tarjeta con intereses elevados. El ahorro cubre menos de un mes de gastos indispensables: su patrimonio es positivo, pero todavía frágil.</p>
+          </article>
+
+          <div class="curso-panel">
+            <span class="curso-label" id="curso-caso-label">Elige la primera acción más razonable</span>
+            <div class="curso-opciones" role="group" aria-labelledby="curso-caso-label">
+              <sc-for list="{{ opcionesCaso }}" as="opcion" hint-placeholder-count="4">
+                <button type="button" onClick="{{ opcion.elegir }}" aria-pressed="{{ opcion.seleccionada }}" class="{{ opcion.clase }}">
+                  <span class="{{ opcion.claseLetra }}">{{ opcion.letra }}</span>
+                  <span class="curso-opcion__texto">{{ opcion.texto }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <sc-if value="{{ casoRespondido }}" hint-placeholder-val="{{ false }}">
+              <div class="{{ claseFeedbackCaso }}">
+                <strong>{{ tituloFeedbackCaso }}</strong>
+                <p>El margen ya es positivo, pero el airbag no llega a un mes y existe deuda cara. Revisar deseos libera más margen; conservar un colchón inicial evita nuevas deudas; y repartir el excedente entre seguridad y tarjeta fortalece a la vez el flujo de caja y el patrimonio.</p>
+              </div>
+            </sc-if>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══ 05 · COMPROBACIÓN ═════════════════════════════════════════════════ -->
+    <section id="leccion-quiz" data-screen-label="05 Comprobación" class="nv-section curso-leccion" aria-labelledby="titulo-quiz">
+      <div class="nv-container">
+
+        <div class="curso-leccion__split">
+          <div>
+            <span class="curso-leccion__kicker">05 · Comprobación</span>
+            <h2 id="titulo-quiz">Cinco preguntas para cerrar</h2>
+          </div>
+          <p>No es un examen. Cada respuesta incluye una explicación para reforzar la idea.</p>
+        </div>
+
+        <div class="curso-quiz">
+          <sc-for list="{{ preguntas }}" as="pregunta" hint-placeholder-count="5">
+            <fieldset class="curso-pregunta">
+              <legend>
+                <span class="curso-pregunta__num">{{ pregunta.numero }}</span>
+                {{ pregunta.texto }}
+              </legend>
+              <div class="curso-pregunta__opciones">
+                <sc-for list="{{ pregunta.opciones }}" as="opcion" hint-placeholder-count="3">
+                  <label class="{{ opcion.clase }}">
+                    <input type="radio" name="{{ pregunta.grupo }}" checked="{{ opcion.seleccionada }}" onChange="{{ opcion.marcar }}">
+                    <span>{{ opcion.texto }}</span>
+                  </label>
+                </sc-for>
+              </div>
+              <sc-if value="{{ pregunta.mostrarExplicacion }}" hint-placeholder-val="{{ false }}">
+                <p class="curso-explicacion">{{ pregunta.explicacion }}</p>
+              </sc-if>
+            </fieldset>
+          </sc-for>
+        </div>
+
+        <div class="curso-acciones">
+          <button type="button" onClick="{{ comprobarQuiz }}" disabled="{{ quizIncompleto }}" class="{{ claseBotonQuiz }}">Comprobar respuestas →</button>
+          <sc-if value="{{ quizComprobado }}" hint-placeholder-val="{{ false }}">
+            <div class="curso-puntuacion">
+              <span>{{ puntuacion }}</span>
+              <div>
+                <strong>{{ tituloQuiz }}</strong>
+                <p>Puedes repetir la comprobación tantas veces como quieras.</p>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+
+      </div>
+    </section>
+    </sc-if>
+
+
+    <sc-if value="{{ noEsCapituloUno }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Partes prácticas" class="nv-section">
+        <div class="nv-container">
+          <div class="curso-sin-practica">
+            <span aria-hidden="true">◫</span>
+            <div>
+              <strong>03 – 05 · Herramienta, caso práctico y comprobación</strong>
+              <p>Las partes prácticas de este capítulo siguen la misma plantilla modernizada que se muestra en el capítulo 1.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+
+    <!-- ══ CIERRE ════════════════════════════════════════════════════════════ -->
+    <section data-screen-label="Cierre del capítulo" class="nv-section">
+      <div class="nv-container">
+        <div class="{{ claseCierre }}">
+          <div class="curso-cierre__head">
+            <span class="curso-cierre__dot" aria-hidden="true"></span>
+            <div>
+              <small>{{ kickerCierre }}</small>
+              <h2>{{ tituloCierre }}</h2>
+              <p>{{ textoCierre }}</p>
+            </div>
+          </div>
+          <div class="curso-cierre__actions">
+            <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
+              <button type="button" onClick="{{ reiniciar }}" class="curso-btn-reset">↺ Reiniciar capítulo</button>
+            </sc-if>
+          </div>
+        </div>
+
+        <nav class="ac-learning-back" aria-label="Seguir aprendiendo en Academia">
+          <a href="academia.html#ruta-aprendizaje">Volver a la ruta de aprendizaje →</a>
+        </nav>
+        <p class="nv-disclaimer nv-disclaimer--center">Contenido educativo general. No constituye asesoramiento financiero, fiscal o jurídico personalizado. Las cifras introducidas permanecen en este dispositivo.</p>
+      </div>
+    </section>
+
+  </main>
+
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props="{&quot;capituloInicial&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;1&quot;, &quot;options&quot;: [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Curso&quot;}, &quot;estadoProgreso&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;nuevo&quot;, &quot;options&quot;: [&quot;nuevo&quot;, &quot;a-medias&quot;, &quot;completado&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Curso&quot;}}">
+class Component extends DCLogic {
+  state = {};
+  capitulosData() {
+    return [
+      { numero: '01', pdf: 'core/downloads/nuvia-academy/capitulo-01-pon-orden-a-tu-dinero.pdf', titulo: 'Pon orden a tu dinero', subtitulo: 'El punto de partida hacia tu tranquilidad financiera', video: '8bkXWpsZ1YI', videoTitulo: 'Pon orden a tu dinero', videoDesc: 'Una introducción visual para comprender las cifras que sostienen tu tranquilidad financiera.', intro: 'Descubre dónde estás, cuánto margen tienes y cuál debería ser tu primera prioridad antes de ahorrar o invertir.', img: 'src/assets/education/financial-course/chapter-01-health-pillars.webp', alt: 'Infografía sobre los cuatro pilares de la salud financiera: flujo de caja, necesidades y deseos, patrimonio neto y fondo de emergencia.' },
+      { numero: '02', pdf: 'core/downloads/nuvia-academy/capitulo-02-ahorrar-con-proposito.pdf', titulo: 'Ahorrar con propósito', subtitulo: 'El arte de construir tu mañana de forma automática', video: 'cwHHU5okGqY', videoTitulo: 'Ahorrar con propósito', videoDesc: 'Descubre cómo convertir el ahorro en un sistema automático conectado con tus objetivos.', intro: 'Ahorrar suele percibirse como una renuncia, pero el ahorro inteligente es una herramienta de diseño financiero: permite decidir hoy qué proyectos y qué tranquilidad tendrá tu familia mañana.', img: 'src/assets/education/financial-course/chapter-02-automatic-saving.webp', alt: 'Infografía sobre ahorro automático, metas financieras, inflación e interés compuesto.' },
+      { numero: '03', pdf: 'core/downloads/nuvia-academy/capitulo-03-invertir-sin-apostar.pdf', titulo: 'Invertir sin apostar', subtitulo: 'Cómo poner tu dinero a trabajar con calma y método', video: 'K-AbB3tDmd0', videoTitulo: 'Invertir sin apostar', videoDesc: 'Una introducción al riesgo, el tiempo y la diversificación para invertir con criterio.', intro: 'Invertir con criterio es un proceso disciplinado que relaciona objetivos, plazo, riesgo, diversificación y comportamiento para poner el ahorro a trabajar a favor del bienestar futuro.', img: 'src/assets/education/financial-course/chapter-03-investment-pillars.webp', alt: 'Infografía sobre los cinco pilares de la inversión: mentalidad, riesgo, diversificación, tiempo y control emocional.' },
+      { numero: '04', pdf: 'core/downloads/nuvia-academy/capitulo-04-la-economia-en-tu-dia-a-dia.pdf', titulo: 'La economía en tu día a día', subtitulo: 'Cómo entender lo que ocurre en el mundo sin complicarte la vida', video: 'uOrdz0Gi96A', videoTitulo: 'La economía en tu día a día', videoDesc: 'Aprende a traducir inflación, tipos y ciclos económicos a decisiones familiares concretas.', intro: 'Entender la economía significa distinguir lo que afecta realmente a tu bolsillo de lo que es ruido informativo para poder decidir con serenidad.', img: 'src/assets/education/financial-course/chapter-04-economic-survival.webp', alt: 'Infografía que explica tipos de interés, inflación, ciclos económicos y la diferencia entre señal y ruido.' },
+      { numero: '05', pdf: 'core/downloads/nuvia-academy/capitulo-05-construye-tu-plan.pdf', titulo: 'Construye tu plan', subtitulo: 'Tu hoja de ruta personal hacia la serenidad financiera', video: 'OoZXhp9sJ_0', videoTitulo: 'Construye tu plan financiero', videoDesc: 'Convierte lo aprendido en una hoja de ruta personal, sencilla y sostenible.', intro: 'El conocimiento financiero solo se vuelve útil cuando lo unes en una hoja de ruta propia, sencilla, escrita y adaptada a la realidad de tu hogar.', img: 'src/assets/education/financial-course/chapter-05-financial-roadmap.webp', alt: 'Infografía del capítulo cinco con la escalera financiera, el test de la almohada, el contrato de Ulises y la revisión anual del plan.' },
+    ];
+  }
+  apuntesCapitulo1() {
+    return [
+      { titulo: '1. El flujo de caja: el movimiento de tu dinero',
+        parrafos: ['Para entender la economía de un hogar debes ver el dinero como un flujo constante, no como una fotografía estática. Cada mes se producen dos movimientos básicos: entra dinero y sale dinero para sostener la vida cotidiana.', 'La salud financiera no exige cerrar todos los grifos ni renunciar a las comodidades básicas. Consiste en regular el caudal para que siempre quede un excedente. Ese margen mensual es el motor que permite ahorrar, reducir deuda y construir patrimonio.', 'Ganar más no resuelve por sí solo el problema: si las salidas crecen al mismo ritmo que las entradas, la situación de riesgo permanece. El primer objetivo es crear un margen de maniobra estable entre lo que ingresas y lo que gastas.'],
+        vinetas: ['Ingresos: el caudal que entra en la cuenta, como salarios, rentas, ingresos profesionales o pensiones.', 'Gastos: el caudal que sale para vivienda, alimentación, suministros, transporte, ocio y demás necesidades de la vida cotidiana.'],
+        formula: 'Margen mensual = ingresos netos − gastos totales',
+        apunteTitulo: 'La analogía del depósito',
+        apunte: 'Imagina que los ingresos son agua que entra en un depósito y los gastos son grifos abiertos. Si sale tanta agua como entra, el depósito nunca se llena. El objetivo no es cerrar todos los grifos, sino conservar siempre una reserva.' },
+      { titulo: '2. Necesidades frente a deseos: el arte de clasificar',
+        parrafos: ['Gestionar un presupuesto con seriedad exige categorizar las salidas de dinero. Clasificar los gastos permite decidir de manera consciente, evita que lo importante quede desplazado por lo inmediato y reduce el remordimiento posterior.'],
+        vinetas: ['Necesidades: vivienda, alimentación, suministros, calefacción, seguros y demás compromisos indispensables.', 'Deseos: restaurantes, ocio, viajes y otros gastos que mejoran la vida, pero pueden aplazarse sin poner en riesgo la estabilidad familiar.'],
+        apunteTitulo: 'La analogía de la maleta',
+        apunte: 'Al preparar un viaje colocas primero documentos, medicinas, abrigo y calzado. Solo después añades artículos de ocio. Priorizar no es tacañería: es asegurarte de que lo esencial siempre viaja contigo.' },
+      { titulo: '3. Tu patrimonio real: tu verdadero terreno propio',
+        parrafos: ['Existe una diferencia importante entre tener un nivel alto de consumo y poseer riqueza real. La brújula de tu salud financiera es el patrimonio neto.', 'El resultado muestra qué parte de tu vida financiera es realmente tuya. Si las deudas superan a los bienes, el patrimonio neto es negativo: estás construyendo sobre terreno ajeno. No es un juicio, sino un punto de partida.', 'El objetivo es reducir pasivos y aumentar activos para ampliar un terreno propio cada vez más grande, firme y resistente.'],
+        formula: 'Patrimonio neto = activos (lo que tienes) − pasivos (lo que debes)' },
+      { titulo: '4. El fondo de emergencia: tu airbag familiar',
+        parrafos: ['La vida no es una línea recta: incluye gastos y acontecimientos imprevistos. El fondo de emergencia es una reserva segura y accesible destinada a impedir que un contratiempo obligue a endeudarse o a vender inversiones con prisa o en un mal momento.', 'Como referencia inicial puede equivaler a entre tres y seis meses de gastos indispensables, aunque la cifra debe adaptarse a la estabilidad de los ingresos, las responsabilidades y la situación de cada familia.'],
+        vinetas: ['Qué es: una reserva de dinero líquido y de fácil acceso.', 'Cuánto tener: como orientación, entre tres y seis meses de gastos indispensables.', 'Dónde guardarlo: en soluciones seguras y líquidas; no está destinado a invertir ni a financiar caprichos.'],
+        apunteTitulo: 'La analogía del airbag',
+        apunte: 'Un airbag permanece oculto y no produce rendimiento, pero protege cuando llega un impacto. El fondo de emergencia cumple la misma función: no se crea para invertir ni para comprar caprichos, sino para absorber un imprevisto.' },
+    ];
+  }
+  directricesCapitulo1() {
+    return [
+      'Enfócate en tu balance, no solo en tus ingresos: el progreso se mide por el patrimonio neto, no por el tamaño de la nómina.',
+      'Identifica y detén las fugas de agua, especialmente las deudas de consumo con intereses elevados.',
+      'Planifica el presupuesto de forma inversa: automatiza el ahorro al cobrar y organiza después el gasto.',
+      'Respeta los límites del fondo de seguridad y úsalo exclusivamente para emergencias verdaderas.',
+      'Acepta la disciplina como una herramienta de libertad: asegurar la estabilidad permite disfrutar del dinero sin remordimientos.',
+    ];
+  }
+  preguntasQuiz() {
+    return [
+      { texto: 'Una persona ingresa 2.500 € y gasta 2.200 € al mes. ¿Cuál es su margen?', opciones: ['200 €', '300 €', '500 €'], correcta: 1, explicacion: 'El margen es la diferencia entre ingresos y gastos: 2.500 € − 2.200 € = 300 €.' },
+      { texto: '¿Cuál de estos gastos es normalmente un deseo y no una necesidad?', opciones: ['El seguro obligatorio', 'Una cena en un restaurante', 'La alimentación básica'], correcta: 1, explicacion: 'Una cena fuera mejora la calidad de vida, pero puede aplazarse sin poner en riesgo la estabilidad familiar.' },
+      { texto: 'Si tienes activos por 80.000 € y deudas por 45.000 €, ¿cuál es tu patrimonio neto?', opciones: ['35.000 €', '45.000 €', '125.000 €'], correcta: 0, explicacion: 'El patrimonio neto se calcula restando las deudas a los activos: 80.000 € − 45.000 €.' },
+      { texto: '¿Qué describe mejor un fondo de emergencia?', opciones: ['Dinero líquido para 3–6 meses de gastos esenciales', 'Una inversión para buscar máxima rentabilidad', 'Dinero reservado para ocio'], correcta: 0, explicacion: 'Es un colchón líquido y seguro para imprevistos. Como orientación, cubre entre tres y seis meses de gastos indispensables y no está destinado a invertir.' },
+      { texto: '¿Cuál es el orden más sensato para mejorar la salud financiera?', opciones: ['Invertir primero y calcular después', 'Crear margen, controlar deuda, formar el airbag y aumentar activos', 'Aumentar el consumo para motivarse'], correcta: 1, explicacion: 'El orden protege el plan: primero se crea margen y estabilidad; después se construye patrimonio con más seguridad.' },
+    ];
+  }
+  renderVals() {
+    const euro = (v) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(v);
+    const caps = this.capitulosData();
+    const seed = this.props.estadoProgreso ?? 'nuevo';
+    const capIdx = this.state.capitulo ?? (Number(this.props.capituloInicial ?? '1') - 1);
+    const cap = caps[capIdx] || caps[0];
+    const esC1 = capIdx === 0;
+    const seedCompletadas = seed === 'completado' ? ['video', 'notes', 'map', 'case', 'quiz'] : seed === 'a-medias' ? ['video', 'notes'] : [];
+    const completadas = this.state.completadas ?? (esC1 ? seedCompletadas : []);
+    const marcar = (id) => this.setState({ completadas: completadas.includes(id) ? completadas : completadas.concat([id]) });
+    const dinero = this.state.dinero ?? { income: 3200, essentials: 1750, flexible: 650, debtPayment: 250, savings: 3000, assets: 18500, debt: 9200 };
+    const calculado = this.state.calculado ?? (seed === 'completado' && esC1);
+    const casoSel = this.state.casoSel !== undefined ? this.state.casoSel : (seed === 'completado' && esC1 ? 2 : null);
+    const quizSel = this.state.quizSel ?? (seed === 'completado' && esC1 ? { 0: 1, 1: 1, 2: 0, 3: 0, 4: 1 } : {});
+    const quizComprobado = this.state.quizComprobado ?? (seed === 'completado' && esC1);
+    const gastoTotal = dinero.essentials + dinero.flexible + dinero.debtPayment;
+    const margen = dinero.income - gastoTotal;
+    const patrimonio = dinero.assets + dinero.savings - dinero.debt;
+    const baseEsencial = dinero.essentials + dinero.debtPayment;
+    const meses = baseEsencial > 0 ? dinero.savings / baseEsencial : 0;
+    const objetivo3m = baseEsencial * 3;
+    const pesoDeseos = gastoTotal > 0 ? Math.round((dinero.flexible / gastoTotal) * 100) : 0;
+    const prioridad = margen <= 0 ? 'Crear un margen estable entre ingresos y gastos'
+      : dinero.debt > 0 && meses < 1 ? 'Combinar un pequeño airbag con la reducción de deuda cara'
+      : dinero.debt > 0 ? 'Revisar el coste de tus deudas y reducir las más caras'
+      : meses < 3 ? 'Completar un fondo de emergencia de al menos tres meses'
+      : 'Aumentar activos y asignar el margen a tus objetivos';
+    const progreso = Math.round((completadas.length / 5) * 100);
+    const preguntasBase = this.preguntasQuiz();
+    const puntos = preguntasBase.reduce((total, p, i) => total + (quizSel[i] === p.correcta ? 1 : 0), 0);
+    const campo = (id, etiqueta, ayuda) => ({ etiqueta, ayuda, valor: dinero[id], cambiar: (e) => this.setState({ dinero: Object.assign({}, dinero, { [id]: Math.max(0, Number(e.target.value) || 0) }), calculado: false }) });
+    const etiquetasPaso = ['Introducción', 'Clase y apuntes', 'Diagnóstico de 4 pilares', 'Caso práctico', 'Comprobación'];
+    const idsPaso = ['video', 'notes', 'map', 'case', 'quiz'];
+    const destinos = ['#leccion-video', '#apuntes', '#leccion-mapa', '#leccion-caso', '#leccion-quiz'];
+    return {
+      capitulos: caps.map((c, i) => ({
+        numero: c.numero, titulo: c.titulo,
+        estado: i === capIdx ? 'Capítulo actual' : 'Contenido disponible',
+        ariaCurrent: i === capIdx ? 'page' : undefined,
+        abrir: () => this.setState({ capitulo: i, completadas: i === 0 ? completadas : [], quizSel: {}, quizComprobado: false, casoSel: null, calculado: false }),
+        claseTab: 'curso-tab' + (i === capIdx ? ' is-active' : ''),
+      })),
+      metaCapitulo: 'Capítulo ' + Number(cap.numero) + ' de 5',
+      numeroCapitulo: String(Number(cap.numero)).padStart(2, '0'),
+      tituloCapitulo: cap.titulo,
+      subtituloCapitulo: cap.subtitulo,
+      introCapitulo: cap.intro,
+      infografiaImg: React.createElement('img', { src: cap.img, alt: cap.alt, style: { display: 'block', width: '100%', height: 'auto' } }),
+      infografiaSrc: cap.img,
+      infografiaAlt: cap.alt,
+      infografiaKicker: 'Infografía del capítulo ' + cap.numero,
+      apuntesKicker: '02 · Clase y apuntes · Capítulo ' + cap.numero,
+      descargaTexto: 'Descargar PDF del capítulo ' + cap.numero,
+      descargaHref: cap.pdf,
+      videoTitulo: cap.videoTitulo,
+      videoDescripcion: cap.videoDesc,
+      videoSrc: 'https://www.youtube-nocookie.com/embed/' + cap.video + '?autoplay=1&rel=0',
+      videoHref: 'https://www.youtube.com/watch?v=' + cap.video,
+      progresoTexto: progreso + ' %',
+      notaSeguimiento: esC1 ? 'Las marcas de actividad son temporales: se reinician al recargar o cambiar de capítulo. No se guarda el progreso.' : 'Este capítulo ofrece vídeo y apuntes, sin seguimiento de actividades.',
+      progresoAncho: progreso + '%',
+      pasos: (esC1 ? idsPaso : idsPaso.slice(0, 2)).map((id, i) => ({
+        etiqueta: etiquetasPaso[i], destino: destinos[i],
+        marca: (esC1 && completadas.includes(id)) ? '✓' : '',
+        claseCheck: 'curso-check' + ((esC1 && completadas.includes(id)) ? ' is-done' : ''),
+      })),
+      esCapituloUno: esC1,
+      noEsCapituloUno: !esC1,
+      marcarVideo: () => { if (esC1) marcar('video'); },
+      textoBotonVideo: (esC1 && completadas.includes('video')) ? '✓ Vídeo completado' : 'Marcar vídeo como visto →',
+      claseBotonVideo: 'curso-btn-marcar curso-btn-marcar--video' + ((esC1 && completadas.includes('video')) ? ' is-done' : ''),
+      apuntes: this.apuntesCapitulo1().map((n, i) => ({
+        numero: '0' + (i + 1), titulo: n.titulo, resumen: n.parrafos[0], abierta: i === 0,
+        parrafos: n.parrafos.map((texto) => ({ texto })),
+        tieneVinetas: !!n.vinetas, vinetas: (n.vinetas || []).map((texto) => ({ texto })),
+        tieneFormula: !!n.formula, formula: n.formula || '',
+        tieneApunte: !!n.apunte, apunteTitulo: n.apunteTitulo || '', apunte: n.apunte || '',
+      })),
+      directrices: this.directricesCapitulo1().map((texto, i) => ({ numero: '0' + (i + 1), texto })),
+      marcarApuntes: () => { if (esC1) marcar('notes'); },
+      textoBotonApuntes: (esC1 && completadas.includes('notes')) ? '✓ Apuntes completados' : 'He leído estos apuntes →',
+      claseBotonApuntes: 'curso-btn-marcar' + ((esC1 && completadas.includes('notes')) ? ' is-done' : ''),
+      camposFlujo: [campo('income', 'Ingresos netos', 'Lo que entra cada mes'), campo('essentials', 'Gastos esenciales', 'Vivienda, alimentación, suministros…'), campo('flexible', 'Deseos y gastos prescindibles', 'Ocio, restaurantes, viajes, suscripciones…'), campo('debtPayment', 'Cuotas de deuda', 'Pagos mínimos mensuales')],
+      camposFoto: [campo('savings', 'Ahorro disponible', 'Dinero líquido y accesible'), campo('assets', 'Otros activos', 'Inversiones y bienes, sin incluir el ahorro anterior'), campo('debt', 'Deuda pendiente', 'Hipoteca, préstamos, tarjetas…')],
+      calcularMapa: () => { this.setState({ calculado: true }); marcar('map'); },
+      mapaCalculado: calculado,
+      mapaTitulo: calculado ? 'Este es tu mapa' : 'Completa los datos',
+      mapaDescripcion: calculado ? 'Las cifras son orientativas. Úsalas para identificar la primera prioridad.' : 'Al calcular verás los cuatro pilares de tu situación actual.',
+      resultados: [
+        { etiqueta: 'Margen mensual', valor: calculado ? euro(margen) : '—', ayuda: calculado ? (margen > 0 ? 'Tu economía genera espacio.' : 'Conviene recuperar equilibrio.') : 'Ingresos menos gastos' },
+        { etiqueta: 'Peso de los deseos', valor: calculado ? pesoDeseos + ' %' : '—', ayuda: calculado ? 'Parte del gasto que puedes revisar con mayor libertad.' : 'Deseos frente al gasto total' },
+        { etiqueta: 'Patrimonio neto', valor: calculado ? euro(patrimonio) : '—', ayuda: calculado ? 'Ahorro y activos menos deudas.' : 'Lo que tienes menos lo que debes' },
+        { etiqueta: 'Airbag familiar', valor: calculado ? meses.toFixed(1).replace('.', ',') : '—', ayuda: calculado ? 'Meses cubiertos · objetivo inicial: ' + euro(objetivo3m) : 'Ahorro líquido frente a gastos indispensables' },
+      ],
+      prioridad,
+      cifrasCaso: [
+        { etiqueta: 'Necesidades', valor: '1.900 €' }, { etiqueta: 'Deseos', valor: '800 €' }, { etiqueta: 'Cuotas de deuda', valor: '300 €' },
+        { etiqueta: 'Margen actual', valor: '400 €' }, { etiqueta: 'Ahorro líquido', valor: '1.500 €' }, { etiqueta: 'Patrimonio neto', valor: '3.500 €' },
+      ],
+      opcionesCaso: [
+        'Invertir inmediatamente todos sus ahorros.',
+        'Mantener todos los gastos y esperar a que aumenten los ingresos.',
+        'Reducir deseos, conservar un colchón inicial y repartir el nuevo margen entre la deuda cara y el fondo de emergencia.',
+        'Utilizar el ahorro para aumentar el gasto mensual.',
+      ].map((texto, i) => {
+        const sel = casoSel === i;
+        const correctaVisible = casoSel !== null && i === 2;
+        return {
+          letra: String.fromCharCode(65 + i), texto,
+          seleccionada: sel,
+          elegir: () => { this.setState({ casoSel: i }); marcar('case'); },
+          clase: 'curso-opcion' + (correctaVisible ? ' is-correct' : sel ? ' is-selected' : ''),
+          claseLetra: 'curso-opcion__letra' + (correctaVisible ? ' is-correct' : ''),
+        };
+      }),
+      casoRespondido: casoSel !== null,
+      tituloFeedbackCaso: casoSel === 2 ? 'Buena decisión' : 'Revísalo una vez más',
+      claseFeedbackCaso: 'curso-feedback' + (casoSel === 2 ? ' is-correct' : ''),
+      preguntas: preguntasBase.map((p, qi) => ({
+        numero: String(qi + 1), texto: p.texto, grupo: 'pregunta-' + qi,
+        explicacion: p.explicacion, mostrarExplicacion: quizComprobado,
+        opciones: p.opciones.map((texto, oi) => ({
+          texto, seleccionada: quizSel[qi] === oi,
+          marcar: () => this.setState({ quizSel: Object.assign({}, quizSel, { [qi]: oi }), quizComprobado: false }),
+          clase: 'curso-radio' + (quizComprobado && oi === p.correcta ? ' is-correct' : quizSel[qi] === oi ? ' is-selected' : ''),
+        })),
+      })),
+      quizIncompleto: Object.keys(quizSel).length !== preguntasBase.length,
+      comprobarQuiz: () => { this.setState({ quizComprobado: true }); marcar('quiz'); },
+      claseBotonQuiz: 'curso-btn-quiz' + (Object.keys(quizSel).length !== preguntasBase.length ? ' is-disabled' : ''),
+      quizComprobado,
+      puntuacion: puntos + '/5',
+      tituloQuiz: puntos === 5 ? 'Has comprendido los cuatro pilares' : 'Buen comienzo. Revisa las explicaciones.',
+      capituloCompleto: esC1 && progreso === 100,
+      iconoCierre: esC1 && progreso === 100 ? '✓' : '◎',
+      kickerCierre: esC1 ? (progreso === 100 ? 'Capítulo completado' : 'Tu siguiente paso') : 'Contenido disponible',
+      tituloCierre: esC1 ? (progreso === 100 ? 'Ya tienes tu punto de partida' : 'Te falta completar ' + (5 - completadas.length) + (5 - completadas.length === 1 ? ' parte' : ' partes')) : 'Continúa con la clase y los apuntes',
+      textoCierre: esC1 ? (progreso === 100 ? 'Has recorrido las cinco actividades de este capítulo. Estas marcas no se guardan ni acreditan un nivel de conocimiento.' : 'Puedes recorrer las cinco actividades a tu ritmo. Las marcas son temporales y no se guarda el progreso.') : 'Consulta el vídeo y los apuntes o elige otro capítulo en el programa. No hay actividades marcables en este capítulo.',
+      claseCierre: 'curso-cierre' + (esC1 && progreso === 100 ? ' is-complete' : ''),
+      reiniciar: () => this.setState({ completadas: [], calculado: false, casoSel: null, quizSel: {}, quizComprobado: false, dinero: undefined }),
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Las guías fiscales de NUVIA tienen ahora una página propia: calendario fiscal, fiscalidad del ahorro y sucesiones y donaciones.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/fiscalidad.html">
+<title>Guías de Mis impuestos | NUVIA</title>
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+
+<!-- ══ REENVÍO ═══════════════════════════════════════════════════════════════
+     Esta página fue durante un tiempo la cáscara de un iframe que servía las
+     tres guías fiscales del núcleo. Cada guía tiene ya una página propia, con
+     su título escrito en el HTML publicado. Se conserva el fichero porque los
+     enlaces con ?guia= llegaron a publicarse: reenvía al destino correcto y,
+     sin JavaScript, muestra las tres puertas.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  var DESTINOS = {
+    calendar: 'guia-calendario.html',
+    savings: 'guia-ahorro.html',
+    inheritance: 'guia-sucesiones.html'
+  };
+  var destino = DESTINOS[new URLSearchParams(window.location.search).get('guia')] || 'fiscalidad.html#guias';
+  window.location.replace(destino);
+})();
+</script>
+</head>
+<body>
+
+<div class="nuvia-page">
+  <main id="contenido" class="nv-container gu-section">
+    <h1 class="gu-title">Las guías de Mis impuestos han cambiado de dirección</h1>
+    <p class="gu-lead">Cada guía tiene ahora su propia página. Si no se te redirige automáticamente, elige la que buscabas.</p>
+
+    <nav class="gt-tabs" aria-label="Guías de Mis impuestos">
+      <a href="guia-calendario.html">Calendario fiscal</a>
+      <a href="guia-ahorro.html">Fiscalidad del ahorro</a>
+      <a href="guia-sucesiones.html">Sucesiones y donaciones</a>
+    </nav>
+
+    <p class="gu-rule-top"><a href="fiscalidad.html#guias">Volver a Mis impuestos</a></p>
+  </main>
+</div>
+
+</body>
+</html>

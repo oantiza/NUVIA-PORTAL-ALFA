@@ -1,0 +1,82 @@
+// Formateadores es-ES para cifras financieras
+import { financialNumber } from './financial.js';
+const SYM = { USD: '$', EUR: '€', GBP: '£', GBX: 'p', JPY: '¥', CHF: 'CHF', CAD: 'C$', AUD: 'A$', HKD: 'HK$', SEK: 'kr', NOK: 'kr', DKK: 'kr' };
+
+export function cur(c) { return SYM[c] || (c ? `${c} ` : ''); }
+
+export function fmtNum(x, dec = 2) {
+  if (financialNumber(x) === null) return '—';
+  return Number(x).toLocaleString('es-ES', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+}
+
+export function fmtPrice(x, currency, dec = 2) {
+  if (financialNumber(x) === null) return '—';
+  const s = cur(currency);
+  return currency === 'USD' || currency === 'GBP'
+    ? `${s}${fmtNum(x, dec)}`
+    : `${fmtNum(x, dec)} ${s}`.trim();
+}
+
+export function fmtPct(x, dec = 2, signed = true) {
+  if (financialNumber(x) === null) return '—';
+  const n = Number(x);
+  const sign = signed && n > 0 ? '+' : '';
+  return `${sign}${fmtNum(n, dec)} %`;
+}
+
+/** Cifras grandes: B (billones), mm (miles de millones), M (millones) */
+export function fmtBig(x, currency) {
+  if (financialNumber(x) === null) return '—';
+  const n = Number(x);
+  const abs = Math.abs(n);
+  let v, suf;
+  if (abs >= 1e12) { v = n / 1e12; suf = 'B'; }
+  else if (abs >= 1e9) { v = n / 1e9; suf = 'mm'; }
+  else if (abs >= 1e6) { v = n / 1e6; suf = 'M'; }
+  else if (abs >= 1e3) { v = n / 1e3; suf = 'k'; }
+  else { v = n; suf = ''; }
+  const s = cur(currency);
+  return `${s}${v.toLocaleString('es-ES', { maximumFractionDigits: 2 })} ${suf}`.trim();
+}
+
+export function fmtDate(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  if (Number.isNaN(dt.getTime())) return String(d);
+  return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+}
+
+export function fmtDateTime(d) {
+  if (!d) return '—';
+  const dt = new Date(d);
+  if (Number.isNaN(dt.getTime())) return String(d);
+  return dt.toLocaleString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+}
+
+export function fmtRatio(x, dec = 1) {
+  if (financialNumber(x) === null) return '—';
+  return `${fmtNum(x, dec)}×`;
+}
+
+export function clsPN(x) {
+  if (financialNumber(x) === null) return '';
+  return Number(x) >= 0 ? 'pos' : 'neg';
+}
+
+/**
+ * Diferencia porcentual de `a` respecto de `b`. Hecho aritmético: mide la
+ * relación entre dos cifras publicadas y no la califica. Se usa para situar
+ * el precio frente a sus medias sin emitir un estado ni una señal.
+ */
+export function difPct(a, b) {
+  const x = Number(a);
+  const y = Number(b);
+  if (a == null || b == null || !Number.isFinite(x) || !Number.isFinite(y) || y === 0) return null;
+  return ((x - y) / y) * 100;
+}
+
+/** Convierte una fracción EODHD (o 'NA') a porcentaje, o null si no hay dato. */
+export function pct100(x) {
+  const n = financialNumber(x);
+  return n === null || !Number.isFinite(n * 100) ? null : n * 100;
+}

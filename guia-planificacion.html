@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Hoja de ruta de NUVIA para planificar la jubilación: objetivos, ingresos, patrimonio y decisiones clave.">
+
+<!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/guia-planificacion.html -->
+<link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-LAB/guia-planificacion.html">
+
+<!-- NUVIA SOCIAL META: START -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="NUVIA">
+<meta property="og:title" content="NUVIA · Planificación de la jubilación">
+<meta property="og:description" content="Hoja de ruta de NUVIA para planificar la jubilación: objetivos, ingresos, patrimonio y decisiones clave.">
+<meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/guia-planificacion.html">
+<meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta property="og:image:type" content="image/webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUVIA · Planificación de la jubilación">
+<meta name="twitter:description" content="Hoja de ruta de NUVIA para planificar la jubilación: objetivos, ingresos, patrimonio y decisiones clave.">
+<meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp">
+<meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
+<!-- NUVIA SOCIAL META: END -->
+
+<title>NUVIA · Planificación de la jubilación</title>
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
+<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
+<link rel="stylesheet" href="estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="estilos/nuvia-components.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
+     loadReactUmd() empieza comprobando si ya están en window y, si lo
+     están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
+<script defer src="js/vendor/react.production.min.js"></script>
+<script defer src="js/vendor/react-dom.production.min.js"></script>
+<script defer src="support.js"></script>
+<script defer src="nuvia-site-unified.js"></script>
+</head>
+<body class="nuvia-design-lab">
+<x-dc>
+<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
+
+
+
+<div class="nuvia-page">
+
+  <!-- ============ HEADER ============ -->
+  <header data-screen-label="Header" class="nuvia-site-header">
+    <div class="nuvia-site-header__inner">
+      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
+        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
+             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
+      </a>
+            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
+        <details class="nuvia-site-nav__topics" data-nav-area="economia">
+          <summary>Economía y Finanzas</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="economia.html">Portada de Economía</a>
+            <a href="mercados.html">Mercados y noticias</a>
+            <a href="cartera.html">Cartera</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
+          <summary>Patrimonio</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="patrimonio.html">Portada de Patrimonio</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="jubilacion.html">Jubilación</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
+          <summary>Familia, Salud y Bienestar</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="bienestar.html">Portada de Bienestar</a>
+            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
+          </div>
+        </details>
+        <details class="nuvia-site-nav__topics" data-nav-area="academy">
+          <summary>Academia NUVIA</summary>
+          <div class="nuvia-site-nav__menu">
+            <a href="academia.html">Portada de Academia</a>
+            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
+            <a href="academia.html?tab=cursos">Cursos</a>
+          </div>
+        </details>
+        <a href="lecturas.html">Lecturas con Criterio</a>
+        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
+        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ============ CABECERA ============ -->
+    <section id="guia" data-screen-label="Cabecera guía" class="nv-hero nv-hero--institutional gu-hero">
+      <div class="nv-container gu-section gp-hero__grid">
+<nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="temas.html">Patrimonio</a></li><li><a href="jubilacion.html">Jubilación</a></li><li><span aria-current="page">Guía de planificación</span></li></ol></nav>
+        <div class="gp-hero__copy">
+          <span class="gp-badge">Ruta práctica · Paso a paso</span>
+          <p class="gp-hero__label">Guía NUVIA · Jubilación</p>
+          <h1 class="gp-hero__title">Tu jubilación necesita una hoja de ruta, no una cifra aislada</h1>
+          <p class="gu-lead">Ordena objetivos, ingresos, gastos y patrimonio. Al terminar tendrás una lista clara de decisiones y próximos pasos para llevar al simulador.</p>
+        </div>
+        <div class="gp-hero__aside">
+          <svg class="gu-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          <h2 class="gp-hero__sub">Tu avance en esta guía</h2>
+          <div class="gp-progress__row">
+            <p class="gp-hero__note">Plan completado</p>
+            <p aria-live="polite" class="gp-figure">{{ progresoTotal }} %</p>
+          </div>
+          <div role="progressbar" aria-label="Progreso total de la guía" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progresoTotalNum }}" class="gp-progress">
+            <div class="gp-progress__fill" style="width:{{ progresoTotal }}%"></div>
+          </div>
+          <p class="gu-footnote-dark">No se guardan datos personales. Tu selección permanece únicamente mientras mantengas abierta esta página.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RECORRIDO ============ -->
+    <section data-screen-label="Recorrido" aria-label="Recorrido de las herramientas de jubilación" class="gu-bar">
+      <div class="nv-container gu-section">
+        <div class="gp-phase gp-phase--divided">
+          <span class="gu-num">01</span>
+          <div><p class="gu-strong">Ordenar</p><p class="gu-muted">Esta guía estructura las decisiones.</p></div>
+        </div>
+        <div class="gp-phase gp-phase--divided">
+          <span class="gu-num">02</span>
+          <div><p class="gu-strong">Calcular</p><p class="gu-muted">El simulador convierte el plan en escenarios.</p></div>
+        </div>
+        <div class="gp-phase">
+          <span class="gu-num">03</span>
+          <div><p class="gu-strong">Ejecutar</p><p class="gu-muted">La guía fiscal prepara el rescate.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 PUNTO DE PARTIDA ============ -->
+    <section data-screen-label="01 Punto de partida" class="nv-container">
+      <p class="gu-kicker">01 · Punto de partida</p>
+      <h2 class="gu-title">Sitúa tu momento y reúne las piezas básicas</h2>
+      <p class="gu-text">No necesitas conocer todas las respuestas. Este diagnóstico identifica qué tienes preparado y qué información conviene obtener antes de hacer números.</p>
+
+      <p class="gu-strong">¿A qué distancia está tu jubilación?</p>
+      <div class="gu-grid-4">
+        <sc-for list="{{ horizontes }}" as="h" hint-placeholder-count="4">
+          <button type="button" onClick="{{ h.abrir }}" aria-pressed="{{ h.pressed }}" class="{{ h.clase }}">
+            <span class="gp-phase__label">{{ h.label }}</span>
+            <span class="gp-phase__title">{{ h.period }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ haySeleccion }}" hint-placeholder-val="{{ false }}">
+        <aside class="gp-detail">
+          <div>
+            <p class="gu-kicker">Prioridad de esta etapa</p>
+            <p class="gu-title--card">{{ prioridad }}</p>
+          </div>
+          <p class="gu-text">{{ descripcionHorizonte }}</p>
+        </aside>
+      </sc-if>
+
+      <div class="gp-summary">
+        <div class="gp-dark-card">
+          <svg class="gu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="m9 14 2 2 4-4"></path></svg>
+          <h3 class="gu-strong">Información disponible</h3>
+          <p class="gu-text">Marca solo aquello que ya conoces o puedes documentar.</p>
+          <p class="gp-figure--xl">{{ progresoInfo }} %</p>
+          <p class="gp-dark-card__label">del punto de partida preparado</p>
+        </div>
+        <div class="gu-grid-2">
+          <sc-for list="{{ piezas }}" as="p" hint-placeholder-count="6">
+            <button type="button" role="checkbox" aria-checked="{{ p.checked }}" onClick="{{ p.abrir }}" class="{{ p.clase }}">
+              <span class="{{ p.caja }}">{{ p.marca }}</span>
+              <span class="gu-left">
+                <span class="gu-block-strong">{{ p.label }}</span>
+                <span class="gu-block-muted">{{ p.detail }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 HOJA DE RUTA ============ -->
+    <section data-screen-label="02 Hoja de ruta" class="nv-container">
+      <p class="gu-kicker">02 · Hoja de ruta</p>
+      <h2 class="gu-title">Seis decisiones, en el orden adecuado</h2>
+      <p class="gu-text">Recorre cada etapa y utiliza las preguntas como preparación para una conversación familiar o profesional.</p>
+
+      <div class="gu-two gu-two--b">
+        <div class="gu-col-divided">
+          <sc-for list="{{ pasos }}" as="p" hint-placeholder-count="6">
+            <button type="button" onClick="{{ p.abrir }}" aria-pressed="{{ p.pressed }}" class="{{ p.clase }}">
+              <span class="gp-step__num {{ p.numClase }}">{{ p.number }}</span>
+              <span class="gu-toggle__title">{{ p.title }}</span>
+              <span aria-hidden="true" class="gu-toggle__chevron">›</span>
+            </button>
+          </sc-for>
+        </div>
+        <article aria-live="polite" class="gu-pane gu-pane--lg">
+          <p class="gu-kicker">{{ pasoEyebrow }}</p>
+          <h3 class="gu-strong">{{ pasoTitulo }}</h3>
+          <p class="gu-text">{{ pasoDescripcion }}</p>
+          <div class="gu-divide-top">
+            <p class="gu-text">Preguntas que debes responder</p>
+            <sc-for list="{{ pasoPreguntas }}" as="q" hint-placeholder-count="3">
+              <p class="gu-item--soft"><span class="gu-accent">✓</span>{{ q }}</p>
+            </sc-for>
+          </div>
+          <div class="gu-callout">
+            <p class="gu-kicker">Resultado de este paso</p>
+            <p class="gu-text">{{ pasoResultado }}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 03 ETAPAS ============ -->
+    <section data-screen-label="03 Etapas" class="nv-container">
+      <p class="gu-kicker">03 · Planificación por etapas</p>
+      <h2 class="gu-title">Las prioridades cambian a medida que se acerca la fecha</h2>
+      <div class="gu-grid-4">
+        <article class="gu-card--split">
+          <p class="gu-num">01</p>
+          <p class="gu-kicker">Construcción</p>
+          <h3 class="gu-title gu-title--xs">Más de 10 años</h3>
+          <p class="gu-text">Objetivo y disciplina de ahorro.</p>
+        </article>
+        <article class="gu-card--split">
+          <p class="gu-num">02</p>
+          <p class="gu-kicker">Concreción</p>
+          <h3 class="gu-title gu-title--xs">Entre 5 y 10 años</h3>
+          <p class="gu-text">Ingresos, patrimonio y brecha.</p>
+        </article>
+        <article class="gu-card--split">
+          <p class="gu-num">03</p>
+          <p class="gu-kicker">Preparación</p>
+          <h3 class="gu-title gu-title--xs">Menos de 5 años</h3>
+          <p class="gu-text">Liquidez y calendario de cobro.</p>
+        </article>
+        <article class="gu-pane--inset">
+          <p class="gu-num">04</p>
+          <p class="gu-kicker">Seguimiento</p>
+          <h3 class="gu-title gu-title--xs">Ya jubilado/a</h3>
+          <p class="gu-text">Sostenibilidad y revisión anual.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 04 RIESGOS ============ -->
+    <section data-screen-label="04 Riesgos" class="nv-container">
+      <p class="gu-kicker">04 · Riesgos que conviene anticipar</p>
+      <h2 class="gu-title">Un buen plan también prepara lo inesperado</h2>
+      <div class="gu-grid-3">
+        <sc-for list="{{ riesgos }}" as="r" hint-placeholder-count="6">
+          <article class="gu-card">
+            <span class="gu-mark">{{ r.inicial }}</span>
+            <h3 class="gu-title--card">{{ r.titulo }}</h3>
+            <p class="gu-muted">{{ r.descripcion }}</p>
+            <p class="gu-rule-top"><strong class="gu-strong">Cómo prepararlo:</strong> {{ r.respuesta }}</p>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <!-- ============ 05 PLAN EN UNA PÁGINA ============ -->
+    <section data-screen-label="05 Plan en una página" class="nv-container">
+      <div class="gu-two gu-two--c">
+        <div class="gu-card--split">
+          <svg class="gu-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+          <p class="gu-kicker">05 · Tu plan en una página</p>
+          <h2 class="gu-strong">Marca decisiones y genera tu resumen</h2>
+          <p class="gu-muted">Utiliza este control como agenda de trabajo. Puedes imprimir el resultado aunque todavía tengas tareas pendientes.</p>
+          <div class="gu-divide-top">
+            <p class="gu-kicker">Próxima acción sugerida</p>
+            <p aria-live="polite" class="gu-strong">{{ proximaAccion }}</p>
+          </div>
+        </div>
+        <div class="gu-pane gu-pane--md">
+          <div class="gu-grid-2">
+            <sc-for list="{{ acciones }}" as="a" hint-placeholder-count="8">
+              <button type="button" role="checkbox" aria-checked="{{ a.checked }}" onClick="{{ a.abrir }}" class="gu-toggle">
+                <span class="{{ a.caja }}">{{ a.marca }}</span>
+                <span class="{{ a.texto }}">{{ a.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <button type="button" onClick="{{ imprimir }}" class="gu-chip-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Imprimir mi hoja de ruta
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGUIENTES PASOS ============ -->
+    <section data-screen-label="Siguientes pasos" aria-label="Siguientes pasos" class="nv-container gu-section">
+      <article class="gu-aside-tint">
+        <p class="gu-muted">Siguiente paso · Calcular</p>
+        <h2 class="gu-title gu-title--sm">Convierte la hoja de ruta en escenarios</h2>
+        <p class="gu-text">Introduce tus datos en el simulador para estimar ingresos, necesidades y brecha.</p>
+        <a href="jubilacion.html" class="nv-btn nv-btn--secondary gu-cta">Abrir simulador <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="gu-card">
+        <p class="gu-kicker">Último paso · Ejecutar</p>
+        <h2 class="gu-title gu-title--sm">Prepara la forma de rescatar tu EPSV</h2>
+        <p class="gu-text">Compara capital, renta y modalidad mixta, junto con su tratamiento fiscal en Bizkaia.</p>
+        <a href="guia-fiscal.html" class="nv-btn nv-btn--soft gu-cta">Ver fiscalidad y rescate <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+
+    <section data-screen-label="Aviso" class="nv-container gu-section">
+      <div class="gu-quote">
+        <span class="gu-accent">!</span>
+        <p class="gu-text">Esta guía es educativa y orientativa. No constituye asesoramiento financiero, fiscal o jurídico y debe adaptarse a la situación personal, familiar y patrimonial de cada usuario.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+    <footer data-screen-label="Footer" class="nuvia-site-footer">
+    <div class="nuvia-site-footer__inner">
+      <div class="nuvia-site-footer__grid">
+        <div class="nuvia-site-footer__brand">
+          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
+               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
+          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="economia.html">Economía y Finanzas</a>
+            <a href="patrimonio.html">Patrimonio</a>
+            <a href="bienestar.html">Familia, Salud y Bienestar</a>
+            <a href="academia.html">Academia NUVIA</a>
+            <a href="lecturas.html">Lecturas con Criterio</a>
+          </div>
+        </div>
+        <div>
+          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
+          <div class="nuvia-site-footer__links">
+            <a href="cartera.html">Cartera y analítica</a>
+            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
+            <a href="vivienda.html">Vivienda y coste de vida</a>
+            <a href="fiscalidad.html">Impuestos</a>
+            <a href="jubilacion.html">Jubilación</a>
+          </div>
+        </div>
+        <div class="nuvia-site-footer__info-column">
+          <h2 class="nuvia-site-footer__heading">Información</h2>
+          <div class="nuvia-site-footer__info">
+            <a href="colaboradores.html">Colaboradores</a>
+            <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <span>Contenido educativo e informativo.</span>
+            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
+          </div>
+        </div>
+      </div>
+      <div class="nuvia-site-footer__legal">
+        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
+        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</div>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = { horizonte: null, listas: {}, hechas: {}, paso: 0 };
+  datos() {
+    if (this._d) return this._d;
+    this._d = {
+      horizontes: [
+        { id: 'more-than-10', period: 'Más de 10 años', label: 'Construcción', priority: 'Objetivo y disciplina de ahorro', description: 'Define el nivel de vida deseado, construye el hábito de ahorro y revisa el plan cuando cambie tu situación.' },
+        { id: 'five-to-10', period: 'Entre 5 y 10 años', label: 'Concreción', priority: 'Ingresos, patrimonio y brecha', description: 'Afina la pensión esperada, ordena el patrimonio y cuantifica la diferencia respecto a tus gastos futuros.' },
+        { id: 'less-than-5', period: 'Menos de 5 años', label: 'Preparación', priority: 'Liquidez y calendario de cobro', description: 'Reduce incertidumbres, prepara documentación y coordina pensión, ahorro privado y necesidades de liquidez.' },
+        { id: 'retired', period: 'Ya jubilado/a', label: 'Seguimiento', priority: 'Sostenibilidad y revisión anual', description: 'Contrasta el gasto real con lo previsto y adapta los cobros a la evolución familiar, patrimonial y fiscal.' },
+      ],
+      piezas: [
+        { id: 'retirement-age', label: 'Edad o fecha objetivo', detail: 'Cuándo te gustaría iniciar esta etapa.' },
+        { id: 'public-pension', label: 'Estimación de pensión pública', detail: 'Una cifra actualizada o un rango razonable.' },
+        { id: 'savings', label: 'Ahorro y previsión acumulados', detail: 'EPSV, planes y otros recursos destinados a jubilación.' },
+        { id: 'expenses', label: 'Presupuesto de vida futura', detail: 'Gastos esenciales, discrecionales y extraordinarios.' },
+        { id: 'housing', label: 'Vivienda y deudas previstas', detail: 'Hipoteca, alquiler, reformas o cambio de residencia.' },
+        { id: 'family', label: 'Compromisos familiares', detail: 'Personas dependientes, ayuda a hijos o legado.' },
+      ],
+      acciones: [
+        { id: 'objective', label: 'He definido cómo quiero vivir la jubilación.' },
+        { id: 'income-map', label: 'He reunido todas mis fuentes de ingresos futuros.' },
+        { id: 'expense-map', label: 'He separado gastos esenciales y discrecionales.' },
+        { id: 'gap', label: 'He estimado la diferencia entre ingresos y gastos.' },
+        { id: 'liquidity', label: 'He previsto una reserva para imprevistos.' },
+        { id: 'longevity', label: 'He considerado longevidad, salud y dependencia.' },
+        { id: 'withdrawal', label: 'He comparado capital, renta y modalidad mixta.' },
+        { id: 'review', label: 'He fijado una fecha anual para revisar el plan.' },
+      ],
+      pasos: [
+        { number: '01', eyebrow: 'Visión personal', title: 'Define tu jubilación', description: 'La planificación empieza por una vida concreta, no por una cifra aislada.', questions: ['¿A qué edad quieres jubilarte?', '¿Dónde y cómo imaginas tu vida cotidiana?', '¿Qué compromisos familiares seguirán activos?'], outcome: 'Una fecha objetivo y una descripción sencilla del nivel de vida deseado.' },
+        { number: '02', eyebrow: 'Fuentes de ingreso', title: 'Construye tu mapa de ingresos', description: 'Reúne todos los flujos que podrán sostener el presupuesto de jubilación.', questions: ['Pensión pública estimada', 'EPSV y otros sistemas de previsión', 'Alquileres, rentas u otros ingresos recurrentes'], outcome: 'Una visión mensual y anual de los ingresos previsibles.' },
+        { number: '03', eyebrow: 'Coste de vida', title: 'Estima tus gastos futuros', description: 'Separa el presupuesto estable de los gastos que pueden aparecer de forma puntual.', questions: ['Gastos esenciales del hogar', 'Ocio, viajes y ayuda familiar', 'Salud, dependencia, reformas e imprevistos'], outcome: 'Un presupuesto base, otro deseado y una reserva extraordinaria.' },
+        { number: '04', eyebrow: 'Suficiencia', title: 'Identifica la brecha', description: 'Compara ingresos y gastos para saber qué debe cubrir tu ahorro acumulado.', questions: ['Diferencia mensual entre ingresos y gastos', 'Duración prudente del horizonte', 'Efecto de la inflación sobre el presupuesto'], outcome: 'Una necesidad anual que puedas llevar al simulador de NUVIA.' },
+        { number: '05', eyebrow: 'Arquitectura patrimonial', title: 'Ordena el patrimonio', description: 'Asigna una función clara a la liquidez, la vivienda y el ahorro de largo plazo.', questions: ['Reserva para los próximos años', 'Deudas que seguirán vigentes', 'Patrimonio destinado a uso, renta o legado'], outcome: 'Un mapa patrimonial por función, sin necesidad de elegir productos concretos.' },
+        { number: '06', eyebrow: 'Ejecución', title: 'Prepara el calendario de cobro', description: 'Coordina las necesidades de liquidez con la forma de rescatar la previsión privada.', questions: ['Capital inicial realmente necesario', 'Ingresos periódicos deseados', 'Impacto fiscal y documentación disponible'], outcome: 'Una primera decisión entre capital, renta o modalidad mixta para revisar fiscalmente.' },
+      ],
+      riesgos: [
+        { inicial: 'L', titulo: 'Longevidad', descripcion: 'La jubilación puede durar más de lo previsto.', respuesta: 'Trabaja con un horizonte prudente y revisa el ritmo de gasto.' },
+        { inicial: 'I', titulo: 'Inflación', descripcion: 'El mismo presupuesto compra menos con el paso del tiempo.', respuesta: 'Actualiza gastos e ingresos en términos de poder adquisitivo.' },
+        { inicial: 'S', titulo: 'Salud y dependencia', descripcion: 'Pueden aparecer necesidades difíciles de anticipar.', respuesta: 'Reserva liquidez y documenta preferencias y apoyos familiares.' },
+        { inicial: 'F', titulo: 'Apoyo familiar', descripcion: 'La ayuda a hijos o dependientes puede prolongarse.', respuesta: 'Separa los compromisos previstos de las ayudas extraordinarias.' },
+        { inicial: 'Q', titulo: 'Falta de liquidez', descripcion: 'Un patrimonio elevado no siempre permite pagar gastos inmediatos.', respuesta: 'Asigna una reserva específica a los primeros años y contingencias.' },
+        { inicial: 'C', titulo: 'Concentración fiscal', descripcion: 'Cobrar demasiado en un ejercicio puede alterar la tributación.', respuesta: 'Compara el calendario de rescate antes de ordenar el cobro.' },
+      ],
+    };
+    return this._d;
+  }
+  componentDidMount() { document.title = 'Guía de planificación para la jubilación | NUVIA'; }
+  toggle(campo, id) {
+    const m = Object.assign({}, this.state[campo]);
+    m[id] = !m[id];
+    this.setState({ [campo]: m });
+  }
+  renderVals() {
+    const d = this.datos();
+    const st = this.state;
+    const sel = d.horizontes.find(h => h.id === st.horizonte) || null;
+    const nList = Object.values(st.listas).filter(Boolean).length;
+    const nAcc = Object.values(st.hechas).filter(Boolean).length;
+    const progresoInfo = Math.round((nList / d.piezas.length) * 100);
+    const progresoTotal = Math.round(((nList + nAcc + (sel ? 1 : 0)) / (d.piezas.length + d.acciones.length + 1)) * 100);
+    let proximaAccion = 'Seleccionar el horizonte hasta tu jubilación.';
+    if (sel) {
+      const faltaInfo = d.piezas.find(p => !st.listas[p.id]);
+      const faltaAcc = d.acciones.find(a => !st.hechas[a.id]);
+      proximaAccion = faltaInfo ? 'Reunir: ' + faltaInfo.label.toLocaleLowerCase('es-ES') + '.'
+        : faltaAcc ? faltaAcc.label
+        : 'Revisar el plan una vez al año o cuando cambie tu situación.';
+    }
+    const paso = d.pasos[st.paso];
+    const claseCaja = (on) => 'gp-box' + (on ? ' is-checked' : '');
+    return {
+      horizontes: d.horizontes.map(h => ({
+        label: h.label, period: h.period, pressed: h.id === st.horizonte,
+        abrir: () => this.setState({ horizonte: h.id }),
+        clase: 'gp-option' + (h.id === st.horizonte ? ' is-active' : ''),
+      })),
+      haySeleccion: !!sel,
+      prioridad: sel ? sel.priority : '',
+      descripcionHorizonte: sel ? sel.description : '',
+      piezas: d.piezas.map(p => {
+        const on = !!st.listas[p.id];
+        return {
+          label: p.label, detail: p.detail, checked: on, marca: on ? '✓' : '',
+          abrir: () => this.toggle('listas', p.id),
+          caja: claseCaja(on),
+          clase: 'gp-task' + (on ? ' is-done' : ''),
+        };
+      }),
+      progresoInfo, progresoTotal, progresoTotalNum: progresoTotal,
+      pasos: d.pasos.map((p, i) => ({
+        number: p.number, title: p.title, pressed: i === st.paso,
+        abrir: () => this.setState({ paso: i }),
+        numClase: i === st.paso ? 'is-active' : '',
+        clase: 'gu-toggle gp-step' + (i === st.paso ? ' is-active' : ''),
+      })),
+      pasoEyebrow: paso.eyebrow, pasoTitulo: paso.title, pasoDescripcion: paso.description,
+      pasoPreguntas: paso.questions, pasoResultado: paso.outcome,
+      riesgos: d.riesgos,
+      acciones: d.acciones.map(a => {
+        const on = !!st.hechas[a.id];
+        return {
+          label: a.label, checked: on, marca: on ? '✓' : '',
+          abrir: () => this.toggle('hechas', a.id),
+          caja: claseCaja(on),
+          texto: 'gp-task__text' + (on ? ' is-done' : ''),
+        };
+      }),
+      proximaAccion,
+      imprimir: () => window.print(),
+    };
+  }
+}
+</script>
+</body>
+</html>

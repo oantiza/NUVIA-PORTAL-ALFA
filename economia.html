@@ -41,7 +41,7 @@
 <script defer src="nuvia-site-unified.js"></script>
 </head>
 
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab nv-home-polish nv-space-page nv-space-page--economia">
 <x-dc>
 
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
@@ -98,28 +98,24 @@
 
   <main id="contenido">
 
-    <section data-screen-label="Cabecera Economía y Finanzas" class="nv-hero nv-hero--institutional">
-      <div class="nv-container">
-        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-          <ol>
-            <li><a href="index.html" data-main-menu-return>Inicio</a></li>
-            <li><span aria-current="page">Economía y Finanzas</span></li>
-          </ol>
-        </nav>
-        <div class="nv-hero__inner nv-hero__inner--simple">
-          <div>
-            <p class="nv-eyebrow nv-eyebrow--on-dark">Espacio NUVIA · Contexto y Análisis</p>
-            <h1>Economía y Finanzas</h1>
-            <p class="nv-hero__lead">
-              Comprende cómo los tipos de interés, la inflación y los mercados se relacionan
-              con el ahorro, la financiación y el poder adquisitivo de tu familia.
-            </p>
-          </div>
+    <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación">
+      <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Economía y Finanzas</span></li></ol>
+    </nav>
+    <section data-screen-label="Cabecera Economía y Finanzas" class="nv-container home26-plate home26-plate--bleed nv-space-entry" aria-labelledby="economia-title">
+      <img class="home26-plate__art" src="src/assets/markets/secondary-news/wall-street-records.jpg" alt="" aria-hidden="true" width="1200" height="800" fetchpriority="high" decoding="async">
+      <div class="home26-plate__veil" aria-hidden="true"></div>
+      <div class="home26-plate__body">
+        <p class="nv-eyebrow nv-eyebrow--on-dark">Contexto y análisis</p>
+        <h1 id="economia-title" class="home26-plate__title">Economía y Finanzas</h1>
+        <p class="home26-plate__copy">Comprende cómo los tipos de interés, la inflación y los mercados se relacionan con el ahorro, la financiación y el poder adquisitivo de tu familia.</p>
+        <div class="nv-space-entry__actions">
+          <a class="home26-plate__cta" href="mercados.html">Explorar mercados <span aria-hidden="true">→</span></a>
+          <a class="nv-space-entry__link" href="#recursos-economia">Ver las herramientas</a>
         </div>
       </div>
     </section>
 
-    <section class="nv-section nv-section--tight" aria-labelledby="titulo-recursos-economia">
+    <section id="recursos-economia" class="nv-section nv-section--tight nv-space-resources" aria-labelledby="titulo-recursos-economia">
       <div class="nv-container">
         <div class="nv-section-heading">
           <div>
@@ -135,6 +131,7 @@
         <div class="nv-card-grid">
 
           <a class="nv-space-tool-card" href="mercados.html">
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg></span>
             <span class="nv-space-tool-card__badge">Contexto y Actualidad</span>
             <h3>Mercados y noticias</h3>
             <p>
@@ -145,26 +142,37 @@
           </a>
 
           <a class="nv-space-tool-card" href="cartera.html">
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v9h9A9 9 0 0 0 12 3Z"/><path d="M8 4a9 9 0 1 0 12 12"/></svg></span>
             <span class="nv-space-tool-card__badge">Laboratorio Cuantitativo</span>
             <h3>Cartera y analítica</h3>
             <p>
-              Constructor interactivo de carteras. Calcula la volatilidad real, correlaciones de Pearson,
-              solapamientos y ratio de Sharpe contrastado con el tipo oficial del €STR.
+              Comprende cómo se distribuye una cartera. Explora su composición, concentración,
+              solapamientos y comportamiento histórico, con los datos y supuestos a la vista.
             </p>
             <span class="nv-space-tool-card__action">Abrir laboratorio de cartera <span aria-hidden="true">→</span></span>
           </a>
 
           <a class="nv-space-tool-card" href="cartera.html?vista=companies">
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V4h10v17M14 9h6v12M2 21h20M7 8h4M7 12h4M7 16h4M17 13h1M17 17h1"/></svg></span>
             <span class="nv-space-tool-card__badge">Análisis Fundamental</span>
             <h3>Análisis y valoración de empresas</h3>
             <p>
-              Estudio detallado de 73 empresas cotizadas. Estados contables, ratios de valoración,
-              historial de dividendos y gráficos interactivos de velas y volumen.
+              Acércate al negocio y a sus cifras: estados contables, ratios, dividendos
+              y evolución histórica. Consulta las fuentes, fechas y límites de cada análisis.
             </p>
             <span class="nv-space-tool-card__action">Consultar empresas <span aria-hidden="true">→</span></span>
           </a>
 
         </div>
+
+        <section class="nv-space-insight" aria-labelledby="economia-concepto">
+          <div><p class="nv-eyebrow">Del mundo a tu día a día</p><h2 id="economia-concepto">La economía también se entiende desde casa.</h2></div>
+          <div class="nv-space-insight__items">
+            <div><h3>Los precios</h3><p>La inflación ayuda a entender cómo cambia el poder de compra con el tiempo.</p></div>
+            <div><h3>Los tipos</h3><p>El coste de financiarse conecta la política monetaria con la economía del hogar.</p></div>
+            <div><h3>La actividad</h3><p>Empleo, producción y consumo ofrecen contexto para leer lo que ocurre.</p></div>
+          </div>
+        </section>
 
         <div class="nv-note nv-section-space" role="note">
           <p>
@@ -177,6 +185,13 @@
       </div>
     </section>
 
+    <nav class="nv-container nv-space-next" aria-label="Otros espacios de NUVIA">
+      <p>Sigue explorando NUVIA</p>
+      <a href="patrimonio.html">Patrimonio <span aria-hidden="true">→</span></a>
+      <a href="bienestar.html">Familia y bienestar <span aria-hidden="true">→</span></a>
+      <a href="academia.html">Academia <span aria-hidden="true">→</span></a>
+      <a href="lecturas.html">Lecturas <span aria-hidden="true">→</span></a>
+    </nav>
   </main>
 
     <footer data-screen-label="Footer" class="nuvia-site-footer">

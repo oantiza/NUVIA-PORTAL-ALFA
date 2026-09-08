@@ -27,7 +27,7 @@ for(const [id,book] of Object.entries(books)) {
 for(const id of ['seleccion-lecturas','catalogo-lecturas','criterios-lecturas','comunidad-lecturas','lecturas-result-count','lecturas-dialog-reason','lecturas-dialog-limit','lecturas-dialog-source']) {
   assert.equal((html.match(new RegExp(`id="${id}"`,'g'))||[]).length,1,id);
 }
-assert.equal((html.match(/data-reading-filter="/g)||[]).length,3);
+assert.equal((html.match(/<button\b[^>]*\bdata-reading-filter="/g)||[]).length,3);
 assert.match(html,/id="lecturas-result-count"[^>]*role="status"[^>]*aria-live="polite"/);
 assert.match(css,/\.lecturas-card\[hidden\] \{ display: none; \}/);
 assert.match(html,/el catálogo todavía no cubre todos los temas de NUVIA/);

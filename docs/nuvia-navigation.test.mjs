@@ -124,7 +124,7 @@ for (const name of (await readdir(root)).filter((name) => name.endsWith('.html')
   if (name !== 'index.html') {
     assert.equal((html.match(/data-main-menu-return/g) || []).length, 1,
       name + ': un regreso visible al menú principal');
-    assert.match(html, /<nav class="nv-breadcrumb"[^>]*>[\s\S]*?<a href="index.html" data-main-menu-return>Inicio<\/a>/,
+    assert.match(html, /<nav\b[^>]*class="[^"]*\bnv-breadcrumb\b[^"]*"[^>]*>[\s\S]*?<a href="index.html" data-main-menu-return>Inicio<\/a>/,
       name + ': regreso en la ruta de navegación');
   }
   const footer = html.match(/<footer data-screen-label="Footer"[\s\S]*?<\/footer>/)?.[0];

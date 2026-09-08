@@ -42,7 +42,7 @@
 <script defer src="support.js"></script>
 <script defer src="nuvia-site-unified.js"></script>
 </head>
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab nv-home-polish nv-campus-page">
 <x-dc>
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
 
@@ -99,12 +99,27 @@
 
   <main id="contenido">
     <!-- ============ CABECERA ============ -->
-    <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="nv-hero nv-hero--institutional gu-hero" aria-labelledby="academy-title">
-      <div class="nv-container gu-section">
-<nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Academia NUVIA</span></li></ol></nav>
-        <span class="ac-x02"><span aria-hidden="true"></span>Academia NUVIA</span>
-        <h1 id="academy-title" class="ac-x03">Saber es patrimonio</h1>
-        <p class="gu-lead">El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.</p>
+    <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="nv-campus-cover" aria-labelledby="academy-title">
+      <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Academia NUVIA</span></li></ol></nav>
+      <div class="nv-container home26-plate home26-plate--light home26-plate--reverse nv-space-entry nv-space-entry--academy">
+        <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
+          <div class="home26-plate__figure">
+            <img class="home26-plate__art" src="src/assets/home/academia-aprendizaje-natural-20260908.webp" alt="" aria-hidden="true" width="1536" height="1024" fetchpriority="high" decoding="async">
+          </div>
+        </sc-if>
+        <div class="home26-plate__body">
+          <p class="nv-eyebrow">Formación</p>
+          <h1 id="academy-title" class="home26-plate__title">Academia NUVIA</h1>
+          <p class="home26-plate__copy"><strong>Saber es patrimonio.</strong> El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.</p>
+          <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
+            <div class="nv-space-entry__actions">
+              <a class="home26-plate__cta" href="#recursos-academia">Explorar cómo aprender <span aria-hidden="true">→</span></a>
+              <a class="nv-space-entry__link" href="#ruta-aprendizaje">Conocer la ruta de aprendizaje</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <div class="nv-container nv-campus-navigation">
         <nav aria-label="Áreas de Academia NUVIA" class="ac-x04">
           <sc-for list="{{ pestanas }}" as="p" hint-placeholder-count="2">
             <button type="button" onClick="{{ p.abrir }}" aria-current="{{ p.ariaCurrent }}" class="{{ p.clase }}"><span>{{ p.label }}</span><span aria-hidden="true" class="ac-x05">{{ p.sufijo }}</span></button>
@@ -121,13 +136,13 @@
 
     <!-- ============ PORTADA ACADEMY ============ -->
     <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
-      <section data-screen-label="Áreas de Academia NUVIA" class="nv-container gu-section">
+      <section id="recursos-academia" data-screen-label="Áreas de Academia NUVIA" class="nv-container gu-section nv-campus-resources">
         <div class="gu-lead">
           <p class="gu-kicker">Elige cómo quieres aprender</p>
-          <h2 class="ac-strong">Dos formas de avanzar con criterio</h2>
-          <p class="gu-text">Consulta un tema concreto en Conocimientos esenciales o sigue las cinco clases de Dinero con criterio en Cursos. Puedes entrar directamente donde te interese.</p>
+          <h2 class="ac-strong">Tu punto de partida para aprender</h2>
+          <p class="gu-text">Comprende un concepto, consulta una palabra o sigue un curso. Tres puertas abiertas para avanzar a tu ritmo, empieces desde donde empieces.</p>
         </div>
-        <div class="gu-grid-2">
+        <div class="gu-grid-2 nv-campus-options">
           <button type="button" onClick="{{ irEsenciales }}" class="ac-x06">
             <span aria-hidden="true" class="ac-x07">01</span>
             <span class="ac-x08">
@@ -137,8 +152,17 @@
               <span class="ac-x12">Explorar conocimientos <span aria-hidden="true">→</span></span>
             </span>
           </button>
+          <a class="nv-campus-glossary" href="academia.html?tab=glosario">
+            <span aria-hidden="true" class="ac-x07">02</span>
+            <span class="ac-x08">
+              <span class="ac-x09">Encuentra el significado</span>
+              <strong class="nv-campus-glossary__title">Glosario financiero</strong>
+              <span class="ac-x11">Palabras que dejan de ser barreras. Conceptos básicos e indicadores explicados para volver a la lectura con más claridad.</span>
+              <span class="ac-x12">Consultar el glosario <span aria-hidden="true">→</span></span>
+            </span>
+          </a>
           <button type="button" onClick="{{ irCursos }}" class="ac-x13">
-            <span aria-hidden="true" class="ac-x14">02</span>
+            <span aria-hidden="true" class="ac-x14">03</span>
             <span class="ac-x08">
               <span class="ac-x15">Aprende paso a paso</span>
               <strong class="ac-x16">Cursos</strong>

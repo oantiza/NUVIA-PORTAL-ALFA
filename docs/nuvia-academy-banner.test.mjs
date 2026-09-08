@@ -11,10 +11,11 @@ const tokens = await readFile(resolve(root, 'estilos/nuvia-tokens.css'), 'utf8')
 
 const section = (id) => home.match(new RegExp(`<section\\b[^>]*id="${id}"[\\s\\S]*?<\\/section>`))?.[0];
 const exactAccess = [
-  ['mercados', 'mercados.html', 'Accede a Economía y Finanzas'],
-  ['patrimonio', 'temas.html', 'Accede a Patrimonio'],
-  ['familia-salud', 'temas.html?topic=bienestar', 'Accede a Familia, Salud y Bienestar'],
-  ['academia', 'academia.html', 'Entrar'],
+  ['mercados', 'economia.html', 'Accede a Economía y Finanzas'],
+  ['patrimonio', 'patrimonio.html', 'Accede a Patrimonio'],
+  ['familia-salud', 'bienestar.html', 'Accede a Familia, Salud y Bienestar'],
+  ['academia', 'academia.html', 'Accede a Academia NUVIA'],
+  ['lecturas-con-criterio', 'lecturas.html', 'Accede a Lecturas con Criterio'],
 ];
 
 for (const [id, href, label] of exactAccess) {
@@ -23,16 +24,10 @@ for (const [id, href, label] of exactAccess) {
   assert.equal((block.match(/<a\b/g) ?? []).length, 1, `${id}: un único acceso`);
   const escapedHref = href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const arrow = label === 'Entrar' ? '' : ' <span aria-hidden="true">→<\\/span>';
+  const arrow = ' <span aria-hidden="true">→<\\/span>';
   assert.match(block, new RegExp(`<a\\b[^>]*href="${escapedHref}"[^>]*>${escapedLabel}${arrow}<\\/a>`),
     `${id}: texto y destino exactos`);
 }
-
-const readingsAccess = section('lecturas-con-criterio');
-assert.ok(readingsAccess, 'lecturas-con-criterio: la sección existe');
-assert.equal((readingsAccess.match(/<a\b/g) ?? []).length, 1, 'lecturas-con-criterio: un único acceso');
-assert.match(readingsAccess, /<a class="home-lecturas" href="lecturas\.html" aria-label="Entrar en Lecturas con Criterio">/,
-  'lecturas-con-criterio: texto accesible y destino exactos');
 
 const hero = section('inicio');
 assert.match(home, /estilos\/nuvia-pages\.css\?v=home-2026-0901-r3/,
@@ -62,42 +57,32 @@ for (const [id, variant] of [
   ['patrimonio', 'home26-plate--light home26-plate--reverse'],
   ['familia-salud', 'home26-plate'],
 ]) assert.ok(section(id)?.includes(variant), `${id}: variante editorial asignada`);
-assert.ok(section('familia-salud').includes('home26-plate__badge">En preparación'), 'Bienestar declara su estado');
+assert.ok(!section('familia-salud').includes('home26-plate__badge'), 'Bienestar no lleva la etiqueta retirada por el fundador');
 assert.doesNotMatch(home, /home26-plate__caption|imagen decorativa/i, 'Se retiran los pies de lámina repetidos');
 assert.doesNotMatch(section('mercados'), /Lámina 01/i, 'Economía elimina la referencia de lámina');
 
-const summary = section('sumario');
-assert.ok(summary?.includes('nv-section--technical'), 'El sumario usa la superficie técnica');
-assert.equal((summary.match(/class="home26-index__item"/g) ?? []).length, 8, 'El sumario contiene ocho materias');
-for (const href of [
-  'vivienda.html', 'mercados.html', 'jubilacion.html', 'cartera.html',
-  'fiscalidad.html', 'temas.html?topic=bienestar',
-  'temas.html?topic=planificacion-patrimonial', 'academia.html?tab=esenciales',
-]) assert.ok(summary.includes(`href="${href}"`), `Sumario conserva ${href}`);
+assert.equal(section('sumario'), undefined, 'Inicio no duplica los accesos a herramientas de los espacios');
+assert.doesNotMatch(home, /home26-spaces__grid/, 'Los cinco banners son la única presentación de los espacios');
+assert.match(home, /id="espacios" class="nv-container home26-plate-label-wrap"/,
+  'Explorar NUVIA conduce al comienzo de los bloques con fotografía');
 
 const academy = section('academia');
-assert.doesNotMatch(academy, /nv-section-heading|titulo-academia|<h2\b/,
-  'Academia elimina la cabecera exterior y su espacio');
-assert.match(academy, /class="nv-eyebrow home26-showcase__label">Formación<\/p>/,
-  'Academia recupera únicamente su rótulo compacto');
-const academyBanner = academy.match(/<div class="home-academia">[\s\S]*?<\/div>/)?.[0];
-assert.ok(academyBanner, 'Academia conserva su banner');
-assert.doesNotMatch(academyBanner, /<h[1-6]\b|<p\b/, 'Academia no superpone título ni descripción');
-assert.match(academyBanner, /class="home-feature-access home-academia__cta"[^>]*>Entrar<\/a>/,
-  'Academia conserva Entrar');
+assert.match(academy, /id="titulo-academia" class="home26-plate__title">Academia NUVIA<\/h2>/,
+  'Academia identifica el espacio con el título HTML del componente común');
+assert.match(academy, /home26-plate--light home26-plate--reverse/,
+  'Academia comparte la composición fotográfica de los otros espacios');
+assert.doesNotMatch(academy, /nuvia-academy-banner-2026\.webp/,
+  'Inicio usa la nueva escena de aprendizaje solicitada');
 
 const readings = section('lecturas-con-criterio');
 assert.doesNotMatch(readings, /nv-section-heading|titulo-lecturas|<h2\b/,
   'Lecturas elimina la cabecera exterior y su espacio');
-assert.match(readings, /class="nv-eyebrow home26-showcase__label">Sección editorial<\/p>/,
-  'Lecturas recupera únicamente su rótulo compacto');
-const readingsBanner = readings.match(/<a class="home-lecturas"[\s\S]*?<\/a>/)?.[0];
+const readingsBanner = readings.match(/<div class="home-lecturas"[\s\S]*?<\/div>/)?.[0];
 assert.ok(readingsBanner, 'Lecturas conserva su banner');
 assert.doesNotMatch(readingsBanner, /<h[1-6]\b|<p\b/, 'Lecturas no superpone título ni descripción');
-assert.match(readingsBanner, /href="lecturas\.html" aria-label="Entrar en Lecturas con Criterio"/,
-  'Lecturas conserva Entrar como nombre accesible del banner');
-assert.match(readingsBanner, /class="home-feature-access home-lecturas__cta">Entrar<\/span>/,
-  'Lecturas usa el mismo acceso visible que Academia');
+assert.doesNotMatch(readingsBanner, /<a\b/, 'El acceso de Lecturas no se superpone a la ilustración');
+assert.match(readings, /class="home26-plate__body home26-panel__body"/,
+  'Lecturas conecta su ilustración con la explicación y el acceso comunes');
 
 assert.doesNotMatch(home, /\sstyle=/i, 'Inicio no contiene estilos en línea');
 assert.doesNotMatch(home, /data-macro-id=|data-daily-news|data-daily-impact|id="noticia"/,
@@ -118,13 +103,13 @@ assert.doesNotMatch(css, /linear-gradient\(0deg,\s*var\(--nv-bg\)/,
 assert.doesNotMatch(homeCss, /#[0-9a-f]{3,8}\b|rgba?\(/i, 'HOME 2026 solo usa colores mediante tokens');
 assert.match(homeCss, /@media\s*\(max-width:\s*1024px\)/, 'Existe el ajuste de tablet a 1024 px');
 assert.doesNotMatch(homeCss, /@media\s*\(max-width:\s*(?:[0-9]{1,3})px\)/, 'No se crea una versión móvil');
-for (const id of ['mercados', 'patrimonio', 'familia-salud']) {
+for (const id of ['mercados', 'patrimonio', 'familia-salud', 'academia', 'lecturas-con-criterio']) {
   assert.match(section(id), /class="[^"]*nv-container[^"]*home26-plate/,
     `${id}: comparte el contenedor fijo y centrado de Academia y Lecturas`);
 }
-assert.equal((home.match(/class="nv-container home26-plate-label-wrap"/g) || []).length, 3,
-  'Los tres rótulos se sitúan fuera y encima de sus respectivas láminas');
-for (const label of ['Resumen estratégico', 'Decisiones de fondo', 'Vida y equilibrio']) {
+assert.equal((home.match(/class="nv-container home26-plate-label-wrap"/g) || []).length, 5,
+  'Los cinco rótulos comparten posición, alineación y componente');
+for (const label of ['Un lugar, cinco espacios', 'Decisiones de fondo', 'Vida y equilibrio', 'Formación', 'Sección editorial']) {
   assert.match(home, new RegExp(`class="nv-container home26-plate-label-wrap">\\s*<p class="nv-eyebrow home26-plate-label">${label}<`),
     `El rótulo exterior muestra ${label}`);
 }
@@ -137,31 +122,6 @@ assert.match(homeCss, /\.home26-plate--bleed \.home26-plate__veil\s*\{[\s\S]*?va
   'Economía conserva contraste sin ocultar en exceso la fotografía');
 assert.match(homeCss, /\.home26-plate__cta\s*\{[\s\S]*?border:\s*1px solid var\(--nv-green-300\);[\s\S]*?border-radius:\s*var\(--nv-radius-pill\);/,
   'Los tres accesos recuperan la forma redondeada y el filete verde');
-assert.match(css, /\.home-feature-access:focus-visible\s*\{[\s\S]*?outline:/, 'Academia y Lecturas tienen foco visible');
-assert.match(css, /\.home-feature-access\s*\{[\s\S]*?min-height:\s*44px;[\s\S]*?font-size:\s*var\(--nv-body\);/,
-  'Entrar de Academia conserva 16 px y área de 44 px');
-assert.match(css, /\.home-feature-access\s*\{[\s\S]*?border-radius:\s*var\(--nv-radius-pill\);[\s\S]*?padding-inline:\s*var\(--nv-space-5\);/,
-  'Academia y Lecturas comparten una píldora mediana');
-assert.match(css, /\.home-lecturas:focus-visible\s*\{[\s\S]*?outline:/,
-  'El banner completo de Lecturas tiene foco visible');
-assert.match(css, /\.home-academia\s*\{[\s\S]*?border-radius:\s*0;/,
-  'Academia usa esquinas cuadradas');
-assert.match(css, /\.home-lecturas\s*\{[\s\S]*?border-radius:\s*0;/,
-  'Lecturas usa esquinas cuadradas');
-assert.match(homeCss, /\.home26-showcase__label\s*\{[\s\S]*?color:\s*var\(--nv-text-link\);/,
-  'Los dos rótulos usan el verde accesible del sistema');
-assert.match(homeCss, /\.home26-showcase__label\s*\{\s*margin:\s*0 0 var\(--nv-space-5\);/,
-  'Los dos rótulos conservan un poco más de aire respecto a sus banners');
-assert.match(homeCss, /\.home26-showcase\s*\{\s*padding-top:\s*var\(--nv-space-12\);\s*\}/,
-  'Los rótulos aprovechan el espacio superior de los banners');
-assert.match(home, /class="home26-band home26-band--compact"[\s\S]*?id="lecturas-con-criterio"/,
-  'El espacio entre Academia y Lecturas usa la franja compacta');
-assert.match(homeCss, /\.home26-band--compact\s*\{\s*height:\s*var\(--nv-space-3\);\s*\}/,
-  'La franja entre Academia y Lecturas queda reducida');
-assert.match(homeCss, /\.home26-showcase--academy\s*\{\s*padding-bottom:\s*var\(--nv-space-10\);\s*\}/,
-  'Academia reduce su espacio inferior');
-assert.match(homeCss, /\.home26-showcase--readings\s*\{\s*padding-top:\s*var\(--nv-space-6\);\s*\}/,
-  'Lecturas reduce su espacio superior');
 
 const definedTokens = new Set([...tokens.matchAll(/--([a-z0-9-]+)\s*:/gi)].map((match) => `--${match[1]}`));
 for (const match of homeCss.matchAll(/var\((--[a-z0-9-]+)/gi)) {
@@ -173,7 +133,7 @@ const assets = new Map([
   ['src/assets/markets/secondary-news/wall-street-records.jpg', '4b0a025883086aab03b5f2c105b79f38dbacd1a23a7ae518260f6c83032f5cce'],
   ['src/assets/home/patrimonio-family-home-young-family-natural-20260901.webp', '905ee21798f11044a74d813750cd83584dcaeb26f1fa7e1016b3256146e7ef0e'],
   ['src/assets/home/wellbeing-life-balance-banner-v2.webp', '7af9d0ab2c2b0af67f9b7bc3665a40d3028bf8c87f6f4d88571ebd73f1ef6941'],
-  ['src/assets/education/nuvia-academy/nuvia-academy-banner-2026.webp', 'bf73ae841dde8a22e63168ff0cc590fa4765020942a80ed41bae168209c5b9ca'],
+  ['src/assets/home/academia-aprendizaje-natural-20260908.webp', '11f5440e2206c50bc659d6bb529609347244cfe8269fc2e1163cbb85a87ecc44'],
   ['src/assets/home/lecturas-con-criterio-banner-sin-boton.webp', '59768e8b2f5a5ac19001c4a3d6cf9cd7b4e2568c7b5758f03eb0015a81dda02a'],
 ]);
 for (const [asset, expected] of assets) {
@@ -190,7 +150,8 @@ assert.match(css, /\.ac-essential-card\s*\{[\s\S]*?border-radius:\s*var\(--nv-ra
 assert.match(css, /\.ac-essential-card:focus-visible\s*\{[\s\S]*?outline:/,
   'Las tarjetas esenciales conservan foco visible');
 const academyHero = academyPage.match(/<section\b[^>]*id="academy"[\s\S]*?<\/section>/)?.[0];
-assert.ok(academyHero?.includes('nv-hero--institutional'), 'Academia interior conserva su cabecera');
+assert.ok(academyHero?.includes('nv-space-entry--academy'), 'Academia interior comparte la composición de Inicio');
+assert.ok(academyHero.includes('src/assets/home/academia-aprendizaje-natural-20260908.webp'), 'Academia conserva continuidad fotográfica al entrar');
 assert.ok(academyHero.includes('{{ pestanas }}') && academyHero.includes('{{ p.abrir }}'), 'Las pestañas de Academia siguen conectadas');
 assert.ok(!academyPage.includes('data-academy-intro'), 'No reaparece la entradilla de Academia');
 

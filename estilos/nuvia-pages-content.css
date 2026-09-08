@@ -2826,3 +2826,167 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
 
 /* Entrada independiente de fundamentales, recuperada para la alfa. */
 .nuvia-company-frame { width: 100%; height: 1200px; border: 0; display: block; border-radius: 16px; }
+
+/* Afinación de las portadas · 08-09-2026. Se conserva la identidad original. */
+.nv-home-main .home-hero h1 { font-weight: 600; line-height: 1.08; letter-spacing: -.045em; }
+.nv-home-main .home-hero .nv-hero__lead { max-width: 660px; line-height: 1.7; }
+.nv-home-main .home-pillars { margin-top: var(--nv-space-12); }
+.nv-home-main .home-pillars__row { padding-top: var(--nv-space-6); }
+.nv-home-main .home-pillars__row > div { display: grid; grid-template-columns: auto auto; column-gap: var(--nv-space-3); row-gap: var(--nv-space-1); justify-content: center; }
+.nv-home-main .home-pillars__num { grid-row: span 2; align-self: center; }
+.nv-home-main .home-pillars__name { font-size: var(--nv-body-sm); letter-spacing: .15em; }
+.nv-home-main .home-pillars small { grid-column: 2; font-size: var(--nv-body-sm); color: var(--nv-text-on-dark-soft); }
+.nv-home-main .home26-project { gap: var(--nv-space-12); align-items: center; }
+.nv-home-main .home26-project__aside { border: 1px solid var(--nv-line); border-top: 3px solid var(--nv-green-600); border-radius: var(--nv-radius-md); background: var(--nv-surface); box-shadow: var(--nv-shadow-md); padding: var(--nv-space-6); }
+.nv-home-main .home26-project__list { gap: var(--nv-space-5); }
+.nv-home-main .home26-project__item + .home26-project__item { border-top: 1px solid var(--nv-line); padding-top: var(--nv-space-5); }
+.nv-value-detail { margin: var(--nv-space-1) 0 0; color: var(--nv-text-soft); font-size: var(--nv-body-sm); line-height: 1.6; }
+.nv-home-main .home26-plate { border-radius: var(--nv-radius-lg); overflow: hidden; box-shadow: var(--nv-shadow-md); }
+.nv-home-main .home26-plate--light { border: 1px solid var(--nv-line); }
+.nv-home-main .home26-plate__copy { line-height: 1.7; }
+.nv-home-main .home26-plate__cta { min-height: 48px; }
+/* El panel editorial comparte marco, explicación y acceso con los espacios
+   fotográficos. Su ilustración conserva el encuadre completo. */
+.home26-panel { display: block; }
+.nv-home-main .home26-panel .home-lecturas { aspect-ratio: auto; border-radius: 0; box-shadow: none; transform: none; transition: none; }
+.home26-panel__body { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--nv-space-12); padding: var(--nv-space-10) var(--nv-space-12); border-top: 1px solid var(--nv-line-on-dark); }
+.home26-plate--light .home26-panel__body { border-color: var(--nv-line); }
+.home26-panel__body .home26-plate__copy { max-width: 650px; margin: 0; }
+.home26-panel__body .home26-plate__cta { flex-shrink: 0; margin-top: 0; align-self: center; text-shadow: none; }
+@media (max-width: 1120px) {
+  .home26-panel__body { flex-direction: column; align-items: flex-start; gap: var(--nv-space-6); padding: var(--nv-space-8); }
+  .home26-panel__body .home26-plate__cta { align-self: flex-start; }
+}
+
+/* Bienestar conserva su organización en cuatro pilares. */
+.nv-space-page--bienestar .nv-card--editorial { padding: var(--nv-space-8); border-top: 3px solid var(--nv-green-600); box-shadow: var(--nv-shadow-md); }
+.nv-space-page--bienestar .nv-card__icon { width: 48px; height: 48px; border-radius: var(--nv-radius-md); margin-bottom: var(--nv-space-6); }
+.nv-space-page--bienestar .nv-card--editorial > p { line-height: 1.7; }
+
+/* Recursos de Academia: tres formas de aprender bajo la portada. */
+.nv-campus-resources > .gu-lead { max-width: 760px; margin-bottom: var(--nv-space-8); }
+.nv-campus-options { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--nv-space-6); }
+.nv-campus-options :is(.ac-x06, .ac-x13, .nv-campus-glossary) { min-height: 310px; padding: var(--nv-space-8); box-shadow: var(--nv-shadow-md); }
+.nv-campus-glossary { position: relative; display: block; overflow: hidden; border: 1px solid var(--nv-line); border-top: 3px solid var(--nv-bronze-600); border-radius: var(--nv-radius-md); background: var(--nv-surface); text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.nv-campus-glossary:hover { transform: translateY(-3px); box-shadow: var(--nv-shadow-lg); }
+.nv-campus-glossary__title { display: block; font-family: var(--nv-font-sans); font-size: var(--nv-title-md); font-weight: 500; line-height: 1.15; color: var(--nv-text); margin-top: var(--nv-space-6); }
+.nv-campus-options :is(.ac-x09, .ac-x15) { background: transparent; padding: 0; border: 0; letter-spacing: .1em; }
+.nv-campus-options :is(.ac-x10, .ac-x16) { line-height: 1.15; }
+.nv-campus-options .ac-x14 { right: var(--nv-space-4); }
+.nv-campus-page .ac-learning-route { padding-top: var(--nv-space-12); border-top: 1px solid var(--nv-line); }
+.nv-campus-page .ac-learning-steps { gap: var(--nv-space-6); }
+.nv-campus-page .ac-learning-step { border-top: 3px solid var(--nv-green-600); box-shadow: var(--nv-shadow-md); }
+
+/* Lecturas conserva su paisaje, su tipografía y las cuatro fichas. */
+.nv-library-page .lecturas-hero__banner { height: 310px; }
+.nv-library-page .lecturas-hero__text { width: 60%; }
+.nv-library-page .lecturas-hero h1 { max-width: 620px; line-height: 1.13; }
+.nv-library-welcome { padding-block: var(--nv-space-12); }
+.nv-library-welcome .nv-section-heading h2 { font-size: var(--nv-title-md); line-height: 1.25; }
+.nv-library-collections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--nv-space-6); }
+.nv-library-collections > a { display: flex; flex-direction: column; padding: var(--nv-space-6); border: 1px solid var(--nv-line); border-top: 3px solid var(--nv-bronze-600); border-radius: var(--nv-radius-md); background: var(--nv-surface); color: var(--nv-text); box-shadow: var(--nv-shadow-md); text-decoration: none; transition: transform .2s, box-shadow .2s; }
+.nv-library-collections > a:hover { transform: translateY(-3px); box-shadow: var(--nv-shadow-lg); }
+.nv-library-collections > a:nth-child(2) { border-top-color: var(--nv-green-600); }
+.nv-library-collections > a:nth-child(3) { border-top-color: var(--nv-navy-700); }
+.nv-library-collections__label { font-size: var(--nv-label); font-weight: var(--nv-weight-title); letter-spacing: .07em; color: var(--nv-text-link); }
+.nv-library-collections h3 { font-size: var(--nv-title-sm); line-height: 1.25; margin-block: var(--nv-space-4); }
+.nv-library-collections p { font-size: var(--nv-body-sm); line-height: 1.65; color: var(--nv-text-soft); margin: 0 0 var(--nv-space-6); }
+.nv-library-collections__action { display: flex; justify-content: space-between; gap: var(--nv-space-3); margin-top: auto; font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); color: var(--nv-text-link); }
+.nv-library-page #seleccion-lecturas { padding-top: var(--nv-space-6); }
+.nv-library-page .lecturas-card { border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); background: var(--nv-surface); box-shadow: var(--nv-shadow-md); }
+
+/* Qué es NUVIA: mismo relato, pausas y saltos de línea más naturales. */
+.nv-about-page .about-index { justify-content: space-between; }
+.nv-about-page .about-index a { font-weight: var(--nv-weight-title); text-decoration: none; border-bottom: 1px solid var(--nv-line); }
+.nv-about-page .about-index a:hover { border-color: var(--nv-green-700); }
+.nv-about-page .about-manifesto__statement { max-width: 1120px; font-size: 56px; line-height: 1.18; gap: var(--nv-space-6); }
+.nv-about-page .about-manifesto__statement > span:nth-child(2) { padding-left: 7%; }
+.nv-about-page .about-manifesto__statement > span:nth-child(3) { max-width: none; padding-left: 14%; }
+.nv-about-page .about-manifesto__body { margin-top: var(--nv-space-12); }
+.nv-about-page .about-world__item p { grid-column: 3; grid-row: 1; }
+.nv-about-space-link { grid-column: 3; grid-row: 2; display: inline-flex; align-items: center; min-height: 44px; width: fit-content; gap: var(--nv-space-4); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); color: var(--nv-text-link); text-decoration: none; text-underline-offset: .2em; }
+.nv-about-space-link:hover { color: var(--nv-text-link); text-decoration: underline; }
+.nv-about-space-link::after { content: ' ↗'; font-family: var(--nv-font-sans); font-size: var(--nv-body); color: var(--nv-text-link); }
+@media (max-width: 1120px) {
+  .nv-home-main .home-hero__veil { background: linear-gradient(95deg, color-mix(in srgb, var(--nv-navy-800) 94%, transparent), color-mix(in srgb, var(--nv-navy-800) 56%, transparent)); }
+  .nv-home-main .home-pillars__row { flex-direction: row; gap: var(--nv-space-4); }
+  .nv-home-main .home-pillars__row > div { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .nv-home-main .home26-project { gap: var(--nv-space-8); }
+  .nv-campus-options { gap: var(--nv-space-4); }
+  .nv-campus-options :is(.ac-x06, .ac-x13, .nv-campus-glossary) { padding: var(--nv-space-6); }
+  .nv-campus-options :is(.ac-x10, .ac-x16, .nv-campus-glossary__title) { font-size: var(--nv-title-sm); }
+  .nv-library-page .lecturas-hero__banner { height: 250px; }
+  .nv-library-collections { gap: var(--nv-space-4); }
+  .nv-library-collections > a { padding: var(--nv-space-5); }
+  .nv-about-page .about-manifesto__statement { font-size: 48px; }
+  .nv-about-page .about-world__item { grid-template-columns: 44px minmax(0, 1fr); gap: var(--nv-space-4) var(--nv-space-6); }
+  .nv-about-page .about-world__item p { grid-column: 2; grid-row: 2; }
+  .nv-about-page .nv-about-space-link { grid-column: 2; grid-row: 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nv-library-collections > a, .nv-campus-glossary { transition: none; }
+}
+
+/* Las cinco portadas prolongan la composición de su banner de Inicio. */
+/* Se muestra únicamente el emblema editado para conservar los paisajes
+   y las letras originales de ambos banners. */
+.nv-reading-emblem { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; clip-path: inset(9% 11.4% 65.5% 81.6%); pointer-events: none; z-index: 2; }
+.nv-reading-signature-paper, .nv-reading-signature { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.nv-reading-signature-paper { object-fit: cover; clip-path: inset(43.7% 10.5% 50.5% 78.5%); }
+.nv-reading-signature text { font-family: var(--nv-font-sans); font-size: 12px; font-weight: 500; letter-spacing: 2.4px; fill: var(--nv-bronze-500); }
+.nv-space-trail { padding-block: var(--nv-space-6); }
+.nv-space-entry { border-radius: var(--nv-radius-lg); overflow: hidden; box-shadow: var(--nv-shadow-md); }
+.nv-space-entry.home26-plate--light { border: 1px solid var(--nv-line); }
+.nv-space-editorial { width: 100%; overflow: hidden; }
+.nv-space-entry .home26-plate__body { padding-block: var(--nv-space-12); }
+.nv-space-entry .nv-eyebrow { margin: 0 0 var(--nv-space-5); }
+.nuvia-design-lab .nv-space-entry .nv-eyebrow--on-dark { color: var(--nv-text-on-dark); }
+.nv-space-entry .home26-plate__copy { line-height: 1.7; }
+.nv-space-entry__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nv-space-4) var(--nv-space-6); margin-top: var(--nv-space-8); }
+.nv-space-entry .home26-plate__cta, .nv-space-editorial .home26-plate__cta { display: inline-flex; align-items: center; gap: var(--nv-space-3); min-height: 48px; margin-top: 0; line-height: 1.5; }
+.nv-space-entry__link { display: inline-flex; align-items: center; min-height: 44px; color: var(--nv-text-on-dark); font-size: var(--nv-body-sm); text-underline-offset: .25em; }
+.home26-plate--light .nv-space-entry__link { color: var(--nv-text-link); }
+.nv-space-entry.home26-plate--bleed .home26-plate__body { padding: 0; }
+.nv-space-entry.home26-plate--bleed .home26-plate__copy { margin-top: var(--nv-space-6); max-width: 680px; }
+.nv-space-entry.home26-plate--bleed .home26-plate__veil { background: linear-gradient(180deg, color-mix(in srgb, var(--nv-navy-950) 16%, transparent), color-mix(in srgb, var(--nv-navy-950) 70%, transparent) 56%, color-mix(in srgb, var(--nv-navy-950) 95%, transparent)); }
+
+.nv-campus-navigation .ac-x04 { border-top: 0; border-bottom: 1px solid var(--nv-line); padding-block: var(--nv-space-6); gap: var(--nv-space-3); }
+.nv-campus-navigation .viv-pill--dark { background: var(--nv-surface); color: var(--nv-text-link); border-color: var(--nv-line); }
+.nv-campus-navigation .viv-pill--dark:hover { background: var(--nv-green-100); color: var(--nv-text-link); border-color: var(--nv-green-600); }
+.nv-campus-navigation .viv-pill--dark.is-active { background: var(--nv-navy-900); color: var(--nv-text-on-dark); border-color: var(--nv-navy-900); }
+.nv-space-entry--academy:not(:has(.home26-plate__figure)) { display: block; }
+.nv-space-entry--academy:not(:has(.home26-plate__figure)) .home26-plate__body { padding-block: var(--nv-space-8); }
+.nv-space-entry--academy:not(:has(.home26-plate__figure)) .home26-plate__title { font-size: var(--nv-title-md); }
+.nv-space-entry--academy:not(:has(.home26-plate__figure)) .home26-plate__copy { max-width: 75ch; margin-top: var(--nv-space-4); }
+
+.nv-library-page .lecturas-hero { background: var(--nv-surface); }
+.nv-library-page .lecturas-hero__navigation.nv-space-trail { padding-block: var(--nv-space-6); }
+.nv-space-editorial .lecturas-hero__content { position: absolute; inset: 0; width: min(var(--nv-container), calc(100% - 2 * var(--nv-page-gutter))); padding-inline: 0; }
+.nv-space-editorial .lecturas-hero__text { width: 62%; }
+.nv-library-page .nv-space-editorial .lecturas-hero__banner { height: auto; aspect-ratio: 2120 / 202; }
+.nv-reading-artwork {
+  position: absolute;
+  right: max(var(--nv-page-gutter), calc((100% - var(--nv-container)) / 2));
+  top: 0;
+  width: 50%;
+  height: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 88%, transparent);
+}
+.nv-space-editorial .lecturas-hero__banner::before { content: ""; position: absolute; inset: 0; background: url("../src/assets/home/lecturas-con-criterio-fondo-compacto-family-wealth.webp") left center / 200% auto no-repeat; }
+.nv-space-editorial .lecturas-hero__art { width: 100%; height: 100%; object-fit: cover; }
+.nv-space-editorial__body { background: var(--nv-cloud); }
+.nv-space-editorial__body > .nv-container { display: flex; padding-inline: 0; }
+.nv-space-editorial__body .home26-plate__copy { color: var(--nv-text-soft); }
+.nv-space-editorial__body .home26-plate__cta { color: var(--nv-text-link); border-color: var(--nv-green-600); }
+.nv-space-editorial__body .home26-plate__cta:hover { background: var(--nv-green-100); }
+@media (max-width: 1120px) {
+  .nv-space-entry .home26-plate__body { padding: var(--nv-space-8); }
+  .nv-space-entry .home26-plate__title { font-size: var(--nv-title-md); }
+  .nv-space-entry.home26-plate--bleed .home26-plate__body { padding: 0; bottom: var(--nv-space-8); }
+  .nv-space-entry.home26-plate--bleed .home26-plate__cta { white-space: normal; }
+  .nv-space-editorial .lecturas-hero__text { width: 65%; }
+  .nv-library-page .nv-space-editorial h1 { font-size: var(--nv-title-md); }
+  .nv-space-editorial .lecturas-hero__text p { font-size: var(--nv-body); }
+  .nv-space-editorial .lecturas-hero__divider { margin-block: var(--nv-space-1); }
+}

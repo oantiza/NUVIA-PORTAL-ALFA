@@ -41,7 +41,7 @@
 <script defer src="nuvia-site-unified.js"></script>
 </head>
 
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab nv-home-polish nv-space-page nv-space-page--bienestar">
 <x-dc>
 
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
@@ -98,28 +98,25 @@
 
   <main id="contenido">
 
-    <section data-screen-label="Cabecera Bienestar" class="nv-hero nv-hero--institutional">
-      <div class="nv-container">
-        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-          <ol>
-            <li><a href="index.html" data-main-menu-return>Inicio</a></li>
-            <li><span aria-current="page">Familia, Salud y Bienestar</span></li>
-          </ol>
-        </nav>
-        <div class="nv-hero__inner nv-hero__inner--simple">
-          <div>
-            <p class="nv-eyebrow nv-eyebrow--on-dark">Espacio NUVIA · Vida y Equilibrio</p>
-            <h1>Familia, Salud y Bienestar</h1>
-            <p class="nv-hero__lead">
-              El tiempo, la salud y la serenidad familiar: el patrimonio intangible sobre el que
-              se apoya y cobra sentido la economía de cada día.
-            </p>
-          </div>
+    <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación">
+      <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Familia, Salud y Bienestar</span></li></ol>
+    </nav>
+    <section data-screen-label="Cabecera Familia, Salud y Bienestar" class="nv-container home26-plate  nv-space-entry" aria-labelledby="bienestar-title">
+      <div class="home26-plate__figure">
+        <img class="home26-plate__art" src="src/assets/home/wellbeing-life-balance-banner-v2.webp" alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" decoding="async">
+      </div>
+      <div class="home26-plate__body">
+        <p class="nv-eyebrow nv-eyebrow--on-dark">Vida y equilibrio</p>
+        <h1 id="bienestar-title" class="home26-plate__title">Familia, Salud y Bienestar</h1>
+        <p class="home26-plate__copy">El tiempo, la salud y la serenidad familiar: el patrimonio intangible sobre el que se apoya y cobra sentido la economía de cada día.</p>
+        <div class="nv-space-entry__actions">
+          <a class="home26-plate__cta" href="#pilares-bienestar">Conocer los cuatro pilares <span aria-hidden="true">→</span></a>
+          <a class="nv-space-entry__link" href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
         </div>
       </div>
     </section>
 
-    <section class="nv-section nv-section--tight" aria-labelledby="titulo-pilares-bienestar">
+    <section id="pilares-bienestar" class="nv-section nv-section--tight nv-space-resources" aria-labelledby="titulo-pilares-bienestar">
       <div class="nv-container">
         <div class="nv-section-heading">
           <div>
@@ -136,7 +133,7 @@
 
           <article class="nv-card nv-card--editorial">
             <div class="nv-card__icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 3"/></svg>
             </div>
             <h3>El valor del tiempo</h3>
             <p>
@@ -180,6 +177,15 @@
 
         </div>
 
+        <section class="nv-space-insight" aria-labelledby="bienestar-concepto">
+          <div><p class="nv-eyebrow">La vida detrás de las cifras</p><h2 id="bienestar-concepto">Cuidar lo que no cabe en una cuenta.</h2></div>
+          <div class="nv-space-insight__items">
+            <div><h3>Tiempo para vivir</h3><p>Convivencia, trabajo y descanso forman parte de una misma vida cotidiana.</p></div>
+            <div><h3>Hábitos y cuidado</h3><p>Un espacio divulgativo para comprender el cuerpo, la mente y el bienestar.</p></div>
+            <div><h3>Vínculos familiares</h3><p>Conversaciones, aprendizajes y proyectos que compartimos con los nuestros.</p></div>
+          </div>
+        </section>
+
         <div class="nv-note nv-section-space" role="note">
           <p>
             <strong>Aviso de divulgación general:</strong>
@@ -192,6 +198,13 @@
       </div>
     </section>
 
+    <nav class="nv-container nv-space-next" aria-label="Otros espacios de NUVIA">
+      <p>Sigue explorando NUVIA</p>
+      <a href="economia.html">Economía <span aria-hidden="true">→</span></a>
+      <a href="patrimonio.html">Patrimonio <span aria-hidden="true">→</span></a>
+      <a href="academia.html">Academia <span aria-hidden="true">→</span></a>
+      <a href="lecturas.html">Lecturas <span aria-hidden="true">→</span></a>
+    </nav>
   </main>
 
     <footer data-screen-label="Footer" class="nuvia-site-footer">

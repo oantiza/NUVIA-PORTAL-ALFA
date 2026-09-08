@@ -38,7 +38,7 @@ La nueva arquitectura separa limpiamente la **bienvenida y orientación** de la 
 
 | Destino | Ruta canónica | Rol funcional | Estado |
 | :--- | :--- | :--- | :--- |
-| **Home de Entrada** | `index.html` | Puerta de bienvenida global, mapa de los 5 espacios y accesos rápidos cotidianos. | Consolidada en diseño base. |
+| **Home de Entrada** | `index.html` | Bienvenida global, presentación del propósito y cinco bloques visuales con acceso a las Homes de espacio. Las herramientas se consultan desde cada espacio y la navegación global, sin índices repetidos en el cuerpo de Inicio. | Simplificada sobre el diseño original. |
 | **Home: Economía y Finanzas** | `economia.html` (o `mercados.html` redefinida) | Sede del espacio: contexto macroeconómico, relación con el hogar y derivación a mercados, cartera y empresas. | **Por diseñar / estructurar.** |
 | **Home: Patrimonio** | `patrimonio.html` (reemplaza a `temas.html`) | Sede del espacio: mapa de la economía familiar (vivienda, retiro, impuestos) y acceso directo a simuladores. | **Por diseñar / estructurar.** |
 | **Home: Familia, Salud y Bienestar** | `bienestar.html` | Sede del espacio: estilo de vida, hábitos saludables y serenidad familiar (sin diagnóstico médico). | **Por diseñar / estructurar.** |

@@ -46,7 +46,7 @@
 <script defer src="nuvia-site-unified.js"></script>
 </head>
 
-<body>
+<body class="nv-home-polish nv-home-main">
 <x-dc>
 
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
@@ -126,16 +126,16 @@
             </p>
 
             <div class="nv-hero__actions">
-              <a class="nv-btn nv-btn--accent" href="#espacios">Explorar NUVIA</a>
+              <a class="nv-btn nv-btn--accent" href="#espacios">Explorar NUVIA <span aria-hidden="true">→</span></a>
               <a class="nv-btn nv-btn--soft" href="academia.html">Empezar a aprender</a>
             </div>
             <sc-if value="{{ barraPilares }}" hint-placeholder-val="{{ true }}">
               <div class="home-pillars">
                 <div class="home-pillars__rule" aria-hidden="true"></div>
                 <div class="home-pillars__row">
-                  <div><span class="home-pillars__num">01</span><span class="home-pillars__name">Comprender</span></div>
-                  <div><span class="home-pillars__num">02</span><span class="home-pillars__name">Cuidar</span></div>
-                  <div><span class="home-pillars__num">03</span><span class="home-pillars__name">Transmitir</span></div>
+                  <div><span class="home-pillars__num">01</span><span class="home-pillars__name">Comprender</span><small>La realidad de tu economía</small></div>
+                  <div><span class="home-pillars__num">02</span><span class="home-pillars__name">Cuidar</span><small>Una mirada a largo plazo</small></div>
+                  <div><span class="home-pillars__num">03</span><span class="home-pillars__name">Transmitir</span><small>Conocimiento y criterio</small></div>
                 </div>
               </div>
             </sc-if>
@@ -145,42 +145,6 @@
     </section>
 
 
-
-    <section id="espacios" class="nv-section home26-spaces" aria-labelledby="titulo-espacios">
-      <div class="nv-container">
-        <p class="nv-eyebrow">Un lugar, cinco espacios</p>
-        <h2 id="titulo-espacios">¿Qué quieres comprender hoy?</h2>
-        <p class="home26-spaces__lead">Elige un punto de partida. Cada espacio reúne información, aprendizaje y recursos para avanzar con tu propio criterio.</p>
-        <div class="home26-spaces__grid">
-          <a href="economia.html"><span class="home26-spaces__number">01</span><h3>Economía y Finanzas</h3><p>Entender los mercados, las empresas y la composición de una cartera.</p><span class="home26-spaces__link">Explorar economía <span aria-hidden="true">→</span></span></a>
-          <a href="patrimonio.html"><span class="home26-spaces__number">02</span><h3>Patrimonio</h3><p>Conectar vivienda, impuestos, jubilación y planificación familiar.</p><span class="home26-spaces__link">Explorar patrimonio <span aria-hidden="true">→</span></span></a>
-          <a href="bienestar.html"><span class="home26-spaces__number">03</span><h3>Familia, Salud y Bienestar</h3><p>Conocer el espacio dedicado a la vida familiar y al equilibrio cotidiano.</p><span class="home26-spaces__link">Conocer el espacio <span aria-hidden="true">→</span></span></a>
-          <a href="academia.html"><span class="home26-spaces__number">04</span><h3>Academia NUVIA</h3><p>Aprender los conceptos esenciales y profundizar con los cursos.</p><span class="home26-spaces__link">Empezar a aprender <span aria-hidden="true">→</span></span></a>
-          <a href="lecturas.html"><span class="home26-spaces__number">05</span><h3>Lecturas con Criterio</h3><p>Descubrir libros e ideas para ampliar la mirada y pensar a largo plazo.</p><span class="home26-spaces__link">Descubrir lecturas <span aria-hidden="true">→</span></span></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="sumario" data-screen-label="Sumario" class="nv-section nv-section--technical" aria-labelledby="titulo-sumario">
-      <div class="nv-container">
-        <div class="home26-index">
-          <div>
-            <p class="nv-eyebrow" id="titulo-sumario">Accesos directos</p>
-            <p class="home26-index__note">Dónde se explica cada cosa.</p>
-          </div>
-          <div class="home26-index__list">
-            <a class="home26-index__item" href="vivienda.html"><span>Vivienda y coste de vida</span><span>01</span></a>
-            <a class="home26-index__item" href="jubilacion.html"><span>Jubilación</span><span>02</span></a>
-            <a class="home26-index__item" href="fiscalidad.html"><span>Impuestos</span><span>03</span></a>
-            <a class="home26-index__item" href="temas.html?topic=planificacion-patrimonial"><span>Planificación patrimonial</span><span>04</span></a>
-            <a class="home26-index__item" href="mercados.html"><span>Mercados y noticias</span><span>05</span></a>
-            <a class="home26-index__item" href="cartera.html"><span>Cartera</span><span>06</span></a>
-            <a class="home26-index__item" href="temas.html?topic=bienestar"><span>Cuerpo, mente y salud</span><span>07</span></a>
-            <a class="home26-index__item" href="academia.html?tab=esenciales"><span>Conocimientos esenciales</span><span>08</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ══ EL PROYECTO ═══════════════════════════════════════════════════════
          La única sección puramente tipográfica de la portada, a propósito.
@@ -204,9 +168,9 @@
           <div class="home26-project__aside" aria-label="Valores de NUVIA">
             <p class="nv-eyebrow nv-eyebrow--editorial">Valores</p>
             <div class="home26-project__list">
-              <div class="home26-project__item"><span class="home26-project__num">01</span><span class="home26-project__name">Claridad</span></div>
-              <div class="home26-project__item"><span class="home26-project__num">02</span><span class="home26-project__name">Honestidad</span></div>
-              <div class="home26-project__item"><span class="home26-project__num">03</span><span class="home26-project__name">Independencia</span></div>
+              <div class="home26-project__item"><span class="home26-project__num">01</span><div><span class="home26-project__name">Claridad</span><p class="nv-value-detail">Entender sin tener que ser experto.</p></div></div>
+              <div class="home26-project__item"><span class="home26-project__num">02</span><div><span class="home26-project__name">Honestidad</span><p class="nv-value-detail">Supuestos y límites siempre a la vista.</p></div></div>
+              <div class="home26-project__item"><span class="home26-project__num">03</span><div><span class="home26-project__name">Independencia</span><p class="nv-value-detail">Información para formar tu propio criterio.</p></div></div>
             </div>
           </div>
         </div>
@@ -216,11 +180,11 @@
 
     <!-- ══ LÁMINA 01 · ECONOMÍA Y FINANZAS ═══════════════════════════════════
          Sustituye el banner editorial por una lámina a sangre. Mismo texto
-         educativo y mismo destino único (mercados.html). Los indicadores y el
+         educativo y acceso a economia.html. Los indicadores y el
          archivo siguen viviendo en Mercados; aquí no se duplica ningún dato.
          ═══════════════════════════════════════════════════════════════════ -->
-    <div class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Resumen estratégico</p>
+    <div id="espacios" class="nv-container home26-plate-label-wrap">
+      <p class="nv-eyebrow home26-plate-label">Un lugar, cinco espacios</p>
     </div>
     <section id="mercados" data-screen-label="Economía y Finanzas" class="nv-container home26-plate home26-plate--bleed" aria-labelledby="titulo-mercados">
       <img class="home26-plate__art" src="src/assets/markets/secondary-news/wall-street-records.jpg"
@@ -230,7 +194,7 @@
         <h2 id="titulo-mercados" class="home26-plate__title">Economía y Finanzas</h2>
         <div class="home26-plate__row">
           <p class="home26-plate__copy">Inflación, tipos de interés, empleo y actividad económica. Cómo los precios, los tipos y el crecimiento se relacionan con el ahorro, la financiación y el poder de compra.</p>
-          <a class="home26-plate__cta" href="mercados.html">Accede a Economía y Finanzas <span aria-hidden="true">→</span></a>
+          <a class="home26-plate__cta" href="economia.html">Accede a Economía y Finanzas <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -238,7 +202,7 @@
 
     <!-- ══ LÁMINA 02 · PATRIMONIO ════════════════════════════════════════════
          Composición partida, espejada respecto a Bienestar. Destino único a
-         temas.html: reúne los cuatro ámbitos y su disponibilidad sin
+         patrimonio.html: reúne los cuatro ámbitos y su disponibilidad sin
          convertir vivienda, fiscalidad o jubilación en opciones preferentes;
          esos destinos siguen en la navegación principal.
          ═══════════════════════════════════════════════════════════════════ -->
@@ -253,15 +217,14 @@
       <div class="home26-plate__body">
         <h2 id="titulo-patrimonio" class="home26-plate__title">Patrimonio</h2>
         <p class="home26-plate__copy">Vivienda, coste de vida, impuestos y jubilación: información y herramientas para entender el presupuesto familiar, comprender las obligaciones fiscales y explorar los ingresos futuros con perspectiva.</p>
-        <a class="home26-plate__cta" href="temas.html">Accede a Patrimonio <span aria-hidden="true">→</span></a>
+        <a class="home26-plate__cta" href="patrimonio.html">Accede a Patrimonio <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
 
     <!-- ══ LÁMINA 03 · FAMILIA, SALUD Y BIENESTAR ════════════════════════════
-         Sección en preparación: el estado se declara con una etiqueta visible
-         sobre la fotografía, sin aparentar que está terminada. Sin etiquetas
-         de materias y con un único enlace educativo, como fija la ficha.
+         Sin etiquetas superpuestas, por indicación del fundador. Un único
+         enlace educativo mantiene el acceso a la portada del espacio.
          Los textos describen temáticas: ningún consejo médico ni terapéutico.
          ═══════════════════════════════════════════════════════════════════ -->
     <div class="nv-container home26-plate-label-wrap">
@@ -271,55 +234,49 @@
       <div class="home26-plate__figure">
         <img class="home26-plate__art" src="src/assets/home/wellbeing-life-balance-banner-v2.webp"
              alt="" aria-hidden="true" width="1600" height="900" loading="lazy">
-        <span class="home26-plate__badge">En preparación</span>
       </div>
       <div class="home26-plate__body">
         <h2 id="titulo-familia-salud" class="home26-plate__title">Familia, Salud y Bienestar</h2>
         <p class="home26-plate__copy">Vida familiar, salud mental y física y equilibrio cotidiano: un espacio para comprender los hábitos, las relaciones y la conciliación entre familia, trabajo y descanso.</p>
-        <a class="home26-plate__cta" href="temas.html?topic=bienestar">Accede a Familia, Salud y Bienestar <span aria-hidden="true">→</span></a>
+        <a class="home26-plate__cta" href="bienestar.html">Accede a Familia, Salud y Bienestar <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
 
-    <!-- ══ SUMARIO ═══════════════════════════════════════════════════════════
-         Bloque nuevo. Es un índice de navegación a páginas que ya existen:
-         no añade datos, cifras, instrumentos ni recomendaciones, y la
-         numeración solo identifica materias (no ordena por atractivo).
-         ═══════════════════════════════════════════════════════════════════ -->
-
-
-
-    <!-- ══ ACADEMIA ══════════════════════════════════════════════════════════
-         La imagen aprobada ya lleva su propia tipografía, así que el bloque
-         prescinde de cabecera exterior y conserva el acceso discreto «Entrar».
-         ═══════════════════════════════════════════════════════════════════ -->
-    <section id="academia" data-screen-label="Academia" class="nv-section home26-showcase home26-showcase--academy" aria-label="Academia">
-      <div class="nv-container">
-        <p class="nv-eyebrow home26-showcase__label">Formación</p>
-        <div class="home-academia">
-          <img class="home-academia__art"
-               src="src/assets/education/nuvia-academy/nuvia-academy-banner-2026.webp"
-               alt="Academia. Saber es patrimonio. Cursos, guías, vídeos y simuladores."
-               width="3552" height="1184" loading="lazy" decoding="async">
-          <a class="home-feature-access home-academia__cta" href="academia.html">Entrar</a>
-        </div>
+    <!-- Academia utiliza una escena de aprendizaje y el mismo componente
+         fotográfico que los otros espacios. Lecturas conserva su ilustración. -->
+    <div class="nv-container home26-plate-label-wrap">
+      <p class="nv-eyebrow home26-plate-label">Formación</p>
+    </div>
+    <section id="academia" data-screen-label="Academia" class="nv-container home26-plate home26-plate--light home26-plate--reverse" aria-labelledby="titulo-academia">
+      <div class="home26-plate__figure">
+        <img class="home26-plate__art"
+             src="src/assets/home/academia-aprendizaje-natural-20260908.webp"
+             alt="" aria-hidden="true" width="1536" height="1024" loading="lazy" decoding="async">
+      </div>
+      <div class="home26-plate__body">
+        <h2 id="titulo-academia" class="home26-plate__title">Academia NUVIA</h2>
+        <p class="home26-plate__copy"><strong>Saber es patrimonio.</strong> Conceptos esenciales, guías y cursos para comprender la economía y las decisiones de cada día. Aprende a tu ritmo, empieces desde donde empieces.</p>
+        <a class="home26-plate__cta" href="academia.html">Accede a Academia NUVIA <span aria-hidden="true">→</span></a>
       </div>
     </section>
-
-
-    <div class="home26-band home26-band--compact" aria-hidden="true"></div>
 
 
     <!-- ══ LECTURAS CON CRITERIO ═════════════════════════════════════════════ -->
-    <section id="lecturas-con-criterio" data-screen-label="Lecturas con Criterio" class="nv-section home26-showcase home26-showcase--readings" aria-label="Lecturas con Criterio">
-      <div class="nv-container">
-        <p class="nv-eyebrow home26-showcase__label">Sección editorial</p>
-        <a class="home-lecturas" href="lecturas.html" aria-label="Entrar en Lecturas con Criterio">
-          <img class="home-lecturas__art" src="src/assets/home/lecturas-con-criterio-banner-sin-boton.webp"
-               alt="Lecturas con Criterio. Historias sencillas de interés duradero."
-               width="2120" height="404" loading="lazy" decoding="async">
-          <span class="home-feature-access home-lecturas__cta">Entrar</span>
-        </a>
+    <div class="nv-container home26-plate-label-wrap">
+      <p class="nv-eyebrow home26-plate-label">Sección editorial</p>
+    </div>
+    <section id="lecturas-con-criterio" data-screen-label="Lecturas con Criterio" class="nv-container home26-plate home26-plate--light home26-panel" aria-label="Lecturas con Criterio">
+      <div class="home-lecturas">
+        <img class="home-lecturas__art" src="src/assets/home/lecturas-con-criterio-banner-sin-boton.webp"
+             alt="Lecturas con Criterio. Historias sencillas de interés duradero."
+             width="2120" height="404" loading="lazy" decoding="async">
+        <img class="nv-reading-emblem" src="src/assets/home/lecturas-emblema-libro-20260908.webp"
+             alt="" aria-hidden="true" width="2171" height="724" loading="lazy" decoding="async">
+      </div>
+      <div class="home26-plate__body home26-panel__body">
+        <p class="home26-plate__copy">La mirada se amplía también leyendo. Libros e ideas sobre dinero, comportamiento y decisiones de largo plazo para profundizar en lo que descubres en NUVIA y desarrollar criterio propio.</p>
+        <a class="home26-plate__cta home-lecturas__cta" href="lecturas.html">Accede a Lecturas con Criterio <span aria-hidden="true">→</span></a>
       </div>
     </section>
 

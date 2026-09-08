@@ -60,7 +60,7 @@ const ESCALA = [12, 14, 16, 18, 22, 28, 36];
    arranque dejó la tabla de cotizaciones con una fila vacía, todo lo demás
    siguió dando cero y nadie se enteró. Estas cuentas son el mínimo. */
 const CONTENIDO = {
-  'index.html':            [['#mercados .home26-plate__cta', 1], ['#patrimonio .home26-plate__cta', 1], ['#familia-salud .home26-plate__cta', 1], ['#academia .home-academia__cta', 1], ['#lecturas-con-criterio .home-lecturas[href="lecturas.html"]', 1], ['#sumario .home26-index__item', 8]],
+  'index.html':            [['#mercados .home26-plate__cta', 1], ['#patrimonio .home26-plate__cta', 1], ['#familia-salud .home26-plate__cta', 1], ['#academia .home26-plate__cta[href="academia.html"]', 1], ['#lecturas-con-criterio .home26-plate__cta[href="lecturas.html"]', 1], ['#espacios', 1], ['#que-es-nuvia .home26-project__body', 1]],
   'mercados.html':         [['.markets-macro__item', 5], ['.markets-secondary-card', 3]],
   'mercados.html?vista=cotizaciones': [['.markets-lab__quote', 16], ['.markets-lab__chip', 5]],
   'curso.html':            [['.curso-resultado', 4], ['.curso-campo', 7]],

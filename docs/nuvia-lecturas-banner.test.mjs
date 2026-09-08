@@ -14,13 +14,13 @@ assert.ok(section?.includes(`src="${homeAsset}"`), 'Inicio usa el banner aportad
 assert.ok(section.includes('href="lecturas.html"'), 'El banner conserva el acceso a Lecturas');
 assert.doesNotMatch(section, /nv-section-heading|titulo-lecturas|<h2\b/,
   'El banner sustituye la cabecera exterior y elimina su espacio');
-assert.match(section, /<a class="home-lecturas" href="lecturas\.html" aria-label="Entrar en Lecturas con Criterio">/,
-  'El banner completo es el acceso editorial con nombre accesible Entrar');
+assert.match(section, /<div class="home-lecturas">/,
+  'La ilustración permanece completa dentro de su propio lienzo');
 assert.equal((section.match(/<a\b/g) ?? []).length, 1, 'Lecturas tiene un único enlace');
-assert.match(section, /class="home-feature-access home-lecturas__cta">Entrar<\/span>/,
-  'Lecturas comparte el acceso HTML de Academia');
+assert.match(section, /class="home26-plate__cta home-lecturas__cta" href="lecturas\.html">Accede a Lecturas con Criterio/,
+  'Lecturas comparte el acceso descriptivo de los otros cuatro espacios');
 assert.ok(section.includes('alt="Lecturas con Criterio. Historias sencillas de interés duradero."'),
-  'La imagen enlazada tiene alternativa informativa');
+  'La imagen tiene alternativa informativa');
 assert.ok(section.includes('width="2120" height="404"'), 'Se reserva la proporción exacta del banner sin botón');
 assert.ok(!section.includes('lecturas-con-criterio-banner-approved.jpeg'), 'No reintroducir la imagen con letras deformadas');
 assert.ok(!section.includes(retiredAsset), 'No reintroducir el PNG con el antiguo botón dibujado');
@@ -35,8 +35,9 @@ const hero = page.match(/<section\b[^>]*id="lecturas"[\s\S]*?<\/section>/)?.[0];
 assert.ok(hero?.includes(`src="${heroAsset}"`), 'La cabecera interior usa el paisaje limpio sin botón');
 assert.equal(page.split(heroAsset).length - 1, 1, 'Una sola imagen de paisaje en la página de Lecturas');
 assert.ok(!hero.includes(retiredAsset), 'No reintroducir el botón integrado del PNG anterior');
-assert.doesNotMatch(hero, /Explorar Lecturas|href="#seleccion-lecturas"|<button\b/i, 'No hay CTA ni enlace de banner en la cabecera');
-assert.ok(hero.includes('class="lecturas-hero__banner"'), 'El fondo ocupa el ancho de la página, fuera del contenedor');
+assert.doesNotMatch(hero.match(/<div class="lecturas-hero__banner">[\s\S]*?<\/h1>/)?.[0] ?? '', /<a\b|<button\b/i, 'El paisaje y el título no incorporan controles superpuestos');
+assert.equal((hero.match(/href="#seleccion-lecturas"/g) ?? []).length, 1, 'Un único acceso al catálogo bajo la ilustración');
+assert.ok(hero.includes('class="nv-space-editorial"'), 'El paisaje se extiende hasta los bordes de la página');
 assert.ok(!hero.includes('nv-hero--institutional'), 'La petición sustituye el fondo azul solo en Lecturas');
 assert.ok(!page.includes('lecturas-con-criterio-escena-compacta.webp'), 'Se retira la escena anterior con Wealth Management');
 assert.match(hero, /<h1 id="lecturas-title">Lecturas con Criterio<\/h1>/, 'Un título HTML visible y accesible con escala controlable');
@@ -58,19 +59,16 @@ assert.match(css, /\.lecturas-hero h1\s*\{[\s\S]*?font-size:\s*var\(--nv-display
 const imageRule = css.match(/\.home-lecturas__art\s*\{([^}]+)\}/)?.[1];
 assert.ok(imageRule?.includes('height: auto'), 'La imagen no debe recortarse ni deformarse');
 assert.ok(!imageRule.includes('filter:'), 'No se alteran los colores del archivo original');
-const homeBannerRule = css.match(/\.home-lecturas\s*\{([^}]+)\}/)?.[1];
-assert.ok(homeBannerRule?.includes('aspect-ratio: 2879 / 546'), 'La caja conserva la proporción panorámica del banner');
-assert.match(css, /\.home-lecturas:focus-visible\s*\{[\s\S]*?outline:/, 'El banner enlazado tiene foco visible');
+assert.match(css, /\.home26-plate__cta:focus-visible\s*\{[\s\S]*?outline:/, 'El acceso compartido conserva foco visible');
 const heroRule = css.match(/\.lecturas-hero\s*\{([^}]+)\}/)?.[1];
 assert.ok(heroRule?.includes('background: var(--nv-surface)'), 'La cabecera usa la superficie común');
 const tokens = await readFile(resolve(root, 'estilos/nuvia-tokens.css'), 'utf8');
 assert.match(tokens, /--nv-surface:\s*var\(--nv-white\);/, 'La superficie de Lecturas sigue siendo blanca');
 assert.match(tokens, /--nv-white:\s*#ffffff;/i, 'No alterar el blanco aprobado');
-const heroImageRule = css.match(/\.lecturas-hero__art\s*\{([^}]+)\}/)?.[1];
-assert.ok(heroImageRule?.includes('width: auto') && heroImageRule.includes('height: 100%'), 'El paisaje mantiene su proporción sin escalar con el ancho de pantalla');
-const bannerRule = css.match(/\.lecturas-hero__banner\s*\{([^}]+)\}/)?.[1];
-assert.ok(bannerRule?.includes('width: 100%') && bannerRule.includes('height: 235px'), 'Fondo a ancho completo sin aumentar los 235 px de altura');
-assert.ok(!bannerRule.includes('max-width:'), 'No limitar el fondo al ancho del contenido');
+const heroImageRule = css.match(/\.nv-space-editorial \.lecturas-hero__art\s*\{([^}]+)\}/)?.[1];
+assert.ok(heroImageRule?.includes('width: 100%') && heroImageRule.includes('height: 100%'), 'El paisaje ocupa el marco editorial');
+const bannerRule = css.match(/\.nv-library-page \.nv-space-editorial \.lecturas-hero__banner\s*\{([^}]+)\}/)?.[1];
+assert.ok(bannerRule?.includes('height: auto') && bannerRule.includes('aspect-ratio: 2120 / 202'), 'El banner conserva el ancho completo con la mitad de altura solicitada');
 const titleRule = css.match(/\.lecturas-hero h1\s*\{([^}]+)\}/)?.[1];
 assert.ok(titleRule?.includes('font-size: var(--nv-display-md)'), 'El título interior usa la escala reducida solicitada');
 const booksRule = css.match(/\.lecturas-hero \+ #seleccion-lecturas\s*\{([^}]+)\}/)?.[1];

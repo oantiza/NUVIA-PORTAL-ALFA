@@ -5,7 +5,7 @@ import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] || '.');
 const read = (file) => readFileSync(resolve(root, file), 'utf8');
-const breadcrumb = (file) => read(file).match(/<nav class="nv-breadcrumb"[\s\S]*?<\/nav>/)?.[0] || '';
+const breadcrumb = (file) => read(file).match(/<nav class="[^"]*\bnv-breadcrumb\b[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
 const pages = ['vivienda.html', 'fiscalidad.html', 'jubilacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html', 'guia-fiscal.html', 'guia-planificacion.html'];
 for (const file of pages) {
   assert.ok(breadcrumb(file).includes('<a href="temas.html">Patrimonio</a>'), `${file}: espacio padre explícito`);

@@ -29,6 +29,22 @@ Clasificación del cambio: verde, presentación educativa y navegación. No camb
 
 ## Implementación
 
+### Banners fotográficos de los cuatro espacios · 09-09-2026
+
+Ajustes posteriores: se suaviza el degradado y se encajan las fotografías completas mediante `object-fit: contain`, alineadas a la derecha sobre el fondo azul NUVIA. Se conserva su proporción original y la altura reducida del banner; el espacio restante mantiene continuidad con la zona de texto.
+
+Última corrección: el fundador insiste en ocupar todo el ancho con las fotografías completas. Las imágenes pasan a ancho 100 % y altura automática, sin espacios laterales, recorte ni deformación. Esta combinación requiere recuperar su altura proporcional y sustituye las alturas reducidas anteriores; títulos, explicaciones y accesos siguen superpuestos con el degradado suavizado.
+
+Orden posterior: recuperar la altura anterior manteniendo el ancho completo. Se restablecen 400 px para Patrimonio, Bienestar y Academia y 448 px para Economía (272 y 368 px en tablet). Las fotografías cubren el marco mediante `object-fit: cover`, con recorte proporcional; se mantienen el degradado suavizado y los contenidos superpuestos.
+
+Ajuste final solicitado: encajar las fotos completas y centradas dentro de esa altura, fundiendo los extremos con el fondo del banner. Se mantiene el marco a ancho completo y altura reducida; las imágenes se escalan proporcionalmente con ancho automático, centrado horizontal y máscara gradual en sus bordes laterales. El fondo azul NUVIA prolonga la composición hasta ambos extremos y el degradado de lectura permanece suavizado.
+
+Última indicación: desplazar las cuatro fotografías hacia la derecha y alinear su borde con el del contenido inferior. Se usa el margen adaptable del contenedor común, conservando el encaje completo, la altura y el difuminado lateral.
+
+Composición vigente, tras la referencia visual de Inicio y el «ok» del fundador: cuatro ampliaciones panorámicas generadas a partir de las escenas anteriores, con imagen continua de borde a borde y el degradado azul de la Home. Se mantienen las alturas compactas, el contenido superpuesto y las rutas. Se retira el encaje lateral con máscara; las panorámicas se encuadran según el ancho disponible. Los originales de Inicio siguen intactos. Procedencia, archivos y prompts completos en `PANORAMICAS_ESPACIOS_20260909.md`. Validación de las cuatro portadas a 1440, 2560 y 768 px sin fallos de contraste, estructura, desbordes ni consola; contratos de imágenes originales y de superficies superados.
+
+El fundador solicita ampliar las fotografías de Economía, Patrimonio, Bienestar y Academia hasta los bordes y reducir su altura un 20 %. Precisa después que títulos, explicaciones y accesos permanezcan dentro del banner, con un degradado detrás del texto para asegurar su lectura. Se sustituye la composición partida por fotografías a ancho completo con contenido superpuesto y alineado al contenedor común. Las franjas de 500 px pasan a 400 px; Economía pasa de 560 a 448 px. En tablet, las franjas de 340 y 460 px pasan a 272 y 368 px respectivamente. Se mantienen las imágenes existentes, las rutas y los contenidos; las vistas interiores de Academia conservan su cabecera compacta sin fotografía. Ajuste de presentación dentro de la ficha verde anterior, sin cambios de datos ni funciones.
+
 Ampliación autorizada por el fundador: adaptar las cinco portadas de espacio a los banners aprobados de Inicio. Se aplica la ficha anterior (clasificación verde): reutilización de las cinco imágenes, composición y navegación educativa, sin nuevos datos, cálculos, recomendaciones o servicios. Se conservarán recursos, pestañas, filtros, catálogo, fuentes y límites. Controles previstos: navegación y contratos existentes, auditoría de render en escritorio/tablet y revisión visual de las cinco entradas.
 
 - Inicio mantiene su fotografía familiar, titular, tipografía y paleta. Por la indicación posterior de simplificar, el recorrido queda en hero, presentación del proyecto y cinco bloques visuales. Se retiran las cinco tarjetas y el sumario de herramientas que repetían destinos. Los banners conducen a las portadas canónicas; `#espacios` apunta al comienzo de esos bloques. Las herramientas continúan en la navegación global y dentro de sus espacios.

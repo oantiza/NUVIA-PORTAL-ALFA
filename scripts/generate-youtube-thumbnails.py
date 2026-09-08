@@ -2,7 +2,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import math
 
-ROOT = Path(r"C:\Users\oanti\Documents\NUVIA-PORTAL-LAB")
+ROOT = Path(r"C:\Users\oanti\Documents\NUVIA-PORTAL-ALFA")
 FONT = ROOT / "output/videos/video-02-crecimiento-diversificacion/04-assets/fonts/Inter-Variable.ttf"
 W, H = 1280, 720
 NAVY = (3, 17, 36)

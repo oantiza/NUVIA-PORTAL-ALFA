@@ -44,5 +44,5 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`NUVIA Portal Lab disponible en http://127.0.0.1:${port}`);
+  console.log(`NUVIA Portal Alfa disponible en http://127.0.0.1:${port}`);
 });

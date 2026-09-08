@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import sharp from 'sharp';
 
 const root = resolve(process.argv[2] || '.');
-const base = 'https://oantiza.github.io/NUVIA-PORTAL-LAB/';
+const base = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 const socialImage = `${base}src/assets/social/nuvia-social-card-2026-v1.webp`;
 const pages = new Map([
   ['index.html', 'NUVIA · Entender tu dinero'],

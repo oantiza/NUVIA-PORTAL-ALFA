@@ -274,7 +274,7 @@ const secondaryNews = preparedSecondaryNews.map(({ candidate, editorial: itemEdi
 });
 
 existing.synchronizedAt = checkedAt.toISOString();
-existing.sourceRepository = 'NUVIA-PORTAL-LAB';
+existing.sourceRepository = 'NUVIA-PORTAL-ALFA';
 existing.dailyEconomicNewsCheckedAt = checkedAt.toISOString();
 existing.editorialUpdate = {
   lastAttemptAt: checkedAt.toISOString(),

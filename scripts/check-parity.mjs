@@ -8,7 +8,7 @@ const required = [
   'core/downloads/nuvia-academy/capitulo-01-pon-orden-a-tu-dinero.pdf',
   'data/daily-content.json',
   'company-analysis/index.html',
-  'company-analysis/src/App.jsx',
+  'company-analysis/src/alfa/App.jsx',
   'web2-integration.js',
 ];
 

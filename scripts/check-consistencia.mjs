@@ -25,7 +25,7 @@ import { resolve, join } from 'node:path';
 const root = resolve(process.argv[2] ?? '.');
 const soloPresupuesto = process.argv.includes('--presupuesto');
 
-const CANONICA_BASE = 'https://oantiza.github.io/NUVIA-PORTAL-LAB/';
+const CANONICA_BASE = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 
 /* La familia de logotipos en uso. Está aprobada pero declarada candidata, así
    que puede cambiar: se sustituye con

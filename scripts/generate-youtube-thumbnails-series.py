@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 
-ROOT = Path(r"C:\Users\oanti\Documents\NUVIA-PORTAL-LAB")
+ROOT = Path(r"C:\Users\oanti\Documents\NUVIA-PORTAL-ALFA")
 W, H = 1280, 720
 
 IMPACT = Path(r"C:\Windows\Fonts\impact.ttf")

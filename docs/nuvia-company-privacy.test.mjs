@@ -4,6 +4,13 @@ import { resolve } from 'node:path';
 
 const root = resolve(process.argv[2] || '.');
 const read = (file) => readFileSync(resolve(root, file), 'utf8');
+const collectSource = (directory) => readdirSync(directory, { withFileTypes: true })
+  .flatMap((entry) => {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) return collectSource(path);
+    return /\.(?:js|jsx|mjs)$/.test(entry.name) ? [readFileSync(path, 'utf8')] : [];
+  })
+  .join('\n');
 /* Alfa (Entrega 2b): dist/ no lleva company-analysis/ salvo NUVIA_EMPRESAS=1.
    Sin el módulo no hay nada que comprobar; el árbol de trabajo sí lo tiene. */
 if (!existsSync(resolve(root, 'company-analysis/index.html'))) {
@@ -20,6 +27,7 @@ const chartAndSummary = hasSource
   ? ['main.jsx', 'App.jsx', 'CompanyReport.jsx', 'client.js', 'remote.js'].map(file => read(`company-analysis/src/alfa/${file}`)).join('\n')
   : builtAssets.filter((file) => file.endsWith('.js')).map((file) => read(`company-analysis/assets/${file}`)).join('\n');
 const fonts = read('estilos/nuvia-fonts.css');
+const completeSource = hasSource ? collectSource(resolve(root, 'company-analysis/src')) : chartAndSummary;
 
 assert.doesNotMatch(companyIndex, /fonts\.(?:googleapis|gstatic)\.com/i,
   'El módulo de empresas no debe solicitar tipografías a Google');
@@ -40,5 +48,10 @@ assert.doesNotMatch(chartAndSummary, /translateCompanyDescription|translate\.goo
   'La descripción no debe enviarse a un traductor no documentado');
 assert.doesNotMatch(chartAndSummary, /identitytoolkit\.googleapis|securetoken\.googleapis|cloudfunctions\.net|bbdd-activos-financieros|nuvia-market-data|signInWith|setDoc\(/,
   'La entrada alfa no incluye autenticación, acceso a la base anterior ni escrituras');
+assert.doesNotMatch(completeSource,
+  /identitytoolkit\.googleapis|securetoken\.googleapis|cloudfunctions\.net|bbdd-activos-financieros|nuvia-market-data|firebase\/auth|firebase\/firestore|signInWith|setDoc\(/i,
+  'El código fuente conservado no incluye autenticación, escrituras ni conexiones con servicios anteriores');
+assert.doesNotMatch(completeSource, /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i,
+  'El código fuente conservado no publica direcciones de correo personales');
 
 console.log(`Módulo de empresas: fuentes locales y descripción sin traducción externa en ${root}.`);

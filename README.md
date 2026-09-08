@@ -1,6 +1,8 @@
-# NUVIA Portal Lab
+# NUVIA Portal Alfa
 
-Laboratorio oficial de NUVIA Portal. Su código de trabajo está exclusivamente en esta carpeta y se publica oficialmente en GitHub Pages. Ningún proceso de este proyecto modifica, sincroniza ni despliega otra versión de NUVIA.
+Repositorio oficial y único de la nueva fase Alfa de NUVIA Portal. Todo el trabajo se realiza exclusivamente en esta carpeta. `NUVIA-PORTAL-LAB` está cerrado y ningún proceso de este proyecto debe leerlo, modificarlo, sincronizarlo ni publicarlo.
+
+La estructura canónica de esta fase está definida en [Arquitectura y Estructura Global del Portal](docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md). Se aplica junto con la [Definición canónica de NUVIA](docs/DEFINICION_NUVIA.md) y el [Marco regulatorio obligatorio](docs/MARCO_REGULATORIO_OBLIGATORIO.md).
 
 ## Gobernanza regulatoria
 
@@ -13,9 +15,9 @@ regulatorio y la función queda bloqueada hasta su corrección o validación.
 ## Entornos
 
 - **Local:** desarrollo y revisión en `http://127.0.0.1:4173`.
-- **Producción:** `https://oantiza.github.io/NUVIA-PORTAL-LAB/`.
+- **Producción:** `https://oantiza.github.io/NUVIA-PORTAL-ALFA/`.
 
-El repositorio oficial es `https://github.com/oantiza/NUVIA-PORTAL-LAB.git`. Cada actualización de `main` ejecuta la validación, genera `dist/` y publica esa compilación en GitHub Pages.
+El repositorio oficial es `https://github.com/oantiza/NUVIA-PORTAL-ALFA.git`. Cada actualización de `main` ejecuta la validación, genera `dist/` y publica esa compilación en GitHub Pages.
 
 ## Trabajo local
 
@@ -52,4 +54,4 @@ La noticia económica y los cinco indicadores macroeconómicos se mantienen dire
 
 ## Alcance
 
-`core/` forma parte del contenido funcional de NUVIA Portal Lab y se trata como un componente local consolidado. No se descarga ni se reconstruye desde otra web durante el trabajo o la publicación.
+`core/` forma parte del contenido funcional de NUVIA Portal Alfa y se trata como un componente local consolidado. No se descarga ni se reconstruye desde otra web durante el trabajo o la publicación.

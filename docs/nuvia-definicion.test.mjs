@@ -36,7 +36,7 @@ for (const sentence of publicSentences) {
   assert.ok(pageText.includes(sentence), `Falta en la presentación canónica: «${sentence}»`);
 }
 
-assert.match(pageRaw, /<link rel="canonical" href="https:\/\/oantiza\.github\.io\/NUVIA-PORTAL-LAB\/que-es-nuvia\.html">/,
+assert.match(pageRaw, /<link rel="canonical" href="https:\/\/oantiza\.github\.io\/NUVIA-PORTAL-ALFA\/que-es-nuvia\.html">/,
   'La página pública mantiene la URL canónica oficial');
 assert.match(pageRaw, /NUVIA informa, explica y calcula\.[\s\S]*Tú comprendes y decides\./,
   'El principio central canónico ocupa un bloque visible');

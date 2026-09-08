@@ -1,4 +1,27 @@
-# Criterios del proyecto NUVIA Portal Lab
+# Criterios del proyecto NUVIA Portal Alfa
+
+## Orden vigente del fundador · nueva fase alfa · 08-09-2026
+
+- El repositorio único, oficial y activo es
+  `https://github.com/oantiza/NUVIA-PORTAL-ALFA.git`.
+- La carpeta local única y oficial de trabajo es
+  `C:\Users\oanti\Documents\NUVIA-PORTAL-ALFA`.
+- Todo el trabajo se realiza exclusivamente en `NUVIA-PORTAL-ALFA`.
+  `NUVIA-PORTAL-LAB` queda cerrado y fuera de alcance: no se debe leer,
+  modificar, sincronizar, ejecutar ni publicar bajo ningún concepto.
+- La producción asociada a esta nueva fase se publica desde el repositorio Alfa
+  en `https://oantiza.github.io/NUVIA-PORTAL-ALFA/`, salvo nueva decisión expresa
+  del fundador.
+- `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md` es la referencia
+  estructural canónica y el punto de partida de esta fase. Debe leerse junto con
+  `docs/DEFINICION_NUVIA.md` y `docs/MARCO_REGULATORIO_OBLIGATORIO.md` antes de
+  cualquier trabajo de producto, estructura, navegación, contenido o diseño.
+- La arquitectura aprobada comprende la Home global, las cinco Homes de espacio,
+  las herramientas y contenidos especializados, las páginas institucionales de
+  Colaboradores y Qué es NUVIA, y la navegación global definida en ese documento.
+- Los asuntos detectados en la auditoría del 08-09-2026 se abordarán uno por uno
+  bajo órdenes posteriores del fundador. Esta orden fija el contexto y no autoriza
+  por sí sola cambios funcionales, despliegues ni actuaciones sobre Firebase.
 
 ## Orden vigente del fundador · alfa · 03-09-2026
 
@@ -56,10 +79,10 @@
 - Debe preservarse la separación estricta entre NUVIA, la actividad profesional
   del agente financiero vinculado y la entidad a la que representa.
 
-- El repositorio único y oficial del proyecto es `https://github.com/oantiza/NUVIA-PORTAL-LAB.git`.
-- La carpeta local única y oficial de trabajo es `C:\Users\oanti\Documents\NUVIA-PORTAL-LAB`.
-- NUVIA Portal Lab es la única versión activa de este proyecto: no se deben leer, modificar, sincronizar ni publicar otras carpetas o repositorios de NUVIA.
-- La producción oficial se publica en GitHub Pages en `https://oantiza.github.io/NUVIA-PORTAL-LAB/`.
+- El repositorio único y oficial del proyecto es `https://github.com/oantiza/NUVIA-PORTAL-ALFA.git`.
+- La carpeta local única y oficial de trabajo es `C:\Users\oanti\Documents\NUVIA-PORTAL-ALFA`.
+- NUVIA Portal Alfa es la única versión activa de este proyecto: no se deben leer, modificar, sincronizar ni publicar otras carpetas o repositorios de NUVIA.
+- La producción oficial se publica en GitHub Pages en `https://oantiza.github.io/NUVIA-PORTAL-ALFA/`.
 - Estas referencias deben utilizarse en todas las tareas relacionadas con este proyecto, sin recuperar rutas o repositorios anteriores.
 - Cada actualización de `main` debe compilar y desplegar `dist/` mediante GitHub Actions.
 - Firebase Hosting deja de ser el canal oficial y no debe publicarse salvo petición expresa del usuario.
@@ -71,5 +94,5 @@
 
 - El módulo `Análisis y valoración de empresas` vive como copia independiente en `company-analysis/` dentro de este repositorio.
 - La vista de cartera debe cargar esa copia local y no la aplicación externa original.
-- No se debe modificar ni publicar el programa fuente original. Cualquier cambio del módulo se realizará únicamente sobre la copia de NUVIA Portal Lab.
+- No se debe modificar ni publicar el programa fuente original. Cualquier cambio del módulo se realizará únicamente sobre la copia de NUVIA Portal Alfa.
 - La copia mantiene conexión con la API de datos existente; cualquier modificación o duplicación de ese backend requiere una petición expresa del usuario.

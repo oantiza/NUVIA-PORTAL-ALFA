@@ -3,8 +3,13 @@
 **Subtítulo:** Home de entrada, 5 Homes de espacio, Colaboradores, Qué es NUVIA y Navegación dirigida  
 **Fecha:** 6 de septiembre de 2026  
 **Destinatario:** Fundador de NUVIA  
-**Estado:** Documento de trabajo y propuesta estructural · Fase Alfa  
+**Estado:** Referencia estructural canónica · Nueva fase Alfa
 **Referencia canónica:** [Marco regulatorio obligatorio v1.2](MARCO_REGULATORIO_OBLIGATORIO.md) y [Definición canónica de NUVIA](DEFINICION_NUVIA.md)
+
+**Decisión del fundador · 8 de septiembre de 2026:** se adopta íntegramente este
+documento como estructura definitiva de referencia y punto de partida de la nueva
+fase de desarrollo. Todo el trabajo se realizará exclusivamente en
+`NUVIA-PORTAL-ALFA`; `NUVIA-PORTAL-LAB` queda cerrado y fuera de alcance.
 
 ---
 
@@ -31,7 +36,7 @@ La nueva arquitectura separa limpiamente la **bienvenida y orientación** de la 
 
 ## 2. Mapa Arquitectónico y Rutas Canónicas
 
-| Destino | Ruta canónica propuesta | Rol funcional | Estado |
+| Destino | Ruta canónica | Rol funcional | Estado |
 | :--- | :--- | :--- | :--- |
 | **Home de Entrada** | `index.html` | Puerta de bienvenida global, mapa de los 5 espacios y accesos rápidos cotidianos. | Consolidada en diseño base. |
 | **Home: Economía y Finanzas** | `economia.html` (o `mercados.html` redefinida) | Sede del espacio: contexto macroeconómico, relación con el hogar y derivación a mercados, cartera y empresas. | **Por diseñar / estructurar.** |

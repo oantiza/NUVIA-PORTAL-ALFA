@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // NUVIA Portal Lab — integración v2 (rediseño canónico).
+  // NUVIA Portal Alfa — integración v2 (rediseño canónico).
   // La app antigua (core/) se eliminó el 21-08-2026 por encargo de Óscar: las
   // páginas rediseñadas son las únicas; de core/ solo quedan los PDF del curso.
   // En la portada hidrata la noticia del día y monta el ticker; en Mercados hidrata
@@ -245,7 +245,7 @@
       mountSecondaryNewsDialog(secondaryNews);
     } catch (error) {
       setNewsUpdateStatus('error', 'No se ha podido comprobar la actualización. Consulta la fecha y la fuente de cada noticia disponible.');
-      console.warn('NUVIA Portal Lab mantiene el último contenido editorial disponible.', error);
+      console.warn('NUVIA Portal Alfa mantiene el último contenido editorial disponible.', error);
     }
   };
 

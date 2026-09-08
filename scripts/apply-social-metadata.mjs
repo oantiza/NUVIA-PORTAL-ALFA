@@ -8,7 +8,7 @@ const pages = [
   'guia-planificacion.html', 'guia-sucesiones.html', 'jubilacion.html',
   'lecturas.html', 'mercados.html', 'que-es-nuvia.html', 'temas.html', 'vivienda.html',
 ];
-const socialImage = 'https://oantiza.github.io/NUVIA-PORTAL-LAB/src/assets/social/nuvia-social-card-2026-v1.webp';
+const socialImage = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp';
 const start = '<!-- NUVIA SOCIAL META: START -->';
 const end = '<!-- NUVIA SOCIAL META: END -->';
 const escapeAttribute = (value) => value.replace(/&(?!(?:amp|quot|lt|gt|#\d+|#x[0-9a-f]+);)/gi, '&amp;').replace(/"/g, '&quot;');

@@ -38,6 +38,8 @@ const paginas = [
   'jubilacion.html',
   'lecturas.html',
   'mercados.html',
+  'metodologia.html',
+  'independencia.html',
   'que-es-nuvia.html',
   'temas.html',
   'vivienda.html',

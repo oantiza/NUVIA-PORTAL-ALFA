@@ -7,6 +7,7 @@ const pages = [
   'guia-ahorro.html', 'guia-calendario.html', 'guia-fiscal.html',
   'guia-planificacion.html', 'guia-sucesiones.html', 'jubilacion.html',
   'lecturas.html', 'mercados.html', 'que-es-nuvia.html', 'temas.html', 'vivienda.html',
+  'metodologia.html', 'independencia.html',
 ];
 const socialImage = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp';
 const start = '<!-- NUVIA SOCIAL META: START -->';

@@ -93,6 +93,8 @@ const CONTENIDO = {
   'patrimonio.html':       [['h1', 1], ['.nv-space-tool-card', 4]],
   'bienestar.html':        [['h1', 1], ['.nv-card--editorial', 4]],
   'colaboradores.html':    [['h1', 1], ['.nv-colaborador', 3]],
+  'metodologia.html':      [['#proceso .nv-card', 4], ['#fuentes .nv-card', 4]],
+  'independencia.html':    [['#compromisos .nv-card', 4], ['#titulo-separacion', 1]],
 };
 
 /* Las interpolaciones SVG usan sc-camel-points / sc-camel-d, alias que el
@@ -104,6 +106,7 @@ const ERRORES_ESPERADOS = {};
 
 const PAGINAS_BASE = [
   'index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'colaboradores.html',
+  'metodologia.html', 'independencia.html',
   'mercados.html', 'cartera.html', 'academia.html', 'curso.html',
   'academia.html?tab=activos', 'academia.html?tab=glosario',
   'lecturas.html', 'vivienda.html', 'fiscalidad.html', 'jubilacion.html',

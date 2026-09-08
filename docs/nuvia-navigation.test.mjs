@@ -98,6 +98,8 @@ const expectedFooterLinks = [
   ['jubilacion.html', 'Jubilación'],
   ['colaboradores.html', 'Colaboradores'],
   ['que-es-nuvia.html', 'Qué es NUVIA'],
+  ['metodologia.html', 'Metodología'],
+  ['independencia.html', 'Independencia'],
 ];
 let checked = 0;
 for (const name of (await readdir(root)).filter((name) => name.endsWith('.html'))) {

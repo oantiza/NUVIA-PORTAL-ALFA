@@ -10,6 +10,8 @@ const pages = [
   'lecturas.html',
   'colaboradores.html',
   'que-es-nuvia.html',
+  'metodologia.html',
+  'independencia.html',
   'mercados.html',
   'cartera.html',
   'vivienda.html',
@@ -111,6 +113,8 @@ const canonicalFooter = `  <footer data-screen-label="Footer" class="nuvia-site-
           <div class="nuvia-site-footer__info">
             <a href="colaboradores.html">Colaboradores</a>
             <a href="que-es-nuvia.html">Qué es NUVIA</a>
+            <a href="metodologia.html">Metodología</a>
+            <a href="independencia.html">Independencia</a>
             <span>Contenido educativo e informativo.</span>
             <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
           </div>

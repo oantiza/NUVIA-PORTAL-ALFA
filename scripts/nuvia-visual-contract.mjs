@@ -3,6 +3,8 @@ export const VISUAL_ARCHETYPES = {
   'index.html': { type: 'institucional', exception: 'Portada fotográfica: composición y velos propios.' },
   'que-es-nuvia.html': { type: 'institucional', exception: 'Cubierta y manifiesto editorial propios.' },
   'colaboradores.html': { type: 'institucional', exception: 'Equipo editorial y divulgación pedagógica.' },
+  'metodologia.html': { type: 'institucional', exception: 'Transparencia sobre fuentes, cálculos, revisión y límites.' },
+  'independencia.html': { type: 'institucional', exception: 'Compromisos editoriales, comerciales y profesionales.' },
   'economia.html': { type: 'espacio', exception: 'Home del espacio Economía y Finanzas.' },
   'patrimonio.html': { type: 'espacio', exception: 'Home del espacio Patrimonio.' },
   'bienestar.html': { type: 'espacio', exception: 'Home del espacio Familia, Salud y Bienestar.' },

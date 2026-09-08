@@ -20,6 +20,8 @@ const pages = new Map([
   ['jubilacion.html', 'NUVIA · Jubilación'],
   ['lecturas.html', 'NUVIA · Lecturas con Criterio'],
   ['mercados.html', 'NUVIA · Economía y Finanzas'],
+  ['metodologia.html', 'NUVIA · Metodología'],
+  ['independencia.html', 'NUVIA · Independencia'],
   ['que-es-nuvia.html', 'NUVIA · Qué es NUVIA'],
   ['temas.html', 'NUVIA · Patrimonio'],
   ['vivienda.html', 'NUVIA · Vivienda y coste de vida'],

@@ -1,6 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { eurostatObservations, ecbObservations } from './official-observations.mjs';
+import { fetchOfficialText, eurostatObservations, ecbObservations } from './official-observations.mjs';
 
 const root = resolve(process.cwd());
 const dataPath = resolve(root, 'data/daily-content.json');
@@ -49,19 +49,10 @@ function movement(current, previous, up = 'Sube', down = 'Baja') {
   };
 }
 
-async function fetchText(url) {
-  const response = await fetch(url, {
-    headers: { 'user-agent': 'NUVIA-Portal-Lab/1.0 (daily official-data updater)' },
-    signal: AbortSignal.timeout(30_000),
-  });
-  if (!response.ok) throw new Error(`${response.status} al consultar ${url}`);
-  return response.text();
-}
-
 async function eurostatSeries(dataset, filters) {
   const query = new URLSearchParams({ lang: 'en', ...filters, lastTimePeriod: '3' });
   const url = `${eurostatApi}/${dataset}?${query}`;
-  const payload = JSON.parse(await fetchText(url));
+  const payload = JSON.parse(await fetchOfficialText(url, { source: `Eurostat · ${dataset}` }));
   const timeIndex = payload.dimension?.time?.category?.index;
   if (!timeIndex || !payload.value) throw new Error(`Respuesta incompleta de Eurostat para ${dataset}`);
 
@@ -99,7 +90,7 @@ function parseCsvRow(row) {
 
 async function ecbSeries(seriesKey, lastObservations = 10) {
   const url = `https://data-api.ecb.europa.eu/service/data/FM/${seriesKey}?format=csvdata&lastNObservations=${lastObservations}`;
-  const rows = (await fetchText(url)).trim().split(/\r?\n/).map(parseCsvRow);
+  const rows = (await fetchOfficialText(url, { source: `BCE · ${seriesKey}` })).trim().split(/\r?\n/).map(parseCsvRow);
   const header = rows.shift();
   const observations = ecbObservations(header, rows);
   if (observations.length < 2) throw new Error(`El BCE no devolvió datos suficientes para ${seriesKey}`);

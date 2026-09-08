@@ -1,10 +1,11 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root=resolve(process.argv[2]||'.');
 const read=f=>readFileSync(resolve(root,f),'utf8');
-const academy=read('academia.html'), css=read('estilos/nuvia-pages.css');
+const academy=read('academia.html'), css=readPageStylesSync(root);
 const compound=academy.split('class="ac-compound-chart"')[1].split('id="ac-compound-help"')[0];
 assert.equal((compound.match(/class="ac-compound-chart__[xy] /g)||[]).length,5);
 assert.doesNotMatch(compound,/<text\b|<span[^>]*>\s*<svg/);

@@ -1,0 +1,2269 @@
+/* ══ CARTERA Y ANÁLISIS ════════════════════════════════════════════════════
+   La última hoja de estilo propia de una página que quedaba en el sitio.
+   Entra ya tokenizada: 21 colores crudos a la paleta —incluidos el
+   #071a38/#0b2a50/#23475f del héroe y el #9db861, que era un verde que no
+   está en ninguna parte—, 15 pesos numéricos a los cuatro tokens y 45
+   tamaños a los siete escalones. Los cuatro !important del principio se
+   quedan: pelean contra el ancho y el relleno que impone el armazón común
+   a todos los <main>, y esta página necesita ocupar el ancho entero.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.nuvia-route-cartera main {
+  padding: 0 0 76px !important;
+  background: var(--nv-surface-page);
+}
+
+.nuvia-route-cartera main > .nuvia-analysis-page {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+.nuvia-analysis-hero {
+  overflow: hidden;
+  position: relative;
+  background: var(--nv-surface-institutional);
+  color: var(--nv-white);
+}
+
+.nuvia-analysis-hero::after {
+  position: absolute;
+  right: -460px;
+  bottom: -880px;
+  width: 1040px;
+  height: 1040px;
+  border: 1px solid var(--nv-surface-on-dark);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.nuvia-analysis-content {
+  width: min(var(--nv-container), calc(100% - 2 * var(--nv-page-gutter)));
+  margin-inline: auto;
+}
+
+.nuvia-analysis-hero__inner {
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  width: min(var(--nv-container), calc(100% - 2 * var(--nv-page-gutter)));
+  margin-inline: auto;
+  padding: var(--nv-space-6) 0 var(--nv-space-6);
+}
+
+.nuvia-analysis-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 16px;
+  color: var(--nv-green-300);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-body);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+.nuvia-analysis-eyebrow > span {
+  display: inline-block;
+  width: 44px;
+  height: 1px;
+  background: var(--nv-green-300);
+}
+
+.nuvia-analysis-hero h1 {
+  max-width: 16em;
+  margin: 0 0 14px;
+  color: var(--nv-white);
+  font-family: var(--font-body);
+  font-size: var(--nv-display-md);
+  font-weight: var(--nv-weight-title);
+  letter-spacing: -.015em;
+  line-height: 1.08;
+}
+
+.nuvia-analysis-lead {
+  max-width: 62ch;
+  margin: 0 0 16px;
+  color: var(--nv-text-on-dark-soft);
+  font-size: var(--nv-body);
+  line-height: 1.6;
+}
+
+.nuvia-analysis-tabs {
+  display: inline-flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  max-width: 100%;
+  border: 1px solid var(--nv-line-on-dark-strong);
+  border-radius: var(--radius-md);
+}
+
+.nuvia-analysis-tabs a {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  border-left: 1px solid var(--nv-line-on-dark-strong);
+  background: transparent;
+  color: var(--nv-text-on-dark-soft);
+  font-family: var(--font-heading);
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-title);
+  line-height: normal;
+  padding: 9px 18px;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+.nuvia-analysis-tabs a:first-child { border-left: 0; }
+.nuvia-analysis-tabs a:hover { background: var(--nv-surface-on-dark); color: var(--nv-white); }
+.nuvia-analysis-tabs a[aria-current="page"] {
+  border-color: var(--nv-line-on-dark-strong) !important;
+  background: var(--nv-white) !important;
+  color: var(--nv-ink) !important;
+}
+
+.nuvia-analysis-hero__divider {
+  height: 1px;
+  margin-top: var(--nv-space-8);
+  background: linear-gradient(to right, transparent, var(--nv-line-on-dark-strong) var(--nv-space-12), var(--nv-line-on-dark-strong) calc(100% - var(--nv-space-12)), transparent);
+}
+
+.nuvia-analysis-content {
+  padding-top: var(--nv-space-6);
+}
+
+.nuvia-suite-shell {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--nv-line);
+  border-radius: 22px;
+  background: var(--nv-white);
+  box-shadow: var(--nv-shadow-md);
+}
+
+.nuvia-suite-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: 720px;
+  border: 0;
+  background: transparent;
+}
+
+.nuvia-suite-shell iframe[hidden] {
+  display: none;
+}
+
+/* ── Laboratorio de cartera (sección propia, paso 18) ─────────────────── */
+
+/* Suelo tipográfico de 12 px del nivel (paso 27): el nv-tag global es de
+   10 px; dentro del laboratorio se eleva al suelo. */
+.nuvia-lab .nv-tag { font-size: var(--nv-label); }
+.nuvia-lab .nv-field label { font-size: var(--nv-label); }
+
+.nuvia-lab {
+  display: grid;
+  gap: var(--nv-space-8);
+  padding-bottom: var(--nv-space-12);
+}
+
+/* La regla display:grid ganaría al atributo hidden; esto restaura su efecto. */
+.nuvia-lab[hidden] { display: none; }
+
+/* Dirección B (22-08-2026): el laboratorio deja de ser una sucesión de
+   módulos y se lee como siete preguntas. El banner superior permanece como
+   pieza común con el módulo de empresas. */
+.nv-lab-tesis {
+  width: min(100%, 850px);
+  margin: 0;
+  color: var(--nv-text-soft);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-body);
+  line-height: 1.48;
+  text-align: left;
+}
+
+/* Alfa (02-09-2026): aviso de versión y fecha de los datos, bajo la tesis. */
+.nv-aviso-alfa {
+  width: min(100%, 850px);
+  margin: 0 auto;
+  flex-direction: column;
+  gap: var(--nv-space-2);
+}
+
+.nv-aviso-alfa__fecha {
+  color: var(--nv-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.nv-en-preparacion {
+  width: min(100%, 850px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.nv-en-preparacion h2 {
+  margin: var(--nv-space-2) 0 var(--nv-space-4);
+  font-size: var(--nv-title-md);
+}
+
+.nv-modelos__no-disponible {
+  color: var(--nv-text-muted);
+  font-size: var(--nv-body-sm);
+}
+
+.nv-lab-fase,
+.nv-lab-analisis-dinamico {
+  display: grid;
+  gap: var(--nv-space-5);
+  min-width: 0;
+  scroll-margin-top: calc(var(--nv-header-height) + var(--nv-space-4));
+}
+
+/* Cada pregunta conserva el verde NUVIA como hilo conductor, pero recibe un
+   acento estable que ayuda a orientarse entre composición, riesgo, solapes y
+   escenarios. El color nunca sustituye al número ni al título. */
+.nv-lab-fase {
+  --nv-fase-acento: var(--nv-green-700);
+  --nv-fase-tinte: var(--nv-green-100);
+}
+.nv-lab-fase--02 {
+  --nv-fase-acento: var(--nv-cat-teal);
+  --nv-fase-tinte: color-mix(in srgb, var(--nv-cat-teal) 8%, var(--nv-white));
+}
+.nv-lab-fase--03 {
+  --nv-fase-acento: var(--nv-cat-cyan);
+  --nv-fase-tinte: color-mix(in srgb, var(--nv-cat-cyan) 8%, var(--nv-white));
+}
+.nv-lab-fase--04 {
+  --nv-fase-acento: var(--nv-cat-purple);
+  --nv-fase-tinte: color-mix(in srgb, var(--nv-cat-purple) 8%, var(--nv-white));
+}
+.nv-lab-fase--05 {
+  --nv-fase-acento: var(--nv-cat-amber);
+  --nv-fase-tinte: color-mix(in srgb, var(--nv-cat-amber) 8%, var(--nv-white));
+}
+
+.nv-lab-analisis-dinamico:empty { display: none; }
+
+.nv-lab-fase__cabecera {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--nv-space-4);
+  padding-top: var(--nv-space-4);
+  border-top: 2px solid color-mix(in srgb, var(--nv-fase-acento) 42%, var(--nv-line));
+}
+
+.nv-lab-fase__numero {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 32px;
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-fase-acento);
+  color: var(--nv-text-on-dark);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .13em;
+}
+
+.nv-lab-fase__pregunta {
+  margin: 0 0 var(--nv-space-1);
+  color: var(--nv-fase-acento);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.nv-lab-fase__cabecera h2 {
+  margin: 0;
+  color: var(--nv-text);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-section-title);
+  font-weight: var(--nv-weight-title);
+}
+
+.nv-lab-caja {
+  min-width: 0;
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+  box-shadow: var(--nv-shadow-sm);
+  padding: clamp(20px, 2.6vw, 32px);
+}
+
+.nv-lab-caja--principal {
+  border-top: 3px solid var(--nv-green-700);
+}
+
+.nv-lab-caja > h3,
+.nv-lab-caja__intro > h3 {
+  margin: 0 0 var(--nv-space-2);
+  color: var(--nv-text);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-title-sm);
+}
+
+.nv-lab-caja > p,
+.nv-lab-caja__intro > p,
+.nv-lab-herramientas > p,
+.nv-lab-despliegue > p {
+  max-width: 74ch;
+  margin: 0 0 var(--nv-space-4);
+  color: var(--nv-text-soft);
+}
+
+.nv-lab-caja > p:last-child { margin-bottom: 0; }
+
+.nv-lab-herramientas,
+.nv-lab-despliegue {
+  min-width: 0;
+}
+
+.nv-lab-herramientas {
+  margin: var(--nv-space-5) 0;
+  border-block: 1px solid var(--nv-line);
+  padding-block: var(--nv-space-3);
+}
+
+.nv-lab-herramientas > h4,
+.nv-lab-despliegue > summary {
+  margin: 0 0 var(--nv-space-3);
+  color: var(--nv-text);
+  font-weight: var(--nv-weight-action);
+}
+
+.nv-lab-despliegue[open] > summary { margin-bottom: var(--nv-space-3); }
+
+.nv-lab-dos-columnas {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+  align-items: start;
+  gap: var(--nv-space-5);
+}
+
+.nv-lab-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: var(--nv-space-3);
+}
+
+.nv-lab-resumen__dato {
+  min-width: 0;
+  border-left: 3px solid var(--nv-green-700);
+  background: var(--nv-lab-tinte);
+  padding: var(--nv-result-padding);
+}
+
+.nv-lab-resumen__etiqueta {
+  display: block;
+  color: var(--nv-text-muted);
+  font-size: var(--nv-result-label);
+  font-weight: var(--nv-result-weight);
+  letter-spacing: normal;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+.nv-lab-resumen__valor {
+  display: block;
+  margin-top: var(--nv-space-1);
+  color: var(--nv-text);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-result-value);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-result-weight);
+  line-height: var(--nv-result-line-height);
+  overflow-wrap: anywhere;
+}
+
+.nv-lab-fase__contenido {
+  display: grid;
+  gap: var(--nv-space-5);
+  min-width: 0;
+}
+
+.nv-lab-subcaja {
+  display: grid;
+  gap: var(--nv-space-3);
+  min-width: 0;
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+  padding: clamp(18px, 2.2vw, 28px);
+}
+
+.nv-lab-subcaja--donut { border-top: 3px solid var(--nv-cat-teal); }
+.nv-lab-sectores { border-top: 3px solid var(--nv-cat-purple); }
+.nv-lab-subcaja--historial { border-top: 3px solid var(--nv-cat-cyan); }
+
+.nv-lab-subcaja > .nv-cons__subtitulo:first-child { margin-top: 0; }
+
+.nv-lab-composicion {
+  display: grid;
+  grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+  align-items: stretch;
+  gap: var(--nv-space-5);
+  min-width: 0;
+}
+
+.nv-lab-geografia {
+  display: grid;
+  gap: var(--nv-space-5);
+  min-width: 0;
+}
+
+.nv-lab-sectores > .nv-analisis__grupo {
+  height: 100%;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.nv-donut {
+  display: grid;
+  gap: var(--nv-space-3);
+  min-width: 0;
+}
+
+.nv-donut__cuerpo {
+  display: grid;
+  justify-items: center;
+  gap: var(--nv-space-4);
+  min-width: 0;
+}
+
+.nv-donut__grafico {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 210px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--nv-line);
+}
+
+.nv-donut__centro {
+  display: grid;
+  place-content: center;
+  width: 55%;
+  aspect-ratio: 1;
+  border: 1px solid var(--nv-line);
+  border-radius: 50%;
+  background: var(--nv-surface);
+  color: var(--nv-text);
+  text-align: center;
+}
+
+.nv-donut__centro strong {
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-title-sm);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+  line-height: 1;
+}
+
+.nv-donut__centro small {
+  margin-top: var(--nv-space-1);
+  color: var(--nv-text-muted);
+  font-size: var(--nv-label);
+}
+
+.nv-donut__leyenda {
+  display: grid;
+  gap: var(--nv-space-2);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nv-donut__item {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--nv-space-2);
+  min-width: 0;
+  font-size: var(--nv-body-sm);
+}
+
+.nv-donut__punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.nv-donut__nombre {
+  overflow: hidden;
+  color: var(--nv-text-soft);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nv-donut__peso {
+  color: var(--nv-text);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+}
+
+@media (max-width: 850px) {
+  .nv-lab-composicion { grid-template-columns: 1fr; }
+}
+
+/* Los SVG conservan su escala tipográfica en tablet. Si el ancho disponible
+   es menor, se desplaza el propio panel y nunca la página completa. */
+.nv-grafico__panel { overflow-x: auto; }
+.nv-grafico__panel > .nv-frontera,
+.nv-grafico__panel > .nv-abanico { min-width: 680px; }
+.nv-mapa__svg { min-width: 640px; }
+
+@media (max-width: 1080px) {
+  .nv-lab-dos-columnas { grid-template-columns: 1fr; }
+  .nv-lab-resumen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Misma tarjeta que el resto de la web (viv-card, fiscal-paso): radio del
+   sistema, superficie y sombra suave, sin borde propio. */
+.nuvia-lab__bloque {
+  min-width: 0;
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+  box-shadow: var(--nv-shadow-sm);
+  padding: var(--nv-space-5) var(--nv-space-6);
+}
+
+.nuvia-lab__bloque > h2 {
+  margin: 0 0 var(--nv-space-3);
+  font-size: var(--nv-title-sm);
+  line-height: 1.25;
+  color: var(--nv-text);
+}
+
+.nuvia-lab__bloque > p {
+  margin: 0 0 var(--nv-space-4);
+  max-width: 72ch;
+  color: var(--nv-text-soft);
+}
+
+.nuvia-lab__bloque > p:last-child { margin-bottom: 0; }
+
+/* Portada del laboratorio (encargo de Óscar, 21-08-2026): el mismo banner de
+   entrada que abre «Análisis y valoración de empresas», traducido a la paleta
+   del laboratorio — marino y verde en lugar del burdeos y el petróleo. */
+.nv-portada-lab {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #d6d9d2;
+  border-radius: var(--nv-radius-md);
+  padding: 20px 24px;
+  text-align: left;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), 0 18px 50px rgba(24, 38, 24, 0.08);
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.66) 0%, rgba(255, 255, 255, 0.3) 34%, transparent 66%),
+    repeating-radial-gradient(circle at 87% 12%, transparent 0 70px, rgba(74, 93, 35, 0.07) 71px 72px, transparent 73px 104px),
+    radial-gradient(circle at 12% 18%, rgba(122, 92, 39, 0.19) 0, rgba(122, 92, 39, 0.07) 18%, transparent 37%),
+    radial-gradient(circle at 87% 82%, rgba(11, 35, 71, 0.16) 0, rgba(11, 35, 71, 0.06) 22%, transparent 43%),
+    linear-gradient(135deg, #f7f3e7 0%, #edf2e9 49%, #e7ecf1 100%);
+}
+
+.nv-portada-lab::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 51, 39, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 51, 39, 0.032) 1px, transparent 1px);
+  background-size: 42px 42px;
+  opacity: 0.72;
+}
+
+.nv-portada-lab::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: auto 0 0 auto;
+  width: 51%;
+  height: 58%;
+  background: linear-gradient(135deg, rgba(11, 35, 71, 0.055), rgba(74, 93, 35, 0.19));
+  clip-path: polygon(0 84%, 15% 70%, 31% 75%, 46% 48%, 61% 56%, 78% 23%, 91% 30%, 100% 8%, 100% 100%, 0 100%);
+}
+
+.nv-portada-lab__texto {
+  position: relative;
+  width: 100%;
+  padding: 0;
+}
+
+.nv-portada-lab__marca {
+  margin: 0;
+  color: var(--nv-navy-900);
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: 400;
+  letter-spacing: 0.19em;
+  line-height: 1;
+}
+
+.nv-portada-lab__seccion {
+  margin: var(--nv-space-2) 0 0;
+  color: var(--nv-green-700);
+  font-size: var(--nv-label);
+  font-weight: 600;
+  letter-spacing: .12em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.nv-portada-lab__lema {
+  max-width: 80ch;
+  margin: 8px 0 0;
+  color: var(--nv-text-soft);
+  font-size: 14px;
+  line-height: 1.68;
+}
+
+.nv-portada-lab__raya {
+  display: block;
+  width: 88px;
+  height: 2px;
+  margin: 12px 0 0;
+  background: var(--nv-green-700);
+}
+
+@media (max-width: 900px) {
+  .nv-portada-lab { min-height: 0; padding: 20px 24px; }
+  .nv-portada-lab__texto { padding-inline: 0; }
+  .nv-portada-lab__marca { font-size: var(--nv-title-sm); }
+  .nv-portada-lab__seccion { letter-spacing: 0.25em; }
+}
+
+/* La portada y sus atajos forman una sola pieza dentro de la rejilla. */
+.nv-portada-grupo { min-width: 0; }
+
+/* Atajos a las secciones del laboratorio (Fase 7): un clic desde arriba.
+   Van en el lenguaje de píldora del sistema (borde, versalitas y tracking,
+   como .nv-tag), centrados bajo la portada. */
+.nv-atajos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--nv-space-2);
+  margin-top: var(--nv-space-4);
+}
+.nv-atajos__enlace {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--nv-space-1) var(--nv-space-3);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-surface);
+  color: var(--nv-text-soft);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* La ventana de la cuenta (encargo 21-08): se abre desde la barra de atajos. */
+.nv-dialogo {
+  width: min(92vw, 880px);
+  max-height: 86vh;
+  overflow: auto;
+  border: 1px solid var(--nv-line);
+  border-radius: 22px;
+  padding: var(--nv-space-5) var(--nv-space-6);
+  background: var(--nv-white);
+  color: var(--nv-text);
+  box-shadow: var(--nv-shadow-md);
+}
+.nv-dialogo::backdrop { background: rgba(11, 35, 71, 0.45); }
+.nv-dialogo__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--nv-space-3);
+  margin-bottom: var(--nv-space-3);
+}
+.nv-dialogo__cabecera h2 { margin: 0; font-size: var(--nv-title-sm); }
+.nv-dialogo__cerrar {
+  border: 1px solid var(--nv-line);
+  border-radius: 999px;
+  background: var(--nv-surface-technical);
+  color: var(--nv-text);
+  width: 36px;
+  height: 36px;
+  font-size: var(--nv-body);
+  font-family: inherit;
+  cursor: pointer;
+}
+.nv-dialogo__intro {
+  margin: 0 0 var(--nv-space-4);
+  max-width: 72ch;
+  color: var(--nv-text-soft);
+}
+
+/* La lista de carteras guardadas, plegada (encargo 21-08). */
+.nv-cons__pliegue { min-width: 0; }
+.nv-cons__pliegue > summary {
+  cursor: pointer;
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-green-800);
+}
+.nv-cons__pliegue[open] > summary { margin-bottom: var(--nv-space-2); }
+.nv-atajos__enlace:hover,
+.nv-atajos__enlace:focus-visible {
+  border-color: var(--nv-green-700);
+  color: var(--nv-green-800);
+}
+
+/* Que el salto del ancla no esconda el título bajo la cabecera fija. */
+.nuvia-lab__bloque > h2 { scroll-margin-top: 96px; }
+
+.nuvia-lab__nota {
+  margin: var(--nv-space-3) 0 0;
+  max-width: 72ch;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+.nuvia-lab__cartas { margin-top: var(--nv-space-2); }
+
+.nuvia-lab__tabla-scroll { overflow-x: auto; }
+
+.nuvia-lab__tabla { width: 100%; min-width: 520px; }
+
+/* ── Simulador ── */
+
+.nuvia-lab__simulador {
+  display: grid;
+  gap: var(--nv-space-5);
+}
+
+.nuvia-lab__simulador > *,
+.nv-sim-resultados > * { min-width: 0; }
+
+.nv-sim-resultados {
+  display: grid;
+  gap: var(--nv-space-4);
+}
+
+.nv-sim-tabla { width: 100%; min-width: 480px; }
+
+.nv-sim-controles {
+  display: grid;
+  gap: var(--nv-space-3);
+}
+
+.nv-sim-fila {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(140px, 2fr) 64px;
+  align-items: center;
+  gap: var(--nv-space-3);
+}
+
+.nv-sim-etiqueta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--nv-space-2);
+  align-items: baseline;
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-sim-punto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.nv-sim-desc {
+  grid-column: 2;
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-body);
+  color: var(--nv-text-muted);
+}
+
+.nv-sim-fila input[type="range"] { width: 100%; accent-color: var(--nv-green-700); }
+
+.nv-sim-valor {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--nv-text-soft);
+}
+
+.nv-sim-barra {
+  display: flex;
+  height: 18px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: var(--nv-line);
+}
+
+.nv-sim-seg { display: block; height: 100%; }
+
+/* ── Buscador de activos (paso 19) ── */
+
+.nv-buscador { display: grid; gap: var(--nv-space-3); }
+
+.nv-buscador__campo { max-width: 520px; }
+
+.nv-buscador__estado {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+.nv-buscador__resultados {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--nv-space-2);
+}
+
+.nv-buscador__resultado {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  column-gap: var(--nv-space-3);
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  padding: var(--nv-space-2) var(--nv-space-3);
+  border: 1px solid var(--nv-line);
+  border-radius: 12px;
+  background: var(--nv-white);
+  cursor: pointer;
+  font: inherit;
+}
+
+.nv-buscador__resultado:hover,
+.nv-buscador__resultado:focus-visible {
+  border-color: var(--nv-green-600);
+}
+
+.nv-buscador__nombre {
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-buscador__detalle {
+  grid-row: 2;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+.nv-buscador__tipo { grid-row: 1 / span 2; }
+
+/* ── Constructor de cartera (paso 20) ── */
+
+.nv-cons { display: grid; gap: var(--nv-space-4); }
+
+/* La cartera se presenta como a un cliente: columnas Activo · Peso · Capital,
+   una posición bajo otra con filete fino, y una barra discreta que dibuja el
+   peso. El peso se edita en su casilla; el capital sale del importe opcional. */
+.nv-cons__importe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--nv-space-2) var(--nv-space-3);
+  margin-bottom: var(--nv-space-3);
+}
+.nv-cons__importe label { font-weight: var(--nv-weight-action); font-size: var(--nv-body-sm); }
+.nv-cons__importe input {
+  width: 18ch;
+  max-width: 100%;
+  padding: 4px 8px;
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-sm);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.nv-cons__importe-nota { flex-basis: 100%; color: var(--nv-text-muted); font-size: var(--nv-label); }
+
+.nv-cons__cabecera,
+.nv-cons__fila {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px 130px 28px;
+  column-gap: var(--nv-space-3);
+  align-items: center;
+}
+
+/* display:flex/grid de las clases le ganaría al atributo hidden (mismo caso
+   que .nuvia-lab[hidden]): esto le devuelve su efecto. */
+.nv-cons__importe[hidden],
+.nv-cons__cabecera[hidden] { display: none; }
+.nv-cons__cabecera {
+  padding: 0 var(--nv-space-2) var(--nv-space-1);
+  color: var(--nv-text-muted);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.nv-cons__cab-cifra { text-align: right; }
+
+.nv-cons__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--nv-line);
+}
+
+.nv-cons__fila {
+  padding: var(--nv-space-3) var(--nv-space-2);
+  border-bottom: 1px solid var(--nv-line);
+}
+
+.nv-cons__activo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nv-space-1) var(--nv-space-2);
+  min-width: 0;
+}
+
+.nv-cons__peso-barra {
+  flex: 1 0 100%; /* sin encoger: siempre salta a su propia línea */
+  height: 3px;
+  border-radius: 999px;
+  background: var(--nv-mist);
+  overflow: hidden;
+}
+.nv-cons__peso-tramo {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: var(--nv-green-700);
+  transition: width .25s ease;
+}
+
+.nv-cons__peso {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 4px;
+}
+.nv-cons__peso-campo {
+  width: 5.5ch;
+  padding: 4px 6px;
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-sm);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.nv-cons__unidad { color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+
+.nv-cons__capital {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+  font-size: var(--nv-body-sm);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .nv-cons__cabecera { display: none; }
+  .nv-cons__fila {
+    grid-template-columns: minmax(0, 1fr) auto 28px;
+    row-gap: var(--nv-space-1);
+  }
+  .nv-cons__activo { grid-column: 1 / -1; }
+  .nv-cons__peso { grid-column: 1; justify-content: flex-start; }
+  .nv-cons__capital { text-align: left; }
+}
+
+.nv-cons__nombre { font-weight: var(--nv-weight-action); color: var(--nv-text); }
+
+.nv-cons__quitar {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--nv-line);
+  border-radius: 50%;
+  background: var(--nv-white);
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body);
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nv-cons__quitar:hover,
+.nv-cons__quitar:focus-visible { border-color: var(--nv-green-600); color: var(--nv-text); }
+
+.nv-cons__contador {
+  margin: 0;
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--nv-text-muted);
+}
+
+.nv-cons__nivel[hidden] { display: none; }
+
+.nv-cons__estado {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+.nv-cons__resultados { display: grid; gap: var(--nv-space-3); min-width: 0; }
+
+.nv-cons__nota { margin: 0; color: var(--nv-text-soft); }
+
+.nv-cons__subtitulo {
+  margin: var(--nv-space-2) 0 0;
+  font-size: var(--nv-body);
+  color: var(--nv-text);
+}
+
+.nv-cons__leyenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nv-space-2) var(--nv-space-4);
+}
+
+.nv-cons__leyenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nv-space-2);
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+}
+
+.nv-cons__nota-clase {
+  margin: 0;
+  font-size: var(--nv-label);
+  color: var(--nv-text-muted);
+}
+
+/* ── Guardado local (paso 24) ── */
+
+.nv-cons__guardado {
+  display: grid;
+  gap: var(--nv-space-3);
+  border-top: 1px solid var(--nv-line);
+  padding-top: var(--nv-space-4);
+}
+
+.nv-cons__reintentar-guardado[hidden] { display: none; }
+.nv-cons__aviso-guardado {
+  margin: 0;
+  max-width: 72ch;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+.nv-cons__guardar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--nv-space-3);
+}
+
+.nv-cons__nombre-campo { flex: 1 1 260px; max-width: 420px; }
+
+.nv-cons__guardadas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--nv-space-2);
+}
+
+.nv-cons__guardada {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nv-space-2) var(--nv-space-3);
+  padding: var(--nv-space-2) var(--nv-space-3);
+  border: 1px solid var(--nv-line);
+  border-radius: 12px;
+  background: var(--nv-white);
+}
+
+.nv-cons__guardada-nombre { font-weight: var(--nv-weight-action); color: var(--nv-text); }
+
+.nv-cons__guardada-detalle {
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+  margin-right: auto;
+}
+
+.nv-cons__fuente {
+  margin: 0;
+  font-size: var(--nv-label);
+  color: var(--nv-text-muted);
+}
+
+/* ── Análisis ampliado del nivel registrado (paso 32) ── */
+
+.nv-analisis { display: grid; gap: var(--nv-space-6); min-width: 0; }
+
+.nv-analisis__cerrado {
+  margin: 0;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+/* Cada gráfico es una tarjeta dentro del análisis: separación clara,
+   título que se ve y una línea que dice qué enseña (Fase 7). */
+.nv-analisis__grupo {
+  display: grid;
+  gap: var(--nv-space-2);
+  min-width: 0;
+  padding-top: var(--nv-space-4);
+  border-top: 1px solid var(--nv-line);
+}
+
+/* En la dirección B cada pregunta principal vive en su propia tarjeta. Los
+   grupos insertados dentro de una subcaja (donut/sectores) conservan el
+   tratamiento compacto de las dos columnas. */
+.nv-lab-fase__contenido > .nv-analisis__grupo,
+.nv-lab-geografia > .nv-analisis__grupo {
+  gap: var(--nv-space-3);
+  border: 1px solid var(--nv-line);
+  border-top: 3px solid var(--nv-fase-acento, var(--nv-green-700));
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+  box-shadow: var(--nv-shadow-sm);
+  padding: clamp(22px, 3vw, 38px);
+}
+
+.nv-lab-fase__contenido > .nv-analisis__grupo > .nv-analisis__titulo,
+.nv-lab-geografia > .nv-analisis__grupo > .nv-analisis__titulo {
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: var(--nv-weight-title);
+  text-align: center;
+}
+
+.nv-lab-fase__contenido > .nv-analisis__grupo > .nv-analisis__lectura,
+.nv-lab-geografia > .nv-analisis__grupo > .nv-analisis__lectura {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.nv-analisis__titulo {
+  margin: 0;
+  font-size: var(--nv-body-lg);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-analisis__grupo--rendimiento { --nv-analisis-acento: var(--nv-cat-clay); }
+.nv-analisis__grupo--riesgo { --nv-analisis-acento: var(--nv-cat-cyan); }
+.nv-analisis__grupo--solape { --nv-analisis-acento: var(--nv-cat-purple); }
+.nv-analisis__grupo--escenario { --nv-analisis-acento: var(--nv-cat-amber); }
+
+.nv-analisis__grupo[class*="nv-analisis__grupo--"] > .nv-analisis__titulo::after {
+  display: block;
+  width: 44px;
+  height: 3px;
+  margin: 10px auto 0;
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-analisis-acento);
+  content: "";
+}
+
+.nv-analisis__lectura {
+  margin: 0;
+  max-width: 72ch;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+}
+
+/* Los grupos cuyo gráfico va centrado centran también su texto: título,
+   lectura, leyenda y fila de cifras. Los grupos de barras y tablas siguen
+   alineados a la izquierda. */
+.nv-analisis__grupo:has(.nv-frontera),
+.nv-analisis__grupo:has(.nv-abanico),
+.nv-analisis__grupo:has(.nv-mapa__svg),
+.nv-evolucion {
+  text-align: center;
+}
+.nv-analisis__grupo:has(.nv-frontera) .nv-analisis__lectura,
+.nv-analisis__grupo:has(.nv-abanico) .nv-analisis__lectura,
+.nv-analisis__grupo:has(.nv-mapa__svg) .nv-analisis__lectura {
+  margin-inline: auto;
+}
+.nv-analisis__grupo:has(.nv-frontera) .nv-leyenda,
+.nv-analisis__grupo:has(.nv-abanico) .nv-leyenda,
+.nv-analisis__grupo:has(.nv-mapa__svg) .nv-mapa__leyenda,
+.nv-analisis__grupo:has(.nv-frontera) .nv-grafico__cifras,
+.nv-analisis__grupo:has(.nv-abanico) .nv-grafico__cifras {
+  justify-content: center;
+}
+.nv-evolucion .nv-cons__nota-clase,
+.nv-analisis__grupo:has(.nv-mapa__svg) .nv-cons__nota {
+  margin-inline: auto;
+}
+
+.nv-analisis__subtitulo-lista {
+  margin: var(--nv-space-2) 0 0;
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-analisis__filas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.nv-analisis__fila {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px var(--nv-space-3);
+  align-items: baseline;
+  min-width: 0;
+}
+
+.nv-analisis__clave { color: var(--nv-text); font-size: var(--nv-body-sm); }
+
+.nv-analisis__peso {
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text);
+}
+
+.nv-analisis__barra {
+  grid-column: 1 / -1;
+  width: var(--nv-barra-ancho, 0%);
+  height: 6px;
+  border-radius: 3px;
+  background: var(--nv-green-600);
+  opacity: 0.55;
+}
+
+.nv-analisis__barra--contraria { background: var(--nv-bronze-700); }
+
+/* Correlaciones: la cifra conserva su propia columna y las dos lecturas se
+   distinguen por color sin convertir la barra en un segundo gráfico. */
+.nv-correlacion__fila {
+  grid-template-columns: minmax(0, 1fr) minmax(220px, auto);
+}
+.nv-correlacion__fila .nv-analisis__barra { grid-column: 1; }
+.nv-correlacion__lista--alta .nv-analisis__barra {
+  background: var(--nv-cat-purple);
+  opacity: .76;
+}
+.nv-correlacion__lista--baja .nv-analisis__barra {
+  background: var(--nv-cat-cyan);
+  opacity: .76;
+}
+.nv-correlacion__subtitulo--alta { color: var(--nv-cat-purple); }
+.nv-correlacion__subtitulo--baja { color: var(--nv-cat-cyan); }
+
+/* Aportación al riesgo (B): la barra es la aportación y la raya fina marca
+   el peso real de la posición sobre la misma escala de 0 a 100. */
+.nv-riesgo {
+  width: 100%;
+  margin-inline: auto;
+  gap: var(--nv-space-3);
+}
+
+.nv-riesgo__pista {
+  position: relative;
+  grid-column: 1 / -1;
+  display: block;
+  height: 12px;
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-mist);
+}
+
+.nv-riesgo__valor {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-cat-clay);
+}
+
+.nv-riesgo__valor--contraria { background: var(--nv-cat-cyan); }
+
+.nv-riesgo__marca {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--nv-navy-900);
+  transform: translateX(-1px);
+}
+
+.nv-analisis__conclusion {
+  width: 100%;
+  margin: var(--nv-space-3) auto 0;
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-green-100);
+  color: var(--nv-green-900);
+  padding: var(--nv-space-4) var(--nv-space-5);
+  font-size: var(--nv-body-sm);
+  text-align: left;
+}
+
+.nv-analisis__conclusion strong {
+  display: block;
+  margin-bottom: var(--nv-space-1);
+  font-size: var(--nv-body);
+}
+
+/* La matriz completa vive plegada: el detalle no tapa la lectura. */
+.nv-analisis__despliegue { min-width: 0; }
+.nv-analisis__despliegue > summary {
+  cursor: pointer;
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-green-800);
+}
+.nv-analisis__despliegue[open] > summary { margin-bottom: var(--nv-space-2); }
+
+/* Comparador editorial de las dos mezclas destacadas de la frontera. En
+   escritorio se leen como pares; en tablet se apilan sin comprimir nombres. */
+.nv-mezclas {
+  margin-top: var(--nv-space-3);
+  text-align: left;
+}
+
+.nv-mezclas > summary {
+  width: fit-content;
+  margin-inline: auto;
+  border: 1px solid color-mix(in srgb, var(--nv-cat-purple) 24%, var(--nv-line));
+  border-radius: var(--nv-radius-pill);
+  background: color-mix(in srgb, var(--nv-cat-purple) 7%, var(--nv-white));
+  color: var(--nv-navy-900);
+  padding: 9px 16px;
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+}
+
+.nv-mezclas > summary::marker { color: var(--nv-cat-purple); }
+.nv-mezclas[open] > summary { margin-bottom: var(--nv-space-5); }
+
+.nv-mezclas__comparador {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+  min-width: 0;
+}
+
+.nv-mezclas__tarjeta {
+  --nv-mezcla-acento: var(--nv-cat-slate);
+  --nv-mezcla-tinte: color-mix(in srgb, var(--nv-cat-slate) 7%, var(--nv-white));
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--nv-mezcla-acento) 25%, var(--nv-line));
+  border-top: 4px solid var(--nv-mezcla-acento);
+  border-radius: var(--nv-radius-md);
+  background: linear-gradient(180deg, var(--nv-mezcla-tinte), var(--nv-white) 34%);
+  box-shadow: var(--nv-shadow-sm);
+  padding: clamp(22px, 2.4vw, 30px);
+}
+
+.nv-mezclas__tarjeta--sharpe {
+  --nv-mezcla-acento: var(--nv-cat-clay);
+  --nv-mezcla-tinte: color-mix(in srgb, var(--nv-cat-clay) 8%, var(--nv-white));
+}
+
+.nv-mezclas__tarjeta--tranquila {
+  --nv-mezcla-acento: var(--nv-cat-cyan);
+  --nv-mezcla-tinte: color-mix(in srgb, var(--nv-cat-cyan) 8%, var(--nv-white));
+}
+
+.nv-mezclas__cabecera {
+  display: grid;
+  gap: var(--nv-space-1);
+  min-height: 154px;
+  margin-bottom: var(--nv-space-4);
+  padding-bottom: var(--nv-space-4);
+  border-bottom: 1px solid color-mix(in srgb, var(--nv-mezcla-acento) 20%, var(--nv-line));
+}
+
+.nv-mezclas__kicker {
+  margin: 0;
+  color: var(--nv-mezcla-acento);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.nv-mezclas__titulo {
+  margin: 0;
+  color: var(--nv-navy-900);
+  font-family: var(--nv-font-serif);
+  font-size: clamp(24px, 2.2vw, 29px);
+  font-weight: var(--nv-weight-title);
+  line-height: 1.15;
+}
+
+.nv-mezclas__metricas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--nv-space-2);
+  margin: var(--nv-space-3) 0 0;
+}
+
+.nv-mezclas__metrica {
+  border-left: 3px solid var(--nv-mezcla-acento);
+  background: color-mix(in srgb, var(--nv-mezcla-acento) 7%, var(--nv-white));
+  padding: 10px 12px;
+}
+
+.nv-mezclas__metrica dt {
+  color: var(--nv-text-muted);
+  font-size: var(--nv-label);
+  line-height: 1.25;
+}
+
+.nv-mezclas__metrica dd {
+  margin: 4px 0 0;
+  color: var(--nv-navy-900);
+  font-size: var(--nv-body);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+}
+
+.nv-mezclas__filas { gap: 0; }
+
+.nv-mezclas__filas .nv-analisis__fila {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px var(--nv-space-3);
+  padding: 12px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--nv-mezcla-acento) 13%, var(--nv-line));
+}
+
+.nv-mezclas__filas .nv-analisis__fila:last-child { border-bottom: 0; }
+
+.nv-mezclas__filas .nv-analisis__clave {
+  overflow-wrap: anywhere;
+  color: var(--nv-navy-900);
+  font-size: 15px;
+  line-height: 1.38;
+}
+
+.nv-mezclas__filas .nv-analisis__peso {
+  min-width: 4ch;
+  color: var(--nv-navy-900);
+  font-size: 15px;
+  text-align: right;
+}
+
+.nv-mezclas__filas .nv-analisis__barra {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--nv-mezcla-acento) 13%, var(--nv-mist));
+  opacity: 1;
+}
+
+.nv-mezclas__filas .nv-analisis__barra::after {
+  display: block;
+  width: var(--nv-barra-ancho, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--nv-mezcla-acento);
+  content: "";
+}
+
+@media (max-width: 1050px) {
+  .nv-mezclas__comparador { grid-template-columns: minmax(0, 1fr); }
+  .nv-mezclas__cabecera { min-height: 0; }
+}
+
+/* Tintes de las celdas de correlación: el color acompaña, la cifra manda. */
+.nv-cor--alta { background: color-mix(in srgb, var(--nv-cat-purple) 34%, var(--nv-white)); }
+.nv-cor--media { background: color-mix(in srgb, var(--nv-cat-purple) 17%, var(--nv-white)); }
+.nv-cor--contraria { background: color-mix(in srgb, var(--nv-cat-cyan) 20%, var(--nv-white)); }
+
+.nv-analisis__calidad {
+  margin: 0;
+  font-size: var(--nv-label);
+  color: var(--nv-text-muted);
+}
+
+.nv-analisis__matriz td,
+.nv-analisis__matriz th {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Frontera del nivel registrado/suscriptor (paso 33, rediseño Fase 7) */
+.nv-frontera {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin-block: var(--nv-space-2);
+  margin-inline: auto;
+}
+.nv-frontera__punto { fill: var(--nv-text-muted); opacity: 0.3; }
+.nv-frontera__linea {
+  stroke: var(--nv-navy-900);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.nv-frontera__halo {
+  stroke: color-mix(in srgb, var(--nv-green-700) 22%, transparent);
+  stroke-width: 10;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.nv-frontera__mi-punto {
+  fill: var(--nv-green-700);
+  stroke: var(--nv-white);
+  stroke-width: 2;
+}
+.nv-frontera__elegido {
+  fill: none;
+  stroke: var(--nv-bronze-700);
+  stroke-width: 3;
+}
+.nv-frontera__sharpe {
+  fill: var(--nv-cat-clay);
+  stroke: var(--nv-paper-light);
+  stroke-width: 2;
+}
+.nv-frontera__tranquila {
+  fill: var(--nv-cat-cyan);
+  stroke: var(--nv-paper-light);
+  stroke-width: 2;
+}
+
+.nv-frontera--eficiente { margin-block: 0; }
+.nv-frontera--eficiente .nv-grafico__eje { font-size: 11px; }
+.nv-frontera--eficiente .nv-grafico__eje-titulo { font-size: 12px; }
+.nv-frontera--eficiente .nv-grafico__rotulo { font-size: 11px; }
+.nv-frontera--eficiente .nv-grafico__rejilla { opacity: .22; }
+
+/* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7) */
+.nv-perfiles__linea {
+  stroke: var(--nv-navy-700);
+  stroke-width: 2;
+  opacity: .58;
+}
+.nv-perfiles__punto {
+  stroke: var(--nv-paper-light);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.nv-perfiles__punto--defensivo { fill: var(--nv-cat-cyan); }
+.nv-perfiles__punto--moderado { fill: var(--nv-cat-slate); }
+.nv-perfiles__punto--equilibrado { fill: var(--nv-green-600); }
+.nv-perfiles__punto--dinamico { fill: var(--nv-cat-purple); }
+.nv-perfiles__punto--agresivo { fill: var(--nv-cat-clay); }
+.nv-perfiles__punto--personalizado { fill: var(--nv-text-soft); }
+.nv-perfiles__etiqueta {
+  fill: var(--nv-navy-900);
+  font-size: 11px;
+  font-weight: var(--nv-weight-action);
+  paint-order: stroke;
+  stroke: var(--nv-paper-light);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+}
+.nv-perfiles__subetiqueta {
+  fill: var(--nv-text-muted);
+  font-size: 9px;
+  font-weight: var(--nv-weight-body);
+}
+.nv-leyenda__marca--perfil {
+  width: 11px;
+  height: 11px;
+  border: 2px solid var(--nv-white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--nv-line);
+}
+.nv-leyenda__marca--perfil-defensivo { background: var(--nv-cat-cyan); }
+.nv-leyenda__marca--perfil-moderado { background: var(--nv-cat-slate); }
+.nv-leyenda__marca--perfil-equilibrado { background: var(--nv-green-600); }
+.nv-leyenda__marca--perfil-dinamico { background: var(--nv-cat-purple); }
+.nv-leyenda__marca--perfil-agresivo { background: var(--nv-cat-clay); }
+.nv-leyenda__marca--perfil-personalizado { background: var(--nv-text-soft); }
+.nv-frontera__eje { font-size: var(--nv-label); fill: var(--nv-text-muted); }
+.nv-frontera__control { display: grid; gap: var(--nv-space-1); min-width: 0; }
+.nv-frontera__control input[type='range'] { width: 100%; max-width: none; }
+.nv-frontera__etiqueta { font-size: var(--nv-body-sm); }
+.nv-frontera__detalle { margin: 0; font-size: var(--nv-body-sm); display: grid; gap: var(--nv-space-1); }
+.nv-frontera__resumen { margin: 0; }
+
+/* Piezas comunes de los gráficos rediseñados (Fase 7, referencia: el
+   laboratorio clásico): panel crema, rejilla punteada discreta, marco de
+   ejes y fila de cifras al pie. */
+.nv-grafico__panel {
+  background: var(--nv-paper-light);
+  border-radius: 18px;
+  padding: var(--nv-space-4) var(--nv-space-4) var(--nv-space-3);
+  display: grid;
+  gap: var(--nv-space-2);
+  min-width: 0;
+}
+.nv-grafico__rejilla { stroke: var(--nv-text-muted); stroke-width: 1; stroke-dasharray: 2 5; opacity: 0.45; }
+.nv-grafico__eje-linea { stroke: var(--nv-text-muted); stroke-width: 1.5; }
+.nv-grafico__eje { font-size: var(--nv-body-sm); fill: var(--nv-text-muted); }
+.nv-grafico__eje-titulo {
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  fill: var(--nv-text-soft);
+}
+.nv-grafico__rotulo {
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  fill: var(--nv-navy-900);
+  paint-order: stroke;
+  stroke: var(--nv-paper-light);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.nv-grafico__cifras {
+  list-style: none;
+  margin: 0;
+  padding: var(--nv-space-2) var(--nv-space-1) 0;
+  border-top: 1px solid var(--nv-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nv-space-1) var(--nv-space-6);
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+}
+.nv-grafico__cifra { display: inline-flex; align-items: center; gap: var(--nv-space-1); min-width: 0; }
+.nv-grafico__cifra strong { color: var(--nv-text); font-weight: var(--nv-weight-action); }
+
+.nv-leyenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nv-space-2) var(--nv-space-4);
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+}
+.nv-leyenda__item { display: inline-flex; align-items: center; gap: var(--nv-space-1); }
+.nv-leyenda__marca { display: inline-block; flex: none; }
+.nv-leyenda__marca--nube {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--nv-text-muted);
+  opacity: 0.45;
+}
+.nv-leyenda__marca--linea {
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--nv-navy-900);
+}
+.nv-leyenda__marca--banda {
+  width: 18px;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--nv-cat-amber);
+  opacity: 0.2;
+}
+.nv-leyenda__marca--banda-interior {
+  width: 18px;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--nv-cat-amber);
+  opacity: 0.42;
+}
+.nv-leyenda__marca--mediana {
+  width: 20px;
+  height: 0;
+  border-top: 3px dashed var(--nv-navy-900);
+}
+.nv-leyenda__marca--punto {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--nv-green-700);
+  border: 2px solid var(--nv-white);
+  box-shadow: 0 0 0 1px var(--nv-line);
+}
+.nv-leyenda__marca--sharpe {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--nv-cat-clay);
+}
+.nv-leyenda__marca--tranquila {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--nv-cat-cyan);
+}
+.nv-leyenda__marca--rombo {
+  width: 11px;
+  height: 11px;
+  background: var(--nv-text-soft);
+  transform: rotate(45deg);
+}
+
+/* La matriz de solapamiento como rejilla de calor numerada (Fase 7) */
+.nv-solape {
+  width: 100%;
+  min-width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 4px;
+  margin: 0 auto;
+}
+.nv-solape__eje {
+  font-size: var(--nv-body-sm);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text-muted);
+  padding: 2px 6px;
+  text-align: center;
+}
+.nv-solape__hueco { padding: 0; text-align: center; }
+.nv-solape__celda {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 44px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: var(--nv-body-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--nv-text);
+}
+.nv-solape--total { background: var(--nv-navy-900); color: var(--nv-white); }
+.nv-solape--alto { background: color-mix(in srgb, var(--nv-cat-purple) 48%, var(--nv-white)); }
+.nv-solape--medio { background: color-mix(in srgb, var(--nv-cat-purple) 28%, var(--nv-white)); }
+.nv-solape--bajo { background: color-mix(in srgb, var(--nv-cat-purple) 13%, var(--nv-white)); }
+.nv-solape--cero { background: var(--nv-mist); color: var(--nv-text-soft); }
+
+/* Evolución de la combinación y sus caídas (encargo 20-08-2026) */
+.nv-evolucion { display: grid; width: 100%; gap: var(--nv-space-1); min-inline-size: 0; }
+.nv-evolucion__svg {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin-block: var(--nv-space-1);
+  margin-inline: auto;
+}
+.nv-evolucion__linea { stroke: var(--nv-green-700); stroke-width: 2.5; }
+.nv-evolucion__comparador {
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+  align-items: end;
+  gap: var(--nv-space-2) var(--nv-space-4);
+  padding: var(--nv-space-3) var(--nv-space-4);
+  margin-block: var(--nv-space-2);
+  border: 1px solid var(--nv-line);
+  border-left: 3px solid var(--nv-bronze-600);
+  border-radius: var(--nv-radius-md);
+  background: color-mix(in srgb, var(--nv-paper) 86%, var(--nv-mist));
+}
+.nv-evolucion__campo { display: grid; gap: var(--nv-space-1); min-width: 0; }
+.nv-evolucion__etiqueta {
+  color: var(--nv-navy-900);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-action);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.nv-evolucion__selector { background-color: var(--nv-white); }
+.nv-evolucion__explicacion,
+.nv-evolucion__estado {
+  margin: 0;
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body-sm);
+  line-height: 1.45;
+}
+.nv-evolucion__estado {
+  grid-column: 1 / -1;
+  min-height: 1.45em;
+  color: var(--nv-green-800);
+}
+.nv-evolucion__graficos { display: grid; gap: var(--nv-space-1); min-width: 0; }
+.nv-evolucion__benchmark {
+  stroke-width: 2.25;
+  stroke-dasharray: 8 5;
+  opacity: .92;
+  vector-effect: non-scaling-stroke;
+}
+.nv-evolucion__benchmark--defensivo { stroke: var(--nv-cat-cyan); }
+.nv-evolucion__benchmark--moderado { stroke: var(--nv-cat-slate); }
+.nv-evolucion__benchmark--equilibrado { stroke: var(--nv-green-600); }
+.nv-evolucion__benchmark--dinamico { stroke: var(--nv-cat-purple); }
+.nv-evolucion__benchmark--agresivo { stroke: var(--nv-cat-clay); }
+.nv-evolucion__leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--nv-space-2) var(--nv-space-5);
+  padding: 0;
+  margin: 0 0 var(--nv-space-2);
+  list-style: none;
+}
+.nv-evolucion__leyenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nv-space-1);
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body-sm);
+  font-variant-numeric: tabular-nums;
+}
+.nv-evolucion__leyenda-item strong { color: var(--nv-navy-900); }
+.nv-evolucion__muestra {
+  display: inline-block;
+  width: 24px;
+  height: 3px;
+  border-radius: 999px;
+}
+.nv-evolucion__muestra--cartera { background: var(--nv-green-700); }
+.nv-evolucion__muestra--defensivo { background: var(--nv-cat-cyan); }
+.nv-evolucion__muestra--moderado { background: var(--nv-cat-slate); }
+.nv-evolucion__muestra--equilibrado { background: var(--nv-green-600); }
+.nv-evolucion__muestra--dinamico { background: var(--nv-cat-purple); }
+.nv-evolucion__muestra--agresivo { background: var(--nv-cat-clay); }
+.nv-evolucion__rejilla { stroke: var(--nv-text-muted); stroke-width: 1; stroke-dasharray: 2 5; opacity: 0.45; }
+.nv-evolucion__cien { stroke: var(--nv-text-muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.nv-evolucion__caida-linea { stroke: var(--nv-negative); stroke-width: 2; }
+.nv-evolucion__caida-area { fill: var(--nv-negative); opacity: 0.14; }
+
+@media (max-width: 1100px) {
+  .nv-evolucion__comparador { grid-template-columns: 1fr; align-items: start; }
+  .nv-evolucion__estado { grid-column: 1; }
+}
+
+/* Abanico de la proyección Montecarlo (paso 40, rediseño Fase 7):
+   a todo el ancho de la tarjeta (encargo de Óscar, 21-08). */
+.nv-abanico {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-block: var(--nv-space-2);
+}
+.nv-abanico__banda { fill: var(--nv-cat-amber); opacity: 0.13; }
+.nv-abanico__banda-interior { fill: var(--nv-cat-amber); opacity: 0.25; }
+.nv-abanico__mediana {
+  stroke: var(--nv-navy-900);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+}
+
+/* Mapa riesgo/rentabilidad (paso 41, rediseño Fase 7: marcas numeradas) */
+.nv-mriesgo__activo { fill: var(--nv-bronze-700); stroke: var(--nv-white); stroke-width: 1.5; }
+.nv-mriesgo__marca { fill: var(--nv-bronze-700); stroke: var(--nv-white); stroke-width: 1.5; }
+.nv-mriesgo__numero {
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-action);
+  fill: var(--nv-white);
+}
+.nv-mriesgo__union { stroke: var(--nv-bronze-700); stroke-width: 1; opacity: 0.5; }
+
+.nv-mriesgo__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--nv-space-2);
+}
+.nv-mriesgo__item {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: var(--nv-space-2);
+  align-items: center;
+  min-width: 0;
+  min-height: 58px;
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-sm);
+  background: color-mix(in srgb, var(--nv-white) 76%, var(--nv-paper));
+  padding: 10px 12px;
+}
+.nv-mriesgo__indice {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--nv-navy-900);
+  color: var(--nv-white);
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-action);
+}
+.nv-mriesgo__nombre {
+  display: -webkit-box;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--nv-text);
+  font-size: var(--nv-body-sm);
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.nv-mriesgo__cifras {
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Distribución geográfica con mapa (dirección B): un dibujo amplio,
+   porcentajes sobre los continentes y leyenda estructurada debajo. */
+.nv-mapa { display: grid; gap: var(--nv-space-3); min-inline-size: 0; }
+.nv-mapa__dibujo {
+  position: relative;
+  width: min(100%, 960px);
+  min-width: 640px;
+  margin-inline: auto;
+}
+
+@media (max-width: 900px) {
+  .nv-mriesgo__lista { grid-template-columns: 1fr; }
+}
+.nv-mapa__svg {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+/* El color identifica la zona; la cifra es la que comunica el peso. */
+.nv-mapa__zona--america { --zona-base: var(--nv-serie-1); }
+.nv-mapa__zona--europa { --zona-base: var(--nv-green-700); }
+.nv-mapa__zona--africa { --zona-base: var(--nv-serie-5); }
+.nv-mapa__zona--asia { --zona-base: var(--nv-serie-3); }
+.nv-mapa__zona--oceania { --zona-base: var(--nv-bronze-700); }
+
+.nv-mapa__zona--n0 { fill: var(--nv-mist); background: var(--nv-mist); }
+.nv-mapa__zona--n1,
+.nv-mapa__zona--n2,
+.nv-mapa__zona--n3,
+.nv-mapa__zona--n4 { fill: var(--zona-base); background: var(--zona-base); }
+
+.nv-mapa__cifra {
+  position: absolute;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  border-radius: var(--nv-radius-pill);
+  background: var(--nv-surface);
+  box-shadow: var(--nv-shadow-sm);
+  padding: 3px var(--nv-space-2);
+  color: var(--nv-text);
+  font-size: var(--nv-label);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+  white-space: nowrap;
+}
+
+.nv-mapa__cifra--cero { color: var(--nv-text-muted); }
+
+.nv-mapa__fuera {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body-sm);
+  text-align: center;
+}
+
+.nv-mapa__leyenda {
+  list-style: none;
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 var(--nv-space-5);
+  font-size: var(--nv-body-sm);
+}
+.nv-mapa__leyenda-item {
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--nv-space-2);
+  border-bottom: 1px solid var(--nv-line);
+  padding-block: var(--nv-space-2);
+}
+.nv-mapa__punto {
+  inline-size: 12px;
+  block-size: 12px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.nv-mapa__punto--fuera {
+  border: 1px solid var(--nv-line-strong);
+  background: repeating-linear-gradient(45deg, var(--nv-mist) 0 3px, var(--nv-surface) 3px 6px);
+}
+.nv-mapa__nombre { min-width: 0; color: var(--nv-text); }
+.nv-mapa__peso {
+  color: var(--nv-text);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--nv-weight-action);
+}
+/* Los chips heredan el color por continente de las clases nv-mapa__zona--*
+   (el background va en la misma regla que el fill, más arriba). */
+
+/* Nota de qué añade el suscriptor, al pie del análisis del registrado */
+.nv-analisis__suscriptor { font-size: var(--nv-label); color: var(--nv-text-muted); }
+
+/* Informe genérico de compañía (paso 37) */
+.nv-informe__cuerpo { display: grid; gap: var(--nv-space-3); min-inline-size: 0; }
+.nv-informe__cerrado { margin: 0; font-size: var(--nv-body-sm); color: var(--nv-text-muted); }
+.nv-informe__campo { max-width: 420px; }
+.nv-informe__resultados { display: grid; gap: 4px; }
+.nv-informe__resultado {
+  text-align: left;
+  font: inherit;
+  font-size: var(--nv-body-sm);
+  padding: 8px 10px;
+  border: 1px solid var(--nv-line);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+.nv-informe__resultado:hover { background: var(--nv-cloud); }
+.nv-informe__articulo { display: grid; gap: var(--nv-space-3); }
+.nv-informe__nombre { margin: 0; }
+.nv-informe__seccion h4 { margin: 0 0 6px; }
+.nv-informe__filas {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 4px 12px;
+  font-size: var(--nv-body-sm);
+}
+.nv-informe__filas dt { color: var(--nv-text-muted); }
+.nv-informe__filas dd { margin: 0; font-variant-numeric: tabular-nums; }
+.nv-informe__riesgos ul { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 6px; font-size: var(--nv-body-sm); }
+
+/* Carteras modelo temáticas (paso 38) */
+.nv-modelos { display: grid; gap: var(--nv-space-3); min-inline-size: 0; }
+.nv-modelos__nota { margin: 0; font-size: var(--nv-body-sm); color: var(--nv-text-muted); }
+.nv-modelos__lista {
+  display: grid;
+  gap: var(--nv-space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+}
+.nv-modelos__tarjeta {
+  display: grid;
+  gap: var(--nv-space-2);
+  align-content: start;
+  min-inline-size: 0;
+  border: 1px solid var(--nv-line);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.nv-modelos__tarjeta--activa {
+  border-color: var(--nv-green-700);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--nv-green-700) 18%, transparent);
+}
+.nv-modelos__nombre { margin: 0; }
+.nv-modelos__tema { margin: 0; font-size: var(--nv-body-sm); }
+.nv-modelos__criterio { margin: 0; font-size: var(--nv-label); color: var(--nv-text-muted); }
+.nv-modelos__composicion { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 4px; font-size: var(--nv-body-sm); }
+.nv-modelos__tarjeta .nv-btn { justify-self: start; }
+.nv-modelos__estado { margin: 0; color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
+
+.nv-modelo-seleccionado {
+  display: grid;
+  gap: var(--nv-space-5);
+  scroll-margin-top: calc(var(--nv-header-height) + var(--nv-space-4));
+}
+.nv-modelo-seleccionado[hidden] { display: none; }
+.nv-modelo-seleccionado__cabecera {
+  border-top: 3px solid var(--nv-green-700);
+  text-align: center;
+}
+.nv-modelo-seleccionado__cabecera h2 {
+  margin: 0 0 var(--nv-space-2);
+  color: var(--nv-text);
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-md);
+  font-weight: var(--nv-weight-title);
+}
+.nv-modelo-seleccionado__cabecera > p:not(.nv-lab-fase__pregunta) {
+  max-width: 76ch;
+  margin: 0 auto;
+  color: var(--nv-text-soft);
+}
+.nv-cons--modelo { margin-top: var(--nv-space-2); }
+.nv-cons--modelo .nv-cons__estado { text-align: center; }
+
+/* «Tus datos y tus derechos» (paso 34) */
+.nv-cuenta__derechos { display: grid; gap: var(--nv-space-2); min-inline-size: 0; }
+.nv-cuenta__derechos h3 { margin: 0; }
+.nv-cuenta__derechos-fila { display: flex; flex-wrap: wrap; gap: var(--nv-space-2); }
+.nv-cuenta__acceso[hidden] { display: none; }
+.nv-cuenta__acceso-lista { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 4px; font-size: var(--nv-body-sm); }
+.nv-cuenta__rectifica { display: grid; gap: var(--nv-space-2); }
+.nv-cuenta__confirma-borrado { display: grid; gap: var(--nv-space-2); }
+.nv-cuenta__confirma-borrado[hidden] { display: none; }
+.nv-cuenta__confirma-borrado p { margin: 0; }
+.nv-cuenta__borrar-definitivo { justify-self: start; }
+
+/* Oferta de migración de lo local a la cuenta (paso 31) */
+.nv-cons__migracion { display: grid; gap: var(--nv-space-2); min-width: 0; }
+.nv-cons__migracion[hidden] { display: none; }
+.nv-cons__migracion p { margin: 0; }
+.nv-cons__migracion-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nv-space-2);
+}
+
+/* ── Cuenta con datos mínimos (paso 28) ── */
+
+.nv-cuenta { display: grid; gap: var(--nv-space-3); }
+
+.nv-cuenta__cuerpo { display: grid; gap: var(--nv-space-3); min-width: 0; }
+
+.nv-cuenta__minimos {
+  margin: 0;
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-cuenta__nota,
+.nv-cuenta__quien {
+  margin: 0;
+  color: var(--nv-text-soft);
+}
+
+.nv-cuenta__admin {
+  width: fit-content;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--nv-cat-purple) 28%, var(--nv-line));
+  border-radius: var(--nv-radius-pill);
+  background: color-mix(in srgb, var(--nv-cat-purple) 9%, var(--nv-white));
+  color: var(--nv-cat-purple);
+  padding: 7px 12px;
+  font-size: var(--nv-label);
+  font-weight: var(--nv-weight-label);
+  letter-spacing: .04em;
+}
+
+.nv-cuenta__forma {
+  display: grid;
+  gap: var(--nv-space-3);
+  max-width: 520px;
+}
+
+.nv-cuenta__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nv-space-2);
+}
+
+.nv-cuenta__olvido {
+  justify-self: start;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+  text-decoration: underline;
+}
+
+.nv-cuenta__estado {
+  margin: 0;
+  min-height: 1.4em;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-muted);
+}
+
+/* Consentimiento granular (paso 29) */
+
+.nv-cuenta__permisos {
+  display: grid;
+  gap: var(--nv-space-3);
+  margin: 0;
+  min-width: 0;
+  padding: var(--nv-space-3);
+  border: 1px solid var(--nv-line);
+  border-radius: 12px;
+}
+
+/* El fieldset del alta no debe imponer su ancho de contenido mínimo
+   (comportamiento propio de <fieldset>) ni desbordar en móvil. */
+.nv-cuenta__permisos--alta {
+  min-inline-size: 0;
+}
+
+.nv-cuenta__permisos h3,
+.nv-cuenta__permisos legend {
+  margin: 0;
+  padding: 0;
+  font-size: var(--nv-body);
+  font-weight: var(--nv-weight-action);
+  color: var(--nv-text);
+}
+
+.nv-cuenta__permiso { display: grid; gap: 4px; }
+
+.nv-cuenta__permiso-linea {
+  display: flex;
+  align-items: center;
+  gap: var(--nv-space-2);
+  cursor: pointer;
+}
+
+.nv-cuenta__permiso-linea input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: var(--nv-green-600);
+  cursor: pointer;
+}
+
+.nv-cuenta__permiso-nombre { font-weight: var(--nv-weight-action); color: var(--nv-text); }
+
+.nv-cuenta__permiso-explica {
+  margin: 0;
+  font-size: var(--nv-body-sm);
+  color: var(--nv-text-soft);
+}
+
+.nv-sim-cifra {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  font-weight: var(--nv-weight-action);
+}
+
+@media (max-width: 640px) {
+  .nv-sim-fila {
+    grid-template-columns: 1fr 64px;
+  }
+  .nv-sim-fila input[type="range"] { grid-column: 1; }
+  .nv-sim-etiqueta { grid-column: 1 / -1; }
+  .nv-sim-valor { grid-row: 2; }
+}
+
+#nuvia-company-suite {
+  height: 720px;
+  min-height: 720px;
+  background: var(--nv-paper);
+}

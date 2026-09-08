@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] || '.');
 const read = (file) => readFileSync(resolve(root, file), 'utf8');
 const tokens = read('estilos/nuvia-tokens.css');
 const components = read('estilos/nuvia-components.css');
-const pages = read('estilos/nuvia-pages.css');
+const pages = readPageStylesSync(root);
 const showcase = read('estilos/sistema-visual.css');
 const rules = (css, selector) => [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)]
   .filter((m) => m[1].trim() === selector).map((m) => m[2]);

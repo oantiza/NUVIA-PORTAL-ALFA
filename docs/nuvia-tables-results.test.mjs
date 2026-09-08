@@ -1,9 +1,10 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 const root=resolve(process.argv[2]||'.');
 const read=file=>readFileSync(resolve(root,file),'utf8');
-const tokens=read('estilos/nuvia-tokens.css'),css=read('estilos/nuvia-components.css'),pages=read('estilos/nuvia-pages.css');
+const tokens=read('estilos/nuvia-tokens.css'),css=read('estilos/nuvia-components.css'),pages=readPageStylesSync(root);
 assert.match(tokens,/--nv-table-text:\s*var\(--nv-body-sm\)/);
 assert.match(tokens,/--nv-table-reading-width:\s*720px/);
 assert.match(tokens,/--nv-result-value:\s*var\(--nv-title-sm\)/);

@@ -2,13 +2,14 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { eligibleNews } from '../scripts/news-editorial.mjs';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] || '.');
 const read = (path) => readFile(resolve(root, path), 'utf8');
 const payload = JSON.parse(await read('data/daily-content.json'));
 const integration = await read('web2-integration.js');
 const markets = await read('mercados.html');
-const styles = await read('estilos/nuvia-pages.css');
+const styles = readPageStylesSync(root);
 const updater = await read('scripts/update-daily-news.mjs').catch(() => '');
 
 const allowedSources = new Set(['EL PAÍS Economía', 'Expansión']);

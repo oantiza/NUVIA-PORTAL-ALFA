@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {readPageStylesSync} from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] ?? resolve(import.meta.dirname, '..'));
 const home = await readFile(resolve(root, 'index.html'), 'utf8');
-const css = await readFile(resolve(root, 'estilos/nuvia-pages.css'), 'utf8');
+const css = readPageStylesSync(root);
 const tokens = await readFile(resolve(root, 'estilos/nuvia-tokens.css'), 'utf8');
 
 const section = (id) => home.match(new RegExp(`<section\\b[^>]*id="${id}"[\\s\\S]*?<\\/section>`))?.[0];

@@ -4,10 +4,11 @@
  */
 import { access, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const html = await readFile(resolve(root, 'academia.html'), 'utf8');
-const css = await readFile(resolve(root, 'estilos/nuvia-pages.css'), 'utf8');
+const css = readPageStylesSync(root);
 
 async function existe(ruta) {
   try {

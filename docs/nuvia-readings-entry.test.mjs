@@ -2,10 +2,11 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {resolve} from 'node:path';
 import {runInNewContext} from 'node:vm';
+import {readPageStylesSync} from '../scripts/read-page-styles.mjs';
 
 const root=resolve(process.argv[2]||'.');
 const html=readFileSync(resolve(root,'lecturas.html'),'utf8');
-const css=readFileSync(resolve(root,'estilos/nuvia-pages.css'),'utf8');
+const css=readPageStylesSync(root);
 const expected={'psicologia-dinero':'comportamiento','inversor-inteligente':'inversion','wall-street':'inversion','pensar-rapido':'comportamiento'};
 const cards=[...html.matchAll(/<article class="lecturas-card"([^>]*)>([\s\S]*?)<\/article>/g)];
 assert.equal(cards.length,4);

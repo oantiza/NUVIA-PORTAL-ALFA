@@ -2,12 +2,13 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { BUTTONS, FIELDS } from '../scripts/check-form-controls.mjs';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root=resolve(process.argv[2] || '.');
 const read=file=>readFileSync(resolve(root,file),'utf8');
 const tokens=read('estilos/nuvia-tokens.css');
 const components=read('estilos/nuvia-components.css');
-const pages=read('estilos/nuvia-pages.css');
+const pages=readPageStylesSync(root);
 const showcase=read('estilos/sistema-visual.css');
 assert.match(tokens,/--nv-control-height:\s*44px;/);
 assert.match(tokens,/--nv-control-font:\s*var\(--nv-body-sm\);/);

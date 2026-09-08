@@ -148,7 +148,14 @@ if (missing.length) {
        y la página «funciona».
    ═══════════════════════════════════════════════════════════════════════════ */
 const problemasCss = [];
-for (const hoja of ['estilos/nuvia-tokens.css', 'estilos/nuvia-components.css', 'estilos/nuvia-pages.css']) {
+for (const hoja of [
+  'estilos/nuvia-tokens.css',
+  'estilos/nuvia-components.css',
+  'estilos/nuvia-pages.css',
+  'estilos/nuvia-pages-foundations.css',
+  'estilos/nuvia-pages-cartera.css',
+  'estilos/nuvia-pages-content.css',
+]) {
   const css = await readFile(resolve(root, hoja), 'utf8');
   const sinComentarios = css.replace(/\/\*[\s\S]*?\*\//g, '');
 

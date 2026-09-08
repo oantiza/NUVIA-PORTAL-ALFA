@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] || '.');
 const read = (file) => readFileSync(resolve(root, file), 'utf8');
@@ -28,7 +29,7 @@ for (const [, attributes, content] of cards) {
   assert.match(content, /class="lecturas-store-link"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/);
 }
 assert.ok(readings.includes("lastCard?.querySelector('.lecturas-summary-button')?.focus()"), 'El cierre devuelve el foco al control nativo');
-const css = read('estilos/nuvia-pages.css');
+const css = readPageStylesSync(root);
 const cover = css.match(/\.lecturas-card__cover\s*\{([^}]*)}/)[1];
 assert.match(cover, /grid-template-rows:\s*minmax\(0, 1fr\)/);
 assert.match(cover, /grid-template-columns:\s*minmax\(0, 1fr\)/);

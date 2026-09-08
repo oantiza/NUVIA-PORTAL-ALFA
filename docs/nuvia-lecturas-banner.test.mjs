@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';
+import {readPageStylesSync} from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] ?? resolve(import.meta.dirname, '..'));
 const homeAsset = 'src/assets/home/lecturas-con-criterio-banner-sin-boton.webp';
@@ -51,7 +52,7 @@ const heroBytes = await readFile(resolve(root, heroAsset));
 assert.equal(createHash('sha256').update(heroBytes).digest('hex'),
   '1f5b0c628e45a1ded050a2ae4b840b30de8fc4d058cb0ecbf2110f70f002ccd1',
   'El paisaje Family Wealth debe estar limpio, sin el CTA rasterizado');
-const css = await readFile(resolve(root, 'estilos/nuvia-pages.css'), 'utf8');
+const css = readPageStylesSync(root);
 assert.match(css, /\.lecturas-hero h1\s*\{[\s\S]*?font-size:\s*var\(--nv-display-md\);/,
   'Solo el título interior de Lecturas usa una escala ligeramente menor');
 const imageRule = css.match(/\.home-lecturas__art\s*\{([^}]+)\}/)?.[1];

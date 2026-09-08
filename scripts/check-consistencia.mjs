@@ -27,6 +27,13 @@ const soloPresupuesto = process.argv.includes('--presupuesto');
 
 const CANONICA_BASE = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 
+/* Rutas antiguas que se conservan únicamente para llevar al visitante a su
+   destino vigente. No necesitan la cáscara común y deben permanecer fuera de
+   buscadores. Sus destinos se verifican por separado en check-parity.mjs. */
+const REDIRECCIONES_COMPATIBILIDAD = new Set([
+  'guia-impuestos.html',
+]);
+
 /* La familia de logotipos en uso. Está aprobada pero declarada candidata, así
    que puede cambiar: se sustituye con
      node scripts/cambiar-familia-logo.mjs <carpeta>
@@ -171,7 +178,8 @@ for (const pagina of paginas) {
   /* sistema-visual.html es la muestra del sistema, no una página del sitio:
      enseña una cabecera y un pie de referencia, no los usa. */
   const esMuestra = pagina === 'sistema-visual.html';
-  if (!esMuestra) {
+  const esRedireccion = REDIRECCIONES_COMPATIBILIDAD.has(pagina);
+  if (!esMuestra && !esRedireccion) {
     if (!/class=["']nuvia-site-header["']/.test(html)) ojo('no usa la cabecera común nuvia-site-header');
     if (!/class=["']nuvia-site-footer["']/.test(html)) ojo('no usa el pie común nuvia-site-footer');
   }
@@ -179,7 +187,7 @@ for (const pagina of paginas) {
 
   /* ── 9 · Restos de la plantilla ───────────────────────────────────────── */
   if (/⟨[^⟩]+⟩/.test(markup)) en('quedan marcadores ⟨…⟩ de la plantilla sin rellenar');
-  if (/name=["']robots["'][^>]*noindex/i.test(html) && !esMuestra) {
+  if (/name=["']robots["'][^>]*noindex/i.test(html) && !esMuestra && !esRedireccion) {
     ojo('lleva noindex: correcto si la sección sigue en preparación, quitar al publicar');
   }
 }

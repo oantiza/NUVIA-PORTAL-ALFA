@@ -68,6 +68,11 @@ jobs:
         env:
           NUVIA_RENDER_OFFLINE: '1'
 
+      - name: Verificar las páginas críticas en tablet
+        run: npm run auditar:tablet
+        env:
+          NUVIA_RENDER_OFFLINE: '1'
+
       - name: Preparar los archivos publicados
         uses: actions/upload-pages-artifact@v5
         with:

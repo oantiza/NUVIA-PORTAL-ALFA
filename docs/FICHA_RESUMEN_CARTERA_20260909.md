@@ -23,7 +23,8 @@ no se presenta como obtenida. Esta ficha documenta la revisión de producto y c�
 8. Valoración: no opina sobre precios presentes o futuros.
 9. Atractivo: no calcula puntuaciones, clasificación de salud o mérito inversor.
 10. Recomendaciones de terceros: ninguna.
-11. Diseño: color único descriptivo; escalas en unidades nativas, sin semáforo;
+11. Diseño: color fijo por magnitud, compartido por su lectura y el pentágono;
+    escalas en unidades nativas, sin semáforo ni colores que dependan del valor;
     el área no es una nota y un dato ausente no recibe vértice ni relleno.
 12. Acciones: solo selección de lectura y explicación metodológica.
 13. Incentivos: ninguno nuevo, sin afiliación o patrocinio.
@@ -106,3 +107,22 @@ temporal de las fuentes APT excluye ese repositorio ajeno a Chromium de Playwrig
 Las fuentes originales del runner y las comprobaciones de integridad se conservan.
 El navegador se descarga desde Playwright; compilación, pruebas y auditorías
 de escritorio/tablet siguen siendo obligatorias antes del despliegue.
+
+## Ajuste de color · 09-09-2026
+
+El fundador solicita dar un poco de color al resumen publicado. Se emplean las
+cinco primeras series cromáticas existentes del laboratorio: verde azulado para
+concentración, morado para clases, bronce para volatilidad, azul para historial
+y terracota para desglose. Son identificadores fijos de magnitudes. La selección
+resalta la lectura elegida y su explicación; los datos ausentes conservan un
+tratamiento neutro. Se mantienen las respuestas de la revisión anterior, con la
+actualización del punto 11: el cambio no altera cifras, fórmulas, escalas, orden,
+acciones ni persistencia. Se comprobarán contraste, correspondencia de colores y
+lectura en escritorio/tablet antes de actualizar la publicación de este resumen.
+
+Comprobación local: las cinco cifras, barras y puntos conservan su correspondencia
+cromática; elegir otra lectura actualiza su punto y el recuadro explicativo.
+Contraste mínimo medido de las cifras: 5,82:1 sobre el fondo del pentágono.
+Sin desborde en escritorio a 1280 px y tablet a 1024 px, con contenido de 680 px;
+selección con Enter comprobada. Las 14 pruebas del resumen y los validadores de
+estilos y lenguaje siguen pasando.

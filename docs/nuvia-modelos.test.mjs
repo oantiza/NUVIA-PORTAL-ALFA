@@ -51,13 +51,15 @@ console.log('\n— Formato para el motor del constructor —');
   comprueba('posicionesDeModelo produce {activo:{asset_id, display_name}, bruto}',
     posiciones.length === CARTERAS_MODELO[0].posiciones.length
     && posiciones.every((p) => p.activo.asset_id && p.activo.display_name && Number.isFinite(p.bruto)));
+  /* Sin fijar ningún ISIN: la prueba sigue a la composición vigente. */
+  const primera = CARTERAS_MODELO[0].posiciones[0];
   const enriquecidas = posicionesDeModelo(CARTERAS_MODELO[0], {
-    IE00B4L5Y983: { instrument_type: 'ETF', economic_asset_class: 'EQUITY' },
+    [primera.asset_id]: { instrument_type: 'ETF', economic_asset_class: 'EQUITY' },
   });
   comprueba('Las fichas del catálogo completan tipo y clase sin cambiar la composición',
     enriquecidas[0].activo.instrument_type === 'ETF'
     && enriquecidas[0].activo.economic_asset_class === 'EQUITY'
-    && enriquecidas[0].bruto === 25);
+    && enriquecidas[0].bruto === primera.peso);
   comprueba('Un modelo vacío no rompe', posicionesDeModelo(null).length === 0);
 }
 

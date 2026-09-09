@@ -1,5 +1,6 @@
 /* Resumen de Mi cartera: una escala por magnitud, sin semáforos de mérito. */
 .nv-resumen-cartera {
+  --nv-resumen-acento: var(--nv-serie-1);
   padding: var(--nv-space-8);
   margin-bottom: var(--nv-space-8);
   background: var(--nv-surface);
@@ -8,6 +9,13 @@
   border-radius: var(--radius-md);
   container-type: inline-size;
 }
+/* Identidad fija de cada magnitud: nunca depende del valor calculado. */
+.nv-resumen-cartera [data-eje="concentracion"] { --nv-resumen-acento: var(--nv-serie-1); }
+.nv-resumen-cartera [data-eje="clases"] { --nv-resumen-acento: var(--nv-serie-2); }
+.nv-resumen-cartera [data-eje="volatilidad"] { --nv-resumen-acento: var(--nv-serie-3); }
+.nv-resumen-cartera [data-eje="historial"] { --nv-resumen-acento: var(--nv-serie-4); }
+.nv-resumen-cartera [data-eje="desglose"] { --nv-resumen-acento: var(--nv-serie-5); }
+.nv-resumen-cartera [data-disponible="false"] { --nv-resumen-acento: var(--nv-text-muted); }
 .nv-resumen-cartera[hidden] { display: none; }
 .nv-resumen-cartera h2, .nv-resumen-cartera h3, .nv-resumen-cartera p { margin: 0; }
 .nv-resumen-cartera h2 { font: var(--nv-weight-title) var(--nv-title-md)/1.2 var(--nv-font-sans); }
@@ -19,12 +27,12 @@
 .nv-resumen-cartera__dibujo { width: 100%; min-height: 365px; }
 .nv-resumen-cartera__dibujo svg { display: block; overflow: visible; }
 .nv-resumen-cartera__rejilla { fill: none; stroke: var(--nv-line-strong); stroke-width: 1; }
-.nv-resumen-cartera__area { fill: var(--nv-text); fill-opacity: .14; }
-.nv-resumen-cartera__contorno { fill: none; stroke: var(--nv-text); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
-.nv-resumen-cartera__punto { fill: var(--nv-text); }
-.nv-resumen-cartera__punto--activo { fill: var(--nv-surface); stroke: var(--nv-text); stroke-width: 2.5; }
+.nv-resumen-cartera__area { fill: var(--nv-serie-1); fill-opacity: .14; }
+.nv-resumen-cartera__contorno { fill: none; stroke: var(--nv-serie-1); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.nv-resumen-cartera__punto { fill: var(--nv-resumen-acento); stroke: var(--nv-surface); stroke-width: 1.5; }
+.nv-resumen-cartera__punto--activo { fill: var(--nv-surface); stroke: var(--nv-resumen-acento); stroke-width: 2.5; }
 .nv-resumen-cartera__rotulo { fill: var(--nv-text); font: var(--nv-weight-body) var(--nv-label) var(--nv-font-sans); }
-.nv-resumen-cartera__cifra { fill: var(--nv-text); font: var(--nv-weight-title) var(--nv-title-sm) var(--nv-font-sans); }
+.nv-resumen-cartera__cifra { fill: var(--nv-resumen-acento); font: var(--nv-weight-title) var(--nv-title-sm) var(--nv-font-sans); }
 .nv-resumen-cartera .nv-resumen-cartera__nota { padding-inline: var(--nv-space-2); margin-top: auto; font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
 .nv-resumen-cartera__lecturas { min-width: 0; }
 .nv-resumen-cartera__lectura {
@@ -32,18 +40,19 @@
   padding: var(--nv-space-4) var(--nv-space-3); border: 0; border-bottom: 1px solid var(--nv-line);
   border-radius: 0; background: var(--nv-surface); color: var(--nv-text); font-family: var(--nv-font-sans);
 }
-.nv-resumen-cartera__lectura:hover { background: var(--nv-surface-page); }
-.nv-resumen-cartera__lectura[aria-pressed="true"] { background: var(--nv-surface-technical); border-radius: var(--radius-sm); border-bottom-color: transparent; }
+.nv-resumen-cartera__lectura:hover { background: color-mix(in srgb, var(--nv-resumen-acento) 4%, var(--nv-surface)); }
+.nv-resumen-cartera__lectura[aria-pressed="true"] { background: color-mix(in srgb, var(--nv-resumen-acento) 8%, var(--nv-surface)); box-shadow: inset 3px 0 var(--nv-resumen-acento); border-radius: var(--radius-sm); border-bottom-color: transparent; }
 .nv-resumen-cartera__linea { display: flex; align-items: baseline; justify-content: space-between; gap: var(--nv-space-4); }
 .nv-resumen-cartera__nombre { font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); }
-.nv-resumen-cartera__valor { font-size: var(--nv-title-sm); font-weight: var(--nv-weight-title); line-height: 1.25; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.nv-resumen-cartera__barra { display: block; height: 4px; margin: var(--nv-space-3) 0 var(--nv-space-2); background: var(--nv-line); border-radius: 2px; overflow: hidden; }
-.nv-resumen-cartera__barra > span { display: block; height: 100%; background: var(--nv-text); border-radius: 2px; }
+.nv-resumen-cartera__nombre::before { content: ''; display: inline-block; width: 7px; height: 7px; margin-right: var(--nv-space-2); border-radius: 50%; background: var(--nv-resumen-acento); vertical-align: middle; }
+.nv-resumen-cartera__valor { color: var(--nv-resumen-acento); font-size: var(--nv-title-sm); font-weight: var(--nv-weight-title); line-height: 1.25; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nv-resumen-cartera__barra { display: block; height: 4px; margin: var(--nv-space-3) 0 var(--nv-space-2); background: color-mix(in srgb, var(--nv-resumen-acento) 16%, var(--nv-surface)); border-radius: 2px; overflow: hidden; }
+.nv-resumen-cartera__barra > span { display: block; height: 100%; background: var(--nv-resumen-acento); border-radius: 2px; }
 .nv-resumen-cartera__detalle { display: block; color: var(--nv-text-soft); font-size: var(--nv-label); line-height: 1.5; overflow-wrap: anywhere; }
-.nv-resumen-cartera__explicacion { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--nv-space-7); border: 1px solid var(--nv-line); border-radius: var(--radius-sm); padding: var(--nv-space-5); margin-top: var(--nv-space-6); }
+.nv-resumen-cartera__explicacion { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--nv-space-7); border: 1px solid var(--nv-line); border-inline-start: 3px solid var(--nv-resumen-acento); background: color-mix(in srgb, var(--nv-resumen-acento) 4%, var(--nv-surface)); border-radius: var(--radius-sm); padding: var(--nv-space-5); margin-top: var(--nv-space-6); }
 .nv-resumen-cartera__explicacion h3 { margin-top: var(--nv-space-2); font: var(--nv-weight-title) var(--nv-body-lg)/1.4 var(--nv-font-sans); overflow-wrap: anywhere; }
 .nv-resumen-cartera__explicacion p { font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
-.nv-resumen-cartera__explicacion .nv-resumen-cartera__etiqueta { font-size: var(--nv-label); color: var(--nv-text-editorial); }
+.nv-resumen-cartera__explicacion .nv-resumen-cartera__etiqueta { font-size: var(--nv-label); color: var(--nv-resumen-acento); }
 .nv-resumen-cartera__explicacion .nv-resumen-cartera__formula { margin-top: var(--nv-space-2); font-size: var(--nv-label); color: var(--nv-text-muted); }
 .nv-resumen-cartera__metodo { border-top: 1px solid var(--nv-line); padding-top: var(--nv-space-4); margin-top: var(--nv-space-5); font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
 .nv-resumen-cartera__metodo summary { width: fit-content; min-height: 44px; cursor: pointer; color: var(--nv-text); font-weight: var(--nv-weight-action); }

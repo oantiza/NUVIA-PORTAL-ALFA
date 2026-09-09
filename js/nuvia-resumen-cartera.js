@@ -191,7 +191,7 @@ export function montaResumenCartera(raiz) {
   const metodo = el('details', 'nv-resumen-cartera__metodo');
   metodo.append(el('summary', '', 'Cómo leer el pentágono y sus escalas'));
   const escalas = el('dl', 'nv-resumen-cartera__escalas');
-  metodo.append(escalas, el('p', '', 'El centro representa cero y el borde, el extremo indicado de cada escala. Las barras utilizan las mismas escalas. Son referencias gráficas; no definen límites de inversión. Los ejes miden cosas diferentes: el área no es una calificación global.'));
+  metodo.append(escalas, el('p', '', 'Cada color identifica una misma lectura en el gráfico y en las barras. El centro representa cero y el borde, el extremo indicado de cada escala. Las barras utilizan las mismas escalas. Son referencias gráficas; no definen límites de inversión. Los ejes miden cosas diferentes: el área no es una calificación global.'));
   const fuente = el('p', 'nv-resumen-cartera__fuente');
   raiz.append(cabecera, grid, explicacion, metodo, fuente);
 
@@ -199,12 +199,16 @@ export function montaResumenCartera(raiz) {
     if (!resumen) return;
     botones.forEach((b, i) => {
       const eje = resumen.ejes[i];
+      b.boton.setAttribute('data-eje', eje.id);
+      b.boton.setAttribute('data-disponible', String(eje.valor != null));
       b.boton.setAttribute('aria-pressed', String(i === seleccionado));
       b.nombre.textContent = eje.nombre; b.valor.textContent = cifra(eje);
       b.relleno.style.width = eje.valor == null ? '0%' : `${eje.valor / eje.maximo * 100}%`;
       b.detalle.textContent = lectura(resumen, i).detalle;
     });
     const actual = lectura(resumen, seleccionado);
+    explicacion.setAttribute('data-eje', resumen.ejes[seleccionado].id);
+    explicacion.setAttribute('data-disponible', String(resumen.ejes[seleccionado].valor != null));
     tituloLectura.textContent = actual.titulo; texto.textContent = actual.texto; formula.textContent = actual.formula;
   }
   function dibuja() {
@@ -225,12 +229,12 @@ export function montaResumenCartera(raiz) {
     resumen.ejes.forEach((_, i) => { const p = g.punto(i, 1); marca('line', { class: 'nv-resumen-cartera__rejilla', x1: g.cx, y1: g.cy, x2: p[0], y2: p[1] }); });
     if (g.completo) marca('polygon', { class: 'nv-resumen-cartera__area', points: g.puntos.map(p => p.join(',')).join(' ') });
     g.segmentos.forEach(([a, b]) => marca('path', { class: 'nv-resumen-cartera__contorno', d: `M${a.join(',')} L${b.join(',')}` }));
-    g.puntos.forEach((p, i) => { if (p) marca('circle', { class: `nv-resumen-cartera__punto${i === seleccionado ? ' nv-resumen-cartera__punto--activo' : ''}`, cx: p[0], cy: p[1], r: i === seleccionado ? 5 : 3 }); });
+    g.puntos.forEach((p, i) => { if (p) marca('circle', { class: `nv-resumen-cartera__punto${i === seleccionado ? ' nv-resumen-cartera__punto--activo' : ''}`, 'data-eje': resumen.ejes[i].id, cx: p[0], cy: p[1], r: i === seleccionado ? 5 : 4 }); });
     const etiquetas = [[g.cx, 24, 'middle'], [ancho - 8, 106, 'end'], [ancho - 8, 320, 'end'], [8, 320, 'start'], [8, 106, 'start']];
     resumen.ejes.forEach((e, i) => {
       const [x, y, anchor] = etiquetas[i];
       marca('text', { x, y, 'text-anchor': anchor, class: 'nv-resumen-cartera__rotulo' }, e.corto);
-      marca('text', { x, y: y + 29, 'text-anchor': anchor, class: 'nv-resumen-cartera__cifra' }, cifra(e));
+      marca('text', { x, y: y + 29, 'text-anchor': anchor, class: 'nv-resumen-cartera__cifra', 'data-eje': e.id, 'data-disponible': String(e.valor != null) }, cifra(e));
     });
     dibujo.textContent = ''; dibujo.append(svg);
   }

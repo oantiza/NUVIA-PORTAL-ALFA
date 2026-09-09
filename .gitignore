@@ -5,6 +5,7 @@ company-analysis/build/
 node_modules/
 npm-debug.log*
 firebase-debug.log*
+/debug.log
 tmp/
 .playwright-mcp/
 .vite-local.*.log

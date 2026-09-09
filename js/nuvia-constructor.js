@@ -17,7 +17,7 @@ import { creaGuardadoLocal, mensajeGuardadoLocal } from './nuvia-guardado-local.
 import { fuenteDelAnalisis } from './nuvia-periodo-analisis.js';
 import { metricasDesdeSerie, serieDeCaidas, sharpe, pct, num, DIAS_MERCADO } from './nuvia-cartera.js';
 import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL, holdingsDe } from './nuvia-analisis.js?v=20260823-6';
-import { montaResumenCartera } from './nuvia-resumen-cartera.js';
+import { montaResumenCartera } from './nuvia-resumen-cartera.js?v=20260909-1';
 
 /* El límite de posiciones depende del nivel de la sesión (paso 33). */
 

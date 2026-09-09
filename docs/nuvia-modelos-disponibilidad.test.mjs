@@ -100,7 +100,7 @@ test('Catálogo parcial: cuenta e identifica ausencias sin cambiar las composici
   const raiz = monta(cliente({ enCatalogo: async () => mapa })); await espera();
   assert.ok(botones(raiz).every((b) => b.disabled));
   const primera = busca(raiz, 'nv-modelos__tarjeta')[0];
-  assert.match(primera.textContent, /2 de 4/);
+  assert.match(primera.textContent, new RegExp(`2 de ${CARTERAS_MODELO[0].posiciones.length}`));
   assert.ok(primera.textContent.includes(CARTERAS_MODELO[0].posiciones[2].asset_id));
   assert.equal(JSON.stringify(CARTERAS_MODELO), antes);
 });
@@ -125,12 +125,19 @@ test('Ficha fallida o identidad incorrecta: nunca envía una composición parcia
 });
 
 test('Selección completa conserva pesos e identificadores y no habilita las incompletas', async () => {
+  /* Se apaga una modelo que NO comparta instrumentos con la primera: las
+     composiciones pueden solaparse, y marcar como ausente algo que la
+     primera también lleva la dejaría incompleta a ella. */
+  const dePrimera = new Set(CARTERAS_MODELO[0].posiciones.map((p) => p.asset_id));
+  const otra = CARTERAS_MODELO.findIndex((m, i) => i > 0
+    && m.posiciones.every((p) => !dePrimera.has(p.asset_id)));
+  assert.ok(otra > 0, 'hace falta una modelo sin instrumentos en común con la primera');
   let recibido; const mapa = presentes();
-  CARTERAS_MODELO[2].posiciones.forEach((p) => { mapa[p.asset_id] = false; });
+  CARTERAS_MODELO[otra].posiciones.forEach((p) => { mapa[p.asset_id] = false; });
   const raiz = monta(cliente({ enCatalogo: async () => mapa }), async (detalle) => { recibido = detalle; });
   await espera(); await botones(raiz)[0].pulsa();
   assert.deepEqual(recibido.posiciones.map((p) => [p.activo.asset_id, p.bruto]), CARTERAS_MODELO[0].posiciones.map((p) => [p.asset_id, p.peso]));
-  assert.ok(botones(raiz)[2].disabled); assert.equal(botones(raiz)[0].textContent, 'Cartera seleccionada');
+  assert.ok(botones(raiz)[otra].disabled); assert.equal(botones(raiz)[0].textContent, 'Cartera seleccionada');
 });
 
 test('Una cartera fija sin todas sus series declara qué falta y cómo se recalcula el reparto', () => {

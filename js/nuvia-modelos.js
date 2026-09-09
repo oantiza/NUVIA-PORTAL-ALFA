@@ -21,7 +21,7 @@ export const NOTA_MODELOS = 'Cada cartera modelo es una composición fija: '
   + 'la misma para cualquiera que la mire, con su criterio y su fecha '
   + 'declarados, y con los pesos a partes iguales. No es una propuesta ni '
   + 'dice nada de ningún lector: por eso no hay botón que la copie a tu '
-  + 'cartera ni enlace para contratarla. Se conservan las composiciones originales; '
+  + 'cartera ni enlace para contratarla. Estas composiciones se fijaron el 09-09-2026; '
   + 'las referencias al catálogo en sus criterios corresponden a la fecha de fijación. '
   + 'La disponibilidad actual en la alfa se comprueba por separado. '
   + 'Al seleccionarla se abre el mismo '
@@ -30,69 +30,83 @@ export const NOTA_MODELOS = 'Cada cartera modelo es una composición fija: '
 
 /**
  * Las carteras modelo. Composición fijada por criterio propio del portal
- * (bases §1) el 19-08-2026, con activos que existen en el catálogo y pesos
+ * (bases §1) el 09-09-2026, con activos que existen en el catálogo y pesos
  * a partes iguales — una regla única para todas, sin ajustes por tema.
+ *
+ * Diez posiciones por composición, con un peso inicial del 10 % cada una.
+ * La revisión de disponibilidad no sustituye instrumentos ni cambia esos pesos.
  */
 export const CARTERAS_MODELO = [
   {
-    clave: 'bolsa-mundial-indexada',
-    nombre: 'Bolsa mundial indexada',
-    tema: 'Fondos y ETF que replican índices de bolsa mundial y de EE. UU., '
-      + 'sin gestor que elija valores.',
-    criterio: 'Cuatro productos indexados de bolsa global presentes en el '
-      + 'catálogo, fijados el 19-08-2026 por criterio propio del portal, '
-      + 'a partes iguales.',
+    clave: 'bolsa-mundial-fondos',
+    nombre: 'Bolsa mundial en fondos',
+    tema: 'Diez fondos de renta variable que combinan mandatos globales, regionales y temáticos.',
+    criterio: 'Diez fondos de renta variable presentes en el catálogo, fijados el 09-09-2026 por criterio propio del portal, a partes iguales.',
     posiciones: [
-      { asset_id: 'IE00B4L5Y983', nombre: 'iShares Core MSCI World UCITS ETF USD (Acc)', peso: 25 },
-      { asset_id: 'IE00B03HD191', nombre: 'Vanguard Global Stock Index Fund EUR Acc', peso: 25 },
-      { asset_id: 'IE00B3XXRP09', nombre: 'Vanguard S&P 500 UCITS ETF', peso: 25 },
-      { asset_id: 'IE00BYX5NX33', nombre: 'Fidelity MSCI World Index Fund EUR P Acc', peso: 25 },
+      { asset_id: 'LU0115769746', nombre: 'Fidelity Funds - World Fund E-Acc-EUR', peso: 10 },
+      { asset_id: 'LU0690375182', nombre: 'Fundsmith Equity Fund T EUR Acc', peso: 10 },
+      { asset_id: 'LU0187079347', nombre: 'Robeco Global Consumer Trends D EUR', peso: 10 },
+      { asset_id: 'IE0031573904', nombre: 'Brandes Global Value Fund A Euro Acc', peso: 10 },
+      { asset_id: 'LU0217576833', nombre: 'JPMorgan Funds - Emerging Markets Equity Fund D (acc) EUR', peso: 10 },
+      { asset_id: 'LU0607512935', nombre: 'Invesco Funds - Invesco Developed Small and Mid-Cap Equity Fund E Accumulation EUR', peso: 10 },
+      { asset_id: 'LU0260869739', nombre: 'Franklin U.S. Opportunities Fund A(acc)EUR', peso: 10 },
+      { asset_id: 'LU0568583420', nombre: 'Amundi Funds - Equity Japan Target A EUR (C)', peso: 10 },
+      { asset_id: 'LU1088692675', nombre: 'UBAM - Global Equity AC EUR', peso: 10 },
+      { asset_id: 'LU0121204431', nombre: 'Goldman Sachs Global Sustainable Equity - X Cap EUR', peso: 10 },
     ],
   },
   {
-    clave: 'grandes-cotizadas-espanolas',
-    nombre: 'Grandes cotizadas españolas',
-    tema: 'Cinco cotizadas españolas de gran capitalización, de sectores '
-      + 'distintos entre sí (energía, textil, banca y telecomunicaciones).',
-    criterio: 'Cinco cotizadas españolas de gran capitalización presentes en '
-      + 'el catálogo, fijadas el 19-08-2026 por criterio propio del portal, '
-      + 'a partes iguales.',
+    clave: 'bolsa-europea-fondos',
+    nombre: 'Bolsa europea en fondos',
+    tema: 'Diez fondos que reparten la bolsa europea por estilo de gestión, tamaño de compañía y país.',
+    criterio: 'Diez fondos de bolsa europea presentes en el catálogo, fijados el 09-09-2026 por criterio propio del portal, a partes iguales.',
     posiciones: [
-      { asset_id: 'ES0144580Y14', nombre: 'Iberdrola S.A.', peso: 20 },
-      { asset_id: 'ES0148396007', nombre: 'Industria de Diseño Textil S.A. (Inditex)', peso: 20 },
-      { asset_id: 'ES0113900J37', nombre: 'Banco Santander S.A.', peso: 20 },
-      { asset_id: 'ES0113211835', nombre: 'Banco Bilbao Vizcaya Argentaria S.A.', peso: 20 },
-      { asset_id: 'ES0178430E18', nombre: 'Telefónica S.A.', peso: 20 },
+      { asset_id: 'LU0117858596', nombre: 'JPMorgan Funds - Europe Equity Fund D (acc) EUR', peso: 10 },
+      { asset_id: 'LU0256839860', nombre: 'Allianz Global Investors Fund - Allianz Europe Equity Growth CT EUR', peso: 10 },
+      { asset_id: 'LU0284396289', nombre: 'DNCA Invest Value Europe Class B shares EUR', peso: 10 },
+      { asset_id: 'LU0011889846', nombre: 'Janus Henderson Horizon Euroland Fund A2 EUR', peso: 10 },
+      { asset_id: 'LU0300507208', nombre: 'Generali Investments SICAV - Euro Future Leaders EX', peso: 10 },
+      { asset_id: 'LU0524465548', nombre: 'Alken Fund - Small Cap Europe Class A', peso: 10 },
+      { asset_id: 'LU0353647737', nombre: 'Fidelity Funds - European Dividend Fund A-Acc-EUR', peso: 10 },
+      { asset_id: 'LU0115765678', nombre: 'Fidelity Funds - Iberia Fund E-Acc-EUR', peso: 10 },
+      { asset_id: 'DE0008490962', nombre: 'DWS Deutschland LC', peso: 10 },
+      { asset_id: 'LU0313923228', nombre: 'BlackRock Strategic Funds - European Opportunities Extension Fund A2 EUR', peso: 10 },
     ],
   },
   {
-    clave: 'value-gestoras-independientes',
-    nombre: 'Value de gestoras independientes',
-    tema: 'Fondos de gestoras independientes españolas que invierten por '
-      + 'análisis fundamental, en España y fuera.',
-    criterio: 'Cuatro fondos de gestoras independientes españolas presentes '
-      + 'en el catálogo, fijados el 19-08-2026 por criterio propio del '
-      + 'portal, a partes iguales.',
+    clave: 'fondos-y-etf-global',
+    nombre: 'Fondos y ETF en cartera global',
+    tema: 'Cuatro ETF que replican índices junto a seis fondos de gestión activa, para ver las dos formas de invertir dentro de la misma cartera.',
+    criterio: 'Cuatro ETF indexados y seis fondos de gestión activa presentes en el catálogo, fijados el 09-09-2026 por criterio propio del portal, a partes iguales.',
     posiciones: [
-      { asset_id: 'LU0563745743', nombre: 'Bestinver Tordesillas SICAV Iberia A', peso: 25 },
-      { asset_id: 'LU1372006947', nombre: 'Cobas Selection Fund P Acc EUR', peso: 25 },
-      { asset_id: 'LU1333148903', nombre: 'Azvalor International R', peso: 25 },
-      { asset_id: 'LU1330191542', nombre: 'Magallanes European Equity R EUR', peso: 25 },
+      { asset_id: 'IE00B4L5Y983', nombre: 'iShares Core MSCI World UCITS ETF USD (Acc)', peso: 10 },
+      { asset_id: 'IE00B6R52259', nombre: 'iShares MSCI ACWI UCITS ETF USD (Acc) EUR', peso: 10 },
+      { asset_id: 'IE00B3XXRP09', nombre: 'Vanguard S&P 500 UCITS ETF', peso: 10 },
+      { asset_id: 'IE00BDBRDM35', nombre: 'iShares Core Global Aggregate Bond UCITS ETF EUR Hedged (Acc)', peso: 10 },
+      { asset_id: 'LU0690375182', nombre: 'Fundsmith Equity Fund T EUR Acc', peso: 10 },
+      { asset_id: 'IE0031573904', nombre: 'Brandes Global Value Fund A Euro Acc', peso: 10 },
+      { asset_id: 'LU0217576833', nombre: 'JPMorgan Funds - Emerging Markets Equity Fund D (acc) EUR', peso: 10 },
+      { asset_id: 'LU0607512935', nombre: 'Invesco Funds - Invesco Developed Small and Mid-Cap Equity Fund E Accumulation EUR', peso: 10 },
+      { asset_id: 'LU0568583420', nombre: 'Amundi Funds - Equity Japan Target A EUR (C)', peso: 10 },
+      { asset_id: 'LU0132601682', nombre: 'Morgan Stanley Investment Funds - Euro Corporate Bond Fund A', peso: 10 },
     ],
   },
   {
-    clave: 'mitad-bolsa-mitad-bonos',
-    nombre: 'Mitad bolsa mundial, mitad bonos en euros',
-    tema: 'La mitad en bolsa mundial indexada y la otra mitad en fondos de '
-      + 'bonos corporativos en euros.',
-    criterio: 'Dos productos de bolsa mundial y dos fondos de bonos '
-      + 'corporativos en euros presentes en el catálogo, fijados el '
-      + '19-08-2026 por criterio propio del portal, a partes iguales.',
+    clave: 'acciones-espanolas-fondos-y-etf',
+    nombre: 'Acciones españolas con fondos y ETF',
+    tema: 'Cinco cotizadas españolas, dos ETF y tres fondos, con exposición a bolsa y bonos.',
+    criterio: 'Cinco cotizadas españolas, dos ETF y tres fondos presentes en el catálogo, fijados el 09-09-2026 por criterio propio del portal, a partes iguales.',
     posiciones: [
-      { asset_id: 'IE00B4L5Y983', nombre: 'iShares Core MSCI World UCITS ETF USD (Acc)', peso: 25 },
-      { asset_id: 'IE00B03HD191', nombre: 'Vanguard Global Stock Index Fund EUR Acc', peso: 25 },
-      { asset_id: 'LU0113257694', nombre: 'Schroder ISF EURO Corporate Bond A Acc', peso: 25 },
-      { asset_id: 'LU0132601682', nombre: 'Morgan Stanley Euro Corporate Bond Fund A', peso: 25 },
+      { asset_id: 'ES0113211835', nombre: 'Banco Bilbao Vizcaya Argentaria SA', peso: 10 },
+      { asset_id: 'ES0113900J37', nombre: 'Banco Santander S.A.', peso: 10 },
+      { asset_id: 'ES0144580Y14', nombre: 'Iberdrola S.A.', peso: 10 },
+      { asset_id: 'ES0148396007', nombre: 'Industria de Diseno Textil SA', peso: 10 },
+      { asset_id: 'ES0178430E18', nombre: 'Telefonica', peso: 10 },
+      { asset_id: 'ES0105336038', nombre: 'Accion IBEX 35 Cotizado Armonizado FI', peso: 10 },
+      { asset_id: 'IE00B4L5Y983', nombre: 'iShares Core MSCI World UCITS ETF USD (Acc)', peso: 10 },
+      { asset_id: 'LU0115765678', nombre: 'Fidelity Funds - Iberia Fund E-Acc-EUR', peso: 10 },
+      { asset_id: 'LU0117858596', nombre: 'JPMorgan Funds - Europe Equity Fund D (acc) EUR', peso: 10 },
+      { asset_id: 'LU0132601682', nombre: 'Morgan Stanley Investment Funds - Euro Corporate Bond Fund A', peso: 10 },
     ],
   },
 ];
@@ -104,7 +118,7 @@ export function validaModelo(modelo) {
   const problemas = [];
   if (!modelo?.nombre) problemas.push('sin nombre');
   if (!modelo?.tema) problemas.push('sin tema');
-  if (!/19-08-2026/.test(modelo?.criterio || '')) problemas.push('criterio sin fecha de fijación');
+  if (!/09-09-2026/.test(modelo?.criterio || '')) problemas.push('criterio sin fecha de fijación');
   if (!/criterio propio/.test(modelo?.criterio || '')) problemas.push('criterio sin declarar');
   const posiciones = modelo?.posiciones || [];
   if (posiciones.length < 3) problemas.push('menos de 3 posiciones');

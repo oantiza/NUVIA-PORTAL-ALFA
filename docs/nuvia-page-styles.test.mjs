@@ -11,7 +11,8 @@ assert.deepEqual(imports, [
   'nuvia-pages-foundations.css',
   'nuvia-pages-cartera.css',
   'nuvia-pages-content.css',
-], 'Mantener el orden de cascada de los tres módulos de página');
+  'nuvia-page-entry.css',
+], 'Mantener el orden de cascada y la entrada común de páginas hijas');
 
 const expanded = readPageStylesSync(root);
 const foundations = expanded.indexOf('ARMAZÓN COMÚN');
@@ -22,4 +23,4 @@ assert.ok(foundations >= 0 && portfolio > foundations && content > portfolio,
 assert.doesNotMatch(expanded, /@import\b/, 'Las pruebas deben leer las reglas expandidas');
 assert.ok(expanded.split(/\r?\n/).length > 9800, 'No se ha perdido ningún tramo de estilos de página');
 
-console.log(`Estilos de página: tres módulos y orden de cascada verificados en ${root}.`);
+console.log(`Estilos de página: cuatro módulos y orden de cascada verificados en ${root}.`);

@@ -10,7 +10,7 @@ assert.ok(code);
 class DCLogic {props={temaInicial:'patrimonio'};setState(state){Object.assign(this.state,state);}}
 const Component=runInNewContext(code+'; Component',{DCLogic,URLSearchParams,window:{location:{search:'?topic=bienestar'}}});
 const model=new Component().renderVals();
-assert.equal(model.titulo,'Familia, Salud y Bienestar');
+assert.equal(model.titulo,'Cuerpo, mente y salud');
 assert.equal(model.esBienestar,true);
 assert.equal(model.mostrarSelector,false);
 assert.equal(model.mostrarRegresoPatrimonio,false);

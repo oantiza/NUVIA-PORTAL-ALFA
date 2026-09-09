@@ -2,6 +2,22 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<script>
+// Compatibilidad de las antiguas portadas, sin perder consultas ni anclas.
+(() => {
+  const url = new URL(location.href);
+  const topic = url.searchParams.get('topic');
+  const destinations = { patrimonio: 'patrimonio.html', jubilacion: 'jubilacion.html', vivienda: 'vivienda.html', 'vivienda-coste-vida': 'vivienda.html', fiscalidad: 'fiscalidad.html', 'mis-impuestos': 'fiscalidad.html' };
+  const target = Object.hasOwn(destinations, topic) ? destinations[topic] : (!['bienestar', 'planificacion-patrimonial'].includes(topic) ? 'patrimonio.html' : null);
+  if (target) {
+    url.pathname = url.pathname.replace(/temas\.html$/, target);
+    url.searchParams.delete('topic');
+    if (target === 'patrimonio.html' && url.hash === '#patrimonio-ambitos') url.hash = 'recursos-patrimonio';
+    if (target === 'jubilacion.html' && url.hash === '#herramientas') url.hash = 'seguir-jubilacion';
+    location.replace(url.href);
+  }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Patrimonio en NUVIA: vivienda y coste de vida, impuestos, jubilación y planificación patrimonial. Accede a las guías y simuladores disponibles.">
 
@@ -33,7 +49,7 @@
 <link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
@@ -98,21 +114,21 @@
   </header>
 
   <main id="contenido">
-    <section id="tema" data-screen-label="Cabecera de espacio" class="nv-hero nv-hero--institutional tm-hero">
+    <section id="tema" data-screen-label="Cabecera de espacio" class="nv-hero nv-hero--institutional tm-hero nv-entry">
       <div class="nv-container">
-<nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span id="tema-ruta" aria-current="page">Patrimonio</span></li></ol></nav>
+<nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a id="tema-madre" href="patrimonio.html">Patrimonio</a></li><li><span id="tema-ruta" aria-current="page">Planificación patrimonial</span></li></ol></nav>
       <span class="nv-eyebrow nv-eyebrow--on-dark"><span></span><span id="tema-eyebrow">Espacio NUVIA · Cuatro ámbitos</span></span>
       <h1 class="tm-title" id="tema-titulo">Patrimonio</h1>
       <p class="nv-hero__lead" id="tema-intro">Vivienda y coste de vida, impuestos, jubilación y planificación patrimonial: guías y simuladores para comprender la economía familiar, con sus datos, supuestos y límites a la vista.</p>
       <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-        <nav class="tm-wellbeing-nav" aria-label="En esta página de Familia, Salud y Bienestar">
-          <a href="#bienestar-ambitos">Temas del espacio</a>
+        <nav class="tm-wellbeing-nav" aria-label="En esta página de Cuerpo, mente y salud">
+          <a href="#bienestar-ambitos">Temas de este contenido</a>
           <a href="#bienestar-guias">Guías en preparación</a>
           <a href="#bienestar-fuentes">Fuentes y límites</a>
         </nav>
       </sc-if>
       <sc-if value="{{ mostrarRegresoPatrimonio }}" hint-placeholder-val="{{ false }}">
-        <a class="tm-back" href="temas.html">← Volver a Patrimonio</a>
+        <a class="tm-back" href="patrimonio.html">← Volver a Patrimonio</a>
       </sc-if>
       <sc-if value="{{ mostrarSelector }}" hint-placeholder-val="{{ false }}">
         <nav aria-label="Ámbitos de Patrimonio" data-screen-label="Selector de Patrimonio" class="tm-pills">
@@ -226,21 +242,13 @@
       <section id="bienestar-ambitos" data-screen-label="Bienestar integral" class="nv-container tm-wellbeing-section" aria-labelledby="bienestar-ambitos-title">
         <div class="nv-notice tm-wellbeing-availability">
           <h2>Qué puedes encontrar hoy</h2>
-          <p>Esta página presenta el enfoque y los temas del espacio. Las tres guías anunciadas más abajo todavía no están publicadas. No hay cuestionarios de salud ni orientación individual.</p>
+          <p>Esta página reúne los temas de Cuerpo, mente y salud. Las tres guías anunciadas más abajo todavía no están publicadas. No hay cuestionarios de salud ni orientación individual.</p>
         </div>
         <article class="tm-wellbeing">
-          <div class="tm-wellbeing__media">
-            <img src="src/assets/home/card-wellness.webp" alt="Una familia practicando ejercicio y relajación en casa" loading="lazy" class="tm-wellbeing__img" width="1600" height="1067">
-            <div aria-hidden="true" class="tm-wellbeing__veil"></div>
-            <div class="tm-wellbeing__caption">
-              <span class="nv-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-7-10a4 4 0 0 1 7-2.65A4 4 0 0 1 19 11c0 5.65-7 10-7 10z"></path></svg></span>
-              <span class="tm-wellbeing__caption-text">Cuidarse también es crear tiempo de calidad para compartir.</span>
-            </div>
-          </div>
           <div class="tm-wellbeing__body">
             <p class="nv-eyebrow">Cuerpo, mente y vida familiar</p>
-            <h2 class="tm-wellbeing__title" id="bienestar-ambitos-title">Cinco temas para comprender el bienestar cotidiano</h2>
-            <p class="tm-card__text">La vida familiar también tiene una dimensión que no se mide en dinero: el cuerpo, los hábitos, la mente y el tiempo compartido. Estos son los temas de partida para los futuros contenidos generales del espacio.</p>
+            <h2 class="tm-wellbeing__title" id="bienestar-ambitos-title">Cinco temas de cuidado cotidiano</h2>
+            <p class="tm-card__text">Estos temas desarrollan los pilares de la portada: cuerpo y hábitos, calma mental, relaciones y tiempo propio. Las guías previstas se agrupan más abajo en tres líneas de contenido.</p>
             <div class="tm-pillars" role="list" aria-label="Cinco temas de Familia, Salud y Bienestar">
               <div class="tm-pillar" role="listitem"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M18 4v16M3 9h6M15 9h6M3 15h6M15 15h6M9 12h6"></path></svg></span><span class="tm-pillar__name">Movimiento consciente</span></div>
               <div class="tm-pillar" role="listitem"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-3 7-7 7-12-5 0-9 2-12 6-1 2-1 4 0 6"></path><path d="M8 18c2-3 5-5 9-7"></path></svg></span><span class="tm-pillar__name">Nutrición equilibrada</span></div>
@@ -257,8 +265,8 @@
       <section data-screen-label="Recursos del tema" class="nv-container">
         <sc-if value="{{ esPlanificacion }}" hint-placeholder-val="{{ false }}">
           <div class="nv-notice tm-overview__notice">
-            <h2 class="tm-legacy__heading">Planificación patrimonial en preparación</h2>
-            <p>Estos son los contenidos previstos. Todavía no puedes completar un cuestionario ni obtener un plan personal. Mientras tanto, puedes consultar las guías y los simuladores disponibles desde la <a href="temas.html">portada de Patrimonio</a>.</p>
+            <h2 class="tm-legacy__heading">Contenidos en preparación</h2>
+            <p>Estos son los contenidos previstos. Todavía no puedes completar un cuestionario ni obtener un plan personal. Mientras tanto, puedes consultar las guías y los simuladores disponibles desde la <a href="patrimonio.html">portada de Patrimonio</a>.</p>
           </div>
         </sc-if>
         <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
@@ -380,9 +388,9 @@
   const TEMAS = {
     'patrimonio': ['Patrimonio', 'Vivienda y coste de vida, impuestos, jubilación y planificación patrimonial: guías y simuladores para comprender la economía familiar, con sus datos, supuestos y límites a la vista.'],
     'vivienda-coste-vida': ['Vivienda y coste de vida', 'Criterios para comparar compra y alquiler, entender la financiación y proteger el presupuesto familiar.'],
-    'mis-impuestos':       ['Mis impuestos', 'Conceptos fiscales para anticipar obligaciones y comprender su efecto sobre el ahorro y el patrimonio.'],
+    'mis-impuestos':       ['Impuestos', 'Conceptos fiscales para anticipar obligaciones y comprender su efecto sobre el ahorro y el patrimonio.'],
     'jubilacion':          ['Jubilación', 'Planificación de ingresos, longevidad, apoyo a los hijos y transmisión responsable del patrimonio familiar.'],
-    'bienestar':           ['Familia, Salud y Bienestar', 'Contenidos generales sobre familia, cuerpo, hábitos, mente y bienestar, basados en fuentes solventes y sin consejo sanitario individual.'],
+    'bienestar':           ['Cuerpo, mente y salud', 'Contenidos generales sobre familia, cuerpo, hábitos, mente y bienestar, basados en fuentes solventes y sin consejo sanitario individual.'],
     'planificacion-patrimonial': ['Planificación patrimonial', 'Una visión de conjunto del patrimonio familiar: objetivos, activos, deudas, liquidez y transmisión.']
   };
   const ALIAS = { vivienda: 'vivienda-coste-vida', fiscalidad: 'mis-impuestos' };
@@ -408,9 +416,13 @@
       'jubilacion': '03',
       'planificacion-patrimonial': '04',
     };
-    poner(document.getElementById('tema-ruta'), esBienestar ? 'Familia, Salud y Bienestar' : 'Patrimonio');
+    poner(document.getElementById('tema-ruta'), t[0]);
+    const madre = document.getElementById('tema-madre');
+    poner(madre, esBienestar ? 'Familia, Salud y Bienestar' : 'Patrimonio');
+    const destinoMadre = esBienestar ? 'bienestar.html' : 'patrimonio.html';
+    if (madre && madre.getAttribute('href') !== destinoMadre) madre.setAttribute('href', destinoMadre);
     poner(document.getElementById('tema-eyebrow'), esBienestar
-      ? 'Espacio NUVIA · En preparación'
+      ? 'Hábitos y vida cotidiana'
       : id === 'patrimonio' ? 'Espacio NUVIA · Cuatro ámbitos' : `Patrimonio · ${ordenPatrimonio[id] || '01'} de 04`);
     document.querySelectorAll('[data-nav-area]').forEach((area) => {
       const activa = area.dataset.navArea === (esBienestar ? 'bienestar' : 'patrimonio');
@@ -458,9 +470,9 @@ class Component extends DCLogic {
         R('Compra o alquiler', 'Claves para comparar alternativas y medir el impacto patrimonial de cada decisión.'),
         R('Hipoteca y tipos', 'Cómo afectan el plazo, el tipo de interés y la cuota al coste total de la financiación.'),
         R('Presupuesto familiar', 'Una estructura sencilla para ordenar gastos, objetivos y margen de seguridad.') ] },
-      { id: 'mis-impuestos', num: '02', nombre: 'Mis impuestos', link: 'fiscalidad.html' },
+      { id: 'mis-impuestos', num: '02', nombre: 'Impuestos', link: 'fiscalidad.html' },
       { id: 'jubilacion', num: '03', nombre: 'Jubilación', intro: 'Planificación de ingresos, longevidad, apoyo a los hijos y transmisión responsable del patrimonio familiar.', tipo: 'herramientas' },
-      { id: 'bienestar', num: '01', nombre: 'Familia, Salud y Bienestar', intro: 'Contenidos generales sobre familia, cuerpo, hábitos, mente y bienestar, basados en fuentes solventes y sin consejo sanitario individual.', tipo: 'recursos', recursos: [
+      { id: 'bienestar', num: '01', nombre: 'Cuerpo, mente y salud', intro: 'Contenidos generales sobre familia, cuerpo, hábitos, mente y bienestar, basados en fuentes solventes y sin consejo sanitario individual.', tipo: 'recursos', recursos: [
         R('Movimiento, nutrición y descanso', 'Contenidos previstos sobre actividad física, alimentación y descanso en la vida cotidiana.'),
         R('Calma y gestión del estrés', 'Conceptos generales sobre estrés, respiración y relajación, con sus fuentes y límites.'),
         R('Familia, trabajo y tiempo propio', 'Contenidos previstos sobre convivencia, responsabilidades, límites y tiempo compartido.') ] },

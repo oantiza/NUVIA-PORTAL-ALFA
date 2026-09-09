@@ -34,7 +34,7 @@
 
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260909-1">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -101,16 +101,16 @@
 
   <main id="contenido">
     <div class="nuvia-page nuvia-analysis-page">
-      <section class="nuvia-analysis-hero" data-screen-label="Cabecera Analítica de cartera" aria-labelledby="analysis-title">
+      <section class="nuvia-analysis-hero nv-entry" data-screen-label="Cabecera Analítica de cartera" aria-labelledby="analysis-title">
         <div class="nuvia-analysis-hero__inner">
           <div>
             <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-              <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="mercados.html">Economía y Finanzas</a></li><li><span id="analysis-current" aria-current="page">Mi cartera</span></li></ol>
+              <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="economia.html">Economía y Finanzas</a></li><li><span id="analysis-current" aria-current="page">Mi cartera</span></li></ol>
             </nav>
-            <p class="nuvia-analysis-eyebrow"><span aria-hidden="true"></span>Analítica NUVIA</p>
+            <p id="analysis-eyebrow" class="nuvia-analysis-eyebrow">Laboratorio de cartera</p>
             <h1 id="analysis-title">Mi cartera</h1>
             <p id="analysis-lead" class="nuvia-analysis-lead">Explora la composición, el riesgo y los escenarios de una cartera. Añade posiciones del catálogo y consulta los cálculos junto a sus fuentes y límites.</p>
-            <p class="nuvia-analysis-availability">Alfa en abierto y sin cuentas. Cartera y fundamentales consultan la base propia. En empresas se identifica cualquier respaldo local, que puede estar desactualizado. Los datos no son en tiempo real. NUVIA muestra información y cálculos, no determina qué inversión elegir.</p>
+            <details class="nv-entry-details"><summary>Datos, disponibilidad y límites</summary><p class="nuvia-analysis-availability">Alfa en abierto y sin cuentas. Cartera y fundamentales consultan la base propia. En empresas se identifica cualquier respaldo local, que puede estar desactualizado. Los datos no son en tiempo real. NUVIA muestra información y cálculos, no determina qué inversión elegir.</p></details>
             <nav class="nuvia-analysis-tabs" aria-label="Vistas de analítica de cartera">
               <a id="vista-portfolio" href="cartera.html?vista=portfolio#laboratorio" aria-current="page">Mi cartera</a>
               <a id="vista-models" href="cartera.html?vista=models#carteras-modelo">Carteras modelo</a>
@@ -124,17 +124,6 @@
       <div class="nuvia-analysis-content">
 
         <section id="laboratorio" class="nuvia-lab" aria-label="Laboratorio de cartera">
-
-          <div class="nv-portada-lab" role="presentation">
-            <div class="nv-portada-lab__texto">
-              <p class="nv-portada-lab__marca">NUVIA</p>
-              <p class="nv-portada-lab__seccion">Laboratorio de cartera</p>
-              <p class="nv-portada-lab__lema">Estudia cómo cambian el riesgo y la rentabilidad estimada de una cartera cuando cambia su reparto entre clases de activo, con una lectura clara y ordenada.</p>
-              <i class="nv-portada-lab__raya" aria-hidden="true"></i>
-            </div>
-          </div>
-
-          <p class="nv-lab-tesis">Primero vemos qué contiene la cartera. Después, cuánto se movió, dónde se solapan sus posiciones y qué escenarios ayudan a entenderla. Cada gráfico responde a una sola pregunta y muestra su fuente.</p>
 
           <div class="nv-portada-grupo">
             <nav class="nv-atajos" aria-label="Secciones del laboratorio">
@@ -200,19 +189,6 @@
         </section>
 
         <section id="carteras-modelo" class="nuvia-lab nuvia-modelos-vista" aria-label="Carteras modelo" hidden>
-          <div class="nv-portada-grupo">
-            <div class="nv-portada-lab nv-portada-lab--modelos" role="presentation">
-              <div class="nv-portada-lab__texto">
-                <p class="nv-portada-lab__marca">NUVIA</p>
-                <p class="nv-portada-lab__seccion">Carteras modelo</p>
-                <p class="nv-portada-lab__lema">Composiciones fijas publicadas por el portal, analizadas con el mismo recorrido y las mismas fuentes que una cartera propia.</p>
-                <i class="nv-portada-lab__raya" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-
-          <p class="nv-lab-tesis">Elige una composición para ver qué contiene, cómo se movió, cuánto riesgo aportó cada posición, dónde se repiten apuestas y qué muestran sus escenarios.</p>
-
           <section id="modelos-fase-01" class="nv-lab-fase" aria-labelledby="modelos-fase-01-title">
             <header class="nv-lab-fase__cabecera">
               <span class="nv-lab-fase__numero" aria-hidden="true">01</span>
@@ -327,6 +303,7 @@ class Component extends DCLogic {
       document.body.dataset.suiteVista = elegida;
       const etiquetas = { portfolio: 'Mi cartera', models: 'Carteras modelo', companies: 'Análisis y valoración de empresas' };
       document.getElementById('analysis-title').textContent = etiquetas[elegida];
+      document.getElementById('analysis-eyebrow').textContent = elegida === 'companies' ? 'Análisis de empresas' : 'Laboratorio de cartera';
       document.getElementById('analysis-current').textContent = etiquetas[elegida];
       document.getElementById('analysis-lead').textContent = {
         portfolio: 'Explora la composición, el riesgo y los escenarios de una cartera. Añade posiciones del catálogo y consulta los cálculos junto a sus fuentes y límites.',

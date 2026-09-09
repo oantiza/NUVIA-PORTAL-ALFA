@@ -33,7 +33,7 @@
 
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -106,7 +106,7 @@
          texto sólo se leía porque el bundle Nocturne pintaba el fondo oscuro.
          Ahora usa el héroe institucional del sistema, que trae su propio fondo.
          ═══════════════════════════════════════════════════════════════════ -->
-    <section id="curso" data-screen-label="Cabecera del curso" class="nv-hero nv-hero--institutional curso-hero">
+    <section id="curso" data-screen-label="Cabecera del curso" class="nv-hero nv-hero--institutional curso-hero nv-entry">
       <div class="nv-container">
         <div class="nv-hero__inner">
           <div>
@@ -114,7 +114,7 @@
               <ol>
                 <li><a href="index.html" data-main-menu-return>Inicio</a></li>
                 <li><a href="academia.html">Academia NUVIA</a></li>
-                <li><span aria-current="page">Dinero con criterio</span></li>
+                <li><a href="academia.html?tab=cursos">Cursos</a></li><li><span aria-current="page">Dinero con criterio</span></li>
               </ol>
             </nav>
 

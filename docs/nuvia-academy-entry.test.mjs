@@ -9,7 +9,7 @@ const course=readFileSync(resolve(root,'curso.html'),'utf8');
 class DCLogic {props={};setState(s){Object.assign(this.state,s);}}
 const component=html=>runInNewContext(html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1]+'; Component',{DCLogic,Intl,URLSearchParams,React:{createElement:(type,props)=>({type,props})},window:{location:{search:'',hash:''}}});
 const Academy=component(academy), Course=component(course);
-assert.match(academy,/document.title = 'NUVIA · Academia NUVIA'/);
+assert.ok(academy.includes("document.title = 'NUVIA · ' + this.entrada()[0]"));
 assert.doesNotMatch(academy,/Academia Nuvia|seguimiento del progreso/);
 assert.equal((academy.match(/id="ruta-aprendizaje"/g)||[]).length,1);
 const route=academy.match(/<section id="ruta-aprendizaje"[\s\S]*?<\/section>/)[0];
@@ -20,8 +20,12 @@ assert.match(route,/sin orden obligatorio ni prueba de nivel/);
 for(const tab of ['inicio','cursos','esenciales','fundamentos','activos','calculadora','glosario']) {
   const a=new Academy(); a.state.tab=tab;
   assert.equal(a.renderVals().mostrarRegreso,tab!=='inicio',tab);
+  const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero'};
+  assert.equal(a.renderVals().entradaTitulo,titles[tab]);
+  assert.equal(a.renderVals().claseCabecera.includes('nv-entry'),tab!=='inicio');
 }
-for(const html of [academy,course]) assert.ok(html.includes('href="academia.html#ruta-aprendizaje"'));
+assert.match(academy, /class="nv-container ac-learning-back"[\s\S]*?href="academia.html"/);
+assert.ok(course.includes('href="academia.html#ruta-aprendizaje"'));
 assert.match(academy,/los capítulos 2 a 5 ofrecen vídeos y apuntes/);
 assert.match(course,/&quot;estadoProgreso&quot;: \{[^}]*&quot;default&quot;: &quot;nuevo&quot;/);
 assert.doesNotMatch(course,/Tu progreso se guarda|guardar el capítulo como completado/);

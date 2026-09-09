@@ -11,6 +11,9 @@
 .nuvia-embedded .alpha-hero h1 { font-size: var(--nv-title-sm); margin-block: var(--nv-space-2); }
 .nuvia-embedded .alpha-hero p { margin-block: var(--nv-space-2); font-size: var(--nv-body-sm); }
 .nuvia-embedded .alpha-source { padding-top: var(--nv-space-2); }
+.nuvia-embedded .alpha-hero > :not(.alpha-source) { display: none; }
+.nuvia-embedded .alpha-hero { background: var(--nv-surface-page); color: var(--nv-text); border-bottom: 1px solid var(--nv-line); }
+.nuvia-embedded .alpha-source { border-top: 0; padding-top: 0; color: var(--nv-text-soft); }
 .alpha-root .main { width: min(var(--nv-container), calc(100% - 2 * var(--nv-page-gutter))); max-width: var(--nv-container); }
 .alpha-picker { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
 .alpha-picker h2 { margin-top: 0; font-size: var(--nv-title-md); }

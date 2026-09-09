@@ -49,6 +49,7 @@ import { checkEconomiaEntry } from './check-economia-entry.mjs';
 import { checkWellbeingEntry } from './check-wellbeing-entry.mjs';
 import { checkAcademyEntry } from './check-academy-entry.mjs';
 import { checkReadingsEntry } from './check-readings-entry.mjs';
+import { checkPageHierarchy } from './check-page-hierarchy.mjs';
 
 const raiz = resolve(process.argv[2] || '.');
 const ANCHOS = (process.argv[3] || '1440').split(',').map(Number);
@@ -79,8 +80,8 @@ const CONTENIDO = {
   'academia.html?tab=calculadora': [['.ac-compound-chart', 1], ['.ac-compound-chart__plot > span', 5]],
   'jubilacion.html#resultados': [['#resultados', 1], ['.jub-chart polyline', 4]],
   'mercados.html?vista=informes': [['.markets-archive__empty', 1]],
-  'temas.html':            [['#patrimonio-ambitos', 1], ['[data-patrimonio-area]', 4]],
-  'temas.html?topic=jubilacion': [['#herramientas .tm-card__title', 3]],
+  'temas.html':            [['.nv-space-tool-card', 4]],
+  'temas.html?topic=jubilacion': [['.nv-field__box', 19], ['#familia-legado', 1]],
   'temas.html?topic=bienestar': [['#tema-titulo', 1], ['.tm-wellbeing', 1], ['.tm-pillar', 5]],
   'temas.html?topic=planificacion-patrimonial': [['#tema-titulo', 1], ['.tm-pills .viv-pill', 4], ['.tm-card__title', 3]],
   'guia-calendario.html':  [['.gt-title', 1]],
@@ -476,6 +477,7 @@ for (const ancho of ANCHOS) {
     interactionProblems.push(...await checkWellbeingEntry(p, pag).catch((error) => [error.message]));
     interactionProblems.push(...await checkAcademyEntry(p, pag).catch((error) => [error.message]));
     interactionProblems.push(...await checkReadingsEntry(p, pag).catch((error) => [error.message]));
+    interactionProblems.push(...await checkPageHierarchy(p, pag).catch((error) => [error.message]));
     const keyboardTabProblems = await p.evaluate(async () => {
       const visible = (element) => {
         const box = element.getBoundingClientRect();

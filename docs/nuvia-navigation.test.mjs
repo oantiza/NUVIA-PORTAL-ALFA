@@ -165,8 +165,8 @@ assert.match(topics, /const temasPatrimonio = temas\.filter\(\(tema\) => tema\.i
   'Familia, Salud y Bienestar no aparece como tema interno de Patrimonio');
 assert.match(topics, /mostrarSelector: !esBienestar/,
   'El selector de Patrimonio se oculta dentro del espacio de Bienestar');
-assert.match(topics, /'bienestar':\s+\['Familia, Salud y Bienestar'/,
-  'Bienestar utiliza el nombre canónico de su espacio');
+assert.match(topics, /'bienestar':\s+\['Cuerpo, mente y salud'/,
+  'El contenido de Bienestar tiene un nombre propio');
 assert.match(topics, /En preparación/, 'Los ámbitos introductorios declaran su estado editorial');
 const academy = await read('academia.html');
 assert.ok(academy.includes("'esenciales'") && academy.includes("'cursos'"), 'Pestañas de Academia conservadas');

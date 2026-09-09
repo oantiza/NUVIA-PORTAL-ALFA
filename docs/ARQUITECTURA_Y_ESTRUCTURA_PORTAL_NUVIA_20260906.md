@@ -222,6 +222,8 @@ El primer destino dentro de cada menú desplegable es siempre la **Home del Espa
 
 ## 8. Plan de Ejecución Técnico
 
+**Actualización de jerarquía · 10-09-2026.** Tras la auditoría de duplicidades y la autorización «Ok adelante», las páginas hijas adoptan entrada compacta, nombre propio y regreso a su Home canónica. Las portadas conservan protagonismo; Lecturas con Criterio mantiene su diseño independiente. El mapa de destinos, la compatibilidad de enlaces anteriores y los controles se detallan en [Jerarquía visual y navegación](JERARQUIA_VISUAL_20260910.md). La fuente editorial implementada es Newsreader; las menciones históricas a Fraunces en las propuestas anteriores no cambian la tipografía vigente.
+
 1. **Fase 1 · Maquetación de `colaboradores.html`:**
    * Creación del archivo base con la plantilla unificada `_plantilla.html`.
    * Rejilla de tarjetas de colaboradores (foto, nombre, especialidad, CV y rol en NUVIA).

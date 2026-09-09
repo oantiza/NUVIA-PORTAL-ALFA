@@ -2,7 +2,11 @@
 export async function checkAcademyEntry(page, route) {
   if(!route.startsWith('academia.html') && route!=='curso.html') return [];
   const problems=[], start=page.url();
-  if(route.startsWith('academia.html') && await page.title()!=='NUVIA · Academia NUVIA') problems.push('Título de Academia no canónico');
+  if(route.startsWith('academia.html')) {
+    const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero'};
+    const title=titles[new URL(start).searchParams.get('tab')||'inicio'];
+    if(await page.title()!=='NUVIA · '+title || (await page.locator('main h1').textContent()).trim()!==title) problems.push('La vista de Academia no tiene título propio');
+  }
   if(route==='academia.html') {
     if(await page.locator('.ac-learning-step').count()!==3) problems.push('Faltan los tres pasos opcionales');
     for(const tab of ['fundamentos','activos','calculadora','glosario']) {
@@ -11,19 +15,16 @@ export async function checkAcademyEntry(page, route) {
       await page.waitForURL(new URL(`academia.html?tab=${tab}`,start).href);
       await page.locator('.ac-learning-back a').waitFor({state:'visible'});
       await page.locator('.ac-learning-back a').click();
-      await page.waitForURL(new URL('academia.html#ruta-aprendizaje',start).href);
+      await page.waitForURL(new URL('academia.html',start).href);
       await page.locator('.ac-learning-step').first().waitFor({state:'visible'});
     }
     await page.goto(start);
     await page.locator('.ac-x10').waitFor({state:'visible'});
   } else if(route.startsWith('academia.html')) {
     await page.locator('.ac-learning-back a').click();
-    await page.waitForURL(new URL('academia.html#ruta-aprendizaje',start).href);
+    await page.waitForURL(new URL('academia.html',start).href);
     await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
-    await page.waitForFunction(()=>{
-      const rect=document.getElementById('ruta-aprendizaje').getBoundingClientRect();
-      return rect.top>=document.querySelector('header').getBoundingClientRect().bottom-1 && rect.top<innerHeight-40;
-    },null,{timeout:5000});
+    await page.locator('.home26-plate__figure').waitFor({state:'visible'});
     await page.goto(start);
     await page.locator('.ac-learning-back a').waitFor({state:'visible'});
   } else {

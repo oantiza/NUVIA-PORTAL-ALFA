@@ -8,10 +8,14 @@ const base = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 const socialImage = `${base}src/assets/social/nuvia-social-card-2026-v1.webp`;
 const pages = new Map([
   ['index.html', 'NUVIA · Entender tu dinero'],
+  ['economia.html', 'NUVIA · Economía y Finanzas'],
+  ['patrimonio.html', 'NUVIA · Patrimonio'],
+  ['bienestar.html', 'NUVIA · Familia, Salud y Bienestar'],
+  ['colaboradores.html', 'NUVIA · Colaboradores'],
   ['academia.html', 'NUVIA · Academia NUVIA'],
   ['cartera.html', 'NUVIA · Cartera y analítica'],
   ['curso.html', 'NUVIA · Dinero con criterio'],
-  ['fiscalidad.html', 'NUVIA · Mis impuestos'],
+  ['fiscalidad.html', 'NUVIA · Impuestos'],
   ['guia-ahorro.html', 'NUVIA · Fiscalidad del ahorro'],
   ['guia-calendario.html', 'NUVIA · Calendario fiscal'],
   ['guia-fiscal.html', 'NUVIA · Fiscalidad y rescate de la EPSV'],

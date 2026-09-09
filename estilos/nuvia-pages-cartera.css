@@ -187,9 +187,9 @@
 .nuvia-analysis-tabs a:first-child { border-left: 0; }
 .nuvia-analysis-tabs a:hover { background: var(--nv-surface-on-dark); color: var(--nv-white); }
 .nuvia-analysis-tabs a[aria-current="page"] {
-  border-color: var(--nv-line-on-dark-strong) !important;
-  background: var(--nv-white) !important;
-  color: var(--nv-ink) !important;
+  border-color: var(--nv-line-on-dark-strong);
+  background: var(--nv-white);
+  color: var(--nv-ink);
 }
 
 .nuvia-analysis-hero__divider {

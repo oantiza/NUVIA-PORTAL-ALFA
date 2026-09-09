@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
-<meta property="og:title" content="NUVIA · Mis impuestos">
+<meta property="og:title" content="NUVIA · Impuestos">
 <meta property="og:description" content="Recursos y guías de NUVIA para comprender la fiscalidad personal y tomar decisiones informadas según tu territorio fiscal.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/fiscalidad.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
@@ -21,13 +21,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NUVIA · Mis impuestos">
+<meta name="twitter:title" content="NUVIA · Impuestos">
 <meta name="twitter:description" content="Recursos y guías de NUVIA para comprender la fiscalidad personal y tomar decisiones informadas según tu territorio fiscal.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
 
-<title>NUVIA · Mis impuestos</title>
+<title>NUVIA · Impuestos</title>
 
 <link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
@@ -36,7 +36,7 @@
 <!-- Hojas en el <head>, no dentro de <helmet>: elimina el parpadeo. -->
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -108,7 +108,7 @@
          El selector de territorio ocupa el panel lateral: es la decisión que
          condiciona todo lo demás, así que va antes que cualquier contenido.
          ═══════════════════════════════════════════════════════════════════ -->
-    <section id="tema" data-screen-label="Cabecera Mis impuestos" class="nv-hero nv-hero--institutional">
+    <section id="tema" data-screen-label="Cabecera Impuestos" class="nv-hero nv-hero--institutional nv-entry">
       <div class="nv-container">
         <div class="nv-hero__inner">
 
@@ -116,14 +116,14 @@
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol>
                 <li><a href="index.html" data-main-menu-return>Inicio</a></li>
-                <li><a href="temas.html">Patrimonio</a></li>
-                <li><span aria-current="page">Mis impuestos</span></li>
+                <li><a href="patrimonio.html">Patrimonio</a></li>
+                <li><span aria-current="page">Impuestos</span></li>
               </ol>
             </nav>
 
             <p class="nv-eyebrow nv-eyebrow--on-dark">Tema clave · Fiscalidad</p>
 
-            <h1>Mis impuestos</h1>
+            <h1>Impuestos</h1>
 
             <p class="nv-hero__lead">
               Fiscalidad personal y familiar aplicada al ahorro, la inversión,
@@ -442,7 +442,7 @@ class Component extends DCLogic {
     } catch (error) { /* La guía seguirá disponible para volver a seleccionar el territorio. */ }
   }
   componentDidMount() {
-    document.title = 'Mis impuestos | NUVIA';
+    document.title = 'NUVIA · Impuestos';
     const current = this.state.seleccion ?? this.props.territorioInicial ?? 'bizkaia';
     const stored = this.territorioGuardado();
     if (stored && stored !== current) this.setState({ seleccion: stored });

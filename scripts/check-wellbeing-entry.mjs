@@ -5,8 +5,8 @@ export async function checkWellbeingEntry(page, route) {
     return await page.locator('.tm-wellbeing-nav,#bienestar-ambitos,#bienestar-fuentes').count() ? ['Bienestar invade una vista de Patrimonio'] : [];
   }
   const problems=[], start=page.url();
-  if(await page.locator('main h1').textContent()!=='Familia, Salud y Bienestar') problems.push('Nombre incorrecto del espacio');
-  if(await page.title()!=='NUVIA · Familia, Salud y Bienestar') problems.push('Título incorrecto de la pestaña');
+  if(await page.locator('main h1').textContent()!=='Cuerpo, mente y salud') problems.push('Nombre incorrecto del espacio');
+  if(await page.title()!=='NUVIA · Cuerpo, mente y salud') problems.push('Título incorrecto de la pestaña');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
   if(await page.locator('.tm-pillar[role="listitem"]').count()!==5) problems.push('Faltan los cinco temas semánticos');
   if(await page.locator('.tm-pillars a,.tm-pillars button,.tm-pillars [tabindex]').count()) problems.push('Los temas simulan acceso a contenidos inexistentes');

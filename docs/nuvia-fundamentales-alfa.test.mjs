@@ -139,7 +139,7 @@ async function suiteFixture(view = 'portfolio') {
   const code = html.match(/<script[^>]+type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
   const listeners = new Map(), nodes = new Map();
   let loads = 0, location = new URL(`https://nuvia.test/portal/cartera.html?vista=${view}`);
-  for (const id of ['analysis-title', 'analysis-current', 'analysis-lead', 'laboratorio', 'carteras-modelo', 'suite-nuvia', 'nuvia-company-frame', 'vista-portfolio', 'vista-models', 'vista-companies']) {
+  for (const id of ['analysis-title', 'analysis-eyebrow', 'analysis-current', 'analysis-lead', 'laboratorio', 'carteras-modelo', 'suite-nuvia', 'nuvia-company-frame', 'vista-portfolio', 'vista-models', 'vista-companies']) {
     nodes.set(id, { hidden: false, attrs: {}, style: {}, dataset: { src: 'company-analysis/index.html' }, handlers: new Map(), contentWindow: {},
       getAttribute(key) { return this.attrs[key] ?? null; }, setAttribute(key, value) { this.attrs[key] = value; },
       addEventListener(type, handler) { this.handlers.set(type, handler); },

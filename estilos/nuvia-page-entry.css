@@ -1,0 +1,139 @@
+/* NUVIA · Jerarquía aprobada 10-09-2026.
+   Entrada optativa para páginas hijas. Lecturas e Inicio no usan .nv-entry. */
+.nuvia-unified .nv-entry {
+  position: relative;
+  min-height: 0;
+  height: auto;
+  padding-block: var(--nv-space-5) var(--nv-space-6);
+  background: var(--nv-surface);
+  color: var(--nv-text);
+  border-bottom: 1px solid var(--nv-line);
+  box-shadow: none;
+}
+.nuvia-unified .nv-entry::after { display: none; }
+.nuvia-unified .nv-entry :is(.nv-hero__inner, .gp-hero__grid, .nuvia-analysis-hero__inner) {
+  min-height: 0;
+  padding-block: 0;
+  gap: var(--nv-space-6);
+}
+.nuvia-unified .nv-entry .nv-breadcrumb { padding-block: 0; margin-block: 0 var(--nv-space-5); }
+.nuvia-unified .nv-entry .nv-breadcrumb :is(a, [aria-current]),
+.nuvia-unified .nv-entry .nv-breadcrumb li + li::before { color: var(--nv-text-soft); }
+.nuvia-unified .nv-entry .nv-breadcrumb a:hover { color: var(--nv-text-link); }
+.nuvia-unified .nv-entry :is(h1, .home26-plate__title) {
+  max-width: 900px;
+  margin: var(--nv-space-2) 0 var(--nv-space-3);
+  font-family: var(--nv-font-serif);
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  color: var(--nv-text);
+  text-shadow: none;
+}
+.nuvia-unified .nv-entry :is(.nv-eyebrow, .nuvia-analysis-eyebrow, .gp-hero__label, .about-kicker) {
+  margin: 0;
+  color: var(--nv-text-link);
+  font-size: var(--nv-label);
+}
+.nuvia-unified .nv-entry :is(.nv-hero__lead, .nuvia-analysis-lead, .home26-plate__copy, .gp-hero__desc, .gu-lead, .about-hero__lead) {
+  max-width: 75ch;
+  margin: 0;
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body);
+  line-height: 1.6;
+}
+.nuvia-unified .nv-entry :is(.nv-hero__aside, .gt-marco, .gp-hero__aside, .jub-howto, .fiscal-selector) {
+  background: var(--nv-surface-page);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-md);
+  box-shadow: none;
+  color: var(--nv-text);
+  padding: var(--nv-space-5);
+}
+.nuvia-unified .nv-entry :is(.nv-hero__aside, .gt-marco, .gp-hero__aside, .jub-howto, .fiscal-selector) :is(p, h2, h3, strong, label, span) { color: var(--nv-text); }
+.nuvia-unified .nv-entry :is(.nv-hero__aside, .gt-marco, .gp-hero__aside, .jub-howto) a { color: var(--nv-text-link); }
+.nuvia-unified .nv-entry :is(.gp-badge, .gu-footnote-dark) { color: var(--nv-text-soft); }
+.nuvia-unified .nv-entry :is(.nv-hero__actions, .markets-area-views, .tm-wellbeing-nav, .nuvia-analysis-tabs) { margin-top: var(--nv-space-5); }
+.nuvia-unified .nv-entry :is(.viv-hero__rule, .nuvia-analysis-hero__divider) { display: none; }
+.nuvia-unified .nv-entry :is(.tm-wellbeing-nav a, .tm-back, .markets-area-views > p) { color: var(--nv-text-soft); }
+.nuvia-unified .nv-entry :is(.nv-btn--soft, .gt-print) { color: var(--nv-text-link); background: var(--nv-surface); border-color: var(--nv-line); }
+.nuvia-unified .nv-entry :is(.gt-chips li, .gu-tag-dark, .jub-tag-dark) { color: var(--nv-text); background: var(--nv-surface); border-color: var(--nv-line); }
+.nuvia-unified .nv-entry :is(.viv-pill--dark, .curso-ruta__volver, .curso-ruta__actual) { color: var(--nv-text-link); border-color: var(--nv-line); background: var(--nv-surface); }
+.nuvia-unified .nv-entry .viv-pill--dark:is(.is-active, [aria-pressed="true"], [aria-current="page"]) { color: var(--nv-text-on-dark); background: var(--nv-navy-900); border-color: var(--nv-navy-900); }
+.nuvia-unified .nv-entry .tm-pill__num { color: inherit; border-color: var(--nv-line); }
+
+/* Vistas hermanas: una misma superficie, área táctil y estado activo. */
+.nuvia-unified .nv-entry :is(.markets-viewnav, .nuvia-analysis-tabs) {
+  display: flex;
+  flex-wrap: wrap;
+  width: fit-content;
+  border: 1px solid var(--nv-line);
+  background: var(--nv-surface-page);
+  border-radius: var(--nv-radius-md);
+  overflow: hidden;
+}
+.nuvia-unified .nv-entry :is(.markets-viewnav button, .nuvia-analysis-tabs a) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--nv-space-2) var(--nv-space-4);
+  border: 0;
+  border-radius: 0;
+  color: var(--nv-text-soft);
+  background: transparent;
+  box-shadow: none;
+}
+.nuvia-unified .nv-entry :is(.markets-viewnav button, .nuvia-analysis-tabs a):is([aria-current="page"], [aria-pressed="true"]) { color: var(--nv-text-on-dark); background: var(--nv-navy-900); }
+.nv-entry-details { margin-top: var(--nv-space-3); font-size: var(--nv-body-sm); }
+.nv-entry-details summary { cursor: pointer; width: fit-content; min-height: 32px; color: var(--nv-text-link); }
+.nuvia-unified .nv-entry-details .nuvia-analysis-availability { margin-block: var(--nv-space-2); color: var(--nv-text-soft); }
+.nuvia-analysis-content .nuvia-lab { gap: var(--nv-space-4); padding-top: var(--nv-space-5); }
+.nuvia-analysis-content .nv-portada-grupo { padding-block: 0; }
+.nuvia-analysis-content .nv-atajos { justify-content: flex-start; margin-top: 0; }
+.nuvia-analysis-content .nv-aviso-alfa { width: 100%; max-width: none; margin: 0; }
+.nuvia-analysis-content .nv-aviso-alfa p { margin-block: var(--nv-space-1); }
+
+/* Academia: el nombre de cada contenido es la única entrada de la vista. */
+.nv-campus-cover.nv-entry .home26-plate { background: transparent; border: 0; }
+.nv-campus-cover.nv-entry .home26-plate__body { padding-block: 0; }
+.nv-campus-cover.nv-entry .nv-campus-navigation .ac-x04 { margin: 0; padding-block: var(--nv-space-4) 0; border: 0; }
+.nv-campus-cover.nv-entry .nv-campus-navigation .ac-x04 { gap: 0; }
+.nv-campus-cover.nv-entry .ac-x04 button { min-height: 44px; border-radius: 0; }
+.nv-campus-cover.nv-entry .ac-x04 button:first-child { border-radius: var(--nv-radius-md) 0 0 var(--nv-radius-md); }
+.nv-campus-cover.nv-entry .ac-x04 button:last-child { border-radius: 0 var(--nv-radius-md) var(--nv-radius-md) 0; }
+.nv-campus-cover.nv-entry + .ac-learning-back { padding-top: var(--nv-space-3); }
+.nv-campus-page .ac-learning-back + .gu-section { padding-top: var(--nv-space-5); }
+.nv-campus-page .ac-x19 { margin-bottom: var(--nv-space-5); }
+.nuvia-unified .nv-campus-page .ac-x21 .gu-title-hero { font-size: var(--nv-title-md); }
+.nv-campus-options .ac-x13 { background: var(--nv-surface); color: var(--nv-text); border: 1px solid var(--nv-line); }
+.nv-campus-options .ac-x13 :is(.ac-x16, .ac-x17, .ac-x18) { color: var(--nv-text); }
+.nv-campus-options .ac-x13 .ac-x15 { color: var(--nv-text-link); }
+.nv-campus-options .ac-x13 .ac-x14 { color: var(--nv-line); }
+
+/* Bienestar: información propia del contenido, sin segunda portada fotográfica. */
+body[data-nuvia-topic="bienestar"] .tm-wellbeing { display: block; background: var(--nv-surface); box-shadow: none; }
+body[data-nuvia-topic="bienestar"] .tm-wellbeing__body { padding: var(--nv-space-6); }
+body[data-nuvia-topic="bienestar"] .tm-wellbeing__title { max-width: none; font-size: var(--nv-title-md); }
+body[data-nuvia-topic="bienestar"] .tm-wellbeing-availability { margin-bottom: var(--nv-space-5); }
+body[data-nuvia-topic="bienestar"] .tm-wellbeing-section { padding-top: var(--nv-space-5); }
+
+/* Las institucionales mantienen su relato con una apertura contenida. */
+.nv-entry--about :is(.about-hero__art, .about-hero__veil, .about-hero__mark, .about-hero__scroll) { display: none; }
+.nuvia-unified .nv-entry--about .about-hero__frame { min-height: 0; padding-block: 0; }
+.nuvia-unified .nv-entry--about .about-hero__copy { padding-block: 0; }
+.nuvia-unified .nv-entry--about h1 span { display: inline; color: inherit; font: inherit; letter-spacing: inherit; }
+.nuvia-unified .nv-entry--about .about-hero__frame { width: min(var(--nv-container), calc(100% - 2 * var(--nv-page-gutter))); }
+.nuvia-unified .nv-entry--about :is(.about-hero__copy p, .about-kicker span) { color: var(--nv-text-soft); }
+.about-presentation :is(.about-purpose h2, .about-world h2, .about-values h2) { font-size: var(--nv-title-md); line-height: 1.15; }
+.about-presentation :is(.about-manifesto__statement, .about-purpose__signature, .about-horizon blockquote, .about-principle p, .about-finale__welcome > strong) { font-size: var(--nv-title-lg); line-height: 1.2; }
+.about-presentation :is(.about-manifesto, .about-purpose, .about-world, .about-values) { padding-block: var(--nv-space-12); }
+.about-presentation :is(.about-principle, .about-finale) { min-height: 0; padding-block: var(--nv-space-12); }
+.about-presentation .about-finale__content { padding-block: 0; }
+
+/* Las portadas conservan protagonismo también en tablet; Lecturas queda fuera. */
+@media (max-width: 1120px) {
+  .nv-space-entry:has(.home26-plate__figure) .home26-plate__title { font-size: 36px; }
+  .nv-space-entry:has(.home26-plate__figure) .home26-plate__figure { height: 320px; }
+  .nuvia-unified .nv-entry :is(h1, .home26-plate__title) { font-size: 28px; }
+}

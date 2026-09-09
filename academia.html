@@ -33,7 +33,7 @@
 <link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
@@ -99,8 +99,8 @@
 
   <main id="contenido">
     <!-- ============ CABECERA ============ -->
-    <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="nv-campus-cover" aria-labelledby="academy-title">
-      <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Academia NUVIA</span></li></ol></nav>
+    <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="{{ claseCabecera }}" aria-labelledby="academy-title">
+      <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}"><li><span aria-current="page">Academia NUVIA</span></li></sc-if><sc-if value="{{ mostrarRegreso }}" hint-placeholder-val="{{ false }}"><li><a href="academia.html">Academia NUVIA</a></li><li><span aria-current="page">{{ entradaTitulo }}</span></li></sc-if></ol></nav>
       <div class="home26-plate home26-plate--light home26-plate--reverse nv-space-entry nv-space-entry--academy">
         <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
           <div class="home26-plate__figure">
@@ -108,9 +108,9 @@
           </div>
         </sc-if>
         <div class="home26-plate__body">
-          <p class="nv-eyebrow">Formación</p>
-          <h1 id="academy-title" class="home26-plate__title">Academia NUVIA</h1>
-          <p class="home26-plate__copy"><strong>Saber es patrimonio.</strong> El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.</p>
+          <p class="nv-eyebrow">{{ entradaEtiqueta }}</p>
+          <h1 id="academy-title" class="home26-plate__title">{{ entradaTitulo }}</h1>
+          <p class="home26-plate__copy">{{ entradaDescripcion }}</p>
           <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
             <div class="nv-space-entry__actions">
               <a class="home26-plate__cta" href="#recursos-academia">Explorar cómo aprender <span aria-hidden="true">→</span></a>
@@ -130,7 +130,7 @@
 
     <sc-if value="{{ mostrarRegreso }}" hint-placeholder-val="{{ false }}">
       <nav class="nv-container ac-learning-back" aria-label="Volver a Academia">
-        <a href="academia.html#ruta-aprendizaje">← Volver a la ruta de aprendizaje</a>
+        <a href="academia.html">← Volver a Academia</a>
       </nav>
     </sc-if>
 
@@ -209,11 +209,9 @@
       <section data-screen-label="Cursos de Academia NUVIA" class="nv-container gu-section">
         <div class="ac-x19">
           <div>
-            <p class="gu-kicker">Academia NUVIA</p>
-            <h2 class="ac-strong">Cursos</h2>
+            <h2 class="ac-strong">Curso disponible</h2>
             <p class="gu-text">Por ahora tienes un curso de nivel inicial: Dinero con criterio. Cinco capítulos con vídeos y apuntes, abiertos para consultar a tu ritmo.</p>
           </div>
-          <button type="button" onClick="{{ irInicio }}" class="ac-x20">← Volver a la portada</button>
         </div>
         <article class="ac-x21">
           <div class="ac-x22">
@@ -247,11 +245,8 @@
       <section data-screen-label="Conocimientos esenciales" class="nv-container gu-section">
         <div class="ac-x19">
           <div>
-            <p class="gu-kicker">Guía del inversor</p>
-            <h2 class="ac-strong">Conocimientos esenciales</h2>
-            <p class="gu-text">Conceptos y herramientas para entender cómo funciona una inversión y tomar decisiones con mayor criterio.</p>
+            <h2 class="ac-strong">Elige un contenido</h2>
           </div>
-          <button type="button" onClick="{{ irInicio }}" class="ac-x20">← Volver a la portada</button>
         </div>
         <div class="gu-grid-2 ac-essentials-grid">
           <button type="button" onClick="{{ irFundamentos }}" class="ac-def ac-def--wide ac-essential-card">
@@ -285,7 +280,7 @@
           <div class="ac-x34">
             <div>
               <p class="gu-accent">Guía de inversión · En lenguaje claro</p>
-              <h2 class="ac-strong">Dónde crece más<br>el <span class="gu-accent">dinero</span></h2>
+              <h2 class="ac-strong">Tiempo, inflación y riesgo</h2>
               <p class="gu-text">Una lectura visual sobre cómo se han comportado históricamente los principales activos: bolsa, bonos, liquidez, oro y vivienda. Qué ha protegido mejor el patrimonio, qué riesgos ha asumido y qué impacto tienen inflación e impuestos.</p>
               <div class="ac-x35"></div>
             </div>
@@ -481,7 +476,7 @@
           <div class="ac-x91">
             <div>
               <p class="gu-accent">Guía esencial · Construcción de patrimonio</p>
-              <h2 class="ac-strong">Los principales activos financieros</h2>
+              <h2 class="ac-strong">Características de los activos</h2>
               <p class="gu-text">Invertir significa destinar una parte del dinero a activos que pueden conservar su valor, generar rentas o crecer con el tiempo. Cada uno funciona de manera diferente: algunos ofrecen estabilidad y disponibilidad; otros permiten prestar dinero a un Estado o una empresa; y otros hacen posible participar en el crecimiento de compañías o acceder a activos reales.</p>
               <p class="gu-text">No existe un activo adecuado para todas las necesidades. Su utilidad depende del objetivo, el plazo, la liquidez necesaria y el riesgo que podamos asumir. Esta guía reúne las principales alternativas al alcance del inversor particular y las ordena según la función que pueden cumplir dentro del patrimonio.</p>
             </div>
@@ -673,7 +668,7 @@
           <div class="ac-x204">
             <div>
               <p class="gu-accent">Concepto esencial · Inversión a largo plazo</p>
-              <h2 class="ac-strong">El poder del interés compuesto</h2>
+              <h2 class="ac-strong">Cómo funciona la acumulación</h2>
               <p class="gu-text">El interés compuesto significa que tu dinero genera rentabilidad no solo sobre el capital que aportaste, sino también sobre las ganancias que se van acumulando. Cuando esas ganancias permanecen invertidas, se incorporan a la base que puede producir la siguiente rentabilidad: el crecimiento empieza a generar nuevo crecimiento.</p>
               <p class="gu-text">Por ejemplo, 10.000 € invertidos durante 30 años a una rentabilidad anual constante del 6 % crecerían hasta unos 57.400 €, antes de costes e impuestos y sin añadir nuevas aportaciones. No es una promesa de resultado: muestra por qué reinvertir, mantener la disciplina y disponer de tiempo puede cambiar la escala del patrimonio.</p>
               <p class="ac-x205">La idea clave no es buscar una rentabilidad extraordinaria cada año, sino dar tiempo a una estrategia razonable para que las ganancias acumuladas también puedan trabajar.</p>
@@ -787,7 +782,7 @@
       <section data-screen-label="Glosario financiero" class="nv-container gu-section">
         <div class="gu-stack">
           <div class="ac-x226">
-            <h2 class="gu-title gu-accent">Glosario financiero</h2>
+            <h2 class="gu-title gu-accent">Conceptos e indicadores</h2>
             <div role="tablist" aria-label="Secciones del glosario" class="ac-x227">
               <sc-for list="{{ subTabs }}" as="t" hint-placeholder-count="2">
                 <button type="button" role="tab" aria-selected="{{ t.selected }}" onClick="{{ t.abrir }}" class="{{ t.clase }}">{{ t.label }}</button>
@@ -877,14 +872,29 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
   state = { tab: 'inicio', activosSub: 'seguridad', sub: 'conceptos', abiertos: {}, c: null };
+  entrada() {
+    const entradas = {
+      inicio: ['Academia NUVIA', 'Formación', 'Saber es patrimonio. El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.'],
+      esenciales: ['Conocimientos esenciales', 'Guías y herramientas', 'Conceptos y herramientas para comprender cómo funcionan el ahorro y la inversión.'],
+      cursos: ['Cursos', 'Aprender paso a paso', 'Explora los cursos disponibles, sus capítulos, vídeos y materiales de apoyo.'],
+      fundamentos: ['Fundamentos de inversión', 'Conocimientos esenciales', 'Tiempo, inflación y riesgo: conceptos para comprender el comportamiento de una inversión.'],
+      activos: ['Activos financieros', 'Conocimientos esenciales', 'Conoce sus características, sus diferencias y las funciones que pueden cumplir en el patrimonio.'],
+      calculadora: ['Interés compuesto', 'Herramienta de aprendizaje', 'Cambia los supuestos y observa cómo evoluciona un ejemplo de acumulación a lo largo del tiempo.'],
+      glosario: ['Glosario financiero', 'Referencia de consulta', 'Conceptos e indicadores explicados para comprender la lectura y los resultados.'],
+    };
+    return entradas[this.state.tab] || entradas.inicio;
+  }
+  sincronizaEntrada() { document.title = 'NUVIA · ' + this.entrada()[0]; }
+  componentDidUpdate() { this.sincronizaEntrada(); }
   cDefaults() { return { initialCapital: 10000, periodicContribution: 300, contributionFrequency: 'monthly', years: 20, expectedReturn: 6.5, inflationRate: 2, taxRate: 21, annualIncrease: 0 }; }
   componentDidMount() {
-    document.title = 'NUVIA · Academia NUVIA';
+    this.sincronizaEntrada();
     const raw = new URLSearchParams(window.location.search).get('tab');
     const p = raw === 'interes' ? 'calculadora' : raw;
     const hash = window.location.hash.replace('#', '');
     if (p && ['inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario'].includes(p)) this.setState({ tab: p });
     else if (hash === 'glosario') this.setState({ tab: 'glosario' });
+    this.sincronizaEntrada();
     // El montaje del componente reemplaza el ancla inicial del HTML.
     // Recuperar el destino después del render, sin mover el interior del hero.
     if (hash === 'ruta-aprendizaje' && (!p || p === 'inicio')) {
@@ -1001,7 +1011,10 @@ class Component extends DCLogic {
     const areaDe = (campo) => pr.filas.length ? '52,204 ' + lineaDe(campo) + ' ' + px(pr.filas.length - 1) + ',204' : '';
     const g = this.glosario();
     const lista = this.state.sub === 'conceptos' ? g.conceptos : g.indicadores;
+    const entrada = this.entrada();
     const vals = {
+      claseCabecera: 'nv-campus-cover' + (tab === 'inicio' ? '' : ' nv-entry'),
+      entradaTitulo: entrada[0], entradaEtiqueta: entrada[1], entradaDescripcion: entrada[2],
       pestanas: defs.map(([id, label, sufijo]) => ({
         label, sufijo,
         ariaCurrent: (id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario'].includes(tab))) ? 'page' : undefined,

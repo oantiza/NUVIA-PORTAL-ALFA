@@ -1,5 +1,7 @@
 /* NUVIA · Entrada modular de estilos de página.
-   Orden de cascada obligatorio: fundamentos → cartera → contenidos. */
+   Orden de cascada: fundamentos → cartera → contenidos → entradas de página. */
 @import url("nuvia-pages-foundations.css");
 @import url("nuvia-pages-cartera.css");
 @import url("nuvia-pages-content.css");
+
+@import url("nuvia-page-entry.css");

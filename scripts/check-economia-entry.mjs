@@ -2,8 +2,14 @@
 export async function checkEconomiaEntry(page, route) {
   const problems=[];
   if(route.startsWith('cartera.html')) {
-    if(await page.locator('main a[href="mercados.html"]').count()!==1) problems.push('Cartera no identifica su espacio de origen');
-    if(!await page.locator('.nuvia-analysis-availability').isVisible()) problems.push('Falta la aclaración de disponibilidad');
+    if(await page.locator('.nv-breadcrumb a[href="economia.html"]').count()!==1) problems.push('Cartera no identifica su espacio de origen');
+    const availability = page.locator('.nv-entry-details summary');
+    if(!await availability.isVisible()) problems.push('Falta el acceso a disponibilidad y límites');
+    else {
+      await availability.click();
+      if(!await page.locator('.nuvia-analysis-availability').isVisible()) problems.push('La aclaración de disponibilidad no se puede consultar');
+      await availability.click();
+    }
     if(await page.locator('.nuvia-analysis-tabs a').count()!==3) problems.push('Cartera pierde una de sus tres vistas');
   }
   if(!route.startsWith('mercados.html')) return problems;

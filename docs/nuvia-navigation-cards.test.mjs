@@ -8,10 +8,10 @@ const read = (file) => readFileSync(resolve(root, file), 'utf8');
 const breadcrumb = (file) => read(file).match(/<nav class="[^"]*\bnv-breadcrumb\b[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
 const pages = ['vivienda.html', 'fiscalidad.html', 'jubilacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html', 'guia-fiscal.html', 'guia-planificacion.html'];
 for (const file of pages) {
-  assert.ok(breadcrumb(file).includes('<a href="temas.html">Patrimonio</a>'), `${file}: espacio padre explícito`);
+  assert.ok(breadcrumb(file).includes('<a href="patrimonio.html">Patrimonio</a>'), `${file}: espacio padre explícito`);
   assert.doesNotMatch(breadcrumb(file), /Temas clave/);
 }
-assert.match(breadcrumb('cartera.html'), /href="mercados.html">Economía y Finanzas<\/a>/);
+assert.match(breadcrumb('cartera.html'), /href="economia.html">Economía y Finanzas<\/a>/);
 assert.match(breadcrumb('academia.html'), /aria-current="page">Academia NUVIA<\/span>/);
 assert.match(breadcrumb('curso.html'), /href="academia.html">Academia NUVIA<\/a>/);
 assert.doesNotMatch(breadcrumb('curso.html'), /<details|lecturas.html/);

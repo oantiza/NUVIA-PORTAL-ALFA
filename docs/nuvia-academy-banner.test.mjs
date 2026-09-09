@@ -151,7 +151,7 @@ assert.match(css, /\.ac-essential-card:focus-visible\s*\{[\s\S]*?outline:/,
   'Las tarjetas esenciales conservan foco visible');
 const academyHero = academyPage.match(/<section\b[^>]*id="academy"[\s\S]*?<\/section>/)?.[0];
 assert.ok(academyHero?.includes('nv-space-entry--academy'), 'Academia interior comparte la composición de Inicio');
-assert.ok(academyHero.includes('src/assets/home/academia-panoramica-20260909.webp'), 'Academia usa la ampliación panorámica de su escena de aprendizaje');
+assert.ok(academyHero.includes('src/assets/home/academia-aprender-en-familia-20260909.webp'), 'Academia usa la panorámica de aprendizaje en familia con la izquierda en penumbra');
 assert.ok(academyHero.includes('{{ pestanas }}') && academyHero.includes('{{ p.abrir }}'), 'Las pestañas de Academia siguen conectadas');
 assert.ok(!academyPage.includes('data-academy-intro'), 'No reaparece la entradilla de Academia');
 

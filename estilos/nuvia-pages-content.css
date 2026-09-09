@@ -2948,7 +2948,7 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
   object-fit: cover;
   object-position: center 70%;
 }
-.nv-space-entry--academy .home26-plate__art { object-position: center 32%; }
+.nv-space-entry--academy .home26-plate__art { object-position: center 48%; }
 .nv-space-entry.home26-plate--bleed .home26-plate__figure { height: 448px; }
 .nv-space-entry:has(.home26-plate__figure)::before {
   content: "";

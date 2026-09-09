@@ -39,7 +39,22 @@ jobs:
         run: npm ci
 
       - name: Preparar Chromium para la auditoría visual
-        run: npx playwright install --with-deps chromium
+        run: |
+          # El Chromium de Playwright se descarga desde su propio CDN. El índice
+          # de Chrome preinstalado en el runner puede fallar por Hash Sum mismatch.
+          # Usar una copia temporal de las fuentes APT sin ese repositorio evita
+          # depender de él, conservando las verificaciones de integridad de APT.
+          apt_sources="$RUNNER_TEMP/nuvia-apt-sources"
+          mkdir -p "$apt_sources"
+          for source in /etc/apt/sources.list.d/*.list /etc/apt/sources.list.d/*.sources; do
+            [ -f "$source" ] || continue
+            if ! grep -Eq 'https?://dl\.google\.com/linux/chrome(-stable)?/deb' "$source"; then
+              cp "$source" "$apt_sources/"
+            fi
+          done
+          printf 'Dir::Etc::sourceparts "%s";\n' "$apt_sources" > "$RUNNER_TEMP/nuvia-apt.conf"
+          sudo env APT_CONFIG="$RUNNER_TEMP/nuvia-apt.conf" "$(command -v node)" node_modules/playwright/cli.js install-deps chromium
+          npx playwright install chromium
 
       - name: Preparar GitHub Pages
         uses: actions/configure-pages@v6

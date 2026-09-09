@@ -96,3 +96,13 @@ no se presenta como obtenida. Esta ficha documenta la revisión de producto y c�
 
 La revisión interna anterior no es una validación jurídica externa. La autorización
 de publicación procede de la orden expresa del fundador recogida al inicio.
+
+## Preparación de la publicación
+
+El primer despliegue y su reintento se detuvieron antes de compilar, por un
+`Hash Sum mismatch` del índice APT de Chrome preinstalado en el runner de GitHub.
+Se ajusta únicamente la instalación de las dependencias de las pruebas: una copia
+temporal de las fuentes APT excluye ese repositorio ajeno a Chromium de Playwright.
+Las fuentes originales del runner y las comprobaciones de integridad se conservan.
+El navegador se descarga desde Playwright; compilación, pruebas y auditorías
+de escritorio/tablet siguen siendo obligatorias antes del despliegue.

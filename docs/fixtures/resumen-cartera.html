@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prueba aislada · resumen de cartera</title>
+<link rel="stylesheet" href="../../estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="../../estilos/nuvia-components.css">
+<link rel="stylesheet" href="../../estilos/nuvia-pages.css">
+<style>
+  body { margin: 24px; background: var(--nv-surface-page); }
+  .prueba-controles { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; margin-bottom: 24px; }
+  #prueba { max-width: 1120px; margin-inline: auto; }
+  #editor { margin-bottom: 24px; }
+</style>
+<h1>Prueba aislada con datos ficticios</h1>
+<div class="prueba-controles">
+  <label>Escenario <select id="escenario"><option value="completo">Historial completo</option><option value="parcial">Historial parcial</option><option value="error">Error de historial</option><option value="vacia">Cartera vacía</option><option value="ceros">Pesos a cero</option><option value="tardia">Respuesta tardía</option></select></label>
+  <label>Ancho del área <select id="ancho"><option value="1120">Escritorio · 1120</option><option value="860">Tablet · 860</option><option value="680">Tablet · área de 680</option></select></label>
+  <p id="verificacion" role="status">Preparando…</p>
+</div>
+<div id="prueba"><div id="editor"></div><div id="resultados"></div></div>
+<script type="module">
+  import { montaConstructor } from '../../js/nuvia-constructor.js';
+  const fechas = [];
+  for (let i=0;i<800;i++) {
+    const fecha = new Date(Date.UTC(2023,8,1+i));
+    if (![0,6].includes(fecha.getUTCDay())) fechas.push(fecha.toISOString().slice(0,10));
+  }
+  const clases = ['EQUITY','FIXED_INCOME','MONEY_MARKET'];
+  const pesos = [19,14,12,11,10,9,8,7,6,4];
+  const posiciones = pesos.map((bruto,i)=>({ bruto, activo:{asset_id:`PRUEBA-${i}`,display_name:`Fondo de prueba ${String.fromCharCode(65+i)}`,instrument_type:'FUND',economic_asset_class:clases[i%3]} }));
+  let escenario = 'completo';
+  const datos = {
+    revisionDatos: () => escenario,
+    nivelSesion: () => 'alfa',
+    sesionActual: () => ({tipo:'alfa'}),
+    detalleActivo: async id => {
+      if (escenario === 'tardia') await new Promise(r=>setTimeout(r,600));
+      const p = posiciones.find(p=>p.activo.asset_id===id);
+      return p ? { ...p.activo, identity:{display_name:p.activo.display_name}, pms_exposure:null, exposure_detail:null } : null;
+    },
+    llama: async (nombre, args) => {
+      const caso = escenario;
+      if (caso === 'tardia') await new Promise(r=>setTimeout(r,700));
+      if (nombre === 'get_price_series') {
+        if (caso === 'error') throw Error('Error simulado');
+        return { dates: fechas, series:args.asset_ids.filter(id=>caso!=='parcial'||id!=='PRUEBA-0').map(id=>({asset_id:id,values:fechas.map((_,t)=>100*Math.exp(.0001*t + .04*Math.sin(t*.12 + Number(id.split('-')[1]))))})) };
+      }
+      if (nombre === 'get_asset_holdings_batch') return { holdings:Object.fromEntries(args.asset_ids.map(id=>[id,{as_of_date:'2026-08-31',holdings:[{name:'Posición interna A',weight_pct:48},{name:'Posición interna B',weight_pct:30}]}])) };
+      throw Error('Consulta fuera de la prueba');
+    },
+  };
+  const memoria = new Map();
+  const controlador = montaConstructor(document.getElementById('editor'), { cliente:datos, posicionesIniciales:posiciones, destinoAnalisis:document.getElementById('resultados'), almacenamientoLocal:{getItem:k=>memoria.get(k)||null,setItem:(k,v)=>memoria.set(k,v),removeItem:k=>memoria.delete(k)} });
+  document.getElementById('verificacion').textContent = 'Cliente aislado · sin escrituras en base de datos';
+  document.getElementById('escenario').addEventListener('change', async e=>{
+    escenario=e.target.value;
+    const cargadas=escenario==='vacia'?[]:posiciones.map(p=>({...p,bruto:escenario==='ceros'?0:p.bruto}));
+    const tarea=controlador.cargaPosiciones(cargadas);
+    if(escenario==='tardia') {
+      escenario='completo';
+      await controlador.cargaPosiciones([posiciones[1]]);
+      document.getElementById('verificacion').textContent='La respuesta anterior debe conservar esta cartera de una sola posición.';
+    }
+    await tarea;
+  });
+  document.getElementById('ancho').addEventListener('change', e=>document.getElementById('prueba').style.maxWidth=`${e.target.value}px`);
+</script>
+</html>

@@ -1,3 +1,63 @@
+/* Resumen de Mi cartera: una escala por magnitud, sin semáforos de mérito. */
+.nv-resumen-cartera {
+  padding: var(--nv-space-8);
+  margin-bottom: var(--nv-space-8);
+  background: var(--nv-surface);
+  color: var(--nv-text);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--radius-md);
+  container-type: inline-size;
+}
+.nv-resumen-cartera[hidden] { display: none; }
+.nv-resumen-cartera h2, .nv-resumen-cartera h3, .nv-resumen-cartera p { margin: 0; }
+.nv-resumen-cartera h2 { font: var(--nv-weight-title) var(--nv-title-md)/1.2 var(--nv-font-sans); }
+.nv-resumen-cartera__cabecera { margin-bottom: var(--nv-space-6); }
+.nv-resumen-cartera .nv-resumen-cartera__subtitulo { margin-top: var(--nv-space-2); color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+.nv-resumen-cartera__grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.25fr); gap: var(--nv-space-7); }
+.nv-resumen-cartera__mapa { min-width: 0; padding: var(--nv-space-5) var(--nv-space-3); background: var(--nv-surface-editorial); border-radius: var(--radius-sm); display: flex; flex-direction: column; }
+.nv-resumen-cartera__mapa h3 { padding-inline: var(--nv-space-2); font: var(--nv-weight-title) var(--nv-body-sm)/1.5 var(--nv-font-sans); }
+.nv-resumen-cartera__dibujo { width: 100%; min-height: 365px; }
+.nv-resumen-cartera__dibujo svg { display: block; overflow: visible; }
+.nv-resumen-cartera__rejilla { fill: none; stroke: var(--nv-line-strong); stroke-width: 1; }
+.nv-resumen-cartera__area { fill: var(--nv-text); fill-opacity: .14; }
+.nv-resumen-cartera__contorno { fill: none; stroke: var(--nv-text); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.nv-resumen-cartera__punto { fill: var(--nv-text); }
+.nv-resumen-cartera__punto--activo { fill: var(--nv-surface); stroke: var(--nv-text); stroke-width: 2.5; }
+.nv-resumen-cartera__rotulo { fill: var(--nv-text); font: var(--nv-weight-body) var(--nv-label) var(--nv-font-sans); }
+.nv-resumen-cartera__cifra { fill: var(--nv-text); font: var(--nv-weight-title) var(--nv-title-sm) var(--nv-font-sans); }
+.nv-resumen-cartera .nv-resumen-cartera__nota { padding-inline: var(--nv-space-2); margin-top: auto; font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
+.nv-resumen-cartera__lecturas { min-width: 0; }
+.nv-resumen-cartera__lectura {
+  display: block; width: 100%; min-height: 44px; text-align: left; cursor: pointer;
+  padding: var(--nv-space-4) var(--nv-space-3); border: 0; border-bottom: 1px solid var(--nv-line);
+  border-radius: 0; background: var(--nv-surface); color: var(--nv-text); font-family: var(--nv-font-sans);
+}
+.nv-resumen-cartera__lectura:hover { background: var(--nv-surface-page); }
+.nv-resumen-cartera__lectura[aria-pressed="true"] { background: var(--nv-surface-technical); border-radius: var(--radius-sm); border-bottom-color: transparent; }
+.nv-resumen-cartera__linea { display: flex; align-items: baseline; justify-content: space-between; gap: var(--nv-space-4); }
+.nv-resumen-cartera__nombre { font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); }
+.nv-resumen-cartera__valor { font-size: var(--nv-title-sm); font-weight: var(--nv-weight-title); line-height: 1.25; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nv-resumen-cartera__barra { display: block; height: 4px; margin: var(--nv-space-3) 0 var(--nv-space-2); background: var(--nv-line); border-radius: 2px; overflow: hidden; }
+.nv-resumen-cartera__barra > span { display: block; height: 100%; background: var(--nv-text); border-radius: 2px; }
+.nv-resumen-cartera__detalle { display: block; color: var(--nv-text-soft); font-size: var(--nv-label); line-height: 1.5; overflow-wrap: anywhere; }
+.nv-resumen-cartera__explicacion { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--nv-space-7); border: 1px solid var(--nv-line); border-radius: var(--radius-sm); padding: var(--nv-space-5); margin-top: var(--nv-space-6); }
+.nv-resumen-cartera__explicacion h3 { margin-top: var(--nv-space-2); font: var(--nv-weight-title) var(--nv-body-lg)/1.4 var(--nv-font-sans); overflow-wrap: anywhere; }
+.nv-resumen-cartera__explicacion p { font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
+.nv-resumen-cartera__explicacion .nv-resumen-cartera__etiqueta { font-size: var(--nv-label); color: var(--nv-text-editorial); }
+.nv-resumen-cartera__explicacion .nv-resumen-cartera__formula { margin-top: var(--nv-space-2); font-size: var(--nv-label); color: var(--nv-text-muted); }
+.nv-resumen-cartera__metodo { border-top: 1px solid var(--nv-line); padding-top: var(--nv-space-4); margin-top: var(--nv-space-5); font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
+.nv-resumen-cartera__metodo summary { width: fit-content; min-height: 44px; cursor: pointer; color: var(--nv-text); font-weight: var(--nv-weight-action); }
+.nv-resumen-cartera__escalas { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--nv-space-3); margin: var(--nv-space-3) 0 var(--nv-space-4); }
+.nv-resumen-cartera__escalas dt { color: var(--nv-text); font-weight: var(--nv-weight-title); }
+.nv-resumen-cartera__escalas dd { margin: var(--nv-space-1) 0 0; font-size: var(--nv-label); }
+.nv-resumen-cartera .nv-resumen-cartera__fuente { margin-top: var(--nv-space-4); font-size: var(--nv-label); color: var(--nv-text-muted); }
+/* Tablet: apilar sin reducir las etiquetas del pentágono. */
+@container (max-width: 750px) {
+  .nv-resumen-cartera__grid, .nv-resumen-cartera__explicacion { grid-template-columns: 1fr; }
+  .nv-resumen-cartera__dibujo { max-width: 500px; align-self: center; }
+  .nv-resumen-cartera__escalas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 /* ══ CARTERA Y ANÁLISIS ════════════════════════════════════════════════════
    La última hoja de estilo propia de una página que quedaba en el sitio.
    Entra ya tokenizada: 21 colores crudos a la paleta —incluidos el

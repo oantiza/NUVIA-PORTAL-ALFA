@@ -21,6 +21,7 @@ const FICHEROS = [
   'js/nuvia-simulador.js',
   'js/nuvia-buscador.js',
   'js/nuvia-constructor.js',
+  'js/nuvia-resumen-cartera.js',
   'js/nuvia-datos.js',
   'js/nuvia-cuenta.js',
   'js/nuvia-analisis.js',

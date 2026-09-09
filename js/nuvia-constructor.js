@@ -16,7 +16,8 @@ import { idActual } from './nuvia-identidades.js';
 import { creaGuardadoLocal, mensajeGuardadoLocal } from './nuvia-guardado-local.js';
 import { fuenteDelAnalisis } from './nuvia-periodo-analisis.js';
 import { metricasDesdeSerie, serieDeCaidas, sharpe, pct, num, DIAS_MERCADO } from './nuvia-cartera.js';
-import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL } from './nuvia-analisis.js?v=20260823-6';
+import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL, holdingsDe } from './nuvia-analisis.js?v=20260823-6';
+import { montaResumenCartera } from './nuvia-resumen-cartera.js';
 
 /* El límite de posiciones depende del nivel de la sesión (paso 33). */
 
@@ -932,6 +933,10 @@ export function montaConstructor(raiz, {
   if (editable) raiz.append(contador, importeCampo, cabeceraLista, lista, estado, nivel, guardadoRaiz);
   else raiz.append(estado);
   const destinoResultados = destinoAnalisis || document.getElementById('analisis-dinamico');
+  // Mi cartera: resumen sobre TODOS los pesos, independiente del subconjunto histórico.
+  const resumenRaiz = editable ? el('section', { 'aria-label': 'Tu cartera, de un vistazo' }) : null;
+  const vistaResumen = resumenRaiz ? montaResumenCartera(resumenRaiz) : null;
+  if (resumenRaiz) (destinoResultados || raiz).append(resumenRaiz);
   (destinoResultados || raiz).append(resultados);
 
   function esRegistrada() {
@@ -1274,6 +1279,32 @@ export function montaConstructor(raiz, {
   async function recalcula() {
     // También una cartera vacía sustituye a la solicitud anterior.
     const mia = ++generacion;
+    const entradaResumen = {
+      posiciones: posiciones.map(p => ({ activo: { ...p.activo }, bruto: p.bruto })),
+      estadoHistorial: 'cargando', estadoDesglose: 'cargando',
+    };
+    vistaResumen?.actualiza(entradaResumen);
+    // Reutiliza las fichas y los desgloses cacheados. Solo los errores vuelven a consultarse.
+    // Una respuesta tardía nunca modifica el resumen de una composición nueva.
+    if (vistaResumen && posiciones.some(p => Number.isFinite(p.bruto) && p.bruto > 0)) {
+      const positivas = entradaResumen.posiciones.filter(p => Number.isFinite(p.bruto) && p.bruto > 0);
+      void (async () => {
+        const fichas = await Promise.all(positivas.map(p => datos.detalleActivo(p.activo.asset_id).catch(() => null)));
+        if (mia !== generacion) return;
+        entradaResumen.fichas = Object.fromEntries(positivas.map((p, i) => [p.activo.asset_id, fichas[i]]));
+        const fondos = positivas.filter((p, i) => ['FUND', 'ETF'].includes(fichas[i]?.instrument_type || p.activo.instrument_type)).map(p => p.activo.asset_id);
+        vistaResumen.actualiza(entradaResumen);
+        const docs = fondos.length ? await holdingsDe(datos, fondos) : {};
+        if (mia !== generacion) return;
+        entradaResumen.desgloses = docs;
+        entradaResumen.estadoDesglose = docs == null ? 'error' : 'listo';
+        vistaResumen.actualiza(entradaResumen);
+      })().catch(() => {
+        if (mia !== generacion) return;
+        entradaResumen.estadoDesglose = 'error';
+        vistaResumen.actualiza(entradaResumen);
+      });
+    }
     const limite = limiteActual();
     const esNivelAdmin = nivelActual() === 'admin';
     contador.textContent = posiciones.length ? textoContador(posiciones.length, limite) : '';
@@ -1300,12 +1331,17 @@ export function montaConstructor(raiz, {
       ]);
     } catch {
       if (mia !== generacion) return;
+      entradaResumen.estadoHistorial = 'error';
+      vistaResumen?.actualiza(entradaResumen);
       estado.textContent = 'No se ha podido consultar el historial. Prueba de nuevo en unos segundos.';
       resultados.textContent = '';
       return;
     }
     if (mia !== generacion) return;
 
+    entradaResumen.historial = payload;
+    entradaResumen.estadoHistorial = 'listo';
+    vistaResumen?.actualiza(entradaResumen);
     const series = payload?.series || [];
     const idsConSerie = series.map((s) => s.asset_id);
     const excluidos = posiciones.filter((p) => !idsConSerie.includes(p.activo.asset_id));

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Economía y Finanzas en NUVIA: mercados y noticias para comprender el contexto; cartera y analítica descriptiva para explorar composición, riesgo y escenarios.">
+<meta name="description" content="Mercados y noticias en NUVIA: noticias, indicadores y cotizaciones para comprender la actualidad económica y seguir la evolución de los mercados.">
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/mercados.html">
 
 <!-- NUVIA SOCIAL META: START -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
-<meta property="og:title" content="NUVIA · Economía y Finanzas">
-<meta property="og:description" content="Economía y Finanzas en NUVIA: mercados y noticias para comprender el contexto; cartera y analítica descriptiva para explorar composición, riesgo y escenarios.">
+<meta property="og:title" content="NUVIA · Mercados y noticias">
+<meta property="og:description" content="Mercados y noticias en NUVIA: noticias, indicadores y cotizaciones para comprender la actualidad económica y seguir la evolución de los mercados.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/mercados.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -19,13 +19,13 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NUVIA · Economía y Finanzas">
-<meta name="twitter:description" content="Economía y Finanzas en NUVIA: mercados y noticias para comprender el contexto; cartera y analítica descriptiva para explorar composición, riesgo y escenarios.">
+<meta name="twitter:title" content="NUVIA · Mercados y noticias">
+<meta name="twitter:description" content="Mercados y noticias en NUVIA: noticias, indicadores y cotizaciones para comprender la actualidad económica y seguir la evolución de los mercados.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
 
-<title>NUVIA · Economía y Finanzas</title>
+<title>NUVIA · Mercados y noticias</title>
 
 <link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
 <link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
@@ -103,29 +103,19 @@
   <main id="contenido">
 
     <!-- ══ CABECERA ══════════════════════════════════════════════════════════ -->
-    <section id="mercados" data-screen-label="Cabecera Economía y Finanzas" class="nv-hero nv-hero--institutional">
+    <section id="mercados" data-screen-label="Cabecera Mercados y noticias" class="nv-hero nv-hero--institutional">
       <div class="nv-container">
         <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Economía y Finanzas</span></li></ol>
+          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="economia.html">Economía y Finanzas</a></li><li><span aria-current="page">Mercados y noticias</span></li></ol>
         </nav>
         <div class="nv-hero__inner nv-hero__inner--simple">
           <div>
-            <p class="nv-eyebrow nv-eyebrow--on-dark">Espacio NUVIA · Contexto y análisis</p>
-            <h1>Economía y Finanzas</h1>
+            <p class="nv-eyebrow nv-eyebrow--on-dark">Actualidad económica</p>
+            <h1>Mercados y noticias</h1>
             <p class="nv-hero__lead">
-              Comprende la actualidad económica y explora la composición, el riesgo
-              y los escenarios de una cartera. Dos ámbitos conectados para desarrollar criterio propio.
+              Noticias, indicadores y cotizaciones para comprender la actualidad económica
+              y seguir la evolución de los mercados.
             </p>
-            <nav class="markets-space-nav" aria-label="Ámbitos de Economía y Finanzas">
-              <a href="mercados.html#actualidad" data-economia-area="mercados" onClick="{{ abrirActualidad }}">
-                <strong>Mercados y noticias →</strong>
-                <span>Noticias, indicadores y cotizaciones para comprender el contexto.</span>
-              </a>
-              <a href="cartera.html" data-economia-area="cartera">
-                <strong>Cartera y analítica →</strong>
-                <span>Composición, riesgo y escenarios. Incluye el acceso al análisis de empresas.</span>
-              </a>
-            </nav>
             <div id="actualidad" class="markets-area-views">
               <p id="markets-views-label">Dentro de Mercados y noticias</p>
               <nav class="markets-viewnav" aria-label="Vistas de mercados" aria-describedby="markets-views-label">
@@ -687,7 +677,7 @@
 class Component extends DCLogic {
   state = { vista: 'portada', mercadoVista: 'cotizaciones', agendaPeriodo: 'dia', agendaImpacto: 'todos', empresaTipo: 'todos', indiceMercado: 'ibex', sectorMercado: 'Todos', busquedaMercado: '', temasOpen: false };
   componentDidMount() {
-    document.title = 'NUVIA · Economía y Finanzas';
+    document.title = 'NUVIA · Mercados y noticias';
     const p = new URLSearchParams(window.location.search).get('vista');
     const legacy = { diario: 'portada', archivo: 'informes', semanal: 'cotizaciones' };
     const vista = legacy[p] || p;

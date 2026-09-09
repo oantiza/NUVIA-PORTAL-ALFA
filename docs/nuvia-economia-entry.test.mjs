@@ -6,19 +6,14 @@ import { runInNewContext } from 'node:vm';
 const root=resolve(process.argv[2]||'.');
 const read=file=>readFileSync(resolve(root,file),'utf8');
 const markets=read('mercados.html'), portfolio=read('cartera.html');
-const entry=markets.match(/<nav class="markets-space-nav"[\s\S]*?<\/nav>/)?.[0];
-assert.ok(entry,'Entrada del espacio presente');
-assert.match(markets,/<h1[^>]*>Economía y Finanzas<\/h1>/);
-assert.match(entry,/aria-label="Ámbitos de Economía y Finanzas"/);
-assert.equal((entry.match(/data-economia-area=/g)||[]).length,2);
-assert.match(entry,/href="mercados.html#actualidad" data-economia-area="mercados"/);
-assert.match(entry,/href="cartera.html" data-economia-area="cartera"/);
-assert.doesNotMatch(entry,/<input\b|<form\b|<textarea\b|href="[^\"]*companies/);
+assert.match(markets,/<h1[^>]*>Mercados y noticias<\/h1>/);
+assert.doesNotMatch(markets,/class="markets-space-nav"|data-economia-area=/);
+assert.match(markets,/<a href="economia.html">Economía y Finanzas<\/a>/);
 assert.match(markets,/id="actualidad" class="markets-area-views"/);
 assert.match(markets,/aria-describedby="markets-views-label"/);
 for(const name of ['description','og:description','twitter:description']) {
   const meta=markets.match(new RegExp(`<meta (?:name|property)="${name}" content="([^"]+)"`));
-  assert.ok(meta?.[1].includes('Economía y Finanzas en NUVIA:'),name);
+  assert.ok(meta?.[1].includes('Mercados y noticias en NUVIA:'),name);
 }
 assert.match(portfolio,/id="analysis-lead"[^>]*>Explora la composición, el riesgo y los escenarios/);
 assert.match(portfolio,/id="analysis-current"/);
@@ -43,7 +38,7 @@ function controller(query='',actions=[]) {
   class DCLogic { setState(state){Object.assign(this.state,state);} }
   const Component=runInNewContext(code+'; Component',{DCLogic,document,URLSearchParams,window:{location:{search:query,reload:()=>actions.push('reload'),assign:url=>actions.push(url)},history:{replaceState:(_state,_title,url)=>actions.push(url)},scrollTo:()=>{}}});
   const c=new Component(); c.componentDidMount();
-  assert.equal(document.title,'NUVIA · Economía y Finanzas');
+  assert.equal(document.title,'NUVIA · Mercados y noticias');
   return c;
 }
 for(const [query,view] of [['','portada'],['portada','portada'],['informes','informes'],['cotizaciones','cotizaciones'],['diario','portada'],['archivo','informes'],['semanal','cotizaciones'],['desconocido','portada']]) {
@@ -64,4 +59,4 @@ for(const view of ['informes','cotizaciones']) {
   assert.deepEqual(queryActions,['mercados.html'],'La pestaña de noticias también recupera el contenido fechado');
 }
 assert.match(code,/\['portada', 'Noticias y contexto'\]/);
-console.log('Economía 5A-2: dos ámbitos, tres vistas y alias, metadatos y empresas dentro de Cartera.');
+console.log('Economía 5A-2: cabecera especializada, tres vistas y alias, metadatos y empresas dentro de Cartera.');

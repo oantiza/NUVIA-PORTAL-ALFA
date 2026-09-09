@@ -19,7 +19,7 @@ const pages = new Map([
   ['guia-sucesiones.html', 'NUVIA · Sucesiones y donaciones'],
   ['jubilacion.html', 'NUVIA · Jubilación'],
   ['lecturas.html', 'NUVIA · Lecturas con Criterio'],
-  ['mercados.html', 'NUVIA · Economía y Finanzas'],
+  ['mercados.html', 'NUVIA · Mercados y noticias'],
   ['metodologia.html', 'NUVIA · Metodología'],
   ['independencia.html', 'NUVIA · Independencia'],
   ['que-es-nuvia.html', 'NUVIA · Qué es NUVIA'],

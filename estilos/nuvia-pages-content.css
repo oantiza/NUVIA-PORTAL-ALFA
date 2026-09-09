@@ -2955,7 +2955,7 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, color-mix(in srgb, var(--nv-hero-photo-blue) 85%, transparent) 0%, color-mix(in srgb, var(--nv-hero-photo-blue) 80%, transparent) 22%, color-mix(in srgb, var(--nv-hero-photo-blue) 55%, transparent) 35%, color-mix(in srgb, var(--nv-hero-photo-blue) 18%, transparent) 44%, transparent 50%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--nv-hero-photo-blue) 92%, transparent) 0%, color-mix(in srgb, var(--nv-hero-photo-blue) 88%, transparent) 22%, color-mix(in srgb, var(--nv-hero-photo-blue) 70%, transparent) 35%, color-mix(in srgb, var(--nv-hero-photo-blue) 35%, transparent) 44%, transparent 50%);
   pointer-events: none;
 }
 .nv-space-entry .home26-plate__body {

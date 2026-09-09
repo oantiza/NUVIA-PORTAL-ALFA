@@ -34,7 +34,9 @@ export async function checkEconomiaEntry(page, route) {
   }
   // Desde Informes o Cotizaciones la pestaña debe recuperar la vista de noticias.
   await page.getByRole('button',{name:'Noticias y contexto',exact:true}).click();
+  await page.waitForURL(new URL('mercados.html',start).href);
   await page.locator('.markets-secondary-card').first().waitFor({state:'visible'});
+  await page.waitForFunction(()=>document.querySelectorAll('.markets-macro__item').length===5);
   if(await page.locator('.markets-macro__item').count()!==5) problems.push('El acceso a noticias no conserva sus indicadores');
   if(await page.getByRole('button',{name:'Noticias y contexto',exact:true}).getAttribute('aria-pressed')!=='true') problems.push('El acceso a noticias abre otra vista');
   if(await page.locator('#mercados').evaluate(el=>el.scrollTop!==0)) problems.push('El ancla desplaza el interior del hero y deja un hueco vacío');

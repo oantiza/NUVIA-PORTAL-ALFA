@@ -29,17 +29,17 @@ const activo = (id, nombre = id) => ({ asset_id: id, display_name: nombre, instr
 console.log('— Posiciones —');
 {
   let pos = [];
-  for (const id of ['A', 'B', 'C', 'D', 'E']) pos = agregaPosicion(pos, activo(id)).posiciones;
-  comprueba('Se admiten 5 posiciones', pos.length === 5);
-  const sexto = agregaPosicion(pos, activo('F'));
-  comprueba('La sexta se rechaza con motivo «limite»', sexto.posiciones.length === MAX_POSICIONES && sexto.motivo === 'limite');
-  const repe = agregaPosicion(pos, activo('A'));
-  comprueba('Un activo repetido se rechaza con motivo «repetido»', repe.posiciones.length === 5 && repe.motivo === 'repetido');
-  pos = quitaPosicion(pos, 'C');
-  comprueba('Quitar una posición deja las otras cuatro', pos.length === 4 && !pos.some((p) => p.activo.asset_id === 'C'));
-  pos = cambiaPeso(pos, 'A', 60);
-  comprueba('Cambiar un peso solo toca esa posición', pos.find((p) => p.activo.asset_id === 'A').bruto === 60
-    && pos.find((p) => p.activo.asset_id === 'B').bruto !== 60);
+  for (let i = 0; i < 20; i += 1) pos = agregaPosicion(pos, activo(`ACT_${i}`)).posiciones;
+  comprueba('Se admiten 20 posiciones', pos.length === 20);
+  const vigesimoPrimero = agregaPosicion(pos, activo('EXTRA'));
+  comprueba('La vigesimoprimera se rechaza con motivo «limite»', vigesimoPrimero.posiciones.length === MAX_POSICIONES && vigesimoPrimero.motivo === 'limite');
+  const repe = agregaPosicion(pos, activo('ACT_0'));
+  comprueba('Un activo repetido se rechaza con motivo «repetido»', repe.posiciones.length === 20 && repe.motivo === 'repetido');
+  pos = quitaPosicion(pos, 'ACT_2');
+  comprueba('Quitar una posición deja las otras diecinueve', pos.length === 19 && !pos.some((p) => p.activo.asset_id === 'ACT_2'));
+  pos = cambiaPeso(pos, 'ACT_0', 60);
+  comprueba('Cambiar un peso solo toca esa posición', pos.find((p) => p.activo.asset_id === 'ACT_0').bruto === 60
+    && pos.find((p) => p.activo.asset_id === 'ACT_1').bruto !== 60);
 }
 
 console.log('\n— Normalización de pesos —');
@@ -89,7 +89,7 @@ console.log('\n— Enlace con las métricas del visitante —');
 }
 
 console.log('\n— Límite comunicado (paso 21) —');
-comprueba('El contador dice cuántas posiciones hay y cuál es el tope', textoContador(3) === 'Posiciones: 3 de 5');
+comprueba('El contador dice cuántas posiciones hay y cuál es el tope', textoContador(3) === 'Posiciones: 3 de 20');
 comprueba('La nota de nivel explica el porqué del tope', NOTA_NIVEL.includes('se lee con claridad'));
 comprueba('…y dice que en la alfa no hay cuentas y que las carteras van en el navegador (Entrega 2b)',
   NOTA_NIVEL.includes('versión alfa') && NOTA_NIVEL.includes('en este navegador') && NOTA_NIVEL.includes('no hay cuentas'));
@@ -232,7 +232,7 @@ console.log('\n— Guardado en la nube: solo ids y pesos (paso 30) —');
   comprueba('Sin ficha, se muestra el identificador y sin clase (nunca se inventa)',
     reconstruidas[1].activo.display_name === 'B' && reconstruidas[1].activo.economic_asset_class === undefined);
   comprueba('Nunca se cargan más de las posiciones del nivel',
-    posicionesDesdeNube(Array.from({ length: 9 }, (_, i) => ({ asset_id: `X${i}`, weight_percent: 10 }))).length === MAX_POSICIONES);
+    posicionesDesdeNube(Array.from({ length: 25 }, (_, i) => ({ asset_id: `X${i}`, weight_percent: 4 }))).length === MAX_POSICIONES);
   comprueba('El aviso de la nube dice que solo se guardan activos y pesos, sin jerga',
     AVISO_GUARDADO_NUBE.includes('tu cuenta') && AVISO_GUARDADO_NUBE.includes('qué activos y con qué peso')
     && AVISO_GUARDADO_NUBE.includes('base de datos NUVIA')
@@ -263,34 +263,34 @@ console.log('\n— Migración de lo local a la cuenta (paso 31) —');
 
 console.log('\n— Límite por nivel (paso 33) —');
 {
-  comprueba('El suscriptor trabaja con 20 posiciones; el resto con 5',
+  comprueba('El laboratorio trabaja de forma unificada con hasta 20 posiciones',
     maxPosiciones('suscriptor') === MAX_POSICIONES_SUSCRIPTOR
     && maxPosiciones('registrada') === MAX_POSICIONES && maxPosiciones('visitante') === MAX_POSICIONES
-    && MAX_POSICIONES_SUSCRIPTOR === 20);
+    && MAX_POSICIONES === 20);
   comprueba('El administrador no tiene tope de posiciones en la interfaz',
     maxPosiciones('admin') === MAX_POSICIONES_ADMIN
     && maxPosiciones('admin') === Number.POSITIVE_INFINITY
     && textoContador(27, maxPosiciones('admin')) === 'Posiciones: 27 · acceso administrador');
 
   let lista = [];
-  for (let i = 0; i < 6; i += 1) {
-    lista = agregaPosicion(lista, { asset_id: `A${i}`, display_name: `Activo ${i}` }, maxPosiciones('suscriptor')).posiciones;
+  for (let i = 0; i < 20; i += 1) {
+    lista = agregaPosicion(lista, { asset_id: `A${i}`, display_name: `Activo ${i}` }).posiciones;
   }
-  comprueba('Con límite de suscriptor, la sexta posición entra', lista.length === 6);
+  comprueba('Entran las 20 posiciones', lista.length === 20);
   let listaAdmin = [];
   for (let i = 0; i < 30; i += 1) {
     listaAdmin = agregaPosicion(listaAdmin, { asset_id: `ADMIN${i}` }, maxPosiciones('admin')).posiciones;
   }
   comprueba('El administrador puede superar el tope del suscriptor', listaAdmin.length === 30);
-  comprueba('Con el límite normal, la sexta se rechaza con motivo «limite»',
-    agregaPosicion(lista.slice(0, 5), { asset_id: 'A9' }).motivo === 'limite');
+  comprueba('Con el límite normal, la vigesimoprimera se rechaza con motivo «limite»',
+    agregaPosicion(lista, { asset_id: 'A99' }).motivo === 'limite');
 
   comprueba('El contador enseña el límite del nivel',
-    textoContador(6, 20) === 'Posiciones: 6 de 20' && textoContador(2) === 'Posiciones: 2 de 5');
+    textoContador(6, 20) === 'Posiciones: 6 de 20' && textoContador(2) === 'Posiciones: 2 de 20');
 
-  const nube = Array.from({ length: 22 }, (_, i) => ({ asset_id: `N${i}`, weight_percent: 1 }));
+  const nube = Array.from({ length: 25 }, (_, i) => ({ asset_id: `N${i}`, weight_percent: 1 }));
   comprueba('Al abrir de la nube, el corte respeta el límite del nivel',
-    posicionesDesdeNube(nube, {}, 20).length === 20 && posicionesDesdeNube(nube, {}).length === 5);
+    posicionesDesdeNube(nube, {}, 20).length === 20 && posicionesDesdeNube(nube, {}).length === 20);
 
   comprueba('La nota del tope del suscriptor explica el porqué, sin aconsejar',
     NOTA_NIVEL_SUSCRIPTOR.includes('20') && NOTA_NIVEL_SUSCRIPTOR.includes('gráficos')

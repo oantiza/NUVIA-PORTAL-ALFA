@@ -62,7 +62,7 @@ test('la interfaz declara ambos métodos y pasa las métricas reales a la compar
   const constructor = readFileSync(new URL('../js/nuvia-constructor.js',import.meta.url),'utf8');
   const analysis = readFileSync(new URL('../js/nuvia-analisis.js',import.meta.url),'utf8');
   assert.match(constructor,/nv-cons__nota.*TEXTO_HISTORIAL/);
-  assert.match(analysis,/grupoFrontera\(\{\s*series, pesos, interactiva: esSuscriptor, nombreDe, tasaSinRiesgo, metricas/);
+  assert.match(analysis,/grupoFrontera\(\{\s*series, pesos, interactiva: true, nombreDe, tasaSinRiesgo, metricas/);
   assert.match(analysis,/filasComparacionMetodos\(metricas, puntoActual\)/);
   assert.match(analysis,/Dos métodos, los mismos datos/);
   assert.match(TEXTO_HISTORIAL,/sin rebalanceo/);

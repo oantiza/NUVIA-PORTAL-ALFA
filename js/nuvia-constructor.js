@@ -20,41 +20,37 @@ import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL } from './nuvia-anal
 
 /* El límite de posiciones depende del nivel de la sesión (paso 33). */
 
-export const MAX_POSICIONES = 5;
+export const MAX_POSICIONES = 20;
 export const MAX_POSICIONES_SUSCRIPTOR = 20;
 export const MAX_POSICIONES_ADMIN = Number.POSITIVE_INFINITY;
 const PESO_INICIAL = 20;
 
-/** Límite de posiciones por nivel (bases §3): 20 para el suscriptor —por
- *  encima de 15–20 los gráficos dejan de comunicar—, 5 para el resto y sin
- *  tope de interfaz para el administrador. */
+/** Límite de posiciones: 20 posiciones como tope del laboratorio (por encima
+ *  de 15–20 los gráficos y tablas dejan de comunicar con claridad). */
 export function maxPosiciones(nivel) {
   if (nivel === 'admin') return MAX_POSICIONES_ADMIN;
-  return nivel === 'suscriptor' ? MAX_POSICIONES_SUSCRIPTOR : MAX_POSICIONES;
+  return MAX_POSICIONES;
 }
 
-/** Texto del contador, visible desde la primera posición (el límite se
- *  comunica antes, no después — bases §3). */
+/** Texto del contador, visible desde la primera posición. */
 export function textoContador(n, limite = MAX_POSICIONES) {
   if (!Number.isFinite(limite)) return `Posiciones: ${n} · acceso administrador`;
   return `Posiciones: ${n} de ${limite}`;
 }
 
 /**
- * Nota de nivel, mostrada al llegar al tope. Describe qué añade cada nivel;
- * no aconseja. El registro ya está abierto (paso 28) y se dice dónde.
+ * Nota de límite, mostrada al llegar al tope de 20 posiciones.
+ * Explica el tope técnico de legibilidad; describe sin juzgar.
  */
 export const NOTA_NIVEL = 'Esta versión alfa trabaja con hasta '
   + `${MAX_POSICIONES} posiciones: bastan para ver el efecto de combinar `
-  + 'activos y la tabla se lee con claridad. Las carteras se guardan en este '
-  + 'navegador; no hay cuentas ni registro en la alfa. Los niveles con más '
-  + `posiciones —hasta ${MAX_POSICIONES_SUSCRIPTOR}— llegarán en fases posteriores, `
-  + 'cuando se abran.';
+  + 'activos y la tabla se lee con claridad. Por encima de 15–20 los gráficos '
+  + 'y distribuciones dejan de leerse con claridad. Las carteras se guardan '
+  + 'en este navegador; no hay cuentas ni registro en la alfa. El límite '
+  + `de la herramienta son hasta ${MAX_POSICIONES} posiciones.`;
 
-/** Nota del tope del suscriptor: el límite de 20 se explica, no se esconde. */
-export const NOTA_NIVEL_SUSCRIPTOR = 'Este es el tope de la herramienta: '
-  + `${MAX_POSICIONES_SUSCRIPTOR} posiciones. Por encima de 15–20 los `
-  + 'gráficos dejan de comunicar: una distribución con 25 porciones no se lee.';
+/** Nota del tope de la herramienta. */
+export const NOTA_NIVEL_SUSCRIPTOR = NOTA_NIVEL;
 
 /* ── Lógica pura (probada en docs/nuvia-constructor.test.mjs) ── */
 
@@ -1282,7 +1278,7 @@ export function montaConstructor(raiz, {
     const esNivelAdmin = nivelActual() === 'admin';
     contador.textContent = posiciones.length ? textoContador(posiciones.length, limite) : '';
     nivel.hidden = esNivelAdmin || posiciones.length < limite;
-    notaNivel.textContent = nivelActual() === 'suscriptor' ? NOTA_NIVEL_SUSCRIPTOR : NOTA_NIVEL;
+    notaNivel.textContent = NOTA_NIVEL;
     if (!posiciones.length) {
       estado.textContent = esNivelAdmin
         ? 'Busca un activo arriba y elígelo para añadirlo aquí. Tu acceso administrador no tiene tope de posiciones.'

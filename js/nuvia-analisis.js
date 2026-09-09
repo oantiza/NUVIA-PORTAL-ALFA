@@ -100,6 +100,14 @@ export function posicionesParaAnalisis(posiciones, pesos) {
     .map((p) => ({ asset_id: p.activo.asset_id, weight_percent: pesos[p.activo.asset_id] * 100 }));
 }
 
+/**
+ * Cobertura mínima de un desglose para entrar en la matriz de solapamiento,
+ * en % del fondo descrito. Por debajo, el desglose solo trae las mayores
+ * posiciones: el cálculo lo normalizaría a 100 y saldría un solapamiento
+ * inflado. Un desglose sin `cobertura_pct` (los de EODHD) no se filtra.
+ */
+export const COBERTURA_MINIMA_SOLAPE = 90;
+
 /** Ids de las posiciones que son fondos o ETF: las únicas con desglose que
  *  comparar. Una acción directa no tiene cartera por dentro. */
 export function idsDeFondos(posiciones) {
@@ -1394,7 +1402,6 @@ export async function montaAnalisis(raiz, {
   raiz.textContent = '';
   if (!pesos) return;
 
-  const nivelEfectivo = nivel || (registrada ? 'registrada' : 'visitante');
   const objetivo = {
     composicion: destinos?.composicion || raiz,
     sectores: destinos?.sectores || destinos?.composicion || raiz,
@@ -1403,26 +1410,12 @@ export async function montaAnalisis(raiz, {
     solapes: destinos?.solapes || raiz,
     escenarios: destinos?.escenarios || raiz,
   };
-  if (nivelEfectivo === 'visitante') {
-    objetivo.riesgo.append(el('p', { class: 'nv-analisis__cerrado' }, NOTA_ANALISIS_CERRADO));
-    objetivo.sectores.append(el('p', { class: 'nv-analisis__cerrado' },
-      'El desglose por sectores no está disponible ahora mismo.'));
-    objetivo.geografia.append(el('p', { class: 'nv-analisis__cerrado' },
-      'El mapa geográfico no está disponible ahora mismo.'));
-    objetivo.solapes.append(el('p', { class: 'nv-analisis__cerrado' },
-      'La comparación de subyacentes entre fondos no está disponible ahora mismo.'));
-    objetivo.escenarios.append(el('p', { class: 'nv-analisis__cerrado' },
-      'Los escenarios simulados pertenecen al nivel suscriptor, todavía no abierto a contratación.'));
-    return;
-  }
-  const esSuscriptor = nivelEfectivo === 'suscriptor' || nivelEfectivo === 'admin';
 
   const nombreDe = {};
   for (const p of posiciones) nombreDe[p.activo.asset_id] = p.activo.display_name || p.activo.asset_id;
 
   if (!destinos) {
-    raiz.append(el('h3', { class: 'nv-cons__subtitulo' },
-      esSuscriptor ? 'Análisis completo (suscripción)' : 'Análisis ampliado (tu cuenta)'));
+    raiz.append(el('h3', { class: 'nv-cons__subtitulo' }, 'Análisis de la cartera'));
   }
 
   /* Ahorro por diversificar: sale de las series ya cargadas, sin más red. */
@@ -1437,22 +1430,17 @@ export async function montaAnalisis(raiz, {
   const riesgoPorPosicion = grupoRiesgoPorPosicion({ series, pesos, nombreDe });
   if (riesgoPorPosicion) objetivo.riesgo.append(riesgoPorPosicion);
 
-  /* Frontera (paso 33): estática con la cartera marcada para el registrado,
-     con recorrido interactivo para el suscriptor. Sin red: series ya cargadas. */
+  /* Frontera (paso 33): interactiva con el reparto de las dos mezclas señaladas. */
   objetivo.riesgo.append(grupoFrontera({
-    series, pesos, interactiva: esSuscriptor, nombreDe, tasaSinRiesgo, metricas,
+    series, pesos, interactiva: true, nombreDe, tasaSinRiesgo, metricas,
   }));
 
   /* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7). */
   objetivo.riesgo.append(grupoMapaRiesgo({ referencia: perfilCarteraSupuestos(posiciones, pesos) }));
 
-  /* Solo suscriptor: proyección por simulación y matriz de correlaciones. */
-  if (esSuscriptor) {
-    objetivo.escenarios.append(grupoProyeccion(metricas));
-    objetivo.solapes.append(grupoCorrelaciones(series, pesos, nombreDe));
-  } else {
-    objetivo.escenarios.append(el('p', { class: 'nv-analisis__cerrado' }, NOTA_ANALISIS_SUSCRIPTOR));
-  }
+  /* Proyección por simulación y matriz de correlaciones: abiertos para todos. */
+  objetivo.escenarios.append(grupoProyeccion(metricas));
+  objetivo.solapes.append(grupoCorrelaciones(series, pesos, nombreDe));
 
   const cargando = el('p', { class: 'nv-cons__nota', role: 'status' }, 'Consultando fichas y desgloses…');
   objetivo.sectores.append(cargando);
@@ -1493,8 +1481,10 @@ export async function montaAnalisis(raiz, {
       `Sin ficha disponible ahora mismo: ${sinFicha.join(', ')}. No entra en la concentración.`));
   }
 
-  /* Solapamiento entre fondos y ETF. */
-  const grupoSolape = grupo('Matriz de solapamiento',
+  /* Solapamiento entre fondos y ETF. La lectura de la matriz solo se escribe
+     si la matriz llega a dibujarse: no se explica un gráfico que no está. */
+  const grupoSolape = grupo('Matriz de solapamiento');
+  const lecturaSolape = () => el('p', { class: 'nv-analisis__lectura' },
     'El porcentaje de subyacentes comunes entre cada par de fondos y ETF, posición a '
     + 'posición: cuanto más oscuro el recuadro, más contenido comparten. La diagonal '
     + 'es cada fondo consigo mismo (100 %). Debajo, la lista dice qué fondo es cada número.');
@@ -1508,13 +1498,37 @@ export async function montaAnalisis(raiz, {
       grupoSolape.append(el('p', { class: 'nv-cons__nota' },
         'No se han podido consultar los desgloses. Prueba de nuevo en unos segundos.'));
     } else {
-      const matriz = matrizSolapamiento(fondos.map((id) => ({ id, cartera: carteraDesdeHoldings(docs[id]) })));
+      /* Una cartera parcial no entra en la matriz. El cálculo normaliza a 100
+         lo que reciba, así que un desglose que solo describe el 35 % del fondo
+         daría un solapamiento creíble y falso. Se declara y se deja fuera. */
+      const parcial = (id) => {
+        const doc = docs[id];
+        /* `cobertura_pct` en los desgloses copiados de la maestra;
+           `top10_weight` en los de EODHD, que solo traen las diez mayores
+           posiciones. La misma vara para los dos. */
+        const c = Number.isFinite(doc?.cobertura_pct) ? doc.cobertura_pct : doc?.top10_weight;
+        return Number.isFinite(c) && c < COBERTURA_MINIMA_SOLAPE;
+      };
+      const parciales = fondos.filter(parcial);
+      const matriz = matrizSolapamiento(fondos.map((id) => ({
+        id, cartera: parcial(id) ? null : carteraDesdeHoldings(docs[id]),
+      })));
       const conDatos = matriz.ids.filter((id) => !matriz.sinDatos.includes(id));
-      const sinDatos = matriz.sinDatos;
+      const sinDatos = matriz.sinDatos.filter((id) => !parciales.includes(id));
+      const nombres = (ids) => ids.map((id) => nombreDe[id] || id).join(', ');
       if (conDatos.length < 2) {
-        grupoSolape.append(el('p', { class: 'nv-cons__nota' },
-          'Sin desglose disponible para comparar estos fondos; nunca se inventa un solapamiento.'));
+        /* Un solo aviso, con los nombres y el motivo de cada grupo. */
+        const motivos = [];
+        if (sinDatos.length) motivos.push(`sin desglose en la base: ${nombres(sinDatos)}`);
+        if (parciales.length) motivos.push(`con desglose parcial, que no basta para comparar: ${nombres(parciales)}`);
+        grupoSolape.append(el('p', { class: 'nv-cons__nota' }, conDatos.length === 1
+          ? `Solo ${nombreDe[conDatos[0]] || conDatos[0]} tiene un desglose completo en la `
+            + 'base de la alfa; sin otro con el que compararlo no hay solapamiento que '
+            + `calcular, y nunca se inventa. El resto, ${motivos.join('; ')}.`
+          : `No hay dos fondos con desglose completo con los que calcular el solapamiento, `
+            + `y nunca se inventa. ${motivos.join('. ').replace(/^./, (c) => c.toUpperCase())}.`));
       } else {
+        grupoSolape.append(lecturaSolape());
         /* La matriz de calor numerada (encargo de Óscar, 21-08): cuanto más
            oscuro, más contenido comparten; la diagonal es cada fondo consigo
            mismo (100 %). Debajo, la lista dice qué fondo es cada número. */
@@ -1559,17 +1573,26 @@ export async function montaAnalisis(raiz, {
         });
         grupoSolape.append(panelGrafico(envoltorio, listaFondos));
       }
-      if (sinDatos.length) {
-        grupoSolape.append(el('p', { class: 'nv-cons__nota' },
-          `Sin desglose en la base: ${sinDatos.map((id) => nombreDe[id] || id).join(', ')}. Sus pares no se calculan.`));
+      if (conDatos.length >= 2) {
+        if (sinDatos.length) {
+          grupoSolape.append(el('p', { class: 'nv-cons__nota' },
+            `Sin desglose en la base: ${nombres(sinDatos)}. Sus pares no se calculan.`));
+        }
+        if (parciales.length) {
+          grupoSolape.append(el('p', { class: 'nv-cons__nota' },
+            `Con desglose parcial —la base solo tiene sus mayores posiciones—: ${nombres(parciales)}. `
+            + 'Quedan fuera de la matriz: comparar una cartera incompleta daría un solapamiento inflado.'));
+        }
+        const fechas = conDatos.map((id) => docs[id]?.as_of_date).filter(Boolean).sort();
+        if (fechas.length) {
+          grupoSolape.append(el('p', { class: 'nv-cons__nota' }, fechas[0] === fechas[fechas.length - 1]
+            ? `Desgloses a ${fechas[0]}.`
+            : `Desgloses entre ${fechas[0]} y ${fechas[fechas.length - 1]}: cada fondo publica su cartera con su propio calendario.`));
+        }
       }
     }
   }
   objetivo.solapes.append(grupoSolape);
 
-  if (!esSuscriptor) {
-    objetivo.solapes.append(el('p', { class: 'nv-analisis__suscriptor' },
-      'La matriz de correlaciones se añade en el nivel suscriptor.'));
-  }
   objetivo.solapes.append(el('p', { class: 'nv-cons__fuente' }, FUENTE_ANALISIS));
 }

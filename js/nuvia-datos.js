@@ -31,9 +31,8 @@ export const CLAVE_SESION_ANTIGUA = 'nuvia.maestra-sesion.v1';
 export const CLAVE_CATALOGO = 'nuvia.catalogo.v1';
 export const PREFIJO_SERIES = 'nuvia.series.v1.';
 
-/** Nivel único de la alfa: análisis completo para cualquiera; los escenarios
- *  del suscriptor siguen «no abiertos», como hasta ahora. */
-export const NIVEL_ALFA = 'registrada';
+/** Nivel único: análisis completo y abierto para cualquiera. */
+export const NIVEL_ALFA = 'abierto';
 export const ANIOS_VENTANA = 3;
 /** Días de margen entre el inicio de la ventana y el primer dato de un
  *  activo para considerarlo con historial suficiente. */

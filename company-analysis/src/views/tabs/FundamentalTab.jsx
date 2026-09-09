@@ -73,7 +73,7 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
                 aLabel="Ingresos" bLabel="Beneficio neto" currency={currency}
               />
             </div>
-            <div className="card" style={{ overflowX: 'auto' }}>
+            <div className="card card--table">
               <table className="tbl">
                 <thead>
                   <tr><th className="l">Ejercicio</th><th><IndicatorInfo name="Ingresos" /></th><th><IndicatorInfo name="EBITDA" /></th><th><IndicatorInfo name="Bº operativo" /></th><th><IndicatorInfo name="Beneficio neto" /></th><th><IndicatorInfo name="Margen neto" /></th></tr>
@@ -98,8 +98,8 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
 
       <div className="grid2 section">
         {balance.length > 0 && (
-          <div className="card" style={{ overflowX: 'auto' }}>
-            <div className="eyebrow" style={{ marginBottom: 10 }}>Balance</div>
+          <div className="card card--table">
+            <div className="eyebrow fundamental-heading">Balance</div>
             <p className="tiny">Divisa del estado: {balanceCurrency || 'no informada'}.</p>
             <table className="tbl">
               <thead>
@@ -120,8 +120,8 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
           </div>
         )}
         {cashflow.length > 0 && (
-          <div className="card" style={{ overflowX: 'auto' }}>
-            <div className="eyebrow" style={{ marginBottom: 10 }}>Flujos de caja</div>
+          <div className="card card--table">
+            <div className="eyebrow fundamental-heading">Flujos de caja</div>
             <p className="tiny">Divisa del estado: {cashCurrency || 'no informada'}.</p>
             <table className="tbl">
               <thead>
@@ -145,7 +145,7 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
 
       <div className="grid2 section">
         {!historicalOnly && <div className="card">
-          <div className="eyebrow" style={{ marginBottom: 10 }}>Dividendos</div>
+          <div className="eyebrow fundamental-heading">Dividendos</div>
           <table className="tbl">
             <tbody>
               <tr><td className="l"><IndicatorInfo name="Dividendo anual estimado" /></td><td className="num">{sd.ForwardAnnualDividendRate != null ? fmtNum(N(sd.ForwardAnnualDividendRate), 2) : '—'}</td></tr>
@@ -158,7 +158,7 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
         </div>}
 
         <div className="card">
-          <div className="eyebrow" style={{ marginBottom: 10 }}>Accionariado</div>
+          <div className="eyebrow fundamental-heading">Accionariado</div>
           <table className="tbl">
             <tbody>
               <tr><td className="l"><IndicatorInfo name="Acciones en circulación" /></td><td className="num">{fmtBig(N(ss.SharesOutstanding))}</td></tr>
@@ -168,12 +168,12 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
           </table>
           {instituciones.length > 0 && (
             <>
-              <div className="tiny" style={{ margin: '12px 0 6px' }}>Principales instituciones</div>
+              <div className="tiny fundamental-institutions-label">Principales instituciones</div>
               <table className="tbl">
                 <tbody>
                   {instituciones.map((i2) => (
                     <tr key={i2.name}>
-                      <td className="l" style={{ fontSize: 11 }}>{i2.name}</td>
+                      <td className="l fundamental-institution-name">{i2.name}</td>
                       <td className="num tiny">{i2.totalShares != null ? fmtPct(N(i2.totalShares), 2, false) : '—'}</td>
                     </tr>
                   ))}
@@ -186,8 +186,8 @@ export default function FundamentalTab({ fund, historicalOnly = false, yearlyLim
 
       {earnHist.length > 0 && (
         <div className="section">
-          <div className="card" style={{ overflowX: 'auto' }}>
-            <div className="eyebrow" style={{ marginBottom: 10 }}>Historial de resultados (BPA)</div>
+          <div className="card card--table">
+            <div className="eyebrow fundamental-heading">Historial de resultados (BPA)</div>
             <table className="tbl">
               <thead>
                 <tr><th className="l">Trimestre</th><th><IndicatorInfo name="BPA real" /></th><th><IndicatorInfo name="Estimado" /></th><th><IndicatorInfo name="Sorpresa" /></th></tr>

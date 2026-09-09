@@ -1,0 +1,563 @@
+/* ============================================================================
+   PROTOTIPO · Laboratorio de cartera · Dirección B
+   ----------------------------------------------------------------------------
+   Reglas que se respetan aquí para que el porte a producción sea mecánico:
+     · Ningún hexadecimal fuera de :root (equivale a nuvia-tokens.css).
+     · Ningún tamaño fuera de la escala 12·14·16·18·22·28·36 + display.
+     · Ningún espaciado fuera de la escala de 4.
+     · Ningún <text> dentro de un <svg>: todo rótulo es HTML sobre el marco,
+       para que no encoja con el viewBox (hallazgo C1: 2,8–4 px a 390 px).
+     · Ningún «span» genérico por descendencia (rompería el sc-interp del
+       runtime x-dc); todo selector va por clase.
+     · Ningún !important.
+     · Rótulos-hecho: «Mayor Sharpe», «Menor oscilación», «10 % bolsa». Jamás
+       «óptima», «conservadora» ni «recomendada».
+   ========================================================================== */
+:root {
+  color-scheme: light;
+
+  /* Marca */
+  --nv-navy-950: #06172f;
+  --nv-navy-900: #0b2347;
+  --nv-navy-800: #15365f;
+  --nv-navy-700: #284c75;
+  --nv-green-900: #2c3817;
+  --nv-green-800: #3f501e;
+  --nv-green-700: #4a5d23;
+  --nv-green-600: #5f7a2c;
+  --nv-green-500: #7c9a44;
+  --nv-green-300: #b9cc8b;
+  --nv-green-100: #eef3df;
+  --nv-bronze-800: #6e5322;
+  --nv-bronze-700: #7a5c27;
+  --nv-bronze-500: #b69152;
+  --nv-bronze-200: #dcc59c;
+  --nv-bronze-100: #f2e7d3;
+  --nv-white: #ffffff;
+  --nv-cloud: #f4f6f9;
+  --nv-mist: #e8edf3;
+
+  /* Texto */
+  --nv-ink: #0b2347;
+  --nv-copy: #3f4f66;
+  --nv-muted: #5b6472;
+  --nv-line: rgba(11, 35, 71, .13);
+  --nv-line-fina: rgba(11, 35, 71, .06);
+  --nv-line-strong: rgba(11, 35, 71, .26);
+  --nv-shadow-sm: 0 1px 2px rgba(6, 23, 47, .05), 0 0 0 1px rgba(11, 35, 71, .06);
+  --nv-shadow-md: 0 20px 46px -32px rgba(6, 23, 47, .34), 0 0 0 1px rgba(11, 35, 71, .06);
+
+  /* Banner de entrada (Innegociable 9): los tonos del banner de empresas. */
+  --nv-portada-a: #f7f3e7;
+  --nv-portada-b: #edf2e9;
+  --nv-portada-c: #e7ecf1;
+  --nv-portada-borde: #d6d9d2;
+
+  /* Siete series seguras para daltonismo. NUNCA portan significado solas:
+     cada una lleva su cifra y su rótulo al lado. */
+  --nv-serie-1: #0b2347;   /* marino  · bolsa mundial   */
+  --nv-serie-2: #4a5d23;   /* oliva   · protagonista    */
+  --nv-serie-3: #7a5c27;   /* bronce  · renta fija      */
+  --nv-serie-4: #1f625c;   /* petróleo· monetario       */
+  --nv-serie-5: #8d4236;   /* teja    · inmobiliario    */
+  --nv-serie-6: #3d5670;   /* pizarra · resto           */
+  --nv-serie-7: #5b4487;   /* morado  · oro             */
+  --nv-serie-1-t: #d8e1ec;
+  --nv-serie-2-t: #dfe8c9;
+  --nv-serie-3-t: #eadfc8;
+  --nv-serie-4-t: #d5e8e4;
+  --nv-serie-5-t: #eddad6;
+  --nv-serie-6-t: #dde5ed;
+  --nv-serie-7-t: #e5deef;
+
+  /* Tipografía: Fraunces con carácter para titulares, Inter para todo dato. */
+  --nv-font-sans: Inter, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --nv-font-serif: Fraunces, Georgia, "Times New Roman", serif;
+  --nv-display-md: clamp(36px, 3vw, 48px);
+  --nv-title-lg: 36px;
+  --nv-title-md: 28px;
+  --nv-title-sm: 22px;
+  --nv-body-lg: 18px;
+  --nv-body: 16px;
+  --nv-body-sm: 14px;
+  --nv-label: 12px;
+
+  --nv-space-1: 4px;  --nv-space-2: 8px;  --nv-space-3: 12px; --nv-space-4: 16px;
+  --nv-space-5: 20px; --nv-space-6: 24px; --nv-space-8: 32px; --nv-space-10: 40px;
+  --nv-space-12: 48px; --nv-space-16: 64px; --nv-space-20: 80px;
+  --nv-radius-sm: 6px; --nv-radius-md: 12px; --nv-radius-pill: 999px;
+  --nv-ancho: 1180px;
+  --nv-lectura: 62ch;
+  --nv-dibujo: 680px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nv-space-6); }
+body {
+  margin: 0;
+  background: var(--nv-cloud);
+  color: var(--nv-ink);
+  font-family: var(--nv-font-sans);
+  font-size: var(--nv-body);
+  line-height: 1.6;
+}
+button, input, summary { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--nv-green-600); outline-offset: 3px; border-radius: var(--nv-radius-sm); }
+.lab-salto { position: fixed; z-index: 30; inset: var(--nv-space-3) auto auto var(--nv-space-3); transform: translateY(-200%); padding: var(--nv-space-2) var(--nv-space-4); background: var(--nv-white); border-radius: var(--nv-radius-sm); box-shadow: var(--nv-shadow-sm); }
+.lab-salto:focus { transform: translateY(0); }
+
+/* Aviso de que esto es una maqueta. No forma parte del diseño. */
+.maqueta { background: var(--nv-green-100); border-bottom: 1px solid var(--nv-green-300); color: var(--nv-green-900); font-size: var(--nv-body-sm); }
+.maqueta__int { display: flex; flex-wrap: wrap; gap: var(--nv-space-3); justify-content: space-between; width: min(100% - 48px, var(--nv-ancho)); margin: 0 auto; padding: var(--nv-space-2) 0; }
+
+.lab { width: min(100% - 48px, var(--nv-ancho)); margin: var(--nv-space-8) auto var(--nv-space-20); }
+
+/* ── Banner de entrada · calcado de .nv-portada-lab (Innegociable 9) ─────── */
+.lab-portada {
+  position: relative; isolation: isolate; display: flex; align-items: center; justify-content: center;
+  min-height: 262px; overflow: hidden; text-align: center;
+  padding: var(--nv-space-10) var(--nv-space-8);
+  border: 1px solid var(--nv-portada-borde); border-radius: var(--nv-radius-md);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78), 0 18px 50px rgba(24,38,24,.08);
+  background:
+    radial-gradient(ellipse at center, rgba(255,255,255,.66) 0%, rgba(255,255,255,.3) 34%, transparent 66%),
+    repeating-radial-gradient(circle at 87% 12%, transparent 0 70px, rgba(74,93,35,.07) 71px 72px, transparent 73px 104px),
+    radial-gradient(circle at 12% 18%, rgba(122,92,39,.19) 0, rgba(122,92,39,.07) 18%, transparent 37%),
+    radial-gradient(circle at 87% 82%, rgba(11,35,71,.16) 0, rgba(11,35,71,.06) 22%, transparent 43%),
+    linear-gradient(135deg, var(--nv-portada-a) 0%, var(--nv-portada-b) 49%, var(--nv-portada-c) 100%);
+}
+.lab-portada::before {
+  content: ''; position: absolute; z-index: -1; inset: 0; opacity: .72;
+  background-image: linear-gradient(rgba(34,51,39,.032) 1px, transparent 1px), linear-gradient(90deg, rgba(34,51,39,.032) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+.lab-portada::after {
+  content: ''; position: absolute; z-index: -1; inset: auto 0 0 auto; width: 51%; height: 58%;
+  background: linear-gradient(135deg, rgba(11,35,71,.055), rgba(74,93,35,.19));
+  clip-path: polygon(0 84%, 15% 70%, 31% 75%, 46% 48%, 61% 56%, 78% 23%, 91% 30%, 100% 8%, 100% 100%, 0 100%);
+}
+.lab-portada__texto { position: relative; width: min(100%, 720px); padding: var(--nv-space-5) var(--nv-space-8); }
+.lab-portada__marca { margin: 0; color: var(--nv-navy-900); font-family: var(--nv-font-serif); font-size: 48px; font-weight: 400; letter-spacing: .19em; line-height: 1; }
+.lab-portada__seccion { margin: var(--nv-space-4) 0 0; color: var(--nv-green-700); font-size: var(--nv-label); font-weight: 600; letter-spacing: .31em; line-height: 1.45; text-transform: uppercase; }
+.lab-portada__lema { max-width: 560px; margin: var(--nv-space-6) auto 0; color: var(--nv-copy); font-size: var(--nv-body-sm); line-height: 1.68; }
+.lab-portada__raya { display: block; width: 88px; height: 2px; margin: var(--nv-space-8) auto 0; background: var(--nv-green-700); }
+
+/* ── Tesis y atajos ─────────────────────────────────────────────────────── */
+.lab-tesis { max-width: 800px; margin: var(--nv-space-12) auto var(--nv-space-6); text-align: center; }
+.lab-tesis h1 { margin: 0 0 var(--nv-space-4); font-family: var(--nv-font-serif); font-size: var(--nv-display-md); font-weight: 500; line-height: 1.14; letter-spacing: -.01em; }
+.lab-tesis p { max-width: var(--nv-lectura); margin: 0 auto; color: var(--nv-copy); font-size: var(--nv-body-lg); }
+
+.lab-atajos { display: flex; flex-wrap: wrap; gap: var(--nv-space-2); justify-content: center; margin-bottom: var(--nv-space-6); }
+.lab-atajos a {
+  padding: var(--nv-space-2) var(--nv-space-4);
+  background: var(--nv-white); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-pill);
+  color: var(--nv-copy); font-size: var(--nv-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; text-decoration: none;
+}
+.lab-atajos a:hover { border-color: var(--nv-green-600); color: var(--nv-green-800); }
+.lab-atajos a::before { content: attr(data-n) " · "; color: var(--nv-green-600); }
+
+/* ── Aviso de cartera de ejemplo ────────────────────────────────────────── */
+.lab-ejemplo {
+  display: flex; gap: var(--nv-space-4); align-items: flex-start; justify-content: center;
+  max-width: 780px; margin: 0 auto var(--nv-space-12);
+  padding: var(--nv-space-4) var(--nv-space-5);
+  background: var(--nv-bronze-100); border: 1px solid var(--nv-bronze-200); border-radius: var(--nv-radius-md);
+  color: var(--nv-copy); font-size: var(--nv-body-sm);
+}
+.lab-ejemplo p { margin: 0; }
+.lab-ejemplo__marca { flex: 0 0 auto; padding: var(--nv-space-1) var(--nv-space-2); background: var(--nv-bronze-700); color: var(--nv-white); border-radius: var(--nv-radius-sm); font-size: var(--nv-label); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.lab-ejemplo__btn { margin-left: var(--nv-space-2); background: none; border: 0; padding: 0; color: var(--nv-green-800); font-size: var(--nv-body-sm); font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* ── Fases: el rótulo que da sensación de avance ────────────────────────── */
+.lab-fase { margin-top: var(--nv-space-16); }
+.lab-fase:first-of-type { margin-top: 0; }
+.lab-fase__rotulo { display: flex; align-items: center; gap: var(--nv-space-4); margin: 0 0 var(--nv-space-6); font-size: var(--nv-body); }
+.lab-fase__rotulo::before, .lab-fase__rotulo::after { content: ''; flex: 1 1 auto; height: 1px; background: var(--nv-line); }
+.lab-fase__n { display: inline-block; min-width: 28px; padding: 2px var(--nv-space-2); margin-right: var(--nv-space-3); background: var(--nv-green-700); color: var(--nv-white); border-radius: var(--nv-radius-pill); font-size: var(--nv-label); font-weight: 700; text-align: center; }
+.lab-fase__texto { color: var(--nv-green-800); font-size: var(--nv-label); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; }
+.lab-fase__pregunta { display: block; margin-top: var(--nv-space-2); color: var(--nv-muted); font-size: var(--nv-body-sm); font-weight: 400; letter-spacing: 0; text-transform: none; }
+
+/* ── Tarjeta: la unidad de todo lo que viene ────────────────────────────── */
+.lab-caja { margin-top: var(--nv-space-6); padding: var(--nv-space-8); background: var(--nv-white); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); box-shadow: var(--nv-shadow-sm); }
+.lab-caja:first-child { margin-top: 0; }
+.lab-caja h2, .lab-caja h3 { margin: 0 auto var(--nv-space-2); font-family: var(--nv-font-serif); font-weight: 500; text-align: center; }
+.lab-caja h2 { font-size: var(--nv-title-md); line-height: 1.2; }
+.lab-caja h3 { font-size: var(--nv-title-sm); line-height: 1.25; }
+.lab-caja__que { max-width: var(--nv-lectura); margin: 0 auto var(--nv-space-6); color: var(--nv-copy); text-align: center; }
+.lab-caja__que:last-child { margin-bottom: 0; }
+
+/* La lectura: qué dice el dibujo, en llano y con la cifra delante. */
+.lab-lectura { max-width: var(--nv-dibujo); margin: var(--nv-space-6) auto 0; padding: var(--nv-space-4) var(--nv-space-5); background: var(--nv-green-100); border-radius: var(--nv-radius-md); color: var(--nv-green-900); font-size: var(--nv-body-sm); }
+.lab-lectura strong { display: block; margin-bottom: var(--nv-space-1); font-size: var(--nv-body); }
+.lab-nota { max-width: var(--nv-dibujo); margin: var(--nv-space-4) auto 0; color: var(--nv-muted); font-size: var(--nv-label); text-align: center; }
+
+/* ── Resumen de cuatro cifras ───────────────────────────────────────────── */
+.lab-cifras { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--nv-space-4); }
+.lab-cifra { padding: var(--nv-space-6); background: var(--nv-white); border: 1px solid var(--nv-line); border-top: 3px solid var(--nv-green-600); border-radius: var(--nv-radius-md); box-shadow: var(--nv-shadow-sm); }
+.lab-cifra__rot { margin: 0; color: var(--nv-copy); font-size: var(--nv-body-sm); font-weight: 600; }
+.lab-cifra__dato { margin: var(--nv-space-2) 0 var(--nv-space-1); font-size: var(--nv-title-md); font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.lab-cifra__pie { margin: 0; color: var(--nv-muted); font-size: var(--nv-label); line-height: 1.5; }
+
+/* ── Tabla de posiciones ────────────────────────────────────────────────── */
+.lab-tabla-scroll { overflow-x: auto; }
+.lab-tabla { width: 100%; min-width: 560px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.lab-tabla th, .lab-tabla td { padding: var(--nv-space-3) var(--nv-space-4); text-align: right; border-bottom: 1px solid var(--nv-line); }
+.lab-tabla th:first-child, .lab-tabla td:first-child { text-align: left; }
+.lab-tabla thead th { color: var(--nv-muted); font-size: var(--nv-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.lab-tabla tbody th { font-weight: 600; }
+.lab-tabla__isin { display: block; color: var(--nv-muted); font-size: var(--nv-label); font-weight: 400; letter-spacing: .04em; }
+.lab-tabla__peso { width: 76px; padding: var(--nv-space-1) var(--nv-space-2); border: 1px solid var(--nv-line-strong); border-radius: var(--nv-radius-sm); text-align: right; font-variant-numeric: tabular-nums; }
+.lab-tabla tfoot td, .lab-tabla tfoot th { border-bottom: 0; font-weight: 700; }
+
+/* Barra con rótulo directo: el patrón de todos los repartos. */
+.lab-barra { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(0, 3fr) auto; gap: var(--nv-space-4); align-items: center; margin-bottom: var(--nv-space-3); }
+.lab-barra:last-child { margin-bottom: 0; }
+.lab-barra__nombre { font-size: var(--nv-body-sm); }
+.lab-barra__pista { position: relative; height: 12px; background: var(--nv-mist); border-radius: var(--nv-radius-pill); }
+.lab-barra__valor { position: absolute; inset: 0 auto 0 0; width: var(--v); background: var(--c, var(--nv-serie-2)); border-radius: var(--nv-radius-pill); }
+.lab-barra__marca { position: absolute; top: -4px; bottom: -4px; left: var(--m); width: 2px; background: var(--nv-navy-900); }
+.lab-barra__cifra { min-width: 52px; text-align: right; font-size: var(--nv-body-sm); font-weight: 700; font-variant-numeric: tabular-nums; }
+.lab-barras { max-width: var(--nv-dibujo); margin: 0 auto; }
+
+/* Reparto apilado + leyenda con rótulo directo */
+.lab-apilada { display: flex; max-width: var(--nv-dibujo); height: 26px; margin: 0 auto var(--nv-space-6); overflow: hidden; border-radius: var(--nv-radius-pill); }
+.lab-apilada__parte { flex: 0 0 auto; width: var(--v); background: var(--c); }
+.lab-leyenda { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--nv-space-2) var(--nv-space-6); max-width: var(--nv-dibujo); margin: 0 auto; padding: 0; list-style: none; }
+.lab-leyenda li { display: flex; gap: var(--nv-space-3); align-items: baseline; justify-content: space-between; padding: var(--nv-space-2) 0; border-bottom: 1px solid var(--nv-line); font-size: var(--nv-body-sm); }
+.lab-leyenda__chip { flex: 0 0 auto; width: 10px; height: 10px; margin-right: var(--nv-space-2); border-radius: 2px; background: var(--c); display: inline-block; }
+.lab-leyenda__cifra { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* ── Marco de gráfico: rejilla en CSS, dibujo en SVG, rótulos en HTML ───── */
+.lab-dibujo { max-width: var(--nv-dibujo); margin: 0 auto; }
+.lab-marco {
+  position: relative; height: 300px;
+  margin: var(--nv-space-8) 0 var(--nv-space-10) var(--nv-space-12);
+  border-left: 1px solid var(--nv-line-strong); border-bottom: 1px solid var(--nv-line-strong);
+  background:
+    repeating-linear-gradient(to top, transparent 0 calc(25% - 1px), var(--nv-line) 25%),
+    repeating-linear-gradient(to right, transparent 0 calc(25% - 1px), var(--nv-line) 25%);
+}
+/* Rejilla fina: una línea cada octavo, con la marcada cada cuarto encima. */
+.lab-marco--fino {
+  background:
+    repeating-linear-gradient(to top, transparent 0 calc(25% - 1px), var(--nv-line) 25%),
+    repeating-linear-gradient(to right, transparent 0 calc(25% - 1px), var(--nv-line) 25%),
+    repeating-linear-gradient(to top, transparent 0 calc(6.25% - 1px), var(--nv-line-fina) 6.25%),
+    repeating-linear-gradient(to right, transparent 0 calc(6.25% - 1px), var(--nv-line-fina) 6.25%);
+}
+/* Cada combinación de la nube. Va en HTML y no en el SVG porque el marco se
+   estira a lo ancho y un <circle> saldría ovalado. */
+.lab-nube { position: absolute; width: 7px; height: 7px; margin: 0 0 -3px -3px; background: var(--nv-navy-700); border-radius: 50%; opacity: .3; }
+/* Punto sin rótulo: marca el mínimo del recorrido sin añadir palabras. */
+.lab-punto--min { --d: 10px; }
+.lab-marco--bajo { height: 132px; margin-top: var(--nv-space-12); }
+.lab-marco svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+/* El rótulo del eje va horizontal y encima del marco: girado a la izquierda se
+   comía el sitio de las cifras y se pisaba con ellas. */
+.lab-eje-y, .lab-eje-x { position: absolute; margin: 0; color: var(--nv-muted); font-size: var(--nv-label); font-weight: 700; letter-spacing: .04em; }
+.lab-eje-y { left: 0; top: -22px; white-space: nowrap; }
+.lab-eje-x { left: 50%; bottom: -48px; transform: translateX(-50%); white-space: nowrap; }
+.lab-marca { position: absolute; color: var(--nv-muted); font-size: var(--nv-label); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lab-marca--y { left: -44px; transform: translateY(50%); }
+.lab-marca--x { bottom: -26px; transform: translateX(-50%); }
+.lab-marca--fin { transform: translateX(-100%); }
+.lab-marca--ini { transform: none; }
+/* El punto es un ancla de tamaño cero: el círculo y el rótulo cuelgan de él en
+   absoluto. Antes el rótulo iba dentro del flujo, así que la altura del
+   elemento era círculo + rótulo y el translate(-50%,50%) que lo centraba se
+   calculaba sobre esa altura: medido, 8 de los 9 puntos caían hasta 12,5 puntos
+   porcentuales por debajo de su coordenada. Con el ancla a cero, «bottom» y
+   «left» son exactamente el dato. */
+.lab-punto { --d: 14px; position: absolute; width: 0; height: 0; }
+.lab-punto::before {
+  content: ''; position: absolute;
+  left: calc(var(--d) / -2 - 3px); top: calc(var(--d) / -2 - 3px);
+  width: var(--d); height: var(--d);
+  background: var(--p); border: 3px solid var(--nv-white); border-radius: 50%; box-shadow: 0 0 0 2px var(--p);
+}
+.lab-punto__rot {
+  position: absolute; left: 50%; top: calc(var(--d) / 2 + 10px); transform: translateX(-50%);
+  padding: var(--nv-space-1) var(--nv-space-2); white-space: nowrap;
+  background: var(--nv-white); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-sm);
+  box-shadow: var(--nv-shadow-sm); color: var(--nv-ink); font-size: var(--nv-label); font-weight: 700;
+}
+.lab-punto--arriba .lab-punto__rot { top: auto; bottom: calc(var(--d) / 2 + 10px); }
+/* En el extremo derecho el rótulo cuelga hacia dentro para no desbordar. */
+.lab-punto--fin .lab-punto__rot { left: auto; right: 0; top: auto; bottom: calc(var(--d) / 2 + 10px); transform: none; }
+.lab-punto--tu { --d: 18px; }
+
+/* ── Glosario en línea ──────────────────────────────────────────────────── */
+.lab-glosa { padding: 0; background: none; border: 0; border-bottom: 1px dotted var(--nv-green-700); color: inherit; font: inherit; cursor: help; }
+.lab-glosa__pop { max-width: 320px; padding: var(--nv-space-4); border: 1px solid var(--nv-line-strong); border-radius: var(--nv-radius-md); box-shadow: var(--nv-shadow-md); color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-glosa__pop strong { display: block; margin-bottom: var(--nv-space-1); color: var(--nv-ink); }
+
+/* ── Herramientas: buscar, montar, guardar ──────────────────────────────── */
+.lab-tool { display: grid; gap: var(--nv-space-4); max-width: var(--nv-dibujo); margin: 0 auto; }
+.lab-tool__rot { display: block; margin-bottom: var(--nv-space-2); color: var(--nv-muted); font-size: var(--nv-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.lab-campo { width: 100%; padding: var(--nv-space-3) var(--nv-space-4); background: var(--nv-white); border: 1px solid var(--nv-line-strong); border-radius: var(--nv-radius-sm); }
+.lab-campo::placeholder { color: var(--nv-muted); }
+.lab-lista { margin: 0; padding: 0; list-style: none; border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); }
+.lab-lista li { display: flex; gap: var(--nv-space-4); align-items: center; justify-content: space-between; padding: var(--nv-space-3) var(--nv-space-4); border-bottom: 1px solid var(--nv-line); }
+.lab-lista li:last-child { border-bottom: 0; }
+.lab-lista__pie { display: block; color: var(--nv-muted); font-size: var(--nv-label); font-weight: 400; }
+.lab-btn { padding: var(--nv-space-2) var(--nv-space-4); background: var(--nv-green-700); color: var(--nv-white); border: 1px solid var(--nv-green-800); border-radius: var(--nv-radius-pill); font-size: var(--nv-body-sm); font-weight: 600; cursor: pointer; white-space: nowrap; }
+.lab-btn--sec { background: var(--nv-white); color: var(--nv-green-800); border-color: var(--nv-line-strong); }
+.lab-fila { display: flex; flex-wrap: wrap; gap: var(--nv-space-4); align-items: flex-end; }
+.lab-fila > div { flex: 1 1 200px; }
+
+/* ── Plegables ──────────────────────────────────────────────────────────── */
+.lab-mas { max-width: var(--nv-dibujo); margin: var(--nv-space-6) auto 0; border-top: 1px solid var(--nv-line); }
+.lab-mas > summary { padding: var(--nv-space-3) 0; color: var(--nv-green-800); font-size: var(--nv-body-sm); font-weight: 600; cursor: pointer; }
+.lab-mas__cuerpo { padding-bottom: var(--nv-space-4); }
+
+/* ── Solapamiento ───────────────────────────────────────────────────────── */
+.lab-par { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--nv-space-4); align-items: start; padding: var(--nv-space-4) 0; border-bottom: 1px solid var(--nv-line); }
+.lab-par:last-of-type { border-bottom: 0; }
+.lab-par h4 { margin: 0 0 var(--nv-space-1); font-size: var(--nv-body); }
+.lab-par p { margin: 0; color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-par__cifra { padding: var(--nv-space-2) var(--nv-space-3); background: var(--t); border-radius: var(--nv-radius-sm); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lab-rejilla { border-collapse: collapse; margin: 0 auto; font-size: var(--nv-label); font-variant-numeric: tabular-nums; }
+.lab-rejilla th, .lab-rejilla td { padding: var(--nv-space-2); border: 1px solid var(--nv-line); text-align: center; }
+.lab-rejilla th { color: var(--nv-muted); font-weight: 600; }
+.lab-rejilla th[scope="row"] { text-align: left; white-space: nowrap; }
+
+/* ── Carteras modelo ────────────────────────────────────────────────────── */
+.lab-modelos { display: grid; grid-template-columns: repeat(auto-fit, minmax(264px, 1fr)); gap: var(--nv-space-4); }
+.lab-modelo { display: flex; flex-direction: column; gap: var(--nv-space-3); padding: var(--nv-space-6); border: 1px solid var(--nv-line); border-top: 3px solid var(--nv-serie-6); border-radius: var(--nv-radius-md); }
+.lab-modelo h4 { margin: 0; font-family: var(--nv-font-serif); font-size: var(--nv-body-lg); font-weight: 500; line-height: 1.25; }
+.lab-modelo p { margin: 0; color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-modelo ul { margin: 0; padding-left: var(--nv-space-5); color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-modelo__pie { margin-top: auto; color: var(--nv-muted); font-size: var(--nv-label); }
+
+/* ── Glosario y supuestos ───────────────────────────────────────────────── */
+.lab-fichas { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--nv-space-4); }
+.lab-ficha { padding: var(--nv-space-5); border: 1px solid var(--nv-line); border-left: 3px solid var(--nv-bronze-500); border-radius: var(--nv-radius-md); }
+.lab-ficha h4 { margin: 0 0 var(--nv-space-2); font-size: var(--nv-body); }
+.lab-ficha p { margin: 0; color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-limites { max-width: 74ch; margin: 0 auto; color: var(--nv-copy); font-size: var(--nv-body-sm); }
+.lab-limites p { margin: 0 0 var(--nv-space-4); }
+.lab-limites p:last-child { margin-bottom: 0; }
+
+.lab-pie { padding: var(--nv-space-8) 0; background: var(--nv-navy-900); color: rgba(255,255,255,.78); text-align: center; font-size: var(--nv-body-sm); }
+.lab-pie p { margin: 0 auto; width: min(100% - 48px, var(--nv-ancho)); }
+
+/* ── Estrechando ────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lab-portada { min-height: 248px; padding: var(--nv-space-8) var(--nv-space-6); }
+  .lab-portada__texto { padding-inline: var(--nv-space-4); }
+  .lab-portada__marca { font-size: var(--nv-title-lg); }
+  .lab-portada__seccion { letter-spacing: .25em; }
+  .lab-cifras { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-caja { padding: var(--nv-space-5); }
+  .lab-fase__rotulo::before, .lab-fase__rotulo::after { display: none; }
+  .lab-fase__texto { white-space: normal; }
+}
+@media (max-width: 640px) {
+  .lab { width: min(100% - 32px, var(--nv-ancho)); }
+  .lab-cifras { grid-template-columns: 1fr; }
+  .lab-barra { grid-template-columns: minmax(0, 1fr) auto; }
+  .lab-barra__pista { grid-column: 1 / -1; }
+  .lab-marco { height: 240px; margin-left: var(--nv-space-10); }
+  .lab-marco--bajo { height: 120px; }
+  .lab-eje-y { left: 0; }
+  .lab-marca--y { left: -38px; }
+  /* Se retiran las marcas secundarias, nunca se encoge la letra. */
+  .lab-marca--sec { display: none; }
+  .lab-marco--fino { background-size: auto, auto, 100% 12.5%, 12.5% 100%; }
+}
+
+/* Rombo de un reparto de referencia: forma distinta del círculo de tu punto,
+   para que la diferencia no dependa solo del color. */
+.lab-rombo { position: absolute; width: 11px; height: 11px; margin: 0 0 -6px -6px; background: var(--nv-navy-800); border: 2px solid var(--nv-white); rotate: 45deg; }
+.lab-rotulo { position: absolute; transform: translate(-50%, -18px); white-space: nowrap; color: var(--nv-navy-800); font-size: var(--nv-label); font-weight: 700; }
+.lab-rotulo--abajo { transform: translate(-50%, 26px); }
+
+/* Mapa: el SVG lleva siluetas, no texto, así que puede escalar sin encoger
+   ninguna letra. Las cifras van en la leyenda, que es HTML. */
+.lab-mapa { max-width: var(--nv-dibujo); margin: 0 auto var(--nv-space-6); }
+.lab-mapa svg { display: block; width: 100%; height: auto; }
+.lab-leyenda--mapa { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.lab-leyenda__chip--fuera { background: repeating-linear-gradient(45deg, var(--nv-mist) 0 3px, var(--nv-white) 3px 6px); border: 1px solid var(--nv-line-strong); }
+
+/* De dónde sale el dato, a la altura del dibujo y no en la nota al pie. */
+.lab-base {
+  display: flex; gap: var(--nv-space-3); align-items: baseline; flex-wrap: wrap;
+  max-width: var(--nv-dibujo); margin: 0 auto var(--nv-space-4);
+  padding: var(--nv-space-2) var(--nv-space-4);
+  background: var(--nv-bronze-100); border-radius: var(--nv-radius-sm);
+  color: var(--nv-copy); font-size: var(--nv-body-sm); text-align: left;
+}
+.lab-base__eti { color: var(--nv-bronze-800); font-size: var(--nv-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+
+/* La cifra, encima de su continente: rótulo directo antes que leyenda. Va en
+   HTML porque dentro del SVG encogería con el viewBox. */
+.lab-mapa { position: relative; }
+.lab-mapa__cifra {
+  position: absolute; transform: translate(-50%, -50%);
+  padding: 2px var(--nv-space-2);
+  background: var(--nv-white); border-radius: var(--nv-radius-pill);
+  box-shadow: 0 1px 3px rgba(6, 23, 47, .22);
+  color: var(--nv-ink); font-size: var(--nv-label); font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.lab-mapa__cifra--cero { color: var(--nv-muted); font-weight: 600; }
+
+/* Datos y posiciones del ejemplo estático. Cada combinación se declara una vez.
+   Se conservan los valores originales: no son reglas globales del portal. */
+.lab-barra__valor--demo-001 { --v:34%; --c:var(--nv-serie-1); }
+.lab-barra__valor--demo-002 { --v:18%; --c:var(--nv-serie-2); }
+.lab-barra__valor--demo-003 { --v:22%; --c:var(--nv-serie-3); }
+.lab-barra__valor--demo-004 { --v:12%; --c:var(--nv-serie-4); }
+.lab-barra__valor--demo-005 { --v:8%; --c:var(--nv-serie-5); }
+.lab-barra__valor--demo-006 { --v:6%; --c:var(--nv-serie-7); }
+.lab-apilada__parte--demo-007 { --v:52%; --c:var(--nv-serie-1); }
+.lab-leyenda__chip--demo-008 { --c:var(--nv-serie-1); }
+.lab-leyenda__chip--demo-009 { --c:var(--nv-serie-3); }
+.lab-leyenda__chip--demo-010 { --c:var(--nv-serie-4); }
+.lab-leyenda__chip--demo-011 { --c:var(--nv-serie-5); }
+.lab-leyenda__chip--demo-012 { --c:var(--nv-serie-7); }
+.lab-barra__valor--demo-013 { --v:45%; --c:var(--nv-serie-1); }
+.lab-barra__valor--demo-014 { --v:32%; --c:var(--nv-serie-2); }
+.lab-barra__valor--demo-015 { --v:15%; --c:var(--nv-serie-3); }
+.lab-barra__valor--demo-016 { --v:3%; --c:var(--nv-serie-5); }
+.lab-barra__valor--demo-017 { --v:5%; --c:var(--nv-serie-6); }
+.lab-mapa__cifra--demo-018 { left:20%; top:33%; }
+.lab-mapa__cifra--demo-019 { left:55%; top:33.5%; }
+.lab-mapa__cifra--demo-020 { left:78.8%; top:33.8%; }
+.lab-mapa__cifra--demo-021 { left:87.1%; top:80%; }
+.lab-mapa__cifra--demo-022 { left:50.4%; top:57%; }
+.lab-leyenda__chip--demo-023 { --c:var(--nv-serie-2); }
+.lab-leyenda__chip--demo-024 { --c:var(--nv-mist); }
+.lab-marca--demo-025 { bottom:2.7%; }
+.lab-marca--demo-026 { bottom:16.2%; }
+.lab-marca--demo-027 { bottom:29.7%; }
+.lab-marca--demo-028 { bottom:43.2%; }
+.lab-marca--demo-029 { bottom:56.8%; }
+.lab-marca--demo-030 { bottom:70.3%; }
+.lab-marca--demo-031 { bottom:83.8%; }
+.lab-marca--demo-032 { bottom:97.3%; }
+.lab-marca--demo-033 { left:0%; }
+.lab-marca--demo-034 { left:16.7%; }
+.lab-marca--demo-035 { left:33.3%; }
+.lab-marca--demo-036 { left:50.0%; }
+.lab-marca--demo-037 { left:66.7%; }
+.lab-marca--demo-038 { left:83.3%; }
+.lab-marca--demo-039 { left:100.0%; }
+.lab-punto--demo-040 { left:100%; bottom:81.1%; --p:var(--nv-green-700); }
+.lab-punto--demo-041 { left:38.6%; bottom:4.3%; --p:var(--nv-bronze-700); }
+.lab-marca--demo-042 { bottom:100.0%; }
+.lab-marca--demo-043 { bottom:75.0%; }
+.lab-marca--demo-044 { bottom:50.0%; }
+.lab-marca--demo-045 { bottom:25.0%; }
+.lab-marca--demo-046 { bottom:0.0%; }
+.lab-punto--demo-047 { left:38.6%; bottom:8.7%; --p:var(--nv-bronze-700); }
+.lab-barra__valor--demo-048 { --v:46%; --c:var(--nv-serie-1); }
+.lab-barra__marca--demo-049 { --m:34%; }
+.lab-barra__valor--demo-050 { --v:27%; --c:var(--nv-serie-2); }
+.lab-barra__marca--demo-051 { --m:18%; }
+.lab-barra__valor--demo-052 { --v:12%; --c:var(--nv-serie-5); }
+.lab-barra__marca--demo-053 { --m:8%; }
+.lab-barra__valor--demo-054 { --v:8%; --c:var(--nv-serie-3); }
+.lab-barra__marca--demo-055 { --m:22%; }
+.lab-barra__valor--demo-056 { --v:5%; --c:var(--nv-serie-7); }
+.lab-barra__marca--demo-057 { --m:6%; }
+.lab-barra__valor--demo-058 { --v:2%; --c:var(--nv-serie-4); }
+.lab-barra__marca--demo-059 { --m:12%; }
+.lab-marca--demo-060 { bottom:11.1%; }
+.lab-marca--demo-061 { bottom:22.2%; }
+.lab-marca--demo-062 { bottom:33.3%; }
+.lab-marca--demo-063 { bottom:44.4%; }
+.lab-marca--demo-064 { bottom:55.6%; }
+.lab-marca--demo-065 { bottom:66.7%; }
+.lab-marca--demo-066 { bottom:77.8%; }
+.lab-marca--demo-067 { bottom:88.9%; }
+.lab-marca--demo-068 { left:11.1%; }
+.lab-marca--demo-069 { left:22.2%; }
+.lab-marca--demo-070 { left:44.4%; }
+.lab-marca--demo-071 { left:55.6%; }
+.lab-marca--demo-072 { left:77.8%; }
+.lab-marca--demo-073 { left:88.9%; }
+.lab-nube--demo-074 { left:67.7%; bottom:71.9%; }
+.lab-nube--demo-075 { left:85.3%; bottom:80.1%; }
+.lab-nube--demo-076 { left:31.1%; bottom:54.3%; }
+.lab-nube--demo-077 { left:91.7%; bottom:89.3%; }
+.lab-nube--demo-078 { left:37.1%; bottom:55.8%; }
+.lab-nube--demo-079 { left:10.8%; bottom:31.3%; }
+.lab-nube--demo-080 { left:21.8%; bottom:42.8%; }
+.lab-nube--demo-081 { left:31.7%; bottom:56.4%; }
+.lab-nube--demo-082 { left:86.1%; bottom:77.1%; }
+.lab-nube--demo-083 { left:35.3%; bottom:58.8%; }
+.lab-nube--demo-084 { left:27.6%; bottom:47.8%; }
+.lab-nube--demo-085 { left:55.6%; bottom:72.4%; }
+.lab-nube--demo-086 { left:11.3%; bottom:32.5%; }
+.lab-nube--demo-087 { left:88.8%; bottom:94.4%; }
+.lab-nube--demo-088 { left:45.9%; bottom:57.8%; }
+.lab-nube--demo-089 { left:66.4%; bottom:83.3%; }
+.lab-nube--demo-090 { left:35.0%; bottom:51.0%; }
+.lab-nube--demo-091 { left:78.4%; bottom:84.6%; }
+.lab-nube--demo-092 { left:80.0%; bottom:93.6%; }
+.lab-nube--demo-093 { left:91.2%; bottom:88.8%; }
+.lab-nube--demo-094 { left:46.5%; bottom:63.1%; }
+.lab-nube--demo-095 { left:42.7%; bottom:64.5%; }
+.lab-nube--demo-096 { left:41.5%; bottom:42.6%; }
+.lab-nube--demo-097 { left:78.9%; bottom:92.5%; }
+.lab-nube--demo-098 { left:78.8%; bottom:82.5%; }
+.lab-nube--demo-099 { left:90.7%; bottom:84.8%; }
+.lab-nube--demo-100 { left:23.9%; bottom:47.3%; }
+.lab-nube--demo-101 { left:49.4%; bottom:69.1%; }
+.lab-nube--demo-102 { left:90.8%; bottom:81.7%; }
+.lab-nube--demo-103 { left:84.9%; bottom:96.1%; }
+.lab-nube--demo-104 { left:18.7%; bottom:38.5%; }
+.lab-nube--demo-105 { left:61.3%; bottom:69.5%; }
+.lab-nube--demo-106 { left:71.1%; bottom:82.9%; }
+.lab-nube--demo-107 { left:29.6%; bottom:54.2%; }
+.lab-nube--demo-108 { left:55.2%; bottom:75.3%; }
+.lab-nube--demo-109 { left:30.2%; bottom:53.0%; }
+.lab-nube--demo-110 { left:56.3%; bottom:75.4%; }
+.lab-nube--demo-111 { left:40.1%; bottom:59.4%; }
+.lab-nube--demo-112 { left:54.0%; bottom:72.6%; }
+.lab-nube--demo-113 { left:20.8%; bottom:44.9%; }
+.lab-nube--demo-114 { left:35.2%; bottom:49.6%; }
+.lab-nube--demo-115 { left:91.1%; bottom:92.9%; }
+.lab-nube--demo-116 { left:29.8%; bottom:50.2%; }
+.lab-nube--demo-117 { left:81.3%; bottom:75.5%; }
+.lab-punto--demo-118 { left:37.8%; bottom:57.8%; --p:var(--nv-green-700); }
+.lab-punto--demo-119 { left:11.7%; bottom:23.3%; --p:var(--nv-navy-800); }
+.lab-punto--demo-120 { left:52.2%; bottom:71.1%; --p:var(--nv-bronze-700); }
+.lab-marca--demo-121 { bottom:12.5%; }
+.lab-marca--demo-122 { bottom:37.5%; }
+.lab-marca--demo-123 { bottom:62.5%; }
+.lab-marca--demo-124 { bottom:87.5%; }
+.lab-rombo--demo-125 { left:29.3%; bottom:44.8%; }
+.lab-rombo--demo-126 { left:35.0%; bottom:54.3%; }
+.lab-rombo--demo-127 { left:47.7%; bottom:63.7%; }
+.lab-rombo--demo-128 { left:63.3%; bottom:73.3%; }
+.lab-rombo--demo-129 { left:80.2%; bottom:82.8%; }
+.lab-punto--demo-130 { left:53.5%; bottom:66.1%; --p:var(--nv-green-700); }
+.lab-par__cifra--demo-131 { --t:var(--nv-serie-2-t); }
+.lab-par__cifra--demo-132 { --t:var(--nv-serie-1-t); }
+.lab-par__cifra--demo-133 { --t:var(--nv-serie-6-t); }
+.lab-cell--demo-134 { background:var(--nv-serie-1-t); }
+.lab-marca--demo-135 { bottom:7.7%; }
+.lab-marca--demo-136 { bottom:15.4%; }
+.lab-marca--demo-137 { bottom:23.1%; }
+.lab-marca--demo-138 { bottom:30.8%; }
+.lab-marca--demo-139 { bottom:38.5%; }
+.lab-marca--demo-140 { bottom:46.2%; }
+.lab-marca--demo-141 { bottom:53.8%; }
+.lab-marca--demo-142 { bottom:61.5%; }
+.lab-marca--demo-143 { bottom:69.2%; }
+.lab-marca--demo-144 { bottom:76.9%; }
+.lab-marca--demo-145 { bottom:84.6%; }
+.lab-marca--demo-146 { bottom:92.3%; }
+.lab-marca--demo-147 { left:10.0%; }
+.lab-marca--demo-148 { left:20.0%; }
+.lab-marca--demo-149 { left:30.0%; }
+.lab-marca--demo-150 { left:40.0%; }
+.lab-marca--demo-151 { left:60.0%; }
+.lab-marca--demo-152 { left:70.0%; }
+.lab-marca--demo-153 { left:80.0%; }
+.lab-marca--demo-154 { left:90.0%; }
+.lab-punto--demo-155 { left:100%; bottom:85.8%; --p:var(--nv-green-600); }
+.lab-punto--demo-156 { left:100%; bottom:42.7%; --p:var(--nv-green-700); }
+.lab-punto--demo-157 { left:100%; bottom:17.9%; --p:var(--nv-navy-800); }

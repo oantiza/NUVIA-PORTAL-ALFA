@@ -428,6 +428,15 @@ html.nuvia-company-embedded .login-wrap {
 .note { font-size: 12px; color: var(--ink2); border-left: 2px solid var(--gold); padding: 2px 0 2px 14px; line-height: 1.55; }
 
 /* ---------- gráficos ---------- */
+.chart-svg { width: 100%; height: auto; display: block; }
+.chart-legend .sw--sma50 { background: var(--sma50); }
+.chart-legend .sw--positive { background: var(--pos); }
+.tiny.chart-caption { margin-top: 4px; }
+/* Composición de las tablas fundamentales: valores originales extraídos del JSX. */
+.card.card--table { overflow-x: auto; }
+.eyebrow.fundamental-heading { margin-bottom: 10px; }
+.tiny.fundamental-institutions-label { margin: 12px 0 6px; }
+.tbl tbody td.fundamental-institution-name { font-size: 11px; }
 .chart-box { position: relative; }
 .chart-legend { display: flex; gap: 16px; font-size: 10.5px; color: var(--ink2); margin-bottom: 8px; flex-wrap: wrap; }
 .chart-legend .sw { display: inline-block; width: 14px; height: 3px; vertical-align: middle; margin-right: 5px; }

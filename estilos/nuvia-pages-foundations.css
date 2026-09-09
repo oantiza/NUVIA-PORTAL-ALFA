@@ -2690,6 +2690,7 @@
 }
 
 .curso-figura__img { min-height: 120px; }
+.curso-figura__asset { display: block; width: 100%; height: auto; }
 
 .curso-figura figcaption {
   display: flex;

@@ -18,7 +18,7 @@ export function Sparkline({ candles, width = 560, height = 150, stroke = 'var(--
 
   const first = candles[0], last = candles[candles.length - 1];
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox={`0 0 ${width} ${height}`} className="chart-svg">
       <path d={area} fill="var(--chart-area)" />
       <path d={path} fill="none" stroke={stroke} strokeWidth="1.8" />
       <text x={pad} y={height - 2} fontSize="10" fill="var(--ink3)">{first.date}</text>
@@ -47,10 +47,10 @@ export function DualBars({ rows, aLabel, bLabel, currency, height = 210, compact
   return (
     <div>
       <div className="chart-legend">
-        <span><span className="sw" style={{ background: 'var(--sma50)' }} /><IndicatorInfo name={aLabel} /></span>
-        <span><span className="sw" style={{ background: 'var(--pos)' }} /><IndicatorInfo name={bLabel} /></span>
+        <span><span className="sw sw--sma50" /><IndicatorInfo name={aLabel} /></span>
+        <span><span className="sw sw--positive" /><IndicatorInfo name={bLabel} /></span>
       </div>
-      <svg viewBox={`0 0 ${width} ${height}`} style={{ width: '100%', height: 'auto', display: 'block' }}>
+      <svg viewBox={`0 0 ${width} ${height}`} className="chart-svg">
         <line x1={padL} x2={width - padR} y1={zeroY} y2={zeroY} stroke="var(--line)" strokeWidth="1" />
         {rows.map((r, i) => {
           const cx = padL + groupW * i + groupW / 2;
@@ -72,7 +72,7 @@ export function DualBars({ rows, aLabel, bLabel, currency, height = 210, compact
           );
         })}
       </svg>
-      <div className="tiny" style={{ marginTop: 4 }}>
+      <div className="tiny chart-caption">
         Barras ausentes: dato no disponible. {' '}
         Último ejercicio: {aLabel} {fmtBig(rows[rows.length - 1]?.a, currency)} · {bLabel} {fmtBig(rows[rows.length - 1]?.b, currency)}
       </div>

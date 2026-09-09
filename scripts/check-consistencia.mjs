@@ -13,10 +13,9 @@
      node scripts/check-consistencia.mjs . --presupuesto → imprime el presupuesto
                                                            actual, para fijar el techo
 
-   EL PRESUPUESTO DE ESTILOS INLINE es la pieza clave. Hoy hay 2.786. El techo
-   se fija por encima del recuento actual de cada página y se BAJA cada semana.
-   Nunca sube. Así la deuda solo puede decrecer mientras se construye el resto
-   del sitio.
+   Las páginas publicadas ya tienen presupuesto cero de atributos style.
+   Los bloques <style> también se rechazan. Las reglas consolidadas viven
+   en las hojas CSS existentes; este control evita reintroducir la deuda.
    ========================================================================== */
 
 import { readFile, readdir } from 'node:fs/promises';
@@ -44,19 +43,18 @@ const FAMILIA_LOGO = 'nuvia-family-wealth-exact-2026-v2';
 /* Techo de atributos style="…" por página.
    Bajar estos números conforme se migra. Cuando una llegue a 0, se congela. */
 const PRESUPUESTO_INLINE = {
-  // Migración completada: las 13 páginas publicadas están en cero.
-  // Los tres restantes son valores calculados en tiempo real que no pueden
-  // expresarse como clase (anchura de una barra de progreso).
+  // Todas las páginas publicadas están en cero. Curso y guía comunican
+  // su porcentaje mediante data-progress; la anchura vive en componentes.
   'academia.html': 0,
   'bienestar.html': 0,
   'cartera.html': 0,
   'colaboradores.html': 0,
-  'curso.html': 1,          // barra de progreso del capítulo
+  'curso.html': 0,
   'economia.html': 0,
   'fiscalidad.html': 0,
   'guia-fiscal.html': 0,
   'guia-impuestos.html': 0,
-  'guia-planificacion.html': 1,  // barra de progreso de la hoja de ruta
+  'guia-planificacion.html': 0,
   'guia-sucesiones.html': 0,
   'guia-ahorro.html': 0,
   'guia-calendario.html': 0,
@@ -70,7 +68,7 @@ const PRESUPUESTO_INLINE = {
   'que-es-nuvia.html': 0,
   'temas.html': 0,
   'vivienda.html': 0,
-  'sistema-visual.html': 11,     // muestra del sistema, no publicada
+  'sistema-visual.html': 0,     // muestra del sistema, publicada con noindex
 };
 
 /* Colores retirados del uso como texto por no llegar a WCAG AA.
@@ -139,7 +137,8 @@ for (const pagina of paginas) {
   }
 
   /* ── 5 · Presupuesto de estilos inline ────────────────────────────────── */
-  const inline = (markup.match(/\sstyle=["']/g) ?? []).length;
+  const inline = (markup.match(/\sstyle\s*=\s*["']/gi) ?? []).length;
+  if (/<style\b/i.test(markup)) en('bloque <style> en el HTML: trasladarlo a una hoja CSS');
   presupuestoReal[pagina] = inline;
   const techo = PRESUPUESTO_INLINE[pagina];
   if (techo === undefined) {

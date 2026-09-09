@@ -1,4 +1,5 @@
 .alpha-root { min-width: 0; --navy: var(--nv-navy-900); --ink: var(--nv-text); --muted: var(--nv-text-muted); --paper: var(--nv-surface-page); --surface: var(--nv-surface); --line: var(--nv-line); }
+.alpha-technical-chart .sw--volume { background: #a7cbbb; }
 .alpha-hero { padding: var(--nv-space-8) max(var(--nv-page-gutter), calc((100% - var(--nv-container)) / 2)); background: var(--nv-surface-institutional); color: var(--nv-text-on-dark); }
 .alpha-hero h1 { color: var(--nv-text-on-dark); font-family: var(--nv-font-sans); font-size: var(--nv-display-md); line-height: 1.12; letter-spacing: -.03em; margin: 12px 0; }
 .alpha-hero .eyebrow { color: #c1ce88; }

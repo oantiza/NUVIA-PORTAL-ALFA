@@ -133,7 +133,7 @@ const assets = new Map([
   ['src/assets/markets/secondary-news/wall-street-records.jpg', '4b0a025883086aab03b5f2c105b79f38dbacd1a23a7ae518260f6c83032f5cce'],
   ['src/assets/home/patrimonio-family-home-young-family-natural-20260901.webp', '905ee21798f11044a74d813750cd83584dcaeb26f1fa7e1016b3256146e7ef0e'],
   ['src/assets/home/wellbeing-life-balance-banner-v2.webp', '7af9d0ab2c2b0af67f9b7bc3665a40d3028bf8c87f6f4d88571ebd73f1ef6941'],
-  ['src/assets/home/academia-aprendizaje-natural-20260908.webp', '11f5440e2206c50bc659d6bb529609347244cfe8269fc2e1163cbb85a87ecc44'],
+  ['src/assets/home/academia-finanzas-moderna-20260909.webp', 'a55ab77dbfd42c886591109249da3165237ca09918d8b20452771e5b7cad0270'],
   ['src/assets/home/lecturas-con-criterio-banner-sin-boton.webp', '59768e8b2f5a5ac19001c4a3d6cf9cd7b4e2568c7b5758f03eb0015a81dda02a'],
 ]);
 for (const [asset, expected] of assets) {
@@ -151,7 +151,7 @@ assert.match(css, /\.ac-essential-card:focus-visible\s*\{[\s\S]*?outline:/,
   'Las tarjetas esenciales conservan foco visible');
 const academyHero = academyPage.match(/<section\b[^>]*id="academy"[\s\S]*?<\/section>/)?.[0];
 assert.ok(academyHero?.includes('nv-space-entry--academy'), 'Academia interior comparte la composición de Inicio');
-assert.ok(academyHero.includes('src/assets/home/academia-aprender-en-familia-20260909.webp'), 'Academia usa la panorámica de aprendizaje en familia con la izquierda en penumbra');
+assert.ok(academyHero.includes('src/assets/home/academia-aula-ampliada-derecha-20260909.webp'), 'Academia interior usa la ampliación panorámica del aula hacia la derecha');
 assert.ok(academyHero.includes('{{ pestanas }}') && academyHero.includes('{{ p.abrir }}'), 'Las pestañas de Academia siguen conectadas');
 assert.ok(!academyPage.includes('data-academy-intro'), 'No reaparece la entradilla de Academia');
 

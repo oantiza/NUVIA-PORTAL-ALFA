@@ -175,7 +175,7 @@
             <div class="curso-progreso">
               <span class="curso-progreso__label">Actividades de este capítulo</span>
               <div class="curso-progreso__track">
-                <span class="curso-progreso__fill" style="width:{{ progresoAncho }}"></span>
+                <span class="curso-progreso__fill nv-progress-fill" data-progress="{{ progresoAncho }}"></span>
               </div>
               <strong>{{ progresoTexto }}</strong>
             </div>
@@ -690,7 +690,7 @@ class Component extends DCLogic {
       tituloCapitulo: cap.titulo,
       subtituloCapitulo: cap.subtitulo,
       introCapitulo: cap.intro,
-      infografiaImg: React.createElement('img', { src: cap.img, alt: cap.alt, style: { display: 'block', width: '100%', height: 'auto' } }),
+      infografiaImg: React.createElement('img', { src: cap.img, alt: cap.alt, className: 'curso-figura__asset' }),
       infografiaSrc: cap.img,
       infografiaAlt: cap.alt,
       infografiaKicker: 'Infografía del capítulo ' + cap.numero,

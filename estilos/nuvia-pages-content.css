@@ -2611,13 +2611,19 @@ p.gu-figure { font-size: var(--nv-result-value); line-height: var(--nv-result-li
   padding: var(--nv-space-16) var(--nv-space-12);
 }
 
+/* Titulares editoriales en Fraunces (09-09-2026): los cinco banners de la
+   Home y las cabeceras de Patrimonio, Economía, Bienestar y Academia. Fraunces
+   se sirve en 400/500/600, sin 700: el peso baja al de titular para no pedir
+   una negrita que el navegador tendría que falsificar, y el espaciado se
+   afloja porque la serif no admite el apretado de Inter. */
 .home26-plate__title {
   margin: 0;
   color: var(--nv-white);
+  font-family: var(--nv-font-serif);
   font-size: 42px;
-  font-weight: 700;
+  font-weight: var(--nv-weight-title);
   line-height: 1.06;
-  letter-spacing: -.028em;
+  letter-spacing: -.018em;
 }
 
 .home26-plate--light .home26-plate__title { color: var(--nv-text); }
@@ -2838,7 +2844,7 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
 .nuvia-company-frame { width: 100%; height: 1200px; border: 0; display: block; border-radius: 16px; }
 
 /* Afinación de las portadas · 08-09-2026. Se conserva la identidad original. */
-.nv-home-main .home-hero h1 { font-weight: 600; line-height: 1.08; letter-spacing: -.045em; }
+.nv-home-main .home-hero h1 { font-family: var(--nv-font-serif); font-weight: var(--nv-weight-title); line-height: 1.08; letter-spacing: -.03em; }
 .nv-home-main .home-hero .nv-hero__lead { max-width: 660px; line-height: 1.7; }
 .nv-home-main .home-pillars { margin-top: var(--nv-space-12); }
 .nv-home-main .home-pillars__row { padding-top: var(--nv-space-6); }

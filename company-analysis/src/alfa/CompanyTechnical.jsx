@@ -79,18 +79,18 @@ export default function CompanyTechnical({ entry }) {
           <button type="button" className="alpha-button" aria-pressed={bands} onClick={() => setBands(v => !v)}>Bandas de Bollinger</button>
         </div>
         </div>
-        <p>Intervalo solicitado: {RANGES.find(([key]) => key === range)[1]}. Datos mostrados: {fmtDate(rows[0]?.date)} — {fmtDate(latest.date)} · {rows.length} observaciones · {data.currency}.
+        <p data-testid="technical-interval">Intervalo solicitado: {RANGES.find(([key]) => key === range)[1]}. Datos mostrados: {fmtDate(rows[0]?.date)} — {fmtDate(latest.date)} · {rows.length} observaciones · {data.currency}.
           {data.points[0].date > target && ' El historial disponible es más corto que el intervalo solicitado.'}</p>
         {analysis.gaps.length > 0 && <p className="alpha-notice">Se observan {analysis.gaps.length} saltos de más de diez días naturales en el historial. Los indicadores se reinician después de cada salto; no se imputan sesiones ni se conectan los tramos del gráfico.</p>}
         <TechnicalChart rows={rows} series={priceSeries} title={`${isOhlcv && style === 'candles' ? 'Velas ajustadas · serie derivada' : 'Evolución del cierre ajustado'} · ${data.currency}`} levels={NONE} height={460} volume={isOhlcv} />
         {isOhlcv && <p className="note">Verde: cierre igual o superior a la apertura; rojo: cierre inferior a la apertura. Los colores de las velas y del volumen describen la sesión, no una señal. El volumen usa una escala independiente en la franja inferior.</p>}
-        <p className="note screen-only">Arrastra para desplazarte y usa la rueda o el gesto de ampliación para examinar el gráfico. La tabla inferior ofrece los mismos datos.</p>
+        <p className="note screen-only">Arrastra para desplazarte y usa la rueda o el gesto de ampliación para examinar el gráfico.</p>
         <div className="alpha-technical-grid">
           <TechnicalChart rows={rows} series={RSI} title="RSI (14) · Referencias de escala 30 y 70" levels={LEVELS} />
           <TechnicalChart rows={rows} series={MACD} title="MACD · Medias exponenciales 12, 26 y 9" levels={NONE} />
         </div>
-        {isOhlcv && <TechnicalChart rows={rows} series={STOCHASTIC} title="Oscilador estocástico (14, 3) · Referencias de escala 20 y 80" levels={STOCHASTIC_LEVELS} />}
-        {isOhlcv && <TechnicalChart rows={rows} series={ATR} title={`ATR (14) · rango de velas ajustadas · ${data.currency}`} levels={NONE} height={180} />}
+        {isOhlcv && <div className="alpha-technical-grid"><TechnicalChart rows={rows} series={STOCHASTIC} title="Oscilador estocástico (14, 3) · Referencias de escala 20 y 80" levels={STOCHASTIC_LEVELS} />
+          <TechnicalChart rows={rows} series={ATR} title={`ATR (14) · rango de velas ajustadas · ${data.currency}`} levels={NONE} /></div>}
         <p className="alpha-chart-credit">Gráficos: <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView Lightweight Charts™</a>
           {' '}· Copyright (с) 2024 TradingView, Inc. · Datos: EODHD.
           {' '}<a href={chartNoticeUrl}>Aviso de atribución</a> · <a href={chartLicenseUrl}>Licencia</a>.</p>
@@ -118,7 +118,7 @@ export default function CompanyTechnical({ entry }) {
         </Section>
         <details ref={methods} className="alpha-technical-methods"><summary>Métodos, ajustes y límites</summary>
           <p>Los indicadores se calculan en este navegador a partir de la serie elegida. Las medias, RSI, MACD y Bollinger utilizan su cierre ajustado, sin mezclar descargas. Un cierre ajustado puede incorporar ajustes del proveedor por operaciones corporativas y dividendos; no es el precio efectivo al que se operó ese día.</p>
-          {isOhlcv && <><p>Velas: apertura, máximo y mínimo originales multiplicados por cierre ajustado / cierre original; el cierre de la vela es el cierre ajustado. Los originales se conservan en la tabla. El volumen ya viene ajustado por splits del proveedor: no se aplica de nuevo el factor. Volumen ausente = «—», distinto de cero.</p>
+          {isOhlcv && <><p>Velas: apertura, máximo y mínimo originales multiplicados por cierre ajustado / cierre original; el cierre de la vela es el cierre ajustado. El volumen ya viene ajustado por splits del proveedor: no se aplica de nuevo el factor. Volumen ausente = «—», distinto de cero.</p>
             <p>ATR (14): rango verdadero = máximo de (máximo − mínimo, valor absoluto de máximo − cierre previo, valor absoluto de mínimo − cierre previo), usando siempre velas ajustadas. Primer rango = máximo − mínimo; semilla = media de 14 rangos; después ATR = (ATR previo × 13 + rango actual) / 14. Se reinicia tras más de diez días naturales sin datos; menos de 14 observaciones = «—».</p>
             <p>Estocástico (14, 3): %K = 100 × (cierre − mínimo de 14 sesiones) / (máximo de 14 sesiones − mínimo de 14 sesiones), sobre velas ajustadas; si todo el rango es plano, %K = 50. %D es la media simple de las tres últimas observaciones %K. Las líneas 20 y 80 son referencias de escala descriptivas: no generan señales ni recomendaciones. El cálculo se reinicia tras más de diez días naturales sin datos.</p>
             <p>Integridad: identidad, moneda, cobertura, huellas SHA-256 por año y revisión conjunta comprobadas al leer. Revisión de esta descarga: <code className="alpha-technical-revision">{data.revision}</code>.</p></>}
@@ -126,16 +126,7 @@ export default function CompanyTechnical({ entry }) {
           <p>Volatilidad: desviación típica muestral de 30 rendimientos logarítmicos × √252. Caída máxima: mínimo de cierre/máximo previo − 1 en los últimos doce meses. Máximos y mínimos son de cierres ajustados, no de precios intradiarios. Los cambios por periodo usan el último cierre en o antes de la fecha objetivo, con tolerancia de diez días. Mes, trimestre y semestre usan 30, 90 y 183 días; las fechas reales se muestran en cada tarjeta.</p>
           <p>Los intervalos terminan en el último dato disponible, no en la fecha de consulta. Las medias se calculan antes de recortar el intervalo visible, con hasta un año adicional de preparación. Si no hay observaciones suficientes aparece «—». Los valores extremos del RSI o del estocástico y los cruces de medias no generan señales, alertas ni recomendaciones.</p>
         </details>
-        <details className="alpha-technical-data screen-only"><summary>Tabla de datos del intervalo ({rows.length} observaciones)</summary>
-          <div className="alpha-table" tabIndex={0} role="region" aria-label="Datos del análisis técnico">
-            <table className="tbl"><caption>Cierres ajustados e indicadores locales · {data.currency}. «—» significa historial insuficiente.</caption>
-              <thead><tr>{['Fecha', 'Cierre ajustado', 'SMA 50', 'SMA 200', 'RSI', 'MACD', 'Referencia', 'Histograma', 'Banda inferior', 'Banda superior',...(isOhlcv ? ['Apertura original','Máximo original','Mínimo original','Cierre original','Factor de ajuste','Apertura ajustada','Máximo ajustado','Mínimo ajustado','Volumen (acciones)','ATR (14)','Estocástico %K (14)','Estocástico %D (3)'] : [])].map(t => <th scope="col" key={t}>{t}</th>)}</tr></thead>
-              <tbody>{rows.map(p => <tr key={p.date}><th scope="row">{p.date}</th>{['value', 'sma50', 'sma200', 'rsi', 'macd', 'signal', 'histogram', 'lower', 'upper',...(isOhlcv ? ['rawOpen','rawHigh','rawLow','rawClose'] : [])].map(k => <td key={k}>{number(p[k])}</td>)}
-                {isOhlcv && <><td>{fmtNum(p.factor,6)}</td>{['open','high','low'].map(k => <td key={k}>{number(p.candle[k])}</td>)}<td>{Number.isFinite(p.volume) ? fmtNum(p.volume,0) : '—'}</td><td>{number(p.atr)}</td><td>{number(p.stochasticK)}</td><td>{number(p.stochasticD)}</td></>}
-              </tr>)}</tbody>
-            </table>
-          </div>
-        </details>
+
       </>}
     </Section>
   </section>;

@@ -82,8 +82,8 @@ export default function TechnicalChart({ rows, series, title, levels = [], heigh
     <figcaption>{title}</figcaption>
     <div className="chart-legend">{series.map(s => <span key={s.key}><span className="sw" style={{ background: s.color }} />{s.label}</span>)}
       {volume && <span><span className="sw sw--volume" />Volumen · franja inferior · acciones ajustadas por splits</span>}</div>
-    {hasValues ? <><div ref={host} className="screen-only" role="img" aria-label={`${title}. Valores consultables en la tabla de datos.`} />
+    {hasValues ? <><div ref={host} className="screen-only" role="img" aria-label={`${title}`} />
       <img ref={printImage} className="print-only alpha-technical-print" alt={title} /></>
-      : <p className="note">Sin datos suficientes para representar este indicador en el intervalo. Consulta la tabla y los métodos.</p>}
+      : <p className="note">Sin datos suficientes para representar este indicador en el intervalo. Consulta los métodos.</p>}
   </figure>;
 }

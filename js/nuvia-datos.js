@@ -138,6 +138,9 @@ export function fichaParaModulos(doc) {
   const sectors = distribucion(ex?.sectors);
   const equityRegions = distribucion(ex?.regions);
   const equity = ex?.asset_mix?.equity;
+  const mix = ex?.asset_mix && typeof ex.asset_mix === 'object' && !Array.isArray(ex.asset_mix)
+    ? ex.asset_mix
+    : null;
   return {
     asset_id: doc.asset_id,
     identity: {
@@ -157,7 +160,15 @@ export function fichaParaModulos(doc) {
     metrics: doc.metrics || null,
     history: doc.history || null,
     quality: doc.quality || null,
-    pms_exposure: Number.isFinite(equity) && equity >= 0 && equity <= 1 ? { equity } : null,
+    pms_exposure: Number.isFinite(equity) && equity >= 0 && equity <= 1
+      ? {
+          equity,
+          fixed_income: Number.isFinite(mix?.fixed_income) ? mix.fixed_income : null,
+          cash: Number.isFinite(mix?.cash) ? mix.cash : null,
+          other: Number.isFinite(mix?.other) ? mix.other : null,
+        }
+      : null,
+    asset_mix: mix,
     exposure_detail: sectors || equityRegions ? { sectors, equity_regions: equityRegions } : null,
     fundamentals_summary: null,
     performance_preview: null,

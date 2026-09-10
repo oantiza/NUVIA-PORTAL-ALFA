@@ -514,19 +514,49 @@ export function perfilesReferencia(proporciones = [10, 30, 50, 70, 90]) {
     .filter((p) => Number.isFinite(p.volatilidad) && Number.isFinite(p.rentabilidad));
 }
 
-/** Punto comparable de la cartera en el mapa de supuestos. Solo se calcula
- * cuando todas las posiciones con peso tienen una de las cuatro clases del
- * modelo. Así no se mezcla historial real con estimaciones ni se descartan
- * silenciosamente fondos mixtos o clases desconocidas. */
-export function perfilCarteraSupuestos(posiciones = [], pesos = {}) {
+/** Punto comparable de la cartera en el mapa de supuestos.
+ * Se calcula cuando todas las posiciones con peso pertenecen a las cuatro
+ * clases del modelo o cuentan con desglose (asset_mix / look-through) que
+ * permite descomponerlas en dichas clases (renta variable, fija, monetario
+ * y activos reales). Si alguna posición queda sin clasificar y sin desglose,
+ * devuelve null para no inventar datos ni mezclar bases incomparables. */
+export function perfilCarteraSupuestos(posiciones = [], pesos = {}, activos = []) {
+  const activosPorId = new Map((Array.isArray(activos) ? activos : []).map((a) => [a.asset_id, a]));
   const porClase = {};
   for (const p of posiciones) {
     const id = p?.activo?.asset_id;
     const peso = Number(pesos?.[id]);
     if (!Number.isFinite(peso) || peso <= 0) continue;
-    const clase = String(p?.activo?.economic_asset_class || '').toUpperCase();
-    if (!CLASES[clase]) return null;
-    porClase[clase] = (porClase[clase] || 0) + peso * 100;
+
+    const activo = activosPorId.get(id) || p?.activo || {};
+    const clase = String(activo?.economic_asset_class || p?.activo?.economic_asset_class || '').toUpperCase();
+    const mix = activo?.asset_mix || p?.activo?.asset_mix || activo?.exposures?.asset_mix || activo?.pms_exposure;
+
+    // Si tiene un desglose explícito de clases (asset_mix o look-through):
+    if (mix && typeof mix === 'object') {
+      const eq = Number(mix.equity) || 0;
+      const fi = Number(mix.fixed_income ?? mix.bond) || 0;
+      const ca = Number(mix.cash ?? mix.money_market) || 0;
+      const ra = Number(mix.real_asset ?? mix.commodities) || 0;
+      const suma = eq + fi + ca + ra;
+      if (suma > 0) {
+        porClase.EQUITY = (porClase.EQUITY || 0) + peso * 100 * (eq / suma);
+        porClase.FIXED_INCOME = (porClase.FIXED_INCOME || 0) + peso * 100 * (fi / suma);
+        porClase.MONEY_MARKET = (porClase.MONEY_MARKET || 0) + peso * 100 * (ca / suma);
+        if (ra > 0) {
+          porClase.REAL_ASSET = (porClase.REAL_ASSET || 0) + peso * 100 * (ra / suma);
+        }
+        continue;
+      }
+    }
+
+    // Si no tiene asset_mix pero su clase económica es una de las 4 clases puras:
+    if (CLASES[clase]) {
+      porClase[clase] = (porClase[clase] || 0) + peso * 100;
+      continue;
+    }
+
+    return null;
   }
   const clases = Object.entries(porClase).map(([clase, peso]) => ({ clase, peso }));
   if (!clases.length) return null;
@@ -1435,17 +1465,10 @@ export async function montaAnalisis(raiz, {
     series, pesos, interactiva: true, nombreDe, tasaSinRiesgo, metricas,
   }));
 
-  /* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7). */
-  objetivo.riesgo.append(grupoMapaRiesgo({ referencia: perfilCarteraSupuestos(posiciones, pesos) }));
-
-  /* Proyección por simulación y matriz de correlaciones: abiertos para todos. */
-  objetivo.escenarios.append(grupoProyeccion(metricas));
-  objetivo.solapes.append(grupoCorrelaciones(series, pesos, nombreDe));
-
   const cargando = el('p', { class: 'nv-cons__nota', role: 'status' }, 'Consultando fichas y desgloses…');
   objetivo.sectores.append(cargando);
 
-  /* Concentración: fichas de la maestra, con la calidad del dato declarada. */
+  /* Fichas de la maestra, con la calidad del dato declarada. */
   const posAnalisis = posicionesParaAnalisis(posiciones, pesos);
   const ids = posAnalisis.map((p) => p.asset_id);
   const fichas = await Promise.all(ids.map((id) => detalleDe(datos, id)));
@@ -1458,10 +1481,18 @@ export async function montaAnalisis(raiz, {
     region: f.identity?.region,
     pms_exposure: f.pms_exposure,
     exposure_detail: f.exposure_detail,
+    asset_mix: f.asset_mix || null,
   }));
   const sinFicha = ids.filter((id, i) => !fichas[i]);
 
   cargando.remove();
+
+  /* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7). */
+  objetivo.riesgo.append(grupoMapaRiesgo({ referencia: perfilCarteraSupuestos(posiciones, pesos, activos) }));
+
+  /* Proyección por simulación y matriz de correlaciones: abiertos para todos. */
+  objetivo.escenarios.append(grupoProyeccion(metricas));
+  objetivo.solapes.append(grupoCorrelaciones(series, pesos, nombreDe));
 
   objetivo.sectores.append(tablaReparto('En qué sectores está la renta variable',
     'El peso de cada sector dentro de la parte de renta variable de la combinación.',

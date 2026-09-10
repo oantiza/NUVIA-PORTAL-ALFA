@@ -312,6 +312,18 @@ console.log('\n— Los perfiles de referencia del mapa riesgo-retorno (encargo 2
     perfilCarteraSupuestos([
       { activo: { asset_id: 'M', economic_asset_class: 'MIXED' } },
     ], { M: 1 }) === null);
+  const carteraMixto = perfilCarteraSupuestos([
+    { activo: { asset_id: 'M', economic_asset_class: 'MIXED', asset_mix: { equity: 0.6, fixed_income: 0.4 } } },
+  ], { M: 1 });
+  comprueba('Un fondo mixto con asset_mix se descompone y da el mismo resultado que la mezcla directa',
+    carteraMixto?.rentabilidad === cartera?.rentabilidad && carteraMixto?.volatilidad === cartera?.volatilidad);
+  const carteraConFichas = perfilCarteraSupuestos([
+    { activo: { asset_id: 'MIXTO', economic_asset_class: 'MIXED' } },
+  ], { MIXTO: 1 }, [
+    { asset_id: 'MIXTO', asset_mix: { equity: 0.5, fixed_income: 0.5 } },
+  ]);
+  comprueba('Un fondo mixto resuelve su asset_mix desde la lista de fichas cargadas',
+    carteraConFichas?.rentabilidad === 0.051 && carteraConFichas?.volatilidad === 0.0859);
   const escalas = escalasMapaRiesgo(perfiles.concat([cartera]));
   comprueba('Las escalas se ajustan a los puntos y no fuerzan un cero lejano',
     escalas.x.min > 0 && escalas.y.min > 0);

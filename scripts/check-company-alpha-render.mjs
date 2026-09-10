@@ -374,18 +374,19 @@ try {
     }
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, `Técnico: desborde a ${width}`);
     await page.locator('.alpha-technical-chart').first().screenshot({ path: resolve(output, `tecnico-precios-${width}.png`) });
-    await page.locator('.alpha-technical-grid').screenshot({ path: resolve(output, `tecnico-indicadores-${width}.png`) });
-    const oneYear = await page.locator('.alpha-technical-data tbody tr').count();
+    await page.locator('.alpha-technical-grid').first().screenshot({ path: resolve(output, `tecnico-indicadores-${width}.png`) });
+    const observations = async () => Number((await page.getByTestId('technical-interval').innerText()).match(/(\d+) observaciones/)[1]);
+    const oneYear = await observations();
+    assert.equal(await page.locator('.alpha-technical-data').count(), 0);
+    assert.equal(await page.locator('.alpha-technical-grid').last().locator('figure').count(), 2);
+    await page.locator('.alpha-technical-grid').last().screenshot({ path: resolve(output, `tecnico-estocastico-atr-${width}.png`) });
     await page.getByRole('button', { name: '5 años', exact: true }).click();
-    assert.ok(await page.locator('.alpha-technical-data tbody tr').count() > oneYear * 4);
+    assert.ok(await observations() > oneYear * 4);
     await page.getByRole('button', { name: '6 meses', exact: true }).click();
-    assert.ok(await page.locator('.alpha-technical-data tbody tr').count() < oneYear);
+    assert.ok(await observations() < oneYear);
     await page.getByRole('button', { name: 'Bandas de Bollinger', exact: true }).click();
     await page.locator('.alpha-technical-chart .chart-legend').getByText('Banda superior', { exact: true }).waitFor();
     assert.equal(reads.length, beforePrices + 8, 'Los controles locales no vuelven a descargar precios');
-    await page.locator('.alpha-technical-data summary').click();
-    assert.equal(await page.getByRole('region', { name: 'Datos del análisis técnico' }).getAttribute('tabindex'), '0');
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1), false, 'La tabla desplaza dentro de su contenedor');
     if (width === 1440) {
       for(const [scenario,message] of [['ohlcvOffline','No se han podido consultar los precios.'],['ohlcvMissing','No hay un historial OHLCV'],['ohlcvInvalid','huella de integridad']]) {
         mode=scenario;
@@ -439,7 +440,7 @@ try {
     }
     assert.deepEqual(errors, [], `Errores JS a ${width}`);
     assert.deepEqual(requests, [], `Peticiones externas a ${width}`);
-    console.log(`OK módulo ${width}px: pestañas completas, cinco gráficos, volumen integrado, crédito común, fundamentales, fechas, ATR, estocástico, periodos y tabla; cero desbordes, errores o red externa. ${width === 1440 ? 'Respaldo, dos series, reintento, cancelación y aislamiento comprobados.' : ''}`);
+    console.log(`OK módulo ${width}px: pestañas completas, cinco gráficos, volumen integrado, crédito común, fundamentales, fechas, ATR, estocástico, periodos; cero desbordes, errores o red externa. ${width === 1440 ? 'Respaldo, dos series, reintento, cancelación y aislamiento comprobados.' : ''}`);
     await context.close();
   }
 } finally {

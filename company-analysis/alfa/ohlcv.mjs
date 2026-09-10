@@ -72,11 +72,42 @@ export function atrWilder(candles, period = 14) {
   });
 }
 
+// Oscilador estocástico: %K sitúa el cierre dentro del rango máximo-mínimo
+// de n sesiones; %D es la media simple de las últimas smooth observaciones %K.
+// Un rango completamente plano se representa en el punto medio neutral (50).
+export function stochasticOscillator(candles, period = 14, smooth = 3) {
+  if (!Number.isInteger(period) || period < 1 || !Number.isInteger(smooth) || smooth < 1) throw new Error('Periodos del estocástico no válidos.');
+  let segment = [], previous = null;
+  return candles.map(p => {
+    const epsilon = Math.max(p?.high || 0, p?.close || 0, p?.open || 0) * Number.EPSILON * 8;
+    if (!validDay(p?.date) || !['open', 'high', 'low', 'close'].every(key => positive(p[key]))
+      || p.low > Math.min(p.open, p.close) + epsilon || p.high + epsilon < Math.max(p.open, p.close)
+      || previous && p.date <= previous.date) throw new Error('Vela del estocástico no válida.');
+    if (previous && Date.parse(p.date) - Date.parse(previous.date) > 10 * 86400000) segment = [];
+    segment.push(p);
+    const window = segment.slice(-period);
+    let k = null, d = null;
+    if (window.length === period) {
+      const highest = Math.max(...window.map(v => v.high)), lowest = Math.min(...window.map(v => v.low));
+      k = highest === lowest ? 50 : 100 * (p.close - lowest) / (highest - lowest);
+      const kWindow = segment.slice(-(period + smooth - 1)).map((point, index, source) => {
+        if (index < period - 1) return null;
+        const range = source.slice(index - period + 1, index + 1);
+        const hi = Math.max(...range.map(v => v.high)), lo = Math.min(...range.map(v => v.low));
+        return hi === lo ? 50 : 100 * (point.close - lo) / (hi - lo);
+      }).filter(Number.isFinite).slice(-smooth);
+      if (kWindow.length === smooth) d = kWindow.reduce((a, b) => a + b, 0) / smooth;
+    }
+    previous = p;
+    return { date: p.date, stochasticK: k, stochasticD: d };
+  });
+}
+
 // Todos los indicadores comparten descarga y escala, sin mezclar /series/.
 export function technicalOhlcv(raw) {
-  const candles = adjustedCandles(raw), atr = atrWilder(candles);
+  const candles = adjustedCandles(raw), atr = atrWilder(candles), stochastic = stochasticOscillator(candles);
   const analysis = technicalAnalysis(candles.map(p => ({date:p.date,value:p.close})));
-  const rows = analysis.rows.map((row,i) => ({...row,candle:candles[i],atr:atr[i].atr,volume:raw[i].volume,
+  const rows = analysis.rows.map((row,i) => ({...row,candle:candles[i],atr:atr[i].atr,...stochastic[i],volume:raw[i].volume,
     rawOpen:raw[i].open,rawHigh:raw[i].high,rawLow:raw[i].low,rawClose:raw[i].close,factor:candles[i].factor}));
   return {...analysis,rows,latest:rows.at(-1) ?? null};
 }

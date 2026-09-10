@@ -323,7 +323,7 @@ try {
       await page.getByRole('tab', { name: 'Técnico', exact: true }).click();
       await page.locator('[data-testid="technical-source"]').waitFor();
       await page.pdf({ path: resolve(output, 'PRUEBA_TECNICO.pdf'), preferCSSPageSize: true, printBackground: true });
-      assert.equal(await page.locator('.alpha-technical-print').evaluateAll(images => images.length===4 && images.every(img => img.naturalWidth > 0)), true, 'Los cuatro gráficos, incluido precio con volumen, se capturan para impresión');
+        assert.equal(await page.locator('.alpha-technical-print').evaluateAll(images => images.length===5 && images.every(img => img.naturalWidth > 0)), true, 'Los cinco gráficos, incluido precio con volumen, se capturan para impresión');
       assert.equal(await page.locator('.alpha-technical-methods').getAttribute('open'), null, 'La impresión restaura el estado del desplegable');
       await page.getByRole('tab', { name: 'Resumen', exact: true }).click();
     }
@@ -336,7 +336,7 @@ try {
     await page.getByRole('tab', { name: 'Técnico', exact: true }).click();
     await page.locator('[data-testid="technical-source"]').waitFor();
     assert.equal(reads.length, beforePrices + 8, 'Solo manifiesto, seis años OHLCV y relectura de versión');
-    assert.equal(await page.locator('.alpha-technical-chart').count(), 4);
+    assert.equal(await page.locator('.alpha-technical-chart').count(), 5);
     assert.equal(await page.locator('.alpha-price-volume').count(), 1, 'Volumen integrado bajo el precio');
     assert.equal(await page.locator('.alpha-technical-chart a').count(), 0, 'Sin logos/enlaces superpuestos dentro de los gráficos');
     const attribution = page.locator('.alpha-chart-credit');
@@ -435,11 +435,11 @@ try {
       releaseHeld();
       await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
       assert.match(await page.locator('.alpha-company').innerText(),/AENA.MC/);
-      assert.equal(await page.locator('.alpha-technical-chart').count(),4);
+        assert.equal(await page.locator('.alpha-technical-chart').count(),5);
     }
     assert.deepEqual(errors, [], `Errores JS a ${width}`);
     assert.deepEqual(requests, [], `Peticiones externas a ${width}`);
-    console.log(`OK módulo ${width}px: pestañas completas, cuatro gráficos, volumen integrado, crédito común, fundamentales, fechas, ATR, periodos y tabla; cero desbordes, errores o red externa. ${width === 1440 ? 'Respaldo, dos series, reintento, cancelación y aislamiento comprobados.' : ''}`);
+    console.log(`OK módulo ${width}px: pestañas completas, cinco gráficos, volumen integrado, crédito común, fundamentales, fechas, ATR, estocástico, periodos y tabla; cero desbordes, errores o red externa. ${width === 1440 ? 'Respaldo, dos series, reintento, cancelación y aislamiento comprobados.' : ''}`);
     await context.close();
   }
 } finally {

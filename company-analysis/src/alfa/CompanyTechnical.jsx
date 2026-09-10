@@ -16,7 +16,8 @@ const RSI = [{ key: 'rsi', label: 'RSI (14)', color: '#946822' }];
 const MACD = [{ key: 'macd', label: 'MACD (12, 26)', color: '#2b7284' }, { key: 'signal', label: 'Media de referencia (9)', color: '#946822' }, { key: 'histogram', label: 'Diferencia', color: '#a7b6c6', histogram: true }];
 const CANDLE = {key:'candle',label:'Velas ajustadas · serie derivada',color:'#102c50',candlestick:true};
 const ATR = [{key:'atr',label:'ATR de Wilder (14)',color:'#745a9b'}];
-const LEVELS = [30, 70], NONE = [];
+const STOCHASTIC = [{key:'stochasticK',label:'%K (14)',color:'#1f7885'}, {key:'stochasticD',label:'%D (3)',color:'#a06c20'}];
+const LEVELS = [30, 70], STOCHASTIC_LEVELS = [20, 80], NONE = [];
 const number = v => Number.isFinite(v) ? fmtNum(v, 2) : '—';
 // El motor devuelve fracciones; fmtPct recibe puntos porcentuales.
 const pct = v => Number.isFinite(v) ? fmtPct(v * 100, 1) : '—';
@@ -65,7 +66,7 @@ export default function CompanyTechnical({ entry }) {
       {data && latest && <>
         <p className="note" data-testid="technical-source">Fuente: EODHD, {isOhlcv ? 'histórico OHLCV' : 'serie de cierres anteriores'} guardado en la base propia. Último dato: <time dateTime={latest.date}>{fmtDate(latest.date)}</time>.
           {' '}Consulta al proveedor: {fmtDate(data.fetchedAt)}.{!isOhlcv && <> Actualización de la ficha: {fmtDate(data.loadedAt)}.</>} No son cotizaciones en tiempo real.</p>
-        {isOhlcv ? <p className="alpha-notice">Velas ajustadas: serie derivada de los precios originales mediante el factor cierre ajustado / cierre original. No son precios negociados. Línea, medias, RSI, MACD, Bollinger y ATR usan esta misma descarga; no se mezclan con la serie de cierres anteriores.</p>
+        {isOhlcv ? <p className="alpha-notice">Velas ajustadas: serie derivada de los precios originales mediante el factor cierre ajustado / cierre original. No son precios negociados. Línea, medias, RSI, MACD, Bollinger, ATR y estocástico usan esta misma descarga; no se mezclan con la serie de cierres anteriores.</p>
           : <p className="alpha-notice">Serie de cierres anteriores: conserva su propia fecha y sus datos originales. Para consultar velas, volumen y ATR, elige «Histórico OHLCV» en el selector.</p>}
         <div className="alpha-chart-tools">
         <div className="alpha-chart-heading"><div className="eyebrow">Precio · {RANGES.find(([key]) => key === range)[1]}</div><h3>Evolución</h3></div>
@@ -88,6 +89,7 @@ export default function CompanyTechnical({ entry }) {
           <TechnicalChart rows={rows} series={RSI} title="RSI (14) · Referencias de escala 30 y 70" levels={LEVELS} />
           <TechnicalChart rows={rows} series={MACD} title="MACD · Medias exponenciales 12, 26 y 9" levels={NONE} />
         </div>
+        {isOhlcv && <TechnicalChart rows={rows} series={STOCHASTIC} title="Oscilador estocástico (14, 3) · Referencias de escala 20 y 80" levels={STOCHASTIC_LEVELS} />}
         {isOhlcv && <TechnicalChart rows={rows} series={ATR} title={`ATR (14) · rango de velas ajustadas · ${data.currency}`} levels={NONE} height={180} />}
         <p className="alpha-chart-credit">Gráficos: <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView Lightweight Charts™</a>
           {' '}· Copyright (с) 2024 TradingView, Inc. · Datos: EODHD.
@@ -97,6 +99,7 @@ export default function CompanyTechnical({ entry }) {
             <Kpi label="Cierre ajustado" value={number(latest.value)} sub={data.currency} />
             {isOhlcv && <Kpi label="ATR (14)" value={number(latest.atr)} sub={`${data.currency} · serie derivada`} />}
             {isOhlcv && <Kpi label="Volumen de la sesión" value={Number.isFinite(latest.volume) ? fmtNum(latest.volume,0) : '—'} sub="Acciones · ajustado por splits" />}
+            {isOhlcv && <Kpi label="Estocástico %K / %D" value={`${number(latest.stochasticK)} / ${number(latest.stochasticD)}`} sub="14 sesiones · media de 3" />}
             <Kpi label="RSI (14)" value={number(latest.rsi)} />
             <Kpi label="SMA 50 / 200" value={`${number(latest.sma50)} / ${number(latest.sma200)}`} />
             <Kpi label="Precio vs SMA 200" value={pct(difference(latest.value, latest.sma200))} />
@@ -117,17 +120,18 @@ export default function CompanyTechnical({ entry }) {
           <p>Los indicadores se calculan en este navegador a partir de la serie elegida. Las medias, RSI, MACD y Bollinger utilizan su cierre ajustado, sin mezclar descargas. Un cierre ajustado puede incorporar ajustes del proveedor por operaciones corporativas y dividendos; no es el precio efectivo al que se operó ese día.</p>
           {isOhlcv && <><p>Velas: apertura, máximo y mínimo originales multiplicados por cierre ajustado / cierre original; el cierre de la vela es el cierre ajustado. Los originales se conservan en la tabla. El volumen ya viene ajustado por splits del proveedor: no se aplica de nuevo el factor. Volumen ausente = «—», distinto de cero.</p>
             <p>ATR (14): rango verdadero = máximo de (máximo − mínimo, valor absoluto de máximo − cierre previo, valor absoluto de mínimo − cierre previo), usando siempre velas ajustadas. Primer rango = máximo − mínimo; semilla = media de 14 rangos; después ATR = (ATR previo × 13 + rango actual) / 14. Se reinicia tras más de diez días naturales sin datos; menos de 14 observaciones = «—».</p>
+            <p>Estocástico (14, 3): %K = 100 × (cierre − mínimo de 14 sesiones) / (máximo de 14 sesiones − mínimo de 14 sesiones), sobre velas ajustadas; si todo el rango es plano, %K = 50. %D es la media simple de las tres últimas observaciones %K. Las líneas 20 y 80 son referencias de escala descriptivas: no generan señales ni recomendaciones. El cálculo se reinicia tras más de diez días naturales sin datos.</p>
             <p>Integridad: identidad, moneda, cobertura, huellas SHA-256 por año y revisión conjunta comprobadas al leer. Revisión de esta descarga: <code className="alpha-technical-revision">{data.revision}</code>.</p></>}
           <p>SMA: media aritmética de 50 o 200 observaciones. EMA: semilla de media simple y factor 2/(n+1). RSI: medias de Wilder de ganancias y pérdidas de 14 cambios; serie plana = 50. MACD: EMA12 − EMA26; referencia EMA9 del MACD; histograma = diferencia. Bollinger: media de 20 cierres ± dos desviaciones típicas poblacionales.</p>
           <p>Volatilidad: desviación típica muestral de 30 rendimientos logarítmicos × √252. Caída máxima: mínimo de cierre/máximo previo − 1 en los últimos doce meses. Máximos y mínimos son de cierres ajustados, no de precios intradiarios. Los cambios por periodo usan el último cierre en o antes de la fecha objetivo, con tolerancia de diez días. Mes, trimestre y semestre usan 30, 90 y 183 días; las fechas reales se muestran en cada tarjeta.</p>
-          <p>Los intervalos terminan en el último dato disponible, no en la fecha de consulta. Las medias se calculan antes de recortar el intervalo visible, con hasta un año adicional de preparación. Si no hay observaciones suficientes aparece «—». Los valores extremos del RSI y los cruces de medias no generan señales, alertas ni recomendaciones.</p>
+          <p>Los intervalos terminan en el último dato disponible, no en la fecha de consulta. Las medias se calculan antes de recortar el intervalo visible, con hasta un año adicional de preparación. Si no hay observaciones suficientes aparece «—». Los valores extremos del RSI o del estocástico y los cruces de medias no generan señales, alertas ni recomendaciones.</p>
         </details>
         <details className="alpha-technical-data screen-only"><summary>Tabla de datos del intervalo ({rows.length} observaciones)</summary>
           <div className="alpha-table" tabIndex={0} role="region" aria-label="Datos del análisis técnico">
             <table className="tbl"><caption>Cierres ajustados e indicadores locales · {data.currency}. «—» significa historial insuficiente.</caption>
-              <thead><tr>{['Fecha', 'Cierre ajustado', 'SMA 50', 'SMA 200', 'RSI', 'MACD', 'Referencia', 'Histograma', 'Banda inferior', 'Banda superior',...(isOhlcv ? ['Apertura original','Máximo original','Mínimo original','Cierre original','Factor de ajuste','Apertura ajustada','Máximo ajustado','Mínimo ajustado','Volumen (acciones)','ATR (14)'] : [])].map(t => <th scope="col" key={t}>{t}</th>)}</tr></thead>
+              <thead><tr>{['Fecha', 'Cierre ajustado', 'SMA 50', 'SMA 200', 'RSI', 'MACD', 'Referencia', 'Histograma', 'Banda inferior', 'Banda superior',...(isOhlcv ? ['Apertura original','Máximo original','Mínimo original','Cierre original','Factor de ajuste','Apertura ajustada','Máximo ajustado','Mínimo ajustado','Volumen (acciones)','ATR (14)','Estocástico %K (14)','Estocástico %D (3)'] : [])].map(t => <th scope="col" key={t}>{t}</th>)}</tr></thead>
               <tbody>{rows.map(p => <tr key={p.date}><th scope="row">{p.date}</th>{['value', 'sma50', 'sma200', 'rsi', 'macd', 'signal', 'histogram', 'lower', 'upper',...(isOhlcv ? ['rawOpen','rawHigh','rawLow','rawClose'] : [])].map(k => <td key={k}>{number(p[k])}</td>)}
-                {isOhlcv && <><td>{fmtNum(p.factor,6)}</td>{['open','high','low'].map(k => <td key={k}>{number(p.candle[k])}</td>)}<td>{Number.isFinite(p.volume) ? fmtNum(p.volume,0) : '—'}</td><td>{number(p.atr)}</td></>}
+                {isOhlcv && <><td>{fmtNum(p.factor,6)}</td>{['open','high','low'].map(k => <td key={k}>{number(p.candle[k])}</td>)}<td>{Number.isFinite(p.volume) ? fmtNum(p.volume,0) : '—'}</td><td>{number(p.atr)}</td><td>{number(p.stochasticK)}</td><td>{number(p.stochasticD)}</td></>}
               </tr>)}</tbody>
             </table>
           </div>

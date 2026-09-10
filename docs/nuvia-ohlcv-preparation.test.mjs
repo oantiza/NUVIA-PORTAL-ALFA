@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { inspectOhlcv, annualOhlcv, adjustedCandles, atrWilder } from '../company-analysis/alfa/ohlcv.mjs';
+import { inspectOhlcv, annualOhlcv, adjustedCandles, atrWilder, stochasticOscillator, technicalOhlcv } from '../company-analysis/alfa/ohlcv.mjs';
 
 const p = { date: '2025-06-18', open: 100, high: 110, low: 90, close: 100, adjusted_close: 10, volume: 1000 };
 const meta = { isin: 'ES0105046017', symbol: 'AENA.MC', currency: 'EUR', fetchedAt: '2026-09-04T00:00:00Z', revision: 'a'.repeat(64) };
@@ -43,4 +43,18 @@ test('ATR: semilla y suavizado manual, plano, historial corto y reinicio tras hu
   assert.equal(atrWilder([...candles, { ...p, date: '2025-08-15' }]).at(-1).atr, null);
   assert.throws(() => atrWilder(candles, 0));
   assert.throws(() => atrWilder([p, p]));
+});
+test('estocástico: fórmula 14/3, rango plano, preparación y reinicio tras hueco', () => {
+  const candles = Array.from({ length: 17 }, (_, i) => ({ ...p, date: `2025-07-${String(i + 1).padStart(2, '0')}`, high: i + 11, low: i + 1, open: i + 6, close: i + 10 }));
+  const values = stochasticOscillator(candles);
+  assert.equal(values[12].stochasticK, null);
+  assert.ok(Math.abs(values[13].stochasticK - 100 * 22 / 23) < 1e-12);
+  assert.equal(values[14].stochasticD, null);
+  assert.ok(Number.isFinite(values[15].stochasticD));
+  const flat = stochasticOscillator(Array.from({length:16},(_,i)=>({...p,date:`2025-08-${String(i+1).padStart(2,'0')}`,open:10,high:10,low:10,close:10}))).at(-1);
+  assert.equal(flat.stochasticK, 50); assert.equal(flat.stochasticD, 50);
+  assert.equal(stochasticOscillator([...candles,{...p,date:'2025-09-15'}]).at(-1).stochasticK,null);
+  assert.throws(()=>stochasticOscillator(candles,0)); assert.throws(()=>stochasticOscillator(candles,14,0));
+  const raw = candles.map(c=>({...c,adjusted_close:c.close,volume:1000}));
+  assert.equal(technicalOhlcv(raw).latest.stochasticK,values.at(-1).stochasticK);
 });

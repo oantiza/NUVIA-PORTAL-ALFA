@@ -15,7 +15,7 @@ export default function TechnicalChart({ rows, series, title, levels = [], heigh
       grid: { vertLines: { color: '#e0e6ee' }, horzLines: { color: '#e0e6ee' } },
       rightPriceScale: { borderColor: '#c8d2de', entireTextOnly: true,
         ...(volume ? { scaleMargins: { top: .08, bottom: .25 } }
-          : series.some(field => field.key === 'rsi') ? { scaleMargins: { top: .04, bottom: .04 } } : {}) },
+          : series.some(field => ['rsi','stochasticK','stochasticD'].includes(field.key)) ? { scaleMargins: { top: .04, bottom: .04 } } : {}) },
       timeScale: { borderColor: '#c8d2de', timeVisible: false, lockVisibleTimeRangeOnResize: true },
       handleScroll: { vertTouchDrag: false },
     });
@@ -39,7 +39,7 @@ export default function TechnicalChart({ rows, series, title, levels = [], heigh
                 return {...info,priceRange:{minValue:Math.max(0,center-.01),maxValue:center+.01}};
               } return info;
             }} : {}),
-            ...(field.key === 'rsi' ? { autoscaleInfoProvider: () => ({ priceRange: { minValue: 0, maxValue: 100 } }) } : {}) });
+            ...(['rsi','stochasticK','stochasticD'].includes(field.key) ? { autoscaleInfoProvider: () => ({ priceRange: { minValue: 0, maxValue: 100 } }) } : {}) });
         plot.setData(segment); reference ||= plot; segment = [];
       };
       for (const row of rows) {

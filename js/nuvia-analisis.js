@@ -552,7 +552,11 @@ export function diagnosticoCarteraSupuestos(posiciones = [], pesos = {}, activos
         if (valido && Math.abs(suma - 1) <= 1e-6) reparto = partes;
       }
       motivo = 'Desglose incompleto, incoherente o con clases fuera del modelo';
-    } else if (CLASES[clase]) reparto = { [clase]: 1 };
+    // La categoría de un fondo no acredita su composición. Este atajo solo es
+    // válido para instrumentos directos.
+    } else if (CLASES[clase] && String(activo.instrument_type || '').toUpperCase() !== 'FUND') {
+      reparto = { [clase]: 1 };
+    }
     if (reparto) {
       for (const [key, value] of Object.entries(reparto)) porClase[key] = (porClase[key] || 0) + peso * value;
     } else pendientes.push({ id, nombre: activo.display_name || activo.name || id, peso, motivo });

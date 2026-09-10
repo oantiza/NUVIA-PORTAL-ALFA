@@ -82,6 +82,8 @@ export function posicionMinima(h) {
     weight_pct: bruto,
     country: h.country ?? null,
     sector: h.sector ?? null,
+    instrument_type: ['equity', 'stock', 'bond', 'cash', 'money_market', 'other'].includes(h.instrument_type)
+      ? h.instrument_type : null,
   };
 }
 

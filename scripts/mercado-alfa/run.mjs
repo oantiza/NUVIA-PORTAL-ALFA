@@ -32,6 +32,7 @@ import { creaClienteEodhd, candidatoEnEuros } from './eodhd.mjs';
 import { proyectaActivo, catalogo, fusionaEod, clavesProhibidasEn, SCHEMA_VERSION, diaIso } from './proyecta.mjs';
 import { commitLotes, tokenGcloud, leeDocumento, listaIds, PROYECTO_ALFA } from './firestore-rest.mjs';
 import { creaGeneracion, cargaPublicable as leePublicable } from './publicable.mjs';
+import { conservaEnriquecimientoFondo } from './enriquecimiento-bdb.mjs';
 
 const RAIZ = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CSV = join(RAIZ, 'universo', 'universo-alfa.csv');
@@ -253,6 +254,12 @@ async function publicar({ dryRun, forzar, retirados }) {
   const informa = (n, de) => { if (n % 1000 === 0 || n === de) console.log(`  ${n}/${de}`); };
   let escritos = 0;
   try {
+    // La actualización de precios no debe borrar el enriquecimiento recuperado de BDB.
+    if (!dryRun) for (const doc of docs.assets) {
+      if (doc.objeto.instrument_type !== 'FUND') continue;
+      const existente = await leeDocumento(doc.ruta, { token });
+      doc.objeto = conservaEnriquecimientoFondo(doc.objeto, existente);
+    }
     if (!dryRun) await commitLotes([{ ruta: rutaRun, objeto: runInicio }], { token });
     const r1 = await commitLotes(docs.assets, { token, dryRun, informa }); escritos += r1.escritos;
     const r2 = await commitLotes(docs.series, { token, dryRun, informa }); escritos += r2.escritos;

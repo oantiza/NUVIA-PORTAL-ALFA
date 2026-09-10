@@ -374,7 +374,12 @@
             <img src="src/assets/home/daily-report-preview.webp" alt="Vista previa de los informes de mercado de NUVIA"
                  width="800" height="600" loading="lazy">
           </div>
-          <div class="markets-report__body">
+          <!-- Dos estados excluyentes. El de espera es el que se sirve en el
+               HTML: si el fichero de ediciones no existe, no carga o no trae
+               nada revisado, el lector ve exactamente lo que veía antes y
+               nunca una sección vacía. El otro lo destapa web2-integration.js
+               cuando hay una edición publicada. -->
+          <div class="markets-report__body" data-informes-estado="espera">
             <p class="nv-tag nv-tag--pending">En preparación</p>
             <h2 id="titulo-informe">Informes de mercado</h2>
             <h3>Una lectura periódica de las variables que ayudan a comprender el contexto económico.</h3>
@@ -383,6 +388,18 @@
               <a class="nv-btn nv-btn--primary" href="#mercados">Consultar mercados y noticias →</a>
               <span class="markets-report__note">No se presenta como diario ningún contenido que no haya sido actualizado y revisado.</span>
             </div>
+          </div>
+
+          <div class="markets-report__body" data-informes-estado="publicado" hidden>
+            <p class="nv-tag" data-informe-portada="etiqueta">Edición revisada</p>
+            <h2>Informes de mercado</h2>
+            <h3 data-informe-portada="titular">—</h3>
+            <p class="markets-report__lead" data-informe-portada="entradilla">—</p>
+            <div class="nv-btn-row">
+              <a class="nv-btn nv-btn--primary" data-informe-portada="leer" href="mercados.html?vista=informes" target="_blank" rel="noreferrer noopener">Leer el informe completo →</a>
+              <a class="nv-btn nv-btn--secondary" data-informe-portada="descargar" href="#" download>⤓ Descargar (HTML)</a>
+            </div>
+            <p class="markets-report__note" data-informe-portada="procedencia">—</p>
           </div>
         </div>
       </div>
@@ -407,10 +424,19 @@
             <p>Archivo en preparación</p>
           </div>
 
-          <div class="nv-card markets-archive__empty">
+          <div class="nv-card markets-archive__empty" data-informes-estado="espera">
             <h3>Todavía no hay informes publicados</h3>
             <p>Mientras se define el formato editorial, puedes consultar la noticia económica seleccionada, las lecturas breves y los indicadores con sus fechas de referencia.</p>
             <a class="nv-btn nv-btn--secondary" href="mercados.html">Volver a mercados y noticias →</a>
+          </div>
+
+          <!-- Cada edición se abre y se descarga desde el mismo fichero: el que
+               genera `scripts/informes-mercado/publicar.mjs`. Reutilizarlo para
+               las dos cosas evita mantener dos versiones del mismo informe que
+               puedan acabar diciendo cosas distintas. -->
+          <div data-informes-estado="publicado" hidden>
+            <ul class="markets-archive" data-informe-archivo></ul>
+            <p class="markets-report__note">Cada edición conserva la fecha de su publicación y las fuentes consultadas. La documentación y la redacción están asistidas por inteligencia artificial y revisadas por una persona antes de publicarse.</p>
           </div>
         </div>
       </section>

@@ -1,0 +1,137 @@
+{
+  "schema_version": "informe-mercado.v1",
+  "actualizadoIso": "2026-09-10T17:37:18.374Z",
+  "ediciones": {
+    "DIARIO": {
+      "schema_version": "informe-mercado.v1",
+      "tipo": "DIARIO",
+      "id": "diario-2026-09-10",
+      "fecha": "2026-09-10",
+      "fechaIso": "2026-09-10T00:00:00.000Z",
+      "generadoIso": "2026-09-10T17:19:23.887Z",
+      "titular": "El BCE eleva los tipos de interés al 2,50% y las bolsas europeas cierran con descensos",
+      "entradilla": "El Banco Central Europeo ha subido los tipos de interés oficiales en 25 puntos básicos debido a la inflación energética. Esta decisión ha coincidido con caídas generales en los principales índices bursátiles mundiales. Los participantes del mercado están a la espera del dato oficial de inflación de Estados Unidos que se publica mañana.",
+      "hechos": [
+        {
+          "texto": "El Banco Central Europeo subió el tipo de la facilidad de depósito al 2,50%",
+          "fecha": "10 de septiembre de 2026"
+        },
+        {
+          "texto": "El índice español IBEX 35 cerró en 19.659,80 puntos tras un descenso del 0,18%",
+          "fecha": "10 de septiembre de 2026"
+        },
+        {
+          "texto": "El precio del barril de petróleo Brent avanzó un 4,48% hasta alcanzar los 105,75 dólares",
+          "fecha": "10 de septiembre de 2026"
+        },
+        {
+          "texto": "El Índice de Precios al Productor de Estados Unidos registró un aumento mensual del 0,4%",
+          "fecha": "agosto de 2026"
+        }
+      ],
+      "indicadores": [
+        {
+          "etiqueta": "Tipo de la facilidad de depósito (BCE)",
+          "valor": "2,50%",
+          "referencia": "10/09/2026 - Banco Central Europeo"
+        },
+        {
+          "etiqueta": "Índice IBEX 35",
+          "valor": "19.659,80 puntos",
+          "referencia": "10/09/2026 - Bolsas y Mercados Españoles"
+        },
+        {
+          "etiqueta": "Rendimiento Bono Español a 10 años",
+          "valor": "3,963%",
+          "referencia": "10/09/2026 - Mercado secundario"
+        },
+        {
+          "etiqueta": "Tipo de cambio EUR/USD",
+          "valor": "1,1616 USD",
+          "referencia": "10/09/2026 - Banco Central Europeo"
+        },
+        {
+          "etiqueta": "Petróleo Brent",
+          "valor": "105,75 USD/barril",
+          "referencia": "10/09/2026 - Futuro continuo"
+        }
+      ],
+      "agenda": [
+        {
+          "cuando": "11 de septiembre de 2026, 14:30 CEST",
+          "que": "Publicación del Índice de Precios de Consumo (CPI) de agosto en Estados Unidos por el U.S. Bureau of Labor Statistics"
+        },
+        {
+          "cuando": "11 de septiembre de 2026, 09:00 CEST",
+          "que": "Publicación de la encuesta de Coyuntura Turística Hotelera por el Instituto Nacional de Estadística de España"
+        }
+      ],
+      "cuerpo": [
+        {
+          "titulo": "Política monetaria y bolsas europeas",
+          "parrafos": [
+            "El Banco Central Europeo, la institución que dirige la política monetaria en la zona euro, ha anunciado una subida de 25 puntos básicos en sus tipos de interés oficiales. Tras esta medida, la facilidad de depósito, que es el interés con el que se remunera el dinero que los bancos guardan en el banco central, se sitúa en el 2,50%. La entidad comunicó que esta decisión responde a la revisión al alza de la inflación derivada del encarecimiento de la energía por el conflicto en Oriente Medio.",
+            "Esta subida del precio del dinero coincidió con descensos generalizados en los mercados de renta variable, que son los mercados financieros donde se negocian las acciones de las empresas cotizadas. El índice IBEX 35 español retrocedió un 0,18% hasta los 19.659,80 puntos. Por su parte, el selectivo Euro Stoxx 50, que agrupa a las mayores empresas de la zona euro, registró una bajada diaria del 0,67%."
+          ]
+        },
+        {
+          "titulo": "Materias primas y mercado estadounidense",
+          "parrafos": [
+            "En el mercado de materias primas, los hidrocarburos experimentaron fuertes ascensos durante la sesión. El crudo Brent, de referencia en Europa, superó los 105 dólares por barril tras sumar un 4,48%. Las fuentes oficiales recogen que este aumento de costes presionó a la baja la cotización de los sectores industriales y de consumo, que dependen directamente de la factura energética para operar.",
+            "En Estados Unidos, los principales índices bursátiles también mostraban caídas en la sesión vespertina tras conocerse el Índice de Precios al Productor, un indicador que mide la variación de los precios que cobran los fabricantes por sus bienes. Este dato mostró un aumento del 0,4% en agosto. Hasta el momento, todavía no se sabe si esta aceleración de los precios alterará la decisión sobre los tipos de interés que tomará la Reserva Federal de Estados Unidos en su próxima reunión de los días 15 y 16 de septiembre."
+          ]
+        }
+      ],
+      "fuentes": [
+        {
+          "titulo": "Banco Central Europeo",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html"
+        },
+        {
+          "titulo": "Oficina de Estadísticas Laborales de Estados Unidos",
+          "url": "https://www.bls.gov/news.release/archives/ppi_09102026.htm"
+        },
+        {
+          "titulo": "elperiodicodeceuta.es",
+          "url": "https://www.elperiodicodeceuta.es/cierre-ibex-35-bolsa-espana-hoy-jueves-10-de-septiembre-de-2026/"
+        },
+        {
+          "titulo": "teleceuta.com",
+          "url": "https://teleceuta.com/ibex-35-cierre-en-negativo-el-jueves-10-de-septiembre-de-2026-con-variacion-de-018/"
+        },
+        {
+          "titulo": "elboletin.com",
+          "url": "https://www.elboletin.com/las-bolsas-europeas-cierran-en-rojo-tras-la-subida-de-tipos-del-bce/"
+        },
+        {
+          "titulo": "democrata.es",
+          "url": "https://www.democrata.es/economia/el-ibex-35-cede-un-0-18-y-pierde-los-19-700-puntos-tras-el-alza-de-tipos-del-bce/"
+        }
+      ],
+      "generacion": {
+        "modeloInvestigacion": "gemini-3.8-flash",
+        "modeloRedaccion": "gemini-3.1-pro-preview",
+        "versionPrompt": "nuvia-mercados-2026-09",
+        "fuentesConsultadas": 6
+      },
+      "revision": {
+        "estado": "publicado",
+        "revisadoIso": "2026-09-10T17:37:18.374Z"
+      },
+      "vigencia": {
+        "estado": "vigente",
+        "dias": 0
+      },
+      "descarga": "core/downloads/informes/diario-2026-09-10.html"
+    }
+  },
+  "archivo": [
+    {
+      "id": "diario-2026-09-10",
+      "tipo": "DIARIO",
+      "fecha": "2026-09-10",
+      "titular": "El BCE eleva los tipos de interés al 2,50% y las bolsas europeas cierran con descensos",
+      "descarga": "core/downloads/informes/diario-2026-09-10.html"
+    }
+  ]
+}

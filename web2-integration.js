@@ -249,9 +249,132 @@
     }
   };
 
+  /**
+   * Informes de mercado.
+   *
+   * La sección se sirve en estado de espera y solo se destapa si hay una
+   * edición revisada. Cualquier tropiezo —fichero ausente, red caída, JSON
+   * ilegible— deja la página como estaba: la promesa impresa en ella es que no
+   * se presenta como actual nada que no se haya revisado, y una sección vacía
+   * o un error a medio pintar la incumplirían igual.
+   *
+   * El texto de las ediciones lo escribe un modelo de lenguaje a partir de
+   * páginas web, así que entra en el DOM por `textContent`. Nunca por HTML.
+   */
+  const ETIQUETA_TIPO = { DIARIO: 'Diario', SEMANAL: 'Semanal' };
+
+  const fechaLegible = (fecha) =>
+    new Intl.DateTimeFormat('es-ES', {
+      timeZone: 'Europe/Madrid',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    }).format(new Date(`${fecha}T12:00:00.000Z`));
+
+  const mostrarEstadoInformes = (estado) => {
+    document.querySelectorAll('[data-informes-estado]').forEach((bloque) => {
+      bloque.hidden = bloque.dataset.informesEstado !== estado;
+    });
+  };
+
+  const pintarPortadaInforme = (edicion) => {
+    const campo = (nombre) => document.querySelector(`[data-informe-portada="${nombre}"]`);
+    const etiqueta = campo('etiqueta');
+    if (etiqueta) {
+      const vigente = edicion.vigencia?.estado === 'vigente';
+      etiqueta.textContent = `${ETIQUETA_TIPO[edicion.tipo] ?? 'Informe'} · ${
+        vigente ? fechaLegible(edicion.fecha) : `archivo · ${fechaLegible(edicion.fecha)}`
+      }`;
+    }
+    const titular = campo('titular');
+    if (titular) titular.textContent = edicion.titular;
+    const entradilla = campo('entradilla');
+    if (entradilla) entradilla.textContent = edicion.entradilla;
+
+    const leer = campo('leer');
+    if (leer) leer.href = edicion.descarga;
+    const descargar = campo('descargar');
+    if (descargar) {
+      descargar.href = edicion.descarga;
+      descargar.setAttribute('download', '');
+    }
+    const procedencia = campo('procedencia');
+    if (procedencia) {
+      procedencia.textContent =
+        `${edicion.fuentes?.length ?? 0} fuentes consultadas. Documentación y redacción asistidas por ` +
+        'inteligencia artificial, revisadas por una persona antes de publicarse.';
+    }
+  };
+
+  const pintarArchivoInformes = (ediciones) => {
+    const lista = document.querySelector('[data-informe-archivo]');
+    if (!lista) return;
+    lista.textContent = '';
+
+    ediciones.forEach((ficha) => {
+      const item = document.createElement('li');
+      item.className = 'nv-card markets-archive__item';
+
+      const meta = document.createElement('p');
+      meta.className = 'nv-eyebrow';
+      meta.textContent = `${ETIQUETA_TIPO[ficha.tipo] ?? 'Informe'} · ${fechaLegible(ficha.fecha)}`;
+
+      const titulo = document.createElement('h3');
+      titulo.textContent = ficha.titular;
+
+      const acciones = document.createElement('div');
+      acciones.className = 'nv-btn-row';
+
+      const leer = document.createElement('a');
+      leer.className = 'nv-btn nv-btn--primary';
+      leer.href = ficha.descarga;
+      leer.target = '_blank';
+      leer.rel = 'noreferrer noopener';
+      leer.textContent = 'Leer el informe →';
+
+      const descargar = document.createElement('a');
+      descargar.className = 'nv-btn nv-btn--secondary';
+      descargar.href = ficha.descarga;
+      descargar.setAttribute('download', '');
+      descargar.textContent = '⤓ Descargar';
+
+      // .markets-archive__item es flex con space-between y su CSS espera un
+      // bloque de texto y, al lado, las acciones. Respetarlo evita reescribir
+      // estilos que ya funcionan en el resto del portal.
+      const texto = document.createElement('div');
+      texto.append(meta, titulo);
+
+      acciones.append(leer, descargar);
+      item.append(texto, acciones);
+      lista.append(item);
+    });
+  };
+
+  const hydrateMarketReports = async () => {
+    if (!document.querySelector('[data-informes-estado]')) return;
+    try {
+      const respuesta = await fetch('./data/informes-mercado.json', { cache: 'no-cache' });
+      if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
+      const indice = await respuesta.json();
+
+      const publicadas = Object.values(indice.ediciones ?? {}).filter(
+        (edicion) => edicion?.revision?.estado === 'publicado',
+      );
+      if (!publicadas.length) return;
+
+      publicadas.sort((a, b) => (a.fecha < b.fecha ? 1 : a.fecha > b.fecha ? -1 : 0));
+      pintarPortadaInforme(publicadas[0]);
+      pintarArchivoInformes(indice.archivo ?? []);
+      mostrarEstadoInformes('publicado');
+    } catch (error) {
+      console.warn('NUVIA Portal Alfa conserva la sección de informes en estado de espera.', error);
+    }
+  };
+
   const startHomeIntegration = () => {
     window.setTimeout(() => {
       hydrateDailyContent();
+      hydrateMarketReports();
     }, 400);
   };
 

@@ -4194,6 +4194,9 @@
 
 /* Archivo de informes */
 .markets-archive { display: flex; flex-direction: column; gap: var(--nv-space-3); }
+/* El archivo se pinta como lista real (<ul>) porque es una lista: el lector
+   con lector de pantalla oye cuántas ediciones hay antes de recorrerlas. */
+ul.markets-archive { list-style: none; margin: 0; padding: 0; }
 
 .markets-archive__item {
   display: flex;

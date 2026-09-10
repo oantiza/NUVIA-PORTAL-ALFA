@@ -520,51 +520,55 @@ export function perfilesReferencia(proporciones = [10, 30, 50, 70, 90]) {
  * permite descomponerlas en dichas clases (renta variable, fija, monetario
  * y activos reales). Si alguna posición queda sin clasificar y sin desglose,
  * devuelve null para no inventar datos ni mezclar bases incomparables. */
-export function perfilCarteraSupuestos(posiciones = [], pesos = {}, activos = []) {
-  const activosPorId = new Map((Array.isArray(activos) ? activos : []).map((a) => [a.asset_id, a]));
-  const porClase = {};
+export function diagnosticoCarteraSupuestos(posiciones = [], pesos = {}, activos = []) {
+  const fichas = new Map(activos.map(a => [a.asset_id, a]));
+  const porClase = {}, pendientes = [];
+  let total = 0;
+  const claves = { equity: 'EQUITY', fixed_income: 'FIXED_INCOME', bond: 'FIXED_INCOME',
+    cash: 'MONEY_MARKET', money_market: 'MONEY_MARKET', real_asset: 'REAL_ASSET', commodities: 'REAL_ASSET' };
   for (const p of posiciones) {
-    const id = p?.activo?.asset_id;
-    const peso = Number(pesos?.[id]);
+    const id = p?.activo?.asset_id, peso = pesos[id];
     if (!Number.isFinite(peso) || peso <= 0) continue;
-
-    const activo = activosPorId.get(id) || p?.activo || {};
-    const clase = String(activo?.economic_asset_class || p?.activo?.economic_asset_class || '').toUpperCase();
-    const mix = activo?.asset_mix || p?.activo?.asset_mix || activo?.exposures?.asset_mix || activo?.pms_exposure;
-
-    // Si tiene un desglose explícito de clases (asset_mix o look-through):
-    if (mix && typeof mix === 'object') {
-      const eq = Number(mix.equity) || 0;
-      const fi = Number(mix.fixed_income ?? mix.bond) || 0;
-      const ca = Number(mix.cash ?? mix.money_market) || 0;
-      const ra = Number(mix.real_asset ?? mix.commodities) || 0;
-      const suma = eq + fi + ca + ra;
-      if (suma > 0) {
-        porClase.EQUITY = (porClase.EQUITY || 0) + peso * 100 * (eq / suma);
-        porClase.FIXED_INCOME = (porClase.FIXED_INCOME || 0) + peso * 100 * (fi / suma);
-        porClase.MONEY_MARKET = (porClase.MONEY_MARKET || 0) + peso * 100 * (ca / suma);
-        if (ra > 0) {
-          porClase.REAL_ASSET = (porClase.REAL_ASSET || 0) + peso * 100 * (ra / suma);
+    total += peso;
+    const activo = { ...p.activo, ...fichas.get(id) };
+    const clase = String(activo.economic_asset_class || '').toUpperCase();
+    const mix = activo.asset_mix ?? activo.exposures?.asset_mix ?? activo.pms_exposure;
+    let reparto = null, motivo = 'Falta el reparto por clases de activo';
+    if (mix != null) {
+      if (typeof mix === 'object' && !Array.isArray(mix)) {
+        const entries = Object.entries(mix), vistos = new Set();
+        let suma = 0, valido = entries.length > 0;
+        const partes = {};
+        for (const [key, value] of entries) {
+          if (!Number.isFinite(value) || value < 0 || value > 1) { valido = false; continue; }
+          const destino = claves[key];
+          if (!destino) { if (value > 0) valido = false; continue; }
+          if (vistos.has(destino)) valido = false;
+          vistos.add(destino);
+          partes[destino] = value;
+          suma += value;
         }
-        continue;
+        // Solo tolerancia numérica: nunca completar un desglose parcial.
+        if (valido && Math.abs(suma - 1) <= 1e-6) reparto = partes;
       }
-    }
-
-    // Si no tiene asset_mix pero su clase económica es una de las 4 clases puras:
-    if (CLASES[clase]) {
-      porClase[clase] = (porClase[clase] || 0) + peso * 100;
-      continue;
-    }
-
-    return null;
+      motivo = 'Desglose incompleto, incoherente o con clases fuera del modelo';
+    } else if (CLASES[clase]) reparto = { [clase]: 1 };
+    if (reparto) {
+      for (const [key, value] of Object.entries(reparto)) porClase[key] = (porClase[key] || 0) + peso * value;
+    } else pendientes.push({ id, nombre: activo.display_name || activo.name || id, peso, motivo });
   }
-  const clases = Object.entries(porClase).map(([clase, peso]) => ({ clase, peso }));
-  if (!clases.length) return null;
-  const volatilidad = volatilidadCartera(clases);
-  const rentabilidad = rentabilidadCartera(clases);
-  return Number.isFinite(volatilidad) && Number.isFinite(rentabilidad)
-    ? { volatilidad, rentabilidad }
-    : null;
+  const clases = Object.entries(porClase).map(([clase, peso]) => ({ clase, peso: peso * 100 }));
+  let referencia = null;
+  if (total > 0 && !pendientes.length && clases.length) {
+    const volatilidad = volatilidadCartera(clases), rentabilidad = rentabilidadCartera(clases);
+    if (Number.isFinite(volatilidad) && Number.isFinite(rentabilidad)) referencia = { volatilidad, rentabilidad };
+  }
+  return { referencia, pendientes: pendientes.map(p => ({ ...p, peso: p.peso / total })),
+    pesoPendiente: total > 0 ? pendientes.reduce((sum, p) => sum + p.peso, 0) / total : 0 };
+}
+
+export function perfilCarteraSupuestos(posiciones = [], pesos = {}, activos = []) {
+  return diagnosticoCarteraSupuestos(posiciones, pesos, activos).referencia;
 }
 
 /**
@@ -1205,9 +1209,9 @@ function grupoProyeccion(metricas) {
  * como punto (volatilidad, rentabilidad anualizada) del historial real,
  * con la cartera marcada. Nivel registrado en adelante.
  */
-function grupoMapaRiesgo({ referencia }) {
+function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
   const bloque = grupo('Mapa riesgo-retorno frente a perfiles de referencia',
-    'Tu combinación y cinco perfiles —Defensivo, Moderado, Equilibrado, Dinámico '
+    (referencia ? 'Tu combinación y cinco perfiles —Defensivo, Moderado, Equilibrado, Dinámico ' : 'Cinco perfiles —Defensivo, Moderado, Equilibrado, Dinámico ')
     + 'y Agresivo— calculados sobre los mismos supuestos por clase de activo. '
     + 'La posición relativa se puede comparar; '
     + 'ningún punto es una propuesta ni una previsión.');
@@ -1290,7 +1294,12 @@ function grupoMapaRiesgo({ referencia }) {
   bloque.append(panelGrafico(svg, filaDeCifras(cifras)));
   if (!referencia) {
     bloque.append(el('p', { class: 'nv-cons__nota' },
-      'La cartera contiene alguna clase fuera del modelo de cuatro clases; por eso no se marca un punto que no sería comparable.'));
+      pendientes.length ? `No podemos situar todavía tu cartera: hay ${pendientes.length} posiciones cuyo reparto no permite compararlas con el modelo. Representan el ${pct(pesoPendiente)} del peso total de la cartera.` : 'No hay posiciones con peso suficiente para situar tu cartera.'));
+  }
+  if (pendientes.length) {
+    const lista = el('ul', { class: 'nv-cons__nota' });
+    pendientes.forEach(p => lista.append(el('li', {}, `${p.nombre} · ${pct(p.peso)} de la cartera: ${p.motivo}.`)));
+    bloque.append(lista);
   }
   bloque.append(el('p', { class: 'nv-cons__nota' },
     'Todos los puntos usan supuestos internos de largo plazo; son referencias comparables, '
@@ -1488,7 +1497,7 @@ export async function montaAnalisis(raiz, {
   cargando.remove();
 
   /* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7). */
-  objetivo.riesgo.append(grupoMapaRiesgo({ referencia: perfilCarteraSupuestos(posiciones, pesos, activos) }));
+  objetivo.riesgo.append(grupoMapaRiesgo(diagnosticoCarteraSupuestos(posiciones, pesos, activos)));
 
   /* Proyección por simulación y matriz de correlaciones: abiertos para todos. */
   objetivo.escenarios.append(grupoProyeccion(metricas));

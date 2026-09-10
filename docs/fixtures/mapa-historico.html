@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verificación del mapa histórico</title>
+<link rel="stylesheet" href="../../estilos/nuvia-tokens.css">
+<link rel="stylesheet" href="../../estilos/nuvia-components.css">
+<link rel="stylesheet" href="../../estilos/nuvia-pages.css">
+<style>body{margin:24px;background:var(--nv-surface-page)}main{max-width:1120px;margin:auto}.controles{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin:24px 0}</style>
+<main>
+<h1>Verificación del mapa histórico</h1>
+<p id="origen">Datos ficticios para pruebas. Fondo con otras exposiciones netas negativas.</p>
+<div class="controles">
+  <label>Caso <select id="caso"><option value="completo">Historial completo</option><option value="parcial">Historial parcial</option><option value="error">Error de referencias</option><option value="tardia">Referencia tardía</option></select></label>
+  <a href="#mapa">Ir al mapa</a>
+</div>
+<div id="editor"></div><div id="resultados"></div>
+</main>
+<script type="module">
+import { montaConstructor } from '../../js/nuvia-constructor.js';
+import { IDS_BENCHMARK } from '../../js/nuvia-mapa-historico.js';
+const id = 'LU0289089384';
+let caso = 'completo';
+let fechas = Array.from({length:800},(_,i)=>new Date(Date.UTC(2023,8,11+i)))
+  .filter(d=>![0,6].includes(d.getUTCDay())).map(d=>d.toISOString().slice(0,10));
+let cartera = { dates:fechas,series:[{asset_id:id,values:fechas.map((_,i)=>100*Math.exp(.0003*i+.06*Math.sin(i*.08)))}] };
+let benchmarks = { dates:fechas,series:IDS_BENCHMARK.map((asset_id,j)=>({asset_id,values:fechas.map((_,i)=>100*Math.exp((j<2?.0002:.00007)*i+(j<2?.025:.008)*Math.sin(i*.08+j*.3)))})) };
+if(new URLSearchParams(location.search).has('real')){
+  const data=await (await fetch('../../output/mapa-historico/jpmorgan.json')).json();
+  cartera=data.cartera;benchmarks=data.benchmarks;
+  document.getElementById('origen').textContent='Verificación con cierres reales de Alfa: JPMorgan Europe Equity Plus A y las cuatro referencias. Copia de lectura local; no escribe en la base de datos.';
+}
+const activo={asset_id:id,display_name:'JPMorgan Europe Equity Plus A',instrument_type:'FUND',economic_asset_class:'EQUITY'};
+const posiciones=[{activo,bruto:100}];
+const datos={
+  nivelSesion:()=> 'alfa',sesionActual:()=>({tipo:'alfa'}),revisionDatos:()=>caso,
+  detalleActivo:async id=>({asset_id:id,instrument_type:'FUND',economic_asset_class:'EQUITY',identity:{display_name:activo.display_name},
+    asset_mix:{equity:.9012317,fixed_income:.0019168,cash:.1055205,other:-.008669}}),
+  llama:async (nombre,args)=>{
+    if(nombre==='get_price_series'){
+      if(args.asset_ids.every(id=>IDS_BENCHMARK.includes(id))){
+        if(caso==='error')throw Error('Fallo de referencias simulado');
+        if(caso==='tardia')await new Promise(r=>setTimeout(r,1600));
+        return benchmarks;
+      }
+      return cartera;
+    }
+    if(nombre==='get_asset_holdings_batch')return {holdings:{}};
+    throw Error('Consulta no prevista');
+  },
+};
+const memoria=new Map();
+const controlador=montaConstructor(document.getElementById('editor'),{cliente:datos,posicionesIniciales:posiciones,
+  destinoAnalisis:document.getElementById('resultados'),
+  almacenamientoLocal:{getItem:k=>memoria.get(k)||null,setItem:(k,v)=>memoria.set(k,v),removeItem:k=>memoria.delete(k)}});
+new MutationObserver(()=>{
+  const mapa=document.querySelector('[data-nv-mapa-historico]');if(mapa&&!mapa.id)mapa.id='mapa';
+}).observe(document.getElementById('resultados'),{childList:true,subtree:true});
+document.getElementById('caso').addEventListener('change',async e=>{
+  caso=e.target.value;
+  await controlador.cargaPosiciones(caso==='parcial'?[{activo,bruto:40},{activo:{asset_id:'PRUEBA-SIN-SERIE',display_name:'Sin historial (prueba)'},bruto:60}]:posiciones);
+  if(caso==='tardia')await controlador.cargaPosiciones([{activo,bruto:25},{activo:{asset_id:'PRUEBA-SIN-SERIE',display_name:'Sin historial (prueba)'},bruto:75}]);
+});
+</script>
+</html>

@@ -26,6 +26,8 @@ import {
 import { concentracionSectorial, concentracionGeografica } from './nuvia-concentracion.js';
 import { grupoMapa } from './nuvia-mapa.js';
 import { matrizSolapamiento } from './nuvia-solapamiento.js';
+import { mapaHistorico } from './nuvia-mapa-historico.js';
+import { fuenteDelAnalisis } from './nuvia-periodo-analisis.js';
 import {
   etiquetaSector, etiquetaRegion, nombreCorto, marcasEje, separaVerticalmente,
 } from './nuvia-etiquetas.js';
@@ -1213,17 +1215,17 @@ function grupoProyeccion(metricas) {
  * como punto (volatilidad, rentabilidad anualizada) del historial real,
  * con la cartera marcada. Nivel registrado en adelante.
  */
-function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
-  const bloque = grupo('Mapa riesgo-retorno frente a perfiles de referencia',
-    (referencia ? 'Tu combinación y cinco perfiles —Defensivo, Moderado, Equilibrado, Dinámico ' : 'Cinco perfiles —Defensivo, Moderado, Equilibrado, Dinámico ')
-    + 'y Agresivo— calculados sobre los mismos supuestos por clase de activo. '
-    + 'La posición relativa se puede comparar; '
-    + 'ningún punto es una propuesta ni una previsión.');
+export function grupoMapaRiesgo({ referencia, perfiles = [], pendientes = [], cobertura = 0,
+  fechas = [], nombreCartera = 'Tu combinación', avisoReferencias = '', huecos = 0 }) {
+  const bloque = grupo('Mapa histórico de riesgo y rentabilidad',
+    'El historial de los activos sitúa tu cartera, también si incluye fondos con posiciones cortas o exposiciones especiales. '
+    + 'Las referencias disponibles usan exactamente las mismas fechas y el mismo método.');
   bloque.classList.add('nv-analisis__grupo--riesgo');
-  const perfiles = perfilesReferencia();
-  if (!perfiles.length) {
+  bloque.setAttribute('data-nv-mapa-historico', '');
+  if (!referencia) {
     bloque.append(el('p', { class: 'nv-cons__nota' },
-      'Sin supuestos de las clases no hay perfiles que dibujar; nunca se inventa.'));
+      'No hay al menos tres cierres válidos con peso positivo para dibujar el mapa histórico.'));
+    pendientes.forEach(p => bloque.append(el('p', { class: 'nv-cons__nota' }, `${p.nombre}: ${p.motivo}.`)));
     return bloque;
   }
   const todos = referencia
@@ -1237,14 +1239,14 @@ function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
     viewBox: `0 0 ${W} ${H}`,
     class: 'nv-frontera',
     role: 'img',
-    'aria-label': 'Mapa riesgo-retorno: perfiles de referencia '
+    'aria-label': 'Mapa histórico de riesgo y rentabilidad: perfiles de referencia '
       + perfiles.map((p) => `${p.nombre}, ${p.rv} % de renta variable (volatilidad ${pct(p.volatilidad)}, rentabilidad ${pct(p.rentabilidad)})`).join('; ')
-      + (referencia ? `; tu combinación: oscilación ${pct(referencia.volatilidad)}, cambio anual estimado ${pct(referencia.rentabilidad)}.` : '.'),
+      + `; ${nombreCartera}: volatilidad ${pct(referencia.volatilidad)}, rentabilidad histórica anualizada ${pct(referencia.rentabilidad)}.`,
   });
   const { x, y } = dibujaEjes(svg, {
     W, H, izq, der, arriba, abajo, ejeX, ejeY,
     tituloX: 'Cuánto se mueve al año (volatilidad) →',
-    tituloY: 'Rentabilidad anual ↑',
+    tituloY: 'Rentabilidad histórica anualizada ↑',
   });
 
   /* Una línea discreta une los perfiles; el color avanza desde el defensivo
@@ -1259,7 +1261,7 @@ function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
       cx: cx.toFixed(1), cy: cy.toFixed(1), r: 6.5,
       class: `nv-perfiles__punto nv-perfiles__punto--${p.tono}`,
     }));
-    const arribaDelPunto = i % 2 === 1;
+    const arribaDelPunto = cy > H - abajo - 42 || (cy > arriba + 32 && i % 2 === 1);
     const rotulo = svgEl('text', {
       x: cx.toFixed(1), y: (arribaDelPunto ? cy - 24 : cy + 24).toFixed(1),
       'text-anchor': 'middle', class: 'nv-perfiles__etiqueta',
@@ -1279,15 +1281,15 @@ function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
     svg.append(svgEl('text', {
       x: (anclaIzq ? cx - 14 : cx + 14).toFixed(1), y: (cy - 10).toFixed(1),
       'text-anchor': anclaIzq ? 'end' : 'start', class: 'nv-grafico__rotulo',
-    }, 'Tu combinación'));
+    }, nombreCartera));
   }
 
   const cifras = [];
   if (referencia) {
     cifras.push({
       clase: 'nv-leyenda__marca--punto',
-      nombre: 'Tu combinación:',
-      texto: `oscilación ${pct(referencia.volatilidad)} · cambio anual estimado ${pct(referencia.rentabilidad)}`,
+      nombre: `${nombreCartera}:`,
+      texto: `volatilidad ${pct(referencia.volatilidad)} · rentabilidad histórica anualizada ${pct(referencia.rentabilidad)}`,
     });
   }
   perfiles.forEach((p) => cifras.push({
@@ -1296,18 +1298,33 @@ function grupoMapaRiesgo({ referencia, pendientes = [], pesoPendiente = 0 }) {
     texto: `${p.rv} % bolsa`,
   }));
   bloque.append(panelGrafico(svg, filaDeCifras(cifras)));
-  if (!referencia) {
-    bloque.append(el('p', { class: 'nv-cons__nota' },
-      pendientes.length ? `No podemos situar todavía tu cartera: hay ${pendientes.length} posiciones cuyo reparto no permite compararlas con el modelo. Representan el ${pct(pesoPendiente)} del peso total de la cartera.` : 'No hay posiciones con peso suficiente para situar tu cartera.'));
-  }
+  bloque.append(el('p', { class: 'nv-cons__nota' },
+    `Cobertura del historial: ${pct(cobertura)} del peso original.`
+    + (pendientes.length ? ' El punto representa solo la parte con historial; sus pesos se reescalan al 100 %.' : ' El punto incluye todas las posiciones con peso.')));
   if (pendientes.length) {
     const lista = el('ul', { class: 'nv-cons__nota' });
     pendientes.forEach(p => lista.append(el('li', {}, `${p.nombre} · ${pct(p.peso)} de la cartera: ${p.motivo}.`)));
     bloque.append(lista);
   }
+  if (avisoReferencias) bloque.append(el('p', { class: 'nv-cons__nota' }, avisoReferencias));
+  bloque.append(el('p', { class: 'nv-cons__fuente' }, fuenteDelAnalisis(fechas, fechas.length - 1)));
+  if (huecos) bloque.append(el('p', { class: 'nv-cons__nota' },
+    `El calendario contiene ${huecos} intervalos de más de siete días. La frecuencia de observación afecta a la estimación de volatilidad.`));
+  const metodo = el('details', { class: 'nv-analisis__despliegue' });
+  metodo.append(el('summary', {}, 'Cómo se calcula y qué referencias utiliza'));
+  metodo.append(el('p', { class: 'nv-cons__nota' },
+    'Se aplica el reparto al primer cierre del periodo mostrado y se deja evolucionar sin rebalancear. '
+    + 'Rentabilidad anualizada = (valor final / valor inicial) elevado a (1 / años transcurridos), menos uno. '
+    + 'Volatilidad = desviación típica muestral de las rentabilidades entre cierres × raíz de (observaciones / años). '
+    + 'Se utilizan solo fechas coincidentes, sin rellenar precios. Al cambiar el periodo común pueden cambiar las cifras respecto de otras métricas de la página.'));
+  metodo.append(el('p', { class: 'nv-cons__nota' },
+    'Los perfiles distribuyen inicialmente 10, 30, 50, 70 o 90 % en la cesta de bolsa; el resto en bonos. '
+    + 'Bolsa: Vanguard Global Stock Index EUR Acc (IE00B03HD191) y Fidelity MSCI World Index EUR P Acc (IE00BYX5NX33). '
+    + 'Bonos: Schroder EURO Corporate Bond A Acc (LU0113257694) y Morgan Stanley Euro Corporate Bond A (LU0132601682). '
+    + 'Cada instrumento pesa la mitad dentro de su cesta. Son referencias instrumentales, no índices puros ni carteras propuestas.'));
+  bloque.append(metodo);
   bloque.append(el('p', { class: 'nv-cons__nota' },
-    'Todos los puntos usan supuestos internos de largo plazo; son referencias comparables, '
-    + 'no previsiones.'));
+    'Todos los puntos describen el periodo histórico indicado; no anticipan rentabilidades futuras.'));
   return bloque;
 }
 
@@ -1440,6 +1457,7 @@ function tablaReparto(titulo, lectura, resultado, etiqueta = etiquetaClave, maxF
  */
 export async function montaAnalisis(raiz, {
   posiciones, pesos, series, datos, registrada, nivel, metricas, tasaSinRiesgo, destinos = null,
+  fechas = [], pesosOriginales = pesos, cargaReferencias = null,
 }) {
   if (!raiz) return;
   raiz.textContent = '';
@@ -1500,8 +1518,30 @@ export async function montaAnalisis(raiz, {
 
   cargando.remove();
 
-  /* Mapa riesgo-retorno frente a perfiles de referencia (Fase 7). */
-  objetivo.riesgo.append(grupoMapaRiesgo(diagnosticoCarteraSupuestos(posiciones, pesos, activos)));
+  /* El mapa no depende del desglose interno ni de la categoría de las fichas. */
+  const espacioMapa = el('div');
+  objetivo.riesgo.append(espacioMapa);
+  const pintaMapa = (benchmarks, errorReferencias = false, cargandoReferencias = false) => {
+    const lectura = mapaHistorico({ posiciones, pesos: pesosOriginales,
+      series, fechas, benchmarks, perfiles: perfilesReferencia(), errorReferencias });
+    if (cargandoReferencias) lectura.avisoReferencias = '';
+    espacioMapa.textContent = '';
+    espacioMapa.append(grupoMapaRiesgo(lectura));
+    if (lectura.avisoReferencias && cargaReferencias) {
+      const reintentar = el('button', { type: 'button', class: 'nv-btn nv-btn--secondary' }, 'Reintentar referencias');
+      reintentar.addEventListener('click', consultaReferencias);
+      espacioMapa.append(reintentar);
+    }
+  };
+  async function consultaReferencias() {
+    pintaMapa(null, false, true);
+    const aviso = el('p', { class: 'nv-cons__nota', role: 'status' }, 'Consultando las referencias históricas…');
+    espacioMapa.append(aviso);
+    try { pintaMapa(await cargaReferencias()); }
+    catch { pintaMapa(null, true); }
+  }
+  if (cargaReferencias) void consultaReferencias();
+  else pintaMapa(null);
 
   /* Proyección por simulación y matriz de correlaciones: abiertos para todos. */
   objetivo.escenarios.append(grupoProyeccion(metricas));

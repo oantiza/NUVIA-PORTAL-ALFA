@@ -16,8 +16,10 @@ import { idActual } from './nuvia-identidades.js';
 import { creaGuardadoLocal, mensajeGuardadoLocal } from './nuvia-guardado-local.js';
 import { fuenteDelAnalisis } from './nuvia-periodo-analisis.js';
 import { metricasDesdeSerie, serieDeCaidas, sharpe, pct, num, DIAS_MERCADO } from './nuvia-cartera.js';
-import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL, holdingsDe } from './nuvia-analisis.js?v=20260823-6';
+import { montaAnalisis, perfilesReferencia, TEXTO_HISTORIAL, holdingsDe } from './nuvia-analisis.js?v=20260910-historico';
 import { montaResumenCartera } from './nuvia-resumen-cartera.js?v=20260909-1';
+import { ACTIVOS_BENCHMARK, IDS_BENCHMARK } from './nuvia-mapa-historico.js';
+export { ACTIVOS_BENCHMARK, IDS_BENCHMARK } from './nuvia-mapa-historico.js';
 
 /* El límite de posiciones depende del nivel de la sesión (paso 33). */
 
@@ -261,19 +263,6 @@ export const BENCHMARKS_EVOLUCION = perfilesReferencia().map(({ nombre, tono, rv
   tono,
   rv,
 }));
-
-export const ACTIVOS_BENCHMARK = {
-  bolsa: [
-    'IE00B03HD191', // Vanguard Global Stock Index Fund EUR Acc
-    'IE00BYX5NX33', // Fidelity MSCI World Index Fund EUR P Acc
-  ],
-  bonos: [
-    'LU0113257694', // Schroder ISF EURO Corporate Bond A Acc
-    'LU0132601682', // Morgan Stanley Euro Corporate Bond Fund A
-  ],
-};
-
-export const IDS_BENCHMARK = [...ACTIVOS_BENCHMARK.bolsa, ...ACTIVOS_BENCHMARK.bonos];
 
 /** Construye la serie histórica de un perfil con las referencias disponibles
  * en la respuesta: iguales pesos dentro de bolsa y dentro de bonos, y el
@@ -1369,7 +1358,9 @@ export function montaConstructor(raiz, {
 
     resultados.textContent = '';
     if (!pesos) {
-      resultados.append(el('p', { class: 'nv-cons__nota' }, 'Sube algún peso para ver las métricas.'));
+      resultados.append(el('p', { class: 'nv-cons__nota' }, posiciones.some(p => Number.isFinite(p.bruto) && p.bruto > 0)
+        ? 'Las posiciones con peso no tienen historial utilizable en el periodo solicitado. Para calcular el mapa hacen falta sus series de precios.'
+        : 'Sube algún peso para ver las métricas.'));
       return;
     }
 
@@ -1409,6 +1400,9 @@ export function montaConstructor(raiz, {
       const nivelSesionActual = nivelActual();
       montaAnalisis(nodo, {
         posiciones, pesos, series, datos,
+        fechas: fechasComunes,
+        pesosOriginales: pesosNormalizados(posiciones),
+        cargaReferencias: () => seriesDelConjunto(IDS_BENCHMARK),
         registrada: Boolean(nivelAnalisis) || esRegistrada(),
         nivel: nivelSesionActual === 'admin' ? 'admin' : (nivelAnalisis || nivelSesionActual),
         metricas: m,

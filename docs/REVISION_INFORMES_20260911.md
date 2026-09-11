@@ -101,3 +101,35 @@ en GitHub Pages?», el fundador responde «Su», entendido en ese contexto como
 confirmación de publicación. Se procede a publicar esta versión en el repositorio
 Alfa y su GitHub Pages oficial. Esta autorización no certifica por sí misma una
 lectura humana de cada dato ni autoriza publicación automática de futuras ediciones.
+
+## Rediseño editorial · 11-09-2026
+
+El fundador solicita un formato más atractivo que invite a leer, con diseño NUVIA,
+uso de color a criterio del ejecutor y menos apariencia de documento antiguo.
+Se actualiza la presentación de las mismas ediciones ya publicadas:
+
+- Apertura azul NUVIA, titular Newsreader, motivo geométrico de hoja, período y
+  descarga visible. El tiempo de lectura es orientativo, calculado a 220 palabras
+  por minuto sobre el resumen, los hechos, el cuerpo, la agenda y los límites.
+- Fondo blanco, cifras en tarjetas azules, verdes y doradas, con unidades,
+  referencias y fechas conservadas. Los colores alternan por posición editorial,
+  sin expresar mejora, empeoramiento ni atractivo financiero.
+- Claves numeradas, temas con título lateral y cuerpo de anchura legible, agenda
+  en dos columnas y fuentes al final. Los datos sin contrastar mantienen su estado
+  y la explicación completa en un apartado visible específico.
+- Las tarjetas de acceso y los dos documentos HTML descargables comparten el
+  diseño. Se conserva la variante de impresión, los enlaces y el selector de edición.
+
+La prueba de alcance regulatorio anterior permanece vigente: cambian presentación
+y jerarquía, sin cambiar datos, contenido financiero, fuentes, períodos, funciones
+de inversión, backend ni tratamientos personales. El motivo gráfico es decorativo;
+no representa una serie de datos. Se conserva la separación profesional.
+
+Las 23 pruebas de informes y la auditoría de las cuatro vistas afectadas a 1440 y
+768 píxeles pasan sin errores de contraste, escala, navegación o desbordes. Las
+pruebas locales aíslan conexiones externas y no acreditan disponibilidad remota.
+
+La compilación completa del rediseño finaliza correctamente, incluidas las 37 vistas
+a 1440 píxeles y el módulo local de empresas a cinco anchos. Tras corregir la anchura
+de los números decorativos, se repite la revisión de ambos lectores a 768 píxeles,
+también sin incidencias. Se revisan visualmente el lector y el HTML descargable.

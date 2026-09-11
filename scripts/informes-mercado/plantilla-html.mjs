@@ -19,7 +19,7 @@ export function informeAHtml(informe) {
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NUVIA · Informe ${etiqueta(informe.tipo).toLowerCase()} · ${escapar(fechaLegible(informe.fecha))}</title>
 <style>${variables}\n${fuentes}\n${css}
-* { box-sizing:border-box; } body {margin:0;padding:40px 24px;background:var(--nv-paper-light);}
+* { box-sizing:border-box; } body {margin:0;padding:40px 24px;background:var(--nv-cloud);}
 main {max-width:1100px;margin:0 auto;} .volver {display:block;color:var(--nv-text-link);font:14px var(--nv-font-sans);margin:0 0 24px;}
 a:focus-visible, summary:focus-visible {outline:2px solid var(--nv-text);outline-offset:4px;}
 @media print {body {padding:0;} .volver {display:none;} }

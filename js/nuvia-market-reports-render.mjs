@@ -11,6 +11,17 @@ export const periodoLegible = (informe) => informe.periodo
   : fechaLegible(informe.fecha);
 const destino = (informe) => `mercados.html?vista=informes&tipo=${informe.tipo.toLowerCase()}#lectura-informe`;
 const descarga = (informe) => `core/downloads/informes/${informe.id}.html`;
+const minutosLectura = (informe) => Math.max(1, Math.ceil([
+  informe.entradilla, ...informe.hechos.map((h) => h.texto),
+  ...informe.cuerpo.flatMap((s) => [s.titulo, ...s.parrafos]),
+  ...informe.agenda.map((a) => a.que), informe.limitaciones || '',
+].join(' ').split(/\s+/).length / 220));
+const numero = (i) => String(i + 1).padStart(2, '0');
+
+function valorDestacado(valor) {
+  const partes = String(valor).match(/^([+−-]?\d[\d.,]*(?:\s?%)?)(.*)$/u);
+  return partes ? `<span class="nv-report__number">${escapar(partes[1])}</span>${partes[2].trim() ? `<span class="nv-report__unit">${escapar(partes[2].trim())}</span>` : ''}` : escapar(valor);
+}
 
 function citas(bloque, informe) {
   return (bloque.fuentes ?? []).map((n) => {
@@ -28,31 +39,29 @@ export function renderInforme(informe, { independiente = false } = {}) {
   const corte = informe.periodo?.corteIso ? new Intl.DateTimeFormat('es-ES', {
     dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/Madrid',
   }).format(new Date(informe.periodo.corteIso)) : null;
-  return `<article class="nv-report" aria-label="Informe ${etiqueta(informe.tipo).toLowerCase()}">
+  const cifras = informe.indicadores.filter((dato) => /\d/.test(dato.valor));
+  const cobertura = informe.indicadores.filter((dato) => !/\d/.test(dato.valor));
+  return `<article class="nv-report nv-report--${informe.tipo.toLowerCase()}" aria-label="Informe ${etiqueta(informe.tipo).toLowerCase()}">
     <header class="nv-report__header">
-      <p class="nv-report__eyebrow">NUVIA · Informe ${etiqueta(informe.tipo).toLowerCase()}</p>
-      <${h} class="nv-report__title">${escapar(informe.titular)}</${h}>
-      <p class="nv-report__meta">${escapar(periodoLegible(informe))}</p>
-      ${corte ? `<p class="nv-report__meta">Información hasta el ${escapar(corte)} · hora de Madrid</p>` : ''}
-      <p class="nv-report__lead">${escapar(informe.entradilla)}</p>
-      ${independiente ? '' : `<a class="nv-report__download" href="${descarga(informe)}" download>Descargar informe ${etiqueta(informe.tipo).toLowerCase()} (HTML) <span aria-hidden="true">↓</span></a>`}
-    </header>
-    <div class="nv-report__layout">
-      <div class="nv-report__main">
-        <section class="nv-report__section"><h3>Las claves del período</h3>
-          <ol class="nv-report__facts">${informe.hechos.map((hecho) => `<li><span class="nv-report__meta">${escapar(hecho.fecha)}</span><p>${escapar(hecho.texto)} ${citas(hecho, informe)}</p></li>`).join('')}</ol>
-        </section>
-        ${informe.cuerpo.map((seccion) => `<section class="nv-report__section"><h3>${escapar(seccion.titulo)}</h3>${seccion.parrafos.map((p) => `<p>${escapar(p)}</p>`).join('')}${citas(seccion, informe)}</section>`).join('')}
+      <div class="nv-report__masthead"><p class="nv-report__eyebrow">NUVIA · Economía en perspectiva</p><span class="nv-report__edition">Informe ${etiqueta(informe.tipo).toLowerCase()}</span></div>
+      <div class="nv-report__cover">
+        <div><${h} class="nv-report__title">${escapar(informe.titular)}</${h}><p class="nv-report__period">${escapar(periodoLegible(informe))}</p></div>
+        <div class="nv-report__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
       </div>
-      <aside class="nv-report__aside" aria-label="Datos y agenda">
-        <section class="nv-report__section"><h3>Cifras de referencia</h3>
-          <dl class="nv-report__figures">${informe.indicadores.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${escapar(dato.valor)}</dd><dd class="nv-report__reference">${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl>
-        </section>
-        <section class="nv-report__section"><h3>Agenda al cierre del informe</h3><p class="nv-report__meta">Fechas previstas en la edición; no es un calendario en directo.</p>
-          <ul class="nv-report__agenda">${informe.agenda.map((cita) => `<li><strong>${escapar(cita.cuando)}</strong><p>${escapar(cita.que)} ${citas(cita, informe)}</p></li>`).join('')}</ul>
-        </section>
-      </aside>
-    </div>
+      <p class="nv-report__lead">${escapar(informe.entradilla)}</p>
+      <div class="nv-report__toolbar"><span class="nv-report__reading">${minutosLectura(informe)} min de lectura aprox. · ${informe.hechos.length} claves</span>${independiente ? '' : `<a class="nv-report__download" href="${descarga(informe)}" download>Descargar informe ${etiqueta(informe.tipo).toLowerCase()} (HTML) <span aria-hidden="true">↓</span></a>`}</div>
+    </header>
+    ${corte ? `<p class="nv-report__cutoff">Información hasta el ${escapar(corte)} · hora de Madrid</p>` : ''}
+    ${cifras.length ? `<section class="nv-report__section nv-report__data"><div class="nv-report__section-label"><h3>Cifras de referencia</h3><span>El período de cada dato, junto a su fuente</span></div>
+      <dl class="nv-report__figures">${cifras.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${valorDestacado(dato.valor)}</dd><dd class="nv-report__reference">${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
+    <section class="nv-report__section nv-report__highlights"><div class="nv-report__section-label"><h3>Las claves del período</h3><span>Una primera lectura</span></div>
+      <ol class="nv-report__facts${informe.hechos.length % 2 === 0 ? ' nv-report__facts--even' : ''}">${informe.hechos.map((hecho, i) => `<li><span class="nv-report__fact-number" aria-hidden="true">${numero(i)}</span><div><span class="nv-report__meta">${escapar(hecho.fecha)}</span><p>${escapar(hecho.texto)} ${citas(hecho, informe)}</p></div></li>`).join('')}</ol>
+    </section>
+    <div class="nv-report__stories">${informe.cuerpo.map((seccion, i) => `<section class="nv-report__story"><div class="nv-report__story-heading"><span class="nv-report__chapter" aria-hidden="true">${numero(i)}</span><h3>${escapar(seccion.titulo)}</h3></div><div class="nv-report__story-copy">${seccion.parrafos.map((p) => `<p>${escapar(p)}</p>`).join('')}${citas(seccion, informe)}</div></section>`).join('')}</div>
+    <section class="nv-report__section nv-report__calendar"><div class="nv-report__section-label"><h3>Agenda al cierre del informe</h3><span>Fechas previstas en la edición; no es un calendario en directo.</span></div>
+      <ul class="nv-report__agenda">${informe.agenda.map((cita) => `<li><strong>${escapar(cita.cuando)}</strong><p>${escapar(cita.que)} ${citas(cita, informe)}</p></li>`).join('')}</ul>
+    </section>
+    ${cobertura.length ? `<section class="nv-report__coverage"><h3>Datos pendientes de contraste</h3><dl>${cobertura.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd class="nv-report__coverage-status">${escapar(dato.valor)}</dd><dd>${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
     <footer class="nv-report__footer">
       <h3>Fuentes y alcance</h3>
       <ol class="nv-report__sources">${informe.fuentes.map((fuente) => `<li><a href="${escapar(fuente.url)}" target="_blank" rel="noreferrer noopener">${escapar(fuente.titulo)}</a>${fuente.nota ? `<span>${escapar(fuente.nota)}</span>` : ''}</li>`).join('')}</ol>
@@ -70,7 +79,7 @@ export function renderTarjetas(indice, { compacto = false } = {}) {
   return `<div class="nv-reports-grid${compacto ? ' nv-reports-grid--compact' : ''}">${['DIARIO', 'SEMANAL'].map((tipo) => {
     const informe = indice.ediciones?.[tipo];
     if (!informe) return `<article class="nv-report-card"><p class="nv-report__eyebrow">Informe ${etiqueta(tipo).toLowerCase()}</p><h3>Próxima edición</h3><p>Las ediciones aparecerán aquí con su fecha y sus fuentes.</p></article>`;
-    return `<article class="nv-report-card"><div class="nv-report-card__meta"><p class="nv-report__eyebrow">Informe ${etiqueta(tipo).toLowerCase()}</p><span data-report-age="${informe.fecha}" data-report-type="${tipo}">Edición fechada</span></div><p class="nv-report__meta">${escapar(periodoLegible(informe))}</p><h3><a href="${destino(informe)}">${escapar(informe.titular)}</a></h3><p>${escapar(informe.entradilla)}</p><a class="nv-report-card__link" href="${destino(informe)}">Leer el ${etiqueta(tipo).toLowerCase()} <span aria-hidden="true">→</span></a></article>`;
+    return `<article class="nv-report-card nv-report-card--${tipo.toLowerCase()}"><div class="nv-report-card__meta"><p class="nv-report__eyebrow">Informe ${etiqueta(tipo).toLowerCase()}</p><span data-report-age="${informe.fecha}" data-report-type="${tipo}">Edición fechada</span></div><p class="nv-report__meta">${escapar(periodoLegible(informe))}</p><h3><a href="${destino(informe)}">${escapar(informe.titular)}</a></h3><p>${escapar(informe.entradilla)}</p><div class="nv-report-card__bottom"><a class="nv-report-card__link" href="${destino(informe)}">Leer el ${etiqueta(tipo).toLowerCase()} <span aria-hidden="true">→</span></a><span>${minutosLectura(informe)} min de lectura aprox.</span></div></article>`;
   }).join('')}</div>`;
 }
 

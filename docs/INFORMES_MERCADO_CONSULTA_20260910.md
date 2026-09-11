@@ -94,3 +94,12 @@ La primera edición de prueba destapó dos defectos y se han corregido:
 Resultado medido tras el cambio: seis fuentes, encabezadas por la nota de prensa del BCE y la
 publicación del IPP de la Oficina de Estadísticas Laborales de Estados Unidos, todas con
 dirección real y comprobable.
+
+## Actualización del 11-09-2026
+
+La [revisión e integración de los dos informes](REVISION_INFORMES_20260911.md)
+actualiza el funcionamiento técnico descrito arriba. Ejecutar el programa de
+incorporación **no acredita una revisión humana**: escribe los archivos locales y
+sincroniza su presentación, sin desplegarlos por sí mismo. El lector permite
+consultar ambas ediciones y descargar sus documentos con el diseño de NUVIA.
+La decisión del fundador sobre la lectura previa a la publicación pública se conserva.

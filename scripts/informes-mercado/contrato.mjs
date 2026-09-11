@@ -19,7 +19,7 @@
 import { tieneFuentePrimaria } from './fuentes.mjs';
 
 export const VERSION_CONTRATO = 'informe-mercado.v1';
-export const VERSION_PROMPT = 'nuvia-mercados-2026-09';
+export const VERSION_PROMPT = 'nuvia-mercados-2026-09-r2';
 
 export const TIPOS = {
   DIARIO: {
@@ -121,10 +121,11 @@ function urlSegura(valor, campo) {
 
 /** Recorre todo el texto publicable de una edición. */
 function textoPublicable(informe) {
-  const partes = [informe.titular, informe.entradilla];
-  for (const hecho of informe.hechos ?? []) partes.push(hecho.texto);
-  for (const cita of informe.agenda ?? []) partes.push(cita.que);
-  for (const indicador of informe.indicadores ?? []) partes.push(indicador.etiqueta, indicador.referencia);
+  const partes = [informe.titular, informe.entradilla, informe.limitaciones];
+  for (const hecho of informe.hechos ?? []) partes.push(hecho.texto, hecho.fecha);
+  for (const cita of informe.agenda ?? []) partes.push(cita.que, cita.cuando);
+  for (const indicador of informe.indicadores ?? []) partes.push(indicador.etiqueta, indicador.valor, indicador.referencia);
+  for (const fuente of informe.fuentes ?? []) partes.push(fuente.titulo, fuente.nota);
   for (const seccion of informe.cuerpo ?? []) {
     partes.push(seccion.titulo);
     for (const parrafo of seccion.parrafos ?? []) partes.push(parrafo);
@@ -155,12 +156,15 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
   }
 
   const tipo = texto(entrada.tipo, 'tipo', { max: 20 });
-  if (!(tipo in TIPOS)) fallo(`tipo debe ser DIARIO o SEMANAL; llegó «${tipo}».`);
+  if (!Object.hasOwn(TIPOS, tipo)) fallo(`tipo debe ser DIARIO o SEMANAL; llegó «${tipo}».`);
   if (tipoEsperado && tipo !== tipoEsperado) fallo(`Se esperaba un informe ${tipoEsperado}.`);
   const config = TIPOS[tipo];
 
   const fecha = texto(entrada.fecha, 'fecha', { min: 10, max: 10 });
   if (!/^\d{4}-\d{2}-\d{2}$/.test(fecha)) fallo('fecha debe tener el formato AAAA-MM-DD.');
+  const fechaValida = (valor) => /^\d{4}-\d{2}-\d{2}$/.test(valor) &&
+    Number.isFinite(Date.parse(`${valor}T12:00:00Z`)) && new Date(`${valor}T12:00:00Z`).toISOString().slice(0, 10) === valor;
+  if (!fechaValida(fecha)) fallo('fecha no corresponde a un día real.');
 
   const informe = {
     schema_version: VERSION_CONTRATO,
@@ -193,6 +197,7 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
     fuentes: lista(entrada.fuentes, 'fuentes', 2, 12).map((bruto, i) => ({
       titulo: texto(bruto?.titulo, `fuentes[${i}].titulo`, { min: 2, max: 180 }),
       url: urlSegura(bruto?.url, `fuentes[${i}].url`),
+      ...(bruto?.nota ? { nota: texto(bruto.nota, `fuentes[${i}].nota`, { max: 300 }) } : {}),
     })),
     generacion: {
       modeloInvestigacion: texto(
@@ -209,8 +214,33 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
     revision: {
       estado: entrada.revision?.estado === 'publicado' ? 'publicado' : 'borrador',
       revisadoIso: entrada.revision?.revisadoIso ?? null,
+      ...(entrada.revision?.nota ? { nota: texto(entrada.revision.nota, 'revision.nota', { max: 600 }) } : {}),
     },
   };
+
+  for (const campo of ['fechaIso', 'generadoIso']) {
+    if (!Number.isFinite(Date.parse(informe[campo]))) fallo(`${campo} no es una fecha válida.`);
+  }
+  if (informe.fechaIso.slice(0, 10) !== fecha) fallo('fechaIso no coincide con la fecha de edición.');
+  if (informe.revision.revisadoIso && !Number.isFinite(Date.parse(informe.revision.revisadoIso))) fallo('Fecha de revisión no válida.');
+  if (entrada.periodo) {
+    const { desde, hasta, corteIso } = entrada.periodo;
+    if (!fechaValida(desde) || !fechaValida(hasta) || desde > hasta || hasta !== fecha) fallo('Período incoherente con la edición.');
+    if (tipo === 'DIARIO' && desde !== hasta) fallo('El período diario debe identificar una jornada.');
+    if (tipo === 'SEMANAL' && Date.parse(hasta) - Date.parse(desde) !== 6 * 86400000) fallo('El semanal debe abarcar siete días naturales.');
+    if (corteIso && !Number.isFinite(Date.parse(corteIso))) fallo('Fecha de corte no válida.');
+    informe.periodo = { desde, hasta, ...(corteIso ? { corteIso } : {}) };
+  }
+  if (entrada.limitaciones) informe.limitaciones = texto(entrada.limitaciones, 'limitaciones', { max: 1200 });
+  for (const campo of ['hechos', 'indicadores', 'agenda', 'cuerpo']) {
+    informe[campo].forEach((bloque, i) => {
+      const refs = entrada[campo][i].fuentes;
+      if (refs !== undefined) {
+        if (!Array.isArray(refs) || refs.some((n) => !Number.isInteger(n) || n < 1 || n > informe.fuentes.length)) fallo(`${campo}[${i}]: referencia a fuente inexistente.`);
+        bloque.fuentes = [...new Set(refs)];
+      }
+    });
+  }
 
   const totalParrafos = informe.cuerpo.reduce((suma, seccion) => suma + seccion.parrafos.length, 0);
   const [minParrafos, maxParrafos] = config.parrafos;
@@ -248,6 +278,7 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
 export function vigencia(informe, ahora = new Date()) {
   const config = TIPOS[informe.tipo];
   const fecha = new Date(`${informe.fecha}T00:00:00.000Z`);
-  const dias = Math.max(0, Math.floor((ahora.getTime() - fecha.getTime()) / 86_400_000));
-  return { estado: dias <= config.diasVigencia ? 'vigente' : 'archivo', dias };
+  const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(ahora);
+  const dias = Math.floor((Date.parse(`${hoy}T00:00:00Z`) - fecha.getTime()) / 86_400_000);
+  return { estado: dias < 0 ? 'futuro' : dias <= config.diasVigencia ? 'vigente' : 'archivo', dias };
 }

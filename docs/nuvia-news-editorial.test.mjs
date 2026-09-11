@@ -66,8 +66,10 @@ assert.match(markets, /src\/assets\/social\/nuvia-social-source-generated-v1\.pn
   'El contenido de reserva debe usar el activo editorial propio');
 assert.doesNotMatch(markets, /daily-news-current|secondary-news-current/,
   'El contenido de reserva no debe rehospedar fotografías de prensa');
-assert.doesNotMatch(markets, /informes diarios/i,
-  'Mercados no debe prometer informes diarios mientras la sección esté en preparación');
+assert.match(markets, /data-report-reader/,
+  'Mercados integra un lector de las ediciones fechadas disponibles');
+assert.doesNotMatch(markets, /Archivo en preparación|Este archivo se habilitará/,
+  'El archivo disponible no se presenta como pendiente');
 assert.doesNotMatch(integration, /Datos oficiales revisados a diario/,
   'Los indicadores no deben prometer una revisión diaria que el sistema no acredita');
 assert.doesNotMatch(styles, /\.markets-lead-news h3[^}]*line-clamp/s,

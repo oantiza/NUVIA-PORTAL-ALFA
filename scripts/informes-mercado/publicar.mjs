@@ -3,8 +3,8 @@
  *
  *   node scripts/informes-mercado/publicar.mjs --id diario-2026-09-10
  *
- * Ejecutar este comando ES la revisión humana: el borrador no llega al portal
- * por sí solo ni por un cron. Quien lo lanza declara que ha leído la edición.
+ * Incorpora un borrador al sitio local; no despliega. Ejecutar el programa no
+ * demuestra una lectura humana. La revisión editorial se registra por separado.
  *
  * Escribe dos cosas:
  *   data/informes-mercado.json          — lo que lee la página de mercados
@@ -17,6 +17,7 @@ import { resolve } from 'node:path';
 
 import { TIPOS, VERSION_CONTRATO, validarInforme, vigencia, ErrorContrato } from './contrato.mjs';
 import { informeAHtml } from './plantilla-html.mjs';
+import { sincronizarInformes } from './sincronizar.mjs';
 
 const CARPETA_BORRADORES = 'output/informes-borrador';
 const CARPETA_DESCARGAS = 'core/downloads/informes';
@@ -61,13 +62,16 @@ export function integrarEnIndice(indice, informe, ahora = new Date()) {
     actualizadoIso: ahora.toISOString(),
     ediciones: {
       ...(indice.ediciones ?? {}),
-      [informe.tipo]: { ...informe, vigencia: vigencia(informe, ahora), descarga: ficha.descarga },
+      [informe.tipo]: indice.ediciones?.[informe.tipo]?.fecha > informe.fecha
+        ? indice.ediciones[informe.tipo]
+        : { ...informe, vigencia: vigencia(informe, ahora), descarga: ficha.descarga },
     },
     archivo,
   };
 }
 
 export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } = {}) {
+  if (!/^(diario|semanal)-\d{4}-\d{2}-\d{2}$/.test(id ?? '')) throw new ErrorContrato('Identificador de informe no válido.');
   const rutaBorrador = resolve(raiz, CARPETA_BORRADORES, `${id}.json`);
   if (!existsSync(rutaBorrador)) {
     const carpeta = resolve(raiz, CARPETA_BORRADORES);
@@ -84,7 +88,7 @@ export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } 
   // Se revalida al publicar, no solo al generar: entre una cosa y otra el
   // fichero ha estado en disco y ha podido editarse a mano.
   const informe = validarInforme(
-    { ...bruto, revision: { estado: 'publicado', revisadoIso: ahora.toISOString() } },
+    { ...bruto, revision: { ...bruto.revision, estado: 'publicado', revisadoIso: ahora.toISOString() } },
     { tipoEsperado: bruto.tipo },
   );
 
@@ -95,6 +99,7 @@ export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } 
 
   const indice = integrarEnIndice(await indiceActual(raiz), informe, ahora);
   await writeFile(resolve(raiz, INDICE), `${JSON.stringify(indice, null, 2)}\n`, 'utf8');
+  await sincronizarInformes({ raiz });
 
   return { informe, rutaHtml, indice };
 }

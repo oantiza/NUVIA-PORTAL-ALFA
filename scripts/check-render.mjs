@@ -79,7 +79,7 @@ const CONTENIDO = {
   'academia.html?tab=fundamentos': [['.ac-history-chart', 1]],
   'academia.html?tab=calculadora': [['.ac-compound-chart', 1], ['.ac-compound-chart__plot > span', 5]],
   'jubilacion.html#resultados': [['#resultados', 1], ['.jub-chart polyline', 4]],
-  'mercados.html?vista=informes': [['.markets-archive__empty', 1]],
+  'mercados.html?vista=informes': [['[data-report-reader]', 1], ['[data-report-edition]:not([hidden]) .nv-report', 1], ['[data-report-select]', 2]],
   'temas.html':            [['.nv-space-tool-card', 4]],
   'temas.html?topic=jubilacion': [['.nv-field__box', 19], ['#familia-legado', 1]],
   'temas.html?topic=bienestar': [['#tema-titulo', 1], ['.tm-wellbeing', 1], ['.tm-pillar', 5]],
@@ -118,6 +118,7 @@ const PAGINAS_BASE = [
   'academia.html?tab=cursos', 'academia.html?tab=esenciales',
   'academia.html?tab=fundamentos', 'academia.html?tab=calculadora',
   'jubilacion.html#resultados', 'mercados.html?vista=informes',
+  'mercados.html?vista=informes&tipo=semanal',
 ];
 const filtroPaginas = (process.argv[4] || '').split(',').map((item) => item.trim()).filter(Boolean);
 const PAGINAS = filtroPaginas.length ? PAGINAS_BASE.filter((pagina) => filtroPaginas.includes(pagina)) : PAGINAS_BASE;

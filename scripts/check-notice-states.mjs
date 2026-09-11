@@ -56,11 +56,11 @@ export async function checkNoticeStates(page, route) {
       await page.getByRole('button',{name:'11 ago 2026',exact:true}).click();
     }
     await page.getByRole('button',{name:'Cotizaciones',exact:true}).click();
-    // Archivo vacío: no simula carga ni error; ofrece una salida real.
+    // Las ediciones reales sustituyen el antiguo estado vacío.
     await page.getByRole('button',{name:'Informes',exact:true}).click();
-    await page.locator('.markets-archive__empty').waitFor({state:'visible'});
-    if(!await page.getByRole('heading',{name:'Todavía no hay informes publicados',exact:true}).isVisible())problems.push('Archivo vacío sin explicación');
-    if(await page.locator('.markets-archive__empty a').getAttribute('href')!=='mercados.html')problems.push('Archivo vacío sin salida a Mercados');
+    await page.locator('[data-report-reader]').waitFor({state:'visible'});
+    if(await page.locator('[data-report-select]').count()!==2)problems.push('No se ofrecen las dos periodicidades');
+    if(!await page.locator('[data-report-edition]:visible .nv-report__download').isVisible())problems.push('La edición no tiene descarga');
     await page.getByRole('button',{name:'Mercados y cotizaciones',exact:true}).click();
   }
   return problems;

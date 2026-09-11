@@ -155,8 +155,10 @@ export function depurarFuentes(fuentes, { maximo = 12, maximoSecundarias = 4 } =
     if (!url) continue;
     const { tipo, nombre, host } = clasificarFuente(url);
     if (tipo === 'vetada' || tipo === 'invalida') continue;
-    if (vistas.has(host)) continue;
-    vistas.add(host);
+    const canonica = new URL(url);
+    canonica.hash = '';
+    if (vistas.has(canonica.href)) continue;
+    vistas.add(canonica.href);
     (tipo === 'primaria' ? primarias : secundarias).push({ titulo: nombre, url });
   }
 

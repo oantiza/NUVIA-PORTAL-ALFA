@@ -79,7 +79,7 @@ export async function generarBorrador({ tipo, fecha = null, clave = null } = {})
   }
   const fuentes = investigacion.fuentes;
 
-  const redaccion = await generarConReserva(apiKey, promptRedaccion(tipo, hoy, investigacion.texto), {
+  const redaccion = await generarConReserva(apiKey, promptRedaccion(tipo, hoy, investigacion.texto, fuentes), {
     fundamentado: false,
     json: true,
   });
@@ -94,6 +94,11 @@ export async function generarBorrador({ tipo, fecha = null, clave = null } = {})
       tipo,
       fecha: hoy,
       fechaIso: `${hoy}T00:00:00.000Z`,
+      periodo: {
+        desde: tipo === 'SEMANAL' ? new Date(Date.parse(`${hoy}T12:00:00Z`) - 6 * 86400000).toISOString().slice(0, 10) : hoy,
+        hasta: hoy,
+        ...(hoy === fechaMadrid() ? { corteIso: new Date().toISOString() } : {}),
+      },
       generadoIso: new Date().toISOString(),
       fuentes,
       generacion: {

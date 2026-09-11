@@ -8,6 +8,7 @@
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 
 import { validarInforme, vigencia, ErrorContrato } from '../scripts/informes-mercado/contrato.mjs';
 import { integrarEnIndice } from '../scripts/informes-mercado/publicar.mjs';
@@ -240,13 +241,61 @@ test('rechaza las redirecciones del buscador, que caducan en horas', () => {
   assert.throws(() => validarInforme(informe), ErrorContrato);
 });
 
-test('descarta las fuentes repetidas del mismo sitio', () => {
+test('conserva documentos distintos de un organismo y elimina la URL repetida', () => {
   const depuradas = depurarFuentes([
     { titulo: 'ecb', url: 'https://www.ecb.europa.eu/press/uno.html' },
     { titulo: 'ecb', url: 'https://www.ecb.europa.eu/press/dos.html' },
     { titulo: 'ine', url: 'https://www.ine.es/prensa/ipc.pdf' },
+    { titulo: 'ine repetido', url: 'https://www.ine.es/prensa/ipc.pdf' },
   ]);
-  assert.equal(depuradas.length, 2);
+  assert.equal(depuradas.length, 3);
+});
+
+test('una republicación histórica no sustituye la última edición', () => {
+  const reciente = validarInforme(informeValido());
+  const antiguo = validarInforme(informeValido({ fecha: '2026-09-01' }));
+  const indice = integrarEnIndice(integrarEnIndice({ ediciones: {}, archivo: [] }, reciente), antiguo);
+  assert.equal(indice.ediciones.DIARIO.id, reciente.id);
+  assert.equal(indice.archivo.length, 2);
+});
+
+test('rechaza días inexistentes, identidades incoherentes y fuentes inexistentes', () => {
+  assert.throws(() => validarInforme(informeValido({ fecha: '2026-02-30' })), ErrorContrato);
+  assert.throws(() => validarInforme(informeValido({ tipo: 'toString' })), ErrorContrato);
+  assert.throws(() => validarInforme(informeValido({ fechaIso: '2026-09-09T00:00:00.000Z' })), ErrorContrato);
+  const mal = informeValido(); mal.hechos[0].fuentes = [7];
+  assert.throws(() => validarInforme(mal), ErrorContrato);
+});
+
+test('los campos de valores y limitaciones tampoco pueden contener consejo', () => {
+  const mal = informeValido(); mal.indicadores[0].valor = 'Oportunidad de compra';
+  assert.throws(() => validarInforme(mal), ErrorContrato);
+  assert.throws(() => validarInforme(informeValido({ limitaciones: 'Deberías revisar tu exposición.' })), ErrorContrato);
+});
+
+test('vigencia se calcula al consultar en Madrid y no convierte el futuro en actual', () => {
+  const informe = validarInforme(informeValido());
+  assert.equal(vigencia(informe, new Date('2026-09-09T10:00:00Z')).estado, 'futuro');
+  assert.equal(vigencia(informe, new Date('2026-09-12T22:30:00Z')).estado, 'archivo');
+});
+
+test('las dos ediciones reales tienen período, referencias y descarga idéntica al lector', () => {
+  const indice = JSON.parse(readFileSync(new URL('../data/informes-mercado.json', import.meta.url), 'utf8'));
+  for (const tipo of ['DIARIO', 'SEMANAL']) {
+    const informe = validarInforme(indice.ediciones[tipo]);
+    assert.ok(informe.periodo);
+    assert.match(informe.revision.nota, /asistidos por IA/);
+    for (const hecho of informe.hechos) assert.ok(hecho.fuentes.length);
+    for (const cifra of informe.indicadores) {
+      if (/\d/.test(cifra.valor)) assert.ok(cifra.fuentes.length, cifra.etiqueta);
+    }
+    const html = readFileSync(new URL(`../core/downloads/informes/${informe.id}.html`, import.meta.url), 'utf8');
+    assert.equal(html, informeAHtml(informe), 'La descarga debe regenerarse cuando cambian datos o presentación');
+    assert.ok(html.includes('data:font/woff2;base64,'), 'Tipografía autoalojada en el documento');
+  }
+  const markets = readFileSync(new URL('../mercados.html', import.meta.url), 'utf8');
+  assert.match(markets, /data-report-select="DIARIO"/);
+  assert.match(markets, /data-report-select="SEMANAL"/);
 });
 
 test('acota la cola secundaria y no toca las primarias', () => {

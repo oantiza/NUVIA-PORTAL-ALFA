@@ -31,7 +31,11 @@ for(const [file,className] of [['vivienda.html','nv-table-scroll viv-table__scro
 }
 const market=read('mercados.html');
 assert.match(market,/<caption[^>]*>Cotizaciones ilustrativas/);
-assert.equal((market.match(/<th scope="col">/g)||[]).length,7);
+// Desde que las portadas de informe viven en esta página hay varias tablas: se
+// cuentan las columnas de la tabla de cotizaciones, no las de todo el archivo.
+const quotesStart=market.lastIndexOf('<table',market.indexOf('Cotizaciones ilustrativas'));
+const quotes=market.slice(quotesStart,market.indexOf('</table>',quotesStart));
+assert.equal((quotes.match(/<th scope="col">/g)||[]).length,7);
 for(const key of ['precio','variacion','anual','peso','volumen','sector'])assert.ok(market.includes(`{{ cotizacion.${key} }}`));
 for(const file of ['js/nuvia-simulador.js','js/nuvia-constructor.js','js/nuvia-analisis.js']) {
   for(const line of read(file).split('\n').filter(l=>l.includes("el('div', { class: 'nv-sim-tabla-scroll'"))) {

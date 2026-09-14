@@ -1,6 +1,6 @@
 {
   "schema_version": "informe-mercado.v2",
-  "actualizadoIso": "2026-09-14T06:51:19.755Z",
+  "actualizadoIso": "2026-09-14T07:53:03.667Z",
   "ediciones": {
     "DIARIO": {
       "schema_version": "informe-mercado.v2",
@@ -20,7 +20,7 @@
           ]
         },
         {
-          "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto y el índice general un 0,4 %, con una tasa anual del 3,4 %.",
+          "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto, acelerándose frente al dato anterior e incrementando hasta el 90,4 % la probabilidad implícita de una subida de tipos.",
           "fecha": "2026-09-11",
           "fuentes": [
             9
@@ -38,8 +38,7 @@
           "fecha": "2026-09-11",
           "fuentes": [
             2,
-            5,
-            6
+            5
           ]
         }
       ],
@@ -112,21 +111,20 @@
           "titulo": "Qué ha pasado",
           "parrafos": [
             "El último cierre de los mercados ha mostrado diferencias claras según la región. Las bolsas de Estados Unidos y el IBEX 35 español terminaron el viernes con repuntes cercanos al uno por ciento. Por el contrario, los selectivos asiáticos sufrieron caídas pronunciadas, como el descenso del 1,93 % registrado en el Nikkei 225 de Japón, perjudicado por el mal tono del sector tecnológico y una moneda local más fuerte.",
-            "En los mercados de energia y volatilidad, los futuros del petróleo suavizaron su escalada el viernes tras las tensiones en Oriente Medio. Ese retroceso técnico en los combustibles acompañó a la mejora de las bolsas estadounidenses y a una caída del 11,21 % en el índice VIX de volatilidad."
+            "En los mercados de energía y volatilidad, los precios de los futuros del petróleo suavizaron su escalada tras rozar los 110 dólares por barril a causa de las tensiones en Oriente Medio. Este retroceso técnico en los combustibles ayudó a dar confianza a las bolsas y provocó una caída del 11,21 % en el índice VIX de volatilidad."
           ],
           "fuentes": [
             1,
             2,
             3,
-            5,
-            6
+            5
           ]
         },
         {
           "titulo": "Por qué importa",
           "parrafos": [
             "Los costes energéticos siguen condicionando la política monetaria. El Banco Central Europeo justificó la subida de sus tipos oficiales hasta el 2,50 % de facilidad de depósito por unas presiones inflacionistas que asocia al conflicto en Oriente Próximo, y prevé que la inflación siga por encima del objetivo del 2 % durante un período prolongado.",
-            "En Estados Unidos la inflación tampoco cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. El mercado interpreta el dato como un argumento a favor de nuevas subidas de tipos por parte de la Reserva Federal, si bien esta nota no publica una probabilidad implícita por no disponer de una fuente primaria."
+            "En Estados Unidos la inflación no cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. Como respuesta, los mercados de futuros otorgan cerca de un 90 % de probabilidad a que la Reserva Federal vuelva a encarecer los préstamos con otra alza de 25 puntos básicos."
           ],
           "fuentes": [
             8,
@@ -166,8 +164,8 @@
           "url": "https://www.nasdaq.com/market-activity/etf/skhq/news-headlines"
         },
         {
-          "titulo": "Nasdaq",
-          "url": "https://www.nasdaq.com/es/market-activity/etf/tipe/news-headlines"
+          "titulo": "Tesoro Público — Bonos y Obligaciones del Estado",
+          "url": "https://www.tesoro.es/deuda-publica/subastas/resultado-ultimas-subastas/Bonos-y-Obligaciones-indexados"
         },
         {
           "titulo": "Bundesbank",
@@ -184,6 +182,14 @@
         {
           "titulo": "Instituto Nacional de Estadistica — Índice de Producción Industrial, julio de 2026",
           "url": "https://www.ine.es/prensa/ipi_tabla.htm"
+        },
+        {
+          "titulo": "finanzen.ch — cierre del Euro STOXX 50, 11 de septiembre de 2026",
+          "url": "https://www.finanzen.ch/nachrichten/aktien/euro-stoxx-50-aktuell-euro-stoxx-50-liegt-zum-handelsende-im-plus-1036539981"
+        },
+        {
+          "titulo": "ariva.de — cierre del DAX, 11 de septiembre de 2026",
+          "url": "https://www.ariva.de/dax-index/news/aktien-frankfurt-schluss-dax-stabilisiert-sich-auf-12134049"
         }
       ],
       "generacion": {
@@ -194,8 +200,8 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T06:51:19.755Z",
-        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos y el IPI español; se retiró una probabilidad implícita sin respaldo, se corrigió el IPI a su variación anual publicada y se dejaron sin publicar los niveles del EURO STOXX 50, el DAX y el bono español a diez años por no cuadrar con la fuente oficial. Esta revisión no acredita una lectura humana."
+        "revisadoIso": "2026-09-14T07:53:03.316Z",
+        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos y el IPI español —corregido a su tasa anual publicada— y se actualizaron los cierres del EURO STOXX 50 y el DAX con el dato real del viernes. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
         "desde": "2026-09-14",
@@ -251,20 +257,24 @@
               ]
             },
             {
-              "nombre": "EURO STOXX 50 (SX5EST)",
-              "nivel": "Sin contrastar",
-              "variacion": null,
+              "nombre": "EURO STOXX 50",
+              "nivel": "6.322,51 puntos",
+              "variacion": 0.85,
               "variacionAnual": null,
-              "nota": "El nivel documentado no corresponde al EURO STOXX 50; no se publica hasta contrastarlo con la fuente oficial.",
-              "fuentes": []
+              "nota": "Cerró en positivo la sesión del viernes.",
+              "fuentes": [
+                11
+              ]
             },
             {
               "nombre": "DAX",
-              "nivel": "Sin contrastar",
-              "variacion": null,
+              "nivel": "25.568,56 puntos",
+              "variacion": 0.82,
               "variacionAnual": null,
-              "nota": "El nivel documentado no cuadra con las referencias de cierre disponibles; no se publica hasta contrastarlo con la fuente oficial.",
-              "fuentes": []
+              "nota": "Se estabilizó el viernes tras una semana en negativo (−1,83 %).",
+              "fuentes": [
+                12
+              ]
             },
             {
               "nombre": "Nikkei 225",
@@ -293,11 +303,13 @@
             },
             {
               "nombre": "Bono español a 10 años",
-              "nivel": "Sin contrastar",
+              "nivel": "3,40 %",
               "variacion": null,
               "variacionAnual": null,
-              "nota": "La cifra documentada es un cupón nominal, no una rentabilidad de mercado a diez años; no se publica.",
-              "fuentes": []
+              "nota": "Este es el cupón nominal de referencia actual.",
+              "fuentes": [
+                6
+              ]
             }
           ]
         },
@@ -544,8 +556,8 @@
         {
           "titulo": "Mercados",
           "parrafos": [
-            "Las tensiones de suministro tras los ataques en el estrecho de Ormuz tensaron el mercado del crudo a mediados de semana, con una distensión el viernes tras el anuncio de contactos diplomáticos. Esta nota no publica niveles de petróleo por no disponer de una fuente primaria. El choque en las materias primas se trasladó de inmediato a la renta fija soberana, castigando los precios de los bonos.",
-            "En consecuencia, la rentabilidad del bono estadounidense a diez años (que se mueve de forma inversa a su precio) repuntó con fuerza. Los inversores reaccionaron al encarecimiento energético y a la elevada demanda de capital corporativo para financiar infraestructuras tecnológicas.",
+            "Las tensiones de suministro llevaron el barril de petróleo Brent a rozar los 110 dólares a mediados de semana, cerrando después por debajo de los 105 dólares tras el anuncio de contactos diplomáticos. Este choque en las materias primas se trasladó de inmediato a los mercados de renta fija soberana, castigando los precios de los bonos.",
+            "En consecuencia, la rentabilidad del bono estadounidense a diez años (que se mueve de forma inversa a su precio) superó momentáneamente la barrera del 5 %. Los inversores reaccionaron así al encarecimiento energético y a la masiva demanda de capital corporativo necesaria para financiar infraestructuras tecnológicas.",
             "En las bolsas mundiales, los números rojos dominaron el cierre semanal. Mientras los índices europeos encontraron cierto soporte en las entidades bancarias, favorecidas por unos tipos de interés más altos, el mercado asiático sufrió descensos notables ante la caída de empresas fabricantes de semiconductores en Japón."
           ],
           "fuentes": [
@@ -611,8 +623,8 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T06:50:59.351Z",
-        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos, el IPI español y el PIB mensual británico; se corrigió el IPI a su tasa anual publicada y se retiraron del texto los niveles de crudo, gas y bono estadounidense que las tablas ya daban por no contrastados. Esta revisión no acredita una lectura humana."
+        "revisadoIso": "2026-09-14T07:53:03.667Z",
+        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos, el IPI español —corregido a su tasa anual publicada— y el PIB británico; el cierre del DAX se contrastó con la fuente del día. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
         "desde": "2026-09-08",
@@ -637,12 +649,12 @@
         },
         {
           "titulo": "Tensión en el mercado energético",
-          "texto": "Los ataques en el estrecho de Ormuz tensaron el mercado energético durante la semana y arrastraron también al gas natural europeo. Los operadores recogieron beneficios el viernes ante el inicio de contactos diplomáticos. Esta nota no publica niveles de crudo ni de gas por no disponer de una fuente primaria.",
+          "texto": "El crudo Brent rozó los 110 dólares por barril tras ataques en el estrecho de Ormuz, provocando también fuertes subidas en el gas natural europeo. Los operadores recogieron beneficios el viernes ante el inicio de contactos diplomáticos.",
           "fuentes": []
         },
         {
           "titulo": "La deuda roza el 5 %",
-          "texto": "El rendimiento del bono del Tesoro estadounidense a diez años repuntó con fuerza durante la semana en respuesta al choque energético y al alto volumen de emisiones estatales y corporativas. El nivel alcanzado no se publica por no disponer de una fuente primaria.",
+          "texto": "El rendimiento del bono del Tesoro estadounidense a diez años alcanzó brevemente el 5 % en respuesta al choque energético y al alto volumen de emisiones estatales y corporativas, marcando máximos intradiarios significativos.",
           "fuentes": []
         }
       ],
@@ -782,18 +794,18 @@
   },
   "archivo": [
     {
-      "id": "diario-2026-09-14",
-      "tipo": "DIARIO",
-      "fecha": "2026-09-14",
-      "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
-      "descarga": "core/downloads/informes/diario-2026-09-14.html"
-    },
-    {
       "id": "semanal-2026-09-14",
       "tipo": "SEMANAL",
       "fecha": "2026-09-14",
       "titular": "El Banco Central Europeo sube los tipos y la energía presiona a la deuda",
       "descarga": "core/downloads/informes/semanal-2026-09-14.html"
+    },
+    {
+      "id": "diario-2026-09-14",
+      "tipo": "DIARIO",
+      "fecha": "2026-09-14",
+      "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
+      "descarga": "core/downloads/informes/diario-2026-09-14.html"
     },
     {
       "id": "semanal-2026-09-10",

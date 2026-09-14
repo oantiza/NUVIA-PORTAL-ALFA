@@ -54,7 +54,7 @@ function fechaMadrid(ahora = new Date()) {
   return partes;
 }
 
-export async function generarBorrador({ tipo, fecha = null, clave = null } = {}) {
+export async function generarBorrador({ tipo, fecha = null, clave = null, alRetirar = null } = {}) {
   const apiKey = clave ?? leerClave();
   const hoy = fecha ?? fechaMadrid();
 
@@ -110,7 +110,7 @@ export async function generarBorrador({ tipo, fecha = null, clave = null } = {})
       revision: { estado: 'borrador', revisadoIso: null },
     },
     // v2: sin tablas, claves y glosario el borrador no vale (ver BLOQUES_V2).
-    { tipoEsperado: tipo, exigirBloques: true },
+    { tipoEsperado: tipo, exigirBloques: true, alRetirar },
   );
 
   return informe;
@@ -121,7 +121,8 @@ async function principal() {
   const raiz = resolve(process.cwd());
 
   process.stdout.write(`Generando el borrador ${TIPOS[tipo].etiqueta}…\n`);
-  const informe = await generarBorrador({ tipo, fecha });
+  const retirados = [];
+  const informe = await generarBorrador({ tipo, fecha, alRetirar: (lista) => retirados.push(...lista) });
 
   const carpeta = resolve(raiz, CARPETA_BORRADORES);
   await mkdir(carpeta, { recursive: true });
@@ -138,6 +139,9 @@ async function principal() {
         `${(informe.mercados ?? []).reduce((n, g) => n + g.filas.length, 0)} referencias de mercado · ` +
         `${informe.agenda.length} citas · ${parrafos} párrafos · ${informe.glosario?.length ?? 0} términos`,
       `  Fuentes:  ${informe.fuentes.length}`,
+      ...(retirados.length
+        ? ['', '  Retirado por no acreditar la cifra con quien la publica:', ...retirados.map((r) => `    · ${r}`)]
+        : []),
       `  Modelos:  ${informe.generacion.modeloInvestigacion} (documentación) · ` +
         `${informe.generacion.modeloRedaccion} (redacción)`,
       '',

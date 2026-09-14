@@ -16,7 +16,7 @@
  * llega a publicarse aunque el prompt dijera lo contrario.
  */
 
-import { tieneFuentePrimaria } from './fuentes.mjs';
+import { acreditarPorNombre, tieneFuentePrimaria } from './fuentes.mjs';
 
 /**
  * v2 (14-09-2026). El informe deja de ser solo prosa: entran cuatro bloques
@@ -277,7 +277,7 @@ function validarGlosario(valor) {
  * mercados: «No se presenta como diario ningún contenido que no haya sido
  * actualizado y revisado».
  */
-export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = false } = {}) {
+export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = false, alRetirar = null } = {}) {
   if (!entrada || typeof entrada !== 'object' || Array.isArray(entrada)) {
     fallo('El informe debe ser un objeto.');
   }
@@ -390,6 +390,48 @@ export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = f
       if (refs !== undefined) bloque.fuentes = resolverRefs(refs, `${campo}[${i}]`);
     });
   }
+  // Lo mismo que en la tabla de mercados, para el texto: un hecho que nadie
+  // publica no es un hecho, y un indicador con cifra sin respaldo es peor que
+  // no ponerlo. Antes de retirar nada se intenta acreditar por el nombre del
+  // organismo —el modelo escribe «según el BCE» y olvida el número de la
+  // fuente— y solo se retira lo que sigue sin respaldo. Se aplica al GENERAR:
+  // las ediciones ya publicadas se leen tal cual.
+  if (exigirBloques) {
+    const retirados = [];
+    for (const campo of ['hechos', 'indicadores']) {
+      informe[campo] = (informe[campo] ?? []).filter((bloque) => {
+        if (bloque.fuentes?.length) return true;
+        const pistas =
+          campo === 'hechos'
+            ? bloque.texto
+            : `${bloque.etiqueta} ${bloque.valor} ${bloque.referencia}`;
+        const acreditadas = acreditarPorNombre(pistas, informe.fuentes);
+        if (acreditadas.length) {
+          bloque.fuentes = acreditadas;
+          return true;
+        }
+        // Un indicador sin cifra (un texto cualitativo) no afirma un número:
+        // no se le exige respaldo documental.
+        if (campo === 'indicadores' && !/\d/.test(bloque.valor ?? '')) return true;
+        retirados.push(`${campo}: ${campo === 'hechos' ? bloque.texto : `${bloque.etiqueta} (${bloque.valor})`}`);
+        return false;
+      });
+    }
+    if (retirados.length && typeof alRetirar === 'function') alRetirar(retirados);
+    if (informe.hechos.length < 3) {
+      fallo(
+        'Menos de tres hechos con fuente que los publique de primera mano. ' +
+          'Vuelve a generar el borrador: lo retirado no se sustituye con relleno.',
+      );
+    }
+    if (informe.indicadores.length < 3) {
+      fallo(
+        'Menos de tres indicadores acreditados. Vuelve a generar el borrador: ' +
+          'una cifra sin publicación que la respalde no se publica.',
+      );
+    }
+  }
+
   // Una fila de mercado con cifra tiene que decir de dónde sale. Sin fuente, la
   // cifra NO se publica: la fila se queda en «Sin contrastar» con las variaciones
   // a null y una nota que lo dice. No se tumba el borrador entero por ello —el

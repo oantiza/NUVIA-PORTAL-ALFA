@@ -199,3 +199,79 @@ export function depurarFuentes(fuentes, { maximo = 12, maximoSecundarias = 4 } =
 export function tieneFuentePrimaria(fuentes) {
   return (fuentes ?? []).some((fuente) => clasificarFuente(fuente?.url).tipo === 'primaria');
 }
+
+/**
+ * Acredita un bloque que cita un organismo pero olvida el numero de la fuente.
+ *
+ * El caso es constante: el modelo escribe «segun la Oficina de Estadisticas
+ * Laborales» o pone «2026-09-10 BCE» en la referencia del indicador, y deja la
+ * lista de fuentes vacia. Si esa publicacion esta en la lista del informe, la
+ * cita existe y solo falta el numero; ponerlo es mas fiel que tirar el bloque.
+ * Si NO esta, no se inventa nada: el bloque se queda sin acreditar y quien
+ * llama decide (en la generacion, se retira).
+ */
+const ALIAS = new Map([
+  ['Banco Central Europeo', ['banco central europeo', 'bce', 'ecb']],
+  ['Banco de España', ['banco de españa']],
+  ['Reserva Federal de Estados Unidos', ['reserva federal', 'la fed', 'fomc', 'federal reserve']],
+  ['Banco de Inglaterra', ['banco de inglaterra', 'bank of england', 'boe']],
+  ['Banco de Japón', ['banco de japón', 'bank of japan', 'boj']],
+  ['Instituto Nacional de Estadística', ['instituto nacional de estadística', 'ine']],
+  ['Oficina de Estadísticas Laborales de Estados Unidos', ['oficina de estadísticas laborales', 'bureau of labor statistics', 'bls']],
+  ['Bureau of Economic Analysis', ['bureau of economic analysis', 'bea']],
+  ['Office for National Statistics', ['office for national statistics', 'ons']],
+  ['Destatis', ['destatis']],
+  ['INSEE', ['insee']],
+  ['ISTAT', ['istat']],
+  ['Eurostat', ['eurostat']],
+  ['Comisión Europea', ['comisión europea', 'eurostat']],
+  ['Tesoro Público', ['tesoro público']],
+  ['Bundesbank', ['bundesbank']],
+  ['Bolsas y Mercados Españoles', ['bolsas y mercados', 'bme']],
+  ['Cboe (índice VIX)', ['cboe']],
+  ['Nikkei Indexes', ['nikkei indexes']],
+  ['S&P Global', ['s&p global', 'spdji']],
+  ['STOXX', ['stoxx']],
+  ['MSCI', ['msci']],
+  ['Administración de Información Energética de Estados Unidos', ['administración de información energética', 'eia']],
+  ['Agencia Internacional de la Energía', ['agencia internacional de la energía']],
+  ['OPEP', ['opep']],
+]);
+
+const sinAcentos = (t) =>
+  String(t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+/** Palabra suelta: «bce» casa, «bcex» o «labce» no. */
+function mencionado(texto, alias) {
+  const limpio = sinAcentos(texto);
+  return alias.some((a) => new RegExp(`(^|[^a-z0-9])${sinAcentos(a).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^a-z0-9]|$)`).test(limpio));
+}
+
+/**
+ * Devuelve los numeros de fuente (1..n) que el texto cita por su nombre.
+ * `fuentes` es la lista del informe, ya depurada.
+ */
+export function acreditarPorNombre(texto, fuentes) {
+  const numeros = [];
+  (fuentes ?? []).forEach((fuente, i) => {
+    if (mencionado(texto, aliasDe(fuente?.titulo))) numeros.push(i + 1);
+  });
+  return numeros;
+}
+
+/**
+ * El título de una fuente rara vez es el nombre pelado del organismo: lleva
+ * detrás la publicación concreta («Banco Central Europeo — Decisiones de
+ * política monetaria, 10 de septiembre de 2026»), a veces en otro idioma y a
+ * veces sin tildes. Se compara por la cabecera del título, sin acentos, para
+ * que el nombre del organismo siga reconociéndose.
+ */
+function aliasDe(titulo) {
+  const limpio = sinAcentos(titulo);
+  for (const [nombre, alias] of ALIAS) {
+    const clave = sinAcentos(nombre);
+    if (limpio.startsWith(clave) || clave.startsWith(limpio)) return alias;
+  }
+  const cabecera = limpio.split(/[—–(,|]/)[0].trim();
+  return cabecera ? [cabecera] : [];
+}

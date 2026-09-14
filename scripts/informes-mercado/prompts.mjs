@@ -170,7 +170,9 @@ párrafos en total, cada uno de 60 caracteres como mínimo, en este orden: ${dia
 de 2 a 8 términos de glosario que aparezcan de verdad en el texto. No incluyas un campo de fuentes
 al nivel del informe: las añade el sistema a partir de las búsquedas reales. Cada lista interna de
 fuentes contiene los números de las publicaciones que respaldan ese bloque. No atribuyas una cifra
-a una publicación que no la contiene. Para un dato sin respaldo, escribe "Sin contrastar", explica
+a una publicación que no la contiene. Un hecho o un indicador con cifra cuya lista de fuentes
+quede vacía se RETIRA del informe, así que pon el número de la publicación que respalda cada
+dato macro —decisiones de tipos, IPC, PIB, paro, producción— igual que en la tabla de mercados. Para un dato sin respaldo, escribe "Sin contrastar", explica
 la carencia y usa una lista vacía. La agenda refleja lo que estaba previsto a la fecha de corte.
 No conviertas un jueves en cierre de semana bursátil.
 

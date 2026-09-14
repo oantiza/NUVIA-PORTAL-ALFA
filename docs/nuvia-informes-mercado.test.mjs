@@ -24,14 +24,14 @@ function informeValido(extra = {}) {
     entradilla:
       'El Banco Central Europeo dejó sin cambios sus tipos oficiales. El petróleo Brent subió un 4% en la sesión y las bolsas europeas cerraron con descensos moderados.',
     hechos: [
-      { texto: 'El BCE mantuvo la facilidad de depósito en el 2,50%.', fecha: '10 de septiembre de 2026' },
-      { texto: 'El IBEX 35 cerró en 19.659,80 puntos, un 0,18% menos.', fecha: '10 de septiembre de 2026' },
-      { texto: 'El Brent alcanzó los 105,75 dólares por barril.', fecha: '10 de septiembre de 2026' },
+      { texto: 'El BCE mantuvo la facilidad de depósito en el 2,50%.', fecha: '10 de septiembre de 2026', fuentes: [1] },
+      { texto: 'El IBEX 35 cerró en 19.659,80 puntos, un 0,18% menos.', fecha: '10 de septiembre de 2026', fuentes: [2] },
+      { texto: 'El Brent alcanzó los 105,75 dólares por barril.', fecha: '10 de septiembre de 2026', fuentes: [2] },
     ],
     indicadores: [
-      { etiqueta: 'IBEX 35', valor: '19.659,80 puntos', referencia: '10 de septiembre de 2026 (BME)' },
-      { etiqueta: 'Brent', valor: '105,75 dólares', referencia: '10 de septiembre de 2026 (ICE)' },
-      { etiqueta: 'EUR/USD', valor: '1,1625', referencia: '10 de septiembre de 2026 (BCE)' },
+      { etiqueta: 'IBEX 35', valor: '19.659,80 puntos', referencia: '10 de septiembre de 2026 (BME)', fuentes: [2] },
+      { etiqueta: 'Brent', valor: '105,75 dólares', referencia: '10 de septiembre de 2026 (ICE)', fuentes: [2] },
+      { etiqueta: 'EUR/USD', valor: '1,1625', referencia: '10 de septiembre de 2026 (BCE)', fuentes: [1] },
     ],
     agenda: [
       { cuando: '11 de septiembre', que: 'Publicación del IPC de agosto en Estados Unidos.' },
@@ -438,4 +438,59 @@ test('v2: variacionLegible usa coma, espacio antes del % y menos tipográfico', 
   assert.equal(variacionLegible(0), '0,0 %');
   assert.equal(variacionLegible(null), '—');
   assert.equal(variacionLegible(-0.05, 2), '−0,05 %');
+});
+
+/**
+ * Acreditación del texto (v2, 14-09-2026).
+ *
+ * La tabla de mercados ya no dejaba pasar una cifra sin fuente, pero los hechos
+ * y los indicadores sí: la edición del 14 de septiembre se publicó con la
+ * decisión del BCE, el IPC estadounidense y el IPI español sin una sola
+ * publicación detrás. Lo que sigue fija la regla: se intenta acreditar por el
+ * nombre del organismo y lo que siga sin respaldo no se publica.
+ */
+test('v2: un hecho sin fuente se acredita por el organismo que cita', () => {
+  const entrada = informeValido(bloquesV2());
+  entrada.hechos[0].fuentes = [];
+  const informe = validarInforme(entrada, { exigirBloques: true });
+  assert.equal(informe.hechos.length, 3);
+  assert.deepEqual(informe.hechos[0].fuentes, [1], 'el texto nombra al BCE, que está en la lista');
+});
+
+test('v2: un indicador con cifra que nadie publica se retira y se avisa', () => {
+  const entrada = informeValido(bloquesV2());
+  entrada.indicadores.push({
+    etiqueta: 'Probabilidad implícita de subida de tipos',
+    valor: '90,4 %',
+    referencia: 'mercados de futuros',
+    fuentes: [],
+  });
+  const retirados = [];
+  const informe = validarInforme(entrada, { exigirBloques: true, alRetirar: (l) => retirados.push(...l) });
+  assert.equal(informe.indicadores.length, 3);
+  assert.match(retirados.join(' '), /Probabilidad implícita/);
+});
+
+test('v2: un indicador sin cifra no necesita respaldo documental', () => {
+  const entrada = informeValido(bloquesV2());
+  entrada.indicadores.push({
+    etiqueta: 'Tono de la reunión',
+    valor: 'Sin contrastar',
+    referencia: 'pendiente de acta',
+    fuentes: [],
+  });
+  const informe = validarInforme(entrada, { exigirBloques: true });
+  assert.equal(informe.indicadores.length, 4);
+});
+
+test('v2: sin hechos acreditados el borrador no sale', () => {
+  const entrada = informeValido(bloquesV2());
+  entrada.hechos = entrada.hechos.map((hecho) => ({ ...hecho, texto: 'Los operadores hablan de un mercado tenso.', fuentes: [] }));
+  assert.throws(() => validarInforme(entrada, { exigirBloques: true }), /tres hechos con fuente/);
+});
+
+test('v2: al leer una edición publicada no se retira nada', () => {
+  const entrada = informeValido();
+  entrada.hechos[0].fuentes = [];
+  assert.equal(validarInforme(entrada).hechos.length, 3);
 });

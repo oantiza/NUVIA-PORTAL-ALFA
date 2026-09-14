@@ -1,6 +1,6 @@
 {
   "schema_version": "informe-mercado.v2",
-  "actualizadoIso": "2026-09-14T08:01:35.659Z",
+  "actualizadoIso": "2026-09-14T08:17:35.552Z",
   "ediciones": {
     "DIARIO": {
       "schema_version": "informe-mercado.v2",
@@ -16,14 +16,14 @@
           "texto": "El Banco Central Europeo elevó sus tres tipos oficiales en 25 puntos básicos y situó la facilidad de depósito en el 2,50 %, aplicable desde el 16 de septiembre, ante las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
           "fecha": "2026-09-10",
           "fuentes": [
-            8
+            5
           ]
         },
         {
           "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto, acelerándose frente al dato anterior e incrementando hasta el 90,4 % la probabilidad implícita de una subida de tipos.",
           "fecha": "2026-09-11",
           "fuentes": [
-            9
+            6
           ]
         },
         {
@@ -38,7 +38,7 @@
           "fecha": "2026-09-11",
           "fuentes": [
             2,
-            5
+            4
           ]
         }
       ],
@@ -48,7 +48,7 @@
           "valor": "+0,4 %",
           "referencia": "2026-09-11, U.S. Bureau of Labor Statistics",
           "fuentes": [
-            9
+            6
           ]
         },
         {
@@ -56,7 +56,7 @@
           "valor": "2,50 %",
           "referencia": "2026-09-10, Banco Central Europeo",
           "fuentes": [
-            8
+            5
           ]
         },
         {
@@ -64,7 +64,7 @@
           "valor": "+2,6 % anual",
           "referencia": "2026-09-10, Instituto Nacional de Estadística",
           "fuentes": [
-            10
+            7
           ]
         }
       ],
@@ -117,7 +117,7 @@
             1,
             2,
             3,
-            5
+            4
           ]
         },
         {
@@ -127,8 +127,8 @@
             "En Estados Unidos la inflación no cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. Como respuesta, los mercados de futuros otorgan cerca de un 90 % de probabilidad a que la Reserva Federal vuelva a encarecer los préstamos con otra alza de 25 puntos básicos."
           ],
           "fuentes": [
-            8,
-            9
+            5,
+            6
           ]
         },
         {
@@ -138,7 +138,7 @@
             "El miércoles también será una fecha clave para las finanzas continentales. Entrarán oficialmente en vigor las nuevas tasas de interés del Banco Central Europeo aprobadas la semana pasada, una medida que coincidirá con el inicio del nuevo período de mantenimiento de reservas para la banca europea."
           ],
           "fuentes": [
-            8
+            5
           ]
         }
       ],
@@ -156,20 +156,8 @@
           "url": "https://www.cboe.com/tradable-products/vix/"
         },
         {
-          "titulo": "S&P Global",
-          "url": "https://www.spglobal.com/spdji/en/%C3%ADndices/equity/sp-500/"
-        },
-        {
           "titulo": "Nasdaq",
           "url": "https://www.nasdaq.com/market-activity/etf/skhq/news-headlines"
-        },
-        {
-          "titulo": "Tesoro Público — Bonos y Obligaciones del Estado",
-          "url": "https://www.tesoro.es/deuda-publica/subastas/resultado-ultimas-subastas/Bonos-y-Obligaciones-indexados"
-        },
-        {
-          "titulo": "Bundesbank",
-          "url": "https://www.bundesbank.de/en/service/banks-and-companies/bbs-bund-bidding-system/outstanding-auctions/federal-bonds-allotment-1007316"
         },
         {
           "titulo": "Banco Central Europeo — Decisiones de política monetaria, 10 de septiembre de 2026",
@@ -182,14 +170,6 @@
         {
           "titulo": "Instituto Nacional de Estadistica — Índice de Producción Industrial, julio de 2026",
           "url": "https://www.ine.es/prensa/ipi_tabla.htm"
-        },
-        {
-          "titulo": "finanzen.ch — cierre del Euro STOXX 50, 11 de septiembre de 2026",
-          "url": "https://www.finanzen.ch/nachrichten/aktien/euro-stoxx-50-aktuell-euro-stoxx-50-liegt-zum-handelsende-im-plus-1036539981"
-        },
-        {
-          "titulo": "ariva.de — cierre del DAX, 11 de septiembre de 2026",
-          "url": "https://www.ariva.de/dax-index/news/aktien-frankfurt-schluss-dax-stabilisiert-sich-auf-12134049"
         }
       ],
       "generacion": {
@@ -200,7 +180,7 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T08:01:35.345Z",
+        "revisadoIso": "2026-09-14T08:17:35.552Z",
         "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos y el IPI español —corregido a su tasa anual publicada— y se actualizaron los cierres del EURO STOXX 50 y el DAX con el dato real del viernes. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
@@ -214,14 +194,14 @@
           "titulo": "Nueva subida de tipos europea",
           "texto": "El Banco Central Europeo ha incrementado sus tres tipos de interes oficiales en 25 puntos básicos, con efecto desde el 16 de septiembre. La decisión responde a las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
           "fuentes": [
-            8
+            5
           ]
         },
         {
           "titulo": "La inflación estadounidense repunta",
           "texto": "El índice de precios de consumo de Estados Unidos aumentó un 0,4 % en agosto frente al mes anterior. Este avance fortalece las expectativas del mercado de una nueva subida de tipos por parte del banco central estadounidense.",
           "fuentes": [
-            9
+            6
           ]
         },
         {
@@ -229,140 +209,6 @@
           "texto": "El índice VIX, que sirve como termómetro de los nervios del mercado, experimentó una fuerte caída tras la corrección del precio del petróleo desde sus recientes máximos. Este factor dio impulso a los principales índices de Wall Street.",
           "fuentes": [
             3
-          ]
-        }
-      ],
-      "mercados": [
-        {
-          "grupo": "Bolsas",
-          "filas": [
-            {
-              "nombre": "IBEX 35",
-              "nivel": "19.838,50 puntos",
-              "variacion": 0.91,
-              "variacionAnual": null,
-              "nota": "Se benefició del cierre de posiciones cortas antes del fin de semana.",
-              "fuentes": [
-                1
-              ]
-            },
-            {
-              "nombre": "S&P 500",
-              "nivel": "7.656,85 puntos",
-              "variacion": 0.86,
-              "variacionAnual": 12.9,
-              "nota": "Registró avances al alinearse la inflación con lo esperado por el consenso.",
-              "fuentes": [
-                4
-              ]
-            },
-            {
-              "nombre": "EURO STOXX 50",
-              "nivel": "6.322,51 puntos",
-              "variacion": 0.85,
-              "variacionAnual": null,
-              "nota": "Cerró en positivo la sesión del viernes.",
-              "fuentes": [
-                11
-              ]
-            },
-            {
-              "nombre": "DAX",
-              "nivel": "25.568,56 puntos",
-              "variacion": 0.82,
-              "variacionAnual": null,
-              "nota": "Se estabilizó el viernes tras una semana en negativo (−1,83 %).",
-              "fuentes": [
-                12
-              ]
-            },
-            {
-              "nombre": "Nikkei 225",
-              "nivel": "64.011,34 puntos",
-              "variacion": -1.93,
-              "variacionAnual": null,
-              "nota": "La fortaleza de la moneda local y las caídas tecnológicas lastraron el selectivo.",
-              "fuentes": [
-                2
-              ]
-            }
-          ]
-        },
-        {
-          "grupo": "Deuda pública",
-          "filas": [
-            {
-              "nombre": "Bono alemán a 10 años",
-              "nivel": "3,39 %",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "La subasta de reapertura cerró a una rentabilidad media del 3,39 %.",
-              "fuentes": [
-                7
-              ]
-            },
-            {
-              "nombre": "Bono español a 10 años",
-              "nivel": "3,40 %",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "Este es el cupón nominal de referencia actual.",
-              "fuentes": [
-                6
-              ]
-            }
-          ]
-        },
-        {
-          "grupo": "Divisas",
-          "filas": [
-            {
-              "nombre": "EUR/USD",
-              "nivel": "Sin contrastar",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
-              "fuentes": []
-            },
-            {
-              "nombre": "EUR/JPY",
-              "nivel": "Sin contrastar",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
-              "fuentes": []
-            }
-          ]
-        },
-        {
-          "grupo": "Materias primas y volatilidad",
-          "filas": [
-            {
-              "nombre": "Petróleo Brent Spot",
-              "nivel": "Sin contrastar",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
-              "fuentes": []
-            },
-            {
-              "nombre": "Índice VIX",
-              "nivel": "15,84 puntos",
-              "variacion": -11.21,
-              "variacionAnual": null,
-              "nota": "Retrocedió fuertemente ante el alivio momentáneo de los costes de los combustibles.",
-              "fuentes": [
-                3
-              ]
-            },
-            {
-              "nombre": "Gas Natural TTF",
-              "nivel": "Sin contrastar",
-              "variacion": null,
-              "variacionAnual": null,
-              "nota": "Sin publicación oficial en la base factual primaria para la fecha de corte.",
-              "fuentes": []
-            }
           ]
         }
       ],
@@ -623,7 +469,7 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T08:01:35.659Z",
+        "revisadoIso": "2026-09-14T08:15:53.873Z",
         "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos, el IPI español —corregido a su tasa anual publicada— y el PIB británico; el cierre del DAX se contrastó con la fuente del día. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
@@ -794,18 +640,18 @@
   },
   "archivo": [
     {
-      "id": "semanal-2026-09-14",
-      "tipo": "SEMANAL",
-      "fecha": "2026-09-14",
-      "titular": "El Banco Central Europeo sube los tipos y la energía presiona a la deuda",
-      "descarga": "core/downloads/informes/semanal-2026-09-14.html"
-    },
-    {
       "id": "diario-2026-09-14",
       "tipo": "DIARIO",
       "fecha": "2026-09-14",
       "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
       "descarga": "core/downloads/informes/diario-2026-09-14.html"
+    },
+    {
+      "id": "semanal-2026-09-14",
+      "tipo": "SEMANAL",
+      "fecha": "2026-09-14",
+      "titular": "El Banco Central Europeo sube los tipos y la energía presiona a la deuda",
+      "descarga": "core/downloads/informes/semanal-2026-09-14.html"
     },
     {
       "id": "semanal-2026-09-10",

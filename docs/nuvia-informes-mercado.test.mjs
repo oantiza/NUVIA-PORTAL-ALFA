@@ -409,8 +409,17 @@ test('v2: los campos de escenarios y riesgos del informe de estrategia siguen fu
   }
 });
 
+function semanalValido() {
+  const base = informeValido({ ...bloquesV2(), tipo: 'SEMANAL' });
+  base.cuerpo[1].parrafos.push(
+    'Las bolsas europeas cerraron la semana con signo mixto, según los datos de cierre difundidos por los operadores de mercado.',
+    'El mercado de deuda acompañó el movimiento del crudo, con precios a la baja en los plazos largos durante toda la semana.',
+  );
+  return base;
+}
+
 test('v2: el lector pinta tablas, gráfico y glosario, con el signo en la cifra', () => {
-  const html = renderInforme(validarInforme(informeValido(bloquesV2())));
+  const html = renderInforme(validarInforme(semanalValido()));
   assert.match(html, /En pocas palabras/);
   assert.match(html, /<svg viewBox="0 0 1000/);
   assert.match(html, /nv-report__table/);
@@ -425,7 +434,7 @@ test('v2: el lector pinta tablas, gráfico y glosario, con el signo en la cifra'
 });
 
 test('v2: el descargable incrusta los tokens de los estilos nuevos y no pierde el signo', () => {
-  const html = informeAHtml(validarInforme(informeValido(bloquesV2())));
+  const html = informeAHtml(validarInforme(semanalValido()));
   assert.match(html, /--nv-positive:/);
   assert.match(html, /--nv-negative:/);
   assert.ok(!/<script/.test(html));
@@ -493,4 +502,20 @@ test('v2: al leer una edición publicada no se retira nada', () => {
   const entrada = informeValido();
   entrada.hechos[0].fuentes = [];
   assert.equal(validarInforme(entrada).hechos.length, 3);
+});
+
+test('v2: el diario no publica la tabla de mercados y el semanal sí', () => {
+  const diario = renderInforme(validarInforme(informeValido(bloquesV2())));
+  assert.ok(!/Los mercados de un vistazo/.test(diario), 'el diario ya la cuenta en cifras y hechos');
+  assert.ok(!/<svg viewBox="0 0 1000/.test(diario));
+  const semanal = renderInforme(validarInforme(semanalValido()));
+  assert.match(semanal, /Los mercados de un vistazo/);
+});
+
+test('v2: el diario se genera sin bloque de mercados y el semanal no', () => {
+  const { mercados, ...sinMercados } = bloquesV2();
+  assert.equal(validarInforme(informeValido(sinMercados), { exigirBloques: true }).mercados, undefined);
+  const semanal = { ...semanalValido() };
+  delete semanal.mercados;
+  assert.throws(() => validarInforme(semanal, { exigirBloques: true }), /Falta el bloque «mercados»/);
 });

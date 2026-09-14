@@ -89,8 +89,11 @@ el lector opere, y este informe no puede apoyarse en material comercial.
 
 Cubre, siempre con cifra, unidad y fecha, lo ocurrido en ${ventana}:
 
-1. TABLA DE MERCADOS. Para cada referencia: nivel de cierre, variación ${variacion} en % y, si la
-   encuentras, variación acumulada en el año en %. Busca cada una en su publicador:
+1. ${tipo === 'DIARIO'
+    ? `CIFRAS DE LA SESIÓN. El informe diario no lleva tabla de mercados: basta el cierre y la
+   variación del día de las referencias que expliquen la sesión, cada una buscada en su publicador:`
+    : `TABLA DE MERCADOS. Para cada referencia: nivel de cierre, variación ${variacion} en % y, si la
+   encuentras, variación acumulada en el año en %. Busca cada una en su publicador:`}
    - Bolsas: IBEX 35 (site:bolsasymercados.es), Euro Stoxx 50 y DAX (site:stoxx.com,
      site:deutsche-boerse.com), S&P 500 y Nasdaq 100 (site:spglobal.com, site:nasdaq.com),
      Nikkei 225 (site:indexes.nikkei.co.jp), MSCI Emergentes (site:msci.com).
@@ -100,7 +103,7 @@ Cubre, siempre con cifra, unidad y fecha, lo ocurrido en ${ventana}:
    - Divisas: tipos de cambio de referencia del BCE, EUR/USD, EUR/GBP y EUR/JPY (site:ecb.europa.eu).
    - Materias primas: Brent (site:eia.gov, site:theice.com), oro (site:lbma.org.uk), gas TTF.
    - Volatilidad: índice VIX (site:cboe.com).
-   Si de una referencia no encuentras publicación oficial, dilo: la tabla la dejará «sin contrastar».
+   Si de una referencia no encuentras publicación oficial, dilo: se quedará «sin contrastar».
 2. QUÉ MOVIÓ ${tipo === 'DIARIO' ? 'LA SESIÓN' : 'LA SEMANA'}: los tres a seis hechos concretos que
    explican esos movimientos según las fuentes, con fecha; distingue el hecho de la interpretación
    y atribuye la interpretación a quien la firma.
@@ -147,12 +150,12 @@ Devuelve ÚNICAMENTE JSON válido, sin bloque de código alrededor, con esta for
   "claves": [{"titulo": "idea en 3-8 palabras", "texto": "1-3 frases llanas: qué ha pasado y por qué importa para entender la economía, sin decir qué hacer", "fuentes": [1]}],
   "hechos": [{"texto": "hecho con su cifra, unidad y porqué documentado", "fecha": "cuándo ocurrió", "fuentes": [1]}],
   "indicadores": [{"etiqueta": "nombre", "valor": "valor con unidad", "referencia": "fecha y fuente", "fuentes": [1]}],
-  "mercados": [
+  ${diario ? '' : `"mercados": [
     {"grupo": "Bolsas", "filas": [{"nombre": "IBEX 35", "nivel": "15.120,4 puntos", "variacion": 0.9, "variacionAnual": 30.2, "nota": "una frase con el porqué según la fuente, o null", "fuentes": [2]}]},
     {"grupo": "Deuda pública", "filas": [{"nombre": "Bono alemán a 10 años", "nivel": "2,65 %", "variacion": -0.05, "variacionAnual": null, "nota": "en deuda, variacion es la de la rentabilidad en puntos porcentuales (1 punto básico = 0.01)", "fuentes": [3]}]},
     {"grupo": "Divisas", "filas": [{"nombre": "EUR/USD", "nivel": "1,1616", "variacion": 0.3, "variacionAnual": null, "nota": null, "fuentes": [1]}]},
     {"grupo": "Materias primas", "filas": [{"nombre": "Brent", "nivel": "Sin contrastar", "variacion": null, "variacionAnual": null, "nota": "sin publicación oficial en la base factual", "fuentes": []}]}
-  ],
+  ],`}
   "agenda": [{"fecha": "AAAA-MM-DD", "hora": "14:30 o null", "region": "EEUU|Eurozona|España|Reino Unido|Japón|China|Global", "que": "qué se publica o quién comparece", "anterior": "dato anterior o null", "porQueImporta": "una frase llana o null", "fuentes": [1]}],
   "cuerpo": [{"titulo": "título de sección", "parrafos": ["párrafo"], "fuentes": [1]}],
   "glosario": [{"termino": "término técnico que aparece en el informe", "definicion": "explicación en una o dos frases para quien no sabe finanzas"}],

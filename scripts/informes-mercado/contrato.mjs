@@ -67,8 +67,16 @@ export const TIPOS = {
   },
 };
 
-/** Bloques v2 que un borrador recién generado tiene que traer. */
+/**
+ * Bloques v2 que un borrador recién generado tiene que traer.
+ *
+ * `mercados` solo se le exige al semanal: en el diario la tabla repetía el
+ * cierre que ya cuentan las cifras destacadas y los hechos, así que ni se pide
+ * al modelo ni se publica (decisión del fundador, 14-09-2026). Si un diario la
+ * trae igualmente, se valida como siempre; simplemente no es obligatoria.
+ */
 export const BLOQUES_V2 = ['claves', 'mercados', 'agenda', 'glosario'];
+export const bloquesExigidos = (tipo) => BLOQUES_V2.filter((b) => !(b === 'mercados' && tipo === 'DIARIO'));
 
 /**
  * Vocabulario vetado en el texto publicable.
@@ -371,7 +379,9 @@ export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = f
     if (bloque === 'agenda') continue; // siempre presente; su forma v2 se admite arriba
     const bruto = entrada[bloque];
     if (bruto === undefined || bruto === null) {
-      if (exigirBloques) fallo(`Falta el bloque «${bloque}»: un informe nuevo no se publica sin él.`);
+      if (exigirBloques && bloquesExigidos(tipo).includes(bloque)) {
+        fallo(`Falta el bloque «${bloque}»: un informe nuevo no se publica sin él.`);
+      }
       continue;
     }
     informe[bloque] = bloque === 'claves' ? validarClaves(bruto) : bloque === 'mercados' ? validarMercados(bruto) : validarGlosario(bruto);

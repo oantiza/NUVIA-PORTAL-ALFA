@@ -1,6 +1,6 @@
 {
   "schema_version": "informe-mercado.v2",
-  "actualizadoIso": "2026-09-14T07:53:03.667Z",
+  "actualizadoIso": "2026-09-14T08:01:35.659Z",
   "ediciones": {
     "DIARIO": {
       "schema_version": "informe-mercado.v2",
@@ -200,7 +200,7 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T07:53:03.316Z",
+        "revisadoIso": "2026-09-14T08:01:35.345Z",
         "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos y el IPI español —corregido a su tasa anual publicada— y se actualizaron los cierres del EURO STOXX 50 y el DAX con el dato real del viernes. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
@@ -623,7 +623,7 @@
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-14T07:53:03.667Z",
+        "revisadoIso": "2026-09-14T08:01:35.659Z",
         "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador, sobre una edición alfa de uso interno. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos, el IPI español —corregido a su tasa anual publicada— y el PIB británico; el cierre del DAX se contrastó con la fuente del día. El resto se publica tal como lo produjo el generador. Esta revisión no acredita una lectura humana."
       },
       "periodo": {

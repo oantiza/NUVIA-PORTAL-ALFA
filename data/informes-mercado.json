@@ -1,409 +1,800 @@
 {
-  "schema_version": "informe-mercado.v1",
-  "actualizadoIso": "2026-09-11T01:17:24.134Z",
+  "schema_version": "informe-mercado.v2",
+  "actualizadoIso": "2026-09-14T06:51:19.755Z",
   "ediciones": {
     "DIARIO": {
-      "schema_version": "informe-mercado.v1",
+      "schema_version": "informe-mercado.v2",
       "tipo": "DIARIO",
-      "id": "diario-2026-09-10",
-      "fecha": "2026-09-10",
-      "fechaIso": "2026-09-10T00:00:00.000Z",
-      "generadoIso": "2026-09-10T17:19:23.887Z",
-      "titular": "El BCE anuncia una subida de tipos; los precios de producción avanzan en Estados Unidos",
-      "entradilla": "La jornada del 10 de septiembre deja dos referencias: el BCE anuncia una subida de 25 puntos básicos, aplicable desde el día 16, y Estados Unidos publica un aumento mensual del 0,4% en los precios de producción de agosto. El tipo de cambio de referencia del euro se sitúa en 1,1616 dólares.",
+      "id": "diario-2026-09-14",
+      "fecha": "2026-09-14",
+      "fechaIso": "2026-09-14T00:00:00.000Z",
+      "generadoIso": "2026-09-14T06:32:42.129Z",
+      "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
+      "entradilla": "El Banco Central Europeo ha elevado los tipos de interés al 2,50 % debido a las presiones inflacionistas de los altos costes energéticos. En Estados Unidos, la tasa subyacente de inflación ha avanzado un 0,3 % mensual, lo que aumenta la probabilidad de nuevas alzas en las tasas del país.",
       "hechos": [
         {
-          "texto": "El BCE anunció una subida de 25 puntos básicos: la facilidad de depósito pasará al 2,50% el 16 de septiembre.",
-          "fecha": "10 de septiembre de 2026",
+          "texto": "El Banco Central Europeo elevó sus tres tipos oficiales en 25 puntos básicos y situó la facilidad de depósito en el 2,50 %, aplicable desde el 16 de septiembre, ante las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
+          "fecha": "2026-09-10",
+          "fuentes": [
+            8
+          ]
+        },
+        {
+          "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto y el índice general un 0,4 %, con una tasa anual del 3,4 %.",
+          "fecha": "2026-09-11",
+          "fuentes": [
+            9
+          ]
+        },
+        {
+          "texto": "El índice IBEX 35 avanzó un 0,91 % por el impulso de los valores de mediana y gran capitalización y el cierre de posiciones cortas de fin de semana.",
+          "fecha": "2026-09-11",
           "fuentes": [
             1
           ]
         },
         {
-          "texto": "El índice de precios de producción de demanda final de Estados Unidos aumentó un 0,4% mensual, con ajuste estacional.",
-          "fecha": "Agosto de 2026 · publicado el 10-09",
+          "texto": "El índice japonés Nikkei 225 sufrió una bajada del 1,93 % presionado por el mal comportamiento de las empresas tecnológicas asiáticas y la fortaleza del yen.",
+          "fecha": "2026-09-11",
           "fuentes": [
-            2
-          ]
-        },
-        {
-          "texto": "El cambio de referencia publicado por el BCE fue de 1,1616 dólares por euro.",
-          "fecha": "10 de septiembre de 2026",
-          "fuentes": [
-            3
+            2,
+            5,
+            6
           ]
         }
       ],
       "indicadores": [
         {
-          "etiqueta": "Facilidad de depósito del BCE · tipo anunciado",
-          "valor": "2,50%",
-          "referencia": "Anuncio: 10-09-2026. Aplicación: 16-09-2026.",
+          "etiqueta": "IPC general mensual de Estados Unidos (Agosto 2026)",
+          "valor": "+0,4 %",
+          "referencia": "2026-09-11, U.S. Bureau of Labor Statistics",
           "fuentes": [
-            1
+            9
           ]
         },
         {
-          "etiqueta": "Precios de producción · Estados Unidos",
-          "valor": "+0,4% mensual",
-          "referencia": "Agosto de 2026, desestacionalizado. BLS · 10-09.",
+          "etiqueta": "Tipo de la facilidad de depósito del BCE",
+          "valor": "2,50 %",
+          "referencia": "2026-09-10, Banco Central Europeo",
           "fuentes": [
-            2
+            8
           ]
         },
         {
-          "etiqueta": "Cambio de referencia EUR/USD",
-          "valor": "1,1616 USD por EUR",
-          "referencia": "BCE · 10-09-2026. Referencia informativa.",
+          "etiqueta": "Índice de Producción Industrial de España (julio 2026)",
+          "valor": "+2,6 % anual",
+          "referencia": "2026-09-10, Instituto Nacional de Estadística",
           "fuentes": [
-            3
+            10
           ]
-        },
-        {
-          "etiqueta": "IBEX 35 · cierre de sesión",
-          "valor": "Sin contrastar",
-          "referencia": "No se ha acreditado el cierre con una publicación accesible que lo respalde.",
-          "fuentes": []
-        },
-        {
-          "etiqueta": "Bono español a diez años",
-          "valor": "Sin contrastar",
-          "referencia": "Faltan fuente verificable, hora de observación e identificación de la referencia.",
-          "fuentes": []
-        },
-        {
-          "etiqueta": "Petróleo Brent",
-          "valor": "Sin contrastar",
-          "referencia": "El borrador no acredita el contrato ni la hora del precio citado.",
-          "fuentes": []
         }
       ],
       "agenda": [
         {
-          "cuando": "11 de septiembre · 14:30 CEST",
-          "que": "IPC de agosto y salarios reales de Estados Unidos. El dato no formaba parte de la información disponible al corte de esta edición.",
-          "fuentes": [
-            4
-          ]
+          "fecha": "2026-09-14",
+          "hora": "09:00",
+          "region": "España",
+          "que": "Índice de Producción de la Construcción de julio de 2026",
+          "anterior": "Serie mensual anterior",
+          "porQueImporta": "Mide el volumen de actividad de edificación y obra civil en el país.",
+          "fuentes": []
         },
         {
-          "cuando": "11 de septiembre · España",
-          "que": "El calendario del INE incluye una publicación de Coyuntura Turística Hotelera referida a diciembre de 2025. La de agosto de 2026 figura para el día 22; no deben confundirse.",
-          "fuentes": [
-            5
-          ]
+          "fecha": "2026-09-14",
+          "hora": "11:00",
+          "region": "Eurozona",
+          "que": "Datos de Comercio Internacional de Bienes de julio de 2026",
+          "anterior": "Saldo de junio de 2026",
+          "porQueImporta": "Permite conocer la balanza comercial y el impacto exterior en la economía del área.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-15",
+          "hora": "09:00",
+          "region": "España",
+          "que": "Índice de Precios de Consumo definitivo de agosto de 2026",
+          "anterior": "+0,3 % mensual en julio",
+          "porQueImporta": "Es el indicador clave para entender la inflación minorista y revisar los contratos.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-16",
+          "hora": "11:00",
+          "region": "Eurozona",
+          "que": "Índice Armonizado de Precios de Consumo final de agosto de 2026",
+          "anterior": "Dato preliminar de agosto",
+          "porQueImporta": "El Banco Central Europeo vigila de cerca esta métrica para calibrar su objetivo del 2,0 %.",
+          "fuentes": []
         }
       ],
       "cuerpo": [
         {
-          "titulo": "Un anuncio con fecha de aplicación",
+          "titulo": "Qué ha pasado",
           "parrafos": [
-            "El Banco Central Europeo acordó elevar sus tres tipos oficiales en 25 puntos básicos, equivalentes a 0,25 puntos porcentuales. La facilidad de depósito quedará en el 2,50%, las operaciones principales de financiación en el 2,65% y la facilidad marginal de crédito en el 2,90%, desde el 16 de septiembre.",
-            "La facilidad de depósito remunera el dinero que los bancos depositan a un día en el banco central. Su variación ayuda a entender el contexto del coste del dinero, pero no es el tipo de interés de una hipoteca ni el de un depósito particular."
+            "El último cierre de los mercados ha mostrado diferencias claras según la región. Las bolsas de Estados Unidos y el IBEX 35 español terminaron el viernes con repuntes cercanos al uno por ciento. Por el contrario, los selectivos asiáticos sufrieron caídas pronunciadas, como el descenso del 1,93 % registrado en el Nikkei 225 de Japón, perjudicado por el mal tono del sector tecnológico y una moneda local más fuerte.",
+            "En los mercados de energia y volatilidad, los futuros del petróleo suavizaron su escalada el viernes tras las tensiones en Oriente Medio. Ese retroceso técnico en los combustibles acompañó a la mejora de las bolsas estadounidenses y a una caída del 11,21 % en el índice VIX de volatilidad."
           ],
           "fuentes": [
-            1
-          ]
-        },
-        {
-          "titulo": "Qué mide el dato de Estados Unidos",
-          "parrafos": [
-            "El BLS publicó un avance mensual desestacionalizado del 0,4% en el índice de precios de producción de demanda final de agosto. Este indicador sigue los precios que reciben los productores por bienes y servicios. Se diferencia del IPC, que refleja los precios pagados por los consumidores y estaba previsto para el día siguiente."
-          ],
-          "fuentes": [
+            1,
             2,
-            4
+            3,
+            5,
+            6
           ]
         },
         {
-          "titulo": "Divisas y alcance de las cifras",
+          "titulo": "Por qué importa",
           "parrafos": [
-            "La referencia del BCE del 10 de septiembre sitúa un euro en 1,1616 dólares. Es una referencia informativa fechada. Los niveles de bolsa, deuda y petróleo del borrador no se han podido contrastar con suficiente detalle; sus apartados muestran esa limitación y no se presentan como cierres verificados."
+            "Los costes energéticos siguen condicionando la política monetaria. El Banco Central Europeo justificó la subida de sus tipos oficiales hasta el 2,50 % de facilidad de depósito por unas presiones inflacionistas que asocia al conflicto en Oriente Próximo, y prevé que la inflación siga por encima del objetivo del 2 % durante un período prolongado.",
+            "En Estados Unidos la inflación tampoco cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. El mercado interpreta el dato como un argumento a favor de nuevas subidas de tipos por parte de la Reserva Federal, si bien esta nota no publica una probabilidad implícita por no disponer de una fuente primaria."
           ],
           "fuentes": [
-            3
+            8,
+            9
+          ]
+        },
+        {
+          "titulo": "Qué se publica ahora",
+          "parrafos": [
+            "A lo largo de los próximos días, el foco estadístico estará puesto en los datos definitivos de inflación de agosto en Europa. El martes se dará a conocer el índice de precios español, mientras que el miércoles se publicará la métrica unificada de precios al consumo para el conjunto de la zona euro.",
+            "El miércoles también será una fecha clave para las finanzas continentales. Entrarán oficialmente en vigor las nuevas tasas de interés del Banco Central Europeo aprobadas la semana pasada, una medida que coincidirá con el inicio del nuevo período de mantenimiento de reservas para la banca europea."
+          ],
+          "fuentes": [
+            8
           ]
         }
       ],
       "fuentes": [
         {
-          "titulo": "BCE · Decisión de política monetaria del 10 de septiembre",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html"
+          "titulo": "Bolsas y Mercados Españoles",
+          "url": "https://www.bolsasymercados.es/es/bme-exchange/%C3%ADndices/ibex/historico/ibex-35-es0si0000005.html"
         },
         {
-          "titulo": "BLS · Precios de producción de agosto de 2026",
-          "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
-          "nota": "Consultado el 11-09-2026. Página de última publicación: puede mostrar otra edición en el futuro."
+          "titulo": "Nikkei Indexes",
+          "url": "https://indexes.nikkei.co.jp/en/nkave/archives/summary?dt=09112026&idx=nk225"
         },
         {
-          "titulo": "BCE · Cambio de referencia del euro del 10 de septiembre",
-          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.hr.html",
-          "nota": "1 EUR = 1,1616 USD. Página diaria mutable; cifra de referencia, no precio de una operación."
+          "titulo": "Cboe (índice VIX)",
+          "url": "https://www.cboe.com/tradable-products/vix/"
         },
         {
-          "titulo": "BLS · Calendario de septiembre de 2026",
-          "url": "https://www.bls.gov/schedule/2026/09_sched.htm"
+          "titulo": "S&P Global",
+          "url": "https://www.spglobal.com/spdji/en/%C3%ADndices/equity/sp-500/"
         },
         {
-          "titulo": "INE · Calendario de publicaciones de 2026",
-          "url": "https://www.ine.es/dynt3/Calendario/calenHTML.htm?q=2026"
+          "titulo": "Nasdaq",
+          "url": "https://www.nasdaq.com/market-activity/etf/skhq/news-headlines"
+        },
+        {
+          "titulo": "Nasdaq",
+          "url": "https://www.nasdaq.com/es/market-activity/etf/tipe/news-headlines"
+        },
+        {
+          "titulo": "Bundesbank",
+          "url": "https://www.bundesbank.de/en/service/banks-and-companies/bbs-bund-bidding-system/outstanding-auctions/federal-bonds-allotment-1007316"
+        },
+        {
+          "titulo": "Banco Central Europeo — Decisiones de política monetaria, 10 de septiembre de 2026",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.es.html"
+        },
+        {
+          "titulo": "U.S. Bureau of Labor Statistics — Consumer Price Index, agosto de 2026",
+          "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
+        },
+        {
+          "titulo": "Instituto Nacional de Estadistica — Índice de Producción Industrial, julio de 2026",
+          "url": "https://www.ine.es/prensa/ipi_tabla.htm"
         }
       ],
       "generacion": {
-        "modeloInvestigacion": "gemini-3.8-flash",
+        "modeloInvestigacion": "gemini-3.7-flash",
         "modeloRedaccion": "gemini-3.1-pro-preview",
-        "versionPrompt": "nuvia-mercados-2026-09",
-        "fuentesConsultadas": 5
+        "versionPrompt": "nuvia-mercados-2026-09-r3",
+        "fuentesConsultadas": 12
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-11T01:17:24.117Z",
-        "nota": "Revisión y contraste asistidos por IA el 11 de septiembre de 2026, por encargo del fundador. Se corrigieron períodos, atribuciones y cifras sin respaldo. Esta revisión no acredita una lectura humana."
+        "revisadoIso": "2026-09-14T06:51:19.755Z",
+        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos y el IPI español; se retiró una probabilidad implícita sin respaldo, se corrigió el IPI a su variación anual publicada y se dejaron sin publicar los niveles del EURO STOXX 50, el DAX y el bono español a diez años por no cuadrar con la fuente oficial. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
-        "desde": "2026-09-10",
-        "hasta": "2026-09-10",
-        "corteIso": "2026-09-10T17:00:00Z"
+        "desde": "2026-09-14",
+        "hasta": "2026-09-14",
+        "corteIso": "2026-09-14T06:32:42.128Z"
       },
-      "limitaciones": "Edición referida al 10 de septiembre, corregida el día 11. No incorpora acontecimientos posteriores al corte ni cotizaciones en directo. No se calculan variaciones bursátiles a partir de precios sin contrastar. Algunos enlaces oficiales muestran la última publicación disponible y pueden cambiar.",
-      "vigencia": {
-        "estado": "vigente",
-        "dias": 1
-      },
-      "descarga": "core/downloads/informes/diario-2026-09-10.html"
-    },
-    "SEMANAL": {
-      "schema_version": "informe-mercado.v1",
-      "tipo": "SEMANAL",
-      "id": "semanal-2026-09-10",
-      "fecha": "2026-09-10",
-      "fechaIso": "2026-09-10T00:00:00.000Z",
-      "generadoIso": "2026-09-10T17:39:33.856Z",
-      "titular": "Una semana de tipos, empleo y vivienda: las referencias del 4 al 10 de septiembre",
-      "entradilla": "Los siete días hasta el 10 de septiembre reúnen la decisión del BCE, los datos de empleo y precios de producción de Estados Unidos y la evolución de la vivienda en España. Es un balance de publicaciones fechado en jueves; no representa el cierre de la semana bursátil del viernes.",
-      "hechos": [
+      "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
+      "claves": [
         {
-          "texto": "El BCE anunció un aumento de 25 puntos básicos en sus tipos oficiales, con aplicación desde el 16 de septiembre.",
-          "fecha": "10 de septiembre de 2026",
-          "fuentes": [
-            1
-          ]
-        },
-        {
-          "texto": "Estados Unidos registró 162.000 empleos no agrícolas adicionales en agosto y una tasa de paro del 4,1%.",
-          "fecha": "Agosto de 2026 · publicado el 04-09",
-          "fuentes": [
-            7
-          ]
-        },
-        {
-          "texto": "El índice de precios de vivienda en España aumentó un 12,2% interanual y un 3,4% frente al trimestre anterior.",
-          "fecha": "Segundo trimestre · publicado el 07-09",
+          "titulo": "Nueva subida de tipos europea",
+          "texto": "El Banco Central Europeo ha incrementado sus tres tipos de interes oficiales en 25 puntos básicos, con efecto desde el 16 de septiembre. La decisión responde a las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
           "fuentes": [
             8
           ]
         },
         {
-          "texto": "Los precios de producción de demanda final de Estados Unidos avanzaron un 0,4% mensual desestacionalizado.",
-          "fecha": "Agosto de 2026 · publicado el 10-09",
+          "titulo": "La inflación estadounidense repunta",
+          "texto": "El índice de precios de consumo de Estados Unidos aumentó un 0,4 % en agosto frente al mes anterior. Este avance fortalece las expectativas del mercado de una nueva subida de tipos por parte del banco central estadounidense.",
           "fuentes": [
-            2
+            9
+          ]
+        },
+        {
+          "titulo": "Alivio en la volatilidad financiera",
+          "texto": "El índice VIX, que sirve como termómetro de los nervios del mercado, experimentó una fuerte caída tras la corrección del precio del petróleo desde sus recientes máximos. Este factor dio impulso a los principales índices de Wall Street.",
+          "fuentes": [
+            3
+          ]
+        }
+      ],
+      "mercados": [
+        {
+          "grupo": "Bolsas",
+          "filas": [
+            {
+              "nombre": "IBEX 35",
+              "nivel": "19.838,50 puntos",
+              "variacion": 0.91,
+              "variacionAnual": null,
+              "nota": "Se benefició del cierre de posiciones cortas antes del fin de semana.",
+              "fuentes": [
+                1
+              ]
+            },
+            {
+              "nombre": "S&P 500",
+              "nivel": "7.656,85 puntos",
+              "variacion": 0.86,
+              "variacionAnual": 12.9,
+              "nota": "Registró avances al alinearse la inflación con lo esperado por el consenso.",
+              "fuentes": [
+                4
+              ]
+            },
+            {
+              "nombre": "EURO STOXX 50 (SX5EST)",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "El nivel documentado no corresponde al EURO STOXX 50; no se publica hasta contrastarlo con la fuente oficial.",
+              "fuentes": []
+            },
+            {
+              "nombre": "DAX",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "El nivel documentado no cuadra con las referencias de cierre disponibles; no se publica hasta contrastarlo con la fuente oficial.",
+              "fuentes": []
+            },
+            {
+              "nombre": "Nikkei 225",
+              "nivel": "64.011,34 puntos",
+              "variacion": -1.93,
+              "variacionAnual": null,
+              "nota": "La fortaleza de la moneda local y las caídas tecnológicas lastraron el selectivo.",
+              "fuentes": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "grupo": "Deuda pública",
+          "filas": [
+            {
+              "nombre": "Bono alemán a 10 años",
+              "nivel": "3,39 %",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La subasta de reapertura cerró a una rentabilidad media del 3,39 %.",
+              "fuentes": [
+                7
+              ]
+            },
+            {
+              "nombre": "Bono español a 10 años",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La cifra documentada es un cupón nominal, no una rentabilidad de mercado a diez años; no se publica.",
+              "fuentes": []
+            }
+          ]
+        },
+        {
+          "grupo": "Divisas",
+          "filas": [
+            {
+              "nombre": "EUR/USD",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            },
+            {
+              "nombre": "EUR/JPY",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            }
+          ]
+        },
+        {
+          "grupo": "Materias primas y volatilidad",
+          "filas": [
+            {
+              "nombre": "Petróleo Brent Spot",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            },
+            {
+              "nombre": "Índice VIX",
+              "nivel": "15,84 puntos",
+              "variacion": -11.21,
+              "variacionAnual": null,
+              "nota": "Retrocedió fuertemente ante el alivio momentáneo de los costes de los combustibles.",
+              "fuentes": [
+                3
+              ]
+            },
+            {
+              "nombre": "Gas Natural TTF",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "Sin publicación oficial en la base factual primaria para la fecha de corte.",
+              "fuentes": []
+            }
+          ]
+        }
+      ],
+      "glosario": [
+        {
+          "termino": "Inflación subyacente",
+          "definicion": "Índice que mide la evolución de los precios eliminando la energía y los alimentos frescos, por ser los productos con precios más inestables y cambiantes."
+        },
+        {
+          "termino": "Puntos básicos",
+          "definicion": "Unidad de medida que equivale a la centésima parte de un punto porcentual (0,01 %). Se usa habitualmente para expresar cambios precisos en los tipos de interés."
+        },
+        {
+          "termino": "Facilidad de depósito",
+          "definicion": "El tipo de interés que un banco central paga a las entidades financieras privadas por guardar el dinero sobrante de estas durante un día."
+        },
+        {
+          "termino": "Posiciones cortas",
+          "definicion": "Estrategia financiera en la que el inversor apuesta a que el precio de un activo va a caer para obtener un beneficio de esa bajada."
+        },
+        {
+          "termino": "Índice VIX",
+          "definicion": "Indicador que mide las expectativas de volatilidad o cambios bruscos en el mercado estadounidense a corto plazo. Se conoce popularmente como el índice del miedo."
+        }
+      ],
+      "vigencia": {
+        "estado": "vigente",
+        "dias": 0
+      },
+      "descarga": "core/downloads/informes/diario-2026-09-14.html"
+    },
+    "SEMANAL": {
+      "schema_version": "informe-mercado.v2",
+      "tipo": "SEMANAL",
+      "id": "semanal-2026-09-14",
+      "fecha": "2026-09-14",
+      "fechaIso": "2026-09-14T00:00:00.000Z",
+      "generadoIso": "2026-09-14T06:32:41.343Z",
+      "titular": "El Banco Central Europeo sube los tipos y la energía presiona a la deuda",
+      "entradilla": "La semana bursátil ha estado dominada por la decisión del Banco Central Europeo de encarecer el precio del dinero. Paralelamente, las tensiones geopolíticas han disparado los precios del petróleo, contagiando a los bonos gubernamentales y empujando a la baja a las bolsas mundiales.",
+      "hechos": [
+        {
+          "texto": "El Banco Central Europeo incrementó sus tres tipos oficiales en 25 puntos básicos y fijó la facilidad de depósito en el 2,50 %, aplicable desde el 16 de septiembre, ante una inflación que prevé por encima del 2 % durante un período prolongado.",
+          "fecha": "2026-09-10",
+          "fuentes": [
+            7
+          ]
+        },
+        {
+          "texto": "La inflación general de Estados Unidos aumentó un 0,4 % mensual en agosto debido a un repunte del 3,9 % en la gasolina, según la Oficina de Estadísticas Laborales.",
+          "fecha": "2026-09-11",
+          "fuentes": [
+            8
+          ]
+        },
+        {
+          "texto": "El índice Nikkei 225 cayó un 1,55 % en la semana tras los retrocesos del sector de semiconductores, impactado por comentarios sobre ajustes monetarios del Banco de Japón.",
+          "fecha": "2026-09-11",
+          "fuentes": [
+            6
           ]
         }
       ],
       "indicadores": [
         {
-          "etiqueta": "Facilidad de depósito del BCE · tipo anunciado",
-          "valor": "2,50%",
-          "referencia": "Anuncio: 10-09-2026. Aplicación: 16-09-2026.",
-          "fuentes": [
-            1
-          ]
-        },
-        {
-          "etiqueta": "Empleo no agrícola · Estados Unidos",
-          "valor": "+162.000 empleos",
-          "referencia": "Variación mensual de agosto de 2026. BLS · 04-09.",
+          "etiqueta": "Tipo de facilidad de depósito (Eurozona)",
+          "valor": "2,50 %",
+          "referencia": "2026-09-10 BCE",
           "fuentes": [
             7
           ]
         },
         {
-          "etiqueta": "Tasa de paro · Estados Unidos",
-          "valor": "4,1%",
-          "referencia": "Agosto de 2026. BLS · 04-09.",
-          "fuentes": [
-            7
-          ]
-        },
-        {
-          "etiqueta": "Precios de vivienda · España",
-          "valor": "+12,2% interanual",
-          "referencia": "Segundo trimestre de 2026. INE · 07-09.",
+          "etiqueta": "IPC interanual general (EE. UU.)",
+          "valor": "3,4 %",
+          "referencia": "2026-09-11 BLS",
           "fuentes": [
             8
           ]
         },
         {
-          "etiqueta": "Precios de producción · Estados Unidos",
-          "valor": "+0,4% mensual",
-          "referencia": "Agosto de 2026, desestacionalizado. BLS · 10-09.",
+          "etiqueta": "IPC subyacente mensual (EE. UU.)",
+          "valor": "+0,3 %",
+          "referencia": "2026-09-11 BLS",
           "fuentes": [
-            2
+            8
           ]
         },
         {
-          "etiqueta": "Cambio de referencia EUR/USD",
-          "valor": "1,1616 USD por EUR",
-          "referencia": "BCE · 10-09-2026. Referencia informativa.",
+          "etiqueta": "Rendimiento medio del Bund a 10 años",
+          "valor": "3,39 %",
+          "referencia": "2026-09-09 Bundesbank",
           "fuentes": [
             3
           ]
         },
         {
-          "etiqueta": "Bolsas, deuda y petróleo · balance semanal",
-          "valor": "Sin contrastar",
-          "referencia": "No se han acreditado series homogéneas para calcular los cambios de este período.",
-          "fuentes": []
+          "etiqueta": "Producción industrial de España (julio 2026, tasa anual)",
+          "valor": "+2,6 %",
+          "referencia": "2026-09-10 INE",
+          "fuentes": [
+            9
+          ]
+        },
+        {
+          "etiqueta": "PIB mensual del Reino Unido (julio 2026)",
+          "valor": "+0,4 %",
+          "referencia": "2026-09-11 ONS",
+          "fuentes": [
+            10
+          ]
         }
       ],
       "agenda": [
         {
-          "cuando": "11 de septiembre · 14:30 CEST",
-          "que": "Publicación del IPC de agosto y de salarios reales de Estados Unidos, según el calendario del BLS.",
+          "fecha": "2026-09-15",
+          "hora": "09:00",
+          "region": "España",
+          "que": "IPC definitivo de agosto",
+          "anterior": "3,6 % (julio)",
+          "porQueImporta": "Confirma el impacto detallado del alza de combustibles sobre los precios de consumo familiar.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-15",
+          "hora": "11:00",
+          "region": "Alemania",
+          "que": "Índice ZEW de Confianza Inversora",
+          "anterior": "Agosto 2026",
+          "porQueImporta": "Mide las expectativas de los analistas financieros sobre la mayor economía europea.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-16",
+          "hora": "20:00",
+          "region": "EEUU",
+          "que": "Decisión de Tipos del FOMC",
+          "anterior": "3,50 % - 3,75 %",
+          "porQueImporta": "Máxima referencia monetaria global que actualiza las proyecciones de tipos y crecimiento.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-17",
+          "hora": "11:00",
+          "region": "Eurozona",
+          "que": "IPC Armonizado definitivo de agosto",
+          "anterior": "2,9 % (julio)",
+          "porQueImporta": "Cifra oficial que sustenta la política de estabilidad de precios del Banco Central Europeo.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-17",
+          "hora": "13:00",
+          "region": "Reino Unido",
+          "que": "Decisión de Tipos del Banco de Inglaterra",
+          "anterior": "3,75 %",
+          "porQueImporta": "Determina el coste de financiación en libras tras el repunte inflacionario global.",
+          "fuentes": []
+        },
+        {
+          "fecha": "2026-09-18",
+          "hora": null,
+          "region": "Global",
+          "que": "Cuádruple Hora Bruja",
+          "anterior": "Vencimiento de junio 2026",
+          "porQueImporta": "Concentra elevados volúmenes operativos y reajustes técnicos de posiciones en los mercados.",
+          "fuentes": []
+        }
+      ],
+      "cuerpo": [
+        {
+          "titulo": "La semana en una idea",
+          "parrafos": [
+            "La actualidad económica ha pivotado sobre el encarecimiento de la energía y sus consecuencias directas en la política monetaria. Los ataques a infraestructuras en Oriente Medio dispararon las cotizaciones del crudo y reafirmaron las presiones sobre los precios, propiciando que las autoridades europeas decidieran intervenir encareciendo el coste del dinero."
+          ],
           "fuentes": [
-            4
+            7
           ]
         },
         {
-          "cuando": "15 y 16 de septiembre",
-          "que": "Reunión del Comité Federal de Mercado Abierto de la Reserva Federal. Al corte de esta edición su decisión no se había producido.",
+          "titulo": "Economía y bancos centrales",
+          "parrafos": [
+            "El Banco Central Europeo decidió elevar sus tres tipos de interés oficiales en 25 puntos básicos, con efecto desde el 16 de septiembre. La medida situó la facilidad de depósito en el 2,50 % y responde a una inflación que la propia entidad prevé por encima de su objetivo del 2 % durante un período prolongado, por el efecto de los carburantes.",
+            "Al otro lado del Atlántico, el índice de precios al consumo de Estados Unidos respaldó esta tendencia al repuntar un 0,4 % mensual en agosto. El salto del 3,9 % exclusivo en el precio de la gasolina complica el escenario para la Reserva Federal, que se reunirá en los próximos días bajo una presión renovada para mantener el ajuste."
+          ],
+          "fuentes": [
+            7,
+            8
+          ]
+        },
+        {
+          "titulo": "Mercados",
+          "parrafos": [
+            "Las tensiones de suministro tras los ataques en el estrecho de Ormuz tensaron el mercado del crudo a mediados de semana, con una distensión el viernes tras el anuncio de contactos diplomáticos. Esta nota no publica niveles de petróleo por no disponer de una fuente primaria. El choque en las materias primas se trasladó de inmediato a la renta fija soberana, castigando los precios de los bonos.",
+            "En consecuencia, la rentabilidad del bono estadounidense a diez años (que se mueve de forma inversa a su precio) repuntó con fuerza. Los inversores reaccionaron al encarecimiento energético y a la elevada demanda de capital corporativo para financiar infraestructuras tecnológicas.",
+            "En las bolsas mundiales, los números rojos dominaron el cierre semanal. Mientras los índices europeos encontraron cierto soporte en las entidades bancarias, favorecidas por unos tipos de interés más altos, el mercado asiático sufrió descensos notables ante la caída de empresas fabricantes de semiconductores en Japón."
+          ],
           "fuentes": [
             6
           ]
         },
         {
-          "cuando": "16 de septiembre",
-          "que": "Entrada en vigor de los tipos de interés anunciados por el BCE el día 10.",
-          "fuentes": [
-            1
-          ]
-        },
-        {
-          "cuando": "17 de septiembre",
-          "que": "Próxima decisión de política monetaria anunciada por el Banco de Inglaterra. La agenda no anticipa el resultado.",
-          "fuentes": [
-            9
-          ]
-        }
-      ],
-      "cuerpo": [
-        {
-          "titulo": "Política monetaria: decisión y calendario",
+          "titulo": "Qué se publica ahora",
           "parrafos": [
-            "El BCE anunció el 10 de septiembre una subida de sus tipos oficiales. La facilidad de depósito pasará al 2,50% el día 16. Distinguir ambas fechas evita interpretar una decisión anunciada como si ya se estuviera aplicando.",
-            "Las proyecciones del organismo sitúan la inflación media de 2026 en el 3,0%, sin cambio frente a junio; las revisiones al alza se refieren a 2027 y 2028. Son proyecciones del BCE, sujetas a incertidumbre, y no datos de inflación ya observados."
-          ],
-          "fuentes": [
-            1
-          ]
-        },
-        {
-          "titulo": "Empleo y precios en Estados Unidos",
-          "parrafos": [
-            "El informe de empleo publicado el 4 de septiembre recoge un incremento de 162.000 puestos no agrícolas en agosto y una tasa de desempleo del 4,1%. Son dos medidas procedentes de encuestas distintas: una sigue los puestos de trabajo y otra la situación laboral de las personas.",
-            "El día 10, el BLS publicó un aumento mensual desestacionalizado del 0,4% en los precios de producción de demanda final. Este dato y el IPC miden etapas diferentes de la formación de precios. La publicación del IPC de agosto estaba prevista para el 11 de septiembre, fuera del período cubierto."
-          ],
-          "fuentes": [
-            7,
-            2,
-            4
-          ]
-        },
-        {
-          "titulo": "La vivienda en España",
-          "parrafos": [
-            "La publicación del INE del 7 de septiembre sitúa la variación anual del índice de precios de vivienda en el 12,2% durante el segundo trimestre de 2026. Frente al trimestre anterior, el aumento fue del 3,4%. Estas cifras describen el conjunto estadístico y no determinan el precio de una vivienda concreta."
-          ],
-          "fuentes": [
-            8
-          ]
-        },
-        {
-          "titulo": "Cómo leer este balance",
-          "parrafos": [
-            "El período va del viernes 4 al jueves 10 de septiembre. Las fechas de publicación y los períodos estadísticos son distintos: un dato difundido esta semana puede describir agosto o un trimestre anterior. No se acredita un cierre bursátil semanal ni se comparan precios de petróleo y deuda con horas o referencias diferentes."
+            "La atención económica se desplaza hacia Estados Unidos, donde la Reserva Federal comunicará su esperada decisión sobre los tipos de interés y actualizará sus proyecciones de crecimiento. En Europa, los operadores vigilarán los datos definitivos de inflación de agosto, esenciales para calibrar el traslado de costes energéticos.",
+            "Finalmente, el cierre de la semana bursátil estará marcado por el fenómeno conocido como «cuádruple hora bruja». El vencimiento simultáneo de los contratos de derivados financieros suele generar fuertes volúmenes de negociación, provocando importantes reajustes técnicos en las carteras de los operadores institucionales."
           ],
           "fuentes": []
         }
       ],
       "fuentes": [
         {
-          "titulo": "BCE · Decisión de política monetaria del 10 de septiembre",
-          "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.en.html"
+          "titulo": "Bolsas y Mercados Españoles",
+          "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
         },
         {
-          "titulo": "BLS · Precios de producción de agosto de 2026",
-          "url": "https://www.bls.gov/news.release/ppi.nr0.htm",
-          "nota": "Consultado el 11-09-2026. Página de última publicación: puede mostrar otra edición en el futuro."
+          "titulo": "S&P Global",
+          "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
         },
         {
-          "titulo": "BCE · Cambio de referencia del euro del 10 de septiembre",
-          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.hr.html",
-          "nota": "1 EUR = 1,1616 USD. Página diaria mutable; cifra de referencia, no precio de una operación."
+          "titulo": "Bundesbank",
+          "url": "https://www.bundesbank.de/de/service/banken-und-unternehmen/bund-bietungs-system-bbs-/aktuelle-auktionen/bundesanleihen-zuteilung-1007314"
         },
         {
-          "titulo": "BLS · Calendario de septiembre de 2026",
-          "url": "https://www.bls.gov/schedule/2026/09_sched.htm"
+          "titulo": "zertifikate.morganstanley.com",
+          "url": "https://zertifikate.morganstanley.com/nachrichten/2394151/aktien-frankfurt-schluss--dax-stabilisiert-sich--auf-wochensicht-im-minus"
         },
         {
-          "titulo": "INE · Calendario de publicaciones de 2026",
-          "url": "https://www.ine.es/dynt3/Calendario/calenHTML.htm?q=2026"
+          "titulo": "wp.fuw.ch",
+          "url": "https://wp.fuw.ch/boerse/indizes/dax/valor-998032/830/814"
         },
         {
-          "titulo": "Reserva Federal · Agenda de septiembre de 2026",
-          "url": "https://www.federalreserve.gov/newsevents/2026-september.htm"
+          "titulo": "morningstar.com",
+          "url": "https://www.morningstar.com/news/dow-jones/202609112687/nikkei-225-index-falls-155-this-week-to-6401134-data-talk"
         },
         {
-          "titulo": "BLS · Empleo de agosto de 2026",
-          "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
-          "nota": "Publicado el 04-09-2026 y consultado el 11-09-2026. Página de última publicación, sujeta a cambios."
+          "titulo": "Banco Central Europeo — Decisiones de política monetaria, 10 de septiembre de 2026",
+          "url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp260910~314e508016.es.html"
         },
         {
-          "titulo": "INE · Precios de vivienda del segundo trimestre de 2026",
-          "url": "https://www.ine.es/dyngs/Prensa/IPV2T26.htm"
+          "titulo": "U.S. Bureau of Labor Statistics — Consumer Price Index, agosto de 2026",
+          "url": "https://www.bls.gov/news.release/cpi.nr0.htm"
         },
         {
-          "titulo": "Banco de Inglaterra · Próxima decisión de tipos",
-          "url": "https://www.bankofengland.co.uk/explainers/what-does-the-bank-of-england-do",
-          "nota": "El 11-09-2026 anunciaba la reunión del 17-09-2026. Página mutable."
+          "titulo": "Instituto Nacional de Estadística — Índice de Producción Industrial, julio de 2026",
+          "url": "https://www.ine.es/prensa/ipi_tabla.htm"
+        },
+        {
+          "titulo": "Office for National Statistics — GDP monthly estimate, UK: July 2026",
+          "url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026"
         }
       ],
       "generacion": {
         "modeloInvestigacion": "gemini-3.8-flash",
         "modeloRedaccion": "gemini-3.1-pro-preview",
-        "versionPrompt": "nuvia-mercados-2026-09",
+        "versionPrompt": "nuvia-mercados-2026-09-r3",
         "fuentesConsultadas": 9
       },
       "revision": {
         "estado": "publicado",
-        "revisadoIso": "2026-09-11T01:17:24.117Z",
-        "nota": "Revisión y contraste asistidos por IA el 11 de septiembre de 2026, por encargo del fundador. Se corrigieron períodos, atribuciones y cifras sin respaldo. Esta revisión no acredita una lectura humana."
+        "revisadoIso": "2026-09-14T06:50:59.351Z",
+        "nota": "Revisión y contraste asistidos por IA el 14 de septiembre de 2026, por encargo del fundador. Se acreditaron con fuente primaria la decisión del BCE, el IPC de Estados Unidos, el IPI español y el PIB mensual británico; se corrigió el IPI a su tasa anual publicada y se retiraron del texto los niveles de crudo, gas y bono estadounidense que las tablas ya daban por no contrastados. Esta revisión no acredita una lectura humana."
       },
       "periodo": {
-        "desde": "2026-09-04",
-        "hasta": "2026-09-10",
-        "corteIso": "2026-09-10T17:00:00Z"
+        "desde": "2026-09-08",
+        "hasta": "2026-09-14",
+        "corteIso": "2026-09-14T06:32:41.343Z"
       },
-      "limitaciones": "Balance de siete días naturales con corte el jueves 10; no incluye el viernes 11. Las variaciones semanales de bolsa, deuda y Brent del borrador no disponen de dos observaciones comparables acreditadas. El contenido conserva los apartados y explica la cobertura. Las proyecciones se atribuyen al organismo que las publica.",
+      "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
+      "claves": [
+        {
+          "titulo": "El BCE sube los tipos",
+          "texto": "El Banco Central Europeo aumentó sus tipos de interés oficiales en 25 puntos básicos y situó la facilidad de depósito en el 2,50 %, con efecto desde el 16 de septiembre. La entidad atribuye la decisión a las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
+          "fuentes": [
+            7
+          ]
+        },
+        {
+          "titulo": "Repunte de precios en EE. UU.",
+          "texto": "El índice de precios al consumo estadounidense creció un 0,4 % mensual en agosto impulsado por la gasolina. Esta persistencia de los precios limita el margen de maniobra de la Reserva Federal de cara a su próxima reunión monetaria.",
+          "fuentes": [
+            8
+          ]
+        },
+        {
+          "titulo": "Tensión en el mercado energético",
+          "texto": "Los ataques en el estrecho de Ormuz tensaron el mercado energético durante la semana y arrastraron también al gas natural europeo. Los operadores recogieron beneficios el viernes ante el inicio de contactos diplomáticos. Esta nota no publica niveles de crudo ni de gas por no disponer de una fuente primaria.",
+          "fuentes": []
+        },
+        {
+          "titulo": "La deuda roza el 5 %",
+          "texto": "El rendimiento del bono del Tesoro estadounidense a diez años repuntó con fuerza durante la semana en respuesta al choque energético y al alto volumen de emisiones estatales y corporativas. El nivel alcanzado no se publica por no disponer de una fuente primaria.",
+          "fuentes": []
+        }
+      ],
+      "mercados": [
+        {
+          "grupo": "Bolsas",
+          "filas": [
+            {
+              "nombre": "IBEX 35",
+              "nivel": "19.838,50 puntos",
+              "variacion": -1.06,
+              "variacionAnual": null,
+              "nota": "Sin contrastar rentabilidad anual oficial en la fuente primaria",
+              "fuentes": [
+                1
+              ]
+            },
+            {
+              "nombre": "S&P 500",
+              "nivel": "7.656,85 puntos",
+              "variacion": -0.68,
+              "variacionAnual": 11.77,
+              "nota": null,
+              "fuentes": [
+                2
+              ]
+            },
+            {
+              "nombre": "DAX 40",
+              "nivel": "25.568,56 puntos",
+              "variacion": -1.83,
+              "variacionAnual": 4.4,
+              "nota": null,
+              "fuentes": [
+                4,
+                5
+              ]
+            },
+            {
+              "nombre": "Nikkei 225",
+              "nivel": "64.011,34 puntos",
+              "variacion": -1.55,
+              "variacionAnual": 27.16,
+              "nota": "Impactado por descensos en el sector tecnológico y de chips",
+              "fuentes": [
+                6
+              ]
+            }
+          ]
+        },
+        {
+          "grupo": "Deuda pública",
+          "filas": [
+            {
+              "nombre": "Bono alemán a 10 años",
+              "nivel": "3,39 %",
+              "variacion": 0.07,
+              "variacionAnual": null,
+              "nota": "Rendimiento medio de subasta. Variación en puntos porcentuales",
+              "fuentes": [
+                3
+              ]
+            },
+            {
+              "nombre": "Bono EE. UU. a 10 años",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            }
+          ]
+        },
+        {
+          "grupo": "Divisas",
+          "filas": [
+            {
+              "nombre": "EUR/USD",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            }
+          ]
+        },
+        {
+          "grupo": "Materias primas",
+          "filas": [
+            {
+              "nombre": "Petróleo Brent",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            },
+            {
+              "nombre": "Gas natural TTF",
+              "nivel": "Sin contrastar",
+              "variacion": null,
+              "variacionAnual": null,
+              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
+              "fuentes": []
+            }
+          ]
+        }
+      ],
+      "glosario": [
+        {
+          "termino": "Punto básico",
+          "definicion": "Centésima parte de un punto porcentual (0,01 %), utilizada habitualmente para medir las variaciones en los tipos de interés."
+        },
+        {
+          "termino": "Facilidad de depósito",
+          "definicion": "El tipo de interés que el banco central paga a los bancos comerciales por guardar su dinero sobrante durante una noche."
+        },
+        {
+          "termino": "Reserva Federal",
+          "definicion": "Es el banco central de Estados Unidos, encargado de dirigir la política monetaria y estabilizar el sistema financiero y los precios."
+        },
+        {
+          "termino": "Renta fija soberana",
+          "definicion": "Conjunto de instrumentos de deuda (como los bonos) emitidos por el Gobierno de un país para financiar sus gastos públicos."
+        },
+        {
+          "termino": "Cuádruple hora bruja",
+          "definicion": "Fecha trimestral en la que expiran simultáneamente distintos tipos de contratos financieros, elevando temporalmente el volumen de operaciones."
+        }
+      ],
       "vigencia": {
         "estado": "vigente",
-        "dias": 1
+        "dias": 0
       },
-      "descarga": "core/downloads/informes/semanal-2026-09-10.html"
+      "descarga": "core/downloads/informes/semanal-2026-09-14.html"
     }
   },
   "archivo": [
+    {
+      "id": "diario-2026-09-14",
+      "tipo": "DIARIO",
+      "fecha": "2026-09-14",
+      "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
+      "descarga": "core/downloads/informes/diario-2026-09-14.html"
+    },
+    {
+      "id": "semanal-2026-09-14",
+      "tipo": "SEMANAL",
+      "fecha": "2026-09-14",
+      "titular": "El Banco Central Europeo sube los tipos y la energía presiona a la deuda",
+      "descarga": "core/downloads/informes/semanal-2026-09-14.html"
+    },
     {
       "id": "semanal-2026-09-10",
       "tipo": "SEMANAL",

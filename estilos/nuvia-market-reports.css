@@ -97,6 +97,50 @@
 .nv-reports-archive > summary { min-height: 44px; cursor: pointer; color: var(--nv-text); font-size: 16px; font-weight: 600; }
 .nv-reports-archive li { margin: 16px 0; }
 .nv-reports-archive a { color: var(--nv-text-link); font-size: 14px; }
+/* --- v2 (14-09-2026): en pocas palabras, mercados, agenda en tabla, glosario --- */
+.nv-report__keys { background: var(--nv-surface-editorial); }
+.nv-report__keys-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; margin: 0; padding: 0; list-style: none; }
+.nv-report__keys-list li { display: flex; gap: 14px; align-items: flex-start; }
+.nv-report__key-number { flex: 0 0 32px; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; color: var(--nv-text-on-dark); background: var(--nv-green-600); font-size: 13px; font-weight: 600; }
+.nv-report__keys-list strong { display: block; margin-bottom: 6px; color: var(--nv-text); font-family: var(--nv-font-serif); font-size: 20px; font-weight: 500; line-height: 1.25; }
+.nv-report__keys-list p { margin: 0; font-size: 14px; line-height: 1.65; }
+.nv-report__chart { margin: 0 0 24px; padding: 20px 24px 16px; border: 1px solid var(--nv-line); border-radius: 12px; background: var(--nv-white); }
+.nv-report__chart svg { display: block; width: 100%; height: auto; font-family: var(--nv-font-sans); }
+.nv-report__chart figcaption { margin-top: 10px; font-size: 12px; color: var(--nv-text-muted); }
+.nv-report__bar-label { font-size: 15px; fill: var(--nv-text-soft); }
+.nv-report__bar-value { font-size: 14px; font-weight: 600; fill: var(--nv-text); font-variant-numeric: tabular-nums; }
+.nv-report__bar-tick { font-size: 12px; fill: var(--nv-text-muted); }
+.nv-report__bar-axis { stroke: var(--nv-line-strong); stroke-width: 1.5; }
+.nv-report__bar--up { fill: var(--nv-positive); }
+.nv-report__bar--down { fill: var(--nv-negative); }
+.nv-report__market { margin-top: 20px; }
+.nv-report__market h4 { margin: 0 0 8px; color: var(--nv-text); font-size: 16px; font-weight: 600; }
+.nv-report__table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.nv-report__table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.nv-report__table th, .nv-report__table td { padding: 10px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--nv-line); }
+.nv-report__table thead th { padding-top: 0; color: var(--nv-text-muted); font-size: 12px; font-weight: 600; white-space: nowrap; border-bottom: 2px solid var(--nv-line-strong); }
+.nv-report__table tbody th { color: var(--nv-text); font-weight: 600; }
+.nv-report__table .num { text-align: right; white-space: nowrap; }
+.nv-report__table tbody tr:nth-child(even) { background: var(--nv-surface-editorial); }
+.nv-report__table .nv-report__note { min-width: 22ch; color: var(--nv-text-soft); }
+.nv-report__table .nv-report__cite { white-space: nowrap; }
+.nv-report__uncited { font-size: 12px; color: var(--nv-text-muted); }
+/* Ganancia y pérdida solo en la cifra, con el signo delante: es un hecho, no un juicio (decisión del fundador, 14-09-2026). */
+.nv-report__delta--up { color: var(--nv-positive); }
+.nv-report__delta--down { color: var(--nv-negative); }
+.nv-report__bar-value.nv-report__delta--up { fill: var(--nv-positive); }
+.nv-report__bar-value.nv-report__delta--down { fill: var(--nv-negative); }
+.nv-report__table-note { margin: 8px 0 0; font-size: 12px; color: var(--nv-text-muted); }
+.nv-report__agenda-table tbody th { white-space: nowrap; }
+.nv-report__agenda-table tbody th strong { display: block; color: var(--nv-text); }
+.nv-report__agenda-table tbody th span { display: block; font-size: 12px; font-weight: 400; color: var(--nv-text-muted); }
+.nv-report__agenda-table tr.nv-report__agenda-day td, .nv-report__agenda-table tr.nv-report__agenda-day th { border-top: 2px solid var(--nv-line-strong); }
+.nv-report__agenda-table tbody tr:first-child td, .nv-report__agenda-table tbody tr:first-child th { border-top: 0; }
+.nv-report__hora, .nv-report__agenda-table td:nth-child(3) { white-space: nowrap; color: var(--nv-text-soft); }
+.nv-report__glossary { border-top: 1px solid var(--nv-line); }
+.nv-report__glossary dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px; margin: 0; }
+.nv-report__glossary dt { color: var(--nv-text); font-size: 15px; font-weight: 600; }
+.nv-report__glossary dd { margin: 4px 0 0; font-size: 14px; line-height: 1.6; color: var(--nv-text-soft); }
 @media (max-width: 1024px) {
   .nv-report-card { padding: 24px; }
   .nv-report-card h3 { font-size: 22px; }
@@ -121,6 +165,9 @@
   .nv-report__toolbar { flex-wrap: wrap; gap: 12px; }
   .nv-report__section-label { align-items: flex-start; flex-direction: column; gap: 6px; }
   .nv-reports-intro { column-gap: 24px; }
+  .nv-report__keys-list, .nv-report__glossary dl { grid-template-columns: minmax(0, 1fr); }
+  .nv-report__table { font-size: 13px; }
+  .nv-report__table th, .nv-report__table td { padding: 8px 10px; }
 }
 @media print {
   @page { size: A4; margin: 15mm; }
@@ -136,7 +183,9 @@
   .nv-report__number { font-size: 22px; }
   .nv-report__story { grid-template-columns: 180px minmax(0, 1fr); padding: 18px 0; }
   .nv-report__calendar { padding: 16px; }
-  .nv-report__figures > div, .nv-report__facts li, .nv-report__agenda li, .nv-report__story-heading { break-inside: avoid; }
+  .nv-report__figures > div, .nv-report__facts li, .nv-report__agenda li, .nv-report__story-heading, .nv-report__keys-list li, .nv-report__chart, .nv-report__table tr, .nv-report__glossary dl > div { break-inside: avoid; }
+  .nv-report__keys { background: var(--nv-white); }
+  .nv-report__table tbody tr:nth-child(even) { background: var(--nv-white); }
   .nv-report h2, .nv-report h3 { break-after: avoid; }
   .nv-report p { orphans: 3; widows: 3; }
   .nv-report__sources { columns: 1; }

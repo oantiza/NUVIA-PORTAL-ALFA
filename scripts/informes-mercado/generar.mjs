@@ -109,7 +109,8 @@ export async function generarBorrador({ tipo, fecha = null, clave = null } = {})
       },
       revision: { estado: 'borrador', revisadoIso: null },
     },
-    { tipoEsperado: tipo },
+    // v2: sin tablas, claves y glosario el borrador no vale (ver BLOQUES_V2).
+    { tipoEsperado: tipo, exigirBloques: true },
   );
 
   return informe;
@@ -133,8 +134,9 @@ async function principal() {
       '',
       `  Borrador: ${destino}`,
       `  Titular:  ${informe.titular}`,
-      `  Contenido: ${informe.hechos.length} hechos · ${informe.indicadores.length} indicadores · ` +
-        `${informe.agenda.length} citas · ${parrafos} párrafos`,
+      `  Contenido: ${informe.claves?.length ?? 0} claves · ${informe.hechos.length} hechos · ${informe.indicadores.length} indicadores · ` +
+        `${(informe.mercados ?? []).reduce((n, g) => n + g.filas.length, 0)} referencias de mercado · ` +
+        `${informe.agenda.length} citas · ${parrafos} párrafos · ${informe.glosario?.length ?? 0} términos`,
       `  Fuentes:  ${informe.fuentes.length}`,
       `  Modelos:  ${informe.generacion.modeloInvestigacion} (documentación) · ` +
         `${informe.generacion.modeloRedaccion} (redacción)`,

@@ -42,13 +42,33 @@ site:ecb.europa.eu, site:bde.es, site:ine.es, site:bls.gov, site:federalreserve.
 site:bolsasymercados.es, site:eia.gov o site:ec.europa.eu, según el dato que busques.
 Al menos una de las fuentes que utilices debe salir de una de esas webs.`;
 
+/**
+ * Voz del informe (v2, 14-09-2026). El lector es una persona con ahorros, no
+ * un profesional: el informe tiene que ser digno de un analista y, a la vez,
+ * entenderse sin saber qué es un punto básico. Explicar no es aconsejar: el
+ * porqué de un movimiento es un hecho documentado; qué hacer con él, no.
+ */
+const LENGUAJE_LLANO = `ESTILO, SIN EXCEPCIONES.
+- Escribe para una persona inteligente que NO trabaja en finanzas. Frases cortas. Nada de jerga
+  sin explicar: la primera vez que uses un término técnico (rentabilidad del bono, punto básico,
+  curva de tipos, PMI, diferencial, volatilidad...) explícalo entre paréntesis o con una frase, y
+  añádelo al glosario.
+- Cada cifra con su unidad y su fecha o período. Cada hecho con su porqué cuando la fuente lo
+  establezca: no digas solo que el índice subió; di qué lo movió según la fuente y cita cuál.
+- Sé concreto e interesante: qué ha pasado, por qué importa para entender la economía y qué se
+  publica en los próximos días. Sin relleno ni frases hechas («cautela», «incertidumbre»).
+- Los porcentajes de la tabla de mercados van como NÚMERO (0.8 significa +0,8 %; -1.25 significa
+  -1,25 %), sin el signo % y con punto decimal. Si un dato no está en la base factual con su
+  fuente, pon null y escribe «Sin contrastar» en el nivel: nunca lo estimes.`;
+
 export function promptInvestigacion(tipo, hoy, { insistirOficiales = false } = {}) {
   const config = TIPOS[tipo];
   const ventana =
     tipo === 'DIARIO'
       ? `la última sesión de mercado y las últimas 24 horas`
       : `los últimos siete días naturales`;
-  const agenda = tipo === 'DIARIO' ? 'de hoy y de mañana' : 'de los próximos siete días';
+  const agenda = tipo === 'DIARIO' ? 'de hoy y de los dos próximos días hábiles' : 'de los próximos siete días';
+  const variacion = tipo === 'DIARIO' ? 'de la sesión' : 'de los siete días (cierre a cierre)';
 
   const refuerzo = insistirOficiales ? `
 
@@ -68,11 +88,27 @@ No cites brókeres, plataformas de negociación ni portales de recomendaciones: 
 el lector opere, y este informe no puede apoyarse en material comercial.
 
 Cubre, siempre con cifra, unidad y fecha, lo ocurrido en ${ventana}:
-1. Cierre de las principales bolsas de Europa, Estados Unidos y Asia, y qué lo explica según
-   las fuentes.
-2. Deuda pública, divisas, materias primas y volatilidad: nivel y variación.
-3. Datos macroeconómicos publicados y decisiones o comparecencias de bancos centrales.
-4. Calendario ${agenda}: publicaciones estadísticas, subastas, reuniones y comparecencias.
+
+1. TABLA DE MERCADOS. Para cada referencia: nivel de cierre, variación ${variacion} en % y, si la
+   encuentras, variación acumulada en el año en %. Busca cada una en su publicador:
+   - Bolsas: IBEX 35 (site:bolsasymercados.es), Euro Stoxx 50 y DAX (site:stoxx.com,
+     site:deutsche-boerse.com), S&P 500 y Nasdaq 100 (site:spglobal.com, site:nasdaq.com),
+     Nikkei 225 (site:indexes.nikkei.co.jp), MSCI Emergentes (site:msci.com).
+   - Deuda: rentabilidad del bono alemán a 10 años (site:bundesbank.de), del bono español a 10
+     años (site:bde.es, site:tesoro.es) y del bono de EEUU a 10 años (site:home.treasury.gov):
+     nivel en % y variación del período en puntos porcentuales; prima de riesgo española.
+   - Divisas: tipos de cambio de referencia del BCE, EUR/USD, EUR/GBP y EUR/JPY (site:ecb.europa.eu).
+   - Materias primas: Brent (site:eia.gov, site:theice.com), oro (site:lbma.org.uk), gas TTF.
+   - Volatilidad: índice VIX (site:cboe.com).
+   Si de una referencia no encuentras publicación oficial, dilo: la tabla la dejará «sin contrastar».
+2. QUÉ MOVIÓ ${tipo === 'DIARIO' ? 'LA SESIÓN' : 'LA SEMANA'}: los tres a seis hechos concretos que
+   explican esos movimientos según las fuentes, con fecha; distingue el hecho de la interpretación
+   y atribuye la interpretación a quien la firma.
+3. DATOS MACRO Y BANCOS CENTRALES publicados en el período: dato, dato anterior, quién lo publica y
+   cuándo; decisiones y comparecencias.
+4. AGENDA ${agenda}: publicaciones estadísticas, subastas, reuniones y comparecencias, con fecha
+   exacta (AAAA-MM-DD), hora en Europe/Madrid si se conoce, región, dato anterior si existe y por
+   qué se sigue ese dato. Toma las fechas de los calendarios oficiales (INE, BCE, BLS, Eurostat).
 
 ${PERIMETRO}
 
@@ -91,13 +127,14 @@ Devuelve un memorando de documentación en español. Todavía no redactes el inf
 export function promptRedaccion(tipo, hoy, investigacion, fuentes = []) {
   const config = TIPOS[tipo];
   const [minParrafos, maxParrafos] = config.parrafos;
+  const diario = tipo === 'DIARIO';
 
   return `Eres el redactor de mercados de un portal español de educación financiera. Redacta el
 informe ${config.etiqueta} con fecha ${hoy} usando EXCLUSIVAMENTE la base factual incluida al
-final. No añadas ninguna cifra ni acontecimiento que no esté en esa base.
+final. No añadas ninguna cifra ni acontecimiento que no esté en esa base. El informe tiene que
+ser digno de un profesional de la inversión y, a la vez, claro e interesante para cualquiera.
 
-El lector es una persona con ahorros, no un profesional: escribe claro, en frases cortas, y
-explica el término técnico la primera vez que aparezca. Tono sereno y descriptivo.
+${LENGUAJE_LLANO}
 
 ${PERIMETRO}
 
@@ -106,22 +143,36 @@ Devuelve ÚNICAMENTE JSON válido, sin bloque de código alrededor, con esta for
   "tipo": "${tipo}",
   "fecha": "${hoy}",
   "titular": "una frase de 12 a 120 caracteres que describa el hecho principal, sin juicio",
-  "entradilla": "2 o 3 frases que resuman lo ocurrido",
-  "hechos": [{"texto": "hecho con su cifra y unidad", "fecha": "cuándo ocurrió", "fuentes": [1]}],
+  "entradilla": "2 o 3 frases que resuman lo ocurrido y qué lo explica, sin jerga",
+  "claves": [{"titulo": "idea en 3-8 palabras", "texto": "1-3 frases llanas: qué ha pasado y por qué importa para entender la economía, sin decir qué hacer", "fuentes": [1]}],
+  "hechos": [{"texto": "hecho con su cifra, unidad y porqué documentado", "fecha": "cuándo ocurrió", "fuentes": [1]}],
   "indicadores": [{"etiqueta": "nombre", "valor": "valor con unidad", "referencia": "fecha y fuente", "fuentes": [1]}],
-  "agenda": [{"cuando": "fecha u hora", "que": "qué se publica o quién comparece", "fuentes": [1]}],
+  "mercados": [
+    {"grupo": "Bolsas", "filas": [{"nombre": "IBEX 35", "nivel": "15.120,4 puntos", "variacion": 0.9, "variacionAnual": 30.2, "nota": "una frase con el porqué según la fuente, o null", "fuentes": [2]}]},
+    {"grupo": "Deuda pública", "filas": [{"nombre": "Bono alemán a 10 años", "nivel": "2,65 %", "variacion": -0.05, "variacionAnual": null, "nota": "en deuda, variacion es la de la rentabilidad en puntos porcentuales (1 punto básico = 0.01)", "fuentes": [3]}]},
+    {"grupo": "Divisas", "filas": [{"nombre": "EUR/USD", "nivel": "1,1616", "variacion": 0.3, "variacionAnual": null, "nota": null, "fuentes": [1]}]},
+    {"grupo": "Materias primas", "filas": [{"nombre": "Brent", "nivel": "Sin contrastar", "variacion": null, "variacionAnual": null, "nota": "sin publicación oficial en la base factual", "fuentes": []}]}
+  ],
+  "agenda": [{"fecha": "AAAA-MM-DD", "hora": "14:30 o null", "region": "EEUU|Eurozona|España|Reino Unido|Japón|China|Global", "que": "qué se publica o quién comparece", "anterior": "dato anterior o null", "porQueImporta": "una frase llana o null", "fuentes": [1]}],
   "cuerpo": [{"titulo": "título de sección", "parrafos": ["párrafo"], "fuentes": [1]}],
+  "glosario": [{"termino": "término técnico que aparece en el informe", "definicion": "explicación en una o dos frases para quien no sabe finanzas"}],
   "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
   "generacion": {"versionPrompt": "${VERSION_PROMPT}"}
 }
 
-Reglas de tamaño: de 3 a 8 hechos; de 3 a 10 indicadores; de 2 a 10 citas de agenda; de 2 a 5
-secciones con ${minParrafos} a ${maxParrafos} párrafos en total, cada uno de 60 caracteres como
-mínimo. No incluyas un campo de fuentes: las añade el sistema a partir de las búsquedas reales.
-Cada lista interna de fuentes contiene los números de las publicaciones que respaldan ese
-bloque. No atribuyas una cifra a una publicación que no la contiene. Para un dato sin respaldo,
-escribe "Sin contrastar", explica la carencia y usa una lista vacía. La agenda refleja lo que
-estaba previsto a la fecha de corte. No conviertas un jueves en cierre de semana bursátil.
+Reglas de tamaño: de 3 a 5 claves; de 3 a 8 hechos; de 3 a 10 indicadores; mercados con al menos
+cuatro grupos y cinco referencias en total, usando SOLO cifras de la base factual (nivel «Sin
+contrastar» y variaciones null donde falte la publicación oficial); de 3 a 12 citas de agenda con
+fecha AAAA-MM-DD, ordenadas por fecha; de ${diario ? 3 : 4} a 5 secciones con ${minParrafos} a ${maxParrafos}
+párrafos en total, cada uno de 60 caracteres como mínimo, en este orden: ${diario
+    ? '«Qué ha pasado», «Por qué importa» y «Qué se publica ahora»'
+    : '«La semana en una idea», «Economía y bancos centrales», «Mercados», «Qué se publica ahora»'}${diario ? '' : ' (y una quinta si hace falta)'};
+de 2 a 8 términos de glosario que aparezcan de verdad en el texto. No incluyas un campo de fuentes
+al nivel del informe: las añade el sistema a partir de las búsquedas reales. Cada lista interna de
+fuentes contiene los números de las publicaciones que respaldan ese bloque. No atribuyas una cifra
+a una publicación que no la contiene. Para un dato sin respaldo, escribe "Sin contrastar", explica
+la carencia y usa una lista vacía. La agenda refleja lo que estaba previsto a la fecha de corte.
+No conviertas un jueves en cierre de semana bursátil.
 
 FUENTES DISPONIBLES (numeración desde 1):
 ${fuentes.map((fuente, i) => `${i + 1}. ${fuente.titulo}: ${fuente.url}`).join('\n')}

@@ -65,6 +65,31 @@ export const PRIMARIAS = new Map([
   ['msci.com', 'MSCI'],
   ['spglobal.com', 'S&P Global'],
   ['ftserussell.com', 'FTSE Russell'],
+  // v2 (14-09-2026): quien publica de primera mano los cierres, rentabilidades
+  // y volatilidades que alimentan la tabla de mercados. Sin estas webs el
+  // buscador solo traía prensa y la tabla salía «sin contrastar».
+  ['indexes.nikkei.co.jp', 'Nikkei Indexes'],
+  ['jpx.co.jp', 'Japan Exchange Group'],
+  ['hkex.com.hk', 'Hong Kong Exchanges'],
+  ['six-group.com', 'SIX Swiss Exchange'],
+  ['borsaitaliana.it', 'Borsa Italiana'],
+  ['cboe.com', 'Cboe (índice VIX)'],
+  ['bundesbank.de', 'Bundesbank'],
+  ['banque-france.fr', 'Banque de France'],
+  ['home.treasury.gov', 'Tesoro de Estados Unidos'],
+  ['fred.stlouisfed.org', 'Reserva Federal de San Luis (FRED)'],
+  ['stlouisfed.org', 'Reserva Federal de San Luis'],
+  ['newyorkfed.org', 'Reserva Federal de Nueva York'],
+  ['lbma.org.uk', 'LBMA (precio del oro)'],
+  ['destatis.de', 'Destatis'],
+  ['insee.fr', 'INSEE'],
+  ['istat.it', 'ISTAT'],
+  ['ons.gov.uk', 'Office for National Statistics'],
+  ['stats.go.jp', 'Oficina de Estadística de Japón'],
+  ['stats.gov.cn', 'Oficina Nacional de Estadística de China'],
+  ['pbc.gov.cn', 'Banco Popular de China'],
+  ['sepe.es', 'Servicio Público de Empleo Estatal'],
+  ['mites.gob.es', 'Ministerio de Trabajo'],
 ]);
 
 /**

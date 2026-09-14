@@ -121,11 +121,11 @@ test('cada tipo tiene su propio rango de extensión', () => {
   const parrafo =
     'El Banco Central Europeo mantuvo sin cambios sus tres tipos de interés oficiales según su comunicado oficial.';
 
-  // Siete párrafos: pasan de largo en el diario y caben en el semanal.
+  // Doce párrafos: pasan de largo en el diario (tope 10) y caben en el semanal (tope 14).
   const largo = informeValido();
   largo.cuerpo = [
-    { titulo: 'Primera parte', parrafos: Array.from({ length: 4 }, () => parrafo) },
-    { titulo: 'Segunda parte', parrafos: Array.from({ length: 3 }, () => parrafo) },
+    { titulo: 'Primera parte', parrafos: Array.from({ length: 6 }, () => parrafo) },
+    { titulo: 'Segunda parte', parrafos: Array.from({ length: 6 }, () => parrafo) },
   ];
   assert.throws(() => validarInforme(largo), ErrorContrato);
 
@@ -314,4 +314,128 @@ test('acota la cola secundaria y no toca las primarias', () => {
     depuradas.slice(0, 3).map((f) => f.titulo),
     ['Banco Central Europeo', 'Instituto Nacional de Estadística', 'Oficina de Estadísticas Laborales de Estados Unidos'],
   );
+});
+
+
+/* ------------------------------------------------------------------------- */
+/* informe-mercado.v2: tablas, claves, agenda con fecha y glosario            */
+/* ------------------------------------------------------------------------- */
+
+import { renderInforme, variacionLegible } from '../js/nuvia-market-reports-render.mjs';
+
+function bloquesV2() {
+  return {
+    claves: [
+      { titulo: 'El BCE mantiene el precio del dinero', texto: 'La facilidad de depósito sigue en el 2,50 %. Es el tipo que cobra un banco por dejar su dinero en el banco central y marca el suelo de lo que pagan los depósitos.', fuentes: [1] },
+      { titulo: 'El petróleo se encarece', texto: 'El Brent subió un 4 % en la sesión. Un barril más caro encarece la gasolina y presiona la inflación de los próximos meses.', fuentes: [2] },
+      { titulo: 'La bolsa española cierra casi plana', texto: 'El IBEX 35 cedió un 0,18 %. Un movimiento pequeño en un día es ruido; lo que cuenta es la tendencia de meses.', fuentes: [2] },
+    ],
+    mercados: [
+      { grupo: 'Bolsas', filas: [
+        { nombre: 'IBEX 35', nivel: '19.659,80 puntos', variacion: -0.18, variacionAnual: 12.4, nota: 'Pesaron los bancos.', fuentes: [2] },
+        { nombre: 'Euro Stoxx 50', nivel: '5.410,10 puntos', variacion: 0.3, variacionAnual: null, nota: null, fuentes: [2] },
+        { nombre: 'S&P 500', nivel: 'Sin contrastar', variacion: null, variacionAnual: null, nota: 'Sin publicación oficial en la base factual.', fuentes: [] },
+      ] },
+      { grupo: 'Deuda pública', filas: [
+        { nombre: 'Bono alemán a 10 años', nivel: '2,65 %', variacion: -0.05, variacionAnual: null, nota: null, fuentes: [1] },
+        { nombre: 'Bono español a 10 años', nivel: '3,30 %', variacion: -0.04, variacionAnual: null, nota: null, fuentes: [1] },
+      ] },
+      { grupo: 'Divisas', filas: [{ nombre: 'EUR/USD', nivel: '1,1625', variacion: 0.2, variacionAnual: null, nota: null, fuentes: [1] }] },
+      { grupo: 'Materias primas', filas: [{ nombre: 'Brent', nivel: '105,75 dólares por barril', variacion: 4.0, variacionAnual: null, nota: 'Menos oferta prevista.', fuentes: [2] }] },
+    ],
+    agenda: [
+      { fecha: '2026-09-11', hora: '14:30', region: 'EEUU', que: 'IPC de agosto', anterior: '2,8 %', porQueImporta: 'Mide la inflación que vigila la Reserva Federal.', fuentes: [1] },
+      { fecha: '2026-09-12', hora: null, region: 'Eurozona', que: 'Comparecencia de la presidenta del BCE ante el Parlamento Europeo.', anterior: null, porQueImporta: null, fuentes: [1] },
+    ],
+    glosario: [
+      { termino: 'Punto básico', definicion: 'Una centésima de punto porcentual: 25 puntos básicos son 0,25 %. Se usa para hablar de tipos de interés.' },
+      { termino: 'Facilidad de depósito', definicion: 'Tipo de interés que el BCE paga a los bancos por el dinero que dejan en él de un día para otro.' },
+    ],
+  };
+}
+
+test('v2: acepta los bloques nuevos y conserva las cifras nulas como nulas', () => {
+  const informe = validarInforme(informeValido(bloquesV2()), { exigirBloques: true });
+  assert.equal(informe.schema_version, 'informe-mercado.v2');
+  assert.equal(informe.claves.length, 3);
+  assert.equal(informe.mercados[0].filas[2].variacion, null);
+  assert.equal(informe.mercados[0].filas[2].nivel, 'Sin contrastar');
+  assert.deepEqual(informe.mercados[0].filas[0].fuentes, [2]);
+  assert.equal(informe.agenda[0].fecha, '2026-09-11');
+  assert.equal(informe.glosario[1].termino, 'Facilidad de depósito');
+});
+
+test('v2: una edición v1 sin bloques sigue siendo válida al leer, no al generar', () => {
+  assert.equal(validarInforme(informeValido()).id, 'diario-2026-09-10');
+  assert.throws(() => validarInforme(informeValido(), { exigirBloques: true }), /Falta el bloque «claves»/);
+  const sinFechas = informeValido(bloquesV2());
+  sinFechas.agenda = [{ cuando: '11 de septiembre', que: 'Publicación del IPC de agosto en Estados Unidos.' }, { cuando: '12 de septiembre', que: 'Comparecencia de la presidenta del BCE.' }];
+  assert.throws(() => validarInforme(sinFechas, { exigirBloques: true }), /fecha AAAA-MM-DD/);
+});
+
+test('v2: una variación escrita como texto no pasa, y una cifra sin fuente se queda sin contrastar', () => {
+  const texto = informeValido(bloquesV2());
+  texto.mercados[0].filas[0].variacion = '+1,4 %';
+  assert.throws(() => validarInforme(texto), /debe ser un número/);
+
+  // El modelo olvida a menudo el número de la fuente. La fila sobrevive, la
+  // cifra no: nadie la respalda y el lector lo ve escrito.
+  const sinFuente = informeValido(bloquesV2());
+  sinFuente.mercados[0].filas[0].fuentes = [];
+  const fila = validarInforme(sinFuente).mercados[0].filas[0];
+  assert.equal(fila.nivel, 'Sin contrastar');
+  assert.equal(fila.variacion, null);
+  assert.equal(fila.variacionAnual, null);
+  assert.match(fila.nota, /no se publica/);
+});
+
+test('v2: el veto de lenguaje alcanza a claves, notas de mercado y glosario', () => {
+  for (const [ruta, valor] of [
+    [['claves', 0, 'texto'], 'Con estos datos es momento de entrar en bolsa antes de que suba más.'],
+    [['mercados', 0, 'filas', 0, 'nota'], 'Un nivel que muchos ven como oportunidad de compra.'],
+    [['glosario', 0, 'definicion'], 'Cuando baja, recomendamos revisar los depósitos y cambiar de banco.'],
+  ]) {
+    const informe = informeValido(bloquesV2());
+    let nodo = informe;
+    for (const paso of ruta.slice(0, -1)) nodo = nodo[paso];
+    nodo[ruta.at(-1)] = valor;
+    assert.throws(() => validarInforme(informe), ErrorContrato, ruta.join('.'));
+  }
+});
+
+test('v2: los campos de escenarios y riesgos del informe de estrategia siguen fuera', () => {
+  for (const campo of ['scenarios', 'escenarios', 'riesgos']) {
+    assert.throws(() => validarInforme(informeValido({ [campo]: [] })), /no pertenece a este contrato/);
+  }
+});
+
+test('v2: el lector pinta tablas, gráfico y glosario, con el signo en la cifra', () => {
+  const html = renderInforme(validarInforme(informeValido(bloquesV2())));
+  assert.match(html, /En pocas palabras/);
+  assert.match(html, /<svg viewBox="0 0 1000/);
+  assert.match(html, /nv-report__table/);
+  assert.match(html, /nv-report__delta--down">−0,18 %/);
+  assert.match(html, /nv-report__delta--up">\+4,00 %/);
+  assert.match(html, /<td class="num">Sin contrastar<\/td>/);
+  assert.match(html, /nv-report__agenda-table/);
+  assert.match(html, /Glosario/);
+  // El gráfico no lleva scripts ni colores en línea: los estilos salen de la hoja y sus tokens.
+  assert.ok(!/<script/.test(html));
+  assert.ok(!/fill="#/.test(html));
+});
+
+test('v2: el descargable incrusta los tokens de los estilos nuevos y no pierde el signo', () => {
+  const html = informeAHtml(validarInforme(informeValido(bloquesV2())));
+  assert.match(html, /--nv-positive:/);
+  assert.match(html, /--nv-negative:/);
+  assert.ok(!/<script/.test(html));
+  assert.match(html, /−0,05 %/);
+});
+
+test('v2: variacionLegible usa coma, espacio antes del % y menos tipográfico', () => {
+  assert.equal(variacionLegible(1.4), '+1,4 %');
+  assert.equal(variacionLegible(-0.3), '−0,3 %');
+  assert.equal(variacionLegible(0), '0,0 %');
+  assert.equal(variacionLegible(null), '—');
+  assert.equal(variacionLegible(-0.05, 2), '−0,05 %');
 });

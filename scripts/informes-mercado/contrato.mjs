@@ -18,8 +18,31 @@
 
 import { tieneFuentePrimaria } from './fuentes.mjs';
 
-export const VERSION_CONTRATO = 'informe-mercado.v1';
-export const VERSION_PROMPT = 'nuvia-mercados-2026-09-r2';
+/**
+ * v2 (14-09-2026). El informe deja de ser solo prosa: entran cuatro bloques
+ * que la página y el descargable convierten en tablas y gráficos, todos
+ * dentro del perímetro descriptivo del §5 («mostrar resultados numéricos»,
+ * «explicar fórmulas y conceptos», «describir hechos verificables»):
+ *
+ *   claves     «En pocas palabras»: 3-5 ideas en lenguaje llano que explican
+ *              qué ha pasado y por qué importa para entender la economía.
+ *   mercados   tabla de referencias por grupo (bolsas, deuda, divisas,
+ *              materias primas, volatilidad) con nivel, variación del período y
+ *              variación en el año, como NÚMEROS, y `null` donde no hay fuente.
+ *   agenda     cada cita con fecha AAAA-MM-DD, hora, región, dato anterior y
+ *              por qué importa (la forma v1 `cuando`/`que` sigue siendo válida).
+ *   glosario   los términos técnicos del texto, explicados.
+ *
+ * Lo que NO entra, aunque el informe de BDB lo lleve: escenarios con
+ * probabilidad, riesgos con «impacto», termómetros, vistas o asignación. Eso
+ * es opinión sobre precio o mérito inversor y el §5 lo prohíbe.
+ *
+ * Al LEER, los bloques nuevos son opcionales: las ediciones v1 publicadas
+ * siguen validando. Al GENERAR (`exigirBloques`), son obligatorios: un
+ * borrador nuevo sin tablas no llega a `output/`.
+ */
+export const VERSION_CONTRATO = 'informe-mercado.v2';
+export const VERSION_PROMPT = 'nuvia-mercados-2026-09-r3';
 
 export const TIPOS = {
   DIARIO: {
@@ -28,7 +51,10 @@ export const TIPOS = {
     etiqueta: 'diario',
     titulo: 'Informe diario de mercado',
     diasVigencia: 2,
-    parrafos: [3, 6],
+    // v2: el cuerpo crece porque ahora explica el porqué de cada movimiento;
+    // el mínimo se mantiene para que las ediciones v1 sigan siendo válidas.
+    parrafos: [3, 10],
+    periodo: 'Var. día',
   },
   SEMANAL: {
     id: 'SEMANAL',
@@ -36,9 +62,13 @@ export const TIPOS = {
     etiqueta: 'semanal',
     titulo: 'Informe semanal de mercado',
     diasVigencia: 10,
-    parrafos: [4, 9],
+    parrafos: [4, 14],
+    periodo: 'Var. semana',
   },
 };
+
+/** Bloques v2 que un borrador recién generado tiene que traer. */
+export const BLOQUES_V2 = ['claves', 'mercados', 'agenda', 'glosario'];
 
 /**
  * Vocabulario vetado en el texto publicable.
@@ -76,6 +106,11 @@ const CAMPOS_PROHIBIDOS = [
   'temperatura',
   'vistas',
   'pesos',
+  // v2: tampoco escenarios con probabilidad ni riesgos con «impacto», que son
+  // expectativas propias sobre precio (§5, «veredictos de valoración»).
+  'scenarios',
+  'escenarios',
+  'riesgos',
 ];
 
 class ErrorContrato extends Error {}
@@ -130,7 +165,108 @@ function textoPublicable(informe) {
     partes.push(seccion.titulo);
     for (const parrafo of seccion.parrafos ?? []) partes.push(parrafo);
   }
+  // v2: el veto alcanza a todo lo que se publica, también a lo nuevo.
+  for (const clave of informe.claves ?? []) partes.push(clave.titulo, clave.texto);
+  for (const grupo of informe.mercados ?? []) {
+    partes.push(grupo.grupo);
+    for (const fila of grupo.filas ?? []) partes.push(fila.nombre, fila.nivel, fila.nota);
+  }
+  for (const cita of informe.agenda ?? []) partes.push(cita.region, cita.porQueImporta, cita.anterior);
+  for (const entrada of informe.glosario ?? []) partes.push(entrada.termino, entrada.definicion);
   return partes.filter((parte) => typeof parte === 'string').join('\n');
+}
+
+/** Cifra que puede faltar: `null` vale; un texto («+1,4 %») no. */
+function numeroOpcional(valor, campo, minimo, maximo) {
+  if (valor === null || valor === undefined) return null;
+  if (typeof valor !== 'number' || !Number.isFinite(valor)) {
+    fallo(`${campo} debe ser un número (0.8 = +0,8 %) o null; llegó «${String(valor)}».`);
+  }
+  if (valor < minimo || valor > maximo) fallo(`${campo} está fuera de rango (${valor}).`);
+  return valor;
+}
+
+function textoOpcional(valor, campo, opciones) {
+  if (valor === null || valor === undefined || valor === '') return null;
+  return texto(valor, campo, opciones);
+}
+
+const FECHA = /^\d{4}-\d{2}-\d{2}$/;
+function fechaReal(valor) {
+  return FECHA.test(valor) && Number.isFinite(Date.parse(`${valor}T12:00:00Z`)) &&
+    new Date(`${valor}T12:00:00Z`).toISOString().slice(0, 10) === valor;
+}
+
+/**
+ * Bloques v2. Cada validador devuelve la copia normalizada del bloque; las
+ * referencias a fuentes (`fuentes: [n]`) se resuelven después, con las demás.
+ */
+function validarClaves(valor) {
+  return lista(valor, 'claves', 3, 5).map((bruto, i) => ({
+    titulo: texto(bruto?.titulo, `claves[${i}].titulo`, { min: 4, max: 90 }),
+    texto: texto(bruto?.texto, `claves[${i}].texto`, { min: 40, max: 480 }),
+  }));
+}
+
+function validarMercados(valor) {
+  const grupos = lista(valor, 'mercados', 2, 6);
+  const nombresGrupo = new Set();
+  let totalFilas = 0;
+  const salida = grupos.map((bruto, g) => {
+    const grupo = texto(bruto?.grupo, `mercados[${g}].grupo`, { min: 3, max: 60 });
+    if (nombresGrupo.has(grupo.toLowerCase())) fallo(`mercados: el grupo «${grupo}» está repetido.`);
+    nombresGrupo.add(grupo.toLowerCase());
+    const nombres = new Set();
+    const filas = lista(bruto?.filas, `mercados[${g}].filas`, 1, 12).map((filaBruta, f) => {
+      const campo = `mercados[${g}].filas[${f}]`;
+      const nombre = texto(filaBruta?.nombre, `${campo}.nombre`, { min: 2, max: 80 });
+      if (nombres.has(nombre.toLowerCase())) fallo(`${campo}: la referencia «${nombre}» está repetida en el grupo.`);
+      nombres.add(nombre.toLowerCase());
+      totalFilas += 1;
+      const fila = {
+        nombre,
+        nivel: textoOpcional(filaBruta?.nivel, `${campo}.nivel`, { max: 60 }),
+        variacion: numeroOpcional(filaBruta?.variacion, `${campo}.variacion`, -100, 1000),
+        variacionAnual: numeroOpcional(filaBruta?.variacionAnual, `${campo}.variacionAnual`, -100, 5000),
+        nota: textoOpcional(filaBruta?.nota, `${campo}.nota`, { max: 240 }),
+      };
+      return fila;
+    });
+    return { grupo, filas };
+  });
+  if (totalFilas < 5) fallo('mercados debe reunir al menos cinco referencias en total.');
+  return salida;
+}
+
+function validarCitaAgenda(bruto, i) {
+  const campo = `agenda[${i}]`;
+  // Forma v1: `cuando` + `que`. Forma v2: fecha AAAA-MM-DD y campos separados.
+  if (bruto?.fecha === undefined) {
+    return {
+      cuando: texto(bruto?.cuando, `${campo}.cuando`, { min: 3, max: 60 }),
+      que: texto(bruto?.que, `${campo}.que`, { min: 10, max: 300 }),
+    };
+  }
+  const fecha = texto(bruto.fecha, `${campo}.fecha`, { min: 10, max: 10 });
+  if (!fechaReal(fecha)) fallo(`${campo}.fecha debe ser un día real en formato AAAA-MM-DD.`);
+  return {
+    fecha,
+    hora: textoOpcional(bruto.hora, `${campo}.hora`, { max: 24 }),
+    region: texto(bruto.region, `${campo}.region`, { min: 2, max: 40 }),
+    que: texto(bruto.que, `${campo}.que`, { min: 10, max: 300 }),
+    anterior: textoOpcional(bruto.anterior, `${campo}.anterior`, { max: 60 }),
+    porQueImporta: textoOpcional(bruto.porQueImporta, `${campo}.porQueImporta`, { max: 260 }),
+  };
+}
+
+function validarGlosario(valor) {
+  const terminos = new Set();
+  return lista(valor, 'glosario', 2, 10).map((bruto, i) => {
+    const termino = texto(bruto?.termino, `glosario[${i}].termino`, { min: 2, max: 60 });
+    if (terminos.has(termino.toLowerCase())) fallo(`glosario: «${termino}» está repetido.`);
+    terminos.add(termino.toLowerCase());
+    return { termino, definicion: texto(bruto?.definicion, `glosario[${i}].definicion`, { min: 30, max: 400 }) };
+  });
 }
 
 /**
@@ -141,7 +277,7 @@ function textoPublicable(informe) {
  * mercados: «No se presenta como diario ningún contenido que no haya sido
  * actualizado y revisado».
  */
-export function validarInforme(entrada, { tipoEsperado = null } = {}) {
+export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = false } = {}) {
   if (!entrada || typeof entrada !== 'object' || Array.isArray(entrada)) {
     fallo('El informe debe ser un objeto.');
   }
@@ -184,10 +320,7 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
       valor: texto(bruto?.valor, `indicadores[${i}].valor`, { min: 1, max: 60 }),
       referencia: texto(bruto?.referencia, `indicadores[${i}].referencia`, { min: 4, max: 120 }),
     })),
-    agenda: lista(entrada.agenda, 'agenda', 2, 10).map((bruto, i) => ({
-      cuando: texto(bruto?.cuando, `agenda[${i}].cuando`, { min: 3, max: 60 }),
-      que: texto(bruto?.que, `agenda[${i}].que`, { min: 10, max: 300 }),
-    })),
+    agenda: lista(entrada.agenda, 'agenda', 2, 14).map(validarCitaAgenda),
     cuerpo: lista(entrada.cuerpo, 'cuerpo', 2, 5).map((bruto, i) => ({
       titulo: texto(bruto?.titulo, `cuerpo[${i}].titulo`, { min: 4, max: 90 }),
       parrafos: lista(bruto?.parrafos, `cuerpo[${i}].parrafos`, 1, 6).map((p, j) =>
@@ -232,15 +365,50 @@ export function validarInforme(entrada, { tipoEsperado = null } = {}) {
     informe.periodo = { desde, hasta, ...(corteIso ? { corteIso } : {}) };
   }
   if (entrada.limitaciones) informe.limitaciones = texto(entrada.limitaciones, 'limitaciones', { max: 1200 });
-  for (const campo of ['hechos', 'indicadores', 'agenda', 'cuerpo']) {
-    informe[campo].forEach((bloque, i) => {
+
+  // Bloques v2: se validan si vienen; al generar, tienen que venir.
+  for (const bloque of BLOQUES_V2) {
+    if (bloque === 'agenda') continue; // siempre presente; su forma v2 se admite arriba
+    const bruto = entrada[bloque];
+    if (bruto === undefined || bruto === null) {
+      if (exigirBloques) fallo(`Falta el bloque «${bloque}»: un informe nuevo no se publica sin él.`);
+      continue;
+    }
+    informe[bloque] = bloque === 'claves' ? validarClaves(bruto) : bloque === 'mercados' ? validarMercados(bruto) : validarGlosario(bruto);
+  }
+  if (exigirBloques && !informe.agenda.every((cita) => cita.fecha)) {
+    fallo('Cada cita de la agenda debe llevar fecha AAAA-MM-DD, hora si se conoce y región.');
+  }
+
+  const resolverRefs = (refs, campo) => {
+    if (!Array.isArray(refs) || refs.some((n) => !Number.isInteger(n) || n < 1 || n > informe.fuentes.length)) fallo(`${campo}: referencia a fuente inexistente.`);
+    return [...new Set(refs)];
+  };
+  for (const campo of ['hechos', 'indicadores', 'agenda', 'cuerpo', 'claves']) {
+    (informe[campo] ?? []).forEach((bloque, i) => {
       const refs = entrada[campo][i].fuentes;
-      if (refs !== undefined) {
-        if (!Array.isArray(refs) || refs.some((n) => !Number.isInteger(n) || n < 1 || n > informe.fuentes.length)) fallo(`${campo}[${i}]: referencia a fuente inexistente.`);
-        bloque.fuentes = [...new Set(refs)];
-      }
+      if (refs !== undefined) bloque.fuentes = resolverRefs(refs, `${campo}[${i}]`);
     });
   }
+  // Una fila de mercado con cifra tiene que decir de dónde sale. Sin fuente, la
+  // cifra NO se publica: la fila se queda en «Sin contrastar» con las variaciones
+  // a null y una nota que lo dice. No se tumba el borrador entero por ello —el
+  // modelo olvida a menudo el número de la fuente— pero tampoco se cuela una
+  // cifra que nadie respalda (misma regla que las cifras de referencia).
+  (informe.mercados ?? []).forEach((grupo, g) => {
+    grupo.filas.forEach((fila, f) => {
+      const refs = entrada.mercados[g].filas[f].fuentes;
+      if (refs !== undefined) fila.fuentes = resolverRefs(refs, `mercados[${g}].filas[${f}]`);
+      const conCifra = fila.variacion !== null || fila.variacionAnual !== null || /\d/.test(fila.nivel ?? '');
+      if (conCifra && !(fila.fuentes?.length)) {
+        fila.nivel = 'Sin contrastar';
+        fila.variacion = null;
+        fila.variacionAnual = null;
+        fila.nota = 'La documentación no acredita esta cifra con una publicación de primera mano; no se publica.';
+        fila.fuentes = [];
+      }
+    });
+  });
 
   const totalParrafos = informe.cuerpo.reduce((suma, seccion) => suma + seccion.parrafos.length, 0);
   const [minParrafos, maxParrafos] = config.parrafos;

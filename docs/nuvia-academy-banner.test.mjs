@@ -143,8 +143,8 @@ for (const [asset, expected] of assets) {
 }
 
 const academyPage = await readFile(resolve(root, 'academia.html'), 'utf8');
-assert.equal((academyPage.match(/class="ac-def ac-def--wide ac-essential-card"/g) || []).length, 4,
-  'Conocimientos esenciales presenta cuatro tarjetas editoriales homogéneas');
+assert.equal((academyPage.match(/class="ac-def ac-def--wide ac-essential-card"/g) || []).length, 5,
+  'Conocimientos esenciales presenta cinco tarjetas editoriales homogéneas, incluida la lección del PIB');
 assert.match(css, /\.ac-essential-card\s*\{[\s\S]*?border-radius:\s*var\(--nv-radius-md\);[\s\S]*?box-shadow:\s*var\(--nv-shadow-sm\);/,
   'Las tarjetas esenciales usan forma, profundidad y tokens del sistema');
 assert.match(css, /\.ac-essential-card:focus-visible\s*\{[\s\S]*?outline:/,

@@ -109,7 +109,7 @@ const PAGINAS_BASE = [
   'index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'colaboradores.html',
   'metodologia.html', 'independencia.html',
   'mercados.html', 'cartera.html', 'academia.html', 'curso.html',
-  'academia.html?tab=activos', 'academia.html?tab=glosario',
+  'academia.html?tab=activos', 'academia.html?tab=glosario', 'academia.html?tab=pib',
   'lecturas.html', 'vivienda.html', 'fiscalidad.html', 'jubilacion.html',
   'temas.html', 'temas.html?topic=jubilacion', 'temas.html?topic=bienestar', 'temas.html?topic=planificacion-patrimonial',
   'guia-calendario.html', 'guia-ahorro.html', 'guia-sucesiones.html',

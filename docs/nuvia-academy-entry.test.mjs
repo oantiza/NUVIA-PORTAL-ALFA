@@ -17,10 +17,10 @@ assert.equal((route.match(/class="ac-learning-step"/g)||[]).length,3);
 for(const tab of ['fundamentos','activos','calculadora','glosario']) assert.ok(route.includes(`href="academia.html?tab=${tab}"`));
 assert.doesNotMatch(route,/<form\b|<input\b|<iframe\b/);
 assert.match(route,/sin orden obligatorio ni prueba de nivel/);
-for(const tab of ['inicio','cursos','esenciales','fundamentos','activos','calculadora','glosario']) {
+for(const tab of ['inicio','cursos','esenciales','fundamentos','activos','calculadora','glosario','pib']) {
   const a=new Academy(); a.state.tab=tab;
   assert.equal(a.renderVals().mostrarRegreso,tab!=='inicio',tab);
-  const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero'};
+  const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
   assert.equal(a.renderVals().entradaTitulo,titles[tab]);
   assert.equal(a.renderVals().claseCabecera.includes('nv-entry'),tab!=='inicio');
 }

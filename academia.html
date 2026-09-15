@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-pib.css">
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
@@ -269,8 +270,104 @@
             <span><strong class="ac-term">Glosario financiero</strong><span class="ac-def-text">Conceptos e indicadores financieros explicados en un lenguaje claro.</span></span>
             <span aria-hidden="true" class="gu-accent">→</span>
           </button>
+
+          <button type="button" onClick="{{ irPIB }}" class="ac-def ac-def--wide ac-essential-card">
+            <span class="ac-x30">05</span>
+            <span><strong class="ac-term">El producto interior bruto · PIB</strong><span class="ac-def-text">Vídeo y guía: qué produce un país, cómo se calcula y qué diferencia hay entre crecimiento y bienestar.</span></span>
+            <span aria-hidden="true" class="gu-accent">→</span>
+          </button>
         </div>
       </section>
+    </sc-if>
+
+    <!-- ============ PIB ============ -->
+    <sc-if value="{{ esPIB }}" hint-placeholder-val="{{ false }}">
+      <article class="nv-container gu-section pib-lesson" aria-label="Lección sobre el PIB">
+        <a href="academia.html?tab=esenciales" class="pib-back">← Conocimientos esenciales</a>
+        <section class="pib-watch" aria-labelledby="pib-video-title">
+          <div class="pib-watch-heading">
+            <div><p class="gu-kicker">Vídeo · 12 min 38 s · Nivel inicial</p><h2 id="pib-video-title">Una economía, muchas cosas.<br>Una cifra para entenderlas.</h2></div>
+            <p>De una manzana al conjunto de un país. Descubre qué cuenta el PIB y aprende a distinguir más producción de precios más altos.</p>
+          </div>
+          <div class="pib-player nv-external-content" data-nuvia-external-frame
+               data-src="https://www.youtube-nocookie.com/embed/ZwhTy0oqx9c?autoplay=1&amp;rel=0"
+               data-title="El PIB, explicado desde cero" aria-describedby="pib-video-description">
+            <div class="nv-external-content__placeholder">
+              <img class="pib-poster" src="src/assets/education/pib/pib-portada.jpg" alt="El PIB, explicado desde cero" width="1920" height="1080" loading="lazy">
+              <span class="nv-external-content__eyebrow">Vídeo · YouTube</span>
+              <p>El vídeo se conecta con YouTube cuando eliges reproducirlo.</p>
+              <div class="nv-external-content__actions">
+                <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+                <a class="nv-btn nv-btn--secondary" href="https://www.youtube.com/watch?v=ZwhTy0oqx9c" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+              </div>
+              <small data-nuvia-external-status aria-live="polite">Pulsa reproducir para cargar el vídeo.</small>
+            </div>
+          </div>
+          <p id="pib-video-description" class="pib-caption">Dos partes: qué mide y cómo se calcula; nominal, real y qué no mide. Subtítulos integrados en el vídeo. La guía inferior amplía los conceptos y matiza algunas simplificaciones de la locución.</p>
+        </section>
+        <nav class="pib-index" aria-label="Contenido de la lección">
+          <a href="#pib-concepto">01 · Qué mide</a><a href="#pib-calculo">02 · Cómo se calcula</a><a href="#pib-fruitopia">03 · Nominal y real</a><a href="#pib-limites">04 · Sus límites</a><a href="#pib-repaso">05 · Repaso</a><a href="#pib-fuentes">Fuentes</a>
+        </nav>
+        <section id="pib-concepto" class="pib-section">
+          <p class="gu-kicker">01 · El concepto</p><h2>Producción durante un periodo</h2>
+          <p>El <strong>producto interior bruto</strong> mide el valor de los bienes y servicios finales producidos dentro de una economía durante un periodo, normalmente un trimestre o un año. Es un flujo de producción: no representa el patrimonio acumulado del país.</p>
+          <div class="pib-three">
+            <div class="ac-tint"><h3>Producto</h3><p>Lo que se produce: alimentos, viviendas nuevas, transporte, educación o cuidados remunerados.</p></div>
+            <div class="ac-tint"><h3>Interior</h3><p>La producción dentro del territorio económico, con independencia de la nacionalidad de sus propietarios.</p></div>
+            <div class="ac-tint"><h3>Bruto</h3><p>Antes de descontar el consumo de capital fijo: el desgaste de edificios, máquinas y otros activos productivos.</p></div>
+          </div>
+          <p>La venta de una bicicleta usada no vuelve a contar como producción nueva. Su reparación o el servicio de intermediación prestado hoy sí pueden aportar producción del periodo. También se incluyen servicios sin precio de mercado: por ejemplo, los servicios públicos se valoran por sus costes y la vivienda en propiedad incorpora un alquiler imputado.</p>
+        </section>
+        <section id="pib-calculo" class="pib-section">
+          <p class="gu-kicker">02 · Tres perspectivas</p><h2>Producción, gasto y renta</h2>
+          <p>Son tres maneras de observar la misma actividad. La producción genera rentas y tiene una contrapartida de gasto, incluida la producción que se almacena. Las estimaciones estadísticas pueden presentar discrepancias que deben conciliarse.</p>
+          <div class="pib-three">
+            <div class="ac-tint"><h3>Producción</h3><p>Se suma el valor añadido: producción menos consumos intermedios. Para obtener el PIB a precios de mercado se añaden los impuestos sobre los productos y se restan las subvenciones sobre ellos.</p></div>
+            <div class="ac-tint"><h3>Gasto</h3><p>Se suma el gasto final en consumo, inversión y compras públicas, más exportaciones y menos importaciones.</p></div>
+            <div class="ac-tint"><h3>Renta</h3><p>Se suman remuneraciones de asalariados, excedente bruto de explotación, renta mixta e impuestos menos subvenciones sobre la producción y las importaciones.</p></div>
+          </div>
+          <div class="pib-equation"><span>Por el lado del gasto</span><strong>PIB = C + I + G + (X − M)</strong><p>En el ejemplo ficticio: 260 + 60 + 70 + (40 − 30) = <b>400 €</b>.</p></div>
+          <dl class="pib-definitions">
+            <div><dt>C · Consumo</dt><dd>Gasto de los hogares en bienes y servicios: comida, ropa o un corte de pelo.</dd></div>
+            <div><dt>I · Inversión</dt><dd>En este esquema, inversión privada en capital nuevo, vivienda nueva y variación de existencias. Comprar acciones no es producir un bien de capital.</dd></div>
+            <div><dt>G · Compras públicas</dt><dd>Consumo e inversión públicos en esta convención pedagógica. Una pensión es una transferencia, no una compra de producción. Su gasto posterior puede aparecer en el consumo del hogar.</dd></div>
+            <div><dt>X − M · Sector exterior</dt><dd>Exportaciones menos importaciones. Se resta lo importado porque puede estar incluido en C, I o G y fue producido fuera.</dd></div>
+          </dl>
+          <p class="pib-caption">Convención: en las tablas oficiales, I puede representar la formación bruta de capital de todos los sectores, incluido el público, y G solo el consumo público. No se debe contabilizar la inversión pública dos veces.</p>
+          <details class="pib-detail"><summary>Por qué el trigo, la harina y el pan no se suman tres veces</summary><p>En el ejemplo simplificado, el agricultor vende trigo por 1 € sin consumos intermedios; el molino vende harina por 2 € tras comprar ese trigo; la panadería vende el pan por 3 € tras comprar la harina. Cada etapa añade 1 €: 1 + 1 + 1 = 3 €. Sumar las ventas de 1 + 2 + 3 duplicaría valores ya incorporados al pan final.</p></details>
+        </section>
+        <section id="pib-fruitopia" class="pib-section">
+          <p class="gu-kicker">03 · El ejemplo del vídeo</p><h2>Fruitopia: ¿más fruta o precios más altos?</h2>
+          <p>Este país imaginario solo produce manzanas y naranjas. Todas son bienes finales. El ejemplo mantiene los precios del año 1 para aislar el cambio en las cantidades.</p>
+          <div class="pib-table-wrap"><table class="pib-table"><caption>Datos ficticios · Cantidades, precios y valor de la producción</caption><thead><tr><th scope="col">Bien</th><th scope="col">Año 1</th><th scope="col">Año 2 · nominal</th><th scope="col">Año 2 · precios del año 1</th></tr></thead><tbody><tr><th scope="row">Manzanas</th><td>200 × 1 € = 200 €</td><td>300 × 1 € = 300 €</td><td>300 × 1 € = 300 €</td></tr><tr><th scope="row">Naranjas</th><td>100 × 2 € = 200 €</td><td>100 × 3 € = 300 €</td><td>100 × 2 € = 200 €</td></tr><tr><th scope="row">PIB</th><td><strong>400 €</strong></td><td><strong>600 €</strong></td><td><strong>500 €</strong></td></tr></tbody></table></div>
+          <div class="pib-three">
+            <div class="ac-tint"><p class="gu-kicker">PIB nominal</p><strong class="pib-number">+50 %</strong><p>600 / 400 − 1. Cambian tanto las cantidades como los precios.</p></div>
+            <div class="ac-tint"><p class="gu-kicker">PIB real · base año 1</p><strong class="pib-number">+25 %</strong><p>500 / 400 − 1. Se valora la producción de ambos años con los mismos precios.</p></div>
+            <div class="ac-tint"><p class="gu-kicker">Deflactor · base 100</p><strong class="pib-number">120</strong><p>(600 / 500) × 100. Frente a 100 en el año base, el nivel de precios aumenta un 20 %.</p></div>
+          </div>
+          <p><strong>Las tasas se combinan multiplicando:</strong> 1,25 × 1,20 = 1,50. El 25 % de volumen y el 20 % de precios producen un aumento nominal del 50 %, no del 45 %. Si el deflactor se expresa con base 100, PIB nominal = PIB real × deflactor / 100.</p>
+          <details class="pib-detail"><summary>El año base, el encadenamiento y el IPC</summary><p>Con los precios del año 2, la producción del año 1 vale 500 € y la del año 2, 600 €: el crecimiento es del 20 %. Las ponderaciones importan. Las series encadenadas actualizan las ponderaciones y enlazan variaciones entre periodos; no consisten, de forma universal, en «partir la diferencia» entre dos tasas. El ejemplo con una base fija sirve para aprender el concepto.</p><p>El deflactor refleja los precios de la producción interior. El IPC sigue los precios de una cesta de consumo de los hogares: no son el mismo indicador. <a href="https://ec.europa.eu/eurostat/cache/metadata/en/nama_10_gdp_esms.htm" target="_blank" rel="noopener noreferrer">Metodología de cuentas nacionales de Eurostat ↗</a>.</p></details>
+        </section>
+        <section id="pib-limites" class="pib-section">
+          <p class="gu-kicker">04 · Interpretar con perspectiva</p><h2>Por habitante no significa para cada persona</h2>
+          <p>El PIB per cápita divide la producción entre la población. Es una media: no es el sueldo ni el ingreso disponible de cada habitante. Para comparar países, las paridades de poder adquisitivo ayudan a corregir diferencias de precios.</p>
+          <p>Ejemplo hipotético: si el PIB real aumenta un 2,8 % y la población un 1 %, la producción real por habitante aumenta aproximadamente un 1,78 %: (1,028 / 1,01 − 1) × 100.</p>
+          <div class="pib-three"><div class="ac-tint"><h3>Distribución</h3><p>Una media creciente puede convivir con situaciones muy diferentes entre hogares. El PIB no describe esa distribución.</p></div><div class="ac-tint"><h3>Tiempo y cuidados</h3><p>El ocio y gran parte del trabajo doméstico no remunerado quedan fuera de la medida, aunque contribuyen al bienestar.</p></div><div class="ac-tint"><h3>Daño y reparación</h3><p>Reconstruir tras una riada genera producción. Eso no significa que el desastre mejore el bienestar ni que se haya recuperado toda la riqueza perdida.</p></div></div>
+          <aside class="ac-tint pib-note"><h3>Dos precisiones para acompañar el vídeo</h3><p><strong>Economía no observada.</strong> No toda actividad sin declarar queda excluida: las cuentas nacionales incorporan estimaciones para ampliar su cobertura, incluidas determinadas actividades ilegales. El rango del 15–25 % mencionado en la locución no dispone aquí de una fuente y un periodo verificables; no debe leerse como una cifra oficial acreditada. <a href="https://ec.europa.eu/eurostat/documents/24987/6642470/FAQ-NA-1.pdf" target="_blank" rel="noopener noreferrer">Aclaración de Eurostat ↗</a>.</p><p><strong>Cifras de España y comparaciones europeas.</strong> Las cifras del vídeo corresponden a su edición y pueden revisarse. Los materiales no identifican la publicación estadística exacta de cada dato. Para consultar cifras vigentes, comprueba periodo, unidad y fecha en el <a href="https://www.ine.es/dyngs/INEbase/operacion.htm?c=Estadistica_C&amp;cid=1254736177057&amp;idp=1254735576581" target="_blank" rel="noopener noreferrer">INE ↗</a> y en <a href="https://ec.europa.eu/eurostat/en/web/national-accounts" target="_blank" rel="noopener noreferrer">Eurostat ↗</a>.</p></aside>
+        </section>
+        <section id="pib-repaso" class="pib-section">
+          <p class="gu-kicker">05 · Comprueba lo aprendido</p><h2>Tres preguntas para leer un titular</h2><p>Piensa tu respuesta y despliega la explicación.</p>
+          <details class="pib-detail"><summary>Si sube el PIB nominal, ¿se ha producido necesariamente más?</summary><p>No. Puede reflejar más producción, precios mayores o ambos. Para estudiar el cambio en el volumen de producción se utiliza el PIB real.</p></details>
+          <details class="pib-detail"><summary>¿Una pensión aumenta directamente G en esta fórmula?</summary><p>No. Es una transferencia. Cuando su receptor compra un bien o servicio, ese gasto puede formar parte de C. Si el bien es importado, M descuenta su producción exterior.</p></details>
+          <details class="pib-detail"><summary>¿Un PIB real por habitante mayor garantiza que todos vivan mejor?</summary><p>No. Es una media de producción. No muestra su reparto ni recoge todas las dimensiones del bienestar, como el tiempo libre o el estado del entorno.</p></details>
+          <p class="pib-takeaway">Ante un titular, comprueba siempre: <strong>nominal o real · total o por habitante · periodo y fuente</strong>.</p>
+        </section>
+        <section id="pib-fuentes" class="pib-section">
+          <p class="gu-kicker">Para seguir estudiando</p><h2>Fuentes de la lección</h2><p>Síntesis educativa basada en el vídeo y los extractos de estudio aportados por su creador. Fruitopia es un ejemplo ficticio del guion.</p>
+          <ul class="pib-sources"><li><strong>Krugman · Módulo 10.</strong> <cite>The Circular Flow and Gross Domestic Product</cite>. Flujo circular, contabilidad nacional y vías de cálculo.</li><li><strong>Krugman · Módulo 11.</strong> <cite>Interpreting Real Gross Domestic Product</cite>. PIB nominal, real, por habitante y límites de su interpretación.</li><li><strong>Macroeconomía · Sección 2.1.</strong> <cite>Measuring the Value of Economic Activity: Gross Domestic Product</cite>. Flujos, existencias y reglas de cómputo. El extracto facilitado no identifica su edición completa.</li><li><strong>Olivier Blanchard · Capítulo 3.</strong> <cite>The Goods Market</cite>, especialmente §3.1. Componentes del gasto y distinción entre inversión productiva y financiera.</li><li><strong>INE y Eurostat.</strong> Referencias oficiales enlazadas en las notas para consultar series y metodología.</li></ul>
+          <p class="pib-caption">Revisión del texto: 15 de septiembre de 2026. Contenido educativo e informativo.</p>
+        </section>
+      </article>
     </sc-if>
 
     <!-- ============ FUNDAMENTOS ============ -->
@@ -875,8 +972,9 @@ class Component extends DCLogic {
   entrada() {
     const entradas = {
       inicio: ['Academia NUVIA', 'Formación', 'Saber es patrimonio. El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.'],
-      esenciales: ['Conocimientos esenciales', 'Guías y herramientas', 'Conceptos y herramientas para comprender cómo funcionan el ahorro y la inversión.'],
+      esenciales: ['Conocimientos esenciales', 'Guías y herramientas', 'Conceptos y herramientas para comprender la economía, el ahorro y la inversión.'],
       cursos: ['Cursos', 'Aprender paso a paso', 'Explora los cursos disponibles, sus capítulos, vídeos y materiales de apoyo.'],
+      pib: ['El PIB, explicado desde cero', 'Conocimientos esenciales · Macroeconomía', 'Qué produce un país, cómo se mide y qué podemos aprender de esa cifra. Un vídeo y una guía para leer la economía con criterio.'],
       fundamentos: ['Fundamentos de inversión', 'Conocimientos esenciales', 'Tiempo, inflación y riesgo: conceptos para comprender el comportamiento de una inversión.'],
       activos: ['Activos financieros', 'Conocimientos esenciales', 'Conoce sus características, sus diferencias y las funciones que pueden cumplir en el patrimonio.'],
       calculadora: ['Interés compuesto', 'Herramienta de aprendizaje', 'Cambia los supuestos y observa cómo evoluciona un ejemplo de acumulación a lo largo del tiempo.'],
@@ -892,7 +990,7 @@ class Component extends DCLogic {
     const raw = new URLSearchParams(window.location.search).get('tab');
     const p = raw === 'interes' ? 'calculadora' : raw;
     const hash = window.location.hash.replace('#', '');
-    if (p && ['inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario'].includes(p)) this.setState({ tab: p });
+    if (p && ['inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(p)) this.setState({ tab: p });
     else if (hash === 'glosario') this.setState({ tab: 'glosario' });
     this.sincronizaEntrada();
     // El montaje del componente reemplaza el ancla inicial del HTML.
@@ -1017,11 +1115,13 @@ class Component extends DCLogic {
       entradaTitulo: entrada[0], entradaEtiqueta: entrada[1], entradaDescripcion: entrada[2],
       pestanas: defs.map(([id, label, sufijo]) => ({
         label, sufijo,
-        ariaCurrent: (id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario'].includes(tab))) ? 'page' : undefined,
+        ariaCurrent: (id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(tab))) ? 'page' : undefined,
         abrir: () => this.abrirTab(id),
-        clase: pill(id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario'].includes(tab))),
+        clase: pill(id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(tab))),
       })),
       esInicio: tab === 'inicio', esCursos: tab === 'cursos', esEsenciales: tab === 'esenciales', mostrarRegreso: tab !== 'inicio',
+      esPIB: tab === 'pib',
+      irPIB: () => this.abrirTab('pib'),
       esFundamentos: tab === 'fundamentos', esActivos: tab === 'activos', esCalculadora: tab === 'calculadora', esGlosario: tab === 'glosario',
       irInicio: () => this.abrirTab('inicio'),
       irCursos: () => this.abrirTab('cursos'),

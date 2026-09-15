@@ -3,7 +3,7 @@ export async function checkAcademyEntry(page, route) {
   if(!route.startsWith('academia.html') && route!=='curso.html') return [];
   const problems=[], start=page.url();
   if(route.startsWith('academia.html')) {
-    const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero'};
+    const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
     const title=titles[new URL(start).searchParams.get('tab')||'inicio'];
     if(await page.title()!=='NUVIA · '+title || (await page.locator('main h1').textContent()).trim()!==title) problems.push('La vista de Academia no tiene título propio');
   }

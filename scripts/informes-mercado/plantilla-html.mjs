@@ -2,7 +2,9 @@ import { readFileSync } from 'node:fs';
 import { renderInforme, escapar, etiqueta, fechaLegible } from '../../js/nuvia-market-reports-render.mjs';
 
 // Estilos y fuentes del portal incrustados: el informe funciona sin conexión.
-const css = readFileSync(new URL('../../estilos/nuvia-market-reports.css', import.meta.url), 'utf8');
+const ilustraciones = readFileSync(new URL('../../src/assets/reports/economic-illustrations-20260917.webp', import.meta.url)).toString('base64');
+const css = readFileSync(new URL('../../estilos/nuvia-market-reports.css', import.meta.url), 'utf8')
+  .replace('../src/assets/reports/economic-illustrations-20260917.webp', `data:image/webp;base64,${ilustraciones}`);
 const tokens = readFileSync(new URL('../../estilos/nuvia-tokens.css', import.meta.url), 'utf8');
 function valorToken(nombre) {
   const valor = tokens.match(new RegExp(`${nombre}:\\s*([^;]+);`))?.[1];

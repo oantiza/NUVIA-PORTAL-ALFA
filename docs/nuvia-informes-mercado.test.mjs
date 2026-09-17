@@ -321,7 +321,7 @@ test('acota la cola secundaria y no toca las primarias', () => {
 /* informe-mercado.v2: tablas, claves, agenda con fecha y glosario            */
 /* ------------------------------------------------------------------------- */
 
-import { renderInforme, variacionLegible } from '../js/nuvia-market-reports-render.mjs';
+import { renderInforme, renderInfografia, variacionLegible, escapar } from '../js/nuvia-market-reports-render.mjs';
 
 function bloquesV2() {
   return {
@@ -518,4 +518,41 @@ test('v2: el diario se genera sin bloque de mercados y el semanal no', () => {
   const semanal = { ...semanalValido() };
   delete semanal.mercados;
   assert.throws(() => validarInforme(semanal, { exigirBloques: true }), /Falta el bloque «mercados»/);
+});
+
+test('infografía: conserva cada clave completa y sus citas antes de las cifras', () => {
+  for (const tipo of ['DIARIO', 'SEMANAL']) {
+    const informe = informeValido({ ...bloquesV2(), tipo });
+    informe.claves.push({ titulo: 'Sin publicación enlazada', texto: 'Este texto no debe recibir una fuente que no conste en la edición.', fuentes: [] });
+    const html = renderInfografia(informe);
+    for (const clave of informe.claves) {
+      assert.ok(html.includes(escapar(clave.titulo)));
+      assert.ok(html.includes(escapar(clave.texto)));
+    }
+    assert.match(html, /Sin fuente vinculada en esta edición/);
+    assert.match(html, /https:\/\/www.ecb.europa.eu\//);
+    assert.match(html, tipo === 'DIARIO' ? /La sesión, de un vistazo/ : /La semana, de un vistazo/);
+    const documento = renderInforme(informe);
+    assert.ok(documento.indexOf('nv-report-graphic"') < documento.indexOf('Cifras de referencia'));
+    assert.equal((documento.match(/Resumen ilustrado del informe/g) || []).length, 1);
+  }
+});
+
+test('infografía: las ediciones sin claves conservan hechos y fechas; el texto no inyecta HTML', () => {
+  const informe = informeValido();
+  informe.hechos[0].texto = '<img src=x onerror=alert(1)> & una cifra';
+  const html = renderInfografia(informe);
+  for (const hecho of informe.hechos) {
+    assert.ok(html.includes(escapar(hecho.texto)));
+    assert.ok(html.includes(escapar(hecho.fecha)));
+  }
+  assert.doesNotMatch(html, /<img|<script/);
+  assert.equal(renderInfografia({ ...informe, hechos: [] }), '');
+});
+
+test('infografía: el descargable lleva la ilustración incrustada y funciona sin red', () => {
+  const html = informeAHtml(informeValido(bloquesV2()));
+  assert.match(html, /data:image\/webp;base64,UklGR/);
+  assert.doesNotMatch(html, /url\(['"]?\.\.\/src\/assets\/reports/);
+  assert.doesNotMatch(html, /<script\b/);
 });

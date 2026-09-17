@@ -119,6 +119,34 @@ function citas(bloque, informe) {
   }).join(' ');
 }
 
+// Solo decide la viñeta decorativa: nunca resume, cambia ni completa el texto.
+function temaIlustrado(titulo) {
+  const texto = String(titulo).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  if (/inflacion|\bipc\b|precios|consumo|cesta/.test(texto)) return 'precios';
+  if (/energia|energet|petroleo|brent|crudo|\bgas\b/.test(texto)) return 'energia';
+  if (/agenda|publica|proxima|calendario|citas/.test(texto)) return 'agenda';
+  if (/bce|banco|tipos|reserva federal|monetari/.test(texto)) return 'tipos';
+  if (/industr|producci|actividad|\bpib\b|empleo|crecimiento/.test(texto)) return 'actividad';
+  return 'panorama';
+}
+
+export function renderInfografia(informe) {
+  const conClaves = Boolean(informe.claves?.length);
+  const ideas = conClaves ? informe.claves : informe.hechos;
+  if (!ideas?.length) return '';
+  const semanal = informe.tipo === 'SEMANAL';
+  return `<section class="nv-report__section nv-report__keys nv-report-graphic" aria-label="Resumen ilustrado del informe ${semanal ? 'semanal' : 'diario'}">
+    <div class="nv-report-graphic__heading"><div><p class="nv-report-graphic__kicker">En pocas palabras · Resumen ilustrado</p><h3>${semanal ? 'La semana' : 'La sesión'}, de un vistazo</h3></div><p class="nv-report-graphic__date">${escapar(periodoLegible(informe))}<span>${ideas.length} ideas para situarte</span></p></div>
+    <ol class="nv-report-graphic__ideas nv-report-graphic__ideas--${ideas.length}">${ideas.map((idea, i) => `<li class="nv-report-graphic__idea">
+      <div class="nv-report-graphic__visual" aria-hidden="true"><span class="nv-report-graphic__number">${numero(i)}</span><span class="nv-report-graphic__illustration nv-report-graphic__illustration--${temaIlustrado(idea.titulo || idea.texto)}"></span></div>
+      ${conClaves ? `<h4>${escapar(idea.titulo)}</h4>` : `<p class="nv-report__meta">${escapar(idea.fecha)}</p>`}
+      <p class="nv-report-graphic__text">${escapar(idea.texto)}</p>
+      <div class="nv-report-graphic__sources">${citas(idea, informe) || '<span>Sin fuente vinculada en esta edición</span>'}</div>
+    </li>`).join('')}</ol>
+    <p class="nv-report-graphic__foot">El contexto y las cifras, paso a paso en el informe.<span aria-hidden="true">↓</span></p>
+  </section>`;
+}
+
 export function renderInforme(informe, { independiente = false } = {}) {
   const h = independiente ? 'h1' : 'h2';
   const corte = informe.periodo?.corteIso ? new Intl.DateTimeFormat('es-ES', {
@@ -140,11 +168,10 @@ export function renderInforme(informe, { independiente = false } = {}) {
         <div class="nv-report__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
       </div>
       <p class="nv-report__lead">${escapar(informe.entradilla)}</p>
-      <div class="nv-report__toolbar"><span class="nv-report__reading">${minutosLectura(informe)} min de lectura aprox. · ${informe.hechos.length} claves</span>${independiente ? '' : `<a class="nv-report__download" href="${descarga(informe)}" download>Descargar informe ${etiqueta(informe.tipo).toLowerCase()} (HTML) <span aria-hidden="true">↓</span></a>`}</div>
+      <div class="nv-report__toolbar"><span class="nv-report__reading">${minutosLectura(informe)} min de lectura aprox. · ${claves.length || informe.hechos.length} claves</span>${independiente ? '' : `<a class="nv-report__download" href="${descarga(informe)}" download>Descargar informe ${etiqueta(informe.tipo).toLowerCase()} (HTML) <span aria-hidden="true">↓</span></a>`}</div>
     </header>
     ${corte ? `<p class="nv-report__cutoff">Información hasta el ${escapar(corte)} · hora de Madrid</p>` : ''}
-    ${claves.length ? `<section class="nv-report__section nv-report__keys"><div class="nv-report__section-label"><h3>En pocas palabras</h3><span>Lo que conviene entender de este período, sin tecnicismos</span></div>
-      <ol class="nv-report__keys-list">${claves.map((clave, i) => `<li><span class="nv-report__key-number" aria-hidden="true">${i + 1}</span><div><strong>${escapar(clave.titulo)}</strong><p>${escapar(clave.texto)} ${citas(clave, informe)}</p></div></li>`).join('')}</ol></section>` : ''}
+    ${renderInfografia(informe)}
     ${cifras.length ? `<section class="nv-report__section nv-report__data"><div class="nv-report__section-label"><h3>Cifras de referencia</h3><span>El período de cada dato, junto a su fuente</span></div>
       <dl class="nv-report__figures">${cifras.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${valorDestacado(dato.valor)}</dd><dd class="nv-report__reference">${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
     ${mercados.length && informe.tipo === 'SEMANAL' ? `<section class="nv-report__section nv-report__markets"><div class="nv-report__section-label"><h3>Los mercados de un vistazo</h3><span>${informe.tipo === 'SEMANAL' ? 'Cierre a cierre de los siete días' : 'Cierre de la última sesión'} · cada cifra, con su publicador</span></div>

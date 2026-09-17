@@ -97,6 +97,41 @@
 .nv-reports-archive > summary { min-height: 44px; cursor: pointer; color: var(--nv-text); font-size: 16px; font-weight: 600; }
 .nv-reports-archive li { margin: 16px 0; }
 .nv-reports-archive a { color: var(--nv-text-link); font-size: 14px; }
+/* Apertura ilustrada. Texto real de cada edición y viñetas sin datos. */
+.nv-report .nv-report-graphic { padding: 28px 32px 16px; background: var(--nv-surface-editorial); }
+.nv-report-graphic__heading { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 22px; }
+.nv-report .nv-report-graphic__kicker { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; color: var(--nv-text-link); margin: 0 0 6px; }
+.nv-report .nv-report-graphic__heading h3, .nv-report .nv-report-graphic__heading h2 { font-family: var(--nv-font-serif); font-size: 28px; font-weight: 500; margin: 0; }
+.nv-report .nv-report-graphic__date { max-width: 36ch; margin: 0; font-size: 12px; text-align: right; color: var(--nv-text-soft); }
+.nv-report-graphic__date span { display: block; margin-top: 4px; }
+.nv-report-graphic__ideas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding: 0; margin: 0; list-style: none; }
+.nv-report-graphic__ideas--2, .nv-report-graphic__ideas--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.nv-report-graphic__idea { position: relative; min-width: 0; display: flex; flex-direction: column; padding: 16px 20px; background: var(--nv-white); border: 1px solid var(--nv-line); border-radius: 14px; }
+.nv-report-graphic__ideas--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.nv-report-graphic__visual { display: flex; justify-content: center; align-items: center; min-height: 104px; margin: -4px 0 12px; }
+.nv-report-graphic__number { position: absolute; top: 16px; left: 16px; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--nv-navy-900); color: var(--nv-white); font-size: 12px; font-weight: 600; }
+.nv-report-graphic__idea:nth-child(3n + 2) .nv-report-graphic__number { background: var(--nv-green-700); }
+.nv-report-graphic__idea:nth-child(3n) .nv-report-graphic__number { background: var(--nv-text-soft); }
+.nv-report-graphic__illustration { display: block; width: 112px; height: 112px; background-image: url('../src/assets/reports/economic-illustrations-20260917.webp'); background-size: 300% 200%; background-repeat: no-repeat; border-radius: 50%; mix-blend-mode: multiply; }
+.nv-report-graphic__illustration--tipos { background-position: 0 0; }
+.nv-report-graphic__illustration--precios { background-position: 50% 0; }
+.nv-report-graphic__illustration--energia { background-position: 100% 0; }
+.nv-report-graphic__illustration--panorama { background-position: 0 100%; }
+.nv-report-graphic__illustration--agenda { background-position: 50% 100%; }
+.nv-report-graphic__illustration--actividad { background-position: 100% 100%; }
+.nv-report .nv-report-graphic__idea h4 { margin: 0 0 10px; font-family: var(--nv-font-serif); font-size: 22px; font-weight: 500; line-height: 1.15; color: var(--nv-text); text-wrap: pretty; }
+.nv-report .nv-report-graphic__text { margin: 0; font-size: 14px; line-height: 1.55; }
+.nv-report-graphic__sources { margin-top: auto; padding-top: 10px; font-size: 12px; line-height: 1.4; color: var(--nv-text-muted); }
+.nv-report .nv-report-graphic__foot { display: flex; justify-content: space-between; gap: 16px; margin: 16px 0 0; padding-top: 12px; border-top: 1px solid var(--nv-line); font-size: 12px; color: var(--nv-text-soft); }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nv-report .nv-report-graphic { padding: 24px; }
+  .nv-report-graphic__ideas { gap: 12px; }
+  .nv-report-graphic__ideas--4, .nv-report-graphic__ideas--5, .nv-report-graphic__ideas--6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nv-report-graphic__idea { padding: 16px; }
+  .nv-report .nv-report-graphic__idea h4 { font-size: 18px; }
+  .nv-report-graphic__illustration { width: 88px; height: 88px; }
+  .nv-report-graphic__number { left: 10px; top: 10px; }
+}
 /* --- v2 (14-09-2026): en pocas palabras, mercados, agenda en tabla, glosario --- */
 .nv-report__keys { background: var(--nv-surface-editorial); }
 .nv-report__keys-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 32px; margin: 0; padding: 0; list-style: none; }
@@ -166,7 +201,7 @@
   .nv-report__section-label { align-items: flex-start; flex-direction: column; gap: 6px; }
   .nv-reports-intro { column-gap: 24px; }
   .nv-report__keys-list, .nv-report__glossary dl { grid-template-columns: minmax(0, 1fr); }
-  .nv-report__table { font-size: 13px; }
+  .nv-report__table { font-size: 14px; }
   .nv-report__table th, .nv-report__table td { padding: 8px 10px; }
 }
 @media print {
@@ -175,6 +210,11 @@
   .nv-report__header { background: var(--nv-white); border-top: 4px solid var(--nv-navy-900); }
   .nv-report .nv-report__title, .nv-report .nv-report__masthead .nv-report__eyebrow, .nv-report__period, .nv-report .nv-report__lead, .nv-report__edition, .nv-report__reading { color: var(--nv-text); }
   .nv-report__header, .nv-report__section, .nv-report__stories, .nv-report__footer, .nv-report__coverage { padding: 16px 0; }
+  .nv-report__header { padding: 12px 0; }
+  .nv-report__masthead { padding-bottom: 10px; }
+  .nv-report .nv-report__title { font-size: 28px; margin-bottom: 12px; }
+  .nv-report .nv-report__lead { font-size: 14px; line-height: 1.45; margin-bottom: 12px; }
+  .nv-report__toolbar { padding-top: 6px; }
   .nv-report__cutoff { padding: 10px 0; }
   .nv-report__cover { display: block; padding: 16px 0; }
   .nv-report__art, .nv-report__download, .nv-reports-nav, .nv-report__trace { display: none !important; }
@@ -185,6 +225,17 @@
   .nv-report__calendar { padding: 16px; }
   .nv-report__figures > div, .nv-report__facts li, .nv-report__agenda li, .nv-report__story-heading, .nv-report__keys-list li, .nv-report__chart, .nv-report__table tr, .nv-report__glossary dl > div { break-inside: avoid; }
   .nv-report__keys { background: var(--nv-white); }
+  .nv-report .nv-report-graphic { padding: 18px; background: var(--nv-surface-editorial); break-inside: avoid; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .nv-report-graphic__ideas { gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nv-report-graphic__ideas--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .nv-report-graphic__idea { padding: 12px; }
+  .nv-report-graphic__visual { min-height: 70px; margin-bottom: 8px; }
+  .nv-report-graphic__illustration { width: 70px; height: 70px; }
+  .nv-report-graphic__number { width: 22px; height: 22px; left: 8px; top: 8px; font-size: 10px; }
+  .nv-report .nv-report-graphic__heading h3, .nv-report .nv-report-graphic__heading h2 { font-size: 22px; }
+  .nv-report .nv-report-graphic__idea h4 { font-size: 18px; }
+  .nv-report .nv-report-graphic__text { font-size: 12px; line-height: 1.45; }
+  .nv-report-graphic__sources, .nv-report-graphic__sources a { font-size: 10px; }
   .nv-report__table tbody tr:nth-child(even) { background: var(--nv-white); }
   .nv-report h2, .nv-report h3 { break-after: avoid; }
   .nv-report p { orphans: 3; widows: 3; }

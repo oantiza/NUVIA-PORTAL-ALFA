@@ -375,7 +375,9 @@ export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = f
         texto(p, `cuerpo[${i}].parrafos[${j}]`, { min: 60, max: 1200 }),
       ),
     })),
-    fuentes: lista(entrada.fuentes, 'fuentes', 2, 12).map((bruto, i) => ({
+    // Hasta 12 al generar (depurarFuentes); al leer caben dos más, las de
+    // los publicadores de curvas y referencias que se añaden al publicar.
+    fuentes: lista(entrada.fuentes, 'fuentes', 2, 14).map((bruto, i) => ({
       titulo: texto(bruto?.titulo, `fuentes[${i}].titulo`, { min: 2, max: 180 }),
       url: urlSegura(bruto?.url, `fuentes[${i}].url`),
       ...(bruto?.nota ? { nota: texto(bruto.nota, `fuentes[${i}].nota`, { max: 300 }) } : {}),

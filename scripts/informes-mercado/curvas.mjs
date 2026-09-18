@@ -13,6 +13,13 @@
  * cada una con su fecha y su fuente. No calcula nada: transcribe. Si una de
  * las dos no responde, se publica la otra; si ninguna, no hay bloque (nunca
  * bloquea la publicación: es información complementaria).
+ *
+ * El mismo módulo completa dos referencias de la tabla de mercados que el
+ * buscador casi nunca acredita con fuente primaria: el cambio euro/dólar (tipo
+ * de referencia diario del BCE, serie EXR.D.USD.EUR.SP00.A) y el Brent (precio
+ * al contado diario que publica la EIA). Sustituyen a la fila «Sin contrastar»
+ * con el último cierre del período y la variación frente al último cierre
+ * anterior al inicio, y añaden su publicador a las fuentes de la edición.
  */
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -114,6 +121,105 @@ function armar(clave, nombre, porFecha, { desde, hasta }, fuente) {
   };
 }
 
+/* --- Referencias de mercado con publicador de primera mano ----------------- */
+
+const variacionPct = (actual, anterior) => Number((((actual - anterior) / anterior) * 100).toFixed(2));
+const fechaLarga = (f) => (f && /^\d{4}-\d{2}-\d{2}$/.test(f) ? new Intl.DateTimeFormat('es-ES', { dateStyle: 'long', timeZone: 'Europe/Madrid' }).format(new Date(`${f}T12:00:00Z`)) : f);
+const formatoEs = (digitos) => new Intl.NumberFormat('es-ES', { minimumFractionDigits: digitos, maximumFractionDigits: digitos });
+
+function ultimoValor(porFecha, tope) {
+  const fechas = [...porFecha.keys()].filter((f) => f <= tope && Number.isFinite(porFecha.get(f))).sort();
+  return fechas.length ? { fecha: fechas[fechas.length - 1], valor: porFecha.get(fechas[fechas.length - 1]) } : null;
+}
+
+export async function referenciaEurUsd({ desde, hasta }) {
+  const url = `https://data-api.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=${diasAntes(desde, 12)}&endPeriod=${hasta}&format=csvdata`;
+  const porFecha = new Map(leerCsv(await descargar(url)).filter((f) => f.TIME_PERIOD).map((f) => [f.TIME_PERIOD, Number(f.OBS_VALUE)]));
+  return armarReferencia(porFecha, { desde, hasta }, {
+    patron: /eur\s*\/\s*usd|euro.*d[oó]lar|d[oó]lar.*euro/i,
+    nombre: 'EUR/USD',
+    grupo: /divisa|cambio/i,
+    nivel: (v) => `${formatoEs(4).format(v)} dólares por euro`,
+    fuente: { titulo: 'Banco Central Europeo · tipos de cambio de referencia del euro (USD)', url: 'https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html' },
+    nota: (a, b) => `Tipo de referencia del BCE del ${a}; variación frente al del ${b}.`,
+  });
+}
+
+/** La EIA publica el histórico como tabla HTML por semanas: «AAAA Mmm-D to Mmm-D» y cinco celdas de lunes a viernes. */
+export function leerTablaEia(html) {
+  const texto = html.replace(/<[^>]+>/g, '|').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ');
+  const meses = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
+  const porFecha = new Map();
+  const patron = /(\d{4}) (\w{3})-\s?(\d{1,2}) to (\w{3})-\s?(\d{1,2})((?:\|\s*\|?\s*(?:\d+\.\d+)?\s*){1,5})/g;
+  for (const m of texto.matchAll(patron)) {
+    const inicio = new Date(Date.UTC(Number(m[1]), meses[m[2]] - 1, Number(m[3])));
+    const celdas = m[6].split('|').map((c) => c.trim()).filter((c, i, arr) => !(c === '' && arr[i - 1] === ''));
+    let dia = 0;
+    for (const celda of celdas.slice(1)) {
+      if (dia > 4) break;
+      const fecha = new Date(inicio.getTime() + dia * 86400000).toISOString().slice(0, 10);
+      if (/^\d+\.\d+$/.test(celda)) porFecha.set(fecha, Number(celda));
+      dia += 1;
+    }
+  }
+  return porFecha;
+}
+
+export async function referenciaBrent({ desde, hasta }) {
+  const url = 'https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=RBRTE&f=D';
+  const porFecha = leerTablaEia(await descargar(url, { aceptar: 'text/html' }));
+  return armarReferencia(porFecha, { desde, hasta }, {
+    patron: /brent|petr[oó]leo|crudo/i,
+    nombre: 'Petróleo Brent',
+    grupo: /materia|energ/i,
+    nivel: (v) => `${formatoEs(2).format(v)} dólares por barril`,
+    fuente: { titulo: 'EIA · Europe Brent Spot Price FOB (dólares por barril)', url: 'https://www.eia.gov/dnav/pet/hist/RBRTEd.htm' },
+    nota: (a, b) => `Precio al contado publicado por la EIA para el ${a}; variación frente al del ${b}.`,
+  });
+}
+
+function armarReferencia(porFecha, { desde, hasta }, def) {
+  const actual = ultimoValor(porFecha, hasta);
+  const anterior = ultimoValor(porFecha, diasAntes(desde, 1));
+  if (!actual) throw new Error(`${def.nombre}: sin dato publicado hasta ${hasta}.`);
+  return {
+    patron: def.patron,
+    grupo: def.grupo,
+    fila: {
+      nombre: def.nombre,
+      nivel: def.nivel(actual.valor),
+      variacion: anterior ? variacionPct(actual.valor, anterior.valor) : null,
+      variacionAnual: null,
+      nota: def.nota(fechaLarga(actual.fecha), fechaLarga(anterior?.fecha ?? '—')),
+    },
+    fuente: def.fuente,
+  };
+}
+
+/** Sustituye (o añade) EUR/USD y Brent en `mercados` y su publicador en `fuentes`. Devuelve una copia. */
+export function aplicarReferencias(informe, referencias) {
+  const fuentes = [...informe.fuentes];
+  const mercados = informe.mercados.map((g) => ({ ...g, filas: g.filas.map((f) => ({ ...f })) }));
+  for (const ref of referencias) {
+    let n = fuentes.findIndex((f) => f.url === ref.fuente.url) + 1;
+    if (!n) { fuentes.push({ titulo: ref.fuente.titulo, url: ref.fuente.url }); n = fuentes.length; }
+    const fila = { ...ref.fila, fuentes: [n] };
+    const grupo = mercados.find((g) => g.filas.some((f) => ref.patron.test(f.nombre))) ?? mercados.find((g) => ref.grupo.test(g.grupo));
+    if (!grupo) { mercados.push({ grupo: ref.nombre === 'EUR/USD' ? 'Divisas' : 'Materias primas', filas: [fila] }); continue; }
+    const i = grupo.filas.findIndex((f) => ref.patron.test(f.nombre));
+    if (i >= 0) grupo.filas[i] = { ...fila, nombre: grupo.filas[i].nombre }; else grupo.filas.push(fila);
+  }
+  return { ...informe, fuentes, mercados };
+}
+
+export async function obtenerReferencias({ desde, hasta }) {
+  const resultados = await Promise.allSettled([referenciaEurUsd({ desde, hasta }), referenciaBrent({ desde, hasta })]);
+  return {
+    referencias: resultados.filter((r) => r.status === 'fulfilled').map((r) => r.value),
+    errores: resultados.filter((r) => r.status === 'rejected').map((r) => r.reason?.message ?? String(r.reason)),
+  };
+}
+
 /** Las dos curvas o las que respondan; `null` si ninguna. Los fallos se devuelven, no se lanzan. */
 export async function obtenerCurvas({ desde, hasta }) {
   const resultados = await Promise.allSettled([curvaBce({ desde, hasta }), curvaTesoro({ desde, hasta })]);
@@ -130,10 +236,13 @@ export async function incorporarCurvas({ id, raiz = process.cwd() }) {
   const edicion = indice.ediciones?.[tipo];
   if (!edicion || edicion.id !== id) throw new Error(`La edición «${id}» no es la vigente en el índice.`);
   const periodo = edicion.periodo ?? { desde: edicion.fecha, hasta: edicion.fecha };
-  const { bloque, errores } = await obtenerCurvas(periodo);
-  if (!bloque) throw new Error(`Ninguna curva disponible: ${errores.join(' · ')}`);
-  const informe = validarInforme({ ...edicion, curvas: bloque }, { tipoEsperado: tipo });
-  indice.ediciones[tipo] = { ...edicion, curvas: informe.curvas };
+  const [{ bloque, errores }, refs] = await Promise.all([obtenerCurvas(periodo), edicion.mercados ? obtenerReferencias(periodo) : { referencias: [], errores: [] }]);
+  errores.push(...refs.errores);
+  if (!bloque && !refs.referencias.length) throw new Error(`Ningún publicador ha respondido: ${errores.join(' · ')}`);
+  let entrada = refs.referencias.length ? aplicarReferencias(edicion, refs.referencias) : edicion;
+  if (bloque) entrada = { ...entrada, curvas: bloque };
+  const informe = validarInforme(entrada, { tipoEsperado: tipo });
+  indice.ediciones[tipo] = { ...edicion, fuentes: entrada.fuentes, mercados: entrada.mercados, ...(bloque ? { curvas: informe.curvas } : {}) };
   await writeFile(rutaIndice, `${JSON.stringify(indice, null, 2)}\n`, 'utf8');
   await mkdir(resolve(raiz, 'core/downloads/informes'), { recursive: true });
   await writeFile(resolve(raiz, `core/downloads/informes/${id}.html`), informeAHtml(validarInforme(indice.ediciones[tipo], { tipoEsperado: tipo })), 'utf8');
@@ -148,7 +257,9 @@ if (process.argv[1] && process.argv[1].endsWith('curvas.mjs')) {
     process.exitCode = 1;
   } else {
     incorporarCurvas({ id }).then(({ informe, errores }) => {
-      process.stdout.write(`\n  Curvas incorporadas a ${id}: ${informe.curvas.curvas.map((c) => `${c.nombre} (${c.fecha}${c.fechaAnterior ? ` frente a ${c.fechaAnterior}` : ''})`).join('; ')}\n`);
+      if (informe.curvas) process.stdout.write(`\n  Curvas incorporadas a ${id}: ${informe.curvas.curvas.map((c) => `${c.nombre} (${c.fecha}${c.fechaAnterior ? ` frente a ${c.fechaAnterior}` : ''})`).join('; ')}\n`);
+      const refs = (informe.mercados ?? []).flatMap((g) => g.filas).filter((f) => /EUR\/USD|Brent/i.test(f.nombre) && f.fuentes?.length);
+      if (refs.length) process.stdout.write(`  Referencias acreditadas: ${refs.map((f) => `${f.nombre} ${f.nivel}`).join('; ')}\n`);
       if (errores.length) process.stdout.write(`  Sin respuesta: ${errores.join(' · ')}\n`);
       process.stdout.write('\n');
     }).catch((error) => {

@@ -459,6 +459,14 @@
         {
           "titulo": "Office for National Statistics — GDP monthly estimate, UK: July 2026",
           "url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/gdpmonthlyestimateuk/july2026"
+        },
+        {
+          "titulo": "Banco Central Europeo · tipos de cambio de referencia del euro (USD)",
+          "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html"
+        },
+        {
+          "titulo": "EIA · Europe Brent Spot Price FOB (dólares por barril)",
+          "url": "https://www.eia.gov/dnav/pet/hist/RBRTEd.htm"
         }
       ],
       "generacion": {
@@ -579,11 +587,13 @@
           "filas": [
             {
               "nombre": "EUR/USD",
-              "nivel": "Sin contrastar",
-              "variacion": null,
+              "nivel": "1,1551 dólares por euro",
+              "variacion": -0.61,
               "variacionAnual": null,
-              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
-              "fuentes": []
+              "nota": "Tipo de referencia del BCE del 14 de septiembre de 2026; variación frente al del 7 de septiembre de 2026.",
+              "fuentes": [
+                11
+              ]
             }
           ]
         },
@@ -592,11 +602,13 @@
           "filas": [
             {
               "nombre": "Petróleo Brent",
-              "nivel": "Sin contrastar",
-              "variacion": null,
+              "nivel": "121,25 dólares por barril",
+              "variacion": 16.06,
               "variacionAnual": null,
-              "nota": "La documentación no acredita esta cifra con una publicación de primera mano; no se publica.",
-              "fuentes": []
+              "nota": "Precio al contado publicado por la EIA para el 14 de septiembre de 2026; variación frente al del 7 de septiembre de 2026.",
+              "fuentes": [
+                12
+              ]
             },
             {
               "nombre": "Gas natural TTF",
@@ -637,7 +649,7 @@
       },
       "descarga": "core/downloads/informes/semanal-2026-09-14.html",
       "curvas": {
-        "obtenidoIso": "2026-09-18T19:30:47.002Z",
+        "obtenidoIso": "2026-09-18T19:46:22.849Z",
         "curvas": [
           {
             "clave": "eurozona",

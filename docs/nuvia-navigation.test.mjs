@@ -12,6 +12,7 @@ const expectedGroups = [
         "economia.html",
         "Portada de Economía"
       ],
+      ["mercados.html?vista=informes#lectura-informe", "Informes"],
       [
         "mercados.html",
         "Mercados y noticias"

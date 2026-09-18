@@ -18,6 +18,7 @@ import { resolve } from 'node:path';
 import { TIPOS, VERSION_CONTRATO, validarInforme, vigencia, ErrorContrato } from './contrato.mjs';
 import { informeAHtml } from './plantilla-html.mjs';
 import { sincronizarInformes } from './sincronizar.mjs';
+import { obtenerCurvas } from './curvas.mjs';
 
 const CARPETA_BORRADORES = 'output/informes-borrador';
 const CARPETA_DESCARGAS = 'core/downloads/informes';
@@ -92,6 +93,15 @@ export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } 
     { tipoEsperado: bruto.tipo },
   );
 
+  // Curvas de tipos (solo semanal): se leen de sus publicadores al publicar.
+  // Si no responden, se publica sin ellas y se avisa; nunca se bloquea.
+  const avisos = [];
+  if (informe.tipo === 'SEMANAL' && informe.periodo) {
+    const { bloque, errores } = await obtenerCurvas(informe.periodo);
+    if (bloque) informe.curvas = validarInforme({ ...bruto, curvas: bloque }, { tipoEsperado: bruto.tipo }).curvas;
+    avisos.push(...errores.map((e) => `Curva sin respuesta: ${e}`));
+  }
+
   const carpetaDescargas = resolve(raiz, CARPETA_DESCARGAS);
   await mkdir(carpetaDescargas, { recursive: true });
   const rutaHtml = resolve(carpetaDescargas, `${informe.id}.html`);
@@ -101,14 +111,14 @@ export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } 
   await writeFile(resolve(raiz, INDICE), `${JSON.stringify(indice, null, 2)}\n`, 'utf8');
   await sincronizarInformes({ raiz });
 
-  return { informe, rutaHtml, indice };
+  return { informe, rutaHtml, indice, avisos };
 }
 
 async function principal() {
   const { id } = leerArgumentos(process.argv.slice(2));
   if (!id) throw new ErrorContrato('Indica qué borrador publicar con --id <identificador>.');
 
-  const { informe, rutaHtml, indice } = await publicar({ id });
+  const { informe, rutaHtml, indice, avisos } = await publicar({ id });
   process.stdout.write(
     [
       '',
@@ -116,6 +126,7 @@ async function principal() {
       `  Titular:   ${informe.titular}`,
       `  Descarga:  ${rutaHtml}`,
       `  Índice:    ${INDICE} (${indice.archivo.length} ediciones en el archivo)`,
+      ...avisos.map((a) => `  Aviso:     ${a}`),
       '',
       '  Queda escrito en el repositorio. Para verlo en el portal: npm run serve',
       '',

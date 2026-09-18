@@ -410,6 +410,19 @@ test('v2: los campos de escenarios y riesgos del informe de estrategia siguen fu
   }
 });
 
+function curvasValidas() {
+  const plazos = [['3 m', 0.25], ['6 m', 0.5], ['1 a', 1], ['2 a', 2], ['3 a', 3], ['5 a', 5], ['7 a', 7], ['10 a', 10], ['20 a', 20], ['30 a', 30]];
+  const curva = (clave, nombre, base, fuente) => ({
+    clave, nombre, fecha: '2026-09-11', fechaAnterior: '2026-09-04',
+    puntos: plazos.map(([plazo, anios], i) => ({ plazo, anios, actual: Number((base + i * 0.1).toFixed(3)), anterior: Number((base + i * 0.1 - 0.05).toFixed(3)) })),
+    fuente,
+  });
+  return { obtenidoIso: '2026-09-18T10:00:00.000Z', curvas: [
+    curva('eurozona', 'Eurozona · deuda pública AAA', 2.5, { titulo: 'Banco Central Europeo · Euro area yield curves', url: 'https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html' }),
+    curva('eeuu', 'Estados Unidos · deuda pública', 4.0, { titulo: 'U.S. Treasury · Daily Par Yield Curve Rates', url: 'https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve' }),
+  ] };
+}
+
 function semanalValido() {
   const base = informeValido({ ...bloquesV2(), tipo: 'SEMANAL' });
   base.cuerpo[1].parrafos.push(
@@ -432,6 +445,27 @@ test('v2.2: el lector pinta las cuatro fichas de la semana con barra de signo y 
   assert.doesNotMatch(html, /nv-report__table/, 'las tablas por grupo se retiraron el 18-09-2026');
   assert.match(html, /nv-report__agenda-table/);
   assert.match(html, /nv-report__agenda-days/);
+});
+
+test('v2.3: con curvas de tipos, la fila de arriba son las dos curvas (eurozona y EE. UU.) y los bonos salen de las fichas', () => {
+  const html = renderInforme(validarInforme({ ...semanalValido(), curvas: curvasValidas() }));
+  assert.equal((html.match(/class="nv-report__tile /g) ?? []).length, 4);
+  assert.ok(html.indexOf('nv-report__tile--eurozona') < html.indexOf('nv-report__tile--eeuu') && html.indexOf('nv-report__tile--eeuu') < html.indexOf('nv-report__tile--eur-usd'));
+  assert.doesNotMatch(html, /nv-report__tile--bono/);
+  assert.match(html, /nv-report__curve-now/);
+  assert.match(html, /nv-report__curve-prev/);
+  assert.match(html, /3,20 %<\/span><span>a 10 años/, "la cifra a diez años de la eurozona (2,5 + 7 × 0,1)");
+  assert.match(html, /data-chart-center/);
+  assert.ok(!/fill="#/.test(html) && !/<script/.test(html));
+  // El contrato rechaza curvas incoherentes: plazos desordenados, clave desconocida o fecha anterior posterior.
+  const rotas = curvasValidas();
+  rotas.curvas[0].puntos.reverse();
+  assert.throws(() => validarInforme({ ...semanalValido(), curvas: rotas }), /de menor a mayor/);
+  const desconocida = curvasValidas();
+  desconocida.curvas[1].clave = 'japon';
+  assert.throws(() => validarInforme({ ...semanalValido(), curvas: desconocida }), /eurozona o eeuu/);
+  // Sin curvas, el semanal sigue publicándose con los cuatro bonos y referencias de siempre.
+  assert.match(renderInforme(validarInforme(semanalValido())), /nv-report__tile--bono-aleman/);
   assert.doesNotMatch(html, /Glosario/);
   assert.doesNotMatch(html, /Fuentes y alcance/);
   assert.match(informeAHtml(validarInforme(semanalValido())), /Glosario/);

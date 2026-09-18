@@ -67,11 +67,72 @@ function barraSigno(valor, unidad) {
     `<text class="nv-report__bar-tick" x="${cero - medio}" y="60" text-anchor="start">${escapar(legible(-tope))}</text><text class="nv-report__bar-tick" x="${cero}" y="60" text-anchor="middle">0</text><text class="nv-report__bar-tick" x="${cero + medio}" y="60" text-anchor="end">${escapar(legible(tope))}</text></svg>`;
 }
 
+/**
+ * Curva de tipos en SVG estático: la línea de la última fecha y, en gris
+ * discontinuo, la de la semana anterior. Eje de plazos a espacios iguales
+ * (de 3 meses a 30 años) y eje de rentabilidad ajustado a los datos, con
+ * la cifra en los plazos que más se miran. Transcribe; no interpreta.
+ */
+function graficoCurva(curva) {
+  const puntos = curva.puntos;
+  const ancho = 460;
+  const alto = 200;
+  const izq = 44;
+  const der = 14;
+  const arriba = 16;
+  const abajo = 30;
+  const valores = puntos.flatMap((p) => [p.actual, p.anterior]).filter((v) => typeof v === 'number');
+  const min = Math.floor((Math.min(...valores) - 0.15) * 4) / 4;
+  const max = Math.ceil((Math.max(...valores) + 0.15) * 4) / 4;
+  const x = (i) => izq + (i * (ancho - izq - der)) / (puntos.length - 1);
+  const y = (v) => arriba + ((max - v) * (alto - arriba - abajo)) / (max - min);
+  const camino = (campo) => puntos.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p[campo]).toFixed(1)}`).join(' ');
+  const pasoY = max - min > 2 ? 0.5 : 0.25;
+  const rejilla = [];
+  for (let v = min; v <= max + 1e-9; v += pasoY) {
+    rejilla.push(`<line class="nv-report__curve-grid" x1="${izq}" y1="${y(v).toFixed(1)}" x2="${ancho - der}" y2="${y(v).toFixed(1)}"></line><text class="nv-report__bar-tick" x="${izq - 6}" y="${(y(v) + 4).toFixed(1)}" text-anchor="end">${escapar(formatoNumero(2).format(v))}</text>`);
+  }
+  const conAnterior = puntos.every((p) => typeof p.anterior === 'number');
+  const destacados = new Set(['2 a', '10 a', '30 a']);
+  const marcas = puntos.map((p, i) => `<circle class="nv-report__curve-dot" cx="${x(i).toFixed(1)}" cy="${y(p.actual).toFixed(1)}" r="3.5"></circle>` +
+    (destacados.has(p.plazo) ? `<text class="nv-report__curve-value" x="${x(i).toFixed(1)}" y="${(y(p.actual) - 9).toFixed(1)}" text-anchor="middle">${escapar(formatoNumero(2).format(p.actual))}</text>` : '') +
+    `<text class="nv-report__bar-tick" x="${x(i).toFixed(1)}" y="${alto - 10}" text-anchor="middle">${escapar(p.plazo)}</text>`).join('');
+  const lectura = puntos.map((p) => `${p.plazo}: ${formatoNumero(2).format(p.actual)} %`).join(', ');
+  return `<svg viewBox="0 0 ${ancho} ${alto}" role="img" aria-label="${escapar(`${curva.nombre}, rentabilidad por plazo el ${fechaLegible(curva.fecha)}: ${lectura}`)}" preserveAspectRatio="xMidYMid meet">${rejilla.join('')}` +
+    (conAnterior ? `<path class="nv-report__curve-prev" d="${camino('anterior')}"></path>` : '') +
+    `<path class="nv-report__curve-now" d="${camino('actual')}"></path>${marcas}</svg>`;
+}
+
+const LECTURA_CURVA = {
+  eurozona: 'Lo que paga la deuda pública europea más solvente según el plazo al que se presta.',
+  eeuu: 'Lo que paga Estados Unidos según el plazo al que se presta.',
+};
+
+function fichasCurvas(informe) {
+  const curvas = ['eurozona', 'eeuu'].map((clave) => informe.curvas?.curvas.find((c) => c.clave === clave)).filter(Boolean);
+  return curvas.map((curva) => {
+    const diez = curva.puntos.find((p) => p.plazo === '10 a');
+    const dos = curva.puntos.find((p) => p.plazo === '2 a');
+    const cambio = diez && typeof diez.anterior === 'number' ? diez.actual - diez.anterior : null;
+    return `<article class="nv-report__tile nv-report__tile--curva nv-report__tile--${curva.clave}">
+      <p class="nv-report__tile-name">Curva de tipos · ${escapar(curva.nombre)}<span>${escapar(LECTURA_CURVA[curva.clave] ?? '')}</span></p>
+      <p class="nv-report__tile-delta"><span class="nv-report__tile-level">${diez ? `${escapar(formatoNumero(2).format(diez.actual))} %` : '—'}</span><span>a 10 años</span>${cambio !== null ? `<span class="nv-report__delta${claseSigno(Number(cambio.toFixed(3)))}">${escapar(variacionLegible(cambio, 2).replace(' %', ' puntos'))}</span><span>en la semana</span>` : ''}</p>
+      <div class="nv-report__tile-chart nv-report__tile-chart--curva">${graficoCurva(curva)}</div>
+      <p class="nv-report__curve-legend"><span class="nv-report__curve-legend-now">${escapar(fechaLegible(curva.fecha))}</span>${curva.fechaAnterior ? `<span class="nv-report__curve-legend-prev">${escapar(fechaLegible(curva.fechaAnterior))}</span>` : ''}${dos && diez ? `<span>De 2 a 10 años: ${escapar(variacionLegible(diez.actual - dos.actual, 2).replace(' %', ' puntos'))}</span>` : ''}</p>
+      <p class="nv-report__tile-source">Fuente <a class="nv-report__citation" href="${escapar(curva.fuente.url)}" target="_blank" rel="noreferrer noopener">${escapar(curva.fuente.titulo)}</a></p>
+    </article>`;
+  }).join('');
+}
+
 function fichasSemana(informe, periodo) {
   const filas = filasMercado(informe.mercados ?? []);
-  const fichas = REFERENCIAS_SEMANA.map((ref) => ({ ref, fila: filas.find((f) => ref.patron.test(f.nombre)) })).filter((x) => x.fila);
-  if (!fichas.length) return '';
-  return `<div class="nv-report__tiles">${fichas.map(({ ref, fila }) => {
+  const curvas = fichasCurvas(informe);
+  // Con curvas, los dos bonos a 10 años ya están dentro de ellas: la fila de
+  // arriba son las curvas y la de abajo, divisa y petróleo.
+  const referencias = curvas ? REFERENCIAS_SEMANA.filter((r) => !r.clave.startsWith('bono')) : REFERENCIAS_SEMANA;
+  const fichas = referencias.map((ref) => ({ ref, fila: filas.find((f) => ref.patron.test(f.nombre)) })).filter((x) => x.fila);
+  if (!fichas.length && !curvas) return '';
+  return `<div class="nv-report__tiles">${curvas}${fichas.map(({ ref, fila }) => {
     const deuda = esDeuda(fila.grupo);
     const unidad = deuda ? ' puntos' : ' %';
     const conCifra = typeof fila.variacion === 'number' && Number.isFinite(fila.variacion);
@@ -86,7 +147,7 @@ function fichasSemana(informe, periodo) {
       <p class="nv-report__tile-source">${citas(fila, informe) ? `Fuente ${citas(fila, informe)}` : '<span class="nv-report__uncited">Sin contrastar</span>'}</p>
     </article>`;
   }).join('')}</div>
-    <p class="nv-report__legend"><span class="nv-report__legend-up">Subida</span><span class="nv-report__legend-down">Bajada</span><span>Cada barra es la variación de la semana publicada por la fuente; a la derecha, sube; a la izquierda, baja. En los bonos, la variación es la de su rentabilidad: si baja, el precio del bono sube.</span></p>`;
+    <p class="nv-report__legend"><span class="nv-report__legend-up">Subida</span><span class="nv-report__legend-down">Bajada</span><span>Cada barra es la variación de la semana publicada por la fuente; a la derecha, sube; a la izquierda, baja.${curvas ? ' Las curvas de tipos muestran la rentabilidad de la deuda pública a cada plazo, tal como la publican el BCE (deuda AAA del área del euro) y el Tesoro de EE. UU.; en gris, la semana anterior. Si la rentabilidad baja, el precio del bono sube.' : ' En los bonos, la variación es la de su rentabilidad: si baja, el precio del bono sube.'}</span></p>`;
 }
 
 const diaAgenda = (fecha) => {
@@ -180,7 +241,7 @@ export function renderInforme(informe, { independiente = false } = {}) {
     ${renderInfografia(informe)}
     ${cifras.length ? `<section class="nv-report__section nv-report__data"><div class="nv-report__section-label"><h3>Cifras de referencia</h3><span>El período de cada dato, junto a su fuente</span></div>
       <dl class="nv-report__figures">${cifras.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${valorDestacado(dato.valor)}</dd><dd class="nv-report__reference">${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
-    ${mercados.length && informe.tipo === 'SEMANAL' && fichasSemana(informe, periodo) ? `<section class="nv-report__section nv-report__markets"><div class="nv-report__section-label"><h3>Los mercados de un vistazo</h3><span>Cuatro referencias de la semana: deuda, divisa y energía · cada cifra, con su publicador</span></div>
+    ${mercados.length && informe.tipo === 'SEMANAL' && fichasSemana(informe, periodo) ? `<section class="nv-report__section nv-report__markets"><div class="nv-report__section-label"><h3>Los mercados de un vistazo</h3><span>${informe.curvas ? 'Las curvas de tipos de la eurozona y de Estados Unidos, el euro y el petróleo' : 'Cuatro referencias de la semana: deuda, divisa y energía'} · cada cifra, con su publicador</span></div>
       ${fichasSemana(informe, periodo)}</section>` : ''}
     <section class="nv-report__section nv-report__highlights"><div class="nv-report__section-label"><h3>${claves.length ? 'Los hechos del período' : 'Las claves del período'}</h3><span>${claves.length ? 'Con su fecha, su cifra y su fuente' : 'Una primera lectura'}</span></div>
       <ol class="nv-report__facts${informe.hechos.length % 2 === 0 ? ' nv-report__facts--even' : ''}">${informe.hechos.map((hecho, i) => `<li><span class="nv-report__fact-number" aria-hidden="true">${numero(i)}</span><div><span class="nv-report__meta">${escapar(hecho.fecha)}</span><p>${escapar(hecho.texto)} ${citas(hecho, informe)}</p></div></li>`).join('')}</ol>

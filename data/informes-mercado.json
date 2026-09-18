@@ -635,7 +635,156 @@
         "estado": "vigente",
         "dias": 0
       },
-      "descarga": "core/downloads/informes/semanal-2026-09-14.html"
+      "descarga": "core/downloads/informes/semanal-2026-09-14.html",
+      "curvas": {
+        "obtenidoIso": "2026-09-18T19:30:47.002Z",
+        "curvas": [
+          {
+            "clave": "eurozona",
+            "nombre": "Eurozona · deuda pública AAA",
+            "fecha": "2026-09-14",
+            "fechaAnterior": "2026-09-07",
+            "puntos": [
+              {
+                "plazo": "3 m",
+                "anios": 0.25,
+                "actual": 2.523,
+                "anterior": 2.445
+              },
+              {
+                "plazo": "6 m",
+                "anios": 0.5,
+                "actual": 2.748,
+                "anterior": 2.588
+              },
+              {
+                "plazo": "1 a",
+                "anios": 1,
+                "actual": 3.026,
+                "anterior": 2.768
+              },
+              {
+                "plazo": "2 a",
+                "anios": 2,
+                "actual": 3.228,
+                "anterior": 2.913
+              },
+              {
+                "plazo": "3 a",
+                "anios": 3,
+                "actual": 3.265,
+                "anterior": 2.964
+              },
+              {
+                "plazo": "5 a",
+                "anios": 5,
+                "actual": 3.299,
+                "anterior": 3.056
+              },
+              {
+                "plazo": "7 a",
+                "anios": 7,
+                "actual": 3.383,
+                "anterior": 3.185
+              },
+              {
+                "plazo": "10 a",
+                "anios": 10,
+                "actual": 3.541,
+                "anterior": 3.389
+              },
+              {
+                "plazo": "20 a",
+                "anios": 20,
+                "actual": 3.836,
+                "anterior": 3.777
+              },
+              {
+                "plazo": "30 a",
+                "anios": 30,
+                "actual": 3.789,
+                "anterior": 3.784
+              }
+            ],
+            "fuente": {
+              "titulo": "Banco Central Europeo · curva de tipos del área del euro (deuda AAA)",
+              "url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_area_yield_curves/html/index.en.html"
+            }
+          },
+          {
+            "clave": "eeuu",
+            "nombre": "Estados Unidos · deuda pública",
+            "fecha": "2026-09-14",
+            "fechaAnterior": "2026-09-04",
+            "puntos": [
+              {
+                "plazo": "3 m",
+                "anios": 0.25,
+                "actual": 4.11,
+                "anterior": 3.91
+              },
+              {
+                "plazo": "6 m",
+                "anios": 0.5,
+                "actual": 4.18,
+                "anterior": 3.98
+              },
+              {
+                "plazo": "1 a",
+                "anios": 1,
+                "actual": 4.37,
+                "anterior": 4.13
+              },
+              {
+                "plazo": "2 a",
+                "anios": 2,
+                "actual": 4.65,
+                "anterior": 4.37
+              },
+              {
+                "plazo": "3 a",
+                "anios": 3,
+                "actual": 4.73,
+                "anterior": 4.45
+              },
+              {
+                "plazo": "5 a",
+                "anios": 5,
+                "actual": 4.8,
+                "anterior": 4.54
+              },
+              {
+                "plazo": "7 a",
+                "anios": 7,
+                "actual": 4.88,
+                "anterior": 4.65
+              },
+              {
+                "plazo": "10 a",
+                "anios": 10,
+                "actual": 4.97,
+                "anterior": 4.78
+              },
+              {
+                "plazo": "20 a",
+                "anios": 20,
+                "actual": 5.37,
+                "anterior": 5.25
+              },
+              {
+                "plazo": "30 a",
+                "anios": 30,
+                "actual": 5.34,
+                "anterior": 5.24
+              }
+            ],
+            "fuente": {
+              "titulo": "Tesoro de EE. UU. · Daily Treasury Par Yield Curve Rates",
+              "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
+            }
+          }
+        ]
+      }
     }
   },
   "archivo": [

@@ -205,6 +205,46 @@ function fechaReal(valor) {
     new Date(`${valor}T12:00:00Z`).toISOString().slice(0, 10) === valor;
 }
 
+function validarCurvas(valor) {
+  if (!valor || typeof valor !== 'object' || Array.isArray(valor)) fallo('curvas debe ser un objeto.');
+  const curvas = lista(valor.curvas, 'curvas.curvas', 1, 2);
+  const claves = new Set();
+  return {
+    obtenidoIso: texto(valor.obtenidoIso ?? new Date().toISOString(), 'curvas.obtenidoIso', { min: 20, max: 30 }),
+    curvas: curvas.map((bruto, i) => {
+      const campo = `curvas.curvas[${i}]`;
+      const clave = texto(bruto?.clave, `${campo}.clave`, { min: 2, max: 20 });
+      if (!/^(eurozona|eeuu)$/.test(clave)) fallo(`${campo}.clave debe ser eurozona o eeuu.`);
+      if (claves.has(clave)) fallo(`${campo}: la curva «${clave}» está repetida.`);
+      claves.add(clave);
+      const fecha = texto(bruto?.fecha, `${campo}.fecha`, { min: 10, max: 10 });
+      if (!fechaReal(fecha)) fallo(`${campo}.fecha no es un día real.`);
+      const fechaAnterior = bruto?.fechaAnterior ? texto(bruto.fechaAnterior, `${campo}.fechaAnterior`, { min: 10, max: 10 }) : null;
+      if (fechaAnterior && (!fechaReal(fechaAnterior) || fechaAnterior >= fecha)) fallo(`${campo}.fechaAnterior debe ser anterior a la fecha de la curva.`);
+      const plazos = new Set();
+      const puntos = lista(bruto?.puntos, `${campo}.puntos`, 4, 14).map((punto, j) => {
+        const plazo = texto(punto?.plazo, `${campo}.puntos[${j}].plazo`, { min: 2, max: 8 });
+        if (plazos.has(plazo)) fallo(`${campo}: el plazo «${plazo}» está repetido.`);
+        plazos.add(plazo);
+        const anios = punto?.anios;
+        if (typeof anios !== 'number' || !(anios > 0) || anios > 50) fallo(`${campo}.puntos[${j}].anios debe ser un número de años positivo.`);
+        const actual = numeroOpcional(punto?.actual, `${campo}.puntos[${j}].actual`, -5, 30);
+        if (actual === null) fallo(`${campo}.puntos[${j}].actual es obligatorio.`);
+        return { plazo, anios, actual, anterior: fechaAnterior ? numeroOpcional(punto?.anterior, `${campo}.puntos[${j}].anterior`, -5, 30) : null };
+      });
+      if (puntos.some((p, j) => j && p.anios <= puntos[j - 1].anios)) fallo(`${campo}: los plazos deben ir de menor a mayor.`);
+      return {
+        clave,
+        nombre: texto(bruto?.nombre, `${campo}.nombre`, { min: 4, max: 80 }),
+        fecha,
+        fechaAnterior,
+        puntos,
+        fuente: { titulo: texto(bruto?.fuente?.titulo, `${campo}.fuente.titulo`, { min: 4, max: 180 }), url: urlSegura(bruto?.fuente?.url, `${campo}.fuente.url`) },
+      };
+    }),
+  };
+}
+
 /**
  * Bloques v2. Cada validador devuelve la copia normalizada del bloque; las
  * referencias a fuentes (`fuentes: [n]`) se resuelven después, con las demás.
@@ -386,6 +426,10 @@ export function validarInforme(entrada, { tipoEsperado = null, exigirBloques = f
     }
     informe[bloque] = bloque === 'claves' ? validarClaves(bruto) : bloque === 'mercados' ? validarMercados(bruto) : validarGlosario(bruto);
   }
+  // Curvas de tipos (18-09-2026): bloque opcional que rellena `curvas.mjs` al
+  // publicar, con datos transcritos del BCE y del Tesoro de EE. UU. Nunca se
+  // exige: si un publicador no responde, el informe sale sin él.
+  if (entrada.curvas !== undefined && entrada.curvas !== null) informe.curvas = validarCurvas(entrada.curvas);
   if (exigirBloques && !informe.agenda.every((cita) => cita.fecha)) {
     fallo('Cada cita de la agenda debe llevar fecha AAAA-MM-DD, hora si se conoce y región.');
   }

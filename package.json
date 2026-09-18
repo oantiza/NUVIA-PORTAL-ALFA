@@ -18,6 +18,7 @@
     "test:fundamentales-alfa": "node --test docs/nuvia-fundamentales-alfa.test.mjs docs/nuvia-fundamentales-ingestion.test.mjs docs/nuvia-fundamentales-remote.test.mjs docs/nuvia-identidades.test.mjs docs/nuvia-fundamentales-index.test.mjs docs/nuvia-fundamentales-metadata.test.mjs docs/nuvia-complementary-audit.test.mjs docs/nuvia-dividend-dates.test.mjs docs/nuvia-dividend-ui.test.mjs docs/nuvia-issuer-evidence.test.mjs docs/nuvia-provider-revision.test.mjs docs/nuvia-accounting-bridge.test.mjs docs/nuvia-earnings-window.test.mjs docs/nuvia-institutions-coverage.test.mjs docs/nuvia-institution-controls.test.mjs",
     "informe:generar": "node scripts/informes-mercado/generar.mjs",
     "informe:publicar": "node scripts/informes-mercado/publicar.mjs",
+    "informe:curvas": "node scripts/informes-mercado/curvas.mjs",
     "test:informes": "node --test docs/nuvia-informes-mercado.test.mjs",
     "test:news-selection": "node --test docs/nuvia-news-selection.test.mjs",
     "test:periodo-analisis": "node --test docs/nuvia-periodo-analisis.test.mjs",

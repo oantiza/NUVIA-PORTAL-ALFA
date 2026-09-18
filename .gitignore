@@ -49,3 +49,5 @@ docs/pdf/
 # Auditoría histórica con correos personales y detalles internos.
 /docs/AUDITORIA_REGULATORIA.md
 .claude/
+Claude outputs/
+

@@ -418,7 +418,7 @@ function semanalValido() {
   return base;
 }
 
-test('v2: el lector pinta tablas, gráfico y glosario, con el signo en la cifra', () => {
+test('v2: el lector pinta tablas y gráfico, con el signo en la cifra; glosario y fuentes solo en el descargable', () => {
   const html = renderInforme(validarInforme(semanalValido()));
   assert.match(html, /En pocas palabras/);
   assert.match(html, /<svg viewBox="0 0 1000/);
@@ -427,7 +427,9 @@ test('v2: el lector pinta tablas, gráfico y glosario, con el signo en la cifra'
   assert.match(html, /nv-report__delta--up">\+4,00 %/);
   assert.match(html, /<td class="num">Sin contrastar<\/td>/);
   assert.match(html, /nv-report__agenda-table/);
-  assert.match(html, /Glosario/);
+  assert.doesNotMatch(html, /Glosario/);
+  assert.doesNotMatch(html, /Fuentes y alcance/);
+  assert.match(informeAHtml(validarInforme(semanalValido())), /Glosario/);
   // El gráfico no lleva scripts ni colores en línea: los estilos salen de la hoja y sus tokens.
   assert.ok(!/<script/.test(html));
   assert.ok(!/fill="#/.test(html));

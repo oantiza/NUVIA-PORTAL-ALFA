@@ -183,10 +183,10 @@ export function renderInforme(informe, { independiente = false } = {}) {
     <section class="nv-report__section nv-report__calendar"><div class="nv-report__section-label"><h3>Agenda al cierre del informe</h3><span>Fechas previstas en la edición; no es un calendario en directo.</span></div>
       ${agendaV2 ? tablaAgenda(informe) : `<ul class="nv-report__agenda">${informe.agenda.map((cita) => `<li><strong>${escapar(cita.cuando)}</strong><p>${escapar(cita.que)} ${citas(cita, informe)}</p></li>`).join('')}</ul>`}
     </section>
-    ${glosario.length ? `<section class="nv-report__section nv-report__glossary"><div class="nv-report__section-label"><h3>Glosario</h3><span>Los términos técnicos de esta edición, explicados</span></div>
+    ${independiente && glosario.length ? `<section class="nv-report__section nv-report__glossary"><div class="nv-report__section-label"><h3>Glosario</h3><span>Los términos técnicos de esta edición, explicados</span></div>
       <dl>${glosario.map((entrada) => `<div><dt>${escapar(entrada.termino)}</dt><dd>${escapar(entrada.definicion)}</dd></div>`).join('')}</dl></section>` : ''}
     ${cobertura.length ? `<section class="nv-report__coverage"><h3>Datos pendientes de contraste</h3><dl>${cobertura.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd class="nv-report__coverage-status">${escapar(dato.valor)}</dd><dd>${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
-    <footer class="nv-report__footer">
+    ${independiente ? `<footer class="nv-report__footer">
       <h3>Fuentes y alcance</h3>
       <ol class="nv-report__sources">${informe.fuentes.map((fuente) => `<li><a href="${escapar(fuente.url)}" target="_blank" rel="noreferrer noopener">${escapar(fuente.titulo)}</a>${fuente.nota ? `<span>${escapar(fuente.nota)}</span>` : ''}</li>`).join('')}</ol>
       ${informe.limitaciones ? `<p>${escapar(informe.limitaciones)}</p>` : ''}
@@ -195,7 +195,7 @@ export function renderInforme(informe, { independiente = false } = {}) {
         <p>Documentación inicial: ${escapar(informe.generacion.modeloInvestigacion)}. Redacción inicial: ${escapar(informe.generacion.modeloRedaccion)}. Versión del proceso: ${escapar(informe.generacion.versionPrompt)}.</p>
         <p>${escapar(informe.revision?.nota || 'La incorporación al índice no acredita por sí sola una lectura humana.')}</p>
       </details>
-    </footer>
+    </footer>` : ''}
   </article>`.replaceAll('<h3>', independiente ? '<h2>' : '<h3>').replaceAll('</h3>', independiente ? '</h2>' : '</h3>')
     // Los bloques opcionales vacíos dejaban líneas en blanco en las páginas sincronizadas.
     .replace(/^[ \t]+$\n/gm, '');

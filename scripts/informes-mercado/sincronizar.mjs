@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { renderTarjetas, renderLector, escapar, etiqueta, fechaLegible } from '../../js/nuvia-market-reports-render.mjs';
+import { renderTarjetas, renderDestacado, renderLector, escapar, etiqueta, fechaLegible } from '../../js/nuvia-market-reports-render.mjs';
 
 export async function sincronizarInformes({ raiz = process.cwd(), comprobar = false } = {}) {
   const indice = JSON.parse(await readFile(resolve(raiz, 'data/informes-mercado.json'), 'utf8'));
@@ -10,7 +10,7 @@ export async function sincronizarInformes({ raiz = process.cwd(), comprobar = fa
     const ruta = resolve(raiz, pagina);
     const previo = await readFile(ruta, 'utf8');
     let siguiente = previo;
-    for (const [id, html] of [['tarjetas', renderTarjetas(indice)], ['lector', renderLector(indice) + archivo]]) {
+    for (const [id, html] of [['destacado', renderDestacado(indice)], ['tarjetas', renderTarjetas(indice)], ['lector', renderLector(indice) + archivo]]) {
       const patron = new RegExp(`(<!-- NUVIA INFORMES ${id}: START -->)[\\s\\S]*?(<!-- NUVIA INFORMES ${id}: END -->)`, 'g');
       siguiente = siguiente.replace(patron, () => `<!-- NUVIA INFORMES ${id}: START -->\n${html}\n<!-- NUVIA INFORMES ${id}: END -->`);
     }

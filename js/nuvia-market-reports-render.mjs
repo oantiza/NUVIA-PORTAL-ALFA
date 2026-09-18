@@ -225,21 +225,23 @@ export function renderDestacado(indice) {
   if (!diario) return '<div class="nv-report-lead nv-report-lead--pendiente"><p class="nv-report__eyebrow">Informe diario</p><h3>Próxima edición</h3><p>Las ediciones aparecerán aquí con su fecha y sus fuentes.</p></div>';
   const cifras = (diario.indicadores ?? []).filter((dato) => /\d/.test(dato.valor)).slice(0, 3);
   const aside = semanal ? `<aside class="nv-report-lead__aside">
-      <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe semanal</p><span class="nv-report-lead__age" data-report-age="${semanal.fecha}" data-report-type="SEMANAL">Edición fechada</span></div>
-      <p class="nv-report-lead__date">${escapar(periodoLegible(semanal))}</p>
-      <h3 class="nv-report-lead__subtitle"><a href="${destino(semanal)}">${escapar(semanal.titular)}</a></h3>
-      <p class="nv-report-lead__text">${escapar(semanal.entradilla)}</p>
+      <div class="nv-report-lead__body">
+        <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe semanal</p><span class="nv-report-lead__age" data-report-age="${semanal.fecha}" data-report-type="SEMANAL">Edición fechada</span><span class="nv-report-lead__date">${escapar(periodoLegible(semanal))}</span></div>
+        <h3 class="nv-report-lead__subtitle"><a href="${destino(semanal)}">${escapar(semanal.titular)}</a></h3>
+        <p class="nv-report-lead__text">${escapar(semanal.entradilla)}</p>
+      </div>
       <div class="nv-report-lead__bottom"><a class="nv-report-lead__cta" href="${destino(semanal)}">Leer el semanal <span aria-hidden="true">→</span></a><span class="nv-report-lead__reading">${minutosLectura(semanal)} min de lectura aprox.</span></div>
       <div class="nv-report-lead__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
     </aside>` : '';
   return `<div class="nv-report-lead">
     <article class="nv-report-lead__main">
-      <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe diario</p><span class="nv-report-lead__age" data-report-age="${diario.fecha}" data-report-type="DIARIO">Edición fechada</span></div>
-      <p class="nv-report-lead__date">${escapar(periodoLegible(diario))}</p>
-      <h3 class="nv-report-lead__title"><a href="${destino(diario)}">${escapar(diario.titular)}</a></h3>
-      <p class="nv-report-lead__text">${escapar(diario.entradilla)}</p>
+      <div class="nv-report-lead__body">
+        <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe diario</p><span class="nv-report-lead__age" data-report-age="${diario.fecha}" data-report-type="DIARIO">Edición fechada</span><span class="nv-report-lead__date">${escapar(periodoLegible(diario))}</span></div>
+        <h3 class="nv-report-lead__title"><a href="${destino(diario)}">${escapar(diario.titular)}</a></h3>
+        <p class="nv-report-lead__text">${escapar(diario.entradilla)}</p>
+        <div class="nv-report-lead__bottom"><a class="nv-report-lead__cta" href="${destino(diario)}">Leer el informe diario <span aria-hidden="true">→</span></a><span class="nv-report-lead__reading">${minutosLectura(diario)} min de lectura aprox.</span></div>
+      </div>
       ${cifras.length ? `<dl class="nv-report-lead__figures">${cifras.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${valorDestacado(dato.valor)}</dd></div>`).join('')}</dl>` : ''}
-      <div class="nv-report-lead__bottom"><a class="nv-report-lead__cta" href="${destino(diario)}">Leer el informe diario <span aria-hidden="true">→</span></a><span class="nv-report-lead__reading">${minutosLectura(diario)} min de lectura aprox.</span></div>
       <div class="nv-report-lead__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
     </article>
     ${aside}

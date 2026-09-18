@@ -337,6 +337,7 @@ function bloquesV2() {
         { nombre: 'S&P 500', nivel: 'Sin contrastar', variacion: null, variacionAnual: null, nota: 'Sin publicación oficial en la base factual.', fuentes: [] },
       ] },
       { grupo: 'Deuda pública', filas: [
+        { nombre: 'Bono de EE. UU. a 10 años', nivel: 'Sin contrastar', variacion: null, variacionAnual: null, nota: 'Sin publicación de primera mano en la base factual.', fuentes: [] },
         { nombre: 'Bono alemán a 10 años', nivel: '2,65 %', variacion: -0.05, variacionAnual: null, nota: null, fuentes: [1] },
         { nombre: 'Bono español a 10 años', nivel: '3,30 %', variacion: -0.04, variacionAnual: null, nota: null, fuentes: [1] },
       ] },
@@ -418,15 +419,19 @@ function semanalValido() {
   return base;
 }
 
-test('v2: el lector pinta tablas y gráfico, con el signo en la cifra; glosario y fuentes solo en el descargable', () => {
+test('v2.2: el lector pinta las cuatro fichas de la semana con barra de signo y la agenda por jornadas; glosario y fuentes solo en el descargable', () => {
   const html = renderInforme(validarInforme(semanalValido()));
   assert.match(html, /En pocas palabras/);
-  assert.match(html, /<svg viewBox="0 0 1000/);
-  assert.match(html, /nv-report__table/);
-  assert.match(html, /nv-report__delta--down">−0,18 %/);
+  assert.match(html, /<svg viewBox="0 0 400 64"/);
+  assert.match(html, /nv-report__tiles/);
+  assert.equal((html.match(/class="nv-report__tile /g) ?? []).length, 4, 'bono de EE. UU., bono alemán, euro-dólar y petróleo');
+  assert.ok(html.indexOf('nv-report__tile--bono-eeuu') < html.indexOf('nv-report__tile--bono-aleman') && html.indexOf('nv-report__tile--eur-usd') < html.indexOf('nv-report__tile--petroleo'), 'orden fijo de lectura, nunca por atractivo');
+  assert.match(html, /nv-report__delta--down">−0,05 puntos/, 'deuda en puntos de rentabilidad');
   assert.match(html, /nv-report__delta--up">\+4,00 %/);
-  assert.match(html, /<td class="num">Sin contrastar<\/td>/);
+  assert.match(html, /nv-report__tile-level--uncited">Sin contrastar</);
+  assert.doesNotMatch(html, /nv-report__table/, 'las tablas por grupo se retiraron el 18-09-2026');
   assert.match(html, /nv-report__agenda-table/);
+  assert.match(html, /nv-report__agenda-days/);
   assert.doesNotMatch(html, /Glosario/);
   assert.doesNotMatch(html, /Fuentes y alcance/);
   assert.match(informeAHtml(validarInforme(semanalValido())), /Glosario/);
@@ -440,7 +445,7 @@ test('v2: el descargable incrusta los tokens de los estilos nuevos y no pierde e
   assert.match(html, /--nv-positive:/);
   assert.match(html, /--nv-negative:/);
   assert.ok(!/<script/.test(html));
-  assert.match(html, /−0,05 %/);
+  assert.match(html, /−0,05 puntos/);
 });
 
 test('v2: variacionLegible usa coma, espacio antes del % y menos tipográfico', () => {
@@ -509,7 +514,7 @@ test('v2: al leer una edición publicada no se retira nada', () => {
 test('v2: el diario no publica la tabla de mercados y el semanal sí', () => {
   const diario = renderInforme(validarInforme(informeValido(bloquesV2())));
   assert.ok(!/Los mercados de un vistazo/.test(diario), 'el diario ya la cuenta en cifras y hechos');
-  assert.ok(!/<svg viewBox="0 0 1000/.test(diario));
+  assert.ok(!/<svg viewBox="0 0 400 64"/.test(diario));
   const semanal = renderInforme(validarInforme(semanalValido()));
   assert.match(semanal, /Los mercados de un vistazo/);
 });

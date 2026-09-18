@@ -37,66 +37,56 @@ const claseSigno = (valor) => (typeof valor !== 'number' || !Number.isFinite(val
 const esDeuda = (grupo) => /deuda|bono|tipos/i.test(grupo);
 
 /**
- * Barras con signo, en SVG estático (sin scripts: el descargable no los admite).
- * Solo las bolsas, que comparten escala; deuda (puntos de rentabilidad) y
- * divisas no se mezclan en el mismo eje. Se pintan dos lecturas del mismo
- * grupo, la del período y la del año, cada una con su propia escala.
+ * Cuatro referencias de la semana, en fichas con una barra de signo cada una
+ * (SVG estático: el descargable no admite scripts). Se eligen por nombre entre
+ * las filas del contrato; si una no viene, la ficha no se pinta. La barra
+ * dibuja la variación publicada sobre su propia escala; no la calcula.
  */
-function graficoVariaciones(grupo, periodo, campo = 'variacion', titulo = periodo) {
-  const filas = grupo.filas.filter((f) => typeof f[campo] === 'number' && Number.isFinite(f[campo]));
-  if (filas.length < 2) return '';
-  const extremo = Math.max(0.5, ...filas.map((f) => Math.abs(f[campo])));
-  const pasos = [0.5, 1, 1.5, 2, 3, 4, 5, 6, 8, 10, 15, 20, 30, 50, 100];
-  const tope = pasos.find((paso) => paso >= extremo * 1.1) ?? Math.ceil(extremo * 1.1);
-  const alto = 26;
-  const hueco = 12;
-  const etiquetas = 288;
-  const cero = 640;
-  const medio = 270;
-  const altoTotal = filas.length * (alto + hueco) + 34;
-  const ejeY = filas.length * (alto + hueco) + 4;
-  const rejilla = [-1, -0.5, 0.5, 1].map((k) => `<line class="nv-report__bar-grid" x1="${(cero + k * medio).toFixed(1)}" y1="0" x2="${(cero + k * medio).toFixed(1)}" y2="${ejeY - 6}"></line>`).join('');
-  const barras = filas.map((fila, i) => {
-    const valor = fila[campo];
-    const y = i * (alto + hueco);
-    const ancho = Math.max(3, (Math.abs(valor) / tope) * medio);
-    const x = valor < 0 ? cero - ancho : cero;
-    const clase = valor < 0 ? 'nv-report__bar--down' : 'nv-report__bar--up';
-    const textoX = valor < 0 ? cero - ancho - 10 : cero + ancho + 10;
-    const ancla = valor < 0 ? 'end' : 'start';
-    return `<text class="nv-report__bar-label" x="${etiquetas - 12}" y="${y + alto / 2}" text-anchor="end" dominant-baseline="middle">${escapar(fila.nombre)}</text>` +
-      `<rect class="${clase}" x="${x.toFixed(1)}" y="${y}" width="${ancho.toFixed(1)}" height="${alto}" rx="5"></rect>` +
-      `<text class="nv-report__bar-value${claseSigno(valor)}" x="${textoX.toFixed(1)}" y="${y + alto / 2}" text-anchor="${ancla}" dominant-baseline="middle">${escapar(variacionLegible(valor, 2))}</text>`;
-  }).join('');
-  const ejes = `<line class="nv-report__bar-axis" x1="${cero}" y1="0" x2="${cero}" y2="${ejeY - 6}"></line>` +
-    `<text class="nv-report__bar-tick" x="${cero - medio}" y="${ejeY + 14}" text-anchor="start">${escapar(variacionLegible(-tope))}</text>` +
-    `<text class="nv-report__bar-tick" x="${cero}" y="${ejeY + 14}" text-anchor="middle">0</text>` +
-    `<text class="nv-report__bar-tick" x="${cero + medio}" y="${ejeY + 14}" text-anchor="end">${escapar(variacionLegible(tope))}</text>`;
-  const descripcion = filas.map((f) => `${f.nombre} ${variacionLegible(f[campo], 2)}`).join('; ');
-  return `<figure class="nv-report__chart"><figcaption><strong>${escapar(titulo)}</strong><span>${escapar(grupo.grupo)} · ${escapar(periodo.toLowerCase())}</span></figcaption><svg viewBox="0 0 1000 ${altoTotal}" role="img" aria-label="${escapar(`${grupo.grupo}, ${titulo.toLowerCase()}: ${descripcion}`)}" preserveAspectRatio="xMinYMin meet">${rejilla}${ejes}${barras}</svg></figure>`;
+const REFERENCIAS_SEMANA = [
+  { clave: 'bono-eeuu', patron: /bono.*(ee\.? ?uu|estados unidos|estadounidense|american|treasury|tesoro)|treasury/i, titulo: 'Bono de EE. UU. a 10 años', lectura: 'Lo que paga Estados Unidos por pedir prestado a diez años.' },
+  { clave: 'bono-aleman', patron: /bono.*(alem|bund)|\bbund\b/i, titulo: 'Bono alemán a 10 años', lectura: 'La referencia de la deuda europea: lo que paga Alemania a diez años.' },
+  { clave: 'eur-usd', patron: /eur\s*\/\s*usd|euro.*d[oó]lar|d[oó]lar.*euro/i, titulo: 'Euro frente al dólar', lectura: 'Cuántos dólares vale un euro.' },
+  { clave: 'petroleo', patron: /brent|petr[oó]leo|crudo|\bwti\b/i, titulo: 'Petróleo Brent', lectura: 'El precio del barril de referencia en Europa.' },
+];
+const filasMercado = (mercados) => mercados.flatMap((grupo) => grupo.filas.map((fila) => ({ ...fila, grupo: grupo.grupo })));
+
+function barraSigno(valor, unidad) {
+  const extremo = Math.max(0.1, Math.abs(valor));
+  const pasos = [0.1, 0.25, 0.5, 1, 1.5, 2, 3, 4, 5, 6, 8, 10, 15, 20, 30, 50, 100];
+  const tope = pasos.find((paso) => paso >= extremo * 1.15) ?? Math.ceil(extremo * 1.15);
+  const cero = 200;
+  const medio = 160;
+  const ancho = Math.max(3, (Math.abs(valor) / tope) * medio);
+  const x = valor < 0 ? cero - ancho : cero;
+  const clase = valor < 0 ? 'nv-report__bar--down' : 'nv-report__bar--up';
+  const legible = (v) => variacionLegible(v, tope < 1 ? 2 : 1).replace(' %', unidad);
+  return `<svg viewBox="0 0 400 64" role="img" aria-label="${escapar(`Variación de la semana: ${legible(valor)}`)}" preserveAspectRatio="xMidYMid meet">` +
+    `<line class="nv-report__bar-grid" x1="${cero - medio}" y1="4" x2="${cero - medio}" y2="42"></line><line class="nv-report__bar-grid" x1="${cero + medio}" y1="4" x2="${cero + medio}" y2="42"></line>` +
+    `<line class="nv-report__bar-axis" x1="${cero}" y1="2" x2="${cero}" y2="44"></line>` +
+    `<rect class="${clase}" x="${x.toFixed(1)}" y="11" width="${ancho.toFixed(1)}" height="24" rx="5"></rect>` +
+    `<text class="nv-report__bar-tick" x="${cero - medio}" y="60" text-anchor="start">${escapar(legible(-tope))}</text><text class="nv-report__bar-tick" x="${cero}" y="60" text-anchor="middle">0</text><text class="nv-report__bar-tick" x="${cero + medio}" y="60" text-anchor="end">${escapar(legible(tope))}</text></svg>`;
 }
 
-// Una frase llana por grupo: qué mide, para quien no trabaja en finanzas. No valora.
-const LECTURA_GRUPO = [
-  [/bolsa|índice|indice|acciones/i, 'bolsas', 'Los grandes índices de acciones: cuánto subieron o bajaron las bolsas.'],
-  [/deuda|bono|tipos/i, 'deuda', 'Lo que paga un Estado por pedir prestado: la rentabilidad de sus bonos.'],
-  [/divisa|cambio|euro|dólar|dolar/i, 'divisas', 'Cuánto vale una moneda frente a otra.'],
-  [/materia|petr|energ|oro|gas/i, 'materias', 'Energía y metales: los precios de las materias primas.'],
-  [/volatil|vix/i, 'volatilidad', 'El termómetro del nerviosismo: cuánto se mueve el mercado.'],
-];
-const lecturaGrupo = (nombre) => { const [, clave = 'otros', texto = ''] = LECTURA_GRUPO.find(([patron]) => patron.test(nombre)) ?? []; return { clave, texto }; };
-
-function tablaMercado(grupo, informe, periodo) {
-  const conAnual = grupo.filas.some((f) => typeof f.variacionAnual === 'number');
-  const conNota = grupo.filas.some((f) => f.nota);
-  const deuda = esDeuda(grupo.grupo);
-  const digitos = 2;
-  const lectura = lecturaGrupo(grupo.grupo);
-  return `<div class="nv-report__market nv-report__market--${lectura.clave}"><div class="nv-report__market-head"><h4>${escapar(grupo.grupo)}</h4>${lectura.texto ? `<p>${escapar(lectura.texto)}</p>` : ''}</div>
-    <div class="nv-report__table-wrap"><table class="nv-report__table nv-report__table--cards"><thead><tr><th scope="col">Referencia</th><th scope="col" class="num">Nivel</th><th scope="col" class="num">${escapar(periodo)}</th>${conAnual ? '<th scope="col" class="num">En el año</th>' : ''}${conNota ? '<th scope="col">Qué lo explica</th>' : ''}<th scope="col">Fuente</th></tr></thead>
-    <tbody>${grupo.filas.map((fila) => `<tr${!fila.nivel || /sin contrastar/i.test(fila.nivel) ? ' class="nv-report__row--uncited"' : ''}><th scope="row">${escapar(fila.nombre)}</th><td class="num">${escapar(fila.nivel ?? 'Sin contrastar')}</td><td class="num nv-report__delta${claseSigno(fila.variacion)}">${escapar(variacionLegible(fila.variacion, digitos))}</td>${conAnual ? `<td class="num nv-report__delta${claseSigno(fila.variacionAnual)}">${escapar(variacionLegible(fila.variacionAnual, 2))}</td>` : ''}${conNota ? `<td class="nv-report__note">${escapar(fila.nota ?? '')}</td>` : ''}<td class="nv-report__cite">${citas(fila, informe) || '<span class="nv-report__uncited">Sin contrastar</span>'}</td></tr>`).join('')}</tbody></table></div>
-    ${deuda ? '<p class="nv-report__table-note">En deuda pública la variación es la de su rentabilidad, en puntos porcentuales: si baja, el precio del bono sube.</p>' : ''}
-  </div>`;
+function fichasSemana(informe, periodo) {
+  const filas = filasMercado(informe.mercados ?? []);
+  const fichas = REFERENCIAS_SEMANA.map((ref) => ({ ref, fila: filas.find((f) => ref.patron.test(f.nombre)) })).filter((x) => x.fila);
+  if (!fichas.length) return '';
+  return `<div class="nv-report__tiles">${fichas.map(({ ref, fila }) => {
+    const deuda = esDeuda(fila.grupo);
+    const unidad = deuda ? ' puntos' : ' %';
+    const conCifra = typeof fila.variacion === 'number' && Number.isFinite(fila.variacion);
+    const sinContrastar = !fila.nivel || /sin contrastar/i.test(fila.nivel);
+    const delta = conCifra ? `<span class="nv-report__delta${claseSigno(fila.variacion)}">${escapar(variacionLegible(fila.variacion, 2).replace(' %', unidad))}</span>` : '<span class="nv-report__delta">—</span>';
+    return `<article class="nv-report__tile nv-report__tile--${ref.clave}${sinContrastar ? ' nv-report__tile--uncited' : ''}">
+      <p class="nv-report__tile-name">${escapar(ref.titulo)}<span>${escapar(ref.lectura)}</span></p>
+      <p class="nv-report__tile-level${sinContrastar ? ' nv-report__tile-level--uncited' : ''}">${escapar(fila.nivel ?? 'Sin contrastar')}</p>
+      <p class="nv-report__tile-delta">${delta}<span>${escapar(periodo)}${deuda ? ' · en puntos de rentabilidad' : ''}</span></p>
+      ${conCifra ? `<div class="nv-report__tile-chart">${barraSigno(fila.variacion, unidad)}</div>` : '<p class="nv-report__tile-empty">La documentación no acredita esta cifra con una publicación de primera mano; no se publica.</p>'}
+      ${fila.nota && !sinContrastar ? `<p class="nv-report__note">${escapar(fila.nota)}</p>` : ''}
+      <p class="nv-report__tile-source">${citas(fila, informe) ? `Fuente ${citas(fila, informe)}` : '<span class="nv-report__uncited">Sin contrastar</span>'}</p>
+    </article>`;
+  }).join('')}</div>
+    <p class="nv-report__legend"><span class="nv-report__legend-up">Subida</span><span class="nv-report__legend-down">Bajada</span><span>Cada barra es la variación de la semana publicada por la fuente; a la derecha, sube; a la izquierda, baja. En los bonos, la variación es la de su rentabilidad: si baja, el precio del bono sube.</span></p>`;
 }
 
 const diaAgenda = (fecha) => {
@@ -175,7 +165,6 @@ export function renderInforme(informe, { independiente = false } = {}) {
   const mercados = informe.mercados ?? [];
   const glosario = informe.glosario ?? [];
   const periodo = ETIQUETA_PERIODO[informe.tipo] ?? 'Variación';
-  const grupoGrafico = mercados.find((g) => /bolsa|índice|indice/i.test(g.grupo)) ?? mercados[0];
   const agendaV2 = informe.agenda.every((cita) => cita.fecha);
   return `<article class="nv-report nv-report--${informe.tipo.toLowerCase()}" aria-label="Informe ${etiqueta(informe.tipo).toLowerCase()}">
     <header class="nv-report__header">
@@ -191,8 +180,8 @@ export function renderInforme(informe, { independiente = false } = {}) {
     ${renderInfografia(informe)}
     ${cifras.length ? `<section class="nv-report__section nv-report__data"><div class="nv-report__section-label"><h3>Cifras de referencia</h3><span>El período de cada dato, junto a su fuente</span></div>
       <dl class="nv-report__figures">${cifras.map((dato) => `<div><dt>${escapar(dato.etiqueta)}</dt><dd>${valorDestacado(dato.valor)}</dd><dd class="nv-report__reference">${escapar(dato.referencia)} ${citas(dato, informe)}</dd></div>`).join('')}</dl></section>` : ''}
-    ${mercados.length && informe.tipo === 'SEMANAL' ? `<section class="nv-report__section nv-report__markets"><div class="nv-report__section-label"><h3>Los mercados de un vistazo</h3><span>${informe.tipo === 'SEMANAL' ? 'Cierre a cierre de los siete días' : 'Cierre de la última sesión'} · cada cifra, con su publicador</span></div>
-      ${(() => { const graficos = grupoGrafico ? [graficoVariaciones(grupoGrafico, periodo, 'variacion', informe.tipo === 'SEMANAL' ? 'Esta semana' : 'Esta sesión'), graficoVariaciones(grupoGrafico, 'En el año', 'variacionAnual', 'En lo que va de año')].filter(Boolean) : []; return graficos.length ? `<div class="nv-report__charts nv-report__charts--${graficos.length}">${graficos.join('')}</div><p class="nv-report__legend"><span class="nv-report__legend-up">Subida</span><span class="nv-report__legend-down">Bajada</span><span>Cada barra es la variación publicada por la fuente de la tabla; a la derecha, sube; a la izquierda, baja.</span></p>` : ''; })()}${mercados.map((grupo) => tablaMercado(grupo, informe, periodo)).join('')}</section>` : ''}
+    ${mercados.length && informe.tipo === 'SEMANAL' && fichasSemana(informe, periodo) ? `<section class="nv-report__section nv-report__markets"><div class="nv-report__section-label"><h3>Los mercados de un vistazo</h3><span>Cuatro referencias de la semana: deuda, divisa y energía · cada cifra, con su publicador</span></div>
+      ${fichasSemana(informe, periodo)}</section>` : ''}
     <section class="nv-report__section nv-report__highlights"><div class="nv-report__section-label"><h3>${claves.length ? 'Los hechos del período' : 'Las claves del período'}</h3><span>${claves.length ? 'Con su fecha, su cifra y su fuente' : 'Una primera lectura'}</span></div>
       <ol class="nv-report__facts${informe.hechos.length % 2 === 0 ? ' nv-report__facts--even' : ''}">${informe.hechos.map((hecho, i) => `<li><span class="nv-report__fact-number" aria-hidden="true">${numero(i)}</span><div><span class="nv-report__meta">${escapar(hecho.fecha)}</span><p>${escapar(hecho.texto)} ${citas(hecho, informe)}</p></div></li>`).join('')}</ol>
     </section>
@@ -260,5 +249,5 @@ export function renderDestacado(indice) {
 export function renderLector(indice) {
   const ediciones = ['DIARIO', 'SEMANAL'].map((tipo) => indice.ediciones?.[tipo]).filter(Boolean);
   if (!ediciones.length) return '<p>No hay ediciones incorporadas todavía.</p>';
-  return `<div data-report-reader><nav class="nv-reports-nav" aria-label="Periodicidad del informe">${ediciones.map((informe, i) => `<a href="${destino(informe)}" data-report-select="${informe.tipo}"${i === 0 ? ' aria-current="true"' : ''}>Informe ${etiqueta(informe.tipo).toLowerCase()}<span>${escapar(periodoLegible(informe))}</span></a>`).join('')}</nav><div id="lectura-informe" tabindex="-1">${ediciones.map((informe, i) => `<div data-report-edition="${informe.tipo}"${i ? ' hidden' : ''}>${renderInforme(informe)}</div>`).join('')}</div></div>`;
+  return `<div data-report-reader><nav class="nv-reports-nav" aria-label="Periodicidad del informe"><span>Edición</span>${ediciones.map((informe, i) => `<a href="${destino(informe)}" data-report-select="${informe.tipo}"${i === 0 ? ' aria-current="true"' : ''} title="${escapar(periodoLegible(informe))}">${etiqueta(informe.tipo)}</a>`).join('')}</nav><div id="lectura-informe" tabindex="-1">${ediciones.map((informe, i) => `<div data-report-edition="${informe.tipo}"${i ? ' hidden' : ''}>${renderInforme(informe)}</div>`).join('')}</div></div>`;
 }

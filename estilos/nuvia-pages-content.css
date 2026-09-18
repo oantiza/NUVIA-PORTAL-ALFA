@@ -2975,6 +2975,43 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
 .nv-campus-options :is(.ac-x09, .ac-x15) { background: transparent; padding: 0; border: 0; letter-spacing: .1em; }
 .nv-campus-options :is(.ac-x10, .ac-x16) { line-height: 1.15; }
 .nv-campus-options .ac-x14 { right: var(--nv-space-4); }
+/* Tres puertas con carácter: cada tarjeta lleva su tono (verde, bronce, azul),
+   filete superior, número de agua teñido y, en la esquina, el ornamento de
+   aros y hoja de la portada de informes. Todo decorativo y aria-hidden sobre
+   superficie blanca: el texto no cambia de fondo ni de color. Sin variables
+   locales: la prueba de banners exige que todo var() salga de los tokens. */
+.nv-campus-page .nv-campus-options :is(.ac-x06, .ac-x13, .nv-campus-glossary) { border-top: 3px solid var(--nv-green-600); }
+.nv-campus-page .nv-campus-options .nv-campus-glossary { border-top-color: var(--nv-bronze-500); }
+.nv-campus-page .nv-campus-options .ac-x13 { border-top-color: var(--nv-navy-700); }
+.nv-campus-page .nv-campus-options .ac-x06:hover { border-top-color: var(--nv-green-700); }
+.nv-campus-page .nv-campus-options .nv-campus-glossary:hover { border-top-color: var(--nv-bronze-700); }
+.nv-campus-page .nv-campus-options .ac-x13:hover { border-top-color: var(--nv-navy-800); }
+.nv-campus-page .nv-campus-options .ac-x07 { z-index: 1; color: color-mix(in srgb, var(--nv-green-600) 13%, transparent); }
+.nv-campus-page .nv-campus-options .nv-campus-glossary .ac-x07 { color: color-mix(in srgb, var(--nv-bronze-500) 15%, transparent); }
+.nv-campus-page .nv-campus-options .ac-x13 .ac-x14 { z-index: 1; color: color-mix(in srgb, var(--nv-navy-700) 13%, transparent); }
+.nv-campus-page .nv-campus-options .nv-campus-glossary .ac-x09 { color: var(--nv-bronze-700); }
+.nv-campus-page .nv-campus-options .ac-x13 .ac-x15 { color: var(--nv-navy-800); }
+.nv-campus-page .nv-campus-options .ac-x08 { z-index: 2; }
+.nv-campus-art { position: absolute; z-index: 0; right: -90px; bottom: -125px; width: 250px; height: 250px; border-radius: 50%; overflow: hidden; background: color-mix(in srgb, var(--nv-green-600) 7%, transparent); pointer-events: none; transition: transform .35s ease; }
+.nv-campus-art > b { position: absolute; width: 150px; height: 150px; left: 50px; top: 50px; border: 1px solid color-mix(in srgb, var(--nv-green-600) 38%, transparent); border-radius: 50%; }
+.nv-campus-art > b:nth-child(2) { left: -25px; }
+.nv-campus-art > b:nth-child(3) { left: 125px; }
+.nv-campus-art > i { position: absolute; display: block; width: 74px; height: 74px; left: 88px; top: 88px; border-radius: 0 90% 0 90%; transform: rotate(-15deg); background: var(--nv-green-300); opacity: .55; }
+.nv-campus-glossary .nv-campus-art { background: color-mix(in srgb, var(--nv-bronze-500) 8%, transparent); }
+.nv-campus-glossary .nv-campus-art > b { border-color: color-mix(in srgb, var(--nv-bronze-500) 40%, transparent); }
+.nv-campus-glossary .nv-campus-art > i { background: var(--nv-bronze-200); }
+.ac-x13 .nv-campus-art { background: color-mix(in srgb, var(--nv-navy-700) 7%, transparent); }
+.ac-x13 .nv-campus-art > b { border-color: color-mix(in srgb, var(--nv-navy-700) 34%, transparent); }
+.ac-x13 .nv-campus-art > i { background: var(--nv-navy-700); opacity: .28; }
+.nv-campus-options > :hover .nv-campus-art { transform: translate(-6px, -6px); }
+@media (max-width: 1120px) {
+  .nv-campus-art { right: -80px; bottom: -120px; width: 220px; height: 220px; }
+  .nv-campus-art > b { width: 130px; height: 130px; left: 45px; top: 45px; }
+  .nv-campus-art > b:nth-child(2) { left: -15px; }
+  .nv-campus-art > b:nth-child(3) { left: 105px; }
+  .nv-campus-art > i { width: 64px; height: 64px; left: 78px; top: 78px; }
+}
+@media (prefers-reduced-motion: reduce) { .nv-campus-art { transition: none; } .nv-campus-options > :hover .nv-campus-art { transform: none; } }
 .nv-campus-page .ac-learning-route { padding-top: var(--nv-space-12); border-top: 1px solid var(--nv-line); }
 .nv-campus-page .ac-learning-steps { gap: var(--nv-space-6); }
 .nv-campus-page .ac-learning-step { border-top: 3px solid var(--nv-green-600); box-shadow: var(--nv-shadow-md); }

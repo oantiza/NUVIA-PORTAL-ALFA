@@ -28,3 +28,13 @@ Clasificación: VERDE, cambio visual sin nuevas funciones. Imágenes decorativas
 
 - `shell:check`, `check-parity`, `check-static-site`, `check-consistencia`, `check-lenguaje` y las pruebas `page-styles`, `surfaces`, `navigation-cards`, `economia-entry`, `page-hierarchy`, `layout-foundations`, `typography-foundations` e `informes`: correctas.
 - Revisión visual a 1440 y 1024 px con la copia local. Pendiente `npm run build` y auditoría de render completa en el equipo del fundador antes de publicar.
+
+## Ampliación · Academia NUVIA, «Tu punto de partida para aprender» (18-09-2026)
+
+Orden del fundador: las tres tarjetas (Conocimientos esenciales, Glosario financiero, Cursos) resultaban planas; dar color y un elemento gráfico, sin fotografía, a elección del ejecutor.
+
+- `academia.html`: cada tarjeta incorpora `<span class="nv-campus-art" aria-hidden="true">` (tres aros y una hoja), el mismo ornamento que la portada de informes de Economía.
+- `estilos/nuvia-pages-content.css`: tono por tarjeta — verde (`--nv-green-600/700/300`), bronce (`--nv-bronze-500/700/200`) y azul (`--nv-navy-700/800`) — aplicado al filete superior, al número de agua (13–15 % del tono) y a la etiqueta; el ornamento se sitúa en la esquina inferior derecha y se desplaza 6 px al pasar el cursor (sin movimiento con `prefers-reduced-motion`). Sin variables locales: la prueba de banners exige que todo `var()` provenga de `nuvia-tokens.css`.
+- Superficie blanca y colores de texto sin cambios; nada de lo añadido es contenido ni lleva semántica.
+
+Validación: `check-static-site`, `check-consistencia`, `page-styles`, `surfaces`, `academy-entry`, `academy-banner`, `page-hierarchy`, `layout-foundations`, `typography-foundations`, `navigation-cards` correctas; revisión visual a 1440 px. Pendiente `npm run build` en el equipo del fundador.

@@ -79,41 +79,60 @@ export async function generarBorrador({ tipo, fecha = null, clave = null, alReti
   }
   const fuentes = investigacion.fuentes;
 
-  const redaccion = await generarConReserva(apiKey, promptRedaccion(tipo, hoy, investigacion.texto, fuentes), {
-    fundamentado: false,
-    json: true,
-  });
+  // La redacción se reintenta UNA vez si el borrador no pasa el contrato, con el
+  // motivo del rechazo delante. El contrato no se relaja: el segundo intento pasa
+  // por la misma validación, y si vuelve a fallar no hay borrador. La
+  // documentación no se repite (es la parte cara y ya está acreditada).
+  const MAX_INTENTOS = 2;
+  let rechazo = null;
+  for (let intento = 1; intento <= MAX_INTENTOS; intento += 1) {
+    const prompt = promptRedaccion(tipo, hoy, investigacion.texto, fuentes) +
+      (rechazo
+        ? `\n\nIMPORTANTE: el intento anterior fue rechazado por la validación con este motivo: «${rechazo}». ` +
+          'Devuelve el JSON completo de nuevo corrigiendo ese punto y respetando todos los límites indicados.'
+        : '');
+    const redaccion = await generarConReserva(apiKey, prompt, { fundamentado: false, json: true });
 
-  const bruto = leerJson(redaccion.texto);
-  // El sistema impone identidad, fuentes y trazabilidad: no se acepta lo que el
-  // modelo diga de sí mismo ni las fuentes que afirme haber consultado.
-  delete bruto.fuentes;
-  const informe = validarInforme(
-    {
-      ...bruto,
-      tipo,
-      fecha: hoy,
-      fechaIso: `${hoy}T00:00:00.000Z`,
-      periodo: {
-        desde: tipo === 'SEMANAL' ? new Date(Date.parse(`${hoy}T12:00:00Z`) - 6 * 86400000).toISOString().slice(0, 10) : hoy,
-        hasta: hoy,
-        ...(hoy === fechaMadrid() ? { corteIso: new Date().toISOString() } : {}),
-      },
-      generadoIso: new Date().toISOString(),
-      fuentes,
-      generacion: {
-        ...(bruto.generacion ?? {}),
-        modeloInvestigacion: investigacion.modelo,
-        modeloRedaccion: redaccion.modelo,
-        fuentesConsultadas: fuentes.length,
-      },
-      revision: { estado: 'borrador', revisadoIso: null },
-    },
-    // v2: sin tablas, claves y glosario el borrador no vale (ver BLOQUES_V2).
-    { tipoEsperado: tipo, exigirBloques: true, alRetirar },
-  );
-
-  return informe;
+    const retiradosIntento = [];
+    try {
+      const bruto = leerJson(redaccion.texto);
+      // El sistema impone identidad, fuentes y trazabilidad: no se acepta lo que el
+      // modelo diga de sí mismo ni las fuentes que afirme haber consultado.
+      delete bruto.fuentes;
+      const informe = validarInforme(
+        {
+          ...bruto,
+          tipo,
+          fecha: hoy,
+          fechaIso: `${hoy}T00:00:00.000Z`,
+          periodo: {
+            desde: tipo === 'SEMANAL' ? new Date(Date.parse(`${hoy}T12:00:00Z`) - 6 * 86400000).toISOString().slice(0, 10) : hoy,
+            hasta: hoy,
+            ...(hoy === fechaMadrid() ? { corteIso: new Date().toISOString() } : {}),
+          },
+          generadoIso: new Date().toISOString(),
+          fuentes,
+          generacion: {
+            ...(bruto.generacion ?? {}),
+            modeloInvestigacion: investigacion.modelo,
+            modeloRedaccion: redaccion.modelo,
+            fuentesConsultadas: fuentes.length,
+          },
+          revision: { estado: 'borrador', revisadoIso: null },
+        },
+        // v2: sin tablas, claves y glosario el borrador no vale (ver BLOQUES_V2).
+        { tipoEsperado: tipo, exigirBloques: true, alRetirar: (lista) => retiradosIntento.push(...lista) },
+      );
+      if (alRetirar && retiradosIntento.length) alRetirar(retiradosIntento);
+      return informe;
+    } catch (error) {
+      const reintentable = error instanceof ErrorContrato || error instanceof ErrorGemini;
+      if (!reintentable || intento === MAX_INTENTOS) throw error;
+      rechazo = error.message;
+      process.stderr.write(`  Redacción rechazada (${rechazo}); se repite una vez.\n`);
+    }
+  }
+  throw new ErrorGemini('La redacción no produjo un borrador válido.');
 }
 
 async function principal() {

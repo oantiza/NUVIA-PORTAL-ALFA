@@ -1,0 +1,233 @@
+name: Informes de mercado · borrador y publicación
+
+# Automatiza todo MENOS la decisión de publicar.
+#
+#   1. A la hora programada genera el borrador con Gemini, lo contrasta con
+#      publicadores oficiales (sin IA) y abre un pull request en `informe/<id>`.
+#   2. El fundador lo lee, corrige el JSON en la rama si hace falta y comenta
+#        /publicar <nota de revisión: qué se contrastó y qué se corrigió>
+#   3. Solo entonces se ejecuta publicar.mjs, se hace merge a main y se lanza
+#      el despliegue de GitHub Pages.
+#
+# §7 del marco: revisión humana proporcional al riesgo. Sin comentario del
+# propietario del repositorio con nota, no se publica nada.
+
+on:
+  schedule:
+    # Diario: lunes a viernes, 06:00 UTC (08:00 en Madrid en verano, 07:00 en invierno).
+    - cron: '0 6 * * 1-5'
+    # Semanal: sábados, 07:00 UTC.
+    - cron: '0 7 * * 6'
+  workflow_dispatch:
+    inputs:
+      tipo:
+        description: 'Edición a generar'
+        type: choice
+        options: [diario, semanal]
+        default: diario
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+
+jobs:
+  borrador:
+    if: github.event_name != 'issue_comment'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: informes-borrador
+      cancel-in-progress: false
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@v7
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Decidir la edición
+        id: tipo
+        env:
+          EVENTO: ${{ github.event_name }}
+          ENTRADA: ${{ inputs.tipo }}
+          CRON: ${{ github.event.schedule }}
+        run: |
+          if [ "$EVENTO" = "workflow_dispatch" ]; then tipo="$ENTRADA";
+          elif [ "$CRON" = "0 7 * * 6" ]; then tipo=semanal;
+          else tipo=diario; fi
+          echo "tipo=$tipo" >> "$GITHUB_OUTPUT"
+
+      - name: Generar el borrador con Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TIPO: ${{ steps.tipo.outputs.tipo }}
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::Falta el secret GEMINI_API_KEY en Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          node scripts/informes-mercado/generar.mjs --tipo "$TIPO"
+
+      - name: Identificar el borrador
+        id: borrador
+        run: |
+          ruta=$(ls -t output/informes-borrador/*.json | head -n 1)
+          id=$(basename "$ruta" .json)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          echo "ruta=$ruta" >> "$GITHUB_OUTPUT"
+
+      - name: Contrastar con publicadores oficiales (sin IA)
+        env:
+          ID: ${{ steps.borrador.outputs.id }}
+        run: |
+          node scripts/informes-mercado/contrastar.mjs --id "$ID" --salida "$RUNNER_TEMP/contraste.md" \
+            || printf '## Contraste automático · %s\n\nEl script de contraste ha fallado; revisar las cifras a mano.\n' "$ID" > "$RUNNER_TEMP/contraste.md"
+          {
+            echo
+            echo "---"
+            echo
+            echo "Vista previa descargable: artefacto **vista-previa-$ID** en la [ejecución del workflow]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
+            echo "Borrador editable: \`output/informes-borrador/$ID.json\` en esta rama."
+          } >> "$RUNNER_TEMP/contraste.md"
+          cat "$RUNNER_TEMP/contraste.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Vista previa HTML
+        env:
+          RUTA: ${{ steps.borrador.outputs.ruta }}
+          ID: ${{ steps.borrador.outputs.id }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/vista"
+          node --input-type=module -e "
+            import { readFileSync, writeFileSync } from 'node:fs';
+            import { informeAHtml } from './scripts/informes-mercado/plantilla-html.mjs';
+            import { validarInforme } from './scripts/informes-mercado/contrato.mjs';
+            const bruto = JSON.parse(readFileSync(process.env.RUTA, 'utf8'));
+            writeFileSync(process.env.RUNNER_TEMP + '/vista/' + process.env.ID + '.html', informeAHtml(validarInforme(bruto, { tipoEsperado: bruto.tipo })));
+          "
+
+      - name: Subir la vista previa
+        uses: actions/upload-artifact@v4
+        with:
+          name: vista-previa-${{ steps.borrador.outputs.id }}
+          path: ${{ runner.temp }}/vista/
+          retention-days: 14
+
+      - name: Abrir el pull request de revisión
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ID: ${{ steps.borrador.outputs.id }}
+          RUTA: ${{ steps.borrador.outputs.ruta }}
+        run: |
+          rama="informe/$ID"
+          titular=$(node -e "console.log(JSON.parse(require('fs').readFileSync(process.env.RUTA,'utf8')).titular)")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$rama"
+          # output/ está en .gitignore: el borrador entra solo en la rama de revisión.
+          git add -f "$RUTA"
+          git commit -m "Borrador $ID (pendiente de revisión)"
+          git push --force origin "$rama"
+          if gh pr view "$rama" --json number >/dev/null 2>&1; then
+            gh pr edit "$rama" --body-file "$RUNNER_TEMP/contraste.md"
+          else
+            gh pr create --base main --head "$rama" \
+              --title "Informe $ID · $titular" \
+              --body-file "$RUNNER_TEMP/contraste.md"
+          fi
+
+  publicar:
+    if: >-
+      github.event_name == 'issue_comment' &&
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/publicar') &&
+      github.event.comment.author_association == 'OWNER'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: informes-publicar
+      cancel-in-progress: false
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PR: ${{ github.event.issue.number }}
+      COMENTARIO: ${{ github.event.comment.body }}
+    steps:
+      - name: Comprobar la rama del pull request
+        id: pr
+        run: |
+          rama=$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json headRefName,state -q 'select(.state=="OPEN") | .headRefName')
+          case "$rama" in
+            informe/diario-*|informe/semanal-*) ;;
+            *) echo "::error::El PR #$PR no es un borrador de informe abierto."; exit 1 ;;
+          esac
+          echo "rama=$rama" >> "$GITHUB_OUTPUT"
+          echo "id=${rama#informe/}" >> "$GITHUB_OUTPUT"
+
+      - name: Leer la nota de revisión
+        run: |
+          nota=$(printf '%s' "$COMENTARIO" | sed '1s|^/publicar[[:space:]]*||' | tr '\r\n' '  ' | sed 's/  */ /g; s/^ //; s/ $//')
+          if [ ${#nota} -lt 20 ]; then
+            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "No publico: falta la nota de revisión. Comenta \`/publicar\` seguido de qué se contrastó y qué se corrigió (mínimo 20 caracteres)."
+            exit 1
+          fi
+          printf '%s' "$nota" > "$RUNNER_TEMP/nota.txt"
+
+      - name: Descargar la rama del borrador
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.pr.outputs.rama }}
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Publicar
+        env:
+          ID: ${{ steps.pr.outputs.id }}
+        run: |
+          set -o pipefail
+          node --input-type=module -e "
+            import { readFileSync, writeFileSync } from 'node:fs';
+            const ruta = 'output/informes-borrador/' + process.env.ID + '.json';
+            const b = JSON.parse(readFileSync(ruta, 'utf8'));
+            b.revision = { ...b.revision, nota: readFileSync(process.env.RUNNER_TEMP + '/nota.txt', 'utf8') };
+            writeFileSync(ruta, JSON.stringify(b, null, 2) + '\n');
+          "
+          node scripts/informes-mercado/publicar.mjs --id "$ID" | tee "$RUNNER_TEMP/publicar.txt"
+          npm run test:informes
+          npm run informes:check
+
+      - name: Merge y despliegue
+        env:
+          ID: ${{ steps.pr.outputs.id }}
+          RAMA: ${{ steps.pr.outputs.rama }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -q --cached "output/informes-borrador/$ID.json"
+          git add -A -- ':!output'
+          git commit -m "Publicar informe $ID"
+          git push origin "HEAD:$RAMA"
+          gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch
+          # Un push hecho con GITHUB_TOKEN no dispara otros workflows; el
+          # despliegue se lanza de forma explícita.
+          gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main
+          {
+            echo "Publicado **$ID** y lanzado el despliegue de GitHub Pages."
+            echo
+            echo '```'
+            cat "$RUNNER_TEMP/publicar.txt"
+            echo '```'
+          } > "$RUNNER_TEMP/respuesta.md"
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/respuesta.md"
+
+      - name: Avisar del fallo
+        if: failure()
+        run: |
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "La publicación ha fallado; no se ha hecho merge. Detalle en $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" || true

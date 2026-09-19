@@ -79,16 +79,16 @@ export async function generarBorrador({ tipo, fecha = null, clave = null, alReti
   }
   const fuentes = investigacion.fuentes;
 
-  // La redacción se reintenta UNA vez si el borrador no pasa el contrato, con el
-  // motivo del rechazo delante. El contrato no se relaja: el segundo intento pasa
+  // La redacción se reintenta hasta dos veces si el borrador no pasa el contrato,
+  // con los motivos de rechazo delante. El contrato no se relaja: el segundo intento pasa
   // por la misma validación, y si vuelve a fallar no hay borrador. La
   // documentación no se repite (es la parte cara y ya está acreditada).
-  const MAX_INTENTOS = 2;
-  let rechazo = null;
+  const MAX_INTENTOS = 3;
+  const rechazos = [];
   for (let intento = 1; intento <= MAX_INTENTOS; intento += 1) {
     const prompt = promptRedaccion(tipo, hoy, investigacion.texto, fuentes) +
-      (rechazo
-        ? `\n\nIMPORTANTE: el intento anterior fue rechazado por la validación con este motivo: «${rechazo}». ` +
+      (rechazos.length
+        ? `\n\nIMPORTANTE: los intentos anteriores fueron rechazados por la validación: ${rechazos.map((r) => `«${r}»`).join("; ")}. ` +
           'Devuelve el JSON completo de nuevo corrigiendo ese punto y respetando todos los límites indicados.'
         : '');
     const redaccion = await generarConReserva(apiKey, prompt, { fundamentado: false, json: true });
@@ -128,8 +128,8 @@ export async function generarBorrador({ tipo, fecha = null, clave = null, alReti
     } catch (error) {
       const reintentable = error instanceof ErrorContrato || error instanceof ErrorGemini;
       if (!reintentable || intento === MAX_INTENTOS) throw error;
-      rechazo = error.message;
-      process.stderr.write(`  Redacción rechazada (${rechazo}); se repite una vez.\n`);
+      rechazos.push(error.message);
+      process.stderr.write(`  Redacción rechazada en el intento ${intento} (${error.message}); se repite.\n`);
     }
   }
   throw new ErrorGemini('La redacción no produjo un borrador válido.');

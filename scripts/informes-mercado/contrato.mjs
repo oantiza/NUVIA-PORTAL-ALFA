@@ -42,7 +42,7 @@ import { acreditarPorNombre, tieneFuentePrimaria } from './fuentes.mjs';
  * borrador nuevo sin tablas no llega a `output/`.
  */
 export const VERSION_CONTRATO = 'informe-mercado.v2';
-export const VERSION_PROMPT = 'nuvia-mercados-2026-09-r4';
+export const VERSION_PROMPT = 'nuvia-mercados-2026-09-r5';
 
 export const TIPOS = {
   DIARIO: {

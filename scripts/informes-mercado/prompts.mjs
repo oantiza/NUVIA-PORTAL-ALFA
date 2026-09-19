@@ -23,6 +23,11 @@ Está terminantemente prohibido:
 - publicar un termómetro, semáforo o puntuación de mercado;
 - ordenar instrumentos o emisores por mérito inversor;
 - dirigirse al lector diciéndole lo que debería hacer.
+VOCABULARIO: un filtro automático rechaza el informe entero si aparece cualquier forma de los verbos
+«comprar» o «vender» (comprar, compre, compramos, compren, vender, venda, vendemos, vendan),
+incluso para describir lo que hace un banco central o un inversor. Usa sustantivos o giros neutros:
+«adquisiciones de bonos», «ventas netas», «salidas de capital», «demanda», «reducción de posiciones».
+Tampoco «recomendable», «infravalorado», «sobrevalorado», «precio objetivo» ni «debería».
 Sí se pide, en cambio: describir lo ocurrido con su cifra, su unidad y su fecha,
 explicar qué variable movió a qué otra cuando la fuente lo establezca, y señalar
 con claridad lo que todavía no se sabe.`;
@@ -163,7 +168,7 @@ Devuelve ÚNICAMENTE JSON válido, sin bloque de código alrededor, con esta for
   "entradilla": "2 o 3 frases que resuman lo ocurrido y qué lo explica, sin jerga",
   "claves": [{"titulo": "idea en 3-8 palabras", "texto": "1-3 frases llanas: qué ha pasado y por qué importa para entender la economía, sin decir qué hacer", "fuentes": [1]}],
   "hechos": [{"texto": "hecho con su cifra, unidad y porqué documentado", "fecha": "cuándo ocurrió", "fuentes": [1]}],
-  "indicadores": [{"etiqueta": "nombre", "valor": "valor con unidad", "referencia": "fecha y fuente", "fuentes": [1]}],
+  "indicadores": [{"etiqueta": "nombre", "valor": "valor con unidad, SIEMPRE como texto entre comillas (p. ej. \"2,3 %\"), nunca como número", "referencia": "fecha y fuente", "fuentes": [1]}],
   ${diario ? '' : `"mercados": [
     {"grupo": "Bolsas", "filas": [{"nombre": "IBEX 35", "nivel": "15.120,4 puntos", "variacion": 0.9, "variacionAnual": 30.2, "nota": "una frase con el porqué según la fuente, o null", "fuentes": [2]}]},
     {"grupo": "Deuda pública", "filas": [{"nombre": "Bono alemán a 10 años", "nivel": "2,65 %", "variacion": -0.05, "variacionAnual": null, "nota": "en deuda, variacion es la de la rentabilidad en puntos porcentuales (1 punto básico = 0.01)", "fuentes": [3]}]},

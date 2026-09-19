@@ -18,7 +18,7 @@ import { resolve } from 'node:path';
 import { TIPOS, VERSION_CONTRATO, validarInforme, vigencia, ErrorContrato } from './contrato.mjs';
 import { informeAHtml } from './plantilla-html.mjs';
 import { sincronizarInformes } from './sincronizar.mjs';
-import { obtenerCurvas, obtenerReferencias, aplicarReferencias } from './curvas.mjs';
+import { obtenerCurvas, obtenerReferencias, aplicarReferencias, acreditarClaves } from './curvas.mjs';
 
 const CARPETA_BORRADORES = 'output/informes-borrador';
 const CARPETA_DESCARGAS = 'core/downloads/informes';
@@ -99,9 +99,10 @@ export async function publicar({ id, raiz = process.cwd(), ahora = new Date() } 
   if (informe.tipo === 'SEMANAL' && informe.periodo) {
     const [{ bloque, errores }, refs] = await Promise.all([obtenerCurvas(informe.periodo), obtenerReferencias(informe.periodo)]);
     const conRefs = refs.referencias.length ? aplicarReferencias(informe, refs.referencias) : informe;
-    const revalidado = validarInforme({ ...conRefs, ...(bloque ? { curvas: bloque } : {}) }, { tipoEsperado: bruto.tipo });
+    const revalidado = validarInforme(acreditarClaves({ ...conRefs, ...(bloque ? { curvas: bloque } : {}) }), { tipoEsperado: bruto.tipo });
     informe.fuentes = revalidado.fuentes;
     informe.mercados = revalidado.mercados;
+    informe.claves = revalidado.claves;
     if (bloque) informe.curvas = revalidado.curvas;
     avisos.push(...errores.map((e) => `Curva sin respuesta: ${e}`), ...refs.errores.map((e) => `Referencia sin respuesta: ${e}`));
   }

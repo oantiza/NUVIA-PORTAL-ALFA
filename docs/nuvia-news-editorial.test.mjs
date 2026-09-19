@@ -32,9 +32,11 @@ const validateItem = (item, label) => {
   assert.equal(item.contextMode, 'automatic-topic-context', `${label}: debe declarar el origen del contexto`);
   assert.match(item.summary, /Titular de .*medio de origen/, `${label}: no inventa un resumen del artículo`);
   iso(item?.sourcePublishedAtIso || item?.publishedAtIso, `${label}: publicación`);
-  assert.equal(item?.imageUrl, 'src/assets/social/nuvia-social-source-generated-v1.png',
-    `${label}: debe usar el activo editorial propio de NUVIA`);
-  assert.match(item?.imageProvenance || '', /Activo editorial propio de NUVIA/,
+  // 19-09-2026: una ilustración propia por tema (recursos ya aprobados en
+  // src/assets/home), nunca una fotografía de prensa rehospedada.
+  assert.match(item?.imageUrl || '', /^src\/assets\/(?:social\/nuvia-social-source-generated-v1\.png|home\/[\w-]+\.webp)$/,
+    `${label}: debe usar un activo propio de NUVIA`);
+  assert.match(item?.imageProvenance || '', /propi[ao] de NUVIA/,
     `${label}: falta documentar la procedencia de la imagen`);
 };
 
@@ -54,6 +56,9 @@ payload.secondaryEconomicNews.forEach((item, index) => validateItem(item, `Notic
 const urls = [payload.dailyEconomicNews.sourceUrl, ...payload.secondaryEconomicNews.map((item) => item.sourceUrl)];
 const titles = [payload.dailyEconomicNews, ...payload.secondaryEconomicNews]
   .map((item) => item.title.toLocaleLowerCase('es-ES'));
+const secondaryCategories = payload.secondaryEconomicNews.map((item) => item.category);
+assert.ok(new Set(secondaryCategories).size >= 2, 'Las noticias breves deben cubrir al menos dos temas distintos');
+assert.ok(new Set(payload.secondaryEconomicNews.map((item) => item.imageUrl)).size >= 2, 'Las noticias breves no repiten la misma ilustración');
 assert.equal(new Set(urls).size, 4, 'Las cuatro noticias deben tener URL distinta');
 assert.equal(new Set(titles).size, 4, 'Las cuatro noticias deben tener titular distinto');
 

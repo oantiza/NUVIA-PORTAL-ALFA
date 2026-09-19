@@ -72,6 +72,11 @@ jobs:
         # Un fallo conserva las cifras anteriores y su fecha real de comprobación.
         continue-on-error: true
 
+      - name: Actualizar cierres de los índices de referencia
+        run: node scripts/update-index-quotes.mjs
+        # Yahoo Finance sin clave. Un fallo conserva los cierres anteriores con su fecha.
+        continue-on-error: true
+
       - name: Actualizar noticias económicas
         run: node scripts/update-daily-news.mjs
         # Si los medios no responden, se conserva la selección del repositorio

@@ -3761,10 +3761,40 @@
 }
 
 .markets-index-widget {
-  height: 528px;
-  min-height: 528px;
+  height: 420px;
+  min-height: 420px;
   background: var(--nv-surface);
 }
+
+/* Cotizaciones de cierre (data/index-quotes.json): la tarjeta muestra cifras
+   sin cargar nada externo; TradingView queda plegado como gráfico en directo. */
+.markets-quotes { padding: var(--nv-space-3) var(--nv-space-5) var(--nv-space-4); }
+.markets-quotes__when { margin: 0 0 var(--nv-space-3); color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+.markets-quotes__list { margin: 0; padding: 0; list-style: none; font-variant-numeric: tabular-nums; }
+.markets-quotes__head, .markets-quotes__row { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(84px, .8fr) minmax(70px, .6fr) minmax(70px, .6fr); gap: var(--nv-space-3); align-items: center; }
+.markets-quotes__head { padding: 0 0 var(--nv-space-2); color: var(--nv-text-muted); font-size: var(--nv-label); font-weight: var(--nv-weight-label); letter-spacing: .08em; text-transform: uppercase; border-bottom: 2px solid var(--nv-line-strong); }
+.markets-quotes__head > span:not(:first-child), .markets-quotes__level, .markets-quotes__delta, .markets-quotes__ytd { text-align: right; white-space: nowrap; }
+.markets-quotes__row { padding: 12px 0; border-bottom: 1px solid var(--nv-line); }
+.markets-quotes__row:last-child { border-bottom: 0; }
+.markets-quotes__name { min-width: 0; }
+.markets-quotes__name strong { display: block; color: var(--nv-text); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); }
+.markets-quotes__name > span { display: block; color: var(--nv-text-muted); font-size: 12px; line-height: 1.4; }
+.markets-quotes__level { color: var(--nv-text); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); }
+.markets-quotes__delta, .markets-quotes__ytd { font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); color: var(--nv-text-muted); }
+.markets-quotes__delta.is-up, .markets-quotes__ytd.is-up { color: var(--nv-positive); }
+.markets-quotes__delta.is-down, .markets-quotes__ytd.is-down { color: var(--nv-negative); }
+.markets-quotes__note { margin: var(--nv-space-3) 0 0; color: var(--nv-text-muted); font-size: 12px; line-height: 1.5; }
+.markets-quotes__note a { color: var(--nv-text-link); }
+.markets-index-card__live-panel { margin-top: auto; border-top: 1px solid var(--nv-line); }
+.markets-index-card__live-panel > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; padding: var(--nv-space-2) var(--nv-space-5); color: var(--nv-text-link); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-action); }
+.markets-index-card__live-panel > summary::marker { color: var(--nv-text-muted); }
+.markets-overview-section { background: linear-gradient(180deg, var(--nv-surface-page) 0%, var(--nv-surface-technical) 100%); }
+/* Informes al pie de Noticias: una franja compacta, no dos tarjetas grandes. */
+.nv-reports-strip .nv-reports-grid { gap: var(--nv-space-4); }
+.nv-reports-strip .nv-report-card { padding: var(--nv-space-5) var(--nv-space-6); border-top-width: 4px; box-shadow: var(--nv-shadow-sm); }
+.nv-reports-strip .nv-report-card h3 { margin: var(--nv-space-2) 0 var(--nv-space-2); font-size: 22px; }
+.nv-reports-strip .nv-report-card > p { display: none; }
+.nv-reports-strip .nv-report-card__bottom { padding-top: var(--nv-space-3); }
 
 .markets-index-widget tv-market-overview { display: block; width: 100%; height: 100%; }
 
@@ -3968,6 +3998,9 @@
   overflow-wrap: anywhere;
 }
 
+/* La atribución («Titular de X. Consulta la noticia completa…») sigue en los
+   datos y en el diálogo; en la tarjeta ya la dicen el medio y «Ampliar». */
+.markets-secondary-card__context, .markets-lead-news__summary { display: none; }
 .markets-secondary-card__context {
   flex: 1;
   margin: 0 0 var(--nv-space-3);

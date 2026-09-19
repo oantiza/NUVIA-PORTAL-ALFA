@@ -10,7 +10,7 @@
       "fechaIso": "2026-09-14T00:00:00.000Z",
       "generadoIso": "2026-09-14T06:32:42.129Z",
       "titular": "La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil",
-      "entradilla": "El Banco Central Europeo ha elevado los tipos de interés al 2,50 % debido a las presiones inflacionistas de los altos costes energéticos. En Estados Unidos, la tasa subyacente de inflación ha avanzado un 0,3 % mensual, lo que aumenta la probabilidad de nuevas alzas en las tasas del país.",
+      "entradilla": "El Banco Central Europeo ha elevado los tipos de interés al 2,50 % debido a las presiones inflacionistas de los altos costes energéticos. En Estados Unidos, la tasa subyacente de inflación ha avanzado un 0,3 % mensual, y los contratos de futuros descuentan otra subida de tipos en el país.",
       "hechos": [
         {
           "texto": "El Banco Central Europeo elevó sus tres tipos oficiales en 25 puntos básicos y situó la facilidad de depósito en el 2,50 %, aplicable desde el 16 de septiembre, ante las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
@@ -20,14 +20,14 @@
           ]
         },
         {
-          "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto, acelerándose frente al dato anterior e incrementando hasta el 90,4 % la probabilidad implícita de una subida de tipos.",
+          "texto": "La inflación subyacente de Estados Unidos se elevó un 0,3 % mensual en agosto, acelerándose frente al dato anterior; tras la publicación, los contratos de futuros descuentan una subida de tipos.",
           "fecha": "2026-09-11",
           "fuentes": [
             6
           ]
         },
         {
-          "texto": "El índice IBEX 35 avanzó un 0,91 % por el impulso de los valores de mediana y gran capitalización y el cierre de posiciones cortas de fin de semana.",
+          "texto": "El índice IBEX 35 avanzó un 0,91 % por el impulso de los valores de mediana y gran capitalización; con todo, cerró la semana un 1,06 % por debajo del viernes anterior.",
           "fecha": "2026-09-11",
           "fuentes": [
             1
@@ -74,7 +74,7 @@
           "hora": "09:00",
           "region": "España",
           "que": "Índice de Producción de la Construcción de julio de 2026",
-          "anterior": "Serie mensual anterior",
+          "anterior": null,
           "porQueImporta": "Mide el volumen de actividad de edificación y obra civil en el país.",
           "fuentes": []
         },
@@ -83,7 +83,7 @@
           "hora": "11:00",
           "region": "Eurozona",
           "que": "Datos de Comercio Internacional de Bienes de julio de 2026",
-          "anterior": "Saldo de junio de 2026",
+          "anterior": null,
           "porQueImporta": "Permite conocer la balanza comercial y el impacto exterior en la economía del área.",
           "fuentes": []
         },
@@ -101,7 +101,7 @@
           "hora": "11:00",
           "region": "Eurozona",
           "que": "Índice Armonizado de Precios de Consumo final de agosto de 2026",
-          "anterior": "Dato preliminar de agosto",
+          "anterior": null,
           "porQueImporta": "El Banco Central Europeo vigila de cerca esta métrica para calibrar su objetivo del 2,0 %.",
           "fuentes": []
         }
@@ -111,7 +111,7 @@
           "titulo": "Qué ha pasado",
           "parrafos": [
             "El último cierre de los mercados ha mostrado diferencias claras según la región. Las bolsas de Estados Unidos y el IBEX 35 español terminaron el viernes con repuntes cercanos al uno por ciento. Por el contrario, los selectivos asiáticos sufrieron caídas pronunciadas, como el descenso del 1,93 % registrado en el Nikkei 225 de Japón, perjudicado por el mal tono del sector tecnológico y una moneda local más fuerte.",
-            "En los mercados de energía y volatilidad, los precios de los futuros del petróleo suavizaron su escalada tras rozar los 110 dólares por barril a causa de las tensiones en Oriente Medio. Este retroceso técnico en los combustibles ayudó a dar confianza a las bolsas y provocó una caída del 11,21 % en el índice VIX de volatilidad."
+            "En los mercados de energía y volatilidad, los precios de los futuros del petróleo suavizaron su escalada tras rozar los 110 dólares por barril a causa de las tensiones en Oriente Medio. Este retroceso del crudo ayudó a dar confianza a las bolsas y provocó una caída del 11,21 % en el índice VIX de volatilidad."
           ],
           "fuentes": [
             1,
@@ -124,7 +124,7 @@
           "titulo": "Por qué importa",
           "parrafos": [
             "Los costes energéticos siguen condicionando la política monetaria. El Banco Central Europeo justificó la subida de sus tipos oficiales hasta el 2,50 % de facilidad de depósito por unas presiones inflacionistas que asocia al conflicto en Oriente Próximo, y prevé que la inflación siga por encima del objetivo del 2 % durante un período prolongado.",
-            "En Estados Unidos la inflación no cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. Como respuesta, los mercados de futuros otorgan cerca de un 90 % de probabilidad a que la Reserva Federal vuelva a encarecer los préstamos con otra alza de 25 puntos básicos."
+            "En Estados Unidos la inflación no cede al ritmo esperado: el índice general subió un 0,4 % mensual en agosto y el subyacente un 0,3 %, con una tasa anual del 3,4 %. Tras el dato, los contratos de futuros descuentan que la Reserva Federal vuelva a encarecer el dinero con otra subida de 25 puntos básicos."
           ],
           "fuentes": [
             5,
@@ -188,18 +188,18 @@
         "hasta": "2026-09-14",
         "corteIso": "2026-09-14T06:32:42.128Z"
       },
-      "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
+      "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
       "claves": [
         {
           "titulo": "Nueva subida de tipos europea",
-          "texto": "El Banco Central Europeo ha incrementado sus tres tipos de interes oficiales en 25 puntos básicos, con efecto desde el 16 de septiembre. La decisión responde a las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
+          "texto": "El Banco Central Europeo ha incrementado sus tres tipos de interés oficiales en 25 puntos básicos, con efecto desde el 16 de septiembre. La decisión responde a las presiones inflacionistas asociadas al conflicto en Oriente Próximo.",
           "fuentes": [
             5
           ]
         },
         {
           "titulo": "La inflación estadounidense repunta",
-          "texto": "El índice de precios de consumo de Estados Unidos aumentó un 0,4 % en agosto frente al mes anterior. Este avance fortalece las expectativas del mercado de una nueva subida de tipos por parte del banco central estadounidense.",
+          "texto": "El índice de precios de consumo de Estados Unidos aumentó un 0,4 % en agosto frente al mes anterior. Tras el dato, los contratos de futuros descuentan una nueva subida de tipos por parte del banco central estadounidense.",
           "fuentes": [
             6
           ]
@@ -224,10 +224,6 @@
         {
           "termino": "Facilidad de depósito",
           "definicion": "El tipo de interés que un banco central paga a las entidades financieras privadas por guardar el dinero sobrante de estas durante un día."
-        },
-        {
-          "termino": "Posiciones cortas",
-          "definicion": "Estrategia financiera en la que el inversor apuesta a que el precio de un activo va a caer para obtener un beneficio de esa bajada."
         },
         {
           "termino": "Índice VIX",
@@ -337,7 +333,7 @@
           "hora": "11:00",
           "region": "Alemania",
           "que": "Índice ZEW de Confianza Inversora",
-          "anterior": "Agosto 2026",
+          "anterior": null,
           "porQueImporta": "Mide las expectativas de los analistas financieros sobre la mayor economía europea.",
           "fuentes": []
         },
@@ -372,9 +368,9 @@
           "fecha": "2026-09-18",
           "hora": null,
           "region": "Global",
-          "que": "Cuádruple Hora Bruja",
-          "anterior": "Vencimiento de junio 2026",
-          "porQueImporta": "Concentra elevados volúmenes operativos y reajustes técnicos de posiciones en los mercados.",
+          "que": "Vencimiento trimestral de futuros y opciones",
+          "anterior": null,
+          "porQueImporta": "Concentra un volumen de negociación muy alto porque muchos inversores cierran o renuevan posiciones a la vez.",
           "fuentes": []
         }
       ],
@@ -404,7 +400,7 @@
           "parrafos": [
             "Las tensiones de suministro llevaron el barril de petróleo Brent a rozar los 110 dólares a mediados de semana, cerrando después por debajo de los 105 dólares tras el anuncio de contactos diplomáticos. Este choque en las materias primas se trasladó de inmediato a los mercados de renta fija soberana, castigando los precios de los bonos.",
             "En consecuencia, la rentabilidad del bono estadounidense a diez años (que se mueve de forma inversa a su precio) superó momentáneamente la barrera del 5 %. Los inversores reaccionaron así al encarecimiento energético y a la masiva demanda de capital corporativo necesaria para financiar infraestructuras tecnológicas.",
-            "En las bolsas mundiales, los números rojos dominaron el cierre semanal. Mientras los índices europeos encontraron cierto soporte en las entidades bancarias, favorecidas por unos tipos de interés más altos, el mercado asiático sufrió descensos notables ante la caída de empresas fabricantes de semiconductores en Japón."
+            "En las bolsas mundiales, la semana cerró con caídas: el IBEX 35 perdió un 1,06 % pese al rebote del viernes, el S&P 500 un 0,68 %, el DAX un 1,83 % y el Nikkei un 1,55 %. Mientras los índices europeos encontraron cierto soporte en las entidades bancarias, favorecidas por unos tipos de interés más altos, el mercado asiático sufrió descensos notables ante la caída de empresas fabricantes de semiconductores en Japón."
           ],
           "fuentes": [
             6
@@ -414,7 +410,7 @@
           "titulo": "Qué se publica ahora",
           "parrafos": [
             "La atención económica se desplaza hacia Estados Unidos, donde la Reserva Federal comunicará su esperada decisión sobre los tipos de interés y actualizará sus proyecciones de crecimiento. En Europa, los operadores vigilarán los datos definitivos de inflación de agosto, esenciales para calibrar el traslado de costes energéticos.",
-            "Finalmente, el cierre de la semana bursátil estará marcado por el fenómeno conocido como «cuádruple hora bruja». El vencimiento simultáneo de los contratos de derivados financieros suele generar fuertes volúmenes de negociación, provocando importantes reajustes técnicos en las carteras de los operadores institucionales."
+            "Finalmente, el viernes coincide el vencimiento trimestral de los contratos de futuros y opciones sobre índices y acciones. Ese día suele concentrar un volumen de negociación muy alto, porque muchos inversores cierran o renuevan sus posiciones a la vez."
           ],
           "fuentes": []
         }
@@ -467,6 +463,10 @@
         {
           "titulo": "EIA · Europe Brent Spot Price FOB (dólares por barril)",
           "url": "https://www.eia.gov/dnav/pet/hist/RBRTEd.htm"
+        },
+        {
+          "titulo": "Tesoro de EE. UU. · Daily Treasury Par Yield Curve Rates",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve"
         }
       ],
       "generacion": {
@@ -485,7 +485,7 @@
         "hasta": "2026-09-14",
         "corteIso": "2026-09-14T06:32:41.343Z"
       },
-      "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
+      "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
       "claves": [
         {
           "titulo": "El BCE sube los tipos",
@@ -503,13 +503,17 @@
         },
         {
           "titulo": "Tensión en el mercado energético",
-          "texto": "El crudo Brent rozó los 110 dólares por barril tras ataques en el estrecho de Ormuz, provocando también fuertes subidas en el gas natural europeo. Los operadores recogieron beneficios el viernes ante el inicio de contactos diplomáticos.",
-          "fuentes": []
+          "texto": "El crudo Brent rozó los 110 dólares por barril tras ataques en el estrecho de Ormuz, provocando también fuertes subidas en el gas natural europeo. El viernes el precio cedió parte de la subida tras el anuncio de contactos diplomáticos.",
+          "fuentes": [
+            12
+          ]
         },
         {
           "titulo": "La deuda roza el 5 %",
           "texto": "El rendimiento del bono del Tesoro estadounidense a diez años alcanzó brevemente el 5 % en respuesta al choque energético y al alto volumen de emisiones estatales y corporativas, marcando máximos intradiarios significativos.",
-          "fuentes": []
+          "fuentes": [
+            13
+          ]
         }
       ],
       "mercados": [
@@ -639,8 +643,8 @@
           "definicion": "Conjunto de instrumentos de deuda (como los bonos) emitidos por el Gobierno de un país para financiar sus gastos públicos."
         },
         {
-          "termino": "Cuádruple hora bruja",
-          "definicion": "Fecha trimestral en la que expiran simultáneamente distintos tipos de contratos financieros, elevando temporalmente el volumen de operaciones."
+          "termino": "Vencimiento de derivados",
+          "definicion": "Fecha en la que expiran a la vez futuros y opciones sobre índices y acciones; cada tercer viernes de marzo, junio, septiembre y diciembre."
         }
       ],
       "vigencia": {

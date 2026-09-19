@@ -1,0 +1,87 @@
+{
+  "checkedAt": "2026-09-19T06:58:36.845Z",
+  "fuente": {
+    "name": "Yahoo Finance",
+    "url": "https://finance.yahoo.com/markets/world-indices/"
+  },
+  "indices": [
+    {
+      "id": "ibex",
+      "symbol": "^IBEX",
+      "name": "IBEX 35",
+      "region": "España",
+      "lectura": "Las 35 mayores empresas de la bolsa española.",
+      "cierre": 19513.8,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 19831.8,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": -1.6,
+      "variacionAnual": 11.56
+    },
+    {
+      "id": "stoxx50",
+      "symbol": "^STOXX50E",
+      "name": "EURO STOXX 50",
+      "region": "Eurozona",
+      "lectura": "Las 50 grandes empresas de la zona euro.",
+      "cierre": 6236.2,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 6322.9,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": -1.37,
+      "variacionAnual": 5.28
+    },
+    {
+      "id": "dax",
+      "symbol": "^GDAXI",
+      "name": "DAX 40",
+      "region": "Alemania",
+      "lectura": "Las 40 mayores empresas alemanas.",
+      "cierre": 25304.06,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 25716.71,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": -1.6,
+      "variacionAnual": 3.12
+    },
+    {
+      "id": "spx",
+      "symbol": "^GSPC",
+      "name": "S&P 500",
+      "region": "Estados Unidos",
+      "lectura": "Las 500 mayores empresas de Estados Unidos.",
+      "cierre": 7650.5,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 7637.76,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": 0.17,
+      "variacionAnual": 11.55
+    },
+    {
+      "id": "nasdaq",
+      "symbol": "^IXIC",
+      "name": "Nasdaq Composite",
+      "region": "Estados Unidos",
+      "lectura": "Bolsa estadounidense con peso de la tecnología.",
+      "cierre": 26522.54,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 26418.3,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": 0.39,
+      "variacionAnual": 14.15
+    },
+    {
+      "id": "nikkei",
+      "symbol": "^N225",
+      "name": "Nikkei 225",
+      "region": "Japón",
+      "lectura": "Las 225 grandes empresas de la bolsa de Tokio.",
+      "cierre": 65018.95,
+      "fecha": "2026-09-18",
+      "cierreAnterior": 64136.25,
+      "fechaAnterior": "2026-09-17",
+      "variacionDia": 1.38,
+      "variacionAnual": 25.44
+    }
+  ]
+}

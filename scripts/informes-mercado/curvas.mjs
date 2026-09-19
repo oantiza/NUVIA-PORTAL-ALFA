@@ -212,6 +212,33 @@ export function aplicarReferencias(informe, referencias) {
   return { ...informe, fuentes, mercados };
 }
 
+/**
+ * Una clave sin fuente que habla del petróleo, del cambio euro/dólar o de la
+ * deuda pública a diez años queda acreditada con el publicador de primera mano
+ * que ya está en la edición (EIA, BCE, Tesoro). Solo cuando no tiene ninguna.
+ */
+const ACREDITACIONES = [
+  [/brent|petr[oó]leo|crudo|barril/i, /eia\.gov/],
+  [/euro.*d[oó]lar|d[oó]lar.*euro|eur\/usd/i, /euro_reference_exchange_rates/],
+  [/bono.*(tesoro|estadounidense|ee\.? ?uu|estados unidos)|treasury|deuda.*(estadounidense|ee\.? ?uu)/i, /treasury\.gov/],
+  [/bono.*(alem|bund)|deuda.*(europea|alem)|\bbund\b/i, /euro_area_yield_curves|bundesbank\.de/],
+];
+export function acreditarClaves(informe) {
+  const fuentes = [...informe.fuentes];
+  if (informe.curvas) {
+    for (const curva of informe.curvas.curvas) {
+      if (!fuentes.some((f) => f.url === curva.fuente.url)) fuentes.push({ titulo: curva.fuente.titulo, url: curva.fuente.url });
+    }
+  }
+  const claves = (informe.claves ?? []).map((clave) => {
+    if (clave.fuentes?.length) return clave;
+    const texto = `${clave.titulo} ${clave.texto}`;
+    const n = ACREDITACIONES.filter(([patron]) => patron.test(texto)).map(([, dominio]) => fuentes.findIndex((f) => dominio.test(f.url)) + 1).filter(Boolean);
+    return n.length ? { ...clave, fuentes: [...new Set(n)] } : clave;
+  });
+  return { ...informe, fuentes, claves };
+}
+
 export async function obtenerReferencias({ desde, hasta }) {
   const resultados = await Promise.allSettled([referenciaEurUsd({ desde, hasta }), referenciaBrent({ desde, hasta })]);
   return {
@@ -241,8 +268,9 @@ export async function incorporarCurvas({ id, raiz = process.cwd() }) {
   if (!bloque && !refs.referencias.length) throw new Error(`Ningún publicador ha respondido: ${errores.join(' · ')}`);
   let entrada = refs.referencias.length ? aplicarReferencias(edicion, refs.referencias) : edicion;
   if (bloque) entrada = { ...entrada, curvas: bloque };
+  entrada = acreditarClaves(entrada);
   const informe = validarInforme(entrada, { tipoEsperado: tipo });
-  indice.ediciones[tipo] = { ...edicion, fuentes: entrada.fuentes, mercados: entrada.mercados, ...(bloque ? { curvas: informe.curvas } : {}) };
+  indice.ediciones[tipo] = { ...edicion, fuentes: entrada.fuentes, mercados: entrada.mercados, claves: entrada.claves, ...(bloque ? { curvas: informe.curvas } : {}) };
   await writeFile(rutaIndice, `${JSON.stringify(indice, null, 2)}\n`, 'utf8');
   await mkdir(resolve(raiz, 'core/downloads/informes'), { recursive: true });
   await writeFile(resolve(raiz, `core/downloads/informes/${id}.html`), informeAHtml(validarInforme(indice.ediciones[tipo], { tipoEsperado: tipo })), 'utf8');

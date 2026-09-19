@@ -59,7 +59,21 @@ const LENGUAJE_LLANO = `ESTILO, SIN EXCEPCIONES.
   publica en los próximos días. Sin relleno ni frases hechas («cautela», «incertidumbre»).
 - Los porcentajes de la tabla de mercados van como NÚMERO (0.8 significa +0,8 %; -1.25 significa
   -1,25 %), sin el signo % y con punto decimal. Si un dato no está en la base factual con su
-  fuente, pon null y escribe «Sin contrastar» en el nivel: nunca lo estimes.`;
+  fuente, pon null y escribe «Sin contrastar» en el nivel: nunca lo estimes.
+- Expectativas: no escribas probabilidades ni «aumenta la probabilidad de». Si el mercado descuenta
+  algo, dilo como hecho atribuido y sin cifra: «los contratos de futuros descuentan otra subida».
+- Jerga vetada en el texto (ni con glosario): «posiciones cortas», «recogida de beneficios»,
+  «retroceso técnico», «reajustes técnicos», «operadores institucionales», «hora bruja» (di
+  «vencimiento trimestral de derivados» y explícalo), «selectivo», «números rojos». Si un
+  término técnico es imprescindible, explícalo en la misma frase; el glosario es un apoyo, no
+  una excusa.
+- Agenda: «anterior» es el DATO anterior con su cifra y unidad («+0,3 % mensual en julio»); si no lo
+  conoces, pon null. Nunca rellenes con «serie anterior», «saldo de junio» o «vencimiento de junio».
+- Coherencia entre ediciones: si un hecho de la sesión contrasta con el balance del período (una
+  subida el viernes en una semana de caídas), dilo en la misma frase.
+- Tildes y ortografía cuidadas: «interés», «índice», «período».
+- «limitaciones» es una frase para el lector, no una nota interna: qué fecha de corte tiene el
+  informe y qué cifras no se han podido contrastar con su publicador.`;
 
 export function promptInvestigacion(tipo, hoy, { insistirOficiales = false } = {}) {
   const config = TIPOS[tipo];
@@ -159,7 +173,7 @@ Devuelve ÚNICAMENTE JSON válido, sin bloque de código alrededor, con esta for
   "agenda": [{"fecha": "AAAA-MM-DD", "hora": "14:30 o null", "region": "EEUU|Eurozona|España|Reino Unido|Japón|China|Global", "que": "qué se publica o quién comparece", "anterior": "dato anterior o null", "porQueImporta": "una frase llana o null", "fuentes": [1]}],
   "cuerpo": [{"titulo": "título de sección", "parrafos": ["párrafo"], "fuentes": [1]}],
   "glosario": [{"termino": "término técnico que aparece en el informe", "definicion": "explicación en una o dos frases para quien no sabe finanzas"}],
-  "limitaciones": "Cobertura, datos sin contrastar y posibles fuentes con contenido mutable.",
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
   "generacion": {"versionPrompt": "${VERSION_PROMPT}"}
 }
 

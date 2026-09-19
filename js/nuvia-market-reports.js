@@ -24,7 +24,8 @@
     const hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Madrid' }).format(new Date());
     document.querySelectorAll('[data-report-age]').forEach((el) => {
       const dias = Math.floor((Date.parse(`${hoy}T12:00:00Z`) - Date.parse(`${el.dataset.reportAge}T12:00:00Z`)) / 86400000);
-      const texto = dias < 0 ? 'Edición fechada' : dias > (el.dataset.reportType === 'SEMANAL' ? 10 : 2) ? 'Edición de archivo' : 'Última edición';
+      // «Archivo» sonaba a documento viejo: la edición vigente es siempre la última publicada.
+      const texto = dias < 0 ? 'Edición fechada' : dias > (el.dataset.reportType === 'SEMANAL' ? 10 : 2) ? (el.dataset.reportType === 'SEMANAL' ? 'Última semana publicada' : 'Última sesión publicada') : 'Última edición';
       if (el.textContent !== texto) el.textContent = texto;
     });
   };

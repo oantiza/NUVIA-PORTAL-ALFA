@@ -5,6 +5,18 @@ import { eligibleNews, newsAttribution, CONTEXT_NOTICE } from './news-editorial.
 const root = resolve(process.cwd());
 const dataPath = resolve(root, 'data/daily-content.json');
 const editorialImageUrl = 'src/assets/social/nuvia-social-source-generated-v1.png';
+// Una ilustración distinta por tema, tomada de los recursos propios ya
+// aprobados en el portal (sin datos ni marcas): evita tres tarjetas con la
+// misma foto. Todas son decorativas.
+const categoryImages = {
+  'Vivienda y financiación': 'src/assets/home/card-vivienda.webp',
+  'Inflación y coste de vida': 'src/assets/home/card-ahorro-inversion.webp',
+  'Tipos de interés y deuda': 'src/assets/home/economia-card-empresas-20260918.webp',
+  'Empleo e ingresos': 'src/assets/home/resource-family-savings.webp',
+  'Economía y mercados': 'src/assets/home/economia-card-mercados-20260918.webp',
+};
+const imageFor = (category) => categoryImages[category] || editorialImageUrl;
+const IMAGE_PROVENANCE = 'Ilustración propia de NUVIA asociada al tema de la noticia; decorativa, sin relación con el artículo enlazado.';
 
 const feeds = [
   {
@@ -17,7 +29,7 @@ const feeds = [
   },
 ];
 
-const excludedPattern = /\b(f[uú]tbol|tenis|motor|moda|viajes|televisi[oó]n|cine)\b/i;
+const excludedPattern = /\b(bitcoin|cripto\w*|ethereum|f[uú]tbol|tenis|motor|moda|viajes|televisi[oó]n|cine)\b/i;
 const excludedUrlPattern = /\/(?:opinion|firmas|blogs?|consultorio)\//i;
 
 function relevanceScore(title) {
@@ -26,7 +38,7 @@ function relevanceScore(title) {
   if (/\b(inflaci[oó]n|tipos?|bce|fed|eur[ií]bor|pib|paro|empleo|salarios?|pensiones?|jubilaci[oó]n|hipotecas?|viviendas?|deuda|bonos?|impuestos?|fiscalidad)\b/.test(normalized)) score += 8;
   if (/\b(econom[ií]a|mercados?|bolsa|ibex|precios?|energ[ií]a|petr[oó]leo|crecimiento|beneficios?|consumo|ahorro|inversi[oó]n|d[oó]lar|euro)\b/.test(normalized)) score += 4;
   if (/\b(españa|europea?|europeo|zona euro)\b/.test(normalized)) score += 2;
-  if (/\b(valores? para invertir|recomendaciones?|apuestas?|rey de)\b/.test(normalized)) score -= 4;
+  if (/\b(valores? para invertir|gu[ií]a de valores|recomendaciones?|apuestas?|rey de|mejores? (?:acciones|fondos|valores))\b/.test(normalized)) score -= 8;
   return score;
 }
 
@@ -239,10 +251,32 @@ const secondaryCandidates = candidates.filter((candidate) => (
   && titleSimilarity(candidate.title, selected.title) < 0.45
 ));
 
+// Variedad antes que puntuación: primero una noticia por tema distinto (y
+// distinto del destacado), alternando medios; si no llega a tres, se completa
+// con las mejores restantes. Así no salen dos «Lagarde» seguidas.
+const usedCategories = new Set([editorial.category]);
+const pick = (candidate) => preparedSecondaryNews.push({ candidate, editorial: editorialFor(candidate.title) });
+const repeated = (candidate) => preparedSecondaryNews.some((item) => titleSimilarity(item.candidate.title, candidate.title) >= 0.35);
 for (const candidate of secondaryCandidates) {
   if (preparedSecondaryNews.length === 3) break;
-  if (preparedSecondaryNews.some((item) => titleSimilarity(item.candidate.title, candidate.title) >= 0.45)) continue;
-  preparedSecondaryNews.push({ candidate, editorial: editorialFor(candidate.title) });
+  const category = editorialFor(candidate.title).category;
+  const lastSource = preparedSecondaryNews[preparedSecondaryNews.length - 1]?.candidate.sourceName ?? selected.sourceName;
+  if (usedCategories.has(category) || candidate.sourceName === lastSource || repeated(candidate)) continue;
+  usedCategories.add(category);
+  pick(candidate);
+}
+for (const candidate of secondaryCandidates) {
+  if (preparedSecondaryNews.length === 3) break;
+  if (preparedSecondaryNews.some((item) => item.candidate.url === candidate.url) || repeated(candidate)) continue;
+  const category = editorialFor(candidate.title).category;
+  if (usedCategories.has(category) && secondaryCandidates.some((c) => !usedCategories.has(editorialFor(c.title).category) && !repeated(c) && !preparedSecondaryNews.some((item) => item.candidate.url === c.url))) continue;
+  usedCategories.add(category);
+  pick(candidate);
+}
+for (const candidate of secondaryCandidates) {
+  if (preparedSecondaryNews.length === 3) break;
+  if (preparedSecondaryNews.some((item) => item.candidate.url === candidate.url) || repeated(candidate)) continue;
+  pick(candidate);
 }
 
 if (preparedSecondaryNews.length < 3) {
@@ -257,9 +291,9 @@ const secondaryNews = preparedSecondaryNews.map(({ candidate, editorial: itemEdi
     title: candidate.title,
     summary: newsAttribution(candidate.sourceName),
     contextMode: 'automatic-topic-context',
-    imageUrl: editorialImageUrl,
+    imageUrl: imageFor(itemEditorial.category),
     imageAlt: '',
-    imageProvenance: 'Activo editorial propio de NUVIA; imagen decorativa generada y documentada en src/assets/social/README.md.',
+    imageProvenance: IMAGE_PROVENANCE,
     body: [
       CONTEXT_NOTICE,
       itemEditorial.context,
@@ -295,9 +329,9 @@ existing.dailyEconomicNews = {
   selectedAt: checkedAt.toISOString(),
   sourceName: selected.sourceName,
   sourceUrl: selected.url,
-  imageUrl: editorialImageUrl,
+  imageUrl: imageFor(editorial.category),
   imageAlt: '',
-  imageProvenance: 'Activo editorial propio de NUVIA; imagen decorativa generada y documentada en src/assets/social/README.md.',
+  imageProvenance: IMAGE_PROVENANCE,
   title: selected.title,
   summary: newsAttribution(selected.sourceName),
   contextMode: 'automatic-topic-context',

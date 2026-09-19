@@ -1,0 +1,282 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-19",
+  "fecha": "2026-09-19",
+  "fechaIso": "2026-09-19T00:00:00.000Z",
+  "generadoIso": "2026-09-19T09:55:27.064Z",
+  "titular": "El Banco de Japón sube los tipos de interés a máximos de treinta y un años y eleva el coste de financiación",
+  "entradilla": "La autoridad monetaria japonesa ha elevado sus tipos de interés al 1,25 %, el nivel más alto desde 1995. Esta decisión, unida al vencimiento simultáneo de múltiples contratos financieros, ha generado descensos en las bolsas globales y ha encarecido la deuda soberana.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 registró un descenso diario del 1,60 % hasta los 19.513,80 puntos, arrastrado por el vencimiento de derivados y las caídas en el sector de telecomunicaciones.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        1,
+        9
+      ]
+    },
+    {
+      "texto": "El Banco de Japón aumentó el tipo de interés de referencia en 25 puntos básicos, fijándolo en el 1,25 % con siete votos a favor y dos en contra.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "La rentabilidad del bono del Tesoro estadounidense a 10 años subió al 5,01 %, encareciendo la financiación a largo plazo en la primera economía mundial.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "texto": "El barril de petróleo Brent bajó un 0,91 % hasta los 103,87 dólares debido a la reapertura de ciertas rutas logísticas de transporte de crudo.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "texto": "Las acciones de Telefónica cayeron un 4,77 % por la inquietud inversora ante la presión competitiva de las nuevas constelaciones de banda ancha satelital.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19.513,80 puntos",
+      "referencia": "2026-09-18 (BME)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "DAX",
+      "valor": "25.296,44 puntos",
+      "referencia": "2026-09-18 (Deutsche Börse)",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "Sin contrastar por restricción de acceso",
+      "referencia": "2026-09-18",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Tipo de interés (Japón)",
+      "valor": "1,25 %",
+      "referencia": "2026-09-18 (BOJ)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años",
+      "valor": "5,01 %",
+      "referencia": "2026-09-18 (US Treasury)",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "103,87 dólares/barril",
+      "referencia": "2026-09-18 (ICE)",
+      "fuentes": [
+        9
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-21",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Indicadores de Actividad del Sector Servicios (IASS)",
+      "anterior": null,
+      "porQueImporta": "Cuantifica la facturación y la creación de empleo en las ramas del sector terciario.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-21",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Cifra de Negocios en la Industria (ICN)",
+      "anterior": null,
+      "porQueImporta": "Mide el ritmo de entrada de pedidos e ingresos de la actividad manufacturera nacional.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-21",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Convocatoria de Operaciones Regulares de Financiación del Eurosistema",
+      "anterior": null,
+      "porQueImporta": "Regula la provisión ordinaria de liquidez a las entidades bancarias del área del euro.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-21",
+      "hora": null,
+      "region": "Global",
+      "que": "Precios de carburantes e importaciones energéticas de la Unión Europea",
+      "anterior": null,
+      "porQueImporta": "Mide la velocidad de traslado de las cotizaciones internacionales a los costes energéticos.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-22",
+      "hora": null,
+      "region": "España",
+      "que": "Liquidación de Obligaciones del Estado adjudicadas en subasta",
+      "anterior": null,
+      "porQueImporta": "Supone la entrada material de fondos en la tesorería del Estado.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-22",
+      "hora": "11:30",
+      "region": "Eurozona",
+      "que": "Adjudicación de Operaciones Principales de Financiación",
+      "anterior": null,
+      "porQueImporta": "Informa del volumen final de liquidez demandado por el sistema crediticio a la tasa rectora.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La jornada del 18 de septiembre de 2026 estuvo marcada por un descenso generalizado en los mercados de renta variable europeos. El índice español IBEX 35 cerró en 19.513,80 puntos tras registrar una caída diaria, influenciada por el vencimiento trimestral de derivados (contratos financieros cuyo valor depende de otro activo). Este suceso aumentó de forma considerable el volumen negociado y las oscilaciones en los precios.",
+        "En el ámbito monetario, el Banco de Japón decidió elevar su tipo de interés de referencia en 25 puntos básicos (un punto básico equivale a la centésima parte de un punto porcentual) hasta situarlo en el 1,25 %. Esta medida, que representa el nivel más alto de la institución desde abril de 1995, generó una revaluación del yen frente al euro y al dólar, lo que afectó a la cotización de los grandes exportadores japoneses."
+      ],
+      "fuentes": [
+        1,
+        4,
+        9
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Los movimientos de esta sesión reflejan un aumento en los costes de endeudamiento a nivel global. El rendimiento del bono estadounidense a 10 años (un título de deuda emitido por un Estado) alcanzó el 5,01 % el 18 de septiembre de 2026. Este encarecimiento de la deuda soberana afecta directamente a las condiciones de crédito para empresas y familias, restando incentivos a la asunción de riesgo en las bolsas frente a las alternativas de renta fija.",
+        "En el sector de las materias primas, la compañía Saudi Aramco canceló la entrega de ciertos cargamentos de crudo a Europa previstos para octubre de 2026 por problemas en sus instalaciones. Aunque el petróleo Brent cerró el 18 de septiembre con un descenso hasta los 103,87 dólares por barril debido a la apertura de rutas alternativas, la interrupción del suministro directo sostiene la presión sobre los costes de la energía, un factor esencial para la evolución futura de la inflación."
+      ],
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "El próximo lunes 21 de septiembre de 2026, el Instituto Nacional de Estadística difundirá los indicadores de actividad del sector servicios y la cifra de negocios en la industria correspondientes a julio. Ambos datos resultan fundamentales para evaluar el ritmo de actividad económica, la fortaleza del consumo interno y el nivel de demanda industrial en el inicio del tercer trimestre del año."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/mercados-y-cotizaciones/estadisticas/boletines-e-informes/valencia.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/zertifikate"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Boerse-Stuttgart-Bank-of-Japan-erhoeht-auf-31-Jahres-Hoch-90bfeac3-fb69-4b0a-ae39-b1d8b3cc6ed5"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse/bitcoin"
+    },
+    {
+      "titulo": "cincodias.elpais.com",
+      "url": "https://cincodias.elpais.com/mercados/bolsa/ibex-35/"
+    },
+    {
+      "titulo": "elperiodicodeceuta.es",
+      "url": "https://www.elperiodicodeceuta.es/cierre-ibex-35-bolsa-espana-hoy-viernes-18-de-septiembre-de-2026/"
+    },
+    {
+      "titulo": "elboletin.com",
+      "url": "https://www.elboletin.com/las-bolsas-europeas-cierran-con-fuertes-caidas-los-bonos-y-el-petroleo-devuelven-la-presion-al-mercado/"
+    },
+    {
+      "titulo": "caixabankresearch.com",
+      "url": "https://www.caixabankresearch.com/en/pulso-economico-semanal/semana-del-10-al-18-septiembre-2026?utm_source=newsletter&utm_medium=email&utm_campaign=pulso_economico-2026-09-18&"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-19",
+    "hasta": "2026-09-19",
+    "corteIso": "2026-09-19T09:55:27.063Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Subida de tipos en Japón",
+      "texto": "El Banco de Japón elevó su tipo de interés oficial al 1,25 % el 18 de septiembre de 2026, el nivel más alto desde 1995. Esta medida impactó en el mercado de divisas e impulsó caídas globales al encarecer el coste del dinero.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "titulo": "Vencimiento masivo de derivados",
+      "texto": "La expiración simultánea de contratos de opciones y futuros sobre índices aumentó drásticamente el volumen de negociación. Este suceso de carácter técnico generó fuertes oscilaciones en los precios durante la sesión del viernes.",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "titulo": "Tensión en la deuda europea",
+      "texto": "La rentabilidad del bono soberano de Francia a 10 años escaló hasta el 4,56 % el 18 de septiembre de 2026. Las dudas sobre las trayectorias presupuestarias de los Estados miembros incrementaron el coste de financiación comunitaria.",
+      "fuentes": [
+        9
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "vencimiento trimestral de derivados",
+      "definicion": "Fecha en la que expiran simultáneamente los contratos de opciones y futuros sobre índices y acciones, lo que suele generar un gran volumen de negociación y fuertes oscilaciones en los precios."
+    },
+    {
+      "termino": "derivados",
+      "definicion": "Instrumentos financieros cuyo valor no es intrínseco, sino que depende de la evolución del precio de otro activo subyacente, como una acción, un índice o una materia prima."
+    },
+    {
+      "termino": "punto básico",
+      "definicion": "Unidad de medida equivalente a la centésima parte de un punto porcentual (0,01 %), utilizada habitualmente para expresar variaciones en los tipos de interés o en la rentabilidad de la deuda."
+    },
+    {
+      "termino": "bono estadounidense a 10 años",
+      "definicion": "Título de deuda soberana emitido por el Gobierno de Estados Unidos para financiarse en los mercados, comprometiéndose a devolver el principal junto con unos intereses en el plazo de una década."
+    }
+  ]
+}

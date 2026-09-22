@@ -5,17 +5,31 @@ import { eligibleNews, newsAttribution, CONTEXT_NOTICE } from './news-editorial.
 const root = resolve(process.cwd());
 const dataPath = resolve(root, 'data/daily-content.json');
 const editorialImageUrl = 'src/assets/social/nuvia-social-source-generated-v1.png';
-// Una ilustración distinta por tema, tomada de los recursos propios ya
-// aprobados en el portal (sin datos ni marcas): evita tres tarjetas con la
-// misma foto. Todas son decorativas.
+// Ilustraciones propias por tema, tomadas de los recursos ya aprobados en el
+// portal (sin datos ni marcas). Todas son decorativas. Desde el 22-09-2026 la
+// portada de Mercados muestra hasta doce noticias, así que cada tema tiene
+// varias y el reparto evita repetir la misma imagen en una misma selección
+// mientras queden libres; solo si se agotan se repite la primera del tema.
 const categoryImages = {
-  'Vivienda y financiación': 'src/assets/home/card-vivienda.webp',
-  'Inflación y coste de vida': 'src/assets/home/card-ahorro-inversion.webp',
-  'Tipos de interés y deuda': 'src/assets/home/economia-card-empresas-20260918.webp',
-  'Empleo e ingresos': 'src/assets/home/resource-family-savings.webp',
-  'Economía y mercados': 'src/assets/home/economia-card-mercados-20260918.webp',
+  'Vivienda y financiación': ['src/assets/home/card-vivienda.webp', 'src/assets/home/patrimonio-card-vivienda-20260922.webp'],
+  'Inflación y coste de vida': ['src/assets/home/card-ahorro-inversion.webp', 'src/assets/home/resource-family-savings.webp'],
+  'Tipos de interés y deuda': ['src/assets/home/economia-card-empresas-20260918.webp', 'src/assets/home/card-impuestos.webp'],
+  'Empleo e ingresos': ['src/assets/home/resource-family-savings.webp', 'src/assets/home/patrimonio-card-planificacion-20260922.webp'],
+  'Economía y mercados': ['src/assets/home/economia-card-mercados-20260918.webp', 'src/assets/home/daily-report-preview.webp', 'src/assets/home/economia-card-cartera-20260918.webp'],
 };
-const imageFor = (category) => categoryImages[category] || editorialImageUrl;
+const reserveImages = [
+  'src/assets/home/daily-report-preview.webp',
+  'src/assets/home/economia-card-cartera-20260918.webp',
+  'src/assets/home/card-impuestos.webp',
+  'src/assets/home/card-ahorro-inversion.webp',
+];
+const usedImages = new Set();
+const imageFor = (category) => {
+  const own = categoryImages[category] || [];
+  const chosen = [...own, ...reserveImages].find((url) => !usedImages.has(url)) || own[0] || editorialImageUrl;
+  usedImages.add(chosen);
+  return chosen;
+};
 const IMAGE_PROVENANCE = 'Ilustración propia de NUVIA asociada al tema de la noticia; decorativa, sin relación con el artículo enlazado.';
 
 const feeds = [
@@ -199,6 +213,12 @@ function editorialFor(title) {
   };
 }
 
+// Noticias breves que acompañan a la destacada: hasta once (doce en total con
+// ella). Si los medios no dan para tantas sin repetir asunto, se publican las
+// que haya, con un mínimo de tres.
+const SECONDARY_TARGET = 11;
+const SECONDARY_MINIMUM = 3;
+
 const checkedAt = new Date();
 const existing = JSON.parse(await readFile(dataPath, 'utf8'));
 let feedReport = [];
@@ -245,6 +265,8 @@ const newCandidates = timelyCandidates.filter((item) => (
 const selected = (newCandidates.length ? newCandidates : timelyCandidates)[0];
 
 const editorial = editorialFor(selected.title);
+// La destacada elige imagen primero; las breves no la repiten.
+const leadImageUrl = imageFor(editorial.category);
 const preparedSecondaryNews = [];
 const secondaryCandidates = candidates.filter((candidate) => (
   candidate.url !== selected.url
@@ -252,13 +274,13 @@ const secondaryCandidates = candidates.filter((candidate) => (
 ));
 
 // Variedad antes que puntuación: primero una noticia por tema distinto (y
-// distinto del destacado), alternando medios; si no llega a tres, se completa
-// con las mejores restantes. Así no salen dos «Lagarde» seguidas.
+// distinto del destacado), alternando medios; después se completa con las
+// mejores restantes. Así no salen dos «Lagarde» seguidas.
 const usedCategories = new Set([editorial.category]);
 const pick = (candidate) => preparedSecondaryNews.push({ candidate, editorial: editorialFor(candidate.title) });
 const repeated = (candidate) => preparedSecondaryNews.some((item) => titleSimilarity(item.candidate.title, candidate.title) >= 0.35);
 for (const candidate of secondaryCandidates) {
-  if (preparedSecondaryNews.length === 3) break;
+  if (preparedSecondaryNews.length >= SECONDARY_TARGET) break;
   const category = editorialFor(candidate.title).category;
   const lastSource = preparedSecondaryNews[preparedSecondaryNews.length - 1]?.candidate.sourceName ?? selected.sourceName;
   if (usedCategories.has(category) || candidate.sourceName === lastSource || repeated(candidate)) continue;
@@ -266,7 +288,7 @@ for (const candidate of secondaryCandidates) {
   pick(candidate);
 }
 for (const candidate of secondaryCandidates) {
-  if (preparedSecondaryNews.length === 3) break;
+  if (preparedSecondaryNews.length >= SECONDARY_TARGET) break;
   if (preparedSecondaryNews.some((item) => item.candidate.url === candidate.url) || repeated(candidate)) continue;
   const category = editorialFor(candidate.title).category;
   if (usedCategories.has(category) && secondaryCandidates.some((c) => !usedCategories.has(editorialFor(c.title).category) && !repeated(c) && !preparedSecondaryNews.some((item) => item.candidate.url === c.url))) continue;
@@ -274,12 +296,12 @@ for (const candidate of secondaryCandidates) {
   pick(candidate);
 }
 for (const candidate of secondaryCandidates) {
-  if (preparedSecondaryNews.length === 3) break;
+  if (preparedSecondaryNews.length >= SECONDARY_TARGET) break;
   if (preparedSecondaryNews.some((item) => item.candidate.url === candidate.url) || repeated(candidate)) continue;
   pick(candidate);
 }
 
-if (preparedSecondaryNews.length < 3) {
+if (preparedSecondaryNews.length < SECONDARY_MINIMUM) {
   throw new Error(`Solo se pudieron preparar ${preparedSecondaryNews.length} noticias breves actuales.`);
 }
 
@@ -329,7 +351,7 @@ existing.dailyEconomicNews = {
   selectedAt: checkedAt.toISOString(),
   sourceName: selected.sourceName,
   sourceUrl: selected.url,
-  imageUrl: imageFor(editorial.category),
+  imageUrl: leadImageUrl,
   imageAlt: '',
   imageProvenance: IMAGE_PROVENANCE,
   title: selected.title,

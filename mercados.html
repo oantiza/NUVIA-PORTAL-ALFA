@@ -235,7 +235,7 @@
             <p class="nv-eyebrow">Mercados en directo</p>
             <h2 id="titulo-indices">Principales índices</h2>
           </div>
-          <p>Cotizaciones, una noticia económica seleccionada y tres lecturas que ayudan a entender el contexto.</p>
+          <p>Cotizaciones, la noticia económica destacada y una selección de titulares para entender el contexto.</p>
         </div>
 
         <p class="nv-notice markets-news-update" data-news-update-status data-notice-state="unverified" role="status" aria-atomic="true">Selección disponible. Consulta la fecha y la fuente de cada noticia; la actualización aún no se ha comprobado. Los textos explicativos son contexto temático automático; no resumen ni verifican los artículos enlazados.</p>
@@ -298,54 +298,15 @@
               </div>
             </article>
 
+            <!-- Noticias que acompañan a la destacada. Las tarjetas las crea
+                 web2-integration.js desde data/daily-content.json: aquí solo
+                 quedan los contenedores, sin titulares escritos a mano. -->
             <section class="markets-secondary-news" aria-labelledby="secondary-market-news-title">
               <div class="markets-secondary-news__head">
                 <h3 id="secondary-market-news-title">Otras noticias que importan</h3>
-                <span>3 lecturas breves</span>
+                <span data-market-news-count>Selección automática</span>
               </div>
-              <div class="markets-secondary-grid">
-                <article class="markets-secondary-card" data-market-news-id="market-brief-1" tabindex="0" role="button"
-                         aria-haspopup="dialog" aria-controls="market-news-dialog"
-                         aria-label="Ampliar noticia: La inflación en la eurozona se eleva al 3,3% en agosto impulsada por la energía">
-                  <span class="markets-secondary-card__label" data-market-news-field="label">Inflación y coste de vida</span>
-                  <img class="markets-news-photo" data-market-news-field="image"
-                       src="src/assets/social/nuvia-social-source-generated-v1.png" alt=""
-                       width="420" height="240" loading="lazy">
-                  <h4 data-market-news-field="headline">La inflación en la eurozona se eleva al 3,3% en agosto impulsada por la energía</h4>
-                  <p class="markets-secondary-card__context" data-market-news-field="context">La actualidad pone el foco en los precios, el poder adquisitivo y las expectativas sobre los tipos de interés.</p>
-                  <div class="markets-secondary-card__foot">
-                    <time class="markets-secondary-card__date" data-market-news-field="change" datetime="2026-09-01T00:00:00.000Z">1 sept 2026</time>
-                    <span class="markets-news-source"><span data-market-news-field="source-name">EL PAÍS Economía</span><span aria-hidden="true">Ampliar →</span></span>
-                  </div>
-                </article>
-                <article class="markets-secondary-card" data-market-news-id="market-brief-2" tabindex="0" role="button"
-                         aria-haspopup="dialog" aria-controls="market-news-dialog"
-                         aria-label="Ampliar noticia: Los intereses de la deuda amenazan la Bolsa con nuevos máximos">
-                  <span class="markets-secondary-card__label" data-market-news-field="label">Tipos de interés y deuda</span>
-                  <img class="markets-news-photo" data-market-news-field="image"
-                       src="src/assets/social/nuvia-social-source-generated-v1.png" alt=""
-                       width="420" height="240" loading="lazy">
-                  <h4 data-market-news-field="headline">Los intereses de la deuda amenazan la Bolsa con nuevos máximos</h4>
-                  <p class="markets-secondary-card__context" data-market-news-field="context">La actualidad pone el foco en el coste del dinero, la remuneración del ahorro y la valoración de los activos.</p>
-                  <div class="markets-secondary-card__foot">
-                    <time class="markets-secondary-card__date" data-market-news-field="change" datetime="2026-09-01T00:00:00.000Z">1 sept 2026</time>
-                    <span class="markets-news-source"><span data-market-news-field="source-name">Expansión</span><span aria-hidden="true">Ampliar →</span></span>
-                  </div>
-                </article>
-                <article class="markets-secondary-card" data-market-news-id="market-brief-3" tabindex="0" role="button"
-                         aria-haspopup="dialog" aria-controls="market-news-dialog"
-                         aria-label="Ampliar noticia: Los mercados afrontan una nueva ola de subidas de tipos">
-                  <span class="markets-secondary-card__label" data-market-news-field="label">Tipos de interés y deuda</span>
-                  <img class="markets-news-photo" data-market-news-field="image"
-                       src="src/assets/social/nuvia-social-source-generated-v1.png" alt=""
-                       width="420" height="240" loading="lazy">
-                  <h4 data-market-news-field="headline">Los mercados afrontan una nueva ola de subidas de tipos</h4>
-                  <p class="markets-secondary-card__context" data-market-news-field="context">La actualidad pone el foco en el coste del dinero, la remuneración del ahorro y la valoración de los activos.</p>
-                  <div class="markets-secondary-card__foot">
-                    <time class="markets-secondary-card__date" data-market-news-field="change" datetime="2026-08-31T00:00:00.000Z">31 ago 2026</time>
-                    <span class="markets-news-source"><span data-market-news-field="source-name">Expansión</span><span aria-hidden="true">Ampliar →</span></span>
-                  </div>
-                </article>              </div>
+              <div class="markets-secondary-grid" data-market-news-slot="featured"></div>
             </section>
 
             <!-- Ficha ampliada. Los data-news-dialog son ganchos de web2-integration.js. -->
@@ -374,18 +335,15 @@
 
           </div>
         </div>
-      </div>
-    </section>
 
-
-    <section data-screen-label="Informes de mercado" class="nv-section" aria-labelledby="titulo-informe">
-      <div class="nv-container">
-        <div class="nv-section-heading"><div><p class="nv-eyebrow">Para leer con perspectiva</p><h2 id="titulo-informe">Informes de mercado</h2></div><p>La jornada y la semana, explicadas con fechas, fuentes y contexto.</p></div>
-        <div class="nv-reports-strip">
-        <!-- NUVIA INFORMES tarjetas: START -->
-<div class="nv-reports-grid"><article class="nv-report-card nv-report-card--diario"><div class="nv-report-card__meta"><p class="nv-report__eyebrow">Informe diario</p><span data-report-age="2026-09-14" data-report-type="DIARIO">Edición fechada</span></div><p class="nv-report__meta">14 de septiembre de 2026</p><h3><a href="mercados.html?vista=informes&tipo=diario#lectura-informe">La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil</a></h3><p>El Banco Central Europeo ha elevado los tipos de interés al 2,50 % debido a las presiones inflacionistas de los altos costes energéticos. En Estados Unidos, la tasa subyacente de inflación ha avanzado un 0,3 % mensual, y los contratos de futuros descuentan otra subida de tipos en el país.</p><div class="nv-report-card__bottom"><a class="nv-report-card__link" href="mercados.html?vista=informes&tipo=diario#lectura-informe">Leer el diario <span aria-hidden="true">→</span></a><span>5 min de lectura aprox.</span></div></article><article class="nv-report-card nv-report-card--semanal"><div class="nv-report-card__meta"><p class="nv-report__eyebrow">Informe semanal</p><span data-report-age="2026-09-14" data-report-type="SEMANAL">Edición fechada</span></div><p class="nv-report__meta">8 de septiembre de 2026 – 14 de septiembre de 2026</p><h3><a href="mercados.html?vista=informes&tipo=semanal#lectura-informe">El Banco Central Europeo sube los tipos y la energía presiona a la deuda</a></h3><p>La semana bursátil ha estado dominada por la decisión del Banco Central Europeo de encarecer el precio del dinero. Paralelamente, las tensiones geopolíticas han disparado los precios del petróleo, contagiando a los bonos gubernamentales y empujando a la baja a las bolsas mundiales.</p><div class="nv-report-card__bottom"><a class="nv-report-card__link" href="mercados.html?vista=informes&tipo=semanal#lectura-informe">Leer el semanal <span aria-hidden="true">→</span></a><span>6 min de lectura aprox.</span></div></article></div>
-<!-- NUVIA INFORMES tarjetas: END -->
-        </div>
+        <section class="markets-more-news" aria-labelledby="more-market-news-title">
+          <div class="markets-more-news__head">
+            <h3 id="more-market-news-title">Más titulares de la selección</h3>
+            <span>Pulsa un titular para ver su contexto y el enlace al medio de origen</span>
+          </div>
+          <div class="markets-news-grid" data-market-news-slot="grid"></div>
+          <p class="nv-notice markets-news-fallback" data-notice-state="unavailable">No se han podido cargar los titulares de la selección. Vuelve a cargar la página; la noticia destacada se mantiene con su fecha y su fuente.</p>
+        </section>
       </div>
     </section>
     </sc-if>

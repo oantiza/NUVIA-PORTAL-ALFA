@@ -50,7 +50,10 @@ validateItem(payload.dailyEconomicNews, 'Noticia principal');
 iso(payload.dailyEconomicNews?.selectedAt, 'Selección de la noticia principal');
 assert.equal(payload.dailyEconomicNews?.impactPoints?.length, 3, 'La noticia principal debe incluir tres claves');
 
-assert.equal(payload.secondaryEconomicNews?.length, 3, 'Deben existir exactamente tres noticias breves');
+// 22-09-2026: la portada de Mercados muestra hasta doce noticias (la destacada
+// y once breves). El actualizador publica las que haya, con un mínimo de tres.
+const secondaryCount = payload.secondaryEconomicNews?.length ?? 0;
+assert.ok(secondaryCount >= 3 && secondaryCount <= 11, 'Deben existir entre tres y once noticias breves');
 payload.secondaryEconomicNews.forEach((item, index) => validateItem(item, `Noticia breve ${index + 1}`));
 
 const urls = [payload.dailyEconomicNews.sourceUrl, ...payload.secondaryEconomicNews.map((item) => item.sourceUrl)];
@@ -59,8 +62,8 @@ const titles = [payload.dailyEconomicNews, ...payload.secondaryEconomicNews]
 const secondaryCategories = payload.secondaryEconomicNews.map((item) => item.category);
 assert.ok(new Set(secondaryCategories).size >= 2, 'Las noticias breves deben cubrir al menos dos temas distintos');
 assert.ok(new Set(payload.secondaryEconomicNews.map((item) => item.imageUrl)).size >= 2, 'Las noticias breves no repiten la misma ilustración');
-assert.equal(new Set(urls).size, 4, 'Las cuatro noticias deben tener URL distinta');
-assert.equal(new Set(titles).size, 4, 'Las cuatro noticias deben tener titular distinto');
+assert.equal(new Set(urls).size, secondaryCount + 1, 'Todas las noticias deben tener URL distinta');
+assert.equal(new Set(titles).size, secondaryCount + 1, 'Todas las noticias deben tener titular distinto');
 
 assert.match(integration, /sourcePublishedAtIso/, 'La interfaz debe calcular la actualidad desde la publicación real');
 assert.match(integration, /editorialUpdate/, 'La interfaz debe mostrar el estado del intento editorial');
@@ -71,6 +74,9 @@ assert.match(markets, /src\/assets\/social\/nuvia-social-source-generated-v1\.pn
   'El contenido de reserva debe usar el activo editorial propio');
 assert.doesNotMatch(markets, /daily-news-current|secondary-news-current/,
   'El contenido de reserva no debe rehospedar fotografías de prensa');
+assert.match(markets, /data-market-news-slot="featured"[\s\S]*data-market-news-slot="grid"/,
+  'Mercados reserva los contenedores de las noticias breves, sin titulares escritos a mano');
+assert.match(integration, /renderSecondaryNews/, 'Las noticias breves se crean desde los datos diarios');
 assert.match(markets, /data-report-reader/,
   'Mercados integra un lector de las ediciones fechadas disponibles');
 assert.doesNotMatch(markets, /Archivo en preparación|Este archivo se habilitará/,
@@ -82,6 +88,7 @@ assert.doesNotMatch(styles, /\.markets-lead-news h3[^}]*line-clamp/s,
 if (updater) {
   assert.doesNotMatch(updater, /fetchCandidateImage|og:image|twitter:image/,
     'La actualización no debe descargar ni rehospedar imágenes de prensa');
+  assert.match(updater, /SECONDARY_TARGET = 11/, 'El actualizador prepara hasta once noticias breves');
   assert.match(updater, /consultorio/,
     'La selección debe excluir consultorios personales');
 }

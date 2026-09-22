@@ -1619,7 +1619,10 @@ sc-for {
 .nv-space-tool-card__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, color-mix(in srgb, var(--nv-navy-900) 14%, transparent) 0%, color-mix(in srgb, var(--nv-navy-900) 34%, transparent) 100%); }
 .nv-space-tool-card--photo:hover .nv-space-tool-card__media img { transform: scale(1.04); }
 .nv-space-tool-card--photo > .nv-space-symbol { position: relative; z-index: 1; margin-top: -23px; margin-bottom: var(--nv-space-4); background: var(--nv-white); box-shadow: var(--nv-shadow-sm); border: 1px solid var(--nv-line); }
-.nv-space-page--economia .nv-space-resources { background: linear-gradient(180deg, var(--nv-surface-page) 0%, var(--nv-surface-technical) 100%); }
+.nv-space-page:is(.nv-space-page--economia, .nv-space-page--patrimonio) .nv-space-resources { background: linear-gradient(180deg, var(--nv-surface-page) 0%, var(--nv-surface-technical) 100%); }
+/* Encuadre de las fotografías de Patrimonio en la banda de la tarjeta. */
+.nv-space-page--patrimonio .nv-space-tool-card__media img[src*="patrimonio-card-planificacion"] { object-position: center 18%; }
+.nv-space-page--patrimonio .nv-space-tool-card__media img[src*="patrimonio-card-jubilacion"] { object-position: center 42%; }
 @media (max-width: 1120px) {
   .nv-space-tool-card__media { height: 140px; margin-inline: calc(-1 * var(--nv-space-6)); }
 }

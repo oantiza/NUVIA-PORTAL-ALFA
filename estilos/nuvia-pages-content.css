@@ -3233,3 +3233,23 @@ a[data-result-anchor][aria-disabled="true"] { cursor: default; }
   .nv-space-editorial .lecturas-hero__text p { font-size: var(--nv-body); }
   .nv-space-editorial .lecturas-hero__divider { margin-block: var(--nv-space-1); }
 }
+
+/* Patrimonio · «Una mirada de conjunto». Texto editorial, no secciones:
+   sin cajas ni ornamentos. Banda abierta entre filetes, frase en serif a la
+   izquierda y tres párrafos separados por filetes verticales; el único color
+   es una raya corta sobre cada título (verde, bronce, azul). Sin variables
+   locales: todo var() sale de nuvia-tokens.css. */
+.nv-space-page--patrimonio .nv-space-insight { align-items: start; margin-top: var(--nv-space-10); padding: var(--nv-space-10) 0; border: 0; border-top: 1px solid var(--nv-line); border-bottom: 1px solid var(--nv-line); border-radius: 0; background: transparent; }
+.nv-space-page--patrimonio .nv-space-insight h2 { max-width: 360px; font-size: var(--nv-title-md); }
+.nv-space-page--patrimonio .nv-space-insight__items { gap: 0; }
+.nv-space-page--patrimonio .nv-space-insight { border-top: 0; }
+.nv-space-page--patrimonio .nv-space-insight__items > div { padding: 0 var(--nv-space-6); border-left: 1px solid var(--nv-line); }
+.nv-space-page--patrimonio .nv-space-insight__items h3 { font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); font-weight: 500; color: var(--nv-text); }
+.nv-space-page--patrimonio .nv-space-insight__items h3::before { content: ""; display: block; width: 28px; height: 2px; margin-bottom: var(--nv-space-4); background: var(--nv-green-600); }
+.nv-space-page--patrimonio .nv-space-insight__items > div:nth-child(2) h3::before { background: var(--nv-bronze-500); }
+.nv-space-page--patrimonio .nv-space-insight__items > div:nth-child(3) h3::before { background: var(--nv-navy-700); }
+@media (max-width: 1120px) {
+  .nv-space-page--patrimonio .nv-space-insight { padding: var(--nv-space-8) 0; }
+  .nv-space-page--patrimonio .nv-space-insight h2 { max-width: none; }
+  .nv-space-page--patrimonio .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }
+}

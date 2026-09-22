@@ -38,7 +38,13 @@ export async function checkTablesAndResults(page, route) {
     }
     for(const value of [...document.querySelectorAll('.curso-resultado strong,.nv-lab-resumen__valor,.markets-macro__value,.markets-lab__summary-value strong,.viv-figure__value,.jub-figure__value,p.gu-figure,.gp-figure,.gp-figure--xl,.ac-x55')].filter(visible)) {
       const s=getComputedStyle(value);
-      if(!['18px','22px'].includes(s.fontSize))out.push('KPI fuera de la escala compacta: '+value.className+' '+s.fontSize);
+      // Retirement redesign (22-09-2026): only the primary result uses display size.
+      const retirementLead=value.matches('.nv-retirement #resultados .jub-results__hero .jub-figure__value--xl');
+      if(retirementLead) {
+        const size=Number.parseFloat(s.fontSize);
+        if(size<36||size>60)out.push('Resultado principal de jubilación fuera de escala: '+s.fontSize);
+        if(!s.fontVariantNumeric.includes('tabular-nums'))out.push('Resultado de jubilación sin cifras tabulares');
+      } else if(!['18px','22px'].includes(s.fontSize))out.push('KPI fuera de la escala compacta: '+value.className+' '+s.fontSize);
       if(value.matches('.curso-resultado strong,.nv-lab-resumen__valor')&&!s.fontVariantNumeric.includes('tabular-nums'))out.push('Resultado sin cifras tabulares');
       if(value.scrollWidth>value.clientWidth+1)out.push('Resultado recortado');
     }

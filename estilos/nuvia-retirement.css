@@ -1,0 +1,144 @@
+/* Jubilación: presentación local; usa exclusivamente tokens del portal. */
+.nv-retirement {
+  --nv-text-link: var(--nv-navy-800);
+  --nv-text-link-hover: var(--nv-navy-900);
+  --nv-focus-ring: 0 0 0 3px var(--nv-white), 0 0 0 5px var(--nv-navy-700);
+}
+.nv-retirement.nuvia-design-lab { --nv-page-accent: var(--nv-navy-800); --nv-page-accent-soft: var(--nv-surface-technical); }
+.nv-retirement .nuvia-site-nav__topics.is-active > summary::after { background: var(--nv-navy-800); }
+.nv-retirement .jub-hero__grid { align-items: start; }
+.nv-retirement .jub-howto__label { margin-top: 0; font-size: var(--nv-body); letter-spacing: normal; text-transform: none; }
+.nv-retirement .jub-howto__num { color: var(--nv-text); }
+.nv-retirement .jub-howto__list { gap: var(--nv-space-4); }
+.nv-retirement .jub-hero .viv-pill-row { margin-top: var(--nv-space-6); }
+.nv-retirement .nv-tag { background: var(--nv-surface-technical); color: var(--nv-text); }
+.nv-retirement :is(.jub-scope__mark, .jub-step-num) { background: var(--nv-surface-technical); color: var(--nv-text); }
+.nv-retirement .jub-scope { background: var(--nv-surface-editorial); }
+.nv-retirement :is(.jub-note, .jub-footnote) { max-width: 85ch; }
+.nv-retirement .jub-note { margin-block: var(--nv-space-2) 0; }
+.nv-retirement :is(.jub-label, .jub-chip, .jub-muted, .nv-field__note) { font-size: var(--nv-body-sm); }
+.nv-retirement .jub-label { letter-spacing: normal; text-transform: none; }
+.nv-retirement .jub-stepnav { margin-top: var(--nv-space-8); }
+.nv-retirement .jub-stepnav ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--nv-space-3); list-style: none; margin: 0; padding: 0; }
+.nv-retirement .jub-stepnav a { display: flex; align-items: center; gap: var(--nv-space-3); min-height: 56px; padding: var(--nv-space-3); color: var(--nv-text); background: var(--nv-surface); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-sm); text-decoration: none; font-size: var(--nv-body-sm); }
+.nv-retirement .jub-stepnav a:hover { background: var(--nv-surface-technical); border-color: var(--nv-navy-700); }
+.nv-retirement .jub-stepnav a span { font-weight: var(--nv-weight-action); }
+.nv-retirement .jub-example-note { font-size: var(--nv-body-sm); color: var(--nv-text-soft); margin-block: var(--nv-space-4) var(--nv-space-8); }
+.nv-retirement .jub-card { margin-bottom: var(--nv-space-8); }
+.nv-retirement .jub-card__head { padding: var(--nv-space-6) var(--nv-space-8); background: var(--nv-surface-page); }
+.nv-retirement .jub-card__head > .jub-step-num { flex-shrink: 0; }
+.nv-retirement .jub-step-num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: var(--nv-radius-sm); font-size: var(--nv-body-lg); flex-shrink: 0; }
+.nv-retirement .jub-card__body { padding: var(--nv-space-8); }
+.nv-retirement .jub-grid-4 { gap: var(--nv-space-8); }
+.nv-retirement .jub-block { margin-top: var(--nv-space-8); padding-top: var(--nv-space-8); }
+.nv-retirement .nv-field__note { margin-top: var(--nv-space-2); line-height: 1.55; }
+.nv-retirement .nv-field__label { font-size: var(--nv-body-sm); text-transform: none; letter-spacing: normal; }
+.nv-retirement .jub-assets__row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: var(--nv-space-5); padding: var(--nv-space-6) 0; align-items: start; }
+.nv-retirement .jub-assets__row:first-child { display: none; } /* Each input now carries its own persistent visible label. */
+.nv-retirement .jub-assets__row > .jub-note { grid-column: 2 / -1; margin: 0; }
+.nv-retirement .jub-assets__row > .jub-muted { align-self: center; }
+.nv-retirement .jub-asset-field { min-width: 0; }
+.nv-retirement .jub-asset-field > .nv-field__label { display: block; min-height: 3em; line-height: 1.5; }
+.nv-retirement .jub-assets__row .jub-row__name { margin-bottom: var(--nv-space-2); }
+.nv-retirement .jub-subpanel > .nv-field__label:not(:first-child) { margin-top: var(--nv-space-5); }
+.nv-retirement .jub-check { padding: var(--nv-space-4); }
+.nv-retirement :is(.jub-check__input, .jub-slider__input) { accent-color: var(--nv-navy-900); }
+.nv-retirement .jub-slider__input { min-height: 44px; min-width: 0; }
+.nv-retirement .viv-pill.is-active { color: var(--nv-white); background: var(--nv-navy-900); border-color: var(--nv-navy-900); }
+.nv-retirement .viv-pill { min-height: 44px; white-space: normal; }
+.nv-retirement :is(.btn-secondary, .nv-btn--soft) { color: var(--nv-text); border-color: var(--nv-control-border); background: var(--nv-surface); }
+.nv-retirement :is(.btn-secondary, .nv-btn--soft):hover { color: var(--nv-text); background: var(--nv-surface-technical); }
+.nv-retirement .nv-field__box:focus-within { border-color: var(--nv-navy-700); }
+.nv-retirement .nv-field__box input { caret-color: var(--nv-navy-900); }
+.nv-retirement .jub-info { margin-block: var(--nv-space-3) var(--nv-space-5); font-size: var(--nv-body-sm); color: var(--nv-text-soft); }
+.nv-retirement .jub-info summary { width: fit-content; min-height: 44px; padding-block: var(--nv-space-3); color: var(--nv-text); cursor: pointer; }
+.nv-retirement .jub-info p { max-width: 75ch; margin: 0; padding: var(--nv-space-4); background: var(--nv-surface-technical); border-radius: var(--nv-radius-sm); }
+.nv-retirement .jub-method { border: 1px solid var(--nv-line-strong); border-radius: var(--nv-radius-md); background: var(--nv-surface); }
+.nv-retirement .jub-method > summary { padding: var(--nv-space-5) var(--nv-space-6); cursor: pointer; font-weight: var(--nv-weight-action); }
+.nv-retirement .jub-method > summary span { font-weight: var(--nv-weight-body); color: var(--nv-text-soft); font-size: var(--nv-body-sm); margin-left: var(--nv-space-4); }
+.nv-retirement .jub-method__body { padding: 0 var(--nv-space-8) var(--nv-space-6); max-width: 90ch; color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
+.nv-retirement .jub-method__body h3 { color: var(--nv-text); font-size: var(--nv-body-lg); margin-top: var(--nv-space-6); }
+.nv-retirement .jub-method__body li { margin-bottom: var(--nv-space-3); }
+.nv-retirement .jub-actions { padding: var(--nv-space-6); border-radius: var(--nv-radius-md); background: var(--nv-surface-technical); }
+.nv-retirement .jub-actions .jub-footnote { flex: 1 1 250px; margin: 0; }
+.nv-retirement .jub-results-step { display: flex; gap: var(--nv-space-3); align-items: center; }
+.nv-retirement .jub-results__hero { grid-template-columns: repeat(3, minmax(0, 1fr)); padding: var(--nv-space-8); background: var(--nv-surface-deep); color: var(--nv-white); gap: var(--nv-space-6); margin-bottom: var(--nv-space-8); }
+.nv-retirement .jub-results__hero > div:first-child { grid-column: 1 / -1; padding-bottom: var(--nv-space-6); border-bottom: 1px solid var(--nv-line-on-dark-strong); }
+.nv-retirement .jub-results__hero :is(.jub-label, .jub-muted) { color: var(--nv-text-on-dark); }
+.nv-retirement .jub-results__hero .jub-muted { max-width: 75ch; }
+.nv-retirement .jub-results__hero .jub-figure__value--xl { font-size: clamp(36px, 4.5vw, 60px); letter-spacing: -.035em; line-height: 1.15; margin-block: var(--nv-space-3); }
+.nv-retirement .jub-results__hero .jub-aside-col { border: 0; padding: 0; }
+.nv-retirement .jub-results__hero .jub-aside-col .jub-figure__value { font-size: var(--nv-title-sm); }
+.nv-retirement .jub-comparison-title { font-size: var(--nv-title-sm); margin-bottom: var(--nv-space-2); }
+.nv-retirement .jub-scenarios { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--nv-space-6); }
+.nv-retirement .jub-scenarios .jub-figure__value { font-size: var(--nv-title-sm); margin-block: var(--nv-space-4) var(--nv-space-2); }
+.nv-retirement .jub-scenario__head { flex-wrap: wrap; }
+.nv-retirement .jub-chart__line--base { color: var(--nv-navy-900); }
+.nv-retirement .jub-chart__line--prudente { color: var(--nv-bronze-700); }
+.nv-retirement .jub-chart__line--favorable { color: var(--nv-cat-purple); }
+.nv-retirement .jub-chart__line--estres { color: var(--nv-cat-slate); }
+.nv-retirement .jub-swatch--base { background: var(--nv-navy-900); }
+.nv-retirement .jub-swatch--prudente { height: 0; border-top: 3px dashed var(--nv-bronze-700); background: none; }
+.nv-retirement .jub-swatch--favorable { height: 0; border-top: 3px dotted var(--nv-cat-purple); background: none; }
+.nv-retirement .jub-swatch--estres { border-color: var(--nv-cat-slate); }
+.nv-retirement .jub-legend { gap: var(--nv-space-3) var(--nv-space-5); }
+/* Tres etapas; las ayudas y los supuestos acompañan sin competir. */
+.nv-retirement .jub-journey { margin-top: var(--nv-space-12); }
+.nv-retirement .jub-journey__head { display: flex; align-items: flex-start; gap: var(--nv-space-4); margin-bottom: var(--nv-space-6); }
+.nv-retirement .jub-journey__head h2 { margin: 0; font-size: var(--nv-title-md); }
+.nv-retirement .jub-journey__head p { margin: var(--nv-space-2) 0 0; color: var(--nv-text-soft); }
+.nv-retirement .jub-card--substep { border-top: 1px solid var(--nv-line); }
+.nv-retirement .jub-card--assumptions { border-top: 1px solid var(--nv-line); box-shadow: none; }
+.nv-retirement .jub-card--assumptions .jub-card__head { background: var(--nv-surface-editorial); }
+.nv-retirement .jub-substep-mark { display: inline-flex; min-width: 28px; min-height: 28px; align-items: center; justify-content: center; color: var(--nv-text-editorial); font-size: var(--nv-body); }
+.nv-retirement .jub-field-example { display: block; margin-top: var(--nv-space-2); color: var(--nv-text-muted); font-size: var(--nv-label); }
+.nv-retirement .nv-field__box input { font-weight: var(--nv-weight-action); font-variant-numeric: tabular-nums; }
+.nv-retirement .jub-assets__row { border-bottom: 0; border-radius: var(--nv-radius-md); padding: var(--nv-space-6); margin-bottom: var(--nv-space-4); background: var(--nv-surface-page); }
+.nv-retirement .jub-income-equation { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr) auto minmax(0, 1.7fr); align-items: center; gap: var(--nv-space-5); margin-block: var(--nv-space-6); }
+.nv-retirement .jub-income-equation p { margin: 0 0 var(--nv-space-3); color: var(--nv-text-on-dark); font-size: var(--nv-body-sm); }
+.nv-retirement .jub-income-amount { font-size: var(--nv-title-sm); font-variant-numeric: tabular-nums; font-weight: var(--nv-weight-title); }
+.nv-retirement .jub-equation-sign { font-size: var(--nv-title-md); color: var(--nv-bronze-200); }
+.nv-retirement .jub-income-equation .jub-income-total { padding: var(--nv-space-5); background: var(--nv-surface-on-dark); border-radius: var(--nv-radius-md); }
+.nv-retirement .jub-income-equation .jub-figure__value--xl { font-size: clamp(36px, 3.5vw, 48px); margin: 0; color: var(--nv-white); }
+.nv-retirement .jub-results-detail { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--nv-space-6); margin-bottom: var(--nv-space-10); }
+.nv-retirement .jub-results-detail > .jub-panel { border-top: 1px solid var(--nv-line); padding: var(--nv-space-8); }
+.nv-retirement .jub-projection .jub-chart-wrap { max-width: 960px; margin-inline: auto; }
+.nv-retirement .jub-projection .jub-legend { justify-content: center; }
+@media (max-width: 1120px) {
+  .nv-retirement .jub-income-equation { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+  .nv-retirement .jub-income-equation > .jub-equation-sign:nth-child(4) { display: none; }
+  .nv-retirement .jub-income-total { grid-column: 1 / -1; }
+  .nv-retirement .jub-howto__list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .nv-retirement .jub-stepnav a { flex-direction: column; align-items: flex-start; gap: var(--nv-space-1); }
+  .nv-retirement .jub-grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .nv-retirement .nuvia-site-header { position: relative; }
+  .nv-retirement .nuvia-site-header__inner { align-items: flex-start; }
+  .nv-retirement .nuvia-site-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--nv-space-2); padding-block: var(--nv-space-2); }
+  .nv-retirement .nuvia-site-nav > .nuvia-site-nav__secondary { position: static; width: auto; }
+  .nv-retirement .nuvia-site-nav > :is(a, details) { min-width: 0; }
+  .nv-retirement .nuvia-site-nav :is(a, summary) { white-space: normal; }
+  .nv-retirement .nuvia-site-nav__menu { max-width: calc(100vw - 56px); }
+  .nv-retirement .jub-howto__list { grid-template-columns: 1fr; }
+  .nv-retirement .jub-stepnav ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nv-retirement .jub-stepnav a { flex-direction: row; align-items: center; gap: var(--nv-space-3); }
+  .nv-retirement .jub-stepnav li:last-child { grid-column: 1 / -1; }
+  .nv-retirement :is(.jub-card__head, .jub-card__body, .jub-panel, .jub-results__hero) { padding: var(--nv-space-5); }
+  .nv-retirement .jub-card__head:has(> .jub-step-num) { flex-direction: row; }
+  .nv-retirement .jub-grid-4, .nv-retirement .jub-scenarios, .nv-retirement .jub-results__hero { grid-template-columns: minmax(0, 1fr); }
+  .nv-retirement .jub-assets__row { grid-template-columns: minmax(0, 1fr); gap: var(--nv-space-4); }
+  .nv-retirement .jub-assets__row > .jub-note { grid-column: auto; }
+  .nv-retirement .jub-asset-field > .nv-field__label { min-height: 0; }
+  .nv-retirement .jub-results__hero .jub-aside-col { padding-top: var(--nv-space-3); border-top: 1px solid var(--nv-line-on-dark-strong); }
+  .nv-retirement .jub-results__hero > div:first-child { border: 0; padding-bottom: 0; }
+  .nv-retirement .jub-method > summary span { display: block; margin: var(--nv-space-2) 0 0; }
+  .nv-retirement .jub-actions .nv-btn-row { width: 100%; display: flex; flex-direction: column-reverse; align-items: stretch; }
+  .nv-retirement .jub-actions .nv-btn { white-space: normal; text-align: center; }
+  .nv-retirement .jub-line { flex-wrap: wrap; }
+  .nv-retirement .jub-method__body { padding-inline: var(--nv-space-5); }
+  .nv-retirement .jub-income-equation { gap: var(--nv-space-3); }
+  .nv-retirement .jub-income-amount { font-size: var(--nv-body-lg); overflow-wrap: anywhere; }
+  .nv-retirement .jub-journey__head h2 { font-size: var(--nv-title-sm); }
+  .nv-retirement .jub-assets__row, .nv-retirement .jub-results-detail > .jub-panel { padding: var(--nv-space-4); }
+}

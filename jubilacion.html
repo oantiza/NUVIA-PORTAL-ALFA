@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-retirement.css">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -46,7 +47,7 @@
 <script defer src="nuvia-site-unified.js"></script>
 </head>
 
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab nv-retirement">
 <x-dc>
 
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
@@ -113,15 +114,15 @@
         <div>
           <span class="nv-eyebrow nv-eyebrow--on-dark">Jubilación · Planificación patrimonial</span>
           <h1>Jubilación</h1>
-          <p class="nv-hero__lead">Introduce tu pensión, tus ahorros y tu EPSV. El simulador te mostrará una estimación sencilla de la renta mensual, los impuestos y el tiempo que podría durar tu patrimonio.</p>
+          <p class="nv-hero__lead">Entiende cuánto podrías cobrar al mes, después de impuestos, y cuánto podrían durar tus ahorros.</p>
           <div class="viv-pill-row">
-            <span class="nv-tag">◆ Solo Bizkaia</span>
+            <span class="nv-tag">Solo Bizkaia</span>
             <span class="jub-tag-dark">Reglas fiscales 2026</span>
             <span class="jub-tag-dark">Cálculo local, sin envío de datos</span>
           </div>
         </div>
         <aside aria-label="Cómo se utiliza" class="jub-howto">
-          <p class="jub-howto__label">Cómo se utiliza</p>
+          <p class="jub-howto__label">Cómo usar esta página</p>
           <div class="jub-howto__list">
             <div class="jub-howto__step">
               <span class="jub-howto__num">01</span>
@@ -129,11 +130,11 @@
             </div>
             <div class="jub-howto__step">
               <span class="jub-howto__num">02</span>
-              <p class="jub-howto__text"><strong class="jub-howto__title">Completa cuatro apartados</strong>Puedes dejar a cero los productos que no tengas.</p>
+              <p class="jub-howto__text"><strong class="jub-howto__title">Prueba con los datos de ejemplo</strong>Después, sustituye los importes por los tuyos. Deja a cero lo que no tengas.</p>
             </div>
             <div class="jub-howto__step">
               <span class="jub-howto__num">03</span>
-              <p class="jub-howto__text"><strong class="jub-howto__title">Lee el resultado</strong>Verás una estimación mensual y varios escenarios fáciles de comparar.</p>
+              <p class="jub-howto__text"><strong class="jub-howto__title">Lee el resultado</strong>Pulsa «Ver mi estimación» y compara los escenarios. Si cambias un dato, vuelve a calcular.</p>
             </div>
           </div>
         </aside>
@@ -157,40 +158,44 @@
         <p class="jub-note"><strong class="jub-strong">Importante:</strong> el resultado es una estimación para ayudarte a planificar y entender distintas alternativas. No sustituye una liquidación tributaria, el certificado de la EPSV ni el asesoramiento individual.</p>
       </div>
 
-      <article data-screen-label="01 Situación" class="jub-card">
+      <nav class="jub-stepnav" aria-label="Pasos del simulador"><ol>
+  <li><a href="#situacion"><span>1</span> Tu situación</a></li>
+  <li><a href="#ahorros"><span>2</span> Tus ahorros</a></li>
+  <li><a href="#estimacion"><span>3</span> Tu estimación</a></li>
+</ol></nav>
+<p class="jub-example-note">Empieza con un ejemplo: 65 años, pensión de 2.000 € en 14 pagas y 200.000 € de patrimonio. Son datos ficticios, no una propuesta para ti.</p>
+      <article id="situacion" data-screen-label="01 Situación" class="jub-card">
         <header class="jub-card__head">
           <span class="jub-step-num">01</span>
           <div>
-            <h2 class="jub-card__title">Tu situación y hasta cuándo quieres planificar</h2>
-            <p class="jub-note">Empieza por tu edad, tu pensión y el horizonte del plan.</p>
+            <h2 class="jub-card__title">Tu situación: ¿con qué ingresos partes?</h2>
+            <p class="jub-note">Indica la pensión que recibes o quieres simular y hasta qué edad mirar hacia adelante.</p>
           </div>
         </header>
         <div class="jub-card__body">
           <div class="jub-grid-4 nv-aligned-fields">
             <div>
               <label for="age" class="nv-field__label">Edad actual</label>
-              <div class="nv-field__box"><input id="age" name="age" type="number" min="40" max="95" defaultValue="{{ v.age }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div>
+              <div class="nv-field__box"><input aria-describedby="help-age" placeholder="65" id="age" name="age" type="number" min="40" max="95" defaultValue="{{ v.age }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div><p id="help-age" class="nv-field__note">Tu edad al inicio de la simulación, entre 40 y 95 años.<span class="jub-field-example">Ejemplo: 65.</span></p>
             </div>
             <div>
               <label for="sex" class="nv-field__label">Sexo (referencia de longevidad)</label>
-              <select class="nv-select" id="sex" name="sex" value="{{ v.sex }}" onChange="{{ setStr }}">
+              <select aria-describedby="help-sex" class="nv-select" id="sex" name="sex" value="{{ v.sex }}" onChange="{{ setStr }}">
                 <option value="male">Hombre</option>
                 <option value="female">Mujer</option>
-              </select>
+              </select><p id="help-sex" class="nv-field__note">Solo se usa al elegir «Esperanza de vida + margen». La referencia demográfica no predice cuánto vivirá una persona.</p>
             </div>
             <div>
-              <label for="pensionMonthly" class="nv-field__label">Pensión pública bruta mensual</label>
-              <div class="nv-field__box"><input id="pensionMonthly" name="pensionMonthly" type="number" min="0" step="50" defaultValue="{{ v.pensionMonthly }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div>
-              <p class="nv-field__note">Antes de IRPF · 14 pagas.</p>
+              <label for="pensionMonthly" class="nv-field__label">Pensión mensual antes de impuestos</label>
+              <div class="nv-field__box"><input aria-describedby="help-pensionMonthly" placeholder="2000" id="pensionMonthly" name="pensionMonthly" type="number" min="0" step="50" defaultValue="{{ v.pensionMonthly }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div><p id="help-pensionMonthly" class="nv-field__note">Importe antes de impuestos en cada una de las 14 pagas.<span class="jub-field-example">Ejemplo: 2.000 €.</span></p>
             </div>
             <div>
               <label for="pensionRevalPct" class="nv-field__label">Subida anual estimada de la pensión</label>
-              <div class="nv-field__box"><input id="pensionRevalPct" name="pensionRevalPct" type="number" min="-2" max="8" step="0.1" defaultValue="{{ v.pensionRevalPct }}" onChange="{{ setRev }}"><span class="nv-field__unit">%</span></div>
-              <p class="nv-field__note">Si prefieres no suponer subidas, escribe 0.</p>
+              <div class="nv-field__box"><input aria-describedby="help-pensionRevalPct" placeholder="2.7" id="pensionRevalPct" name="pensionRevalPct" type="number" min="-2" max="8" step="0.1" defaultValue="{{ v.pensionRevalPct }}" onChange="{{ setRev }}"><span class="nv-field__unit">%</span></div><p id="help-pensionRevalPct" class="nv-field__note"><span class="jub-field-example">Ejemplo inicial: 2,7 %. Por ahora, cambiar este dato no modifica la estimación.</span></p>
             </div>
           </div>
           <div class="jub-block">
-            <p class="nv-field__label">¿Cómo quieres fijar la duración del plan?</p>
+            <p class="nv-field__label">¿Hasta qué edad quieres simular?</p>
             <div class="viv-pill-row">
               <sc-for list="{{ hOpts }}" as="o" hint-placeholder-count="3">
                 <button type="button" onClick="{{ o.abrir }}" aria-pressed="{{ o.pressed }}" class="{{ o.clase }}">{{ o.label }}</button>
@@ -200,18 +205,18 @@
               <sc-if value="{{ hTarget }}" hint-placeholder-val="{{ true }}">
                 <div class="jub-narrow">
                   <label for="targetAge" class="nv-field__label">Planificar hasta la edad de</label>
-                  <div class="nv-field__box"><input id="targetAge" name="targetAge" type="number" min="41" max="110" defaultValue="{{ v.targetAge }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div>
+                  <div class="nv-field__box"><input aria-describedby="help-targetAge" placeholder="95" id="targetAge" name="targetAge" type="number" min="41" max="110" defaultValue="{{ v.targetAge }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div><p id="help-targetAge" class="nv-field__note">Edad hasta la que simulas las retiradas. Debe superar tu edad actual, con un máximo de 110.<span class="jub-field-example">Ejemplo: 95.</span></p>
                 </div>
               </sc-if>
               <sc-if value="{{ hLongevity }}" hint-placeholder-val="{{ false }}">
                 <div class="jub-narrow">
                   <label for="longevityMargin" class="nv-field__label">Años de seguridad adicionales</label>
-                  <select class="nv-select" id="longevityMargin" name="longevityMargin" value="{{ v.longevityMargin }}" onChange="{{ setNumSel }}">
+                  <select aria-describedby="help-longevityMargin" class="nv-select" id="longevityMargin" name="longevityMargin" value="{{ v.longevityMargin }}" onChange="{{ setNumSel }}">
                     <option value="0">Sin margen</option>
                     <option value="5">+5 años</option>
                     <option value="10">+10 años</option>
                     <option value="15">+15 años</option>
-                  </select>
+                  </select><p id="help-longevityMargin" class="nv-field__note">Años que añades a la referencia demográfica.<span class="jub-field-example">Ejemplo inicial: 5 años.</span></p>
                   <p class="nv-field__note">{{ expectativa }}</p>
                 </div>
               </sc-if>
@@ -223,12 +228,14 @@
         </div>
       </article>
 
-      <article data-screen-label="02 Patrimonio privado" class="jub-card">
+      <section id="ahorros" class="jub-journey" aria-labelledby="titulo-ahorros">
+<header class="jub-journey__head"><span class="jub-step-num">02</span><div><h2 id="titulo-ahorros">Tus ahorros: ¿con qué cuentas?</h2><p>Reúne el dinero disponible y, si la tienes, tu EPSV.</p></div></header>
+<article data-screen-label="02 Patrimonio privado" class="jub-card jub-card--substep">
         <header class="jub-card__head">
           <div class="jub-card__headrow">
-            <span class="jub-step-num">02</span>
+            <span class="jub-substep-mark" aria-hidden="true">A</span>
             <div>
-              <h2 class="jub-card__title">Tus ahorros e inversiones fuera de la EPSV</h2>
+              <h3 class="jub-card__title">Ahorros e inversiones</h3>
               <p class="jub-note">Indica cuánto vale hoy cada producto y cuánto dinero pusiste originalmente. Si no tienes un producto, déjalo en cero.</p>
             </div>
           </div>
@@ -243,67 +250,67 @@
           </div>
           <div class="jub-assets__row">
             <div><strong class="jub-row__name">Liquidez y efectivo</strong><span class="jub-muted">Cuentas corrientes y dinero disponible.</span></div>
-            <div class="nv-field__box"><input aria-label="Valor actual de liquidez" name="cashValue" type="number" min="0" step="1000" defaultValue="{{ v.cashValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="cashValue">Valor actual de liquidez</label><div class="nv-field__box"><input id="cashValue" aria-describedby="help-cashValue" placeholder="50000" aria-label="Valor actual de liquidez" name="cashValue" type="number" min="0" step="1000" defaultValue="{{ v.cashValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-cashValue" class="nv-field__note">Dinero disponible hoy.<span class="jub-field-example">Ejemplo: 50.000 €; escribe 0 si no tienes.</span></p></div>
             <span class="jub-muted">—</span>
             <span class="jub-note">Retirada de principal no sujeta.</span>
           </div>
           <div class="jub-assets__row">
             <div><strong class="jub-row__name">Fondos de inversión</strong><span class="jub-muted">Se estima qué parte de cada retirada es ganancia.</span></div>
-            <div class="nv-field__box"><input aria-label="Valor actual de fondos" name="fundsValue" type="number" min="0" step="1000" defaultValue="{{ v.fundsValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
-            <div class="nv-field__box"><input aria-label="Aportado a fondos" name="fundsCost" type="number" min="0" step="1000" defaultValue="{{ v.fundsCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="fundsValue">Valor actual de fondos</label><div class="nv-field__box"><input id="fundsValue" aria-describedby="help-fundsValue" placeholder="100000" aria-label="Valor actual de fondos" name="fundsValue" type="number" min="0" step="1000" defaultValue="{{ v.fundsValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-fundsValue" class="nv-field__note">Valor que figura hoy en tu posición.<span class="jub-field-example">Ejemplo: 100.000 €.</span></p></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="fundsCost">Aportado a fondos</label><div class="nv-field__box"><input id="fundsCost" aria-describedby="help-fundsCost" placeholder="75000" aria-label="Aportado a fondos" name="fundsCost" type="number" min="0" step="1000" defaultValue="{{ v.fundsCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-fundsCost" class="nv-field__note">Dinero que aportaste, sin sumar ganancias.<span class="jub-field-example">Ejemplo: 75.000 €.</span></p></div>
             <span class="jub-note">Ganancia positiva a la base del ahorro.</span>
           </div>
           <div class="jub-assets__row">
             <div><strong class="jub-row__name">Acciones y ETF</strong><span class="jub-muted">Estimación simplificada, sin FIFO por lotes.</span></div>
-            <div class="nv-field__box"><input aria-label="Valor actual de acciones y ETF" name="sharesValue" type="number" min="0" step="1000" defaultValue="{{ v.sharesValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
-            <div class="nv-field__box"><input aria-label="Pagado por acciones y ETF" name="sharesCost" type="number" min="0" step="1000" defaultValue="{{ v.sharesCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="sharesValue">Valor actual de acciones y ETF</label><div class="nv-field__box"><input id="sharesValue" aria-describedby="help-sharesValue" placeholder="50000" aria-label="Valor actual de acciones y ETF" name="sharesValue" type="number" min="0" step="1000" defaultValue="{{ v.sharesValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-sharesValue" class="nv-field__note">Valor actual conjunto.<span class="jub-field-example">Ejemplo: 50.000 €.</span></p></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="sharesCost">Pagado por acciones y ETF</label><div class="nv-field__box"><input id="sharesCost" aria-describedby="help-sharesCost" placeholder="40000" aria-label="Pagado por acciones y ETF" name="sharesCost" type="number" min="0" step="1000" defaultValue="{{ v.sharesCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-sharesCost" class="nv-field__note">Importe que pagaste al comprar.<span class="jub-field-example">Ejemplo: 40.000 €.</span></p></div>
             <span class="jub-note">Ganancia positiva a la base del ahorro.</span>
           </div>
           <div class="jub-assets__row">
             <div><strong class="jub-row__name">Depósitos y renta fija</strong><span class="jub-muted">El capital no tributa; los intereses sí pueden.</span></div>
-            <div class="nv-field__box"><input aria-label="Valor actual de depósitos" name="depositsValue" type="number" min="0" step="1000" defaultValue="{{ v.depositsValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="depositsValue">Valor actual de depósitos</label><div class="nv-field__box"><input id="depositsValue" aria-describedby="help-depositsValue" placeholder="0" aria-label="Valor actual de depósitos" name="depositsValue" type="number" min="0" step="1000" defaultValue="{{ v.depositsValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-depositsValue" class="nv-field__note">Capital actual en estos productos.<span class="jub-field-example">Ejemplo: 0 € si no tienes.</span></p></div>
             <span class="jub-muted">Principal = valor actual</span>
             <span class="jub-note">Intereses a la base del ahorro.</span>
           </div>
           <div class="jub-assets__row">
             <div><strong class="jub-row__name">Seguros de ahorro</strong><span class="jub-muted">Rescates ordinarios; sin rentas vitalicias aseguradas.</span></div>
-            <div class="nv-field__box"><input aria-label="Valor de rescate del seguro" name="insuranceValue" type="number" min="0" step="1000" defaultValue="{{ v.insuranceValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
-            <div class="nv-field__box"><input aria-label="Primas aportadas al seguro" name="insuranceCost" type="number" min="0" step="1000" defaultValue="{{ v.insuranceCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="insuranceValue">Valor de rescate del seguro</label><div class="nv-field__box"><input id="insuranceValue" aria-describedby="help-insuranceValue" placeholder="0" aria-label="Valor de rescate del seguro" name="insuranceValue" type="number" min="0" step="1000" defaultValue="{{ v.insuranceValue }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-insuranceValue" class="nv-field__note">Importe disponible si rescatas el seguro.<span class="jub-field-example">Ejemplo: 0 € si no tienes.</span></p></div>
+            <div class="jub-asset-field"><label class="nv-field__label" for="insuranceCost">Primas aportadas al seguro</label><div class="nv-field__box"><input id="insuranceCost" aria-describedby="help-insuranceCost" placeholder="0" aria-label="Primas aportadas al seguro" name="insuranceCost" type="number" min="0" step="1000" defaultValue="{{ v.insuranceCost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-insuranceCost" class="nv-field__note">Total de primas que has pagado.<span class="jub-field-example">Ejemplo: 0 € si no tienes.</span></p></div>
             <span class="jub-note">Rendimiento positivo a la base del ahorro.</span>
           </div>
           <p class="jub-footnote">Si un producto vale menos de lo que pagaste, el simulador no utiliza automáticamente esa pérdida para reducir el impuesto: esa compensación depende del resto de operaciones del año.</p>
         </div>
       </article>
 
-      <article data-screen-label="03 EPSV" class="jub-card">
+      <article id="epsv" data-screen-label="03 EPSV" class="jub-card jub-card--substep">
         <header class="jub-card__head">
           <div class="jub-card__headrow">
-            <span class="jub-step-num">03</span>
+            <span class="jub-substep-mark" aria-hidden="true">B</span>
             <div>
-              <h2 class="jub-card__title">Tu EPSV y la forma de cobrarla</h2>
-              <p class="jub-note">Solo si tienes una EPSV. Se diferencian los derechos anteriores y posteriores al 1 de enero de 2026.</p>
+              <h3 class="jub-card__title">Tu EPSV y la forma de cobrarla</h3>
+              <p class="jub-note">Si no tienes una EPSV, deja sus saldos en cero y continúa a «Tu estimación». Si la tienes, utiliza el certificado de tu entidad.</p>
             </div>
           </div>
           <button type="button" onClick="{{ cargarDFB }}" class="btn btn-secondary jub-btn-small">Cargar caso práctico DFB</button>
         </header>
-        <div class="jub-card__body">
+        <div class="jub-card__body"><details class="jub-info"><summary><span aria-hidden="true">ⓘ</span> ¿Qué es una EPSV?</summary><p>Una entidad de previsión social voluntaria: un sistema de ahorro para complementar la jubilación en el País Vasco. Aquí se distingue lo que aportaste de las ganancias acumuladas.</p></details>
           <div class="nv-fields">
             <div class="jub-subpanel">
               <h3 class="jub-subtitle">Derechos anteriores al 1/1/2026</h3>
               <label for="epsvPre" class="nv-field__label">Saldo actual de esta parte</label>
-              <div class="nv-field__box"><input id="epsvPre" name="epsvPre" type="number" min="0" step="1000" defaultValue="{{ v.epsvPre }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+              <div class="nv-field__box"><input aria-describedby="help-epsvPre" placeholder="0" id="epsvPre" name="epsvPre" type="number" min="0" step="1000" defaultValue="{{ v.epsvPre }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-epsvPre" class="nv-field__note">Saldo de los derechos anteriores a 2026 según el certificado.<span class="jub-field-example">Ejemplo: 0 € sin EPSV.</span></p>
               <sc-if value="{{ dmDetailed }}" hint-placeholder-val="{{ true }}">
                 <label for="epsvPreReturn" class="nv-field__label">Ganancias incluidas en ese saldo</label>
-                <div class="nv-field__box"><input id="epsvPreReturn" name="epsvPreReturn" type="number" min="0" step="500" defaultValue="{{ v.epsvPreReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+                <div class="nv-field__box"><input aria-describedby="help-epsvPreReturn" placeholder="0" id="epsvPreReturn" name="epsvPreReturn" type="number" min="0" step="500" defaultValue="{{ v.epsvPreReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-epsvPreReturn" class="nv-field__note">Parte del saldo anterior que corresponde a ganancias; no puede superar ese saldo.<span class="jub-field-example">Ejemplo: 0 €.</span></p>
               </sc-if>
             </div>
             <div class="jub-subpanel">
               <h3 class="jub-subtitle">Derechos desde el 1/1/2026</h3>
               <label for="epsvPost" class="nv-field__label">Saldo actual de esta parte</label>
-              <div class="nv-field__box"><input id="epsvPost" name="epsvPost" type="number" min="0" step="1000" defaultValue="{{ v.epsvPost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+              <div class="nv-field__box"><input aria-describedby="help-epsvPost" placeholder="0" id="epsvPost" name="epsvPost" type="number" min="0" step="1000" defaultValue="{{ v.epsvPost }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-epsvPost" class="nv-field__note">Saldo de los derechos desde 2026 según el certificado.<span class="jub-field-example">Ejemplo: 0 € sin EPSV.</span></p>
               <sc-if value="{{ dmDetailed }}" hint-placeholder-val="{{ true }}">
                 <label for="epsvPostReturn" class="nv-field__label">Ganancias incluidas en ese saldo</label>
-                <div class="nv-field__box"><input id="epsvPostReturn" name="epsvPostReturn" type="number" min="0" step="500" defaultValue="{{ v.epsvPostReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
+                <div class="nv-field__box"><input aria-describedby="help-epsvPostReturn" placeholder="0" id="epsvPostReturn" name="epsvPostReturn" type="number" min="0" step="500" defaultValue="{{ v.epsvPostReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-epsvPostReturn" class="nv-field__note">Parte del saldo desde 2026 que corresponde a ganancias; no puede superar ese saldo.<span class="jub-field-example">Ejemplo: 0 €.</span></p>
               </sc-if>
             </div>
           </div>
@@ -323,15 +330,15 @@
                 </label>
                 <div>
                   <label for="seniorityKnown" class="nv-field__label">¿Conoces los años de antigüedad?</label>
-                  <select class="nv-select" id="seniorityKnown" name="seniorityKnown" value="{{ v.seniorityKnown }}" onChange="{{ setStr }}">
+                  <select aria-describedby="help-seniorityKnown" class="nv-select" id="seniorityKnown" name="seniorityKnown" value="{{ v.seniorityKnown }}" onChange="{{ setStr }}">
                     <option value="yes">Sí</option>
                     <option value="no">No</option>
-                  </select>
+                  </select><p id="help-seniorityKnown" class="nv-field__note">Elige «Sí» solo si conoces la fecha de la primera aportación.</p>
                 </div>
                 <sc-if value="{{ seniorityYes }}" hint-placeholder-val="{{ true }}">
                   <div>
                     <label for="seniorityYears" class="nv-field__label">Años desde la primera aportación</label>
-                    <div class="nv-field__box"><input id="seniorityYears" name="seniorityYears" type="number" min="1" max="60" defaultValue="{{ v.seniorityYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div>
+                    <div class="nv-field__box"><input aria-describedby="help-seniorityYears" placeholder="20" id="seniorityYears" name="seniorityYears" type="number" min="1" max="60" defaultValue="{{ v.seniorityYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div><p id="help-seniorityYears" class="nv-field__note">Años desde tu primera aportación, entre 1 y 60.<span class="jub-field-example">Ejemplo: 20.</span></p>
                   </div>
                 </sc-if>
               </div>
@@ -350,33 +357,33 @@
                 <div class="jub-mt jub-narrow--wide">
                   <label for="epsvCapitalPct" class="nv-field__label">Parte que cobrarías de una sola vez</label>
                   <div class="jub-slider">
-                    <input id="epsvCapitalPct" name="epsvCapitalPct" type="range" min="0" max="100" step="5" defaultValue="{{ v.epsvCapitalPct }}" onChange="{{ setNum }}" class="jub-slider__input">
+                    <input aria-describedby="help-epsvCapitalPct" id="epsvCapitalPct" name="epsvCapitalPct" type="range" min="0" max="100" step="5" defaultValue="{{ v.epsvCapitalPct }}" onChange="{{ setNum }}" class="jub-slider__input">
                     <span class="jub-slider__value">{{ v.epsvCapitalPct }} %</span>
-                  </div>
+                  </div><p id="help-epsvCapitalPct" class="nv-field__note">Porcentaje del saldo que cobrarías de una vez.<span class="jub-field-example">Ejemplo: 50 %; en modo mixto debe ser mayor que 0 y menor que 100.</span></p>
                 </div>
               </sc-if>
             </div>
             <div>
-              <label for="taxRegime" class="nv-field__label">Régimen del cobro anterior a 2026</label>
-              <select class="nv-select" id="taxRegime" name="taxRegime" value="{{ v.taxRegime }}" onChange="{{ setStr }}">
+              <label for="taxRegime" class="nv-field__label">Tratamiento de los derechos anteriores a 2026</label>
+              <select aria-describedby="help-taxRegime" class="nv-select" id="taxRegime" name="taxRegime" value="{{ v.taxRegime }}" onChange="{{ setStr }}">
                 <option value="auto">Automático: comparar y elegir menor impuesto</option>
                 <option value="transitory">Régimen transitorio: integrar el 60 %</option>
                 <option value="new">Régimen desde 2026: separar aportación y ganancia</option>
-              </select>
+              </select><p id="help-taxRegime" class="nv-field__note">La opción automática compara el impuesto calculado de ambos regímenes. No determina tu derecho a aplicarlos.</p>
             </div>
           </div>
 
           <div class="jub-block jub-grid-2">
             <div>
               <label for="contingency" class="nv-field__label">Motivo por el que cobras la EPSV</label>
-              <select class="nv-select" id="contingency" name="contingency" value="{{ v.contingency }}" onChange="{{ setStr }}">
+              <select aria-describedby="help-contingency" class="nv-select" id="contingency" name="contingency" value="{{ v.contingency }}" onChange="{{ setStr }}">
                 <option value="retirement">Jubilación</option>
                 <option value="disability">Invalidez</option>
                 <option value="dependency">Dependencia</option>
                 <option value="seriousIllness">Enfermedad grave</option>
                 <option value="longUnemployment">Desempleo de larga duración</option>
                 <option value="other">Otro rescate o baja</option>
-              </select>
+              </select><p id="help-contingency" class="nv-field__note">Selecciona el motivo que consta en la documentación.<span class="jub-field-example">Ejemplo inicial: jubilación.</span></p>
             </div>
             <label class="jub-check">
               <input type="checkbox" name="firstBenefit" checked="{{ v.firstBenefit }}" onChange="{{ setChk }}" class="jub-check__input">
@@ -391,16 +398,16 @@
           <div class="jub-block jub-grid-2 nv-aligned-fields">
             <div>
               <label for="epsvRentQualification" class="nv-field__label">Tipo de renta formalizada con la EPSV</label>
-              <select class="nv-select" id="epsvRentQualification" name="epsvRentQualification" value="{{ v.epsvRentQualification }}" onChange="{{ setStr }}">
+              <select aria-describedby="help-epsvRentQualification" class="nv-select" id="epsvRentQualification" name="epsvRentQualification" value="{{ v.epsvRentQualification }}" onChange="{{ setStr }}">
                 <option value="none">Pagos ordinarios: la ganancia puede tributar</option>
                 <option value="temporary">Renta temporal formalizada de 15 años o más</option>
                 <option value="life">Renta vitalicia formalizada por la EPSV</option>
-              </select>
+              </select><p id="help-epsvRentQualification" class="nv-field__note">Describe el contrato real, no la frecuencia de tus retiradas.<span class="jub-field-example">Ejemplo inicial: pagos ordinarios.</span></p>
             </div>
             <sc-if value="{{ rentTemporary }}" hint-placeholder-val="{{ false }}">
               <div>
                 <label for="epsvRentYears" class="nv-field__label">Duración del contrato</label>
-                <div class="nv-field__box"><input id="epsvRentYears" name="epsvRentYears" type="number" min="15" max="50" defaultValue="{{ v.epsvRentYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div>
+                <div class="nv-field__box"><input aria-describedby="help-epsvRentYears" placeholder="15" id="epsvRentYears" name="epsvRentYears" type="number" min="15" max="50" defaultValue="{{ v.epsvRentYears }}" onChange="{{ setNum }}"><span class="nv-field__unit">años</span></div><p id="help-epsvRentYears" class="nv-field__note">Duración que figura en el contrato.<span class="jub-field-example">Ejemplo: 15 años; comprueba también la cuantía constante.</span></p>
               </div>
               <label class="jub-check">
                 <input type="checkbox" name="constantRent" checked="{{ v.constantRent }}" onChange="{{ setChk }}" class="jub-check__input">
@@ -411,11 +418,14 @@
         </div>
       </article>
 
-      <article data-screen-label="04 Hipótesis" class="jub-card">
+      </section>
+<section id="estimacion" class="jub-journey" aria-labelledby="titulo-estimacion">
+<header class="jub-journey__head"><span class="jub-step-num">03</span><div><h2 id="titulo-estimacion">Tu estimación: mira hacia adelante</h2><p>Revisa los supuestos y calcula para ver de dónde salen tus ingresos.</p></div></header>
+      <article id="supuestos" data-screen-label="04 Hipótesis" class="jub-card jub-card--assumptions">
         <header class="jub-card__head">
-          <span class="jub-step-num">04</span>
+          <span class="jub-substep-mark" aria-hidden="true">ⓘ</span>
           <div>
-            <h2 class="jub-card__title">Supuestos para hacer la proyección</h2>
+            <h3 class="jub-card__title">Los supuestos de tu escenario</h3>
             <p class="jub-note">Estas cifras no son garantías: sirven para comparar escenarios.</p>
           </div>
         </header>
@@ -423,25 +433,22 @@
           <div class="jub-grid-4 nv-aligned-fields">
             <div>
               <label for="expectedReturn" class="nv-field__label">Rentabilidad anual estimada</label>
-              <div class="nv-field__box"><input id="expectedReturn" name="expectedReturn" type="number" min="-2" max="12" step="0.1" defaultValue="{{ v.expectedReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div>
-              <p class="nv-field__note">Una cifra menor produce una estimación más prudente.</p>
+              <div class="nv-field__box"><input aria-describedby="help-expectedReturn" placeholder="3" id="expectedReturn" name="expectedReturn" type="number" min="-2" max="12" step="0.1" defaultValue="{{ v.expectedReturn }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div><p id="help-expectedReturn" class="nv-field__note">Variación anual que supones para el patrimonio.<span class="jub-field-example">Ejemplo inicial: 3 %; no es una rentabilidad garantizada.</span></p>
             </div>
             <div>
               <label for="incomeGrowth" class="nv-field__label">Subida anual de las retiradas</label>
-              <div class="nv-field__box"><input id="incomeGrowth" name="incomeGrowth" type="number" min="0" max="6" step="0.1" defaultValue="{{ v.incomeGrowth }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div>
-              <p class="nv-field__note">Para compensar parcialmente el coste de vida.</p>
+              <div class="nv-field__box"><input aria-describedby="help-incomeGrowth" placeholder="2" id="incomeGrowth" name="incomeGrowth" type="number" min="0" max="6" step="0.1" defaultValue="{{ v.incomeGrowth }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div><p id="help-incomeGrowth" class="nv-field__note">Cuánto aumentan las retiradas cada año.<span class="jub-field-example">Ejemplo: 2 % convierte 1.000 € en 1.020 € al año siguiente.</span></p>
             </div>
             <div>
               <label for="otherDeductions" class="nv-field__label">Otras deducciones (opcional)</label>
-              <div class="nv-field__box"><input id="otherDeductions" name="otherDeductions" type="number" min="0" step="100" defaultValue="{{ v.otherDeductions }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div>
-              <p class="nv-field__note">La deducción por edad se calcula automáticamente.</p>
+              <div class="nv-field__box"><input aria-describedby="help-otherDeductions" placeholder="0" id="otherDeductions" name="otherDeductions" type="number" min="0" step="100" defaultValue="{{ v.otherDeductions }}" onChange="{{ setNum }}"><span class="nv-field__unit">€</span></div><p id="help-otherDeductions" class="nv-field__note">Otras deducciones anuales en euros.<span class="jub-field-example">Ejemplo: 0 si no las conoces. La deducción por edad se calcula automáticamente.</span></p>
             </div>
             <label class="jub-check">
               <input type="checkbox" name="stressEnabled" checked="{{ v.stressEnabled }}" onChange="{{ setChk }}" class="jub-check__input">
               <span class="jub-note"><strong class="jub-row__name">Comprobar un comienzo desfavorable</strong>Caída del 12 % el primer año y del 5 % el segundo, manteniendo las retiradas.</span>
             </label>
           </div>
-          <p class="jub-subpanel"><strong class="jub-strong">Por qué importa:</strong> perder dinero al principio de la jubilación puede dañar más el plan que sufrir la misma caída años después, porque ya se están realizando retiradas.</p>
+          <details class="jub-info"><summary><span aria-hidden="true">ⓘ</span> Rentabilidad e inflación, en palabras sencillas</summary><p>La rentabilidad es lo que gana o pierde el patrimonio en un año. La inflación es la subida del coste de vida: con el mismo dinero puedes comprar menos. La subida de retiradas es una hipótesis que eliges tú; no es una previsión de inflación ni un ajuste automático.</p></details><p class="jub-subpanel"><strong class="jub-strong">Por qué importa:</strong> perder dinero al principio de la jubilación puede dañar más el plan que sufrir la misma caída años después, porque ya se están realizando retiradas.</p>
         </div>
       </article>
 
@@ -453,25 +460,44 @@
           </sc-for>
         </div>
       </sc-if>
-      <div class="jub-actions">
+      <details class="jub-method" id="metodo">
+  <summary>¿Cómo se calcula? <span>Supuestos y límites del simulador</span></summary>
+  <div class="jub-method__body">
+    <h3>De tus datos a una renta mensual</h3>
+    <ol><li>La pensión anual es el importe mensual que introduces multiplicado por 14.</li><li>El patrimonio y la parte de EPSV que se cobra periódicamente se reparten durante el horizonte elegido, aplicando la rentabilidad y el crecimiento de retiradas indicados. En el modo de conservar capital, se calcula la retirada a partir de la rentabilidad estimada.</li><li>Se calcula el IRPF estimado de Bizkaia 2026 y se divide la renta neta anual entre 12. El cobro de EPSV de una sola vez se muestra aparte y no se suma a esa renta mensual.</li></ol>
+    <h3>Qué supone el ejemplo inicial</h3>
+    <p>De 65 a 95 años, rentabilidad anual del 3 % y subida anual de retiradas del 2 %. El escenario conservador resta 1,5 puntos a la rentabilidad y el optimista suma 1,5 puntos, dentro de los límites del modelo. El comienzo desfavorable aplica −12 % y −5 % los dos primeros años.</p>
+    <h3>Qué conviene tener presente</h3>
+    <p>La proyección comienza con los saldos que introduces: no simula aportaciones antes de jubilarte. Muestra importes nominales, sin descontar la inflación. La subida anual de la pensión no cambia esta estimación. Los rendimientos son hipótesis, no garantías.</p>
+    <p>La fiscalidad es simplificada: no reproduce una declaración completa, no compensa automáticamente pérdidas ni calcula compras por lotes. La referencia de longevidad es aproximada. Contrasta el desglose y los requisitos de tu EPSV con su documentación.</p>
+  </div>
+</details>
+      <div id="calcular" class="jub-actions">
         <p class="jub-footnote">Antes de calcular, revisa que los importes sean tuyos y no los valores de ejemplo.</p>
         <div class="nv-btn-row">
           <button type="button" onClick="{{ restablecer }}" class="nv-btn nv-btn--soft">Restablecer</button>
-          <button type="button" onClick="{{ calcular }}" class="nv-btn nv-btn--accent">Ver mi estimación de jubilación →</button>
+          <button type="button" onClick="{{ calcular }}" class="nv-btn nv-btn--primary">Ver mi estimación de jubilación →</button>
         </div>
       </div>
     </section>
 
+      </section>
     <sc-if value="{{ hayPlan }}" hint-placeholder-val="{{ false }}">
       <section id="resultados" data-screen-label="Resultados" class="nv-container jub-section">
-        <span class="nv-eyebrow">Tu estimación</span>
+        <p class="jub-results-step">Tu estimación · Escenario base · Primer año</p>
         <h2 class="jub-results__title">Lo que podrías cobrar cada mes</h2>
 
         <div class="jub-results__hero">
           <div>
-            <p class="jub-label">Renta neta mensual estimada · Escenario base</p>
-            <p class="jub-figure__value jub-figure__value--xl">{{ resNeta }}</p>
-            <p class="jub-muted">Pensión pública + retiradas de patrimonio y EPSV, después de IRPF.</p>
+            <p class="jub-label">Así se forma tu ingreso mensual</p>
+<div class="jub-income-equation" role="group" aria-label="Pensión neta más retiradas netas igual a renta neta mensual estimada">
+<div><p>Pensión pública neta</p><strong class="jub-income-amount">{{ f1PensionNeta }}</strong></div>
+<span class="jub-equation-sign" aria-hidden="true">+</span>
+<div><p>Retiradas netas de ahorros y EPSV</p><strong class="jub-income-amount">{{ f1RetiradasNetas }}</strong></div>
+<span class="jub-equation-sign" aria-hidden="true">=</span>
+<div class="jub-income-total"><p>Ingreso mensual estimado</p><p class="jub-figure__value jub-figure__value--xl">{{ resNeta }}</p></div>
+</div>
+            <p class="jub-muted">Es el dinero mensual medio después de impuestos durante el primer año. El total anual se divide entre 12; no coincide con cada una de las 14 pagas de la pensión. Importes redondeados.</p>
           </div>
           <div class="jub-aside-col">
             <p class="jub-label">Renta bruta</p>
@@ -488,6 +514,60 @@
           </div>
         </div>
 
+        <div class="jub-results-detail">
+          <article class="jub-panel jub-projection">
+            <p class="jub-label">Proyección del patrimonio</p>
+            <h3 class="jub-panel__title">Cuánto podría durar tu dinero</h3>
+            <!-- Los rótulos de los ejes iban dentro del <svg> como <text>{{ … }}</text>.
+                 El runtime envuelve toda interpolación en un <span>, y un <span>
+                 de HTML dentro de un SVG no lo pinta el navegador: los cuatro
+                 rótulos interpolados llevaban ahí sin verse, y solo se leía el
+                 «0», que es texto fijo. Ahora son HTML colocado sobre el marco,
+                 con la misma geometría: el dibujo no se toca. -->
+            <p class="jub-footnote">Las líneas muestran el saldo restante, no los ingresos. Llegar a cero antes del horizonte significa que el patrimonio se agota en ese escenario.</p>
+            <div class="jub-chart-wrap">
+              <div class="jub-chart-wrap__plot">
+                <span class="jub-chart-wrap__y jub-chart-wrap__y--max">{{ chartMax }}</span>
+                <span class="jub-chart-wrap__y jub-chart-wrap__y--mid">{{ chartMid }}</span>
+                <span class="jub-chart-wrap__y jub-chart-wrap__y--zero">0</span>
+                <span class="jub-chart-wrap__x jub-chart-wrap__x--ini">{{ edadInicio }}</span>
+                <span class="jub-chart-wrap__x jub-chart-wrap__x--fin">{{ edadFin }}</span>
+            <svg viewBox="0 0 640 210" class="jub-chart" role="img" aria-label="Evolución del patrimonio por escenario">
+              <line x1="46" y1="10" x2="46" y2="180" stroke="currentColor" stroke-width="1" class="jub-chart__axis"></line>
+              <line x1="46" y1="180" x2="632" y2="180" stroke="currentColor" stroke-width="1" class="jub-chart__axis"></line>
+              <line x1="46" y1="95" x2="632" y2="95" stroke="currentColor" stroke-width="1" class="jub-chart__grid"></line>
+              <line x1="46" y1="10" x2="632" y2="10" stroke="currentColor" stroke-width="1" class="jub-chart__grid"></line>
+              <polyline stroke-dasharray="8 4" sc-camel-points="{{ lineaConservador }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="jub-chart__line jub-chart__line--prudente"></polyline>
+              <polyline stroke-dasharray="2 4" sc-camel-points="{{ lineaOptimista }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="jub-chart__line jub-chart__line--favorable"></polyline>
+              <polyline sc-camel-points="{{ lineaEstres }}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="5 4" stroke-linecap="round" class="jub-chart__line jub-chart__line--estres"></polyline>
+              <polyline sc-camel-points="{{ lineaBase }}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" class="jub-chart__line jub-chart__line--base"></polyline>
+            </svg>
+              </div>
+            </div>
+            <div class="jub-legend">
+              <span class="jub-chip"><span class="jub-swatch jub-swatch--base"></span>Base</span>
+              <span class="jub-chip"><span class="jub-swatch jub-swatch--prudente"></span>Conservador</span>
+              <span class="jub-chip"><span class="jub-swatch jub-swatch--favorable"></span>Optimista</span>
+              <sc-if value="{{ hayEstres }}" hint-placeholder-val="{{ true }}">
+                <span class="jub-chip"><span class="jub-swatch jub-swatch--estres"></span>Comienzo desfavorable</span>
+              </sc-if>
+            </div>
+          </article>
+          <article class="jub-panel">
+            <details class="jub-info"><summary><span aria-hidden="true">ⓘ</span> ¿Qué significa neto e IRPF?</summary><p>Bruto es el importe antes de impuestos. Neto es lo que queda tras el IRPF estimado, el impuesto sobre la renta. Las cifras mensuales son promedios de los importes anuales.</p></details><p class="jub-label">Escenario base · Año 1</p>
+            <h3 class="jub-panel__title">De dónde sale la renta</h3>
+            <div class="jub-stack">
+              <p class="jub-line"><span>Pensión pública neta</span><strong class="jub-num">{{ f1PensionNeta }}</strong></p>
+              <p class="jub-line"><span>Retiradas netas de patrimonio y EPSV</span><strong class="jub-num">{{ f1RetiradasNetas }}</strong></p>
+              <p class="jub-line"><span>IRPF sobre la pensión</span><strong class="jub-num is-negative">{{ f1CuotaBase }}</strong></p>
+              <p class="jub-line"><span>IRPF adicional por las retiradas</span><strong class="jub-num is-negative">{{ f1ImpuestoExtra }}</strong></p>
+            </div>
+            <p class="jub-footnote">{{ notaRatios }}</p>
+          </article>
+        </div>
+
+        <h3 class="jub-comparison-title">¿Y si la rentabilidad cambia?</h3>
+        <p class="jub-footnote">Cada escenario vuelve a estimar las retiradas. El comienzo desfavorable mantiene las del escenario base para mostrar el efecto de las pérdidas iniciales.</p>
         <div class="jub-scenarios">
           <sc-for list="{{ escenarios }}" as="e" hint-placeholder-count="3">
             <article class="jub-panel">
@@ -503,57 +583,6 @@
               </div>
             </article>
           </sc-for>
-        </div>
-
-        <div class="jub-grid-2">
-          <article class="jub-panel">
-            <p class="jub-label">Proyección del patrimonio</p>
-            <h3 class="jub-panel__title">Cuánto podría durar tu dinero</h3>
-            <!-- Los rótulos de los ejes iban dentro del <svg> como <text>{{ … }}</text>.
-                 El runtime envuelve toda interpolación en un <span>, y un <span>
-                 de HTML dentro de un SVG no lo pinta el navegador: los cuatro
-                 rótulos interpolados llevaban ahí sin verse, y solo se leía el
-                 «0», que es texto fijo. Ahora son HTML colocado sobre el marco,
-                 con la misma geometría: el dibujo no se toca. -->
-            <div class="jub-chart-wrap">
-              <div class="jub-chart-wrap__plot">
-                <span class="jub-chart-wrap__y jub-chart-wrap__y--max">{{ chartMax }}</span>
-                <span class="jub-chart-wrap__y jub-chart-wrap__y--mid">{{ chartMid }}</span>
-                <span class="jub-chart-wrap__y jub-chart-wrap__y--zero">0</span>
-                <span class="jub-chart-wrap__x jub-chart-wrap__x--ini">{{ edadInicio }}</span>
-                <span class="jub-chart-wrap__x jub-chart-wrap__x--fin">{{ edadFin }}</span>
-            <svg viewBox="0 0 640 210" class="jub-chart" role="img" aria-label="Evolución del patrimonio por escenario">
-              <line x1="46" y1="10" x2="46" y2="180" stroke="currentColor" stroke-width="1" class="jub-chart__axis"></line>
-              <line x1="46" y1="180" x2="632" y2="180" stroke="currentColor" stroke-width="1" class="jub-chart__axis"></line>
-              <line x1="46" y1="95" x2="632" y2="95" stroke="currentColor" stroke-width="1" class="jub-chart__grid"></line>
-              <line x1="46" y1="10" x2="632" y2="10" stroke="currentColor" stroke-width="1" class="jub-chart__grid"></line>
-              <polyline sc-camel-points="{{ lineaConservador }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="jub-chart__line jub-chart__line--prudente"></polyline>
-              <polyline sc-camel-points="{{ lineaOptimista }}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="jub-chart__line jub-chart__line--favorable"></polyline>
-              <polyline sc-camel-points="{{ lineaEstres }}" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="5 4" stroke-linecap="round" class="jub-chart__line jub-chart__line--estres"></polyline>
-              <polyline sc-camel-points="{{ lineaBase }}" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" class="jub-chart__line jub-chart__line--base"></polyline>
-            </svg>
-              </div>
-            </div>
-            <div class="jub-legend">
-              <span class="jub-chip"><span class="jub-swatch jub-swatch--base"></span>Base</span>
-              <span class="jub-chip"><span class="jub-swatch jub-swatch--prudente"></span>Conservador</span>
-              <span class="jub-chip"><span class="jub-swatch jub-swatch--favorable"></span>Optimista</span>
-              <sc-if value="{{ hayEstres }}" hint-placeholder-val="{{ true }}">
-                <span class="jub-chip"><span class="jub-swatch jub-swatch--estres"></span>Estrés de secuencia</span>
-              </sc-if>
-            </div>
-          </article>
-          <article class="jub-panel">
-            <p class="jub-label">Escenario base · Año 1</p>
-            <h3 class="jub-panel__title">De dónde sale la renta</h3>
-            <div class="jub-stack">
-              <p class="jub-line"><span>Pensión pública neta</span><strong class="jub-num">{{ f1PensionNeta }}</strong></p>
-              <p class="jub-line"><span>Retiradas netas de patrimonio y EPSV</span><strong class="jub-num">{{ f1RetiradasNetas }}</strong></p>
-              <p class="jub-line"><span>IRPF sobre la pensión</span><strong class="jub-num is-negative">{{ f1CuotaBase }}</strong></p>
-              <p class="jub-line"><span>IRPF adicional por las retiradas</span><strong class="jub-num is-negative">{{ f1ImpuestoExtra }}</strong></p>
-            </div>
-            <p class="jub-footnote">{{ notaRatios }}</p>
-          </article>
         </div>
 
         <sc-if value="{{ hayCapital }}" hint-placeholder-val="{{ false }}">

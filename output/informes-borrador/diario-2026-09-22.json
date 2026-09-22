@@ -1,0 +1,246 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-22",
+  "fecha": "2026-09-22",
+  "fechaIso": "2026-09-22T00:00:00.000Z",
+  "generadoIso": "2026-09-22T10:44:53.175Z",
+  "titular": "Las plazas bursátiles inician la semana con ascensos impulsadas por el respiro energético",
+  "entradilla": "Los principales índices europeos registraron avances superiores al uno por ciento en la sesión del lunes. La caída de los precios del petróleo y del gas alivió las perspectivas de costes para la industria.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró la sesión con una subida del 1,08 % hasta alcanzar los 19.724,40 puntos.",
+      "fecha": "2026-09-21",
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "texto": "El indicador EURO STOXX 50 finalizó en 6.317,85 puntos tras sumar un 1,31 %, coincidiendo con la entrada en vigor de su reequilibrio anual.",
+      "fecha": "2026-09-21",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El índice DAX 40 avanzó un 1,07 % hasta situarse en 25.575,01 puntos, favorecido por unas menores estimaciones de costes industriales.",
+      "fecha": "2026-09-21",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (Renta Variable)",
+      "valor": "19.724,40 puntos (+1,08 %)",
+      "referencia": "21 de septiembre de 2026",
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50 (Renta Variable)",
+      "valor": "6.317,85 puntos (+1,31 %)",
+      "referencia": "21 de septiembre de 2026",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Petróleo Brent (Materias Primas)",
+      "valor": "Sin contrastar",
+      "referencia": "Descenso del 0,48 % hasta 103,370 USD/barril. Cifra sin publicador de primera mano en los enlaces disponibles.",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Bono español a 10 años (Renta Fija)",
+      "valor": "Sin contrastar",
+      "referencia": "Rendimiento del 3,96 % el 18 de septiembre de 2026. Cifra sin publicador de primera mano en los enlaces disponibles.",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD (Divisas)",
+      "valor": "Sin contrastar",
+      "referencia": "1,1490 dólares por euro el 21 de septiembre de 2026. Cifra sin publicador de primera mano en los enlaces disponibles.",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-22",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Encuesta de Ocupación Hotelera de agosto",
+      "anterior": "Resultados de julio de 2026",
+      "porQueImporta": "Mide el nivel de ocupación y tarifas en el mes central de la temporada turística.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-22",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Importaciones energéticas de la Unión Europea (2T)",
+      "anterior": "Retroceso del 16,3 % interanual en el primer trimestre",
+      "porQueImporta": "Permite diagnosticar la evolución del saldo comercial exterior europeo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-22",
+      "hora": "13:00",
+      "region": "Eurozona",
+      "que": "Comparecencia de Christine Lagarde (BCE)",
+      "anterior": null,
+      "porQueImporta": "Ofrecerá mensajes sobre la fortaleza del sistema financiero frente a perturbaciones macroeconómicas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-23",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Producción del Sector Servicios de julio",
+      "anterior": "Cifras de junio de 2026",
+      "porQueImporta": "Proporciona la medida del pulso de facturación en el comercio y los servicios.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-24",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Precios Industriales de agosto",
+      "anterior": "Datos del mes de julio de 2026",
+      "porQueImporta": "Sirve como indicador anticipado de la transmisión de precios hacia el consumidor.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La primera sesión de la semana concluyó con ascensos consistentes en los grandes mercados bursátiles europeos. El índice IBEX 35 sumó un 1,08 % hasta superar los 19.700 puntos, mientras que el indicador alemán DAX 40 se revalorizó un 1,07 %. Estas alzas estuvieron acompañadas de una relajación en las cotizaciones de las principales fuentes de energía.",
+        "En el ámbito corporativo, la jornada estuvo marcada por la entrada en vigor de los ajustes anuales de composición en índices como el EURO STOXX 50 y el S&P 500 estadounidense. Estos cambios mecánicos obligan a readaptar carteras a los fondos que replican su comportamiento, afectando al volumen de las acciones que entran y salen."
+      ],
+      "fuentes": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La moderación en los precios del gas natural y del petróleo aporta oxígeno a las perspectivas económicas de la eurozona. Una energía más asequible reduce directamente la presión sobre los gastos operativos del tejido manufacturero, lo que fomenta el apetito inversor hacia la renta variable en detrimento de los activos refugio.",
+        "En paralelo, la asimilación de los recientes incrementos en los tipos de interés oficiales estabiliza la hoja de ruta de las finanzas continentales. El mantenimiento de tasas más elevadas durante un período prolongado garantiza el margen de intermediación de las entidades bancarias, consolidando los beneficios del sector financiero."
+      ],
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención macroeconómica inmediata recae en las estadísticas del sector exterior y de servicios. A lo largo del martes se difunden los datos de ocupación hotelera en España del mes de agosto, una pieza central para calibrar el cierre del verano. A nivel comunitario, las cifras de importaciones energéticas permitirán evaluar su peso en la balanza comercial.",
+        "A medida que avance la semana, el foco se trasladará hacia la diplomacia económica. Los primeros contactos entre delegaciones de Estados Unidos y China preparan el terreno para las reuniones bilaterales programadas para el jueves, donde se abordarán cuestiones determinantes sobre aranceles y desarrollo tecnológico."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/home.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/avisos.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/weekly-outlook-surprisingly-calm"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse/bitcoin"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-blue-chip-indices-composition-changes-sep-01-2026/"
+    },
+    {
+      "titulo": "efe.com",
+      "url": "https://efe.com/economia/2026-09-21/bolsa-espanola-cotizacion-21-septiembre/"
+    },
+    {
+      "titulo": "servimedia.es",
+      "url": "https://www.servimedia.es/noticias/ibex-sube-1-08-escala-19700-puntos/1413328782"
+    },
+    {
+      "titulo": "monex.com.mx",
+      "url": "https://www.monex.com.mx/portal/download/reportes/Al%20Cierre%20210926.pdf"
+    },
+    {
+      "titulo": "ebc.com",
+      "url": "https://www.ebc.com/es/forex/el-dax-sube-un-1-1-mientras-el-bundesbank-advierte-de-un-impacto-de-hasta-0-2-puntos-en-el-crecimiento-aleman-del-tercer-trimestre-debido-a-la-crisis-del-rin"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-22",
+    "hasta": "2026-09-22",
+    "corteIso": "2026-09-22T10:44:53.175Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Avances bursátiles generalizados",
+      "texto": "Los mercados de renta variable registraron subidas consistentes. El índice español IBEX 35 y el alemán DAX 40 superaron el uno por ciento de ganancia tras la sesión del lunes.",
+      "fuentes": [
+        2,
+        4
+      ]
+    },
+    {
+      "titulo": "Alivio en el coste energético",
+      "texto": "El abaratamiento del gas natural y del petróleo restó presión a las estimaciones de gastos operativos en Europa. Esto favoreció la demanda de acciones frente a los activos refugio.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "titulo": "Relevo en los grandes índices",
+      "texto": "El indicador europeo EURO STOXX 50 ejecutó sus cambios anuales de empresas componentes. Estos ajustes provocaron movimientos mecánicos en las carteras de los fondos que replican la composición.",
+      "fuentes": [
+        6
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Activo refugio",
+      "definicion": "Instrumento financiero que los inversores demandan para proteger su capital cuando perciben inestabilidad o incertidumbre en el panorama económico general."
+    },
+    {
+      "termino": "Renta variable",
+      "definicion": "Conjunto de activos financieros, principalmente acciones de empresas, cuyos rendimientos no están garantizados y dependen de la evolución del negocio."
+    },
+    {
+      "termino": "Margen de intermediación",
+      "definicion": "Beneficio básico que obtiene una entidad bancaria, calculado como la diferencia entre los intereses que cobra por los préstamos y los que paga por los depósitos."
+    }
+  ]
+}

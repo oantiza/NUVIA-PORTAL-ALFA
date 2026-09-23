@@ -96,6 +96,29 @@
   }
 
   /* ------------------------------------------------------------ Controles -- */
+  /* Importes en euros: se muestran con puntos de miles y coma decimal
+     («44.000,5») y se guardan como texto numérico («44000.5»). El punto que
+     escribe el usuario se toma como separador de miles (salvo «44000.5»: un
+     único punto con 1-2 cifras detrás es decimal); la coma, como decimal
+     (máximo 2). Una coma final se conserva mientras se escribe. */
+  function euroTexto(valor) {
+    if (valor === '' || valor === undefined || valor === null) return '';
+    const txt = String(valor); const i = txt.indexOf('.');
+    const ent = i < 0 ? txt : txt.slice(0, i), dec = i < 0 ? null : txt.slice(i + 1);
+    const entF = ent === '' ? '0' : f0(Number(ent));
+    return dec === null ? entF : entF + ',' + dec;
+  }
+  function euroValor(escrito) {
+    let e = String(escrito);
+    // «44000.5» o «1.25»: un único punto seguido de 1-2 cifras al final y sin coma se lee como decimal.
+    if (e.indexOf(',') < 0 && /^[^.]*\.\d{1,2}$/.test(e)) e = e.replace('.', ',');
+    const t = e.replace(/\./g, '').replace(/[^\d,]/g, '');
+    const i = t.indexOf(',');
+    if (i < 0) return t.replace(/^0+(?=\d)/, '');
+    const ent = t.slice(0, i).replace(/^0+(?=\d)/, ''), dec = t.slice(i + 1).replace(/,/g, '').slice(0, 2);
+    return (ent || '0') + '.' + dec;
+  }
+
   /* Aviso junto al campo cuando el valor no es válido. El motor nunca calcula
      con un valor fuera de rango: lo limita y el aviso dice cuál usa. */
   function errorCampo(valor, min, max, euros) {
@@ -115,7 +138,7 @@
       h('label', { htmlFor: id, className: 'jb-field__label' }, etiqueta),
       h('div', { className: 'jb-field__box' },
         euros
-          ? h('input', { id, name: id, type: 'text', inputMode: 'numeric', autoComplete: 'off', value: valor === '' || valor === undefined || valor === null ? '' : f0(valor), onChange: (e) => onChange(e.target.value.replace(/[^\d]/g, '')), 'aria-describedby': [ayudaId, errId].filter(Boolean).join(' ') || undefined, 'aria-invalid': error ? 'true' : undefined })
+          ? h('input', { id, name: id, type: 'text', inputMode: 'decimal', autoComplete: 'off', value: euroTexto(valor), onChange: (e) => onChange(euroValor(e.target.value)), 'aria-describedby': [ayudaId, errId].filter(Boolean).join(' ') || undefined, 'aria-invalid': error ? 'true' : undefined })
           : h('input', { id, name: id, type: 'number', inputMode: 'decimal', value: valor === undefined || valor === null ? '' : valor, min, max, step: paso || 'any', onChange: (e) => onChange(e.target.value), 'aria-describedby': [ayudaId, errId].filter(Boolean).join(' ') || undefined, 'aria-invalid': error ? 'true' : undefined }),
         unidad ? h('span', { className: 'jb-field__unit', 'aria-hidden': 'true' }, unidad) : null),
       error ? h('p', { id: errId, className: 'jb-field__error', role: 'alert' }, error) : null,
@@ -602,6 +625,6 @@
   }
 
   /* Piezas compartidas con las guías de jubilación (js/nuvia-guias-jubilacion-ui.js). */
-  const kit = { h: (...a) => h(...a), frag: (...a) => frag(...a), icono, Opciones, Casilla, f0, eur, pct };
+  const kit = { euroTexto, euroValor, h: (...a) => h(...a), frag: (...a) => frag(...a), icono, Opciones, Casilla, f0, eur, pct };
   global.NuviaJubilacionUI = { render, estadoInicial, estadoVacio, casoDFB, entradaMotor, kit };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

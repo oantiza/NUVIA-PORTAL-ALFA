@@ -58,6 +58,12 @@ test('Jubilación: campos controlados, reinicio y avisos (rediseño 23-09-2026)'
   campo('jb-pension').p.onChange({target:{value:'3.000'}});
   assert.equal(campo('jb-pension').p.value,'3.000','El campo muestra el estado');
   assert.notEqual(neto(),inicial,'El resultado se recalcula al momento');
+  campo('jb-pension').p.onChange({target:{value:'2.150,5'}});
+  assert.equal(campo('jb-pension').p.value,'2.150,5','Admite decimales con coma');
+  assert.equal(c.state.s.pension,'2150.5');
+  campo('jb-pension').p.onChange({target:{value:'2150.25'}});
+  assert.equal(campo('jb-pension').p.value,'2.150,25','Un punto con dos cifras al final se lee como decimal');
+  campo('jb-pension').p.onChange({target:{value:'3.000'}});
   boton('Empezar de cero').p.onClick();
   assert.equal(campo('jb-pension').p.value,'0');
   boton('Cargar el ejemplo').p.onClick();

@@ -14,7 +14,7 @@ Orden del fundador: «aplica esta plantilla a las otras subsecciones» (la cabec
 | Jubilación | `card-jubilacion.webp` · pareja paseando junto al mar (etapa activa) |
 | Mercados y noticias | `daily-report-preview.webp` · tableta con gráficos |
 | Mi cartera (y sus vistas) | `card-ahorro-inversion.webp` · móvil con gráfico y monedas |
-| Planificación patrimonial (`temas.html`) | `academia-aprender-en-familia-20260909.webp` · dos personas revisando documentos |
+| Planificación patrimonial (`temas.html`) | `planificacion-patrimonial-familia-20260923.webp` · foto nueva (23-09): pareja e hija revisando un esquema junto a un ventanal. Se borraron los rótulos en inglés de las carpetas (STRATEGY, LEGACY) y la etiqueta |
 | Cuerpo, mente y salud (`temas.html?topic=bienestar`) | `card-wellness.webp` · familia haciendo ejercicio |
 
 Ajustes de composición: en Vivienda las pestañas de herramientas pasan a lo ancho bajo la cabecera; en Jubilación «Cómo usar esta página» pasa a una franja de tres pasos bajo la cabecera. Impuestos conserva su cabecera propia (selector sobre la foto).

@@ -63,6 +63,19 @@
     balanza: 'M12 3v18M6 21h12M5 7h14M5 7l-3 6a3 3 0 0 0 6 0L5 7Zm14 0-3 6a3 3 0 0 0 6 0l-3-6Z',
     flecha: 'M5 12h14m-6-6 6 6-6 6',
     calculo: 'M6 3h12a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm2 4h8M8 12h2m4 0h2m-8 4h2m4 0h2',
+    lista: 'M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01',
+    ruta: 'M6 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm12-14a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM8 19h7.5a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7H16',
+    check: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm-4-9 3 3 5-6',
+    casa: 'M3 11 12 4l9 7M5 10v10h14V10M10 20v-6h4v6',
+    familia: 'M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM2 20a6 6 0 0 1 12 0m-1 0a4.5 4.5 0 0 1 9 0',
+    calendario: 'M4 6h16v14H4V6Zm0 4h16M8 3v4m8-4v4',
+    documento: 'M14 3H6v18h12V7l-4-4Zm0 0v4h4M9 13h6M9 17h6',
+    alerta: 'M12 3 2 20h20L12 3Zm0 6v5m0 3h.01',
+    enlace: 'M14 4h6v6M20 4l-9 9M18 14v6H4V6h6',
+    objetivo: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-4a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-4a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z',
+    salud: 'M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z',
+    grafico: 'M4 20V4m0 16h16M8 16v-4m4 4V8m4 8v-6',
+    firma: 'M3 17c3-4 5-9 7-9s-1 9 1 9 3-4 5-4 1 3 3 3h2M3 21h18',
   };
   const icono = (n, cls) => h('svg', { className: 'jb-icon' + (cls ? ' ' + cls : ''), viewBox: '0 0 24 24', 'aria-hidden': 'true', focusable: 'false' },
     h('path', { d: TRAZOS[n], fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }));
@@ -588,5 +601,7 @@
             h('td', { className: 'is-neg' }, '−' + eur(f.impuesto / d)), h('td', null, eur(f.neto / d)), h('td', null, eur(f.neto / 12 / d)), h('td', null, eur(f.saldo / (vista === 'hoy' ? d * (1 + res.entrada.inflacion) : 1)))); })))));
   }
 
-  global.NuviaJubilacionUI = { render, estadoInicial, estadoVacio, casoDFB, entradaMotor };
+  /* Piezas compartidas con las guías de jubilación (js/nuvia-guias-jubilacion-ui.js). */
+  const kit = { h: (...a) => h(...a), frag: (...a) => frag(...a), icono, Opciones, Casilla, f0, eur, pct };
+  global.NuviaJubilacionUI = { render, estadoInicial, estadoVacio, casoDFB, entradaMotor, kit };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

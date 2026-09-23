@@ -80,3 +80,22 @@ Clasificación: **ámbar** por datos patrimoniales. Es una revisión interna; la
 `scripts/check-render.mjs` (contenido y espera de resultados), `scripts/check-family-review.mjs` (gráfico de escenarios), `scripts/check-tables-results.mjs` (cifra principal `.jb-live__num`, 48 px), `scripts/audit-field-alignment.mjs` y `scripts/check-field-alignment.mjs` (recorrido por pasos), y `docs/nuvia-formularios.test.mjs` (campos controlados, reinicio y avisos).
 
 Verificado en el entorno de trabajo: el render de 1440, 1180, 1024, 900, 820 y 768 px, y la alineación de campos a 1440, 1024 y 820 px, pasan sin fallos. Las pruebas del motor y de formularios también pasan.
+
+## 6. Guías de jubilación con el mismo sistema visual (23-09-2026, segunda entrega)
+
+Petición del fundador: aplicar a las guías «Hoja de ruta» (`guia-planificacion.html`) y «Fiscalidad y rescate de la EPSV» (`guia-fiscal.html`) el estilo del simulador.
+
+- Módulo común `js/nuvia-guias-jubilacion-ui.js`, que reutiliza los componentes y los iconos del simulador (`NuviaJubilacionUI.kit`) y su hoja de estilos (`estilos/nuvia-jubilacion.css`, prefijo `jg-`). Las tres páginas usan el acento azul de Jubilación (`nv-retirement`).
+- La cabecera de las dos guías muestra el recorrido Ordenar → Calcular → Ejecutar, que enlaza la hoja de ruta, el simulador y la guía fiscal e indica en qué punto está el usuario.
+- **Hoja de ruta:**
+  - cuatro pasos (Tu momento, Lo que ya tienes, Seis decisiones y Tu plan), con una línea de etapas;
+  - tarjetas marcables y una ruta de seis decisiones que se pueden marcar como revisadas;
+  - un panel al momento con anillo de progreso, contadores y la próxima acción;
+  - riesgos presentados con iconos, siguientes pasos y un informe imprimible «Mi hoja de ruta».
+- **Guía fiscal:**
+  - selector de modalidad (capital, renta, mixta) con una matriz fiscal en chips por base;
+  - el caso práctico de la DFB calculado con el motor del simulador: origen de los 100.000 € y bases de cada forma de cobro;
+  - tramitación en línea de pasos, checklist marcable con progreso e informe «Mi checklist», y fuentes oficiales en tarjetas.
+- **Corrección de contenido:** la guía decía que el ejemplo reparte «89.000 € en el tramo anterior y 11.000 € en el posterior». Según el caso práctico, la prestación se reparte en proporción a lo aportado: 88.571 € y 11.429 €. Así queda ahora.
+- **Nuevo enlace:** `jubilacion.html?caso=dfb` abre el simulador con el caso práctico cargado; la guía fiscal enlaza ahí.
+- **Pruebas:** `docs/nuvia-guias-jubilacion.test.mjs` (progreso, interacción, bases del caso DFB, anclas e informes), incluida en `test:jubilacion`. El render de 1440 a 768 px pasa sin fallos en las tres páginas.

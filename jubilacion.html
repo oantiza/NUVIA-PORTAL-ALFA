@@ -276,7 +276,12 @@ class Component extends DCLogic {
   componentDidMount() { document.title = 'Simulador de jubilación | NUVIA'; }
   renderVals() {
     const ui = typeof window !== 'undefined' ? window.NuviaJubilacionUI : null;
-    if (ui && !this.state.s) this.state.s = ui.estadoInicial();
+    if (ui && !this.state.s) {
+      // jubilacion.html?caso=dfb abre el simulador con el caso práctico de la DFB (enlace desde la guía fiscal).
+      let s0 = ui.estadoInicial();
+      try { if (new URLSearchParams(location.search).get('caso') === 'dfb') { s0 = ui.casoDFB(s0); this.state.paso = 2; } } catch (e) { /* sin location */ }
+      this.state.s = s0;
+    }
     return { app: ui ? ui.render(this) : null };
   }
 }

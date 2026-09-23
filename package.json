@@ -20,7 +20,7 @@
     "informe:publicar": "node scripts/informes-mercado/publicar.mjs",
     "informe:curvas": "node scripts/informes-mercado/curvas.mjs",
     "test:informes": "node --test docs/nuvia-informes-mercado.test.mjs",
-    "test:jubilacion": "node --test docs/nuvia-jubilacion-motor.test.mjs",
+    "test:jubilacion": "node --test docs/nuvia-jubilacion-motor.test.mjs docs/nuvia-guias-jubilacion.test.mjs",
     "test:news-selection": "node --test docs/nuvia-news-selection.test.mjs",
     "test:periodo-analisis": "node --test docs/nuvia-periodo-analisis.test.mjs",
     "test:resumen-cartera": "node --test docs/nuvia-resumen-cartera.test.mjs",

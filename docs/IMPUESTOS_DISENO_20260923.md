@@ -16,10 +16,10 @@ Orden del fundador: «Implementa» la maqueta aprobada (`Claude outputs/maqueta-
 | Dato | Territorios | Fuente | Estado |
 |---|---|---|---|
 | Escala ahorro 2026, 9 tramos 19–28 % | Bizkaia | DFB, comparativa IRPF 2026 (KA-01877) | Oficial |
-| Misma escala | Álava, Gipuzkoa | Cuatrecasas, novedades País Vasco 2025-2026 | **Contrastar con cada Hacienda Foral** |
-| Escala ahorro 6 tramos 20–28 % | Navarra | Art. 60 TR IRPF Navarra (vía guiafiscal.es) | **Contrastar con el texto oficial** |
+| Misma escala | Álava, Gipuzkoa | Art. 76.1 NF 33/2013 (Álava) según NF 3/2025, y art. 76.1 NF 3/2014 (Gipuzkoa) según NF 1/2025; efectos 1-1-2026 (texto consolidado en Iberley) | Contrastado 23-09 |
+| Escala ahorro 6 tramos 20–28 % | Navarra | Art. 60 TR IRPF según Ley Foral 36/2022 (BOE-A-2023-3349), vigente desde 1-1-2023; no la modifican la LF 20/2024 (BOE-A-2025-719) ni las medidas de 2026 (alerta EY 12-01-2026). La cuota íntegra de 300.000 € del BOE (78.380 €) coincide con el cálculo de la página | Contrastado 23-09 |
 | Escala 19/21/23/27/30 % | Territorio común | AEAT, manual Renta 2025 | Oficial |
-| 130 3T hasta 26/10 y 2.º plazo Renta 10/11 | Bizkaia | Calendario 2026 (tukonta.com, secundaria) | **Contrastar con calendario DFB** |
+| 130 3T hasta 26/10 y 2.º plazo Renta 10/11 | Bizkaia | 130: plazo del 1 al 25 de octubre, que pasa al lunes 26 por caer el 25 en domingo (billin.net, tukonta.com). 2.º plazo: la DFB indica «a primeros de noviembre» (KA-01186); el día 10 lo dan tukonta.com e ideiatek.net. El PDF del calendario de la DFB no se pudo abrir (certificado) | Contrastado con fuentes secundarias coincidentes y la regla oficial |
 | 130: 10/2, 10/5, 10/8, 10/11 | Gipuzkoa | gipuzkoa.eus, modelo 130 | Oficial |
 | 130 días 20 (abr, jul, oct) y 30/1; 2.º plazo 5/11 | Territorio común | Calendario AEAT / dato ya publicado | Oficial |
 | 130 por mes (sin día) | Álava, Navarra | Meses ya publicados en la página | Día pendiente |

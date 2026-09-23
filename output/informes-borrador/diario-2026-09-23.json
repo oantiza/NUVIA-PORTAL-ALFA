@@ -1,0 +1,290 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-23",
+  "fecha": "2026-09-23",
+  "fechaIso": "2026-09-23T00:00:00.000Z",
+  "generadoIso": "2026-09-23T10:33:59.327Z",
+  "titular": "El petróleo cede ante los contactos diplomáticos mientras la tecnología impulsa las bolsas de Estados Unidos",
+  "entradilla": "Los precios de la energía caen tras las reuniones en Naciones Unidas, lo que alivia las expectativas de inflación a corto plazo. En los mercados de acciones, la demanda de infraestructura para inteligencia artificial vuelve a liderar los avances en Wall Street.",
+  "hechos": [
+    {
+      "texto": "El índice estadounidense S&P 500 subió un 0.17 % diario y cerró en los 7650.5 puntos.",
+      "fecha": "2026-09-22",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El índice Nasdaq 100 avanzó un 0.82 % debido a la demanda de servidores y componentes informáticos.",
+      "fecha": "2026-09-22",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "El barril de petróleo Brent registró un descenso del 2.46 % diario hasta los 97.86 dólares.",
+      "fecha": "2026-09-22",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "texto": "La rentabilidad del bono del Estado alemán a 10 años se situó en el 3.49 % anual, un descenso de 0.01 puntos porcentuales.",
+      "fecha": "2026-09-22",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "El índice bursátil español IBEX 35 cerró la jornada en los 19754.10 puntos, con un alza diaria del 0.15 %.",
+      "fecha": "2026-09-22",
+      "fuentes": [
+        10
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "S&P 500",
+      "valor": "7650.5 puntos",
+      "referencia": "2026-09-22 (S&P Global)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19754.10 puntos",
+      "referencia": "2026-09-22 (BME/MEFF)",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "Bono alemán a 10 años",
+      "valor": "3.49",
+      "referencia": "2026-09-22 (Bundesbank)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "97.86 dólares",
+      "referencia": "2026-09-22 (ICE)",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-22 (STOXX)",
+      "fuentes": [
+        1,
+        2
+      ]
+    },
+    {
+      "etiqueta": "DAX 40",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-22 (Deutsche Börse)",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Euro/Dólar",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-22 (BCE)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Cboe VIX",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-22 (Cboe)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-23",
+      "hora": "08:00",
+      "region": "Eurozona",
+      "que": "Subasta de bonos federales de Alemania",
+      "anterior": null,
+      "porQueImporta": "Sirve como referencia del coste a largo plazo que asume el Estado más solvente de Europa.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "fecha": "2026-09-23",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Cifra de Negocios Empresarial y de Producción del Sector Servicios",
+      "anterior": "+4,1 % interanual en junio",
+      "porQueImporta": "Muestra el dinamismo de la actividad comercial y de servicios del país.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-24",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Precios Industriales (IPRI) de agosto",
+      "anterior": null,
+      "porQueImporta": "Anticipa las presiones de costes en las fábricas que luego se trasladan al consumidor.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-25",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Contabilidad Nacional Trimestral y Producto Interior Bruto (PIB)",
+      "anterior": "Crecimiento preliminar del 0,8 % trimestral",
+      "porQueImporta": "Es la medida central de la actividad económica global de un país.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Las bolsas estadounidenses han terminado la sesión con resultados positivos, impulsadas nuevamente por las empresas tecnológicas. El sector de la inteligencia artificial y los centros de datos atraen gran parte del capital inversor debido a la constante necesidad de actualización de infraestructuras.",
+        "En el ámbito de las materias primas, el precio del crudo ha bajado de forma notable. La confirmación de contactos diplomáticos en Naciones Unidas entre representantes de Estados Unidos e Irán ha rebajado la percepción de riesgo en las rutas internacionales de transporte marítimo."
+      ],
+      "fuentes": [
+        4,
+        5,
+        11
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Cuando la energía se abarata, disminuye el miedo a que la inflación siga acelerándose a corto plazo. Este entorno más tranquilo ayuda a estabilizar la rentabilidad exigida a la deuda pública, lo que abarata las futuras emisiones de los Estados europeos y norteamericanos.",
+        "Por otro lado, la inversión internacional consolida su peso en España y ya posee más de la mitad del mercado de acciones nacional. Sin embargo, carecemos de datos directos verificables sobre el cierre exacto de grandes índices europeos como el Euro Stoxx 50 o el DAX 40 para esta jornada."
+      ],
+      "fuentes": [
+        1,
+        3,
+        8,
+        10
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días, los mercados evaluarán subastas de deuda a muy largo plazo en Alemania y diversos indicadores de actividad macroeconómica en España. Cabe destacar que varias de las publicaciones estadísticas previstas se mantendrán en el nivel de sin contrastar hasta disponer de acceso directo a sus fuentes documentales primarias."
+      ],
+      "fuentes": [
+        8
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-blue-chip-indices-composition-changes-sep-01-2026/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://www.stoxx.com/document/News/2026/July/Market_Consultation_STOXX_SX5E_Index_20260710.pdf"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.cashmarket.deutsche-boerse.com/resource/blob/5582956/7e075b168648c7b58e5340d69bb7d529/data/Del_BFZ.pdf"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/nwcl"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/downloads/web/msci-com/indexes/index-resources/market-classification/MSCI%202026%20GLOBAL%20MARKET%20ACCESSIBILITY%20REVIEW%20REPORT.pdf"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/downloads/web/msci-com/research-and-insights/paper/the-total-portfolio-approach-an-analytical-toolkit/The-Total-Portfolio-Approach-An-Analytical-Toolkit.pdf"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/964878/c7a4170574cae0e613e7db4f0820f59a/472B63F073F071307366337C94F8C870/2026-09-22-rendite-download.pdf"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/826022/cb270e6e4990ee963d16adeab803605d/mL/2020-02-18-rendite-download.pdf"
+    },
+    {
+      "titulo": "meff.es",
+      "url": "https://www.meff.es/ing/Financial-Derivatives/Spreadsheet/FIE_IBEX_35_"
+    },
+    {
+      "titulo": "bnnbloomberg.ca",
+      "url": "https://www.bnnbloomberg.ca/markets/2026/09/23/asian-shares-are-mixed-and-oil-prices-fall-after-trump-says-us-and-iran-met-at-the-un/"
+    },
+    {
+      "titulo": "sifma.org",
+      "url": "https://www.sifma.org/resources/guides-playbooks/holiday-schedule"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-23",
+    "hasta": "2026-09-23",
+    "corteIso": "2026-09-23T10:33:59.326Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Tensión marítima a la baja",
+      "texto": "Las delegaciones de Estados Unidos e Irán mantuvieron reuniones en la Asamblea General de Naciones Unidas. Los mercados interpretan este paso como un factor que disminuye temporalmente la prima de riesgo (el sobreprecio exigido ante posibles conflictos) en las vías navegables del crudo.",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "titulo": "Avances en la tecnología",
+      "texto": "El sector tecnológico estadounidense cerró al alza gracias al impulso de los proveedores de centros de datos. La demanda constante de componentes físicos para desarrollar la inteligencia artificial sigue concentrando el flujo de capital.",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "El petróleo alivia la deuda",
+      "texto": "La bajada del crudo frena las expectativas de que los precios al consumo sigan subiendo con fuerza a corto plazo. Este entorno beneficia a la renta fija y relaja ligeramente la rentabilidad exigida a los bonos emitidos por los gobiernos.",
+      "fuentes": [
+        8,
+        11
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Inflación",
+      "definicion": "Aumento generalizado y sostenido de los precios de los bienes y servicios de una economía a lo largo del tiempo, lo que disminuye el poder de compra del dinero."
+    },
+    {
+      "termino": "Prima de riesgo",
+      "definicion": "Exceso de rentabilidad o sobreprecio que se exige a un activo financiero para compensar un riesgo adicional, como un conflicto geopolítico o la menor solvencia de un emisor."
+    },
+    {
+      "termino": "Rentabilidad",
+      "definicion": "Ganancia o interés anual que obtiene un inversor, expresado habitualmente como porcentaje del importe invertido o del valor nominal de un título de deuda."
+    }
+  ]
+}

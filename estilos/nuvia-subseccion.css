@@ -1,0 +1,67 @@
+/* ============================================================================
+   NUVIA · CABECERA DE SUBSECCIÓN · 23-09-2026
+   Plantilla aprobada en Impuestos: cabecera clara y compacta con la foto
+   enmarcada a la derecha y un filete bronce en la esquina. Distingue las
+   páginas hijas de las portadas de sección (foto a sangre). El título conserva
+   la escala de páginas hijas. Solo tokens: ningún color literal.
+   Uso: añadir .nv-sub-hero a la sección .nv-entry y envolver texto y foto en
+   .nv-sub-hero__grid > (div, .nv-sub-hero__media > img.nv-sub-hero__img).
+   ========================================================================== */
+
+.nuvia-unified .nv-entry.nv-sub-hero {
+  padding-block: var(--nv-space-8) var(--nv-space-12);
+}
+.nuvia-unified .nv-entry.nv-sub-hero .nv-sub-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+  align-items: center;
+  gap: var(--nv-space-12);
+}
+/* En tablet, .nv-hero__inner recupera su columna lateral de 280 px; en
+   Jubilación el envoltorio simple debe seguir ocupando todo el ancho. */
+.nuvia-unified .nv-entry.nv-sub-hero .nv-hero__inner--simple:not(.nv-sub-hero__grid) { grid-template-columns: minmax(0, 1fr); }
+.nv-sub-hero__media {
+  position: relative;
+  margin: var(--nv-space-4) var(--nv-space-4) 0 0;
+}
+.nv-sub-hero__media::before {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 120px;
+  height: 120px;
+  border-top: 2px solid var(--nv-bronze-500);
+  border-right: 2px solid var(--nv-bronze-500);
+  border-top-right-radius: 28px;
+  content: "";
+  opacity: .7;
+  pointer-events: none;
+}
+.nv-sub-hero__img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--nv-radius-lg);
+  box-shadow: var(--nv-shadow-lg);
+}
+
+/* Piezas que antes ocupaban la columna lateral y ahora van a lo ancho. */
+.nv-sub-hero .nv-sub-hero__full { margin-top: var(--nv-space-8); }
+.nv-sub-hero .jub-howto.nv-sub-hero__full .jub-howto__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--nv-space-6);
+}
+
+@media (max-width: 980px) {
+  .nuvia-unified .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0, 1fr); gap: var(--nv-space-8); }
+  .nv-sub-hero__media { margin-right: 0; }
+  .nv-sub-hero__media::before { display: none; }
+  .nv-sub-hero__img { height: 240px; }
+}
+@media (max-width: 640px) {
+  .nv-sub-hero__img { height: 200px; }
+  .nv-sub-hero .jub-howto.nv-sub-hero__full .jub-howto__list { grid-template-columns: minmax(0, 1fr); }
+}

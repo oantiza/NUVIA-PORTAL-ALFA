@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
@@ -115,9 +116,10 @@
   </header>
 
   <main id="contenido">
-    <section id="tema" data-screen-label="Cabecera de espacio" class="nv-hero nv-hero--institutional tm-hero nv-entry">
+    <section id="tema" data-screen-label="Cabecera de espacio" class="nv-hero nv-hero--institutional tm-hero nv-entry nv-sub-hero">
       <div class="nv-container">
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a id="tema-madre" href="patrimonio.html">Patrimonio</a></li><li><span id="tema-ruta" aria-current="page">Planificación patrimonial</span></li></ol></nav>
+      <div class="nv-sub-hero__grid"><div>
       <span class="nv-eyebrow nv-eyebrow--on-dark"><span></span><span id="tema-eyebrow">Espacio NUVIA · Cuatro ámbitos</span></span>
       <h1 class="tm-title" id="tema-titulo">Patrimonio</h1>
       <p class="nv-hero__lead" id="tema-intro">Vivienda y coste de vida, impuestos, jubilación y planificación patrimonial: guías y simuladores para comprender la economía familiar, con sus datos, supuestos y límites a la vista.</p>
@@ -142,6 +144,19 @@
           </sc-for>
         </nav>
       </sc-if>
+      </div>
+      <div class="nv-sub-hero__media">
+        <sc-if value="{{ esPlanificacion }}" hint-placeholder-val="{{ true }}">
+          <img class="nv-sub-hero__img" src="src/assets/home/academia-aprender-en-familia-20260909.webp"
+               alt="Dos personas revisan documentos juntas en una mesa de trabajo"
+               width="2172" height="724">
+        </sc-if>
+        <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
+          <img class="nv-sub-hero__img" src="src/assets/home/card-wellness.webp"
+               alt="Una familia hace ejercicio al aire libre en el porche de casa"
+               width="1600" height="1067">
+        </sc-if>
+      </div></div>
       <div class="viv-hero__rule"></div>
     </div>
     </section>

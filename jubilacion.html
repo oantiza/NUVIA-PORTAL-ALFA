@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
 <link rel="stylesheet" href="estilos/nuvia-retirement.css">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -104,13 +105,13 @@
   </header>
 
 <main id="contenido">
-    <section id="simulador" data-screen-label="Cabecera simulador" class="nv-hero nv-hero--institutional jub-hero nv-entry">
+    <section id="simulador" data-screen-label="Cabecera simulador" class="nv-hero nv-hero--institutional jub-hero nv-entry nv-sub-hero">
       <div class="nv-container">
       <div class="nv-hero__inner nv-hero__inner--simple"><div>
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
         <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="patrimonio.html">Patrimonio</a></li><li><span aria-current="page">Jubilación</span></li></ol>
       </nav>
-      <div class="jub-hero__grid">
+      <div class="jub-hero__grid nv-sub-hero__grid">
         <div>
           <span class="nv-eyebrow nv-eyebrow--on-dark">Jubilación · Planificación patrimonial</span>
           <h1>Jubilación</h1>
@@ -121,24 +122,29 @@
             <span class="jub-tag-dark">Cálculo local, sin envío de datos</span>
           </div>
         </div>
-        <aside aria-label="Cómo se utiliza" class="jub-howto">
-          <p class="jub-howto__label">Cómo usar esta página</p>
-          <div class="jub-howto__list">
-            <div class="jub-howto__step">
-              <span class="jub-howto__num">01</span>
-              <p class="jub-howto__text"><strong class="jub-howto__title">Reúne tus datos</strong>Pensión bruta, saldos actuales y certificado de la EPSV.</p>
-            </div>
-            <div class="jub-howto__step">
-              <span class="jub-howto__num">02</span>
-              <p class="jub-howto__text"><strong class="jub-howto__title">Prueba con los datos de ejemplo</strong>Después, sustituye los importes por los tuyos. Deja a cero lo que no tengas.</p>
-            </div>
-            <div class="jub-howto__step">
-              <span class="jub-howto__num">03</span>
-              <p class="jub-howto__text"><strong class="jub-howto__title">Lee el resultado</strong>Pulsa «Ver mi estimación» y compara los escenarios. Si cambias un dato, vuelve a calcular.</p>
-            </div>
-          </div>
-        </aside>
+        <div class="nv-sub-hero__media">
+          <img class="nv-sub-hero__img" src="src/assets/home/card-jubilacion.webp"
+               alt="Pareja paseando junto al mar en un día soleado"
+               width="1448" height="1086">
+        </div>
       </div>
+      <aside aria-label="Cómo se utiliza" class="jub-howto nv-sub-hero__full">
+        <p class="jub-howto__label">Cómo usar esta página</p>
+        <div class="jub-howto__list">
+          <div class="jub-howto__step">
+            <span class="jub-howto__num">01</span>
+            <p class="jub-howto__text"><strong class="jub-howto__title">Reúne tus datos</strong>Pensión bruta, saldos actuales y certificado de la EPSV.</p>
+          </div>
+          <div class="jub-howto__step">
+            <span class="jub-howto__num">02</span>
+            <p class="jub-howto__text"><strong class="jub-howto__title">Prueba con los datos de ejemplo</strong>Después, sustituye los importes por los tuyos. Deja a cero lo que no tengas.</p>
+          </div>
+          <div class="jub-howto__step">
+            <span class="jub-howto__num">03</span>
+            <p class="jub-howto__text"><strong class="jub-howto__title">Lee el resultado</strong>Pulsa «Ver mi estimación» y compara los escenarios. Si cambias un dato, vuelve a calcular.</p>
+          </div>
+        </div>
+      </aside>
       <div class="viv-hero__rule"></div>
       </div></div>
     </div>

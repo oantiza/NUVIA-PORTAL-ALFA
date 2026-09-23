@@ -36,6 +36,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -103,23 +104,31 @@
   </header>
 
 <main id="contenido">
-    <section id="vivienda" data-screen-label="Cabecera vivienda" class="nv-hero nv-hero--institutional viv-hero nv-entry">
+    <section id="vivienda" data-screen-label="Cabecera vivienda" class="nv-hero nv-hero--institutional viv-hero nv-entry nv-sub-hero">
       <div class="nv-container">
         <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
           <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="patrimonio.html">Patrimonio</a></li><li><span aria-current="page">Vivienda y coste de vida</span></li></ol>
         </nav>
-        <div class="nv-hero__inner"><div>
+        <div class="nv-hero__inner nv-sub-hero__grid"><div>
         <span class="nv-eyebrow nv-eyebrow--on-dark">Tema clave · Vivienda y coste de vida</span>
         <h1>Vivienda y coste de vida</h1>
         <p class="nv-hero__lead">Calcula, compara y somete la decisión a escenarios exigentes antes de comprometer el presupuesto familiar.</p>
         <div class="nv-hero__actions"><a class="nv-btn nv-btn--accent" href="#simulador-vivienda">Ir al simulador</a><a class="nv-btn nv-btn--soft" href="#como-funciona-vivienda">Cómo funciona</a></div>
+        </div>
+        <div class="nv-sub-hero__media">
+          <img class="nv-sub-hero__img" src="src/assets/home/card-vivienda.webp"
+               alt="Fachada de una vivienda unifamiliar moderna con jardín"
+               width="1448" height="1086">
+        </div>
+        </div>
+        <div class="nv-sub-hero__full">
         <div class="viv-hero__rule"></div>
         <nav aria-label="Herramientas de vivienda" class="viv-tabs">
           <sc-for list="{{ pestanas }}" as="t" hint-placeholder-count="5">
             <button type="button" onClick="{{ t.abrir }}" aria-pressed="{{ t.pressed }}" class="{{ t.clase }}">{{ t.label }}</button>
           </sc-for>
         </nav>
-        </div></div>
+        </div>
       </div>
     </section>
 

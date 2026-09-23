@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
 
 <script defer src="web2-integration.js"></script>
 <script defer src="js/nuvia-market-reports.js"></script>
@@ -105,12 +106,12 @@
   <main id="contenido">
 
     <!-- ══ CABECERA ══════════════════════════════════════════════════════════ -->
-    <section id="mercados" data-screen-label="Cabecera Mercados y noticias" class="nv-hero nv-hero--institutional nv-entry">
+    <section id="mercados" data-screen-label="Cabecera Mercados y noticias" class="nv-hero nv-hero--institutional nv-entry nv-sub-hero">
       <div class="nv-container">
         <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
           <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="economia.html">Economía y Finanzas</a></li><li><span aria-current="page">Mercados y noticias</span></li></ol>
         </nav>
-        <div class="nv-hero__inner nv-hero__inner--simple">
+        <div class="nv-hero__inner nv-hero__inner--simple nv-sub-hero__grid">
           <div>
             <p class="nv-eyebrow nv-eyebrow--on-dark">Actualidad económica</p>
             <h1>Mercados y noticias</h1>
@@ -126,6 +127,11 @@
                 </sc-for>
               </nav>
             </div>
+          </div>
+          <div class="nv-sub-hero__media">
+            <img class="nv-sub-hero__img" src="src/assets/home/daily-report-preview.webp"
+                 alt="Tableta con gráficos de mercado sobre una mesa, con la ciudad al fondo"
+                 width="1448" height="1086">
           </div>
         </div>
       </div>

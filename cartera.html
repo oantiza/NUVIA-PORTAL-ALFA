@@ -35,6 +35,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -102,8 +103,8 @@
 
   <main id="contenido">
     <div class="nuvia-page nuvia-analysis-page">
-      <section class="nuvia-analysis-hero nv-entry" data-screen-label="Cabecera Analítica de cartera" aria-labelledby="analysis-title">
-        <div class="nuvia-analysis-hero__inner">
+      <section class="nuvia-analysis-hero nv-entry nv-sub-hero" data-screen-label="Cabecera Analítica de cartera" aria-labelledby="analysis-title">
+        <div class="nuvia-analysis-hero__inner nv-sub-hero__grid">
           <div>
             <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="economia.html">Economía y Finanzas</a></li><li><span id="analysis-current" aria-current="page">Mi cartera</span></li></ol>
@@ -118,6 +119,11 @@
               <a id="vista-companies" href="cartera.html?vista=companies#suite-nuvia">Análisis y valoración de empresas</a>
             </nav>
             <div class="nuvia-analysis-hero__divider" aria-hidden="true"></div>
+          </div>
+          <div class="nv-sub-hero__media">
+            <img class="nv-sub-hero__img" src="src/assets/home/card-ahorro-inversion.webp"
+                 alt="Móvil con un gráfico ascendente junto a monedas apiladas y una planta"
+                 width="1448" height="1086">
           </div>
         </div>
       </section>

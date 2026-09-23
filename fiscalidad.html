@@ -37,6 +37,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-fiscal.css">
 
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
@@ -103,13 +104,14 @@
     </div>
   </header>
 
-  <main id="contenido">
+  <main id="contenido" class="fiscal-page">
 
-    <!-- ══ HÉROE INSTITUCIONAL ═══════════════════════════════════════════════
-         El selector de territorio ocupa el panel lateral: es la decisión que
-         condiciona todo lo demás, así que va antes que cualquier contenido.
+    <!-- ══ CABECERA DE SUBSECCIÓN ════════════════════════════════════════════
+         Clara y compacta, con la foto enmarcada: se distingue de la portada de
+         Patrimonio (foto a sangre). El selector de territorio va montado sobre
+         la foto porque condiciona todo lo demás.
          ═══════════════════════════════════════════════════════════════════ -->
-    <section id="tema" data-screen-label="Cabecera Impuestos" class="nv-hero nv-hero--institutional nv-entry">
+    <section id="tema" data-screen-label="Cabecera Impuestos" class="nv-hero nv-hero--institutional nv-entry fiscal-hero">
       <div class="nv-container">
         <div class="nv-hero__inner">
 
@@ -127,49 +129,55 @@
             <h1>Impuestos</h1>
 
             <p class="nv-hero__lead">
-              Fiscalidad personal y familiar aplicada al ahorro, la inversión,
-              el patrimonio y las decisiones sucesorias.
+              Tu año fiscal, ordenado: qué vence, cuánto pesa cada decisión y
+              qué revisar antes de mover tu patrimonio.
             </p>
           </div>
 
-          <aside class="fiscal-selector">
-            <label class="fiscal-selector__label" for="residencia-fiscal">
-              ¿Dónde tienes tu residencia fiscal?
-            </label>
+          <div class="fiscal-hero__media">
+            <img class="fiscal-hero__img" src="src/assets/home/card-impuestos.webp"
+                 alt="Escritorio con documentos fiscales, una calculadora y una pequeña maqueta de casa"
+                 width="1200" height="760">
 
-            <div class="fiscal-selector__field">
-              <!-- data-dc-value no enlaza nada: el runtime lo pasa tal cual como
-                   atributo data-. El selector se quedaba en la primera opción no
-                   deshabilitada —Bizkaia— aunque hubiera otro territorio guardado,
-                   así que la página decía «Gipuzkoa» y el desplegable «Bizkaia». -->
-              <select id="residencia-fiscal"
-                      value="{{ seleccion }}"
-                      onChange="{{ cambiarTerritorio }}"
-                      aria-describedby="ayuda-residencia">
-                <option value="sin-seleccion" disabled="{{ true }}">Selecciona tu territorio</option>
-                <option value="bizkaia">Bizkaia</option>
-                <option value="araba">Araba / Álava</option>
-                <option value="gipuzkoa">Gipuzkoa</option>
-                <option value="navarra">Navarra</option>
-                <option value="common-territory">Territorio común</option>
-                <option value="unsure">No estoy seguro</option>
-              </select>
-            </div>
+            <aside class="fiscal-selector">
+              <label class="fiscal-selector__label" for="residencia-fiscal">
+                ¿Dónde tienes tu residencia fiscal?
+              </label>
 
-            <div class="fiscal-selector__status" id="ayuda-residencia" aria-live="polite">
-              <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}">
-                <span class="fiscal-selector__mark" aria-hidden="true">◆</span>
-                <div>
-                  <span class="fiscal-selector__regime">{{ regimen }}</span>
-                  <span class="fiscal-selector__authority">{{ autoridad }}</span>
-                </div>
-              </sc-if>
-              <sc-if value="{{ sinTerritorio }}" hint-placeholder-val="{{ false }}">
-                <span class="fiscal-selector__mark" aria-hidden="true">?</span>
-                <p class="fiscal-selector__help">{{ ayudaSinTerritorio }}</p>
-              </sc-if>
-            </div>
-          </aside>
+              <div class="fiscal-selector__field">
+                <!-- data-dc-value no enlaza nada: el runtime lo pasa tal cual como
+                     atributo data-. El selector se quedaba en la primera opción no
+                     deshabilitada —Bizkaia— aunque hubiera otro territorio guardado,
+                     así que la página decía «Gipuzkoa» y el desplegable «Bizkaia». -->
+                <select id="residencia-fiscal"
+                        value="{{ seleccion }}"
+                        onChange="{{ cambiarTerritorio }}"
+                        aria-describedby="ayuda-residencia">
+                  <option value="sin-seleccion" disabled="{{ true }}">Selecciona tu territorio</option>
+                  <option value="bizkaia">Bizkaia</option>
+                  <option value="araba">Araba / Álava</option>
+                  <option value="gipuzkoa">Gipuzkoa</option>
+                  <option value="navarra">Navarra</option>
+                  <option value="common-territory">Territorio común</option>
+                  <option value="unsure">No estoy seguro</option>
+                </select>
+              </div>
+
+              <div class="fiscal-selector__status" id="ayuda-residencia" aria-live="polite">
+                <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}">
+                  <span class="fiscal-selector__mark" aria-hidden="true">◆</span>
+                  <div>
+                    <span class="fiscal-selector__regime">{{ regimen }}</span>
+                    <span class="fiscal-selector__authority">{{ autoridad }}</span>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ sinTerritorio }}" hint-placeholder-val="{{ false }}">
+                  <span class="fiscal-selector__mark" aria-hidden="true">?</span>
+                  <p class="fiscal-selector__help">{{ ayudaSinTerritorio }}</p>
+                </sc-if>
+              </div>
+            </aside>
+          </div>
 
         </div>
       </div>
@@ -224,61 +232,193 @@
     <!-- ══ ESTADO 3 · CON TERRITORIO ═════════════════════════════════════════ -->
     <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}">
 
-      <section data-screen-label="Marco de referencia" class="fiscal-marco" aria-labelledby="marco-referencia">
+      <!-- ══ PRÓXIMO VENCIMIENTO Y LÍNEA DEL AÑO ════════════════════════════
+           La cuenta atrás se calcula con la fecha del visitante. Los hitos sin
+           día confirmado se muestran por mes y remiten al calendario oficial. -->
+      <section data-screen-label="Próximo vencimiento" class="fiscal-agenda" aria-labelledby="agenda-titulo">
         <div class="nv-container">
-          <div class="fiscal-marco__inner">
-            <div>
-              <p class="nv-eyebrow">Tu marco de referencia</p>
-              <h2 id="marco-referencia">{{ nombre }}</h2>
+          <div class="fiscal-agenda__card">
+            <div class="fiscal-agenda__count" aria-live="polite">
+              <p class="fiscal-agenda__kicker">{{ proximoKicker }}</p>
+              <sc-if value="{{ proximoConDias }}" hint-placeholder-val="{{ true }}">
+                <p class="fiscal-agenda__n">{{ proximoDias }}<span class="fiscal-agenda__unit">{{ proximoUnidad }}</span></p>
+              </sc-if>
+              <sc-if value="{{ proximoSoloMes }}" hint-placeholder-val="{{ false }}">
+                <p class="fiscal-agenda__n fiscal-agenda__n--mes">{{ proximoMes }}</p>
+              </sc-if>
+              <p class="fiscal-agenda__text"><strong>{{ proximoModelo }}</strong>{{ proximoDetalle }}</p>
             </div>
-            <p class="fiscal-marco__intro" aria-live="polite">{{ intro }}</p>
-            <a class="fiscal-marco__source"
-               href="{{ fuenteHref }}" target="_blank" rel="noopener noreferrer">{{ fuenteLabel }} ↗</a>
+            <div class="fiscal-agenda__year">
+              <div class="fiscal-agenda__head">
+                <h2 id="agenda-titulo">Tu año fiscal 2026 · {{ nombre }}</h2>
+                <a href="guia-calendario.html">Ver calendario completo →</a>
+              </div>
+              <div class="fiscal-tl__scroll">
+                <div class="fiscal-tl" role="img" aria-label="{{ lineaAria }}">
+                  <div class="fiscal-tl__rail"></div>
+                  <div class="fiscal-tl__past" data-w="{{ hoyPos }}"></div>
+                  <div class="fiscal-tl__range" data-pos="{{ rentaPos }}" data-w="{{ rentaAncho }}"></div>
+                  <span class="fiscal-tl__rlabel" data-pos="{{ rentaCentro }}">Campaña de Renta 2025</span>
+                  <sc-for list="{{ hitosLinea }}" as="hito" hint-placeholder-count="5">
+                    <span class="{{ hito.claseDot }}" data-pos="{{ hito.pos }}"></span>
+                    <span class="{{ hito.claseLbl }}" data-pos="{{ hito.pos }}"><span class="fiscal-tl__lbl-a">{{ hito.corto }}</span><span class="fiscal-tl__lbl-b">{{ hito.fecha }}</span></span>
+                  </sc-for>
+                  <div class="fiscal-tl__today" data-pos="{{ hoyPos }}"></div>
+                  <span class="fiscal-tl__hoy" data-pos="{{ hoyPos }}">Hoy</span>
+                  <div class="fiscal-tl__months">
+                    <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
+                    <span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
+                  </div>
+                </div>
+              </div>
+              <ul class="fiscal-tl__legend">
+                <li><i class="l-done" aria-hidden="true"></i>Ya pasado</li>
+                <li><i class="l-next" aria-hidden="true"></i>Próximo</li>
+                <li><i class="l-pend" aria-hidden="true"></i>Pendiente</li>
+                <li><i class="l-mes" aria-hidden="true"></i>Día por confirmar en el calendario oficial</li>
+                <li><i class="l-renta" aria-hidden="true"></i>Campaña de Renta</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="guias" data-screen-label="Guías del territorio" class="nv-section" aria-labelledby="guias-territorio">
+      <!-- ══ TRES DECISIONES CLAVE ══════════════════════════════════════════
+           Cada tarjeta abre con su cifra; el detalle queda en un desplegable. -->
+      <section id="guias" data-screen-label="Guías del territorio" class="fiscal-bloque" aria-labelledby="guias-territorio">
         <div class="nv-container">
-          <h2 id="guias-territorio" class="nv-visually-hidden">Guías de tu territorio fiscal</h2>
+          <div class="fiscal-bloque__head">
+            <div>
+              <p class="nv-eyebrow"><span>Tu marco de referencia · {{ nombre }}</span></p>
+              <h2 id="guias-territorio">Lo esencial de tu fiscalidad, de un vistazo</h2>
+            </div>
+            <div class="fiscal-bloque__aside">
+              <p aria-live="polite">{{ intro }}</p>
+              <a href="{{ fuenteHref }}" target="_blank" rel="noopener noreferrer">{{ fuenteLabel }} ↗</a>
+            </div>
+          </div>
 
           <div class="nv-card-grid">
             <sc-for list="{{ tarjetas }}" as="tarjeta" hint-placeholder-count="3">
-              <article class="nv-card fiscal-guia">
+              <article class="{{ tarjeta.clase }}">
 
-                <div class="fiscal-guia__head">
-                  <span class="nv-card__icon" aria-hidden="true">
-                    <svg width="20" height="20" viewBox="0 0 24 24">
-                      <path sc-camel-d="{{ tarjeta.icono }}" fill="none" stroke="currentColor"
-                            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
+                <div class="fiscal-guia__fig">
                   <span class="fiscal-guia__ref">{{ tarjeta.eyebrow }}</span>
+                  <p class="fiscal-guia__cifra">{{ tarjeta.cifra }}</p>
+                  <p class="fiscal-guia__cap">{{ tarjeta.cifraCap }}</p>
+                  <svg class="fiscal-guia__marca" viewBox="0 0 24 24" aria-hidden="true">
+                    <path sc-camel-d="{{ tarjeta.icono }}" fill="none" stroke="currentColor"
+                          stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
                 </div>
 
-                <h3>{{ tarjeta.titulo }}</h3>
-                <p>{{ tarjeta.descripcion }}</p>
+                <div class="fiscal-guia__body">
+                  <h3>{{ tarjeta.titulo }}</h3>
+                  <p>{{ tarjeta.descripcion }}</p>
 
-                <dl class="fiscal-guia__datos">
-                  <sc-for list="{{ tarjeta.datos }}" as="dato" hint-placeholder-count="3">
-                    <div class="fiscal-dato">
-                      <dt>{{ dato.etiqueta }}</dt>
-                      <dd>{{ dato.valor }}</dd>
-                    </div>
-                  </sc-for>
-                </dl>
+                  <details class="fiscal-guia__detalle">
+                    <summary>{{ tarjeta.verDetalle }}</summary>
+                    <dl class="fiscal-guia__datos">
+                      <sc-for list="{{ tarjeta.datos }}" as="dato" hint-placeholder-count="3">
+                        <div class="fiscal-dato">
+                          <dt>{{ dato.etiqueta }}</dt>
+                          <dd>{{ dato.valor }}</dd>
+                        </div>
+                      </sc-for>
+                    </dl>
+                    <p class="fiscal-guia__nota">{{ tarjeta.nota }}</p>
+                  </details>
 
-                <p class="fiscal-guia__nota">{{ tarjeta.nota }}</p>
-
-                <div class="fiscal-guia__acciones">
-                  <a class="nv-btn nv-btn--primary" href="{{ tarjeta.guia }}">Abrir guía →</a>
-                  <a class="fiscal-guia__fuente"
-                     href="{{ tarjeta.fuenteHref }}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a>
+                  <div class="fiscal-guia__acciones">
+                    <a class="nv-btn nv-btn--primary" href="{{ tarjeta.guia }}">Abrir guía →</a>
+                    <a class="fiscal-guia__fuente"
+                       href="{{ tarjeta.fuenteHref }}" target="_blank" rel="noopener noreferrer">Fuente oficial ↗</a>
+                  </div>
                 </div>
 
               </article>
             </sc-for>
           </div>
+        </div>
+      </section>
+
+      <!-- ══ EJEMPLO: TRIBUTACIÓN DE UNA GANANCIA ═══════════════════════════
+           Cálculo local y educativo con la escala del ahorro del territorio.
+           No guarda nada ni emite recomendaciones. -->
+      <section id="ejemplo-ahorro" data-screen-label="Ejemplo de tributación" class="fiscal-bloque" aria-labelledby="sim-titulo">
+        <div class="nv-container">
+          <div class="fiscal-sim">
+            <div class="fiscal-sim__in">
+              <p class="nv-eyebrow">Pruébalo tú</p>
+              <h2 id="sim-titulo">¿Cuánto tributa una ganancia?</h2>
+              <p>
+                Escribe una ganancia al vender acciones, fondos o un inmueble y
+                mira cómo se reparte entre los tramos de la escala del ahorro.
+              </p>
+              <label class="fiscal-sim__label" for="sim-importe">Ganancia patrimonial</label>
+              <div class="fiscal-sim__amount">
+                <input id="sim-importe" type="text" inputmode="numeric" autocomplete="off"
+                       key="{{ simClaveTexto }}" defaultValue="{{ simTexto }}" onChange="{{ simEscribir }}">
+                <span class="fiscal-sim__eur" aria-hidden="true">€</span>
+              </div>
+              <input class="fiscal-sim__range" type="range" min="1000" max="400000" step="1000"
+                     key="{{ simClaveRango }}" defaultValue="{{ simRango }}" onChange="{{ simDeslizar }}" aria-label="Ajustar la ganancia">
+              <div class="fiscal-sim__chips" role="group" aria-label="Importes de ejemplo">
+                <sc-for list="{{ simChips }}" as="chip" hint-placeholder-count="4">
+                  <button type="button" class="{{ chip.clase }}" onClick="{{ chip.elegir }}"
+                          aria-pressed="{{ chip.activo }}">{{ chip.texto }}</button>
+                </sc-for>
+              </div>
+            </div>
+
+            <div class="fiscal-sim__out" aria-live="polite">
+              <dl class="fiscal-sim__res">
+                <div><dt>Cuota estimada</dt><dd>{{ simCuota }}</dd></div>
+                <div><dt>Tipo medio efectivo</dt><dd>{{ simMedio }}</dd></div>
+              </dl>
+              <p class="fiscal-sim__bars-t">Cómo se reparte por tramos <span class="fiscal-sim__bars-n">{{ simNumTramos }}</span></p>
+              <div class="fiscal-sim__bar" role="img" aria-label="{{ simBarraAria }}">
+                <sc-for list="{{ simTramos }}" as="tramo" hint-placeholder-count="4">
+                  <span class="{{ tramo.clase }}" data-w="{{ tramo.w }}" title="{{ tramo.titulo }}">{{ tramo.etiqueta }}</span>
+                </sc-for>
+              </div>
+              <p class="fiscal-sim__escala"><span>0 €</span><span>{{ simTexto }} €</span></p>
+              <div class="fiscal-sim__compare">
+                <p>Con la misma ganancia en <strong>{{ simCompNombre }}</strong>:</p>
+                <p class="fiscal-sim__delta">{{ simComp }}</p>
+              </div>
+              <p class="fiscal-sim__note">{{ simNota }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ERRORES FRECUENTES ═════════════════════════════════════════════ -->
+      <section data-screen-label="Errores frecuentes" class="fiscal-bloque" aria-labelledby="errores-titulo">
+        <div class="nv-container">
+          <div class="fiscal-bloque__head">
+            <div>
+              <p class="nv-eyebrow">Antes de actuar</p>
+              <h2 id="errores-titulo">Tres errores frecuentes</h2>
+            </div>
+          </div>
+          <ol class="fiscal-errores">
+            <li>
+              <span class="fiscal-errores__num" aria-hidden="true">01</span>
+              <h3>Pensar que donar solo tributa para quien recibe</h3>
+              <p>Donar inmuebles o valores puede generar una ganancia patrimonial en el IRPF de quien dona, además del impuesto de quien recibe.</p>
+            </li>
+            <li>
+              <span class="fiscal-errores__num" aria-hidden="true">02</span>
+              <h3>Contar con el último día de la campaña para domiciliar</h3>
+              <p>Si pagas domiciliando, el plazo para presentar puede terminar antes que la campaña general.</p>
+            </li>
+            <li>
+              <span class="fiscal-errores__num" aria-hidden="true">03</span>
+              <h3>Vender sin mirar las pérdidas pendientes</h3>
+              <p>Las pérdidas del ahorro pueden compensar ganancias. Las fechas de adquisición y las pérdidas de ejercicios anteriores cambian el resultado.</p>
+            </li>
+          </ol>
         </div>
       </section>
 
@@ -358,7 +498,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;territorioInicial&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;bizkaia&quot;, &quot;options&quot;: [&quot;bizkaia&quot;, &quot;araba&quot;, &quot;gipuzkoa&quot;, &quot;navarra&quot;, &quot;common-territory&quot;, &quot;sin-seleccion&quot;, &quot;unsure&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Territorio&quot;}}">
 class Component extends DCLogic {
-  state = { seleccion: null };
+  state = { seleccion: null, sim: 40000, simVT: 0, simVR: 0 };
   datos() {
     const IC = {
       calendar: 'M7 3 V6 M17 3 V6 M4 5 H20 V21 H4 Z M4 9 H20 M8 13 H10 M14 13 H16 M8 17 H10',
@@ -419,6 +559,142 @@ class Component extends DCLogic {
       },
     };
   }
+  /* Rediseño 23-09-2026: agenda del año, cifras de las tarjetas y escala del
+     ahorro por territorio. Los hitos con día confirmado llevan { m, d }; los que
+     solo tienen mes confirmado llevan { m, d: null } y se muestran por mes. */
+  extras() {
+    const D = (m, d) => ({ m, d });
+    const M = (m) => ({ m, d: null });
+    const TRIM = { '4T': 'del 4.º trimestre de 2025', '1T': 'del 1.er trimestre', '2T': 'del 2.º trimestre', '3T': 'del 3.er trimestre' };
+    const p130 = (t, f) => ({ ...f, corto: '130 · ' + t, modelo: 'Modelo 130', detalle: 'pago fraccionado de autónomos ' + TRIM[t] });
+    const renta2 = (f) => ({ ...f, corto: 'Renta · 2.º plazo', modelo: 'Renta 2025', detalle: 'segundo plazo del pago fraccionado' });
+    /* Escalas de la base liquidable del ahorro: [límite superior, tipo %]. */
+    const FORAL_VASCA = [[7500, 19], [15000, 20], [30000, 22], [50000, 24], [90000, 25.5], [120000, 26], [240000, 26.5], [300000, 27], [Infinity, 28]];
+    const NAVARRA = [[6000, 20], [10000, 22], [15000, 24], [200000, 26], [300000, 27], [Infinity, 28]];
+    const COMUN = [[6000, 19], [50000, 21], [200000, 23], [300000, 27], [Infinity, 30]];
+    const notaForal = (t) => 'Ejemplo educativo con la escala del ahorro de ' + t + ' para operaciones de 2026, que se declararán en 2027. Supone que la ganancia es toda tu base liquidable del ahorro, sin otras rentas del ahorro, pérdidas compensables ni reducciones. No sustituye el cálculo de tu declaración ni constituye asesoramiento fiscal.';
+    const cifras = (c1, k1, c2, k2, c3, k3) => [[c1, k1], [c2, k2], [c3, k3]];
+    return {
+      'bizkaia': {
+        renta: [D(4, 15), D(6, 30)],
+        hitos: [p130('4T', D(1, 26)), p130('1T', D(4, 27)), p130('2T', D(7, 27)), p130('3T', D(10, 26)), renta2(D(11, 10))],
+        cifras: cifras('30 jun', 'Último día de la campaña de Renta 2025', '19–28 %', 'Escala del ahorro para operaciones de 2026', '1 año', 'Plazo general para declarar una herencia'),
+        escala: FORAL_VASCA, nota: notaForal('Bizkaia'), comparar: ['common-territory', 'territorio común (escala estatal y autonómica)'],
+      },
+      'araba': {
+        renta: [D(4, 7), D(6, 25)],
+        hitos: [p130('4T', M(2)), p130('1T', M(5)), p130('2T', M(8)), p130('3T', M(11))],
+        cifras: cifras('25 jun', 'Último día de la campaña de Renta 2025', '19–28 %', 'Escala del ahorro para operaciones de 2026', '6 meses', 'Plazo ordinario para declarar una herencia'),
+        escala: FORAL_VASCA, nota: notaForal('Álava'), comparar: ['common-territory', 'territorio común (escala estatal y autonómica)'],
+      },
+      'gipuzkoa': {
+        renta: [D(4, 7), D(7, 2)],
+        hitos: [p130('4T', D(2, 10)), p130('1T', D(5, 10)), p130('2T', D(8, 10)),
+          { ...D(11, 10), corto: '130 · 3T y Renta', modelo: 'Modelo 130 y Renta 2025', detalle: 'pago fraccionado de autónomos del 3.er trimestre y segundo plazo de Renta' }],
+        cifras: cifras('2 jul', 'Último día de la campaña de Renta 2025', '19–28 %', 'Escala del ahorro para operaciones de 2026', '1 año', 'Plazo para declarar una herencia, sin prórroga'),
+        escala: FORAL_VASCA, nota: notaForal('Gipuzkoa'), comparar: ['common-territory', 'territorio común (escala estatal y autonómica)'],
+      },
+      'navarra': {
+        renta: [D(4, 9), D(6, 25)],
+        hitos: [p130('4T', M(2)), p130('1T', M(4)), p130('2T', M(8)), p130('3T', M(10)), renta2(D(11, 20))],
+        cifras: cifras('25 jun', 'Último día de la campaña de Renta 2025', '20–28 %', 'Escala propia del ahorro: seis tramos', '6 meses', 'Plazo general para declarar una herencia'),
+        escala: NAVARRA,
+        nota: 'Ejemplo educativo con la escala del ahorro del artículo 60 del Texto Refundido del IRPF de Navarra. Supone que la ganancia es toda tu base liquidable del ahorro, sin otras rentas del ahorro, pérdidas compensables ni reducciones. No sustituye el cálculo de tu declaración ni constituye asesoramiento fiscal.',
+        comparar: ['common-territory', 'territorio común (escala estatal y autonómica)'],
+      },
+      'common-territory': {
+        renta: [D(4, 8), D(6, 30)],
+        hitos: [p130('4T', D(1, 30)), p130('1T', D(4, 20)), p130('2T', D(7, 20)), p130('3T', D(10, 20)), renta2(D(11, 5))],
+        cifras: cifras('30 jun', 'Último día de la campaña de Renta 2025', '19–30 %', 'Escala estatal y autonómica del ahorro', '6 meses', 'Plazo general de referencia para una herencia'),
+        escala: COMUN,
+        nota: 'Ejemplo educativo con la escala conjunta estatal y autonómica de la base del ahorro. Supone que la ganancia es toda tu base liquidable del ahorro, sin otras rentas del ahorro, pérdidas compensables ni reducciones. No sustituye el cálculo de tu declaración ni constituye asesoramiento fiscal.',
+        comparar: ['bizkaia', 'Bizkaia (escala foral para operaciones de 2026)'],
+      },
+    };
+  }
+  /* Agenda del año: posición en la línea (0–100), estado de cada hito y el
+     próximo vencimiento respecto de la fecha del visitante. */
+  agenda(x, nombre) {
+    const Y = 2026;
+    const MES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const MES_LARGO = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    const ahora = new Date();
+    const hoy = new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate());
+    const inicio = new Date(Y, 0, 1);
+    const pct = (fecha) => Math.max(0, Math.min(100, Math.round((fecha - inicio) / 864e5 / 365 * 100)));
+    const fechaDe = (h) => new Date(Y, h.m - 1, h.d || 15);
+    const finDe = (h) => (h.d ? new Date(Y, h.m - 1, h.d) : new Date(Y, h.m, 0));
+    let proximo = null;
+    let ultimaPos = -100;
+    let arriba = false;
+    const hitosLinea = x.hitos.map((h) => {
+      const hecho = finDe(h) < hoy;
+      const esProximo = !hecho && !proximo;
+      if (esProximo) proximo = h;
+      const pos = pct(fechaDe(h));
+      arriba = pos - ultimaPos < 7 ? !arriba : false;
+      ultimaPos = pos;
+      const estado = hecho ? ' is-done' : esProximo ? ' is-next' : '';
+      return {
+        pos,
+        corto: h.corto,
+        fecha: hecho || !h.d ? MES[h.m - 1] : h.d + '/' + h.m,
+        claseDot: 'fiscal-tl__dot' + (h.d ? '' : ' fiscal-tl__dot--mes') + estado,
+        claseLbl: 'fiscal-tl__lbl' + estado + (arriba ? ' is-up' : ''),
+      };
+    });
+    const rentaIni = pct(fechaDe(x.renta[0]));
+    const out = {
+      hitosLinea,
+      hoyPos: pct(hoy),
+      rentaPos: rentaIni,
+      rentaAncho: Math.max(1, pct(fechaDe(x.renta[1])) - rentaIni),
+      rentaCentro: Math.round((rentaIni + pct(fechaDe(x.renta[1]))) / 2),
+      lineaAria: 'Calendario fiscal de 2026 en ' + nombre + ': ' + x.hitos.map((h) => h.corto + ', ' + (h.d ? h.d + ' de ' : '') + MES_LARGO[h.m - 1]).join('; ') + '.',
+      proximoKicker: 'Próximo vencimiento',
+      proximoConDias: false,
+      proximoSoloMes: false,
+      proximoDias: '',
+      proximoUnidad: '',
+      proximoMes: '',
+      proximoModelo: '',
+      proximoDetalle: '',
+    };
+    if (!proximo) {
+      out.proximoKicker = 'Agenda 2026';
+      out.proximoSoloMes = true;
+      out.proximoMes = 'Al día';
+      out.proximoModelo = 'Sin vencimientos pendientes';
+      out.proximoDetalle = ' en esta agenda para el resto de 2026. Consulta el calendario oficial para otras obligaciones.';
+    } else if (proximo.d) {
+      const dias = Math.round((finDe(proximo) - hoy) / 864e5);
+      out.proximoConDias = true;
+      out.proximoDias = String(dias);
+      out.proximoUnidad = dias === 1 ? 'día' : 'días';
+      out.proximoModelo = proximo.modelo;
+      out.proximoDetalle = ' · ' + proximo.detalle + '. ' + (dias === 0 ? 'El plazo termina hoy.' : 'Plazo hasta el ' + proximo.d + ' de ' + MES_LARGO[proximo.m - 1] + '.');
+    } else {
+      out.proximoSoloMes = true;
+      out.proximoMes = MES_LARGO[proximo.m - 1].charAt(0).toUpperCase() + MES_LARGO[proximo.m - 1].slice(1);
+      out.proximoModelo = proximo.modelo;
+      out.proximoDetalle = ' · ' + proximo.detalle + '. Vence en ' + MES_LARGO[proximo.m - 1] + '; consulta el día exacto en el calendario oficial.';
+    }
+    return out;
+  }
+  /* Tributación de una ganancia con la escala del ahorro: cuota por tramos. */
+  simular(importe, escala) {
+    let previo = 0;
+    let total = 0;
+    const partes = [];
+    for (const [limite, tipo] of escala) {
+      if (importe <= previo) break;
+      const tramo = Math.min(importe, limite) - previo;
+      total += tramo * tipo / 100;
+      partes.push({ tramo, tipo });
+      previo = limite;
+    }
+    return { total, partes };
+  }
   territorioGuardado() {
     try {
       const preference = JSON.parse(window.localStorage.getItem('nuvia-tax-preference') || 'null');
@@ -442,7 +718,22 @@ class Component extends DCLogic {
       }));
     } catch (error) { /* La guía seguirá disponible para volver a seleccionar el territorio. */ }
   }
+  /* En móvil la línea del año se desplaza en horizontal: se lleva a la vista
+     el tramo de «hoy» para que el próximo vencimiento se vea sin buscarlo. */
+  centrarLinea() {
+    const caja = document.querySelector('.fiscal-tl__scroll');
+    const hoy = caja && caja.querySelector('.fiscal-tl__today');
+    if (!caja || !hoy || caja.scrollWidth <= caja.clientWidth) return;
+    caja.scrollLeft = Math.max(0, hoy.offsetLeft - caja.clientWidth / 2);
+  }
+  componentDidUpdate() {
+    if (this.lineaCentrada !== this.state.seleccion) {
+      this.lineaCentrada = this.state.seleccion;
+      setTimeout(() => this.centrarLinea(), 0);
+    }
+  }
   componentDidMount() {
+    setTimeout(() => this.centrarLinea(), 0);
     document.title = 'NUVIA · Impuestos';
     const current = this.state.seleccion ?? this.props.territorioInicial ?? 'bizkaia';
     const stored = this.territorioGuardado();
@@ -463,6 +754,35 @@ class Component extends DCLogic {
     const t = jur[seleccion] || null;
     const estadoVacio = seleccion === 'sin-seleccion';
     const estadoInseguro = seleccion === 'unsure';
+    const extras = this.extras();
+    const x = t ? extras[seleccion] : null;
+    const clasesTarjeta = ['nv-card fiscal-guia fiscal-guia--t1', 'nv-card fiscal-guia fiscal-guia--t2', 'nv-card fiscal-guia fiscal-guia--t3'];
+    const verDetalle = ['Ver fechas clave', 'Ver tramos y matices', 'Ver plazos y modelos'];
+
+    /* Ejemplo de tributación: importe, reparto por tramos y comparación. */
+    const miles = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    const pctTexto = (n) => String(n).replace('.', ',') + ' %';
+    const sim = Math.max(0, Math.min(5000000, Number(this.state.sim) || 0));
+    /* Los dos campos usan defaultValue (sin plantilla visible antes de
+       arrancar). Cuando el importe cambia desde otro control, la clave del
+       campo cambia y React lo vuelve a montar con el valor nuevo; el campo
+       que se está usando conserva su clave y no pierde el foco. */
+    const fijar = (v, origen) => this.setState((prev) => ({
+      sim: Math.max(0, Math.min(5000000, v)),
+      simVT: origen === 'texto' ? prev.simVT : prev.simVT + 1,
+      simVR: origen === 'rango' ? prev.simVR : prev.simVR + 1,
+    }));
+    const calculo = x ? this.simular(sim, x.escala) : { total: 0, partes: [] };
+    const comparado = x ? this.simular(sim, extras[x.comparar[0]].escala) : { total: 0 };
+    const diferencia = comparado.total - calculo.total;
+    const simTramos = calculo.partes.map((p, i) => ({
+      clase: 'fiscal-sim__seg fiscal-sim__seg--' + (i + 1) + (i === calculo.partes.length - 1 ? ' is-last' : ''),
+      w: Math.max(1, Math.min(100, Math.round(p.tramo / sim * 100))),
+      etiqueta: p.tramo / sim > 0.09 ? pctTexto(p.tipo) : '',
+      titulo: miles(p.tramo) + ' € al ' + pctTexto(p.tipo),
+    }));
+    const agenda = x ? this.agenda(x, t.nombre) : this.agenda({ hitos: [], renta: [{ m: 1, d: 1 }, { m: 1, d: 1 }] }, '');
+
     return {
       seleccion,
       cambiarTerritorio: (e) => {
@@ -483,8 +803,36 @@ class Component extends DCLogic {
       intro: t ? t.intro : '',
       fuenteLabel: t ? t.fuenteLabel : '',
       fuenteHref: t ? t.fuenteHref : '#',
-      tarjetas: t ? t.tarjetas.map((tarjeta) => ({ ...tarjeta, guia: guideByTitle[tarjeta.titulo] })) : [],
-      notaOrientativa: t ? 'Contenido orientativo para ' + t.nombre + ' · Ejercicio 2026 · Actualizado el 3 de agosto de 2026.' : '',
+      tarjetas: t ? t.tarjetas.map((tarjeta, i) => ({
+        ...tarjeta,
+        guia: guideByTitle[tarjeta.titulo],
+        clase: clasesTarjeta[i],
+        cifra: x.cifras[i][0],
+        cifraCap: x.cifras[i][1],
+        verDetalle: verDetalle[i],
+      })) : [],
+      notaOrientativa: t ? 'Contenido orientativo para ' + t.nombre + ' · Ejercicio 2026 · Actualizado el 23 de septiembre de 2026.' : '',
+      ...agenda,
+      simTexto: sim ? miles(sim) : '',
+      simRango: String(Math.min(400000, Math.max(1000, sim))),
+      simEscribir: (e) => fijar(Number(String(e.target.value).replace(/\D/g, '')) || 0, 'texto'),
+      simClaveTexto: 'sim-texto-' + (this.state.simVT || 0),
+      simClaveRango: 'sim-rango-' + (this.state.simVR || 0),
+      simDeslizar: (e) => fijar(Number(e.target.value) || 0, 'rango'),
+      simChips: [5000, 40000, 120000, 350000].map((v) => ({
+        texto: miles(v) + ' €',
+        activo: v === sim ? 'true' : 'false',
+        clase: 'fiscal-sim__chip' + (v === sim ? ' is-active' : ''),
+        elegir: () => fijar(v, 'chip'),
+      })),
+      simCuota: miles(calculo.total) + ' €',
+      simMedio: sim ? pctTexto((calculo.total / sim * 100).toFixed(1)) : '–',
+      simNumTramos: calculo.partes.length === 1 ? '1 tramo' : calculo.partes.length + ' tramos',
+      simTramos,
+      simBarraAria: 'Reparto por tramos: ' + simTramos.map((p) => p.titulo).join('; ') + '.',
+      simCompNombre: x ? x.comparar[1] : '',
+      simComp: miles(comparado.total) + ' €' + (Math.abs(diferencia) >= 1 ? ' (' + (diferencia > 0 ? '+' : '−') + miles(Math.abs(diferencia)) + ' €)' : ''),
+      simNota: x ? x.nota : '',
     };
   }
 }

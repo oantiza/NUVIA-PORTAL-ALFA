@@ -31,6 +31,8 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css?v=20260910-1">
+<link rel="stylesheet" href="estilos/nuvia-jubilacion.css">
+<link rel="stylesheet" href="estilos/nuvia-guias-fiscales.css">
 <!-- React y ReactDOM, servidos por el sitio. Van antes que support.js: su
      loadReactUmd() empieza comprobando si ya están en window y, si lo
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
@@ -39,7 +41,7 @@
 <script defer src="support.js"></script>
 <script defer src="nuvia-site-unified.js"></script>
 </head>
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab jg-fiscal">
 <x-dc>
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
 
@@ -143,11 +145,13 @@
         <a class="gt-strip__change" href="fiscalidad.html">Cambiar de territorio →</a>
       </div>
 
-      <nav class="gt-tabs" aria-label="Guías de Impuestos">
-        <a href="guia-ahorro.html">Fiscalidad del ahorro</a>
-        <a href="guia-calendario.html" aria-current="page">Calendario fiscal</a>
-        <a href="guia-sucesiones.html">Sucesiones y donaciones</a>
-      </nav>
+      <nav class="jg-guides jg-guides--row" aria-label="Guías de Impuestos">
+              <ol class="jg-route3">
+                <li class="is-on"><a href="guia-calendario.html" aria-current="page"><span class="jg-route3__num">01</span><span><strong>Calendario fiscal</strong>Obligaciones y fechas del año · estás aquí</span></a></li>
+                <li><a href="guia-ahorro.html"><span class="jg-route3__num">02</span><span><strong>Fiscalidad del ahorro</strong>Intereses, dividendos y ganancias</span></a></li>
+                <li><a href="guia-sucesiones.html"><span class="jg-route3__num">03</span><span><strong>Sucesiones y donaciones</strong>Herencias y transmisiones en vida</span></a></li>
+              </ol>
+            </nav>
     </section>
 
 

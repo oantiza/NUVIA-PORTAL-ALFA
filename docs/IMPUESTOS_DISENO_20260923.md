@@ -19,13 +19,13 @@ Orden del fundador: «Implementa» la maqueta aprobada (`Claude outputs/maqueta-
 | Misma escala | Álava, Gipuzkoa | Art. 76.1 NF 33/2013 (Álava) según NF 3/2025, y art. 76.1 NF 3/2014 (Gipuzkoa) según NF 1/2025; efectos 1-1-2026 (texto consolidado en Iberley) | Contrastado 23-09 |
 | Escala ahorro 6 tramos 20–28 % | Navarra | Art. 60 TR IRPF según Ley Foral 36/2022 (BOE-A-2023-3349), vigente desde 1-1-2023; no la modifican la LF 20/2024 (BOE-A-2025-719) ni las medidas de 2026 (alerta EY 12-01-2026). La cuota íntegra de 300.000 € del BOE (78.380 €) coincide con el cálculo de la página | Contrastado 23-09 |
 | Escala 19/21/23/27/30 % | Territorio común | AEAT, manual Renta 2025 | Oficial |
-| 130 3T hasta 26/10 y 2.º plazo Renta 10/11 | Bizkaia | 130: plazo del 1 al 25 de octubre, que pasa al lunes 26 por caer el 25 en domingo (billin.net, tukonta.com). 2.º plazo: la DFB indica «a primeros de noviembre» (KA-01186); el día 10 lo dan tukonta.com e ideiatek.net. El PDF del calendario de la DFB no se pudo abrir (certificado) | Contrastado con fuentes secundarias coincidentes y la regla oficial |
+| 130: 1-31 ene, 1-25 abr, 1-25 jul, 1-25 oct; 2.º plazo Renta 10/11 | Bizkaia | 130: Calendario fiscal 2026 oficial de la DFB (PDF aportado por el fundador el 23-09); se muestra el día 25 que figura en el calendario. 2.º plazo: la DFB indica «a primeros de noviembre» (KA-01186) y no figura en el calendario; el día 10 lo dan tukonta.com e ideiatek.net | 130 oficial; 2.º plazo con fuentes secundarias coincidentes |
 | 130: 10/2, 10/5, 10/8, 10/11 | Gipuzkoa | gipuzkoa.eus, modelo 130 | Oficial |
 | 130 días 20 (abr, jul, oct) y 30/1; 2.º plazo 5/11 | Territorio común | Calendario AEAT / dato ya publicado | Oficial |
 | 130 por mes (sin día) | Álava, Navarra | Meses ya publicados en la página | Día pendiente |
 | Fechas de Renta y plazos de sucesiones | Todos | Datos ya publicados en la página | Sin cambios |
 
-Los días de los pagos ya vencidos de Bizkaia (26/1, 27/4, 27/7) se infieren de la regla del día 25 hábil y solo se usan para situar puntos pasados, que se rotulan por mes.
+Los días de los pagos de Bizkaia salen del calendario oficial de la DFB (31/1, 25/4, 25/7 y 25/10).
 
 ## Revisión interna previa (§12 del marco)
 

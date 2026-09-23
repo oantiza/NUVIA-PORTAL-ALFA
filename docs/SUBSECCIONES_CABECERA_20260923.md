@@ -12,7 +12,7 @@ Orden del fundador: «aplica esta plantilla a las otras subsecciones» (la cabec
 |---|---|
 | Vivienda y coste de vida | `card-vivienda.webp` · fachada de vivienda |
 | Jubilación | `card-jubilacion.webp` · pareja paseando junto al mar (etapa activa) |
-| Mercados y noticias | `daily-report-preview.webp` · tableta con gráficos |
+| Mercados y noticias | `mercados-noticias-manana-20260923.webp` · foto nueva (23-09): lectura de la prensa económica al amanecer. Se retiraron la cabecera «Financial Times» del periódico y se desenfocaron los lomos de libros con títulos reales (marcas de terceros) |
 | Mi cartera (y sus vistas) | `card-ahorro-inversion.webp` · móvil con gráfico y monedas |
 | Planificación patrimonial (`temas.html`) | `planificacion-patrimonial-familia-20260923.webp` · foto nueva (23-09): pareja e hija revisando un esquema junto a un ventanal. Se borraron los rótulos en inglés de las carpetas (STRATEGY, LEGACY) y la etiqueta |
 | Cuerpo, mente y salud (`temas.html?topic=bienestar`) | `card-wellness.webp` · familia haciendo ejercicio |

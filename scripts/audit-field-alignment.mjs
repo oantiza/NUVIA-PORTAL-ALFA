@@ -37,12 +37,15 @@ try {
       }
     }
     if(route==='jubilacion.html') {
-      await page.getByRole('button',{name:'No, necesito una estimación',exact:true}).click();
+      // Rediseño 23-09-2026: se recorren los cuatro pasos del simulador.
+      for(const [paso,estado] of [[1,'ahorros'],[2,'epsv'],[3,'supuestos']]) {
+        await page.locator('.jb-stepper__btn').nth(paso).click(); await record(width,route,estado);
+      }
+      await page.locator('.jb-stepper__btn').nth(2).click();
+      await page.getByRole('radio',{name:'Sí, tengo una EPSV',exact:true}).click();
+      await record(width,route,'con EPSV');
+      await page.getByRole('radio',{name:'No, estimarlo',exact:true}).click();
       await record(width,route,'sin certificado');
-      await page.getByRole('combobox',{name:'Tipo de renta formalizada con la EPSV',exact:true}).selectOption('temporary');
-      await record(width,route,'renta temporal');
-      await page.getByRole('spinbutton',{name:'Subida anual estimada de la pensión',exact:true}).fill('99');
-      await record(width,route,'error de formulario');
     }
     if(route==='sistema-visual.html') {
       // Synthetic stress case in this isolated page only: multi-line labels and

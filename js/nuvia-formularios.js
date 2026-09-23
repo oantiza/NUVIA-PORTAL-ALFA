@@ -1,5 +1,8 @@
 /** Controles de entrada locales. No cambia fórmulas ni consulta servicios. */
-export const RUTAS_FORMULARIOS = ['vivienda.html', 'jubilacion.html', 'academia.html', 'curso.html', 'guia-ahorro.html', 'guia-sucesiones.html', 'cartera.html'];
+/* jubilacion.html queda fuera desde el rediseño del 23-09-2026: su simulador
+   valida sus propios campos (controlados por React) y este interceptor, al
+   cortar el evento «input» en captura, impediría que React recibiera el cambio. */
+export const RUTAS_FORMULARIOS = ['vivienda.html', 'academia.html', 'curso.html', 'guia-ahorro.html', 'guia-sucesiones.html', 'cartera.html'];
 const ANIOS = /^(age|targetAge|years|fixedYears|comparisonYears|repaymentYears|seniorityYears|epsvRentYears|heirsCount)$/;
 const NEGATIVOS = /^(expectedReturn|inflationRate|homeAppreciation|rentGrowth|investmentReturn)$/;
 const PORCENTAJES = /Rate$|Percent$|Pct$|^(spread|annualIncrease|homeAppreciation|rentGrowth|investmentReturn|expectedReturn|incomeGrowth|repaymentFee|tae)$/;
@@ -45,7 +48,6 @@ export function erroresRelacion(valores) {
 
 const RESULTADOS = {
   'vivienda.html': '.viv-card__aside, .viv-table, .viv-offer__result, .viv-offer__badge, .viv-offer__chips',
-  'jubilacion.html': '#resultados',
   'academia.html': '.ac-x209 > .gu-stack',
   'curso.html': '.curso-tool > .curso-panel[aria-live]',
   'guia-ahorro.html': '.gt-resultado',

@@ -65,7 +65,7 @@ const CONTENIDO = {
   'mercados.html':         [['.markets-macro__item', 5], ['.markets-secondary-card', 3]],
   'mercados.html?vista=cotizaciones': [['.markets-lab__quote', 16], ['.markets-lab__chip', 5]],
   'curso.html':            [['.curso-resultado', 4], ['.curso-campo', 7]],
-  'jubilacion.html':       [['.nv-field__box', 19]],
+  'jubilacion.html':       [['.jb-stepper__btn', 4], ['.jb-field__box', 1], ['.jb-live__num', 1]],
   'vivienda.html':         [['.nv-field__box', 12], ['.viv-pill--dark', 2]],
   'lecturas.html':         [['.lecturas-card', 4]],
   'fiscalidad.html':       [['.fiscal-dato', 9]],
@@ -78,10 +78,10 @@ const CONTENIDO = {
   'academia.html?tab=esenciales': [['h2', 1]],
   'academia.html?tab=fundamentos': [['.ac-history-chart', 1]],
   'academia.html?tab=calculadora': [['.ac-compound-chart', 1], ['.ac-compound-chart__plot > span', 5]],
-  'jubilacion.html#resultados': [['#resultados', 1], ['.jub-chart polyline', 4]],
+  'jubilacion.html#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-chart--saldos polyline', 4], ['.jb-tax__col', 3]],
   'mercados.html?vista=informes': [['[data-report-reader]', 1], ['[data-report-edition]:not([hidden]) .nv-report', 1], ['[data-report-select]', 2]],
   'temas.html':            [['.nv-space-tool-card', 4]],
-  'temas.html?topic=jubilacion': [['.nv-field__box', 19], ['#familia-legado', 1]],
+  'temas.html?topic=jubilacion': [['.jb-stepper__btn', 4], ['#familia-legado', 1]],
   'temas.html?topic=bienestar': [['#tema-titulo', 1], ['.tm-wellbeing', 1], ['.tm-pillar', 5]],
   'temas.html?topic=planificacion-patrimonial': [['#tema-titulo', 1], ['.tm-pills .viv-pill', 4], ['.tm-card__title', 3]],
   'guia-calendario.html':  [['.gt-title', 1]],
@@ -407,9 +407,11 @@ for (const ancho of ANCHOS) {
     await p.goto(base + pag, { waitUntil: 'load', timeout: 60000 });
     await p.waitForTimeout(4200);
     // Escenario de prueba local: los resultados existen solo tras calcular.
+    // Jubilación: el análisis se calcula al cargar; se espera a que el gráfico
+    // se redibuje con el ancho real de su contenedor.
     if (pag === 'jubilacion.html#resultados') {
-      await p.getByRole('button', {name:'Ver mi estimación de jubilación →', exact:true}).click();
-      await p.locator('#resultados .jub-chart').waitFor({state:'visible'});
+      await p.locator('#resultados .jb-chart--saldos svg').waitFor({state:'visible'});
+      await p.waitForTimeout(300);
     }
     p.off('console', anotar); p.off('pageerror', anotarError);
     const ruido = consola.filter((t) => RUIDO_CONOCIDO.test(t));

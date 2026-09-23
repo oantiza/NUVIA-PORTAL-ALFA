@@ -3,7 +3,8 @@ export async function checkFamilyReview(page, route) {
   const contracts = {
     'academia.html?tab=calculadora': ['.ac-compound-chart__plot', 2, 5],
     'academia.html?tab=fundamentos': ['.nv-chart-scroll', 6, 18],
-    'jubilacion.html#resultados': ['.jub-chart-wrap__plot', 4, 5],
+    // Jubilación (23-09-2026): los rótulos dependen de la escala; se exige nombre, 4 series y 12 px efectivos.
+    'jubilacion.html#resultados': ['#resultados .jb-chart--saldos', 4, null],
   };
   const problems = [];
   const contract = contracts[route];
@@ -19,7 +20,8 @@ export async function checkFamilyReview(page, route) {
         if (points.length<4 || points.some(n=>n==='' || !Number.isFinite(Number(n)))) out.push('Serie vacía o con coordenadas no numéricas');
       }
       const texts=[...root.querySelectorAll(':scope > span, svg text')];
-      if (texts.length!==labels) out.push(`Faltan rótulos: ${texts.length}/${labels}`);
+      if (labels!==null && texts.length!==labels) out.push(`Faltan rótulos: ${texts.length}/${labels}`);
+      if (labels===null && texts.length<6) out.push(`Faltan rótulos: ${texts.length}`);
       const area=root.getBoundingClientRect();
       for (const el of texts) {
         const box=el.getBoundingClientRect(), style=getComputedStyle(el);

@@ -39,18 +39,32 @@ test('relaciones incoherentes en vivienda, jubilación y ofertas', () => {
   assert.deepEqual(erroresRelacion({downPayment:10}),{});
   assert.deepEqual(erroresRelacion({'a|years':10,'a|fixedYears':25,'a|kind':'Fija'}),{});
 });
-test('Jubilación invalida planes ante cambios, reinicios y errores', () => {
+test('Jubilación: campos controlados, reinicio y avisos (rediseño 23-09-2026)', () => {
   const html=readFileSync(new URL('../jubilacion.html',import.meta.url),'utf8');
   const code=html.match(/<script[^>]+type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
+  const React={Fragment:'F',createElement:(t,p,...c)=>({t,p:p||{},c:c.flat(Infinity)})};
+  const ctx={React,Intl,setTimeout:()=>{},document:{title:''}}; ctx.window=ctx; ctx.globalThis=ctx;
+  for(const f of ['motor','graficos','informe','ui']) vm.runInNewContext(readFileSync(new URL(`../js/nuvia-jubilacion-${f}.js`,import.meta.url),'utf8'),ctx);
   class DCLogic {setState(s){this.state={...this.state,...s};}}
-  const C=vm.runInNewContext(code+';Component',{DCLogic,Intl,URLSearchParams,location:{search:''},setTimeout:()=>{}});
-  const c=new C(); c.state={s:c.defaults(),errores:[],plan:{old:true}};
-  c.upd('age',70);assert.equal(c.state.plan,null);
-  for(const action of ['vaciarPatrimonio','cargarDFB','restablecer']) {
-    c.state.plan=null; const fn=c.renderVals()[action]; c.state.plan={old:true}; fn();assert.equal(c.state.plan,null,action);
-  }
-  c.state={s:{...c.defaults(),age:111},errores:[],plan:null};
-  const v=c.renderVals();c.state.plan={old:true};v.calcular();assert.equal(c.state.plan,null);assert.ok(c.state.errores.length);
+  const C=vm.runInNewContext(code+';Component',Object.assign(ctx,{DCLogic}));
+  const c=new C();
+  const buscar=(n,f,out=[])=>{if(n&&typeof n==='object'){if(f(n))out.push(n);(n.c||[]).forEach(k=>buscar(k,f,out));}return out;};
+  const app=()=>c.renderVals().app;
+  const campo=(id)=>buscar(app(),n=>n.t==='input'&&n.p.id===id)[0];
+  const boton=(texto)=>buscar(app(),n=>n.t==='button'&&n.c.includes(texto))[0];
+  const neto=()=>buscar(app(),n=>n.p&&n.p.className==='jb-live__num')[0].c[0];
+  assert.equal(campo('jb-pension').p.value,'2.000');
+  const inicial=neto();
+  campo('jb-pension').p.onChange({target:{value:'3.000'}});
+  assert.equal(campo('jb-pension').p.value,'3.000','El campo muestra el estado');
+  assert.notEqual(neto(),inicial,'El resultado se recalcula al momento');
+  boton('Empezar de cero').p.onClick();
+  assert.equal(campo('jb-pension').p.value,'0');
+  boton('Cargar el ejemplo').p.onClick();
+  assert.equal(campo('jb-pension').p.value,'2.000','Restablecer vuelve a pintar el ejemplo');
+  assert.equal(neto(),inicial);
+  campo('jb-edad').p.onChange({target:{value:'111'}});
+  assert.ok(buscar(app(),n=>n.p&&n.p.className==='jb-field__error').length,'Aviso junto al campo fuera de rango');
 });
 test('destinos pendientes y alias, sin bloquear herramientas disponibles', () => {
   for(const path of ['cartera.html?vista=companies','cartera.html?vista=technical','cartera.html?vista=fundamental']) assert.equal(destinoPendiente(new URL(path,'https://local.test/sub/')),false,path);

@@ -6,7 +6,7 @@ export async function inspectFieldAlignment(page) {
     for (const label of document.querySelectorAll('label, .nv-field__label')) {
       if (!visible(label)) continue;
       const field = label.parentElement;
-      const control = [...field.children].find(el => el.matches('.nv-field__box, .nv-select, input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select, textarea'));
+      const control = [...field.children].find(el => el.matches('.nv-field__box, .jb-field__box, .jb-select, .nv-select, input:not([type=hidden]):not([type=checkbox]):not([type=radio]), select, textarea'));
       if (!control || !visible(control)) continue;
       let parent = field.parentElement;
       while (parent && getComputedStyle(parent).display === 'contents') parent = parent.parentElement;

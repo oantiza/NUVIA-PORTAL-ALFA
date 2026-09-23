@@ -36,10 +36,11 @@ export async function checkTablesAndResults(page, route) {
         for(const cell of table.querySelectorAll('tr > :nth-child(3)')) if(getComputedStyle(cell).textAlign!=='left')out.push('La explicación del laboratorio se alinea como una cifra');
       }
     }
-    for(const value of [...document.querySelectorAll('.curso-resultado strong,.nv-lab-resumen__valor,.markets-macro__value,.markets-lab__summary-value strong,.viv-figure__value,.jub-figure__value,p.gu-figure,.gp-figure,.gp-figure--xl,.ac-x55')].filter(visible)) {
+    for(const value of [...document.querySelectorAll('.curso-resultado strong,.nv-lab-resumen__valor,.markets-macro__value,.markets-lab__summary-value strong,.viv-figure__value,.jub-figure__value,.jb-live__num,p.gu-figure,.gp-figure,.gp-figure--xl,.ac-x55')].filter(visible)) {
       const s=getComputedStyle(value);
       // Retirement redesign (22-09-2026): only the primary result uses display size.
-      const retirementLead=value.matches('.nv-retirement #resultados .jub-results__hero .jub-figure__value--xl');
+      // Rediseño 23-09-2026: la cifra principal es la del panel en vivo del simulador.
+      const retirementLead=value.matches('.nv-retirement .jb-live__num');
       if(retirementLead) {
         const size=Number.parseFloat(s.fontSize);
         if(size<36||size>60)out.push('Resultado principal de jubilación fuera de escala: '+s.fontSize);

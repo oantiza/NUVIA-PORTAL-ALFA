@@ -1,0 +1,239 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-24",
+  "fecha": "2026-09-24",
+  "fechaIso": "2026-09-24T00:00:00.000Z",
+  "generadoIso": "2026-09-24T10:51:30.653Z",
+  "titular": "La bolsa española retrocede levemente por las renovables mientras repunta la volatilidad global",
+  "entradilla": "El mercado español cerró la jornada con descensos, penalizado por el comportamiento dispar de sus sectores clave. Al mismo tiempo, la volatilidad en Estados Unidos registró un aumento significativo a la espera de nuevos datos sobre la actividad económica.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró con una bajada de 92,20 puntos (-0,47 %) hasta situarse en los 19.632,20 puntos. Según analistas financieros, el avance de las empresas vinculadas a los hidrocarburos no logró compensar los descensos en telecomunicaciones y renovables.",
+      "fecha": "2026-09-23",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad VIX se situó en 15,11 puntos al cierre de la sesión, lo que representa un incremento diario de 0,90 puntos (+6,33 %).",
+      "fecha": "2026-09-23",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "Las cifras de cierre definitivas de los índices Euro Stoxx 50 y DAX no se publican en las plataformas abiertas y gratuitas de sus emisores oficiales.",
+      "fecha": "2026-09-23",
+      "fuentes": [
+        3,
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (España)",
+      "valor": "19.632,20 puntos",
+      "referencia": "2026-09-23, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50 (Eurozona)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación en abierto",
+      "fuentes": [
+        3,
+        4
+      ]
+    },
+    {
+      "etiqueta": "S&P 500 (Estados Unidos)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación en abierto",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Índice VIX",
+      "valor": "15,11 puntos",
+      "referencia": "2026-09-23, Chicago Board Options Exchange",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Bono del Tesoro de EE.UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación oficial en fuentes provistas",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación oficial en fuentes provistas",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-24",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Precios Industriales de agosto",
+      "anterior": "9,2 % interanual en julio de 2026",
+      "porQueImporta": "Permite calibrar la evolución de los costes de producción industrial antes de su impacto en el consumidor final.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-24",
+      "hora": "09:15",
+      "region": "Eurozona",
+      "que": "Comparecencia de Isabel Schnabel, miembro del Comité Ejecutivo del Banco Central Europeo",
+      "anterior": null,
+      "porQueImporta": "Ofrece la visión de la entidad sobre el entorno económico y la política monetaria europea.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-25",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Producto Interior Bruto del segundo trimestre",
+      "anterior": "+2,6 % interanual en el primer trimestre de 2026",
+      "porQueImporta": "Es la medida oficial del tamaño y crecimiento de toda la actividad económica del país.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-25",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Agregados monetarios y crédito bancario de agosto",
+      "anterior": null,
+      "porQueImporta": "Actúa como termómetro de la creación de dinero y la concesión de financiación al sector privado.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La bolsa española registró un leve descenso en la última sesión completa. El índice IBEX 35 cerró en 19.632,20 puntos, perdiendo un 0,47 % respecto a la jornada del 22 de septiembre. Según indican los analistas financieros, este movimiento a la baja ocurrió porque el avance de las empresas de combustibles fósiles no logró compensar las caídas en las compañías de telecomunicaciones y energías renovables.",
+        "En el mercado de Estados Unidos, el índice de volatilidad VIX subió hasta los 15,11 puntos el 23 de septiembre. No ha sido posible contrastar el cierre oficial del S&P 500 y de las principales plazas europeas, debido a que sus publicadores restringen el acceso gratuito a las cifras definitivas al término de la sesión comercial."
+      ],
+      "fuentes": [
+        1,
+        6
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La evolución dispar de los distintos sectores dentro del mercado español muestra cómo cada industria reacciona a su propio entorno. El coste de la energía y las perspectivas de los tipos de interés (el precio del dinero) afectan de manera muy desigual a una empresa que refina petróleo y a otra que instala tecnología solar.",
+        "El repunte de la volatilidad en Estados Unidos señala un mayor dinamismo en la bolsa americana. Este factor resulta fundamental para comprender si los inversores están buscando mayor protección para sus carteras ante los próximos cambios en el entorno económico a corto plazo."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En los próximos días, la atención económica se centrará en los datos de la industria y la actividad general de España. El jueves se difunde el Índice de Precios Industriales, clave para saber si los costes de producción se están acelerando antes de llegar al consumidor minorista.",
+        "El viernes se conocerá el dato definitivo del Producto Interior Bruto español del segundo trimestre. Esta magnitud confirmará el ritmo exacto al que crece la economía nacional frente al trimestre previo y ayudará a medir el pulso real del consumo interno del país."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/dam/descargas/regulacion/renta-variable/bolsa-barcelona/notice/2026/icf-20260923-pagares.pdf"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-blue-chip-indices-composition-changes-sep-01-2026/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-scheduled-adjustments-to-dax-blue-chip-indices-sep-3-2026/"
+    },
+    {
+      "titulo": "New York Stock Exchange",
+      "url": "https://www.nyse.com/quote/index/SPX"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/volume_snapshot/"
+    },
+    {
+      "titulo": "facebook.com",
+      "url": "https://www.facebook.com/elforodeceuta/posts/-ibex-35-cierra-a-la-baja-el-mi%C3%A9rcoles-23-de-septiembre-de-2026-cierra-en-196322/1764755852322464/"
+    },
+    {
+      "titulo": "elperiodicodeceuta.es",
+      "url": "https://www.elperiodicodeceuta.es/cierre-ibex-35-bolsa-espana-hoy-miercoles-23-de-septiembre-de-2026/"
+    },
+    {
+      "titulo": "democrata.es",
+      "url": "https://www.democrata.es/economia/el-ibex-35-inicia-la-sesion-con-un-descenso-cercano-al-0-6-mientras-el-brent-roza-los-104-dolares/"
+    },
+    {
+      "titulo": "vantagemarkets.com",
+      "url": "https://www.vantagemarkets.com/market-news/nasdaq-record-close-sp500-flat-dow-lower-september-23-2026/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-24",
+    "hasta": "2026-09-24",
+    "corteIso": "2026-09-24T10:51:30.653Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Descenso en España",
+      "texto": "El principal índice español terminó la sesión a la baja. El movimiento refleja cómo las caídas en las telecomunicaciones anulan las subidas de las energéticas, según los analistas.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "Repunte de volatilidad",
+      "texto": "El índice VIX cerró al alza, lo que indica un mayor nivel de fluctuación esperada en Estados Unidos. Esto refleja la demanda de protección ante los próximos datos de actividad económica.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Datos restringidos",
+      "texto": "Varios índices internacionales clave no ofrecen su cifra de cierre en formato abierto. Esta limitación restringe el análisis del panorama global mediante fuentes primarias.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Índice VIX",
+      "definicion": "Indicador que mide la fluctuación esperada en el mercado estadounidense durante los próximos treinta días, utilizado a menudo como termómetro del riesgo percibido por los inversores."
+    },
+    {
+      "termino": "Volatilidad",
+      "definicion": "Medida de la frecuencia y la intensidad con la que cambia el precio de un activo financiero a lo largo del tiempo."
+    },
+    {
+      "termino": "Producto Interior Bruto",
+      "definicion": "Valor total de todos los bienes y servicios finales producidos en un país durante un período determinado, utilizado para medir el tamaño y la salud de su economía."
+    }
+  ]
+}

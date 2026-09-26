@@ -1,0 +1,385 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "SEMANAL",
+  "id": "semanal-2026-09-26",
+  "fecha": "2026-09-26",
+  "fechaIso": "2026-09-26T00:00:00.000Z",
+  "generadoIso": "2026-09-26T12:10:35.245Z",
+  "titular": "La fuerza tecnológica levanta a las bolsas mientras la deuda acusa la persistencia de la inflación",
+  "entradilla": "La economía estadounidense volvió a mostrar su robustez con datos de actividad superiores a lo previsto. Esta firmeza anticipa un coste del dinero más elevado, lo que encareció la deuda pública, pero no logró frenar el ascenso bursátil liderado por los desarrollos en inteligencia artificial.",
+  "hechos": [
+    {
+      "texto": "El índice PMI compuesto de Estados Unidos, que agrupa la actividad en manufacturas y servicios, ascendió a un máximo de cinco años impulsado por los nuevos pedidos industriales y el empleo.",
+      "fecha": "2026-09-23",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El gobernador Michael S. Barr anticipó que serán necesarios nuevos aumentos en el precio del dinero, lo que impulsó un alza diaria de 15 puntos básicos (0,15 puntos porcentuales) en la rentabilidad de la deuda estadounidense a 10 años.",
+      "fecha": "2026-09-23",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "La rentabilidad del bono alemán a 10 años aumentó 0,11 puntos porcentuales en la semana, hasta alcanzar un nivel del 3,57 % en respuesta a las mayores expectativas de restricción monetaria.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "El índice Nasdaq 100 cerró con un avance semanal del 3,00 % tras la firma de compromisos corporativos de capacidad de computación y el despliegue del software 'Muse' por parte de Meta Platforms.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "Estados Unidos prorrogó hasta enero de 2027 el marco arancelario actual con China, evitando una subida impositiva bilateral que estaba programada para el mes de noviembre.",
+      "fecha": "2026-09-24",
+      "fuentes": [
+        7
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Rentabilidad del bono alemán a 10 años",
+      "valor": "3,57 %",
+      "referencia": "2026-09-25, Deutsche Bundesbank",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Índice PMI compuesto de Estados Unidos",
+      "valor": "Máximo de 5 años",
+      "referencia": "2026-09-23, S&P Global",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Pernoctaciones hoteleras en España",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-22, Instituto Nacional de Estadística",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Producción del Sector Servicios en España",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-23, Instituto Nacional de Estadística",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-28",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Encuesta de Clima Económico y Confianza (ESI) de la Comisión Europea",
+      "anterior": null,
+      "porQueImporta": "Es un indicador adelantado que refleja el sentimiento en la industria, los servicios y el consumo europeo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta de Ofertas de Empleo (JOLTS) de septiembre",
+      "anterior": null,
+      "porQueImporta": "Permite evaluar la cantidad de puestos de trabajo vacantes y la presión actual sobre la contratación laboral.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-01",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Publicación de la Tasa de Desempleo oficial de agosto",
+      "anterior": "6,4 % en julio 2026",
+      "porQueImporta": "Sirve para medir la disponibilidad de mano de obra y su posible efecto futuro en los costes salariales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar del IPC Armonizado de septiembre",
+      "anterior": "3,3 % interanual en agosto 2026",
+      "porQueImporta": "Esta es una magnitud clave para anticipar los futuros movimientos y decisiones del Banco Central Europeo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Informe sobre la Situación del Empleo, nóminas no agrícolas y paro",
+      "anterior": "Tasa de desempleo del 4,1 % en agosto 2026",
+      "porQueImporta": "Dato crítico para determinar si la economía mantiene el dinamismo o si comienza a mostrar señales de agotamiento.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "La semana en una idea",
+      "parrafos": [
+        "La firmeza de la economía estadounidense y los mensajes más restrictivos de las autoridades monetarias han marcado el paso de los mercados durante los últimos siete días. Los tipos de interés de la deuda pública han registrado incrementos significativos ante la expectativa de que el precio del dinero se mantenga elevado durante un período prolongado.",
+        "A pesar de este mayor coste de financiación, los principales índices de acciones lograron cerrar la semana con avances. La pujanza de las empresas tecnológicas, centradas en el desarrollo de la inteligencia artificial, sirvió de fuerte contrapeso frente a las tensiones generadas en el mercado de bonos soberanos."
+      ],
+      "fuentes": [
+        4,
+        6,
+        9
+      ]
+    },
+    {
+      "titulo": "Economía y bancos centrales",
+      "parrafos": [
+        "El indicador adelantado de actividad en Estados Unidos, conocido como índice PMI compuesto, alcanzó su nivel más alto de los últimos cinco años. Esta vitalidad económica se apoyó en la creación de empleo y en la entrada de nuevos pedidos, lo que refleja una demanda interna que no cede ante las duras condiciones financieras actuales.",
+        "En este contexto de dinamismo, el gobernador de la Reserva Federal, Michael S. Barr, señaló que su estimación personal contempla múltiples subidas adicionales en los tipos de interés. Esta afirmación impulsó una reacción inmediata, y los mercados descuentan ahora un entorno monetario mucho más exigente para los próximos meses."
+      ],
+      "fuentes": [
+        4,
+        6
+      ]
+    },
+    {
+      "titulo": "Mercados",
+      "parrafos": [
+        "La rentabilidad de la deuda soberana acusó el impacto directo de estas perspectivas económicas al alza. El rendimiento del bono alemán a 10 años, que actúa como principal referencia para la deuda pública europea, escaló hasta el 3,57 %, lo que supone un avance de 11 puntos básicos (0,11 puntos porcentuales) al cierre de la semana.",
+        "En las bolsas, la prórroga de la tregua arancelaria entre Washington y Pekín aportó un alivio temporal a las fricciones comerciales internacionales. Estados Unidos pospuso hasta enero de 2027 las subidas de tarifas aduaneras que estaban previstas para noviembre, lo que favoreció el tono positivo y la estabilidad general en los parqués europeos.",
+        "Al otro lado del Atlántico, el índice Nasdaq 100 destacó con una fuerte subida semanal del 3,00 %, impulsado por anuncios corporativos y nuevas infraestructuras de computación. Las grandes empresas del sector tecnológico lograron avanzar de forma sostenida a pesar del lastre que supone el encarecimiento generalizado del crédito."
+      ],
+      "fuentes": [
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Los próximos días traerán referencias clave sobre la evolución de los precios y la salud del mercado laboral. La Eurozona publicará su estimación preliminar de inflación correspondiente a septiembre, un dato fundamental para evaluar el efecto que tienen las recientes subidas de tipos de interés aplicadas por el Banco Central Europeo.",
+        "Por su parte, Estados Unidos difundirá su informe mensual sobre empleo, que desgrana la creación de nóminas no agrícolas y la tasa de desempleo nacional. Esta cifra es un pilar crítico para entender el rumbo del mercado de trabajo y orienta directamente a la Reserva Federal a la hora de decidir sus próximos pasos."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/DAX-FLASH-Kaum-Bewegung-auf-Rekordniveau-bb02125e-1459-49ee-aa14-fe42fd4be033"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/documents/indexnews/announcements/20260824-1484792/1484792_sp-thematic-rbics-updates-20260824.pdf"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/docs/global-indexes/global-markets-dashboard-september-18-2026"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/economic-institute/chartstopper-092526"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Boerse-Stuttgart-Trump-und-Xi-verlaengern-Zollpause-d4656aec-7adc-4180-a070-af506bd3750c"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/de/statistiken/geld-und-kapitalmaerkte/zinssaetze-und-renditen/taegliche-renditen-der-jeweils-juengsten-bundeswertpapiere-772218"
+    },
+    {
+      "titulo": "boerse-frankfurt.de",
+      "url": "https://www.boerse-frankfurt.de/nachrichten/Aktien-Frankfurt-Schluss-Dax-beendet-durchwachsene-Woche-freundlich-c9106ac1-83d2-4a03-8d10-cc03e77702b2"
+    },
+    {
+      "titulo": "boerse-frankfurt.de",
+      "url": "https://www.boerse-frankfurt.de/nachrichten/Aktien-Europa-Aufatmen-zum-Wochenende-a7ee2182-9187-49f5-bb43-68390ddc1bb6"
+    },
+    {
+      "titulo": "boerse-frankfurt.de",
+      "url": "https://www.boerse-frankfurt.de/nachrichten/Aktien-Europa-Schluss-Verluste---Steigende-Oelpreise-und-Anleiherenditen-aa49b8bf-e172-4339-87d5-17ed234ada52"
+    },
+    {
+      "titulo": "morningstar.com",
+      "url": "https://www.morningstar.com/news/dow-jones/202609186726/sp-500-falls-008-this-week-to-765050-data-talk"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-20",
+    "hasta": "2026-09-26",
+    "corteIso": "2026-09-26T12:10:35.245Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta el viernes 25 de septiembre de 2026. Las cifras que no se han podido contrastar directamente con su entidad emisora oficial se señalan como 'Sin contrastar' y sus variaciones numéricas se omiten para preservar el máximo rigor documental.",
+  "claves": [
+    {
+      "titulo": "Tensión monetaria prolongada",
+      "texto": "El gobernador de la Reserva Federal indicó que contempla múltiples subidas adicionales en los tipos de interés oficiales. Este aviso provocó que los inversores ajustaran sus expectativas y elevó la rentabilidad exigida a la deuda pública de forma inmediata.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Concentración en la tecnología",
+      "texto": "Las empresas de semiconductores e infraestructuras de computación recibieron fuertes flujos de capital tras anunciar nuevos programas informáticos. La fortaleza de este bloque permitió que el índice tecnológico Nasdaq 100 se desmarcara con una fuerte subida semanal.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Pausa en las aduanas",
+      "texto": "Washington y Pekín acordaron retrasar dos meses el incremento de sus tarifas comerciales para facilitar las negociaciones bilaterales. Los parqués acogieron con alivio este aplazamiento, aunque la disputa de fondo sobre el comercio internacional sigue sin resolverse.",
+      "fuentes": [
+        7
+      ]
+    }
+  ],
+  "mercados": [
+    {
+      "grupo": "Bolsas",
+      "filas": [
+        {
+          "nombre": "IBEX 35",
+          "nivel": "19.700,10 puntos",
+          "variacion": 0.95,
+          "variacionAnual": null,
+          "nota": "Dato pendiente de serie anual consolidada en la fuente oficial",
+          "fuentes": [
+            1
+          ]
+        },
+        {
+          "nombre": "DAX",
+          "nivel": "25.408,64 puntos",
+          "variacion": 0.4,
+          "variacionAnual": 8,
+          "nota": "El mercado reaccionó con cautela pero de forma positiva a la pausa arancelaria temporal",
+          "fuentes": [
+            9,
+            7
+          ]
+        },
+        {
+          "nombre": "S&P 500",
+          "nivel": "7.743,30 puntos",
+          "variacion": 1.21,
+          "variacionAnual": 11.76,
+          "nota": "El índice avanza sostenido por el fuerte empuje de las grandes empresas tecnológicas",
+          "fuentes": [
+            12
+          ]
+        },
+        {
+          "nombre": "Nasdaq 100",
+          "nivel": "30.466 puntos",
+          "variacion": 3,
+          "variacionAnual": 14.6,
+          "nota": "Destaca por la intensa entrada de capital en infraestructuras de computación",
+          "fuentes": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Deuda pública",
+      "filas": [
+        {
+          "nombre": "Bono alemán a 10 años",
+          "nivel": "3,57 %",
+          "variacion": 0.11,
+          "variacionAnual": null,
+          "nota": "El encarecimiento de la deuda responde al tono restrictivo de los bancos centrales",
+          "fuentes": [
+            8
+          ]
+        },
+        {
+          "nombre": "Bono EE. UU. a 10 años",
+          "nivel": "5,17 %",
+          "variacion": 0.17,
+          "variacionAnual": null,
+          "nota": "El repunte se aceleró tras las perspectivas de tipos de interés de la Reserva Federal",
+          "fuentes": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Divisas",
+      "filas": [
+        {
+          "nombre": "EUR/USD",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Tipo de cambio oficial sin publicación abierta en las fuentes requeridas",
+          "fuentes": []
+        }
+      ]
+    },
+    {
+      "grupo": "Materias primas",
+      "filas": [
+        {
+          "nombre": "Petróleo Brent",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Sin publicación oficial en la base factual vinculada para el precio de liquidación",
+          "fuentes": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Rentabilidad del bono",
+      "definicion": "Interés anual que obtiene un inversor si mantiene un título de deuda pública ininterrumpidamente hasta su fecha de vencimiento."
+    },
+    {
+      "termino": "Punto básico",
+      "definicion": "Unidad de medida equivalente a la centésima parte de un punto porcentual (0,01 %), utilizada para expresar variaciones minúsculas en los tipos de interés."
+    },
+    {
+      "termino": "Índice PMI",
+      "definicion": "Indicador económico que refleja el estado de un sector al consultar a los directivos de empresas sobre nuevos pedidos, ritmos de producción y niveles de empleo."
+    },
+    {
+      "termino": "Bono a 10 años",
+      "definicion": "Título de deuda emitido por un Estado que promete devolver el capital prestado al cabo de una década, pagando un interés periódico durante el transcurso de ese tiempo."
+    },
+    {
+      "termino": "Nóminas no agrícolas",
+      "definicion": "Medida estadística del número total de empleados en Estados Unidos que excluye a los trabajadores del campo, organizaciones sin ánimo de lucro y hogares privados debido a su fuerte estacionalidad."
+    },
+    {
+      "termino": "Tregua arancelaria",
+      "definicion": "Acuerdo temporal entre dos países para no aumentar los impuestos que se aplican a los bienes importados, con el fin de facilitar las negociaciones comerciales conjuntas."
+    }
+  ]
+}

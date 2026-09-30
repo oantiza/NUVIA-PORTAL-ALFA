@@ -1,0 +1,293 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-30",
+  "fecha": "2026-09-30",
+  "fechaIso": "2026-09-30T00:00:00.000Z",
+  "generadoIso": "2026-09-30T11:41:58.949Z",
+  "titular": "La deuda estadounidense alcanza máximos mientras la diplomacia frena la presión del crudo",
+  "entradilla": "Los rendimientos de los bonos en Estados Unidos escalaron a niveles no vistos en los últimos años tras las recientes declaraciones de la Reserva Federal. Al mismo tiempo, la reanudación parcial del transporte petrolero en Arabia Saudí restó presión a los precios energéticos y aportó calma a los índices bursátiles europeos.",
+  "hechos": [
+    {
+      "texto": "El índice DAX cerró en 25.399,21 puntos el 29 de septiembre, con un avance del 0,10 % impulsado por el alivio de la tensión en Oriente Próximo.",
+      "fecha": "2026-09-29",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El S&P 500 retrocedió un 0,17 % el 29 de septiembre hasta los 7.670,84 puntos, penalizado por el deterioro de la confianza del consumidor y la caída de las vacantes laborales en Estados Unidos.",
+      "fecha": "2026-09-29",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "texto": "El índice tecnológico Nasdaq 100 subió un 0,21 % el 29 de septiembre, respaldado por la decisión del Gobierno estadounidense de no emitir nuevas regulaciones restrictivas sobre inteligencia artificial.",
+      "fecha": "2026-09-29",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "texto": "El EURO STOXX 50 avanzó un 0,30 % el 29 de septiembre, cerrando la sesión en los 6.320 puntos.",
+      "fecha": "2026-09-29",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "El IBEX 35 careció de cifra oficial de cierre el 29 de septiembre debido a la falta de volcado técnico en el servidor de su publicador oficial.",
+      "fecha": "2026-09-29",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable - DAX (Alemania)",
+      "valor": "25.399,21 puntos",
+      "referencia": "2026-09-29 (Deutsche Börse)",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - EURO STOXX 50",
+      "valor": "6.320 puntos",
+      "referencia": "2026-09-29 (STOXX)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - S&P 500 (EE. UU.)",
+      "valor": "7.670,84 puntos",
+      "referencia": "2026-09-29 (Nasdaq)",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - IBEX 35 (España)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-29 (Falta dato oficial)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Deuda - Bono EE. UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en fuentes provistas",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas - EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en fuentes provistas",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias Primas - Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en fuentes provistas",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-30",
+      "hora": "10:00",
+      "region": "España",
+      "que": "Deuda de las Administraciones Públicas (2T 2026)",
+      "anterior": "101,6 % del PIB en el 1T 2026",
+      "porQueImporta": "Permite vigilar el nivel de endeudamiento estatal.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-30",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Índice de Precios de Gastos de Consumo Personal (agosto 2026)",
+      "anterior": "2,6 % interanual en julio",
+      "porQueImporta": "Es la referencia principal de inflación que utiliza el banco central para los tipos de interés.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-01",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Tasa de desempleo (agosto 2026)",
+      "anterior": "6,4 % en julio 2026",
+      "porQueImporta": "Muestra la situación del mercado laboral y posibles tensiones salariales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación rápida de la inflación (septiembre 2026)",
+      "anterior": "3,2 % interanual en agosto",
+      "porQueImporta": "Es un dato adelantado clave para la política monetaria europea.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Situación del empleo (septiembre 2026)",
+      "anterior": "Tasa de desempleo del 4,1 % en agosto",
+      "porQueImporta": "Aporta pistas sobre la solidez de la economía estadounidense.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales índices bursátiles cerraron la sesión del 29 de septiembre con resultados dispares. En Europa, el índice DAX alemán sumó un 0,10 % y el EURO STOXX 50 avanzó un 0,30 %. En Estados Unidos, el índice S&P 500 retrocedió un 0,17 %.",
+        "El sector tecnológico estadounidense registró subidas tras descartar el Gobierno nuevas leyes estrictas sobre inteligencia artificial. El índice Nasdaq 100 cerró en positivo con un avance del 0,21 % en la jornada bursátil.",
+        "En el plano energético regional, Arabia Saudí logró restaurar la mitad de la capacidad de su oleoducto estratégico. Esto ayudó a mitigar los temores de disrupción de suministro en las bolsas europeas."
+      ],
+      "fuentes": [
+        6,
+        8,
+        11
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La ausencia de regulación inmediata sobre inteligencia artificial elimina barreras a corto plazo para las empresas tecnológicas. Esto explica el mayor dinamismo relativo de los índices ligados a la computación avanzada.",
+        "La estabilización del suministro de crudo reduce la incertidumbre geopolítica en los precios de la energía. Al haber menos sobresaltos externos, los inversores europeos mostraron una mayor tranquilidad durante la sesión.",
+        "El descenso de los puestos vacantes en Estados Unidos señala un enfriamiento de la demanda laboral. Esto, sumado a los elevados costes de financiación, limitó la asunción de riesgos entre los participantes del mercado."
+      ],
+      "fuentes": [
+        6,
+        11
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En los próximos días, el mercado centrará su atención en los datos de inflación. Destaca el indicador de consumo personal en Estados Unidos y la estimación adelantada de los precios en la zona del euro.",
+        "La coyuntura laboral también aportará pistas clave para anticipar los movimientos de los bancos centrales. Se publicará el desempleo europeo de agosto y la creación de nóminas no agrícolas en Estados Unidos.",
+        "Por último, se vigilará la evolución de la deuda de las Administraciones Públicas en España. El Banco de España revelará el volumen de pasivos respecto al producto interior bruto (PIB) del segundo trimestre del año."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/barcelona/2026/09/29/2_51_0_20260929.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/bme-exchange/indices/ibex.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/home.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Schluss-Dax-rettet-knappes-Plus-ins-Ziel-03c1e7f4-e0e6-4665-abe8-4dbd346886a2"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Schluss-Dax-rutscht-mit-US-Schwaeche-knapp-ins-Minus-7a140717-fe65-4698-b1ad-4467403f5adc"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5e/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Eroeffnung-Dax-weiter-stabil---Anleger-warten-ab-ece9872e-222a-49f6-8161-abf3636ff9a1"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/auswahlindizes-neuzusammensetzung-der-dax-blue-chip-indizes"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/mtne+/news-headlines"
+    },
+    {
+      "titulo": "english.news.cn",
+      "url": "https://english.news.cn/northamerica/20260930/65a4dd32e89f40ff89908becca34df02/c.html"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-30",
+    "hasta": "2026-09-30",
+    "corteIso": "2026-09-30T11:41:58.948Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Alivio en el mercado energético",
+      "texto": "Arabia Saudí restauró la mitad de la capacidad de su oleoducto estratégico el 29 de septiembre. Este avance redujo la percepción de riesgo en las bolsas de Europa.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Impulso a los semiconductores",
+      "texto": "El Gobierno de Estados Unidos anunció el 29 de septiembre que mantendrá el actual marco regulatorio sobre inteligencia artificial sin nuevas restricciones. La decisión dio impulso a los índices tecnológicos.",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "titulo": "Incertidumbre laboral estadounidense",
+      "texto": "Las vacantes de empleo en Estados Unidos registraron un descenso durante el mes de agosto. Esta caída limitó la toma de posiciones en la renta variable estadounidense.",
+      "fuentes": [
+        11
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Índice bursátil",
+      "definicion": "Registro estadístico que refleja las variaciones de valor de un conjunto de acciones que cotizan en bolsa."
+    },
+    {
+      "termino": "Renta variable",
+      "definicion": "Conjunto de activos financieros, como las acciones, cuyos rendimientos no están garantizados ni son conocidos de antemano."
+    },
+    {
+      "termino": "Nóminas no agrícolas",
+      "definicion": "Indicador que mide el número de empleos creados o perdidos en Estados Unidos durante el último mes, excluyendo al sector agrícola."
+    },
+    {
+      "termino": "Producto interior bruto",
+      "definicion": "Magnitud económica que expresa el valor total de los bienes y servicios producidos en un país durante un período determinado."
+    },
+    {
+      "termino": "Banco central",
+      "definicion": "Institución pública responsable de gestionar la moneda de un país o región, controlar la oferta monetaria y fijar los tipos de interés oficiales."
+    }
+  ]
+}

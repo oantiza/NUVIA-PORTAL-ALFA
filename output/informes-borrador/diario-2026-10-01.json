@@ -1,0 +1,273 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-01",
+  "fecha": "2026-10-01",
+  "fechaIso": "2026-10-01T00:00:00.000Z",
+  "generadoIso": "2026-10-01T12:11:10.610Z",
+  "titular": "La firmeza de las materias primas y el alza en la rentabilidad de la deuda marcan el cierre del trimestre",
+  "entradilla": "El tercer trimestre del año termina con subidas en la rentabilidad de la deuda pública y reconfiguraciones en los índices bursátiles. La persistencia de la tensión geopolítica sostiene los precios de la energía y beneficia a las empresas extractivas.",
+  "hechos": [
+    {
+      "texto": "La rentabilidad del bono del Tesoro de Estados Unidos a diez años subió hasta el 5,29 % el 30 de septiembre de 2026, un alza de cinco puntos básicos frente a la sesión del día 28.",
+      "fecha": "2026-09-30",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad VIX cerró en 16,34 puntos el 30 de septiembre de 2026, lo que representa un avance del 1,87 % en la sesión regular.",
+      "fecha": "2026-09-30",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "El índice español IBEX 35 terminó septiembre de 2026 en 19.426,0 puntos, acumulando un retroceso del 2,7 % durante el mes.",
+      "fecha": "2026-09-30",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice estadounidense S&P 500 avanzó un 0,28 % el 30 de septiembre de 2026, movido por las divergencias sectoriales derivadas de la firmeza en la rentabilidad de la deuda soberana.",
+      "fecha": "2026-09-30",
+      "fuentes": [
+        4,
+        7
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (Septiembre)",
+      "valor": "19.426,0 puntos",
+      "referencia": "2026-09-30 BME",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "DAX",
+      "valor": "25.408,64 puntos",
+      "referencia": "2026-09-30 Deutsche Börse",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "6.302,82 puntos",
+      "referencia": "2026-09-30 Deutsche Börse",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "7.692,64 puntos",
+      "referencia": "2026-09-30 S&P Global",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Bono EEUU 10 años",
+      "valor": "5,29 %",
+      "referencia": "2026-09-30 Tesoro EEUU",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "etiqueta": "Índice VIX",
+      "valor": "16,34 puntos",
+      "referencia": "2026-09-30 Cboe",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Oro (fijación vespertina)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-30 LBMA",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-01",
+      "hora": "10:30",
+      "region": "España",
+      "que": "Subasta de Bonos y Obligaciones del Estado",
+      "anterior": "Subastas ordinarias de septiembre de 2026",
+      "porQueImporta": "Determina los costes marginales de emisión soberana a medio y largo plazo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-01",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Tasa de Desempleo de agosto de 2026",
+      "anterior": "6,4 % en julio de 2026",
+      "porQueImporta": "Indicador del grado de resistencia macroeconómica del mercado de trabajo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar de la inflación de septiembre de 2026",
+      "anterior": "3,2 % anual en agosto de 2026",
+      "porQueImporta": "Magnitud cuantitativa que guía el mandato de estabilidad del banco central.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-02",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Informe de Situación del Empleo de septiembre de 2026",
+      "anterior": "4,1 % de tasa de desempleo en agosto de 2026",
+      "porQueImporta": "Variable crítica que orienta la política monetaria de la Reserva Federal.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "El mes de septiembre termina con movimientos mixtos en los mercados bursátiles y reconfiguraciones en los principales índices de referencia mundiales. En España, el índice IBEX 35 cerró el noveno mes del año con un descenso en su cotización acumulada, de acuerdo con los registros de su sociedad rectora.",
+        "Los rendimientos de la deuda pública mantienen una clara tendencia al alza. El interés del bono del Tesoro de Estados Unidos a diez años sumó cinco puntos básicos (cada punto básico equivale a una centésima de punto porcentual) hasta alcanzar el 5,29 % al cierre del período."
+      ],
+      "fuentes": [
+        1,
+        12
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El comportamiento de la deuda soberana actúa como referencia directa para los costes de financiación de toda la economía. El avance en las rentabilidades condiciona especialmente a los sectores empresariales que requieren constantes y grandes inversiones de capital para mantener su actividad.",
+        "Los conflictos internacionales prolongan las presiones sobre las cotizaciones de la energía. Según los documentos de análisis de índices, esta situación demora la normalización de los resultados corporativos industriales y favorece el comportamiento bursátil de las empresas ligadas a los recursos naturales."
+      ],
+      "fuentes": [
+        3,
+        6
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días se divulgarán datos fundamentales sobre el mercado de trabajo en Estados Unidos y en la zona del euro. Las cifras de empleo resultan críticas para que los agentes evalúen la fortaleza de la actividad económica frente al nivel actual de los tipos de interés oficiales.",
+        "También se publicará la estimación adelantada de la inflación europea correspondiente al mes de septiembre. Este registro resulta esencial para el diseño de la política monetaria, ya que determina el margen de actuación de la autoridad emisora ante la persistencia de tensiones en los servicios."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/sala-de-comunicacion/notas-de-prensa/2026/six-balance-mensual-de-mercados-septiembre-2026.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/bme-growth.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-de/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/volume_snapshot/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/documents/performance-reports/dashboard-australia-new-zealand.pdf"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/rnr%5Ef"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/trad.rt"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/rklb/news-headlines"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/nkave/archives/news/20260930E_1.pdf"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/research-and-insights/paper/by-choice-not-by-chance-small-and-mid-caps-in-portfolio-construction"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-01",
+    "hasta": "2026-10-01",
+    "corteIso": "2026-10-01T12:11:10.610Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Energía y materias primas",
+      "texto": "El conflicto en Oriente Medio sostiene el encarecimiento de los recursos energéticos. Esta situación apoya a las empresas vinculadas a las materias primas frente a los sectores intensivos en consumo de capital.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Rendimientos al alza",
+      "texto": "La rentabilidad del bono estadounidense repunta de nuevo. Este avance condiciona el comportamiento de las acciones con mayores valoraciones y genera divergencias sectoriales antes de los datos laborales.",
+      "fuentes": [
+        7,
+        12
+      ]
+    },
+    {
+      "titulo": "Ajustes trimestrales",
+      "texto": "Los principales índices mundiales actualizan sus componentes como parte de su revisión de cierre de trimestre. Estos movimientos mecánicos responden a criterios de liquidez y ponderación.",
+      "fuentes": [
+        1,
+        4,
+        10
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Punto básico",
+      "definicion": "Unidad de medida equivalente a la centésima parte de un punto porcentual (0,01 %), utilizada habitualmente para expresar variaciones en los tipos de interés o en los rendimientos de la deuda."
+    },
+    {
+      "termino": "Rentabilidad del bono",
+      "definicion": "El rendimiento anualizado que obtiene un inversor por mantener un título de deuda pública hasta su vencimiento, el cual se mueve siempre de forma inversa al precio de dicho título en el mercado."
+    },
+    {
+      "termino": "Índice de volatilidad",
+      "definicion": "Indicador que mide las expectativas de fluctuación de un mercado financiero en el corto plazo; los aumentos en su puntuación suelen coincidir con escenarios de mayor riesgo percibido."
+    }
+  ]
+}

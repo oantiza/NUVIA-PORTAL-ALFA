@@ -11,15 +11,22 @@ export async function checkWellbeingEntry(page, route) {
   if(await page.locator('.tm-pillar[role="listitem"]').count()!==5) problems.push('Faltan los cinco temas semánticos');
   const topicLinks=page.locator('.tm-pillars a.tm-pillar__link');
   if(await topicLinks.count()!==5) problems.push('Faltan los cinco accesos a subsecciones');
-  for(const link of await topicLinks.all()) {
-    const destination=await link.getAttribute('href');
-    if(!destination?.startsWith('#')||await page.locator(`section${destination}`).count()!==1) problems.push('Subsección de Bienestar sin destino');
-    await link.focus();
+  const destinations=await topicLinks.evaluateAll(links=>links.map(a=>a.getAttribute('href')));
+  for(const destination of destinations) {
+    await page.locator('.tm-pillars a[href="'+destination+'"]').focus();
     await page.keyboard.press('Enter');
     await page.waitForURL(new URL(destination,start).href);
-    if(!await page.locator(`section${destination}`).isVisible()) problems.push('Subsección de Bienestar no visible');
+    await page.locator('main h1').waitFor();
+    if(await page.locator('main h1').count()!==1) problems.push('Subsección sin título propio');
+    if(destination==='respiracion-relajacion.html') {
+      await page.locator('main a[href="la-respiracion-como-el-escultor-del-cerebro.html"]').click();
+      await page.locator('.tm-breathing-essay').waitFor();
+      await page.locator('.nv-breadcrumb a[href="respiracion-relajacion.html"]').click();
+    }
+    await page.locator('.nv-breadcrumb a[href="temas.html?topic=bienestar"]').click();
+    await page.locator('.tm-pillars').waitFor();
   }
-  if(await page.locator('#respiracion-relajacion .tm-breathing-essay').count()!==1) problems.push('El ensayo no pertenece a Respiración y relajación');
+  if(await page.locator('.tm-breathing-essay').count()) problems.push('La portada contiene el artículo completo');
   if(await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Las tres guías no están marcadas en preparación');
   for(const card of await page.locator('.tm-card:has(.nv-tag--pending)').all()) {
     if(await card.locator('a,button,input').count()) problems.push('Una guía pendiente ofrece una acción falsa');
@@ -30,7 +37,7 @@ export async function checkWellbeingEntry(page, route) {
   for(const source of await sources.all()) {
     if(await source.getAttribute('target')!=='_blank'||await source.getAttribute('rel')!=='noopener noreferrer') problems.push('Enlace externo sin protección');
   }
-  for(const id of ['bienestar-ambitos','respiracion-relajacion','bienestar-guias','bienestar-fuentes']) {
+  for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
     const link=page.locator(`.tm-wellbeing-nav a[href="#${id}"]`);
     await link.focus();
     await page.keyboard.press('Enter');

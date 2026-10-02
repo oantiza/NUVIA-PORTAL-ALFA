@@ -106,6 +106,12 @@ const RUIDO_EXTERNO = /ERR_TUNNEL|ERR_BLOCKED|ERR_NAME|Failed to load resource|t
 const ERRORES_ESPERADOS = {};
 
 const PAGINAS_BASE = [
+  'movimiento-consciente.html',
+  'nutricion-equilibrada.html',
+  'respiracion-relajacion.html',
+  'familia-trabajo.html',
+  'descanso-limites-tiempo-propio.html',
+  'la-respiracion-como-el-escultor-del-cerebro.html',
   'index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'colaboradores.html',
   'metodologia.html', 'independencia.html',
   'mercados.html', 'cartera.html', 'academia.html', 'curso.html',

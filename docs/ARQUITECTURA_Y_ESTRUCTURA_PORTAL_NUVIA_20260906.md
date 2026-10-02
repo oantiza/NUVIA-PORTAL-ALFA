@@ -236,3 +236,16 @@ El primer destino dentro de cada menú desplegable es siempre la **Home del Espa
 4. **Fase 4 · Verificación y Calidad Automatizada:**
    * Actualización de los contratos de navegación (`docs/nuvia-navigation.test.mjs`).
    * Ejecución de la auditoría visual completa con Playwright (`npm run auditar`) verificando los 30 estados a 1440 px y viewports de tablet sin regresiones.
+
+
+### Actualización de Bienestar · 02-10-2026
+
+Por orden del fundador, Familia, Salud y Bienestar conserva su Home de espacio. La portada de Cuerpo, mente y salud (temas.html?topic=bienestar) organiza cinco subsecciones, cada una con página propia y catálogo abierto a varios artículos y formatos:
+
+- Movimiento consciente: movimiento-consciente.html.
+- Nutrición equilibrada: nutricion-equilibrada.html.
+- Respiración y relajación: respiracion-relajacion.html.
+- Familia y trabajo: familia-trabajo.html.
+- Descanso, límites y tiempo propio: descanso-limites-tiempo-propio.html.
+
+Los artículos se abren en páginas de lectura independientes con regreso a su subsección. El primero, de Isabel Florido Mayor, reside en la-respiracion-como-el-escultor-del-cerebro.html. La introducción de la serie y los contenidos relacionados pertenecen a la subsección, fuera del ensayo. Las tarjetas de ambas portadas llevan a estas páginas; las antiguas anclas mantienen compatibilidad.

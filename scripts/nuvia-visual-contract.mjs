@@ -1,5 +1,11 @@
 /* Contrato de presentación para pruebas. No se carga en el portal ni lee datos. */
 export const VISUAL_ARCHETYPES = {
+  'movimiento-consciente.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
+  'nutricion-equilibrada.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
+  'respiracion-relajacion.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
+  'familia-trabajo.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
+  'descanso-limites-tiempo-propio.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
+  'la-respiracion-como-el-escultor-del-cerebro.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'index.html': { type: 'institucional', exception: 'Portada fotográfica: composición y velos propios.' },
   'que-es-nuvia.html': { type: 'institucional', exception: 'Cubierta y manifiesto editorial propios.' },
   'colaboradores.html': { type: 'institucional', exception: 'Equipo editorial y divulgación pedagógica.' },

@@ -93,3 +93,14 @@ Verificación de esta orden: los cinco accesos tienen destino real y se comprueb
 con teclado; el ensayo está contenido en la subsección de respiración. El texto
 firmado coincide entre web, Word y PDF. Ambas páginas pasan la auditoría a 1440,
 1024 y 768 px, además de los contratos de contenido, navegación y jerarquía.
+
+
+## Páginas independientes y contenidos relacionados · 02-10-2026
+
+Por orden del fundador, la portada de Cuerpo, mente y salud enlaza cinco páginas propias: movimiento-consciente.html, nutricion-equilibrada.html, respiracion-relajacion.html, familia-trabajo.html y descanso-limites-tiempo-propio.html. Cada subsección reúne artículos y otros formatos; no equivale a un único artículo. Las cuatro subsecciones sin publicaciones muestran su disponibilidad real.
+
+El ensayo corregido conserva su texto y pasa a la-respiracion-como-el-escultor-del-cerebro.html, dentro de Respiración y relajación. La introducción de la serie permanece en la página de la subsección. El vídeo facilitado por el fundador (https://youtu.be/VyLpqgXjbnU) se enlaza junto al artículo y desde su página de lectura. No se atribuye un título ni autor sin verificar; no se incrusta un reproductor externo. Se conservan los accesos antiguos mediante redirección.
+
+Control interno: reorganización editorial y enlace expresamente solicitado, sin nuevas afirmaciones sanitarias, formularios, datos personales ni cambios de backend.
+
+Validación: compilación completa y comprobaciones de publicación superadas; ocho páginas revisadas a 1024 y 768 px, además de la auditoría general de escritorio. Probados los accesos por teclado, el regreso entre niveles y las antiguas anclas. Texto del ensayo conservado y vídeo enlazado en catálogo y lectura.

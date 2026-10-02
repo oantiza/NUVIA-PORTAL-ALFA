@@ -17,7 +17,7 @@
     if (['economia.html', 'mercados.html', 'cartera.html'].includes(currentRoute)) return 'economia';
     if (['academia.html', 'curso.html'].includes(currentRoute)) return 'academy';
     if (currentRoute === 'lecturas.html') return 'lecturas';
-    if (currentRoute === 'bienestar.html' || (currentRoute === 'temas.html' && currentTopic() === 'bienestar')) return 'bienestar';
+    if (["movimiento-consciente.html","nutricion-equilibrada.html","respiracion-relajacion.html","familia-trabajo.html","descanso-limites-tiempo-propio.html","la-respiracion-como-el-escultor-del-cerebro.html"].includes(currentRoute) || currentRoute === 'bienestar.html' || (currentRoute === 'temas.html' && currentTopic() === 'bienestar')) return 'bienestar';
     if (currentRoute.startsWith('guia-') || [
       'patrimonio.html', 'temas.html', 'fiscalidad.html', 'jubilacion.html', 'vivienda.html'
     ].includes(currentRoute)) return 'patrimonio';

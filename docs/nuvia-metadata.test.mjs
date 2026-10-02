@@ -7,6 +7,12 @@ const root = resolve(process.argv[2] || '.');
 const base = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 const socialImage = `${base}src/assets/social/nuvia-social-card-2026-v1.webp`;
 const pages = new Map([
+  ['movimiento-consciente.html', 'NUVIA · Movimiento consciente'],
+  ['nutricion-equilibrada.html', 'NUVIA · Nutrición equilibrada'],
+  ['respiracion-relajacion.html', 'NUVIA · Respiración y relajación'],
+  ['familia-trabajo.html', 'NUVIA · Familia y trabajo'],
+  ['descanso-limites-tiempo-propio.html', 'NUVIA · Descanso, límites y tiempo propio'],
+  ['la-respiracion-como-el-escultor-del-cerebro.html', 'NUVIA · La respiración como el escultor del cerebro'],
   ['index.html', 'NUVIA · Entender tu dinero'],
   ['economia.html', 'NUVIA · Economía y Finanzas'],
   ['patrimonio.html', 'NUVIA · Patrimonio'],

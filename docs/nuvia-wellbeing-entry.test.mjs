@@ -18,7 +18,7 @@ assert.equal(model.recursos.length,3);
 assert.deepEqual(Array.from(model.recursos,r=>r.titulo),['Movimiento, nutrición y descanso','Calma y gestión del estrés','Familia, trabajo y tiempo propio']);
 const nav=html.match(/<nav class="tm-wellbeing-nav"[\s\S]*?<\/nav>/)?.[0];
 assert.ok(nav);
-for(const id of ['bienestar-ambitos','respiracion-relajacion','bienestar-guias','bienestar-fuentes']) {
+for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
   assert.ok(nav.includes(`href="#${id}"`));
   assert.equal((html.match(new RegExp(`id="${id}"`,'g'))||[]).length,1,id);
 }
@@ -28,9 +28,11 @@ assert.equal((list.match(/role="listitem"/g)||[]).length,5);
 const wellbeingTopics=['movimiento-consciente','nutricion-equilibrada','respiracion-relajacion','familia-trabajo','descanso-limites-tiempo-propio'];
 assert.equal((list.match(/class="tm-pillar__link"/g)||[]).length,5);
 for(const id of wellbeingTopics) {
-  assert.ok(list.includes(`href="#${id}"`));
-  assert.match(html,new RegExp(`<section id="${id}"[^>]+aria-labelledby="${id}-title"`));
-  assert.equal((html.match(new RegExp(`id="${id}"`,'g'))||[]).length,1);
+  assert.ok(list.includes(`href="${id}.html"`));
+  const child=readFileSync(resolve(root,id+'.html'),'utf8');
+  assert.match(child,/Artículos y contenidos/);
+  assert.match(child,/href="temas.html\?topic=bienestar"/);
+  assert.equal((html.match(new RegExp(`id="${id}"`,'g'))||[]).length,0);
 }
 assert.match(html,/Las tres guías anunciadas más abajo todavía no están publicadas/);
 assert.match(html,/Tres guías en preparación/);
@@ -44,17 +46,19 @@ for(const url of ['https://www.who.int/es/health-topics','https://medlineplus.go
 }
 assert.match(html,/href="lecturas.html" class="nv-btn nv-btn--secondary">Consultar el catálogo de lecturas/);
 console.log('Bienestar 5A-3: cinco temas, tres guías pendientes, navegación, fuentes y límites explícitos.');
-const essay=html.match(/<article class="tm-breathing-essay">([\s\S]*?)<\/article>/)?.[1];
+const articlePage=readFileSync(resolve(root,'la-respiracion-como-el-escultor-del-cerebro.html'),'utf8');
+const essay=articlePage.match(/<article class="tm-breathing-essay">([\s\S]*?)<\/article>/)?.[1];
 assert.ok(essay,'El ensayo publicado debe estar disponible');
 assert.match(essay,/Isabel Florido Mayor/);
 assert.match(essay,/datetime="2026-10-02"/);
 assert.doesNotMatch(essay.match(/<div class="tm-breathing-essay__text">([\s\S]*?)<\/div>/)?.[1],/<h[1-6]\b/,'La autora pide texto seguido sin epígrafes');
-assert.match(essay,/<h3 id="respiracion-title">La respiración como el escultor del cerebro<\/h3>/);
-const breathingSection=html.match(/<section id="respiracion-relajacion"[\s\S]*?<\/section>/)?.[0];
-assert.ok(breathingSection.includes('<article class="tm-breathing-essay">'),'El artículo pertenece a Respiración y relajación');
+assert.match(articlePage,/<h1>La respiración como el escultor del cerebro<\/h1>/);
+const breathingSection=readFileSync(resolve(root,'respiracion-relajacion.html'),'utf8');
+assert.match(breathingSection,/href="la-respiracion-como-el-escultor-del-cerebro.html"/);
+assert.doesNotMatch(breathingSection,/<article class="tm-breathing-essay">/);
 assert.match(essay,/<div class="tm-breathing-essay__text">\s*<p>Podemos dejar de andar/);
 assert.doesNotMatch(essay,/En esta serie de vídeos/,'La introducción de la web es ajena al artículo');
-assert.ok(breathingSection.indexOf('En esta serie de vídeos')<breathingSection.indexOf('<article class="tm-breathing-essay">'),'La introducción precede al artículo');
+assert.match(breathingSection,/En esta serie de vídeos/);
 assert.match(essay,/llevar vida directamente al corazón/);
 assert.match(essay,/en la mente, que/);
 assert.match(essay,/nos acompaña a diario: la respiración/);
@@ -64,6 +68,14 @@ assert.equal((essay.match(/<li>/g)||[]).length,5);
 assert.doesNotMatch(essay,/\[equilibrio\?\]|\[llevar\?\]/);
 const home=readFileSync(resolve(root,'bienestar.html'),'utf8');
 for(const topic of ['Movimiento consciente','Nutrición equilibrada','Respiración y relajación','Familia y trabajo','Descanso, límites y tiempo propio']) assert.ok(home.includes(`<h3>${topic}</h3>`),topic);
-assert.match(home,/href="temas.html\?topic=bienestar#respiracion-relajacion"/);
-for(const id of wellbeingTopics) assert.ok(home.includes(`href="temas.html?topic=bienestar#${id}"`));
+assert.match(home,/href="respiracion-relajacion.html"/);
+for(const id of wellbeingTopics) assert.ok(home.includes(`href="${id}.html"`));
 assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta/);
+
+for (const content of [breathingSection, articlePage]) assert.match(content, /href="https:\/\/youtu.be\/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer"/);
+const redirect=html.match(/<script>([\s\S]*?)<\/script>/)[1];
+for(const id of wellbeingTopics){
+  let destination;
+  runInNewContext(redirect,{URL,location:{href:'https://example.test/temas.html?topic=bienestar#'+id,replace:value=>{destination=value;}}});
+  assert.equal(destination,id+'.html','El acceso antiguo abre la subsección independiente');
+}

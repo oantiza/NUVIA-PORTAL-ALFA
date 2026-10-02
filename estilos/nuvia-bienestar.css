@@ -1,0 +1,185 @@
+/* ============================================================================
+   NUVIA · FAMILIA, SALUD Y BIENESTAR · 02-10-2026
+   Portada con el lenguaje de Economía y Patrimonio (entradilla editorial y
+   tarjetas con fotografía) y subsecciones con la cabecera compacta aprobada
+   en Impuestos. Solo tokens: ningún color literal. Prefijo .bn-.
+   ========================================================================== */
+
+/* ── Portada ─────────────────────────────────────────────────────────────── */
+.nv-space-page--bienestar { --nv-space-accent: var(--nv-green-700); }
+.nv-space-page--bienestar .nv-space-resources {
+  background: linear-gradient(180deg, var(--nv-surface-page) 0%, var(--nv-surface-technical) 100%);
+}
+
+/* Entradilla editorial: banda abierta, sin caja, como en Patrimonio. */
+.nv-space-page--bienestar .nv-space-insight {
+  align-items: start;
+  margin-top: var(--nv-space-10);
+  padding: var(--nv-space-10) 0;
+  border: 0;
+  border-bottom: 1px solid var(--nv-line);
+  border-radius: 0;
+  background: transparent;
+}
+.nv-space-page--bienestar .nv-space-insight h2 { max-width: 380px; font-size: var(--nv-title-md); }
+.nv-space-page--bienestar .nv-space-insight__items { gap: 0; }
+.nv-space-page--bienestar .nv-space-insight__items > div { padding: 0 var(--nv-space-6); border-left: 1px solid var(--nv-line); }
+.nv-space-page--bienestar .nv-space-insight__items h3 {
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: 500;
+  color: var(--nv-text);
+}
+.nv-space-page--bienestar .nv-space-insight__items h3::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  margin-bottom: var(--nv-space-4);
+  background: var(--nv-green-600);
+}
+.nv-space-page--bienestar .nv-space-insight__items > div:nth-child(2) h3::before { background: var(--nv-bronze-500); }
+.nv-space-page--bienestar .nv-space-insight__items > div:nth-child(3) h3::before { background: var(--nv-navy-700); }
+
+/* Cinco tarjetas con fotografía: tres arriba y dos centradas debajo. */
+.bn-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--nv-space-6); }
+.bn-grid > * { grid-column: span 2; }
+.bn-grid > :nth-child(4) { grid-column: 2 / span 2; }
+.bn-grid > :nth-child(5) { grid-column: 4 / span 2; }
+.nv-space-page--bienestar .nv-space-tool-card__media::after {
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--nv-green-800) 10%, transparent) 0%,
+    color-mix(in srgb, var(--nv-navy-900) 30%, transparent) 100%);
+}
+.nv-space-page--bienestar .nv-space-tool-card p { margin-bottom: var(--nv-space-5); }
+
+/* ── Subsecciones ───────────────────────────────────────────────────────── */
+.bn-sub-hero__tags { display: flex; flex-wrap: wrap; gap: var(--nv-space-2); margin-top: var(--nv-space-5); }
+.bn-intro {
+  max-width: 70ch;
+  margin: 0 0 var(--nv-space-8);
+  padding-left: var(--nv-space-5);
+  border-left: 3px solid var(--nv-green-600);
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--nv-text);
+}
+.bn-pub { display: flex; flex-direction: column; }
+.bn-pub > .nv-btn { align-self: flex-start; margin-top: auto; }
+.bn-pub__meta { color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
+.bn-pub__quote {
+  margin: var(--nv-space-2) 0 var(--nv-space-5);
+  padding: var(--nv-space-4) var(--nv-space-5);
+  border-left: 3px solid var(--nv-green-600);
+  background: var(--nv-surface-page);
+  border-radius: 0 var(--nv-radius-md) var(--nv-radius-md) 0;
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  line-height: 1.45;
+  color: var(--nv-text);
+}
+.bn-pub__quote p { margin: 0 0 var(--nv-space-3); }
+.bn-pub__quote p:last-child { margin-bottom: 0; }
+.bn-player {
+  aspect-ratio: 16 / 9;
+  margin-block: var(--nv-space-4);
+  overflow: hidden;
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-navy-950);
+  box-shadow: var(--nv-shadow-md);
+}
+.bn-player .nv-external-content__placeholder { padding: var(--nv-space-6); }
+.bn-player .nv-external-content__placeholder p { font-size: var(--nv-body-sm); }
+.bn-player .nv-external-content__placeholder--dark p { color: var(--nv-white); }
+
+/* Otros temas del mismo bloque, al pie de cada subsección. */
+.bn-siblings {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--nv-space-3);
+  margin-top: var(--nv-space-10);
+  padding-top: var(--nv-space-6);
+  border-top: 1px solid var(--nv-line);
+}
+.bn-siblings > p { margin: 0 auto 0 0; font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); color: var(--nv-text-muted); }
+.bn-siblings > a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nv-space-3);
+  min-height: 44px;
+  padding: var(--nv-space-2) var(--nv-space-4);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-pill);
+  color: var(--nv-text-link);
+  background: var(--nv-surface);
+  font-size: var(--nv-body-sm);
+  text-decoration: none;
+}
+.bn-siblings > a:hover { border-color: var(--nv-green-600); background: var(--nv-green-100); }
+.bn-siblings > a.tm-wellbeing-return { border: 0; background: transparent; margin-top: 0; }
+
+/* ── Página de lectura del artículo ─────────────────────────────────────── */
+.bn-article { max-width: 76ch; margin-inline: auto; }
+.bn-article .tm-breathing-essay { padding: var(--nv-space-10); }
+.bn-article .tm-breathing-essay__byline { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nv-space-2) var(--nv-space-3); margin: 0 0 var(--nv-space-6); padding-bottom: var(--nv-space-5); border-bottom: 1px solid var(--nv-line); }
+.bn-article .tm-breathing-essay__text > p:first-child { font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); line-height: 1.45; }
+.bn-article__video { margin-top: var(--nv-space-10); }
+.bn-article__video h2 { margin: 0 0 var(--nv-space-2); font-size: var(--nv-title-sm); }
+.bn-article__video > p { margin: 0 0 var(--nv-space-4); color: var(--nv-text-soft); font-size: var(--nv-body-sm); line-height: 1.6; }
+.bn-author {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--nv-space-5);
+  align-items: start;
+  margin-top: var(--nv-space-8);
+  padding: var(--nv-space-6);
+  border: 1px solid var(--nv-line);
+  border-left: 3px solid var(--nv-green-600);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+}
+.bn-author__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--nv-green-100);
+  color: var(--nv-green-800);
+  font-family: var(--nv-font-serif);
+  font-size: var(--nv-title-sm);
+  font-weight: 500;
+}
+.bn-author p { margin: 0 0 var(--nv-space-2); line-height: 1.6; }
+.bn-author p:last-of-type { margin-bottom: 0; }
+.bn-author a { color: var(--nv-text-link); font-size: var(--nv-body-sm); text-underline-offset: .25em; }
+.bn-editorial {
+  margin-top: var(--nv-space-8);
+  padding: var(--nv-space-5) var(--nv-space-6);
+  border-top: 1px solid var(--nv-line);
+  color: var(--nv-text-soft);
+  font-size: var(--nv-body-sm);
+  line-height: 1.6;
+}
+.bn-editorial p { margin: 0 0 var(--nv-space-2); }
+.bn-editorial a { color: var(--nv-text-link); text-underline-offset: .25em; }
+.bn-article__return { margin-top: var(--nv-space-8); display: flex; flex-wrap: wrap; gap: var(--nv-space-3) var(--nv-space-6); }
+
+/* ── Tablet ─────────────────────────────────────────────────────────────── */
+@media (max-width: 1120px) {
+  .nv-space-page--bienestar .nv-space-insight { padding: var(--nv-space-8) 0; }
+  .nv-space-page--bienestar .nv-space-insight h2 { max-width: none; }
+  .nv-space-page--bienestar .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }
+  .bn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bn-grid > *, .bn-grid > :nth-child(4), .bn-grid > :nth-child(5) { grid-column: auto; }
+  .bn-article .tm-breathing-essay { padding: var(--nv-space-8); }
+}
+@media (max-width: 900px) {
+  .bn-grid { grid-template-columns: minmax(0, 1fr); }
+  .bn-siblings > p { flex-basis: 100%; }
+  .bn-author { grid-template-columns: minmax(0, 1fr); }
+}

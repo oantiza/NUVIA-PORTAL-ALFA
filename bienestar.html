@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-bienestar.css">
 
 <script defer src="js/vendor/react.production.min.js"></script>
 <script defer src="js/vendor/react-dom.production.min.js"></script>
@@ -113,6 +114,17 @@
       </div>
     </section>
 
+    <div class="nv-container nv-space-intro">
+      <section class="nv-space-insight" aria-labelledby="bienestar-concepto">
+        <div><p class="nv-eyebrow">Una mirada de conjunto</p><h2 id="bienestar-concepto">Las decisiones se toman mejor con el cuerpo descansado y la mente serena.</h2></div>
+        <div class="nv-space-insight__items">
+          <div><h3>El cuerpo</h3><p>Moverse y comer con criterio sostiene la energía con la que afrontamos cada día.</p></div>
+          <div><h3>La mente</h3><p>Respirar, parar y atender al presente ayuda a decidir con calma y sin urgencias.</p></div>
+          <div><h3>El tiempo</h3><p>Familia, trabajo y descanso: el equilibrio que da sentido a lo que se construye.</p></div>
+        </div>
+      </section>
+    </div>
+
     <section id="pilares-bienestar" class="nv-section nv-section--tight nv-space-resources" aria-labelledby="titulo-pilares-bienestar">
       <div class="nv-container">
         <div class="nv-section-heading">
@@ -120,40 +132,54 @@
             <p class="nv-eyebrow">Cuerpo, mente y salud</p>
             <h2 id="titulo-pilares-bienestar">Cinco temas de cuidado cotidiano</h2>
           </div>
-          <p>Movimiento, nutrición, respiración, vida familiar y descanso. Estos cinco temas organizan los contenidos de Cuerpo, mente y salud.</p>
+          <p>Movimiento, nutrición, respiración, vida familiar y descanso. Cada tema reúne los artículos, vídeos y otros contenidos que publican nuestros colaboradores.</p>
         </div>
-        <div class="nv-card-grid nv-card-grid--2">
-          <article class="nv-card nv-card--editorial">
-            <span class="nv-card__icon" aria-hidden="true">01</span>
+
+        <div class="nv-card-grid bn-grid">
+
+          <a class="nv-space-tool-card nv-space-tool-card--photo" href="movimiento-consciente.html">
+            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/bienestar-card-movimiento-20261002.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg></span>
+            <span class="nv-space-tool-card__badge">Tema 01 · Cuerpo</span>
             <h3>Movimiento consciente</h3>
-            <p>El cuerpo y el movimiento en la vida cotidiana.</p>
-            <a class="nv-btn nv-btn--secondary" href="movimiento-consciente.html">Explorar el tema →</a>
-          </article>
-          <article class="nv-card nv-card--editorial">
-            <span class="nv-card__icon" aria-hidden="true">02</span>
+            <p>Caminar, estirarse y mantener una actividad que acompañe cada etapa de la vida, sin exigencias ni rendimiento.</p>
+            <span class="nv-space-tool-card__action">Explorar el tema <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="nv-space-tool-card nv-space-tool-card--photo" href="nutricion-equilibrada.html">
+            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/bienestar-card-nutricion-20261002.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 9 11 5 20 4c-1 9-5 15-15 15Z"/><path d="M5 19c3-5 6-8 10-10"/></svg></span>
+            <span class="nv-space-tool-card__badge">Tema 02 · Hábitos</span>
             <h3>Nutrición equilibrada</h3>
-            <p>La alimentación como parte de los hábitos de cuidado.</p>
-            <a class="nv-btn nv-btn--secondary" href="nutricion-equilibrada.html">Explorar el tema →</a>
-          </article>
-          <article class="nv-card nv-card--editorial">
-            <span class="nv-card__icon" aria-hidden="true">03</span>
+            <p>Comer con criterio y con calma, lejos de las dietas milagro y de las promesas que no se sostienen.</p>
+            <span class="nv-space-tool-card__action">Explorar el tema <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="nv-space-tool-card nv-space-tool-card--photo" href="respiracion-relajacion.html">
+            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/bienestar-card-respiracion-20261002.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h8a2.5 2.5 0 1 1-2.5 2.5"/></svg></span>
+            <span class="nv-space-tool-card__badge">Tema 03 · Calma y gestión del estrés</span>
             <h3>Respiración y relajación</h3>
-            <p>La respiración, la calma y la atención al momento presente.</p>
-            <a class="nv-btn nv-btn--secondary" href="respiracion-relajacion.html">Explorar el tema →</a>
-          </article>
-          <article class="nv-card nv-card--editorial">
-            <span class="nv-card__icon" aria-hidden="true">04</span>
+            <p>La respiración, la calma y la atención al momento presente. Con el ensayo y el vídeo de Isabel Florido Mayor.</p>
+            <span class="nv-space-tool-card__action">Leer y ver los contenidos <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="nv-space-tool-card nv-space-tool-card--photo" href="familia-trabajo.html">
+            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/bienestar-card-familia-20261002.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 21v-2a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v2M15 21v-1.5a4 4 0 0 1 4-4h1"/></svg></span>
+            <span class="nv-space-tool-card__badge">Tema 04 · Convivencia</span>
             <h3>Familia y trabajo</h3>
-            <p>La convivencia y el equilibrio con la vida laboral.</p>
-            <a class="nv-btn nv-btn--secondary" href="familia-trabajo.html">Explorar el tema →</a>
-          </article>
-          <article class="nv-card nv-card--editorial">
-            <span class="nv-card__icon" aria-hidden="true">05</span>
+            <p>Tiempo compartido, acuerdos y rutinas que sostienen la convivencia cuando el trabajo ocupa buena parte del día.</p>
+            <span class="nv-space-tool-card__action">Explorar el tema <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="nv-space-tool-card nv-space-tool-card--photo" href="descanso-limites-tiempo-propio.html">
+            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/bienestar-card-descanso-20261002.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
+            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg></span>
+            <span class="nv-space-tool-card__badge">Tema 05 · Descanso</span>
             <h3>Descanso, límites y tiempo propio</h3>
-            <p>El descanso y el espacio que reservamos para nosotros.</p>
-            <a class="nv-btn nv-btn--secondary" href="descanso-limites-tiempo-propio.html">Explorar el tema →</a>
-          </article>
+            <p>Dormir bien, saber parar y poner límites: el espacio que cada persona reserva para sí misma.</p>
+            <span class="nv-space-tool-card__action">Explorar el tema <span aria-hidden="true">→</span></span>
+          </a>
+
         </div>
+
         <div class="nv-note nv-section-space" role="note">
           <p><strong>Aviso de divulgación general:</strong> Los contenidos de este espacio son informativos y educativos. No constituyen consejo médico, diagnóstico clínico ni prescripción sanitaria individualizada.</p>
         </div>

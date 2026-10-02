@@ -47,6 +47,12 @@ const PRESUPUESTO_INLINE = {
   // su porcentaje mediante data-progress; la anchura vive en componentes.
   'academia.html': 0,
   'bienestar.html': 0,
+  'descanso-limites-tiempo-propio.html': 0,
+  'familia-trabajo.html': 0,
+  'la-respiracion-como-el-escultor-del-cerebro.html': 0,
+  'movimiento-consciente.html': 0,
+  'nutricion-equilibrada.html': 0,
+  'respiracion-relajacion.html': 0,
   'cartera.html': 0,
   'colaboradores.html': 0,
   'curso.html': 0,

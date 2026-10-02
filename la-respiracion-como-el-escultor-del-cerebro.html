@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
+<link rel="stylesheet" href="estilos/nuvia-bienestar.css">
 
 <script defer src="js/vendor/react.production.min.js"></script>
 <script defer src="js/vendor/react-dom.production.min.js"></script>
@@ -98,42 +100,28 @@
   </header>
 
   <main id="contenido">
-<section class="nv-hero nv-hero--institutional nv-entry">
-<div class="nv-container">
-<nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-<ol>
-<li>
-<a href="index.html" data-main-menu-return>Inicio</a>
-</li>
-<li>
-<a href="bienestar.html">Familia, Salud y Bienestar</a>
-</li>
-<li>
-<a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
-</li>
-<li>
-<a href="respiracion-relajacion.html">Respiración y relajación</a>
-</li>
-<li>
-<span aria-current="page">La respiración como el escultor del cerebro</span>
-</li>
-</ol>
-</nav>
-<p class="nv-eyebrow">Respiración y relajación · Ensayo</p>
-<h1>La respiración como el escultor del cerebro</h1>
-</div>
-</section>
-<section class="nv-section nv-section--tight">
-<div class="nv-container">
-<article class="tm-breathing-essay">
-          <header>
-            
-            
-            <p class="tm-breathing-essay__byline">Por <strong>Isabel Florido Mayor</strong> · <time datetime="2026-10-02">2 de octubre de 2026</time>
-</p>
-          </header>
-          <div class="tm-breathing-essay__text">
-            <p>Podemos dejar de andar, correr, comer, beber, incluso hablar. ¿Podemos dejar de respirar?</p>
+    <section id="articulo" data-screen-label="Cabecera del artículo" class="nv-hero nv-hero--institutional nv-entry">
+      <div class="nv-container">
+        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="bienestar.html">Familia, Salud y Bienestar</a></li><li><a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a></li><li><a href="respiracion-relajacion.html">Respiración y relajación</a></li><li><span aria-current="page">La respiración como el escultor del cerebro</span></li></ol>
+        </nav>
+        <div class="nv-hero__inner nv-hero__inner--simple"><div>
+          <span class="nv-eyebrow nv-eyebrow--on-dark">Respiración y relajación · Ensayo</span>
+          <h1>La respiración como el escultor del cerebro</h1>
+          <div class="bn-sub-hero__tags"><span class="nv-tag">Ensayo</span><span class="nv-tag">Lectura de 2 minutos</span><span class="nv-tag">Con vídeo</span></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="nv-section nv-section--tight" aria-label="Lectura del ensayo">
+      <div class="nv-container">
+        <div class="bn-article">
+          <article class="tm-breathing-essay">
+            <header>
+              <p class="tm-breathing-essay__byline"><span class="bn-author__avatar" aria-hidden="true">IF</span><span>Por <strong>Isabel Florido Mayor</strong> · <time datetime="2026-10-02">2 de octubre de 2026</time></span></p>
+            </header>
+            <div class="tm-breathing-essay__text">
+              <p>Podemos dejar de andar, correr, comer, beber, incluso hablar. ¿Podemos dejar de respirar?</p>
             <p>¿Cuán consciente eres de tu respiración?</p>
             <p>La respiración se dibuja como el hilo que nos ata a la vida.</p>
             <p>Así como el cuerpo es la puerta de la mente, respirar es el camino que nos conduce a la vida.</p>
@@ -155,26 +143,50 @@
               <li>Un generador de calma.</li>
               <li>Un despertador de la concentración y la atención plena.</li>
             </ul>
-          </div>
-          <footer class="tm-breathing-essay__context">
-            <p>Reflexión de la autora sobre la respiración y el bienestar. Las imágenes de «energía vital» y de «llevar vida directamente al corazón» pertenecen al lenguaje del ensayo.</p>
+            </div>
+          </article>
+
+          <section class="bn-article__video" aria-labelledby="bn-video-titulo">
+            <h2 id="bn-video-titulo">Vídeo junto al ensayo</h2>
+            <p>Contenido audiovisual que acompaña la lectura. Es una pieza separada del ensayo, facilitada para esta publicación.</p>
+            <div class="bn-player nv-external-content nv-external-content--dark" data-nuvia-external-frame
+                 data-src="https://www.youtube-nocookie.com/embed/VyLpqgXjbnU?autoplay=1&amp;rel=0"
+                 data-title="Vídeo junto al ensayo «La respiración como el escultor del cerebro»">
+              <div class="nv-external-content__placeholder nv-external-content__placeholder--dark">
+                <span class="nv-external-content__eyebrow">Vídeo · YouTube</span>
+                <p>El vídeo se conecta con YouTube solo cuando eliges reproducirlo.</p>
+                <div class="nv-external-content__actions">
+                  <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+                  <a class="nv-btn nv-btn--secondary" href="https://youtu.be/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+                </div>
+                <small data-nuvia-external-status aria-live="polite">No se establece conexión mientras el vídeo permanece cerrado.</small>
+              </div>
+            </div>
+          </section>
+
+          <aside class="bn-author" aria-labelledby="bn-autora-titulo">
+            <span class="bn-author__avatar" aria-hidden="true">IF</span>
+            <div>
+              <p class="nv-eyebrow" id="bn-autora-titulo">Sobre la autora</p>
+              <p><strong>Isabel Florido Mayor</strong> es colaboradora de NUVIA en yoga, respiración, meditación y gestión del estrés. Sus artículos se publican en Cuerpo, mente y salud, dentro del tema que corresponde a cada uno.</p>
+              <a href="colaboradores.html#isabel-florido">Ver colaboradores de NUVIA →</a>
+            </div>
+          </aside>
+
+          <aside class="bn-editorial" aria-label="Notas editoriales">
+            <p><strong>Notas editoriales de NUVIA.</strong> Reflexión de la autora sobre la respiración y el bienestar. Las imágenes de «energía vital» y de «llevar vida directamente al corazón» pertenecen al lenguaje del ensayo.</p>
             <p>Para ampliar el contexto divulgativo sobre respiración, relajación y estrés: <a href="https://www.nccih.nih.gov/health/espanol/estres" target="_blank" rel="noopener noreferrer">Estrés · NCCIH (Institutos Nacionales de Salud de Estados Unidos)</a>. Esta fuente complementaria no constituye un aval del ensayo.</p>
-          </footer>
-        </article>
-<aside class="nv-note nv-section-space" aria-label="Vídeo relacionado">
-<p>
-<strong>Vídeo junto al ensayo</strong>
-</p>
-<p>
-<a href="https://youtu.be/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer">Ver el vídeo en YouTube ↗</a>
-</p>
-</aside>
-<p class="nv-section-space">
-<a class="tm-wellbeing-return" href="respiracion-relajacion.html">Más contenidos de Respiración y relajación →</a>
-</p>
-</div>
-</section>
-</main>
+            <p>Contenido informativo y educativo. No constituye consejo médico, diagnóstico clínico ni prescripción sanitaria individualizada.</p>
+          </aside>
+
+          <p class="bn-article__return">
+            <a class="tm-wellbeing-return" href="respiracion-relajacion.html">← Más contenidos de Respiración y relajación</a>
+            <a class="tm-wellbeing-return" href="bienestar.html">Portada de Familia, Salud y Bienestar →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
 
     <footer data-screen-label="Footer" class="nuvia-site-footer">
     <div class="nuvia-site-footer__inner">

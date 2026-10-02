@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
+<link rel="stylesheet" href="estilos/nuvia-bienestar.css">
 
 <script defer src="js/vendor/react.production.min.js"></script>
 <script defer src="js/vendor/react-dom.production.min.js"></script>
@@ -98,57 +100,81 @@
   </header>
 
   <main id="contenido">
-<section class="nv-hero nv-hero--institutional nv-entry">
-<div class="nv-container">
-<nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-<ol>
-<li>
-<a href="index.html" data-main-menu-return>Inicio</a>
-</li>
-<li>
-<a href="bienestar.html">Familia, Salud y Bienestar</a>
-</li>
-<li>
-<a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
-</li>
-<li>
-<span aria-current="page">Respiración y relajación</span>
-</li>
-</ol>
-</nav>
-<p class="nv-eyebrow">Cuerpo, mente y salud</p>
-<h1>Respiración y relajación</h1>
-<p class="nv-hero__lead">La respiración, la calma y la atención al momento presente.</p>
-</div>
-</section>
-<section class="nv-section nv-section--tight">
-<div class="nv-container">
-<p class="tm-card__text tm-breathing-intro">En esta serie de vídeos y pequeños ensayos acerca de la salud y el bienestar integral (mente, cuerpo), hoy queremos subrayar la importancia de la respiración como mecanismo regulador del estrés negativo.</p>
-<div class="nv-section-heading">
-<h2>Artículos y contenidos</h2>
-</div>
-<div class="nv-card-grid nv-card-grid--2">
-<article class="nv-card nv-card--editorial">
-<p class="nv-eyebrow">Ensayo</p>
-<h3>La respiración como el escultor del cerebro</h3>
-<p>Una reflexión sobre la respiración, la vida y la atención al momento presente.</p>
-<p>Por <strong>Isabel Florido Mayor</strong>
-</p>
-<a class="nv-btn nv-btn--secondary" href="la-respiracion-como-el-escultor-del-cerebro.html">Leer el artículo →</a>
-</article>
-<article class="nv-card nv-card--editorial">
-<p class="nv-eyebrow">Vídeo · YouTube</p>
-<h3>Vídeo junto al ensayo</h3>
-<p>Un contenido audiovisual para acompañar la lectura de «La respiración como el escultor del cerebro».</p>
-<a class="nv-btn nv-btn--secondary" href="https://youtu.be/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer">Ver el vídeo en YouTube ↗</a>
-</article>
-</div>
-<p class="nv-section-space">
-<a class="tm-wellbeing-return" href="temas.html?topic=bienestar">Volver a los cinco temas →</a>
-</p>
-</div>
-</section>
-</main>
+    <section id="respiracion-relajacion" data-screen-label="Cabecera Respiración y relajación" class="nv-hero nv-hero--institutional nv-entry nv-sub-hero">
+      <div class="nv-container">
+        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="bienestar.html">Familia, Salud y Bienestar</a></li><li><a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a></li><li><span aria-current="page">Respiración y relajación</span></li></ol>
+        </nav>
+        <div class="nv-hero__inner nv-sub-hero__grid"><div>
+          <span class="nv-eyebrow nv-eyebrow--on-dark">Cuerpo, mente y salud · Tema 03 de 05</span>
+          <h1>Respiración y relajación</h1>
+          <p class="nv-hero__lead">La respiración, la calma y la atención al momento presente.</p>
+          <div class="bn-sub-hero__tags"><span class="nv-tag">Un ensayo</span><span class="nv-tag">Un vídeo</span></div>
+        </div>
+        <div class="nv-sub-hero__media">
+          <img class="nv-sub-hero__img" src="src/assets/home/bienestar-sub-respiracion-20261002.webp"
+               alt="Una persona de espaldas, de pie en un paseo marítimo al amanecer, mira el mar en calma"
+               width="1500" height="900">
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nv-section nv-section--tight" aria-labelledby="respiracion-relajacion-contenidos">
+      <div class="nv-container">
+        <p class="bn-intro tm-breathing-intro">En esta serie de vídeos y pequeños ensayos acerca de la salud y el bienestar integral (mente, cuerpo), hoy queremos subrayar la importancia de la respiración como mecanismo regulador del estrés negativo.</p>
+
+        <div class="nv-section-heading">
+          <div>
+            <p class="nv-eyebrow">Publicaciones</p>
+            <h2 id="respiracion-relajacion-contenidos">Artículos y contenidos</h2>
+          </div>
+          <p>Artículos, vídeos y otras piezas sobre la respiración, la calma y el estrés. Isabel Florido Mayor, colaboradora de NUVIA, publica aquí los contenidos que corresponden a este tema.</p>
+        </div>
+
+        <div class="nv-card-grid nv-card-grid--2">
+          <article class="nv-card nv-card--editorial bn-pub" aria-labelledby="bn-ensayo-titulo">
+            <p class="nv-eyebrow">Ensayo</p>
+            <h3 id="bn-ensayo-titulo">La respiración como el escultor del cerebro</h3>
+            <p>Una reflexión sobre la respiración, la vida y la atención al momento presente.</p>
+            <blockquote class="bn-pub__quote">
+              <p>Podemos dejar de andar, correr, comer, beber, incluso hablar. ¿Podemos dejar de respirar?</p>
+              <p>Somos como respiramos.</p>
+            </blockquote>
+            <p class="bn-pub__meta">Por <strong>Isabel Florido Mayor</strong> · <time datetime="2026-10-02">2 de octubre de 2026</time> · Lectura de 2 minutos</p>
+            <a class="nv-btn nv-btn--secondary" href="la-respiracion-como-el-escultor-del-cerebro.html">Leer el artículo →</a>
+          </article>
+          <article class="nv-card nv-card--editorial bn-pub" aria-labelledby="bn-video-titulo">
+            <p class="nv-eyebrow">Vídeo · YouTube</p>
+            <h3 id="bn-video-titulo">Vídeo junto al ensayo</h3>
+            <p>Contenido audiovisual que acompaña la lectura de «La respiración como el escultor del cerebro». Es una pieza separada del ensayo.</p>
+            <div class="bn-player nv-external-content nv-external-content--dark" data-nuvia-external-frame
+                 data-src="https://www.youtube-nocookie.com/embed/VyLpqgXjbnU?autoplay=1&amp;rel=0"
+                 data-title="Vídeo junto al ensayo «La respiración como el escultor del cerebro»">
+              <div class="nv-external-content__placeholder nv-external-content__placeholder--dark">
+                <span class="nv-external-content__eyebrow">Vídeo · YouTube</span>
+                <p>El vídeo se conecta con YouTube solo cuando eliges reproducirlo.</p>
+                <div class="nv-external-content__actions">
+                  <button type="button" class="nv-btn nv-btn--primary" data-nuvia-external-load>Reproducir vídeo</button>
+                  <a class="nv-btn nv-btn--secondary" href="https://youtu.be/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer">Abrir en YouTube ↗</a>
+                </div>
+                <small data-nuvia-external-status aria-live="polite">No se establece conexión mientras el vídeo permanece cerrado.</small>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <nav class="bn-siblings" aria-label="Otros temas de Cuerpo, mente y salud">
+          <p>Otros temas de Cuerpo, mente y salud</p>
+          <a href="movimiento-consciente.html">Movimiento consciente <span aria-hidden="true">→</span></a>
+          <a href="nutricion-equilibrada.html">Nutrición equilibrada <span aria-hidden="true">→</span></a>
+          <a href="familia-trabajo.html">Familia y trabajo <span aria-hidden="true">→</span></a>
+          <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio <span aria-hidden="true">→</span></a>
+          <a class="tm-wellbeing-return" href="temas.html?topic=bienestar">Volver a los cinco temas →</a>
+        </nav>
+      </div>
+    </section>
+  </main>
 
     <footer data-screen-label="Footer" class="nuvia-site-footer">
     <div class="nuvia-site-footer__inner">

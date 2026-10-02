@@ -34,6 +34,8 @@
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
+<link rel="stylesheet" href="estilos/nuvia-subseccion.css">
+<link rel="stylesheet" href="estilos/nuvia-bienestar.css">
 
 <script defer src="js/vendor/react.production.min.js"></script>
 <script defer src="js/vendor/react-dom.production.min.js"></script>
@@ -98,41 +100,51 @@
   </header>
 
   <main id="contenido">
-<section class="nv-hero nv-hero--institutional nv-entry">
-<div class="nv-container">
-<nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-<ol>
-<li>
-<a href="index.html" data-main-menu-return>Inicio</a>
-</li>
-<li>
-<a href="bienestar.html">Familia, Salud y Bienestar</a>
-</li>
-<li>
-<a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
-</li>
-<li>
-<span aria-current="page">Nutrición equilibrada</span>
-</li>
-</ol>
-</nav>
-<p class="nv-eyebrow">Cuerpo, mente y salud</p>
-<h1>Nutrición equilibrada</h1>
-<p class="nv-hero__lead">La alimentación como parte de los hábitos de cuidado.</p>
-</div>
-</section>
-<section class="nv-section nv-section--tight">
-<div class="nv-container">
-<div class="nv-section-heading">
-<h2>Artículos y contenidos</h2>
-</div>
-<p class="nv-note">Los primeros contenidos de esta subsección están en preparación.</p>
-<p class="nv-section-space">
-<a class="tm-wellbeing-return" href="temas.html?topic=bienestar">Volver a los cinco temas →</a>
-</p>
-</div>
-</section>
-</main>
+    <section id="nutricion-equilibrada" data-screen-label="Cabecera Nutrición equilibrada" class="nv-hero nv-hero--institutional nv-entry nv-sub-hero">
+      <div class="nv-container">
+        <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
+          <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="bienestar.html">Familia, Salud y Bienestar</a></li><li><a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a></li><li><span aria-current="page">Nutrición equilibrada</span></li></ol>
+        </nav>
+        <div class="nv-hero__inner nv-sub-hero__grid"><div>
+          <span class="nv-eyebrow nv-eyebrow--on-dark">Cuerpo, mente y salud · Tema 02 de 05</span>
+          <h1>Nutrición equilibrada</h1>
+          <p class="nv-hero__lead">La alimentación como parte de los hábitos de cuidado.</p>
+          <div class="bn-sub-hero__tags"><span class="nv-tag nv-tag--pending">Artículos en preparación</span></div>
+        </div>
+        <div class="nv-sub-hero__media">
+          <img class="nv-sub-hero__img" src="src/assets/home/bienestar-sub-nutricion-20261002.webp"
+               alt="Una mujer elige fruta y verdura de temporada en un puesto de mercado de barrio con una cesta de mimbre"
+               width="1500" height="900">
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nv-section nv-section--tight" aria-labelledby="nutricion-equilibrada-contenidos">
+      <div class="nv-container">
+        <div class="nv-section-heading">
+          <div>
+            <p class="nv-eyebrow">Publicaciones</p>
+            <h2 id="nutricion-equilibrada-contenidos">Artículos y contenidos</h2>
+          </div>
+          <p>Esta subsección reunirá artículos, vídeos y otras piezas de nuestros colaboradores sobre este tema. Se publicarán aquí a medida que estén listos.</p>
+        </div>
+
+        <div class="nv-note" role="note">
+          <p><strong>En preparación.</strong> Los primeros contenidos de esta subsección están en preparación. Mientras tanto, puedes leer el ensayo y ver el vídeo publicados en <a href="respiracion-relajacion.html">Respiración y relajación</a>.</p>
+        </div>
+
+        <nav class="bn-siblings" aria-label="Otros temas de Cuerpo, mente y salud">
+          <p>Otros temas de Cuerpo, mente y salud</p>
+          <a href="movimiento-consciente.html">Movimiento consciente <span aria-hidden="true">→</span></a>
+          <a href="respiracion-relajacion.html">Respiración y relajación <span aria-hidden="true">→</span></a>
+          <a href="familia-trabajo.html">Familia y trabajo <span aria-hidden="true">→</span></a>
+          <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio <span aria-hidden="true">→</span></a>
+          <a class="tm-wellbeing-return" href="temas.html?topic=bienestar">Volver a los cinco temas →</a>
+        </nav>
+      </div>
+    </section>
+  </main>
 
     <footer data-screen-label="Footer" class="nuvia-site-footer">
     <div class="nuvia-site-footer__inner">

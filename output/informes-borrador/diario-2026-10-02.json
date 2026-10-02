@@ -1,0 +1,264 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-02",
+  "fecha": "2026-10-02",
+  "fechaIso": "2026-10-02T00:00:00.000Z",
+  "generadoIso": "2026-10-02T11:42:55.002Z",
+  "titular": "La inflación europea y el petróleo marcan la sesión antes del dato de empleo en Estados Unidos",
+  "entradilla": "La persistencia de los precios altos en la zona del euro y el encarecimiento de la energía captan la atención de los mercados. Los participantes aguardan las inminentes cifras laborales estadounidenses, lo que ha impulsado al alza las rentabilidades de la deuda pública global.",
+  "hechos": [
+    {
+      "texto": "El índice bursátil alemán DAX avanzó un 0,8 % durante las primeras horas de negociación, amparado por noticias políticas vinculadas al desarrollo tecnológico.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "El índice de la Bolsa española, el IBEX 35, acumuló un descenso del 2,7 % al cierre del mes de septiembre tras los retrocesos registrados en las últimas semanas del período.",
+      "fecha": "2026-09-30",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "Los precios internacionales del crudo registraron nuevas subidas que frenaron el avance de varios indicadores europeos en Fráncfort.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El mercado de renta fija acusó liquidaciones generalizadas que elevaron los rendimientos de la deuda global en los instantes previos a la agenda oficial estadounidense.",
+      "fecha": "2026-10-01",
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "RV España: IBEX 35",
+      "valor": "-2,7 %",
+      "referencia": "Balance mensual de septiembre (SIX/BME)",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "RV Alemania: DAX",
+      "valor": "+0,8 %",
+      "referencia": "Intradía del 2026-10-02 (Deutsche Börse)",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Materias Primas: Petróleo",
+      "valor": "Sin contrastar",
+      "referencia": "Tendencia referida por Deutsche Börse",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "Renta Fija: Deuda Global",
+      "valor": "Sin contrastar",
+      "referencia": "Tensión documentada por wsls.com",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "etiqueta": "Macroeconomía: Empleo EE. UU.",
+      "valor": "Sin contrastar",
+      "referencia": "Dato pendiente de publicación (wsls.com)",
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-02",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Informe de la situación del empleo",
+      "anterior": "+162.000 nóminas y tasa del 4,1 % en agosto",
+      "porQueImporta": "Evalúa el dinamismo laboral, vital para la política monetaria.",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "fecha": "2026-10-05",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Precios de producción industrial",
+      "anterior": "+1,6 % mensual en julio",
+      "porQueImporta": "Permite anticipar presiones en la cadena de suministros y costes.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Volumen de comercio minorista",
+      "anterior": "-0,6 % mensual en julio",
+      "porQueImporta": "Representa la fortaleza del gasto final de consumo en el bloque.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "15:30",
+      "region": "EEUU",
+      "que": "Entrada en vigor de rebalanceos S&P",
+      "anterior": "Rebalanceo ordinario de septiembre",
+      "porQueImporta": "Genera cambios obligatorios en los fondos de inversión pasiva.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Las primeras sesiones bursátiles del mes de octubre arrancan marcadas por movimientos mixtos tras un septiembre que dejó saldos negativos en índices europeos de referencia, como el IBEX 35 español. Por el contrario, el indicador alemán DAX logró mostrar una recuperación durante su apertura apoyado en factores corporativos y de actualidad empresarial estadounidense.",
+        "En paralelo, la atención recae sobre la cotización de los recursos energéticos básicos. El petróleo ha vuelto a encarecerse y presiona a los mercados. Al mismo tiempo, los bonos de deuda soberana han sido objeto de liquidaciones masivas en los mercados internacionales, lo que ha provocado un repunte sustancial de los rendimientos que se exigen para financiar a los Estados a largo plazo."
+      ],
+      "fuentes": [
+        3,
+        5,
+        7,
+        12
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Las recientes presiones sobre el coste de la energía dificultan el trabajo de los bancos centrales a la hora de relajar la política monetaria, esto es, reducir el coste del dinero. Un repunte generalizado en los precios reduce el margen para que los organismos emisores apliquen abaratamientos del crédito sin el riesgo de reactivar la inflación general en la economía de la zona comunitaria.",
+        "Además, los incrementos en la rentabilidad de los bonos tienen una consecuencia directa sobre el sector empresarial. Al elevarse el coste de emitir nueva deuda para financiarse, las empresas afrontan gastos financieros superiores, lo que restringe sus márgenes de actividad e impacta sobre las valoraciones que el público general otorga a las compañías cotizadas."
+      ],
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "El punto central de interés recae íntegramente sobre la radiografía del mercado laboral de Estados Unidos. La cifra mensual de creación de empleo indicará la verdadera resistencia de la principal economía del mundo tras varios meses de intensa observación por parte de las autoridades encargadas de determinar el interés oficial de los préstamos en el país.",
+        "Una vez asimilada esta estadística, la próxima semana pondrá el foco sobre la coyuntura del continente europeo. Se publicarán métricas de suma importancia sobre la actividad minorista y la producción industrial, las cuales permitirán conocer si el bolsillo de las familias y la fabricación de bienes logran un repunte tangible durante este último trimestre del año."
+      ],
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/media/press-releases/2026/six-exchange-figures-september-2026.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/barcelona/2026/10/01/2_51_0_20261001.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/sala-de-comunicacion/notas-de-prensa/2026/six-balance-mensual-de-mercados-septiembre-2026.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/valencia/2026/10/01/4_78_3_20261001.pdf"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/ROUNDUP-Aktien-Frankfurt-Eroeffnung-Dax-legt-zu---Trump-fuer-KI-Selbstkontrolle-ea79d804-d261-4008-92e9-f985acc11847"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Schluss-Dax-legt-zu---Gewinne-an-der-Wall-Street-ermutigen-d82d17e4-c585-4c33-916e-90a405756fab"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/ROUNDUP-Aktien-Frankfurt-Eroeffnung-Dax-gibt-nach---Oelpreise-steigen-wieder-dd67a439-deaf-4b91-80dd-a0e9dc5e9642"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5dee/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/unscheduled-adjustment-in-sdax-oct-1-2026/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-and-osmosis-collaborate-to-launch-istoxx-osmosis-multi-factor-transition-indices/"
+    },
+    {
+      "titulo": "wsls.com",
+      "url": "https://www.wsls.com/business/2026/10/02/asian-shares-mixed-after-global-bond-sell-off-deepens-and-ahead-of-us-jobs-data/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-02",
+    "hasta": "2026-10-02",
+    "corteIso": "2026-10-02T11:42:55.002Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "El crudo al alza",
+      "texto": "Los precios del petróleo mantienen su escalada de las últimas jornadas. Este repunte encarece los costes energéticos y añade presión a las previsiones de inflación de los países importadores.",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "titulo": "Tensión en los bonos",
+      "texto": "La deuda soberana mundial registra caídas en sus cotizaciones, lo que eleva el interés que ofrecen a los inversores. Estos movimientos responden al compás de espera ante los inminentes indicadores económicos.",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "titulo": "Atención al empleo",
+      "texto": "El foco se concentra en el informe de nóminas no agrícolas de Estados Unidos. La salud del ámbito laboral servirá para valorar la senda de los costes de financiación a ambos lados del Atlántico.",
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "rentabilidad",
+      "definicion": "Beneficio o interés financiero que ofrece un activo de inversión, expresado normalmente como un porcentaje anual."
+    },
+    {
+      "termino": "bonos de deuda soberana",
+      "definicion": "Títulos emitidos por un Estado o Gobierno para obtener financiación, a cambio de pagar unos intereses periódicos a quien los adquiere."
+    },
+    {
+      "termino": "política monetaria",
+      "definicion": "Conjunto de directrices que aplican los bancos centrales para influir en la cantidad de dinero disponible y en su coste, con el fin de controlar la inflación."
+    },
+    {
+      "termino": "inflación",
+      "definicion": "Incremento sostenido y generalizado de los precios de los bienes y servicios de un país durante un período concreto de tiempo."
+    }
+  ]
+}

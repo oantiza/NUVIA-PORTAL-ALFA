@@ -20,7 +20,7 @@ export async function checkWellbeingEntry(page, route) {
   for(const source of await sources.all()) {
     if(await source.getAttribute('target')!=='_blank'||await source.getAttribute('rel')!=='noopener noreferrer') problems.push('Enlace externo sin protección');
   }
-  for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
+  for(const id of ['bienestar-ambitos','respiracion-relajacion','bienestar-guias','bienestar-fuentes']) {
     const link=page.locator(`.tm-wellbeing-nav a[href="#${id}"]`);
     await link.focus();
     await page.keyboard.press('Enter');

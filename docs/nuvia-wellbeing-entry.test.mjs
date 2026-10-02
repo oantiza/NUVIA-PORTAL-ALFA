@@ -18,7 +18,7 @@ assert.equal(model.recursos.length,3);
 assert.deepEqual(Array.from(model.recursos,r=>r.titulo),['Movimiento, nutrición y descanso','Calma y gestión del estrés','Familia, trabajo y tiempo propio']);
 const nav=html.match(/<nav class="tm-wellbeing-nav"[\s\S]*?<\/nav>/)?.[0];
 assert.ok(nav);
-for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
+for(const id of ['bienestar-ambitos','respiracion-relajacion','bienestar-guias','bienestar-fuentes']) {
   assert.ok(nav.includes(`href="#${id}"`));
   assert.equal((html.match(new RegExp(`id="${id}"`,'g'))||[]).length,1,id);
 }
@@ -38,3 +38,14 @@ for(const url of ['https://www.who.int/es/health-topics','https://medlineplus.go
 }
 assert.match(html,/href="lecturas.html" class="nv-btn nv-btn--secondary">Consultar el catálogo de lecturas/);
 console.log('Bienestar 5A-3: cinco temas, tres guías pendientes, navegación, fuentes y límites explícitos.');
+const essay=html.match(/<article class="tm-breathing-essay">([\s\S]*?)<\/article>/)?.[1];
+assert.ok(essay,'El ensayo publicado debe estar disponible');
+assert.match(essay,/Isabel Florido Mayor/);
+assert.match(essay,/datetime="2026-10-02"/);
+assert.equal((essay.match(/<h3>/g)||[]).length,3);
+assert.equal((essay.match(/<li>/g)||[]).length,5);
+assert.doesNotMatch(essay,/\[equilibrio\?\]|\[llevar\?\]/);
+const home=readFileSync(resolve(root,'bienestar.html'),'utf8');
+for(const topic of ['Movimiento consciente','Nutrición equilibrada','Respiración y relajación','Familia y trabajo','Descanso, límites y tiempo propio']) assert.ok(home.includes(`<h3>${topic}</h3>`),topic);
+assert.match(home,/href="temas.html\?topic=bienestar#respiracion-relajacion"/);
+assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta/);

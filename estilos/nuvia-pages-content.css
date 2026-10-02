@@ -1547,6 +1547,15 @@
 .tm-wellbeing-availability h2, .tm-wellbeing-limits h3 { margin: 0 0 var(--nv-space-2); font-size: var(--nv-body-lg); line-height: 1.4; }
 .tm-wellbeing-source__link { color: var(--nv-text-link); font-size: var(--nv-body-sm); margin-top: auto; text-underline-offset: .25em; }
 .tm-wellbeing-limits, .tm-wellbeing-reading { margin-top: var(--nv-space-6); }
+.tm-breathing-essay { max-width: 76ch; margin-inline: auto; padding: var(--nv-space-8); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); background: var(--nv-surface); }
+.tm-breathing-essay h2 { margin: 0; font-size: var(--nv-title-lg); }
+.tm-breathing-essay__byline { margin-top: var(--nv-space-3); color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
+.tm-breathing-essay__text { font-size: var(--nv-body-lg); line-height: 1.7; }
+.tm-breathing-essay__text h3 { margin: var(--nv-space-8) 0 var(--nv-space-4); font-size: var(--nv-title-sm); }
+.tm-breathing-essay__text p { margin-block: var(--nv-space-4); }
+.tm-breathing-essay__text ul { padding-left: var(--nv-space-6); }
+.tm-breathing-essay__context { margin-top: var(--nv-space-8); padding-top: var(--nv-space-5); border-top: 1px solid var(--nv-line); color: var(--nv-text-soft); font-size: var(--nv-body-sm); line-height: 1.6; }
+.tm-breathing-essay__context a { color: var(--nv-text-link); text-underline-offset: .25em; }
 body[data-nuvia-topic="bienestar"] .tm-card__tag { margin-top: auto; }
 .tm-wellbeing { display: grid; grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); min-height: 430px; overflow: hidden; border-radius: var(--nv-radius-md); background: var(--nv-paper-light); box-shadow: var(--nv-shadow-md); }
 .tm-wellbeing__media { position: relative; min-height: 430px; overflow: hidden; }

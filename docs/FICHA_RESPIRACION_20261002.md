@@ -72,3 +72,24 @@ final, sin diferencias; contrato del contenido, navegación, referencias locales
 lenguaje y plantilla común correctos. Auditoría de Home y artículo a 1440, 1024
 y 768 px sin fallos. La actualización de `main` activa la compilación y
 publicación de `dist/` mediante el flujo oficial de GitHub Actions.
+
+## Cinco subsecciones y separación de la introducción
+
+Nueva orden del fundador: convertir los cinco temas señalados en subsecciones
+de Cuerpo, mente y salud y colocar el artículo dentro de Respiración y relajación.
+Cada tarjeta y cada acceso desde la Home de Bienestar enlazan a su subsección:
+Movimiento consciente; Nutrición equilibrada; Respiración y relajación;
+Familia y trabajo; Descanso, límites y tiempo propio. Los otros cuatro espacios
+indican con claridad que sus artículos están en preparación; no se inventa contenido.
+
+La nota de voz de Isabel de las 19:48:01, aportada por el fundador con la orden
+de aplicarla, aclara que la introducción sobre la serie es ajena al artículo.
+Se conserva como introducción de la web antes del ensayo. El texto firmado
+comienza «Podemos dejar de andar…»; Word y PDF siguen esta misma separación.
+Esta aclaración sustituye la colocación de ese párrafo dentro del texto firmado.
+No cambia el perímetro informativo, los datos ni la clasificación de esta ficha.
+
+Verificación de esta orden: los cinco accesos tienen destino real y se comprueban
+con teclado; el ensayo está contenido en la subsección de respiración. El texto
+firmado coincide entre web, Word y PDF. Ambas páginas pasan la auditoría a 1440,
+1024 y 768 px, además de los contratos de contenido, navegación y jerarquía.

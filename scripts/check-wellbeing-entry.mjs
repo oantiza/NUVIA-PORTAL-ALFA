@@ -9,7 +9,17 @@ export async function checkWellbeingEntry(page, route) {
   if(await page.title()!=='NUVIA · Cuerpo, mente y salud') problems.push('Título incorrecto de la pestaña');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
   if(await page.locator('.tm-pillar[role="listitem"]').count()!==5) problems.push('Faltan los cinco temas semánticos');
-  if(await page.locator('.tm-pillars a,.tm-pillars button,.tm-pillars [tabindex]').count()) problems.push('Los temas simulan acceso a contenidos inexistentes');
+  const topicLinks=page.locator('.tm-pillars a.tm-pillar__link');
+  if(await topicLinks.count()!==5) problems.push('Faltan los cinco accesos a subsecciones');
+  for(const link of await topicLinks.all()) {
+    const destination=await link.getAttribute('href');
+    if(!destination?.startsWith('#')||await page.locator(`section${destination}`).count()!==1) problems.push('Subsección de Bienestar sin destino');
+    await link.focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL(new URL(destination,start).href);
+    if(!await page.locator(`section${destination}`).isVisible()) problems.push('Subsección de Bienestar no visible');
+  }
+  if(await page.locator('#respiracion-relajacion .tm-breathing-essay').count()!==1) problems.push('El ensayo no pertenece a Respiración y relajación');
   if(await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Las tres guías no están marcadas en preparación');
   for(const card of await page.locator('.tm-card:has(.nv-tag--pending)').all()) {
     if(await card.locator('a,button,input').count()) problems.push('Una guía pendiente ofrece una acción falsa');

@@ -27,6 +27,7 @@ export async function checkWellbeingEntry(page, route) {
     await page.locator('.tm-pillars').waitFor();
   }
   if(await page.locator('.tm-breathing-essay').count()) problems.push('La portada contiene el artículo completo');
+  await page.waitForFunction(() => document.querySelectorAll('.tm-card__tag.nv-tag--pending').length === 3, null, {timeout: 5000}).catch(() => {});
   if(await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Las tres guías no están marcadas en preparación');
   for(const card of await page.locator('.tm-card:has(.nv-tag--pending)').all()) {
     if(await card.locator('a,button,input').count()) problems.push('Una guía pendiente ofrece una acción falsa');

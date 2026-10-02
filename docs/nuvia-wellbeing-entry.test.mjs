@@ -42,7 +42,14 @@ const essay=html.match(/<article class="tm-breathing-essay">([\s\S]*?)<\/article
 assert.ok(essay,'El ensayo publicado debe estar disponible');
 assert.match(essay,/Isabel Florido Mayor/);
 assert.match(essay,/datetime="2026-10-02"/);
-assert.equal((essay.match(/<h3>/g)||[]).length,3);
+assert.equal((essay.match(/<h3>/g)||[]).length,0,'La autora pide texto seguido sin epígrafes');
+assert.match(essay,/<h2 id="respiracion-title">La respiración como el escultor del cerebro<\/h2>/);
+assert.match(essay,/<div class="tm-breathing-essay__text">\s*<p>En esta serie de vídeos/);
+assert.match(essay,/llevar vida directamente al corazón/);
+assert.match(essay,/en la mente, que/);
+assert.match(essay,/nos acompaña a diario: la respiración/);
+assert.match(essay,/hablar\. ¿Podemos dejar de respirar\?/);
+assert.doesNotMatch(essay,/adentro|vida llevándola|La respiración, como el equilibrio/);
 assert.equal((essay.match(/<li>/g)||[]).length,5);
 assert.doesNotMatch(essay,/\[equilibrio\?\]|\[llevar\?\]/);
 const home=readFileSync(resolve(root,'bienestar.html'),'utf8');

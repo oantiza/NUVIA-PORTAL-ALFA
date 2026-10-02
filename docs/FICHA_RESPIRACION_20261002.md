@@ -49,3 +49,26 @@ Esta adaptación informativa no añade tratamientos de datos ni recomendaciones.
 metadatos correctos. Auditoría de las dos páginas a 1440, 1024 y 768 px sin
 fallos; el ancla del ensayo comprobada con teclado en esos tres anchos. Recorrido
 Home → ensayo verificado con autoría y tres apartados visibles.
+
+## Revisión de la autora y publicación de la versión corregida
+
+El fundador aporta las notas de voz de Isabel Florido Mayor del 02-10-2026
+y solicita aplicar sus correcciones en un documento final. Después ordena
+expresamente actualizar el artículo publicado, preparar el PDF y mostrar los cambios.
+El título vigente pasa a ser «La respiración como el escultor del cerebro».
+Se retiran los tres epígrafes añadidos, se mueve el párrafo sobre la serie de vídeos
+y ensayos a la introducción y se corrigen «llevar vida directamente al corazón»,
+«nos acompaña a diario», la coma después de «mente» y la interrogación inicial.
+Esta revisión sustituye la interpretación inicial de «equilibrio» y la presentación
+en tres apartados. La lista final de cinco puntos se conserva.
+
+La web reproduce el título y los párrafos del Word final; el contexto divulgativo
+del portal permanece separado del texto de la autora. La revisión no incorpora
+diagnósticos, protocolos, datos personales en base de datos ni nuevas funciones.
+Se mantiene la clasificación y el perímetro descritos en esta ficha.
+
+Comprobación de esta revisión: párrafos de la web y PDF comparados con el Word
+final, sin diferencias; contrato del contenido, navegación, referencias locales,
+lenguaje y plantilla común correctos. Auditoría de Home y artículo a 1440, 1024
+y 768 px sin fallos. La actualización de `main` activa la compilación y
+publicación de `dist/` mediante el flujo oficial de GitHub Actions.

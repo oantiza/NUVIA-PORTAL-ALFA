@@ -1,0 +1,360 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "SEMANAL",
+  "id": "semanal-2026-10-03",
+  "fecha": "2026-10-03",
+  "fechaIso": "2026-10-03T00:00:00.000Z",
+  "generadoIso": "2026-10-03T12:23:29.110Z",
+  "titular": "El freno del empleo estadounidense altera las expectativas sobre los tipos y Europa afronta un repunte de la inflación",
+  "entradilla": "La creación de empleo en Estados Unidos se ha desacelerado con fuerza, lo que alivia la presión sobre la política monetaria norteamericana. En Europa, el encarecimiento de la energía ha vuelto a impulsar los precios, mientras los mercados asimilan el incremento sostenido del coste de la deuda pública a largo plazo.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró la semana con un descenso del 2,49 % (19.085,30 puntos), si bien logró un rebote el viernes que las firmas de análisis atribuyen a la caída del crudo tras el anuncio del G7.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        1,
+        5
+      ]
+    },
+    {
+      "texto": "El S&P 500 retrocedió un 0,27 % en el período, hasta los 7.722,72 puntos, un movimiento que los analistas asocian a la asimilación del informe laboral y la reevaluación de los costes de financiación.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        4,
+        8
+      ]
+    },
+    {
+      "texto": "La rentabilidad del bono español a 10 años avanzó 8 puntos básicos (un punto básico equivale a un 0,01 %), hasta el 4,11 %, debido a las primas exigidas frente a los amplios programas de emisión fiscal.",
+      "fecha": "2026-10-01",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "Los contratos de futuros (acuerdos que reflejan las estimaciones del mercado) descuentan el cese de los incrementos de los tipos de interés en Estados Unidos tras el freno de la contratación en septiembre.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        8
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Rentabilidad del bono español a 10 años",
+      "valor": "4,11 %",
+      "referencia": "2026-10-01 (Banco de España)",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Prima de riesgo española",
+      "valor": "52 pb",
+      "referencia": "2026-10-02 (Banco de España)",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Inflación Zona Euro (avance septiembre)",
+      "valor": "Sin contrastar",
+      "referencia": "Eurostat (fuente oficial no habilitada en los anexos)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Creación de empleo EE. UU. (septiembre)",
+      "valor": "Sin contrastar",
+      "referencia": "BLS (fuente oficial no habilitada en los anexos)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-05",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Precios de Producción Industrial (agosto)",
+      "anterior": "+1,6 % mensual en julio de 2026",
+      "porQueImporta": "Indica la traslación de costes fabriles a los precios que afrontan los consumidores.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Producción Industrial (agosto)",
+      "anterior": null,
+      "porQueImporta": "Cuantifica el crecimiento real del tejido manufacturero y de suministro.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "10:30",
+      "region": "España",
+      "que": "Subasta de Letras del Tesoro a 6 y 12 meses",
+      "anterior": "2,391 % marginal a 6 meses",
+      "porQueImporta": "Fija el coste de financiación a corto plazo para el Estado español.",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Volumen del Comercio al por Menor (agosto)",
+      "anterior": "-0,6 % mensual en julio de 2026",
+      "porQueImporta": "Refleja la evolución y la fortaleza del consumo interno de los hogares europeos.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-07",
+      "hora": "20:00",
+      "region": "EEUU",
+      "que": "Actas de la reunión de política monetaria (FOMC)",
+      "anterior": null,
+      "porQueImporta": "Detalla el debate interno de la institución sobre la inflación y el empleo.",
+      "fuentes": [
+        8
+      ]
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "La semana en una idea",
+      "parrafos": [
+        "El pulso de los mercados financieros se ha visto determinado por dos fuerzas contrapuestas. Por un lado, la resistencia de los precios en Europa, impulsada por los costes de la energía. Por otro, las evidencias estadísticas de que el mercado laboral estadounidense pierde tracción de forma acelerada.",
+        "Este escenario dibuja un panorama dispar para las principales autoridades económicas. Mientras en Estados Unidos los participantes del mercado descuentan una pausa inminente en las subidas del coste del dinero, en Europa las presiones inflacionistas dificultan cualquier relajación en el corto plazo."
+      ],
+      "fuentes": [
+        6,
+        8
+      ]
+    },
+    {
+      "titulo": "Economía y bancos centrales",
+      "parrafos": [
+        "La creación de nóminas en Estados Unidos registró un frenazo notable durante el mes de septiembre, situándose muy por debajo de las proyecciones iniciales. Este enfriamiento del empleo altera la hoja de ruta del banco central estadounidense (la Reserva Federal), lo que diluye el temor a un nuevo incremento de los tipos de interés en octubre.",
+        "En la zona euro, la dinámica ha resultado contraria tras el repunte de la inflación preliminar, empujada por el fuerte encarecimiento energético y las tensiones en Oriente Medio. Esta persistencia en los precios de consumo complica el escenario para el Banco Central Europeo, que mantiene un tono prudente sobre sus siguientes actuaciones."
+      ],
+      "fuentes": [
+        6,
+        8
+      ]
+    },
+    {
+      "titulo": "Mercados",
+      "parrafos": [
+        "Las principales bolsas han reflejado esta divergencia con cierres semanales a la baja, aunque mitigados en la jornada del viernes. El índice español IBEX 35 retrocedió en el cómputo global de la semana, si bien logró sumar avances en su última sesión tras el anuncio del G7 sobre la liberación de reservas estratégicas, un movimiento que alivió el precio del petróleo.",
+        "En el mercado de deuda soberana, los rendimientos han escalado de forma generalizada. La rentabilidad del bono español a diez años (el beneficio anual demandado por los inversores para financiar al Estado) repuntó durante la semana, reflejando las mayores primas requeridas para asimilar el elevado volumen de las emisiones fiscales a nivel global."
+      ],
+      "fuentes": [
+        1,
+        2,
+        5,
+        8
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días, la atención de los mercados recaerá sobre las actas de la última reunión del banco central de Estados Unidos. El documento detallará las deliberaciones internas de la entidad monetaria acerca de la persistencia de la inflación y la capacidad de resistencia en el ritmo de contratación laboral.",
+        "Asimismo, en Europa se difundirán datos estadísticos de especial relevancia sobre la producción industrial y el comercio minorista. Estas cifras permitirán calibrar el impacto real que ostentan los costes de la energía tanto en el consumo cotidiano de los hogares como en la actividad productiva de las fábricas del continente."
+      ],
+      "fuentes": [
+        6,
+        8
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Banco de España",
+      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/pdf/si_1_2.pdf"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/en/know-how/lexikon/dax"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+    },
+    {
+      "titulo": "intereconomia.com",
+      "url": "https://intereconomia.com/noticia/mercados/el-ibex-35-aprueba-en-viernes-pero-pierde-en-la-semana-mas-del-3-20261002-1755/"
+    },
+    {
+      "titulo": "morningstar.com",
+      "url": "https://www.morningstar.com/news/dow-jones/202610024764/euro-stoxx-50-index-ends-the-week-102-lower-at-623850-data-talk"
+    },
+    {
+      "titulo": "tradingeconomics.com",
+      "url": "https://tradingeconomics.com/germany/stock-market"
+    },
+    {
+      "titulo": "portfolio-terminal.com",
+      "url": "https://portfolio-terminal.com/blog/stock-market-week-in-review-september-25-2026"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 8
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-27",
+    "hasta": "2026-10-03",
+    "corteIso": "2026-10-03T12:23:29.110Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Freno laboral en Estados Unidos",
+      "texto": "La economía norteamericana generó menos empleos de los proyectados en septiembre. Este enfriamiento apoya la perspectiva de una pausa en el incremento de los tipos de interés (el coste oficial del dinero).",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Energía y precios en Europa",
+      "texto": "La inflación de la zona euro volvió a escalar impulsada por los mayores costes energéticos. Esta rigidez restringe el margen de las autoridades europeas para relajar las condiciones financieras a corto plazo.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Tensión en la deuda pública",
+      "texto": "Los inversores exigen mayores rendimientos para mantener bonos soberanos a largo plazo. Las fuertes necesidades de emisión fiscal han elevado los costes de financiación hasta cotas máximas de las últimas dos décadas.",
+      "fuentes": [
+        2,
+        8
+      ]
+    }
+  ],
+  "mercados": [
+    {
+      "grupo": "Bolsas",
+      "filas": [
+        {
+          "nombre": "IBEX 35",
+          "nivel": "19.085,30 puntos",
+          "variacion": -2.49,
+          "variacionAnual": 10.27,
+          "nota": "Cierra la semana a la baja pese al avance del viernes inducido por el alivio energético.",
+          "fuentes": [
+            1,
+            5
+          ]
+        },
+        {
+          "nombre": "S&P 500",
+          "nivel": "7.722,72 puntos",
+          "variacion": -0.27,
+          "variacionAnual": 12.81,
+          "nota": null,
+          "fuentes": [
+            4
+          ]
+        },
+        {
+          "nombre": "Euro Stoxx 50",
+          "nivel": "6.238,50 puntos",
+          "variacion": -1.02,
+          "variacionAnual": 7.72,
+          "nota": null,
+          "fuentes": [
+            6
+          ]
+        },
+        {
+          "nombre": "DAX 40",
+          "nivel": "25.231,20 puntos",
+          "variacion": -0.7,
+          "variacionAnual": 1.8,
+          "nota": null,
+          "fuentes": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Deuda pública",
+      "filas": [
+        {
+          "nombre": "Bono del Estado Español a 10 años",
+          "nivel": "4,11 %",
+          "variacion": 0.08,
+          "variacionAnual": null,
+          "nota": "Variación expresada en puntos porcentuales (8 puntos básicos).",
+          "fuentes": [
+            2
+          ]
+        },
+        {
+          "nombre": "Bono alemán a 10 años",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Cotización oficial ausente en el listado de fuentes documentales.",
+          "fuentes": []
+        }
+      ]
+    },
+    {
+      "grupo": "Divisas",
+      "filas": [
+        {
+          "nombre": "EUR/USD",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Ausencia de enlace oficial del BCE en las referencias provistas.",
+          "fuentes": []
+        }
+      ]
+    },
+    {
+      "grupo": "Materias primas",
+      "filas": [
+        {
+          "nombre": "Petróleo Brent",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Registro institucional no verificable mediante el catálogo facilitado.",
+          "fuentes": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Tipos de interés",
+      "definicion": "El coste oficial del dinero que fijan los bancos centrales, utilizado como herramienta de primer orden para tratar de controlar el nivel general de inflación en la economía."
+    },
+    {
+      "termino": "Rentabilidad del bono",
+      "definicion": "El rendimiento anual que exige y obtiene un inversor por financiar a una institución mediante un título de deuda y mantenerlo hasta su fecha de vencimiento."
+    },
+    {
+      "termino": "Punto básico",
+      "definicion": "Unidad de medida equivalente a la centésima parte de un punto porcentual (0,01 %). Se emplea de forma común para expresar alteraciones minúsculas en las métricas financieras."
+    },
+    {
+      "termino": "Contratos de futuros",
+      "definicion": "Acuerdos financieros que comprometen a intercambiar un activo a un precio fijado en una fecha posterior, los cuales actúan a su vez como reflejo de las expectativas generales del mercado."
+    }
+  ]
+}

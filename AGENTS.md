@@ -12,6 +12,10 @@
 - La producción asociada a esta nueva fase se publica desde el repositorio Alfa
   en `https://oantiza.github.io/NUVIA-PORTAL-ALFA/`, salvo nueva decisión expresa
   del fundador.
+- `docs/GUIA_MAESTRA_DISENO_Y_ESTRUCTURA_NUVIA.md` (03-10-2026) es la guía
+  maestra operativa de diseño, estructura, contenido y validación. Toda persona,
+  programa o asistente, interno o externo, debe leerla y aplicarla antes de
+  intervenir en la web.
 - `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md` es la referencia
   estructural canónica y el punto de partida de esta fase. Debe leerse junto con
   `docs/DEFINICION_NUVIA.md` y `docs/MARCO_REGULATORIO_OBLIGATORIO.md` antes de

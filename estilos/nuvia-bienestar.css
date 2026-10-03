@@ -47,6 +47,13 @@
     color-mix(in srgb, var(--nv-navy-900) 30%, transparent) 100%);
 }
 .nv-space-page--bienestar .nv-space-tool-card p { margin-bottom: var(--nv-space-5); }
+/* Con dos tarjetas por fila la banda es más ancha: más alta y con el encuadre
+   de cada foto fijado para que no se corten las cabezas. */
+.nv-space-page--bienestar .nv-space-tool-card__media { height: 260px; }
+.nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-respiracion"] { object-position: center 22%; }
+.nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-movimiento"] { object-position: center 18%; }
+.nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-descanso"] { object-position: center 35%; }
+.nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-nutricion"] { object-position: center 55%; }
 
 /* ── Subsecciones ───────────────────────────────────────────────────────── */
 .bn-sub-hero__tags { display: flex; flex-wrap: wrap; gap: var(--nv-space-2); margin-top: var(--nv-space-5); }
@@ -243,6 +250,7 @@
 
 /* ── Tablet ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1120px) {
+  .nv-space-page--bienestar .nv-space-tool-card__media { height: 200px; }
   .nv-space-page--bienestar .nv-space-insight { padding: var(--nv-space-8) 0; }
   .nv-space-page--bienestar .nv-space-insight h2 { max-width: none; }
   .nv-space-page--bienestar .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }

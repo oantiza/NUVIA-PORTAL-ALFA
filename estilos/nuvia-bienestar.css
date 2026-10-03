@@ -191,12 +191,19 @@
 .bn-siblings > a.tm-wellbeing-return { border: 0; background: transparent; margin-top: 0; }
 
 /* ── Página de lectura del artículo ─────────────────────────────────────── */
-.bn-article { max-width: 76ch; margin-inline: auto; }
-.bn-article .tm-breathing-essay { padding: var(--nv-space-10); }
-.bn-article > .bn-intro { margin-bottom: var(--nv-space-8); }
-.bn-article .tm-breathing-essay__byline { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nv-space-2) var(--nv-space-3); margin: 0 0 var(--nv-space-6); padding-bottom: var(--nv-space-5); border-bottom: 1px solid var(--nv-line); }
-.bn-article .tm-breathing-essay__text > p:first-child { font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); line-height: 1.45; }
-.bn-article__video { margin-top: var(--nv-space-10); }
+.bn-article { max-width: 66ch; margin-inline: auto; }
+.bn-article__meta { margin: var(--nv-space-3) 0 0; color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
+.bn-article__meta strong { color: var(--nv-text); font-weight: var(--nv-weight-action); }
+/* El ensayo se lee sobre la página, sin caja: una sola voz tipográfica (Newsreader). */
+.bn-article .bn-essay { max-width: none; padding: var(--nv-space-6) 0 0; border: 0; border-top: 1px solid var(--nv-line); border-radius: 0; background: transparent; }
+.bn-article .tm-breathing-essay__byline { margin: 0 0 var(--nv-space-6); color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+.bn-essay__lead { margin: 0 0 var(--nv-space-8); font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); line-height: 1.5; color: var(--nv-text-soft); }
+.bn-article .tm-breathing-essay__text { font-family: var(--nv-font-serif); font-size: var(--nv-body-lg); line-height: 1.75; color: var(--nv-text); }
+.bn-article .tm-breathing-essay__text p { margin-block: 0 var(--nv-space-5); }
+.bn-article .tm-breathing-essay__text ul { margin: var(--nv-space-2) 0 0; padding-left: var(--nv-space-6); }
+.bn-article .tm-breathing-essay__text li { margin-bottom: var(--nv-space-3); }
+.bn-article .tm-breathing-essay__text li::marker { color: var(--nv-green-600); }
+.bn-article__video { margin-top: var(--nv-space-10); padding-top: var(--nv-space-8); border-top: 1px solid var(--nv-line); }
 .bn-article__video h2 { margin: 0 0 var(--nv-space-2); font-size: var(--nv-title-sm); }
 .bn-article__video > p { margin: 0 0 var(--nv-space-4); color: var(--nv-text-soft); font-size: var(--nv-body-sm); line-height: 1.6; }
 .bn-author {
@@ -204,7 +211,7 @@
   grid-template-columns: auto minmax(0, 1fr);
   gap: var(--nv-space-5);
   align-items: start;
-  margin-top: var(--nv-space-8);
+  margin-top: var(--nv-space-10);
   padding: var(--nv-space-6);
   border: 1px solid var(--nv-line);
   border-left: 3px solid var(--nv-green-600);
@@ -229,7 +236,7 @@
 .bn-author a { color: var(--nv-text-link); font-size: var(--nv-body-sm); text-underline-offset: .25em; }
 .bn-editorial {
   margin-top: var(--nv-space-8);
-  padding: var(--nv-space-5) var(--nv-space-6);
+  padding: var(--nv-space-5) 0 0;
   border-top: 1px solid var(--nv-line);
   color: var(--nv-text-soft);
   font-size: var(--nv-body-sm);
@@ -246,7 +253,6 @@
   .nv-space-page--bienestar .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }
   .bn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bn-grid > *, .bn-grid > :nth-child(4), .bn-grid > :nth-child(5) { grid-column: auto; }
-  .bn-article .tm-breathing-essay { padding: var(--nv-space-8); }
 }
 @media (max-width: 900px) {
   .bn-grid { grid-template-columns: minmax(0, 1fr); }

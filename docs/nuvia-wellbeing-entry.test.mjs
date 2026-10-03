@@ -47,7 +47,7 @@ for(const url of ['https://www.who.int/es/health-topics','https://medlineplus.go
 assert.match(html,/href="lecturas.html" class="nv-btn nv-btn--secondary">Consultar el catálogo de lecturas/);
 console.log('Bienestar 5A-3: cinco temas, tres guías pendientes, navegación, fuentes y límites explícitos.');
 const articlePage=readFileSync(resolve(root,'la-respiracion-como-el-escultor-del-cerebro.html'),'utf8');
-const essay=articlePage.match(/<article class="tm-breathing-essay">([\s\S]*?)<\/article>/)?.[1];
+const essay=articlePage.match(/<article class="tm-breathing-essay[^"]*">([\s\S]*?)<\/article>/)?.[1];
 assert.ok(essay,'El ensayo publicado debe estar disponible');
 assert.match(essay,/Isabel Florido Mayor/);
 assert.match(essay,/datetime="2026-10-02"/);
@@ -57,8 +57,8 @@ const breathingSection=readFileSync(resolve(root,'respiracion-relajacion.html'),
 assert.match(breathingSection,/href="la-respiracion-como-el-escultor-del-cerebro.html"/);
 assert.doesNotMatch(breathingSection,/<article class="tm-breathing-essay">/);
 assert.match(essay,/<div class="tm-breathing-essay__text">\s*<p>Podemos dejar de andar/);
-assert.doesNotMatch(essay,/En esta serie de vídeos/,'La introducción de la web es ajena al texto firmado');
-assert.match(articlePage,/<p class="bn-intro"[^>]*>En esta serie de vídeos/,'La introducción presenta el primer ensayo en su página de lectura');
+assert.doesNotMatch(essay.match(/<div class="tm-breathing-essay__text">([\s\S]*?)<\/div>/)?.[1],/En esta serie de vídeos/,'La entradilla no forma parte del cuerpo del ensayo');
+assert.match(essay,/<p class="bn-essay__lead">En esta serie de vídeos/,'La entradilla de la autora presenta el ensayo en su página de lectura');
 assert.doesNotMatch(breathingSection,/En esta serie de vídeos/,'La subsección no lleva la introducción del ensayo');
 assert.doesNotMatch(breathingSection,/data-nuvia-external-frame/,'La subsección no incrusta vídeos: solo las páginas de lectura');
 assert.match(articlePage,/data-nuvia-external-frame/);

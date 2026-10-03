@@ -110,6 +110,41 @@
 .bn-player .nv-external-content__placeholder p { font-size: var(--nv-body-sm); }
 .bn-player .nv-external-content__placeholder--dark p { color: var(--nv-white); }
 
+/* Lista de publicaciones de una subsección: filas a lo ancho, bajas, enteras
+   clicables; tipo y fecha a la izquierda, titular en el centro, miniatura y
+   acción a la derecha. La más reciente lleva un filete bronce. */
+.bn-entries { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--nv-line); }
+.bn-entry { border-bottom: 1px solid var(--nv-line); }
+.bn-entry__link {
+  display: grid;
+  grid-template-columns: 136px minmax(0, 1fr) 200px;
+  gap: var(--nv-space-8);
+  align-items: center;
+  padding: var(--nv-space-6) var(--nv-space-5);
+  color: inherit;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background-color .2s ease;
+}
+.bn-entry--latest .bn-entry__link { border-left-color: var(--nv-bronze-500); }
+.bn-entry__link:hover, .bn-entry__link:focus-visible { background: var(--nv-green-100); }
+.bn-entry__kind { display: flex; flex-direction: column; gap: var(--nv-space-2); }
+.bn-entry__kind time { color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+.bn-entry__body h3 { margin: 0 0 var(--nv-space-2); font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); font-weight: 500; line-height: 1.25; color: var(--nv-text); }
+.bn-entry__body p { margin: 0; color: var(--nv-text-soft); font-size: var(--nv-body); line-height: 1.55; }
+.bn-entry__body p.bn-entry__meta { margin-top: var(--nv-space-2); font-size: var(--nv-body-sm); }
+.bn-entry__aside { display: flex; flex-direction: column; align-items: flex-end; gap: var(--nv-space-3); }
+.bn-entry__thumb { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--nv-radius-sm); box-shadow: var(--nv-shadow-sm); }
+.bn-entry__action { display: inline-flex; align-items: center; gap: var(--nv-space-2); color: var(--nv-text-link); font-size: var(--nv-control-font); font-weight: var(--nv-weight-action); }
+.bn-entry__link:hover .bn-entry__action { color: var(--nv-text-link-hover); }
+@media (max-width: 1120px) {
+  .bn-entry__link { grid-template-columns: 112px minmax(0, 1fr) 160px; gap: var(--nv-space-6); }
+}
+@media (max-width: 900px) {
+  .bn-entry__link { grid-template-columns: minmax(0, 1fr) 150px; }
+  .bn-entry__kind { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: var(--nv-space-4); }
+}
+
 /* Otros temas del mismo bloque, al pie de cada subsección. */
 .bn-siblings {
   display: flex;

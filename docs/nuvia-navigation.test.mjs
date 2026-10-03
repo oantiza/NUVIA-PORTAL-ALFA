@@ -61,7 +61,12 @@ const expectedGroups = [
       [
         "temas.html?topic=bienestar",
         "Cuerpo, mente y salud"
-      ]
+      ],
+      ["movimiento-consciente.html", "Movimiento consciente"],
+      ["nutricion-equilibrada.html", "Nutrición equilibrada"],
+      ["respiracion-relajacion.html", "Respiración y relajación"],
+      ["familia-trabajo.html", "Familia y trabajo"],
+      ["descanso-limites-tiempo-propio.html", "Descanso, límites y tiempo propio"]
     ]
   },
   {

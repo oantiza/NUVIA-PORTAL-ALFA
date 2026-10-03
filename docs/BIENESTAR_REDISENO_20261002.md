@@ -88,3 +88,10 @@ afirmaciones sanitarias ni titulaciones.
   la intermitencia de anclas ya documentada el 23-09, también en la versión anterior.
 - Pendiente: compilación completa (`npm run build`) y publicación desde `main` por
   decisión del fundador.
+
+## Ajustes del 03-10-2026
+
+- El vídeo estaba en privado en YouTube (sin miniatura y sin reproducción para visitantes). El fundador lo pasa a «No listado». Se guarda su miniatura como portada local (`src/assets/home/bienestar-video-respiracion-portada-20261003.webp`, recortada para retirar el subtítulo quemado); el reproductor sigue sin conectar con YouTube hasta pulsar «Reproducir».
+- Orden del fundador: un solo reproductor y ningún vídeo en la primera página de Respiración y relajación. La subsección lista solo los ensayos y artículos (tarjeta del ensayo con extracto, firma y fecha); el vídeo se ve únicamente en la página de lectura.
+- La introducción «En esta serie de vídeos y pequeños ensayos…» presenta el primer ensayo, no la sección: pasa a la página de lectura, antes del texto firmado y fuera de él. La prueba `nuvia-wellbeing-entry` recoge este orden (sin introducción ni `data-nuvia-external-frame` en la subsección; ambos en el artículo).
+- `check-render` a 1440 y 768 px en las dos páginas sin fallos. Publicado desde `main`.

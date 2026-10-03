@@ -140,6 +140,7 @@
 /* ── Página de lectura del artículo ─────────────────────────────────────── */
 .bn-article { max-width: 76ch; margin-inline: auto; }
 .bn-article .tm-breathing-essay { padding: var(--nv-space-10); }
+.bn-article > .bn-intro { margin-bottom: var(--nv-space-8); }
 .bn-article .tm-breathing-essay__byline { display: flex; flex-wrap: wrap; align-items: center; gap: var(--nv-space-2) var(--nv-space-3); margin: 0 0 var(--nv-space-6); padding-bottom: var(--nv-space-5); border-bottom: 1px solid var(--nv-line); }
 .bn-article .tm-breathing-essay__text > p:first-child { font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); line-height: 1.45; }
 .bn-article__video { margin-top: var(--nv-space-10); }

@@ -57,8 +57,11 @@ const breathingSection=readFileSync(resolve(root,'respiracion-relajacion.html'),
 assert.match(breathingSection,/href="la-respiracion-como-el-escultor-del-cerebro.html"/);
 assert.doesNotMatch(breathingSection,/<article class="tm-breathing-essay">/);
 assert.match(essay,/<div class="tm-breathing-essay__text">\s*<p>Podemos dejar de andar/);
-assert.doesNotMatch(essay,/En esta serie de vídeos/,'La introducción de la web es ajena al artículo');
-assert.match(breathingSection,/En esta serie de vídeos/);
+assert.doesNotMatch(essay,/En esta serie de vídeos/,'La introducción de la web es ajena al texto firmado');
+assert.match(articlePage,/<p class="bn-intro"[^>]*>En esta serie de vídeos/,'La introducción presenta el primer ensayo en su página de lectura');
+assert.doesNotMatch(breathingSection,/En esta serie de vídeos/,'La subsección no lleva la introducción del ensayo');
+assert.doesNotMatch(breathingSection,/data-nuvia-external-frame/,'La subsección no incrusta vídeos: solo las páginas de lectura');
+assert.match(articlePage,/data-nuvia-external-frame/);
 assert.match(essay,/llevar vida directamente al corazón/);
 assert.match(essay,/en la mente, que/);
 assert.match(essay,/nos acompaña a diario: la respiración/);
@@ -72,7 +75,7 @@ assert.match(home,/href="respiracion-relajacion.html"/);
 for(const id of wellbeingTopics) assert.ok(home.includes(`href="${id}.html"`));
 assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta/);
 
-for (const content of [breathingSection, articlePage]) assert.match(content, /href="https:\/\/youtu.be\/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer"/);
+assert.match(articlePage, /href="https:\/\/youtu.be\/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer"/);
 const redirect=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 for(const id of wellbeingTopics){
   let destination;

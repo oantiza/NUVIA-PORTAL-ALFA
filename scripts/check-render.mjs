@@ -82,7 +82,7 @@ const CONTENIDO = {
   'mercados.html?vista=informes': [['[data-report-reader]', 1], ['[data-report-edition]:not([hidden]) .nv-report', 1], ['[data-report-select]', 2]],
   'temas.html':            [['.nv-space-tool-card', 4]],
   'temas.html?topic=jubilacion': [['.jb-stepper__btn', 4], ['#familia-legado', 1]],
-  'temas.html?topic=bienestar': [['#tema-titulo', 1], ['.tm-wellbeing', 1], ['.tm-pillar', 5]],
+  'temas.html?topic=bienestar': [['#tema-titulo', 1], ['.tm-wellbeing', 1], ['.tm-pillar', 4]],
   'temas.html?topic=planificacion-patrimonial': [['#tema-titulo', 1], ['.tm-pills .viv-pill', 4], ['.tm-card__title', 3]],
   'guia-calendario.html':  [['.gt-title', 1]],
   'guia-ahorro.html':      [['.gt-title', 1]],

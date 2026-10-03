@@ -115,7 +115,7 @@ Cada una de las 5 Homes de espacio contará con su propia identidad cromática y
 
 3. **Home de Familia, Salud y Bienestar:**
    * Apertura serena y humana sobre el equilibrio entre tiempo, salud y patrimonio.
-   * Temas vigentes por orden del fundador de 02-10-2026: la Home sigue la estructura de Cuerpo, mente y salud —Movimiento consciente; Nutrición equilibrada; Respiración y relajación; Familia y trabajo; Descanso, límites y tiempo propio—. Se sustituyen las secciones anteriores de la Home y se retira el bloque adicional «Cuidar lo que no cabe en una cuenta» para conservar un único mapa de contenidos.
+   * Temas vigentes por orden del fundador de 03-10-2026: la Home sigue la estructura de Cuerpo, mente y salud con cuatro temas, en este orden —Respiración y relajación; Movimiento consciente; Nutrición equilibrada; Descanso, límites y tiempo propio— (Familia y trabajo retirado el 03-10-2026). Se sustituyen las secciones anteriores de la Home y se retira el bloque adicional «Cuidar lo que no cabe en una cuenta» para conservar un único mapa de contenidos.
    * Advertencia taxativa: divulgación basada en fuentes solventes, sin emisión de diagnósticos ni prescripciones sanitarias individuales.
 
 4. **Home de Academia NUVIA:**

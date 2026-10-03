@@ -3,7 +3,6 @@ export const VISUAL_ARCHETYPES = {
   'movimiento-consciente.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'nutricion-equilibrada.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'respiracion-relajacion.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'familia-trabajo.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'descanso-limites-tiempo-propio.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'la-respiracion-como-el-escultor-del-cerebro.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
   'index.html': { type: 'institucional', exception: 'Portada fotográfica: composición y velos propios.' },

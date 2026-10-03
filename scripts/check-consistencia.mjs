@@ -48,7 +48,6 @@ const PRESUPUESTO_INLINE = {
   'academia.html': 0,
   'bienestar.html': 0,
   'descanso-limites-tiempo-propio.html': 0,
-  'familia-trabajo.html': 0,
   'la-respiracion-como-el-escultor-del-cerebro.html': 0,
   'movimiento-consciente.html': 0,
   'nutricion-equilibrada.html': 0,

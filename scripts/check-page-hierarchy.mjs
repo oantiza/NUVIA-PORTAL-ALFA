@@ -3,7 +3,7 @@ export async function checkPageHierarchy(page, route) {
   const path = new URL(page.url()).pathname.split('/').pop();
   const homes = ['index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'lecturas.html', 'sistema-visual.html'];
   if (homes.includes(path) || route === 'academia.html') return [];
-  const parent = path === 'la-respiracion-como-el-escultor-del-cerebro.html' ? 'respiracion-relajacion.html' : ["movimiento-consciente.html","nutricion-equilibrada.html","respiracion-relajacion.html","familia-trabajo.html","descanso-limites-tiempo-propio.html"].includes(path) ? 'temas.html?topic=bienestar' : path === 'cartera.html' || path === 'mercados.html' ? 'economia.html'
+  const parent = path === 'la-respiracion-como-el-escultor-del-cerebro.html' ? 'respiracion-relajacion.html' : ["respiracion-relajacion.html","movimiento-consciente.html","nutricion-equilibrada.html","descanso-limites-tiempo-propio.html"].includes(path) ? 'temas.html?topic=bienestar' : path === 'cartera.html' || path === 'mercados.html' ? 'economia.html'
     : path === 'academia.html' || path === 'curso.html' ? 'academia.html'
     : route.includes('topic=bienestar') ? 'bienestar.html'
     : ['colaboradores.html', 'metodologia.html', 'independencia.html', 'que-es-nuvia.html'].includes(path) ? 'index.html'

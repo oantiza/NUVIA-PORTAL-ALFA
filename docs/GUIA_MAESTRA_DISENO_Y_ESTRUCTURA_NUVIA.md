@@ -37,7 +37,7 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 - **Economía y Finanzas** (`economia.html`): Informes (`mercados.html?vista=informes`), Mercados y noticias, Cartera, Análisis y valoración de empresas (`cartera.html?vista=companies`, módulo `company-analysis/`).
 - **Patrimonio** (`patrimonio.html`): Vivienda y coste de vida, Jubilación, Impuestos (`fiscalidad.html` y `guia-*.html`), Planificación patrimonial (`temas.html?topic=planificacion-patrimonial`).
-- **Familia, Salud y Bienestar** (`bienestar.html`): Cuerpo, mente y salud (`temas.html?topic=bienestar`) con cinco subsecciones propias: `movimiento-consciente.html`, `nutricion-equilibrada.html`, `respiracion-relajacion.html`, `familia-trabajo.html`, `descanso-limites-tiempo-propio.html`. Cada subsección reúne artículos y ensayos; cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
+- **Familia, Salud y Bienestar** (`bienestar.html`): Cuerpo, mente y salud (`temas.html?topic=bienestar`) con cuatro subsecciones propias, en este orden: `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html` (Familia y trabajo se retiró el 03-10-2026). Cada subsección lista sus publicaciones como filas a lo ancho (`.bn-entries`); cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
 - **Academia NUVIA** (`academia.html`): Conocimientos esenciales, Cursos, Fundamentos, Activos, Interés compuesto, Glosario (vistas `?tab=…`) y `curso.html`.
 - **Lecturas con Criterio** (`lecturas.html`): catálogo y fichas; conserva su diseño editorial propio (excepción expresa).
 
@@ -47,7 +47,7 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 ### 2.4 Cáscara común (cabecera y pie)
 
-La navegación y el pie son **un componente único** definido en `_plantilla.html` y sincronizado a todas las páginas con `npm run shell:sync` (`npm run shell:check` verifica). Nunca se edita la cabecera o el pie en una página suelta. El menú de cada espacio lista su portada y todas sus hijas (incluidas, en Bienestar, las cinco subsecciones). El pie muestra los cinco espacios, las herramientas, la información de confianza y los avisos legales.
+La navegación y el pie son **un componente único** definido en `_plantilla.html` y sincronizado a todas las páginas con `npm run shell:sync` (`npm run shell:check` verifica). Nunca se edita la cabecera o el pie en una página suelta. El menú de cada espacio lista su portada y todas sus hijas (incluidas, en Bienestar, las cuatro subsecciones). El pie muestra los cinco espacios, las herramientas, la información de confianza y los avisos legales.
 
 ### 2.5 Contenido de colaboradores
 
@@ -126,7 +126,7 @@ Acentos por espacio (`--nv-space-accent`): verde en Economía y Bienestar, bronc
 1. Ruta `.nv-space-trail`.
 2. Hero `.home26-plate` con panorámica propia (`src/assets/home/<espacio>-panoramica-*.webp`), eyebrow, H1 y párrafo de propósito; variantes `--light`, `--reverse`, `--bleed` según espacio.
 3. Entradilla editorial `.nv-space-intro > .nv-space-insight` («Una mirada de conjunto»): banda abierta sin caja, frase en Newsreader a la izquierda y tres párrafos separados por filetes, con una raya corta de color (verde, bronce, azul). Es texto editorial, no tarjetas.
-4. Mapa de accesos `.nv-space-resources` con tarjetas con fotografía `.nv-space-tool-card.nv-space-tool-card--photo` (banda de imagen 2:1 decorativa, símbolo `.nv-space-symbol`, badge, H3, párrafo, acción). Tres por fila; en Bienestar, 3 + 2 centradas (`.bn-grid`).
+4. Mapa de accesos `.nv-space-resources` con tarjetas con fotografía `.nv-space-tool-card.nv-space-tool-card--photo` (banda de imagen 2:1 decorativa, símbolo `.nv-space-symbol`, badge, H3, párrafo, acción). Tres por fila en Economía; 2 × 2 (`.nv-card-grid--2`) en Patrimonio y Bienestar.
 5. `.nv-note` con el aviso del espacio.
 6. `.nv-space-next` «Sigue explorando NUVIA».
 

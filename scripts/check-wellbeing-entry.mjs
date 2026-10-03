@@ -8,9 +8,9 @@ export async function checkWellbeingEntry(page, route) {
   if(await page.locator('main h1').textContent()!=='Cuerpo, mente y salud') problems.push('Nombre incorrecto del espacio');
   if(await page.title()!=='NUVIA · Cuerpo, mente y salud') problems.push('Título incorrecto de la pestaña');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
-  if(await page.locator('.tm-pillar[role="listitem"]').count()!==5) problems.push('Faltan los cinco temas semánticos');
+  if(await page.locator('.tm-pillar[role="listitem"]').count()!==4) problems.push('Faltan los cuatro temas semánticos');
   const topicLinks=page.locator('.tm-pillars a.tm-pillar__link');
-  if(await topicLinks.count()!==5) problems.push('Faltan los cinco accesos a subsecciones');
+  if(await topicLinks.count()!==4) problems.push('Faltan los cuatro accesos a subsecciones');
   const destinations=await topicLinks.evaluateAll(links=>links.map(a=>a.getAttribute('href')));
   for(const destination of destinations) {
     await page.locator('.tm-pillars a[href="'+destination+'"]').focus();

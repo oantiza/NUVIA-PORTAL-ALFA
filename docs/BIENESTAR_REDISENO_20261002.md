@@ -95,3 +95,18 @@ afirmaciones sanitarias ni titulaciones.
 - Orden del fundador: un solo reproductor y ningún vídeo en la primera página de Respiración y relajación. La subsección lista solo los ensayos y artículos (tarjeta del ensayo con extracto, firma y fecha); el vídeo se ve únicamente en la página de lectura.
 - La introducción «En esta serie de vídeos y pequeños ensayos…» presenta el primer ensayo, no la sección: pasa a la página de lectura, antes del texto firmado y fuera de él. La prueba `nuvia-wellbeing-entry` recoge este orden (sin introducción ni `data-nuvia-external-frame` en la subsección; ambos en el artículo).
 - `check-render` a 1440 y 768 px en las dos páginas sin fallos. Publicado desde `main`.
+
+## Cuatro temas · 03-10-2026
+
+Orden del fundador: Cuerpo, mente y salud pasa de cinco a cuatro temas. Se retira
+«Familia y trabajo» (página y sus dos imágenes; los originales siguen en
+`output/imagegen/`) y el orden queda: 01 Respiración y relajación, 02 Movimiento
+consciente, 03 Nutrición equilibrada, 04 Descanso, límites y tiempo propio.
+Afecta a la portada (rejilla 2 × 2), a la página Cuerpo, mente y salud, al menú
+común, al sitemap, a las subsecciones (numeración y temas hermanos) y a los
+contratos y pruebas del portal. También: el artículo se lee sin caja, en
+Newsreader, con la entradilla de la autora dentro de la pieza firmada; la
+subsección lista las publicaciones como filas a lo ancho (`.bn-entries`); el
+vídeo lleva portada local y la miniatura solo muestra botones y una nota mínima.
+Validación: pruebas estáticas en verde y render a 1440 y 768 px en las cinco
+páginas afectadas. Publicado desde `main`.

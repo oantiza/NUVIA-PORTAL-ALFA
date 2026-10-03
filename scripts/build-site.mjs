@@ -49,7 +49,6 @@ const paginas = [
   'movimiento-consciente.html',
   'nutricion-equilibrada.html',
   'respiracion-relajacion.html',
-  'familia-trabajo.html',
   'descanso-limites-tiempo-propio.html',
   'la-respiracion-como-el-escultor-del-cerebro.html',
   'colaboradores.html',

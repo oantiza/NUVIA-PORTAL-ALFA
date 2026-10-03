@@ -15,7 +15,7 @@ assert.equal(model.esBienestar,true);
 assert.equal(model.mostrarSelector,false);
 assert.equal(model.mostrarRegresoPatrimonio,false);
 assert.equal(model.recursos.length,3);
-assert.deepEqual(Array.from(model.recursos,r=>r.titulo),['Movimiento, nutrición y descanso','Calma y gestión del estrés','Familia, trabajo y tiempo propio']);
+assert.deepEqual(Array.from(model.recursos,r=>r.titulo),['Movimiento, nutrición y descanso','Calma y gestión del estrés','Descanso, límites y tiempo propio']);
 const nav=html.match(/<nav class="tm-wellbeing-nav"[\s\S]*?<\/nav>/)?.[0];
 assert.ok(nav);
 for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
@@ -24,9 +24,9 @@ for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
 }
 const list=html.match(/<div class="tm-pillars"[\s\S]*?<\/article>/)?.[0];
 assert.match(list,/role="list"/);
-assert.equal((list.match(/role="listitem"/g)||[]).length,5);
-const wellbeingTopics=['movimiento-consciente','nutricion-equilibrada','respiracion-relajacion','familia-trabajo','descanso-limites-tiempo-propio'];
-assert.equal((list.match(/class="tm-pillar__link"/g)||[]).length,5);
+assert.equal((list.match(/role="listitem"/g)||[]).length,4);
+const wellbeingTopics=['respiracion-relajacion','movimiento-consciente','nutricion-equilibrada','descanso-limites-tiempo-propio'];
+assert.equal((list.match(/class="tm-pillar__link"/g)||[]).length,4);
 for(const id of wellbeingTopics) {
   assert.ok(list.includes(`href="${id}.html"`));
   const child=readFileSync(resolve(root,id+'.html'),'utf8');
@@ -45,7 +45,7 @@ for(const url of ['https://www.who.int/es/health-topics','https://medlineplus.go
   assert.ok(html.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`));
 }
 assert.match(html,/href="lecturas.html" class="nv-btn nv-btn--secondary">Consultar el catálogo de lecturas/);
-console.log('Bienestar 5A-3: cinco temas, tres guías pendientes, navegación, fuentes y límites explícitos.');
+console.log('Bienestar 5A-3: cuatro temas, tres guías pendientes, navegación, fuentes y límites explícitos.');
 const articlePage=readFileSync(resolve(root,'la-respiracion-como-el-escultor-del-cerebro.html'),'utf8');
 const essay=articlePage.match(/<article class="tm-breathing-essay[^"]*">([\s\S]*?)<\/article>/)?.[1];
 assert.ok(essay,'El ensayo publicado debe estar disponible');
@@ -70,10 +70,10 @@ assert.doesNotMatch(essay,/adentro|vida llevándola|La respiración, como el equ
 assert.equal((essay.match(/<li>/g)||[]).length,5);
 assert.doesNotMatch(essay,/\[equilibrio\?\]|\[llevar\?\]/);
 const home=readFileSync(resolve(root,'bienestar.html'),'utf8');
-for(const topic of ['Movimiento consciente','Nutrición equilibrada','Respiración y relajación','Familia y trabajo','Descanso, límites y tiempo propio']) assert.ok(home.includes(`<h3>${topic}</h3>`),topic);
+for(const topic of ['Respiración y relajación','Movimiento consciente','Nutrición equilibrada','Descanso, límites y tiempo propio']) assert.ok(home.includes(`<h3>${topic}</h3>`),topic);
 assert.match(home,/href="respiracion-relajacion.html"/);
 for(const id of wellbeingTopics) assert.ok(home.includes(`href="${id}.html"`));
-assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta/);
+assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta|familia-trabajo/);
 
 assert.match(articlePage, /href="https:\/\/youtu.be\/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer"/);
 const redirect=html.match(/<script>([\s\S]*?)<\/script>/)[1];

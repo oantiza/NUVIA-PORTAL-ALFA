@@ -41,11 +41,6 @@
 .nv-space-page--bienestar .nv-space-insight__items > div:nth-child(2) h3::before { background: var(--nv-bronze-500); }
 .nv-space-page--bienestar .nv-space-insight__items > div:nth-child(3) h3::before { background: var(--nv-navy-700); }
 
-/* Cinco tarjetas con fotografía: tres arriba y dos centradas debajo. */
-.bn-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--nv-space-6); }
-.bn-grid > * { grid-column: span 2; }
-.bn-grid > :nth-child(4) { grid-column: 2 / span 2; }
-.bn-grid > :nth-child(5) { grid-column: 4 / span 2; }
 .nv-space-page--bienestar .nv-space-tool-card__media::after {
   background: linear-gradient(180deg,
     color-mix(in srgb, var(--nv-green-800) 10%, transparent) 0%,
@@ -251,11 +246,8 @@
   .nv-space-page--bienestar .nv-space-insight { padding: var(--nv-space-8) 0; }
   .nv-space-page--bienestar .nv-space-insight h2 { max-width: none; }
   .nv-space-page--bienestar .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }
-  .bn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .bn-grid > *, .bn-grid > :nth-child(4), .bn-grid > :nth-child(5) { grid-column: auto; }
 }
 @media (max-width: 900px) {
-  .bn-grid { grid-template-columns: minmax(0, 1fr); }
   .bn-siblings > p { flex-basis: 100%; }
   .bn-author { grid-template-columns: minmax(0, 1fr); }
 }

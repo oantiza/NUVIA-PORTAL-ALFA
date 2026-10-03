@@ -12,7 +12,7 @@ for(const [query,destination] of [
   ['?topic=vivienda-coste-vida','vivienda.html'], ['?topic=fiscalidad','fiscalidad.html'],
   ['?topic=mis-impuestos','fiscalidad.html'], ['?topic=desconocido','patrimonio.html'],
   ['?topic=toString','patrimonio.html'],
-  ['?topic=bienestar',null], ['?topic=planificacion-patrimonial',null],
+  ['?topic=bienestar','bienestar.html'], ['?topic=planificacion-patrimonial',null],
 ]) {
   let result=null;
   const href='https://example.test/NUVIA-PORTAL-ALFA/temas.html'+query+(query?'&':'?')+'territorio=bizkaia#familia-legado';

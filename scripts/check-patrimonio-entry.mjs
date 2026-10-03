@@ -39,9 +39,5 @@ export async function checkPatrimonioEntry(page, route) {
     if(!new URL(page.url()).pathname.endsWith('/jubilacion.html')) problems.push('El acceso antiguo no llega a Jubilación');
     if(await page.locator('#familia-legado').count()!==1) problems.push('Se ha perdido el contenido de Familia y legado');
   }
-  if(route==='temas.html?topic=bienestar') {
-    if(await page.locator('#tema-titulo').textContent()!=='Cuerpo, mente y salud') problems.push('El contenido de Bienestar no tiene título propio');
-    if(await page.locator('.tm-pills,.tm-back,#patrimonio-ambitos').count()) problems.push('Bienestar vuelve a mostrar navegación interna de Patrimonio');
-  }
   return problems;
 }

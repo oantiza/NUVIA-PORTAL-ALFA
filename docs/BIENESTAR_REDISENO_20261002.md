@@ -110,3 +110,19 @@ subsección lista las publicaciones como filas a lo ancho (`.bn-entries`); el
 vídeo lleva portada local y la miniatura solo muestra botones y una nota mínima.
 Validación: pruebas estáticas en verde y render a 1440 y 768 px en las cinco
 páginas afectadas. Publicado desde `main`.
+
+## Retirada de la página intermedia «Cuerpo, mente y salud» · 03-10-2026
+
+Orden del fundador: `temas.html?topic=bienestar` era redundante con la portada de
+Bienestar (mismo índice de temas) y heredada de la arquitectura anterior. Se retira:
+`temas.html` ya no sirve contenido de Bienestar y redirige `?topic=bienestar` a
+`bienestar.html` (y `#subseccion` a su página). El bloque «Fuentes de consulta y
+límites» (OMS, MedlinePlus y los límites sanitarios) pasa a la portada de Bienestar
+(`.bn-sources`); el anuncio de «tres guías en preparación» no se traslada, porque no
+son contenidos publicados. Recorrido definitivo: Inicio › Familia, Salud y Bienestar ›
+Subsección › Artículo. El menú común pierde la entrada «Cuerpo, mente y salud»; las
+subsecciones y el artículo acortan su ruta y vuelven a la portada.
+Contratos y pruebas (`check-wellbeing-entry`, `check-patrimonio-entry`,
+`check-page-hierarchy`, `check-render`, `nuvia-wellbeing-entry`, `nuvia-navigation`,
+`nuvia-page-hierarchy`) actualizados. Validación estática en verde y render a 1440,
+1024 y 768 px en las páginas afectadas.

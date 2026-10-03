@@ -1,62 +1,36 @@
-/* Presentación y rutas locales; no abre fuentes externas ni recopila información. */
+/* Presentación y rutas locales de Familia, Salud y Bienestar; no abre fuentes externas ni recopila información. */
 export async function checkWellbeingEntry(page, route) {
-  if(!route.startsWith('temas.html')) return [];
-  if(route!=='temas.html?topic=bienestar') {
-    return await page.locator('.tm-wellbeing-nav,#bienestar-ambitos,#bienestar-fuentes').count() ? ['Bienestar invade una vista de Patrimonio'] : [];
+  if(route.startsWith('temas.html')) {
+    return await page.locator('.tm-wellbeing-nav,#bienestar-ambitos,#bienestar-fuentes,.tm-pillars').count() ? ['Bienestar invade una vista de Patrimonio'] : [];
   }
+  if(route!=='bienestar.html') return [];
   const problems=[], start=page.url();
-  if(await page.locator('main h1').textContent()!=='Cuerpo, mente y salud') problems.push('Nombre incorrecto del espacio');
-  if(await page.title()!=='NUVIA · Cuerpo, mente y salud') problems.push('Título incorrecto de la pestaña');
+  if(await page.locator('main h1').textContent()!=='Familia, Salud y Bienestar') problems.push('Nombre incorrecto del espacio');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
-  if(await page.locator('.tm-pillar[role="listitem"]').count()!==4) problems.push('Faltan los cuatro temas semánticos');
-  const topicLinks=page.locator('.tm-pillars a.tm-pillar__link');
+  const topicLinks=page.locator('#pilares-bienestar a.nv-space-tool-card');
   if(await topicLinks.count()!==4) problems.push('Faltan los cuatro accesos a subsecciones');
   const destinations=await topicLinks.evaluateAll(links=>links.map(a=>a.getAttribute('href')));
   for(const destination of destinations) {
-    await page.locator('.tm-pillars a[href="'+destination+'"]').focus();
+    await page.locator('#pilares-bienestar a[href="'+destination+'"]').focus();
     await page.keyboard.press('Enter');
     await page.waitForURL(new URL(destination,start).href);
     await page.locator('main h1').waitFor();
     if(await page.locator('main h1').count()!==1) problems.push('Subsección sin título propio');
+    if(await page.locator('.nv-breadcrumb a[href="temas.html?topic=bienestar"]').count()) problems.push('La subsección conserva el nivel retirado en su ruta');
     if(destination==='respiracion-relajacion.html') {
-      await page.locator('main a[href="la-respiracion-como-el-escultor-del-cerebro.html"]').click();
+      await page.locator('main a[href="la-respiracion-como-el-escultor-del-cerebro.html"]').first().click();
       await page.locator('.tm-breathing-essay').waitFor();
       await page.locator('.nv-breadcrumb a[href="respiracion-relajacion.html"]').click();
     }
-    await page.locator('.nv-breadcrumb a[href="temas.html?topic=bienestar"]').click();
-    await page.locator('.tm-pillars').waitFor();
+    await page.locator('.nv-breadcrumb a[href="bienestar.html"]').click();
+    await page.locator('#pilares-bienestar').waitFor();
   }
   if(await page.locator('.tm-breathing-essay').count()) problems.push('La portada contiene el artículo completo');
-  await page.waitForFunction(() => document.querySelectorAll('.tm-card__tag.nv-tag--pending').length === 3, null, {timeout: 5000}).catch(() => {});
-  if(await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Las tres guías no están marcadas en preparación');
-  for(const card of await page.locator('.tm-card:has(.nv-tag--pending)').all()) {
-    if(await card.locator('a,button,input').count()) problems.push('Una guía pendiente ofrece una acción falsa');
-  }
-  if(!await page.locator('.tm-wellbeing-availability').isVisible()||!await page.locator('.tm-wellbeing-limits').isVisible()) problems.push('Falta la disponibilidad o los límites');
-  const sources=page.locator('.tm-wellbeing-source__link');
+  const sources=page.locator('.bn-sources .tm-wellbeing-source__link');
   if(await sources.count()!==2) problems.push('Faltan los dos índices de consulta');
   for(const source of await sources.all()) {
     if(await source.getAttribute('target')!=='_blank'||await source.getAttribute('rel')!=='noopener noreferrer') problems.push('Enlace externo sin protección');
   }
-  for(const id of ['bienestar-ambitos','bienestar-guias','bienestar-fuentes']) {
-    const link=page.locator(`.tm-wellbeing-nav a[href="#${id}"]`);
-    await link.focus();
-    await page.keyboard.press('Enter');
-    await page.waitForURL(new URL('#'+id,start).href);
-    await page.waitForFunction(id=>{
-      const el=document.getElementById(id), rect=el.getBoundingClientRect();
-      const header=document.querySelector('header')?.getBoundingClientRect();
-      return rect.top>=(header?.bottom||0)-1 && rect.top<innerHeight-40;
-    },id,{timeout:5000}).catch(async () => {
-      const position = await page.locator('#'+id).evaluate(el => ({top: el.getBoundingClientRect().top, headerBottom: document.querySelector('header')?.getBoundingClientRect().bottom, scrollY, viewport: innerHeight}));
-      throw new Error(`Destino ${id} fuera de lectura: ${JSON.stringify(position)}`);
-    });
-    if(await page.locator('#tema').evaluate(el=>el.scrollTop!==0)) problems.push('El enlace desplaza el interior de la cabecera');
-  }
-  await page.locator('.tm-wellbeing-reading a').click();
-  await page.waitForURL(new URL('lecturas.html',start).href);
-  await page.locator('.lecturas-card').first().waitFor({state:'visible'});
-  await page.goto(start);
-  await page.locator('.tm-wellbeing-nav').waitFor({state:'visible'});
+  if(!await page.locator('#fuentes-bienestar').isVisible()) problems.push('Faltan las fuentes y los límites');
   return problems;
 }

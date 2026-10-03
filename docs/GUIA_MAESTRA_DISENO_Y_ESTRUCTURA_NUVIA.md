@@ -37,13 +37,13 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 - **Economía y Finanzas** (`economia.html`): Informes (`mercados.html?vista=informes`), Mercados y noticias, Cartera, Análisis y valoración de empresas (`cartera.html?vista=companies`, módulo `company-analysis/`).
 - **Patrimonio** (`patrimonio.html`): Vivienda y coste de vida, Jubilación, Impuestos (`fiscalidad.html` y `guia-*.html`), Planificación patrimonial (`temas.html?topic=planificacion-patrimonial`).
-- **Familia, Salud y Bienestar** (`bienestar.html`): Cuerpo, mente y salud (`temas.html?topic=bienestar`) con cuatro subsecciones propias, en este orden: `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html` (Familia y trabajo se retiró el 03-10-2026). Cada subsección lista sus publicaciones como filas a lo ancho (`.bn-entries`); cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
+- **Familia, Salud y Bienestar** (`bienestar.html`): la portada es a la vez el índice de Cuerpo, mente y salud, con cuatro subsecciones propias, en este orden: `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html` (Familia y trabajo se retiró el 03-10-2026; la antigua página intermedia `temas.html?topic=bienestar` redirige a la portada y sus anclas a cada subsección). Cada subsección lista sus publicaciones como filas a lo ancho (`.bn-entries`); cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
 - **Academia NUVIA** (`academia.html`): Conocimientos esenciales, Cursos, Fundamentos, Activos, Interés compuesto, Glosario (vistas `?tab=…`) y `curso.html`.
 - **Lecturas con Criterio** (`lecturas.html`): catálogo y fichas; conserva su diseño editorial propio (excepción expresa).
 
 ### 2.3 Recorrido y jerarquía de una página hija
 
-`Inicio › Espacio › [Bloque] › Página › [Artículo]`. Toda página hija lleva: ruta de navegación (`.nv-breadcrumb`), un único `<h1>`, una explicación breve y, si procede, controles o navegación local. No repite las tarjetas de bienvenida ni añade una segunda portada. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
+`Inicio › Espacio › Página › [Artículo]`. Toda página hija lleva: ruta de navegación (`.nv-breadcrumb`), un único `<h1>`, una explicación breve y, si procede, controles o navegación local. No repite las tarjetas de bienvenida ni añade una segunda portada. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
 
 ### 2.4 Cáscara común (cabecera y pie)
 
@@ -127,14 +127,14 @@ Acentos por espacio (`--nv-space-accent`): verde en Economía y Bienestar, bronc
 2. Hero `.home26-plate` con panorámica propia (`src/assets/home/<espacio>-panoramica-*.webp`), eyebrow, H1 y párrafo de propósito; variantes `--light`, `--reverse`, `--bleed` según espacio.
 3. Entradilla editorial `.nv-space-intro > .nv-space-insight` («Una mirada de conjunto»): banda abierta sin caja, frase en Newsreader a la izquierda y tres párrafos separados por filetes, con una raya corta de color (verde, bronce, azul). Es texto editorial, no tarjetas.
 4. Mapa de accesos `.nv-space-resources` con tarjetas con fotografía `.nv-space-tool-card.nv-space-tool-card--photo` (banda de imagen 2:1 decorativa, símbolo `.nv-space-symbol`, badge, H3, párrafo, acción). Tres por fila en Economía; 2 × 2 (`.nv-card-grid--2`) en Patrimonio y Bienestar.
-5. `.nv-note` con el aviso del espacio.
+5. `.nv-note` con el aviso del espacio; en Bienestar, además, el bloque «Fuentes de consulta y límites» (`.bn-sources`).
 6. `.nv-space-next` «Sigue explorando NUVIA».
 
 **C · Página hija / subsección** (`.nv-hero.nv-hero--institutional.nv-entry.nv-sub-hero`):
 1. Ruta completa.
 2. Cabecera clara y compacta (`nuvia-subseccion.css`): eyebrow, H1 36 px, lead y etiquetas a la izquierda; foto enmarcada a la derecha (`.nv-sub-hero__media > img.nv-sub-hero__img`, radio grande, sombra y filete bronce en la esquina). En tablet la foto baja bajo el texto.
 3. Cuerpo: `.nv-section-heading` + contenido (catálogo de tarjetas, herramienta, guía).
-4. Pie local: enlaces a páginas hermanas y regreso al nivel superior.
+4. Pie local: enlaces a páginas hermanas y regreso a la portada del espacio.
 
 **D · Artículo / lectura** (`.nv-hero--institutional.nv-entry` sin foto): eyebrow «Subsección · Tipo», H1, etiquetas (tipo, duración, «Con vídeo»); columna de lectura ≈ 76ch con introducción (si la hay, fuera del texto firmado), `<article>` con firma y fecha, texto íntegro, reproductor único con portada local, «Sobre el autor» y notas editoriales; enlaces de regreso.
 

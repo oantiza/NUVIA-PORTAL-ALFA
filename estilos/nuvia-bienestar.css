@@ -55,6 +55,22 @@
 .nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-descanso"] { object-position: center 35%; }
 .nv-space-page--bienestar .nv-space-tool-card__media img[src*="bienestar-card-nutricion"] { object-position: center 55%; }
 
+/* Fuentes de consulta y límites, al pie de la portada. */
+.bn-sources {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--nv-space-10);
+  margin-top: var(--nv-space-10);
+  padding-top: var(--nv-space-8);
+  border-top: 1px solid var(--nv-line);
+}
+.bn-sources__text h3 { margin: var(--nv-space-2) 0 var(--nv-space-3); font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); font-weight: 500; }
+.bn-sources__text p:last-child { margin: 0; color: var(--nv-text-soft); font-size: var(--nv-body-sm); line-height: 1.65; }
+.bn-sources__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--nv-space-4); }
+.bn-sources__list li { display: grid; gap: var(--nv-space-1); padding: var(--nv-space-4) var(--nv-space-5); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); background: var(--nv-surface); }
+.bn-sources__list a { font-size: var(--nv-body); font-weight: var(--nv-weight-action); }
+.bn-sources__list span { color: var(--nv-text-muted); font-size: var(--nv-body-sm); }
+
 /* ── Subsecciones ───────────────────────────────────────────────────────── */
 .bn-sub-hero__tags { display: flex; flex-wrap: wrap; gap: var(--nv-space-2); margin-top: var(--nv-space-5); }
 .bn-intro {
@@ -251,6 +267,7 @@
 /* ── Tablet ─────────────────────────────────────────────────────────────── */
 @media (max-width: 1120px) {
   .nv-space-page--bienestar .nv-space-tool-card__media { height: 200px; }
+  .bn-sources { grid-template-columns: minmax(0, 1fr); gap: var(--nv-space-6); }
   .nv-space-page--bienestar .nv-space-insight { padding: var(--nv-space-8) 0; }
   .nv-space-page--bienestar .nv-space-insight h2 { max-width: none; }
   .nv-space-page--bienestar .nv-space-insight__items > div:first-child { padding-left: 0; border-left: 0; }

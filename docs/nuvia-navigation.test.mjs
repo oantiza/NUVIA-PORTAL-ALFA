@@ -58,10 +58,6 @@ const expectedGroups = [
         "bienestar.html",
         "Portada de Bienestar"
       ],
-      [
-        "temas.html?topic=bienestar",
-        "Cuerpo, mente y salud"
-      ],
       ["respiracion-relajacion.html", "Respiración y relajación"],
       ["movimiento-consciente.html", "Movimiento consciente"],
       ["nutricion-equilibrada.html", "Nutrición equilibrada"],

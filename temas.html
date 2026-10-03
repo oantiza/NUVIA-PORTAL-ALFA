@@ -9,8 +9,8 @@
   const topic = url.searchParams.get('topic');
     const wellbeingPages = ["respiracion-relajacion","movimiento-consciente","nutricion-equilibrada","descanso-limites-tiempo-propio"];
     if (topic === 'bienestar' && wellbeingPages.includes(url.hash.slice(1))) { location.replace(url.hash.slice(1) + '.html'); return; }
-  const destinations = { patrimonio: 'patrimonio.html', jubilacion: 'jubilacion.html', vivienda: 'vivienda.html', 'vivienda-coste-vida': 'vivienda.html', fiscalidad: 'fiscalidad.html', 'mis-impuestos': 'fiscalidad.html' };
-  const target = Object.hasOwn(destinations, topic) ? destinations[topic] : (!['bienestar', 'planificacion-patrimonial'].includes(topic) ? 'patrimonio.html' : null);
+  const destinations = { patrimonio: 'patrimonio.html', jubilacion: 'jubilacion.html', vivienda: 'vivienda.html', 'vivienda-coste-vida': 'vivienda.html', fiscalidad: 'fiscalidad.html', 'mis-impuestos': 'fiscalidad.html', bienestar: 'bienestar.html' };
+  const target = Object.hasOwn(destinations, topic) ? destinations[topic] : (topic !== 'planificacion-patrimonial' ? 'patrimonio.html' : null);
   if (target) {
     url.pathname = url.pathname.replace(/temas\.html$/, target);
     url.searchParams.delete('topic');
@@ -99,7 +99,6 @@
           <summary>Familia, Salud y Bienestar</summary>
           <div class="nuvia-site-nav__menu">
             <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="temas.html?topic=bienestar">Cuerpo, mente y salud</a>
             <a href="respiracion-relajacion.html">Respiración y relajación</a>
             <a href="movimiento-consciente.html">Movimiento consciente</a>
             <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
@@ -129,14 +128,6 @@
       <span class="nv-eyebrow nv-eyebrow--on-dark"><span></span><span id="tema-eyebrow">Espacio NUVIA · Cuatro ámbitos</span></span>
       <h1 class="tm-title" id="tema-titulo">Patrimonio</h1>
       <p class="nv-hero__lead" id="tema-intro">Vivienda y coste de vida, impuestos, jubilación y planificación patrimonial: guías y simuladores para comprender la economía familiar, con sus datos, supuestos y límites a la vista.</p>
-      <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-        <nav class="tm-wellbeing-nav" aria-label="En esta página de Cuerpo, mente y salud">
-          <a href="#bienestar-ambitos">Temas de este contenido</a>
-          <a href="la-respiracion-como-el-escultor-del-cerebro.html">Ensayo de Isabel Florido Mayor</a>
-          <a href="#bienestar-guias">Guías en preparación</a>
-          <a href="#bienestar-fuentes">Fuentes y límites</a>
-        </nav>
-      </sc-if>
       <sc-if value="{{ mostrarRegresoPatrimonio }}" hint-placeholder-val="{{ false }}">
         <a class="tm-back" href="patrimonio.html">← Volver a Patrimonio</a>
       </sc-if>
@@ -157,11 +148,6 @@
           <img class="nv-sub-hero__img" src="src/assets/home/planificacion-patrimonial-familia-20260923.webp"
                alt="Una pareja y su hija revisan juntos un esquema en un cuaderno, en una mesa junto a un ventanal con jardín"
                width="1600" height="964">
-        </sc-if>
-        <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-          <img class="nv-sub-hero__img" src="src/assets/home/card-wellness.webp"
-               alt="Una familia hace ejercicio al aire libre en el porche de casa"
-               width="1600" height="1067">
         </sc-if>
       </div></div>
       <div class="viv-hero__rule"></div>
@@ -261,27 +247,6 @@
       </section>
     </sc-if>
 
-    <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-      <section id="bienestar-ambitos" data-screen-label="Bienestar integral" class="nv-container tm-wellbeing-section" aria-labelledby="bienestar-ambitos-title">
-        <div class="nv-notice tm-wellbeing-availability">
-          <h2>Qué puedes encontrar hoy</h2>
-          <p>Esta página reúne los temas de Cuerpo, mente y salud. Ya puedes leer «La respiración como el escultor del cerebro», de Isabel Florido Mayor, en Respiración y relajación. Las tres guías anunciadas más abajo todavía no están publicadas. No hay cuestionarios de salud ni orientación individual.</p>
-        </div>
-        <article class="tm-wellbeing">
-          <div class="tm-wellbeing__body">
-            <p class="nv-eyebrow">Cuerpo, mente y vida familiar</p>
-            <h2 class="tm-wellbeing__title" id="bienestar-ambitos-title">Cuatro temas de cuidado cotidiano</h2>
-            <p class="tm-card__text">Cuatro espacios para descubrir artículos y otros contenidos sobre el cuidado cotidiano. Elige un tema para explorar su página.</p>
-            <div class="tm-pillars" role="list" aria-label="Cuatro temas de Familia, Salud y Bienestar">
-              <div class="tm-pillar" role="listitem"><a class="tm-pillar__link" href="respiracion-relajacion.html"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M7 8c1.5-2 3.2-3 5-3s3.5 1 5 3M7 16c1.5 2 3.2 3 5 3s3.5-1 5-3"></path></svg></span><span class="tm-pillar__name">Respiración y relajación</span><span class="tm-pillar__arrow" aria-hidden="true">→</span></a></div>
-              <div class="tm-pillar" role="listitem"><a class="tm-pillar__link" href="movimiento-consciente.html"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v16M18 4v16M3 9h6M15 9h6M3 15h6M15 15h6M9 12h6"></path></svg></span><span class="tm-pillar__name">Movimiento consciente</span><span class="tm-pillar__arrow" aria-hidden="true">→</span></a></div>
-              <div class="tm-pillar" role="listitem"><a class="tm-pillar__link" href="nutricion-equilibrada.html"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-3 7-7 7-12-5 0-9 2-12 6-1 2-1 4 0 6"></path><path d="M8 18c2-3 5-5 9-7"></path></svg></span><span class="tm-pillar__name">Nutrición equilibrada</span><span class="tm-pillar__arrow" aria-hidden="true">→</span></a></div>
-              <div class="tm-pillar" role="listitem"><a class="tm-pillar__link" href="descanso-limites-tiempo-propio.html"><span class="tm-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span><span class="tm-pillar__name">Descanso, límites y tiempo propio</span><span class="tm-pillar__arrow" aria-hidden="true">→</span></a></div>
-            </div>
-          </div>
-        </article>
-      </section>
-    </sc-if>
 
 
 
@@ -293,13 +258,6 @@
             <p>Estos son los contenidos previstos. Todavía no puedes completar un cuestionario ni obtener un plan personal. Mientras tanto, puedes consultar las guías y los simuladores disponibles desde la <a href="patrimonio.html">portada de Patrimonio</a>.</p>
           </div>
         </sc-if>
-        <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-          <div class="tm-block-head tm-wellbeing-anchor" id="bienestar-guias">
-            <p class="nv-eyebrow">Próximos contenidos</p>
-            <h2 class="tm-legacy__heading">Tres guías en preparación</h2>
-            <p class="tm-card__text">Son líneas editoriales previstas, no artículos disponibles. Cada guía deberá contar con fuentes identificadas, autoría, fecha de revisión y revisión profesional de su contenido sanitario antes de publicarse.</p>
-          </div>
-        </sc-if>
         <div class="nv-card-grid">
           <sc-for list="{{ recursos }}" as="r" hint-placeholder-count="3">
             <article class="nv-card tm-card">
@@ -309,36 +267,6 @@
               <span class="nv-tag nv-tag--pending tm-card__tag">En preparación</span>
             </article>
           </sc-for>
-        </div>
-      </section>
-    </sc-if>
-    <sc-if value="{{ esBienestar }}" hint-placeholder-val="{{ false }}">
-      <section id="bienestar-fuentes" class="nv-container tm-wellbeing-section" aria-labelledby="bienestar-fuentes-title">
-        <div class="tm-block-head">
-          <p class="nv-eyebrow">Información y alcance</p>
-          <h2 class="tm-legacy__heading" id="bienestar-fuentes-title">Fuentes de consulta y límites</h2>
-          <p class="tm-card__text">Estos índices públicos permiten consultar información general. No son las fuentes de guías que todavía no se han publicado ni implican un aval de estas instituciones a NUVIA.</p>
-        </div>
-        <div class="nv-card-grid nv-card-grid--2">
-          <article class="nv-card tm-card tm-wellbeing-source">
-            <h3 class="tm-card__title">Organización Mundial de la Salud</h3>
-            <p class="tm-card__text">Índice de temas de salud de la OMS en español.</p>
-            <a href="https://www.who.int/es/health-topics" target="_blank" rel="noopener noreferrer" class="tm-wellbeing-source__link">Consultar temas de la OMS <span class="nv-visually-hidden">(se abre en otra pestaña)</span> ↗</a>
-          </article>
-          <article class="nv-card tm-card tm-wellbeing-source">
-            <h3 class="tm-card__title">MedlinePlus en español</h3>
-            <p class="tm-card__text">Índice de temas de salud de la Biblioteca Nacional de Medicina de Estados Unidos.</p>
-            <a href="https://medlineplus.gov/spanish/healthtopics.html" target="_blank" rel="noopener noreferrer" class="tm-wellbeing-source__link">Consultar temas de MedlinePlus <span class="nv-visually-hidden">(se abre en otra pestaña)</span> ↗</a>
-          </article>
-        </div>
-        <div class="nv-notice tm-wellbeing-limits">
-          <h3>Información general, no atención sanitaria</h3>
-          <p>Este espacio no ofrece diagnóstico, tratamiento ni consejo sanitario individual. No sustituye la atención de un profesional sanitario ni solicita datos sobre tu salud.</p>
-        </div>
-        <div class="tm-wellbeing-reading">
-          <h3 class="tm-card__title">También puedes explorar Lecturas con Criterio</h3>
-          <p class="tm-card__text">El catálogo general de NUVIA ya se puede consultar. Es un espacio distinto de estas guías en preparación.</p>
-          <a href="lecturas.html" class="nv-btn nv-btn--secondary">Consultar el catálogo de lecturas →</a>
         </div>
       </section>
     </sc-if>

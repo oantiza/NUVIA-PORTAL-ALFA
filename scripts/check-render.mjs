@@ -95,7 +95,7 @@ const CONTENIDO = {
   'bienestar.html':        [['h1', 1], ['.nv-space-tool-card', 5]],
   'movimiento-consciente.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 5]],
   'nutricion-equilibrada.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 5]],
-  'respiracion-relajacion.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-pub', 2], ['.bn-player', 1]],
+  'respiracion-relajacion.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-pub', 2], ['.bn-pub__poster', 1]],
   'familia-trabajo.html':  [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 5]],
   'descanso-limites-tiempo-propio.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 5]],
   'la-respiracion-como-el-escultor-del-cerebro.html': [['h1', 1], ['.tm-breathing-essay', 1], ['.bn-player', 1], ['.bn-author', 1]],

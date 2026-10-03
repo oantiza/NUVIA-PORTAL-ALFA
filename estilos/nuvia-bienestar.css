@@ -106,7 +106,25 @@
 .bn-player__poster { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9; }
 .bn-player .nv-external-content__placeholder::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, color-mix(in srgb, var(--nv-navy-950) 10%, transparent) 0%, color-mix(in srgb, var(--nv-navy-950) 82%, transparent) 100%); }
 .bn-player .nv-external-content__placeholder > :not(.bn-player__poster) { position: relative; }
-.bn-player .nv-external-content__placeholder p { text-shadow: 0 1px 8px rgba(0, 0, 0, .5); }
+/* Sobre la portada solo se ven los botones y una nota mínima: el rótulo y la
+   frase explicativa quedan para lectores de pantalla. */
+.bn-player .nv-external-content__eyebrow,
+.bn-player .nv-external-content__placeholder > p {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.bn-player .nv-external-content__placeholder::before {
+  background: linear-gradient(180deg, transparent 0%, transparent 45%, color-mix(in srgb, var(--nv-navy-950) 72%, transparent) 100%);
+}
+.bn-player .nv-external-content__placeholder small { font-size: var(--nv-label); opacity: .8; text-shadow: 0 1px 6px rgba(0, 0, 0, .6); }
+.bn-player .nv-external-content__actions { gap: var(--nv-space-3); }
 .bn-player .nv-external-content__placeholder p { font-size: var(--nv-body-sm); }
 .bn-player .nv-external-content__placeholder--dark p { color: var(--nv-white); }
 

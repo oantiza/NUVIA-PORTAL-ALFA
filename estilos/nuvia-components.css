@@ -1481,6 +1481,9 @@ sc-for {
   color: var(--nv-navy-900);
   flex-shrink: 0;
 }
+/* Avatar con fotografía: misma medida y filete que las iniciales. */
+.nv-colaborador__avatar--photo { overflow: hidden; padding: 0; }
+.nv-colaborador__avatar--photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
 .nv-colaborador__info h3 {
   margin: 0;

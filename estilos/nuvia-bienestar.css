@@ -249,6 +249,8 @@
   font-size: var(--nv-title-sm);
   font-weight: 500;
 }
+.bn-author__avatar--photo { overflow: hidden; width: 72px; height: 72px; border: 2px solid var(--nv-line-strong); background: var(--nv-cloud); }
+.bn-author__avatar--photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .bn-author p { margin: 0 0 var(--nv-space-2); line-height: 1.6; }
 .bn-author p:last-of-type { margin-bottom: 0; }
 .bn-author a { color: var(--nv-text-link); font-size: var(--nv-body-sm); text-underline-offset: .25em; }

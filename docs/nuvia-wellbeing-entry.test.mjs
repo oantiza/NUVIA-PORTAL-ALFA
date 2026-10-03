@@ -75,7 +75,7 @@ assert.match(home,/href="respiracion-relajacion.html"/);
 for(const id of wellbeingTopics) assert.ok(home.includes(`href="${id}.html"`));
 assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta|familia-trabajo/);
 
-assert.match(articlePage, /href="https:\/\/youtu.be\/VyLpqgXjbnU" target="_blank" rel="noopener noreferrer"/);
+assert.match(articlePage, /href="https:\/\/youtu.be\/XOGS8dDb1_o" target="_blank" rel="noopener noreferrer"/);
 const redirect=html.match(/<script>([\s\S]*?)<\/script>/)[1];
 for(const id of wellbeingTopics){
   let destination;

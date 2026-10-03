@@ -3,7 +3,7 @@
 Orden del fundador: aplicar el diseño global de la web al espacio Familia, Salud y
 Bienestar con sus cinco subsecciones, colocar el ensayo de Isabel Florido Mayor en
 Respiración y relajación de forma homogénea con el resto de la web e incrustar el
-vídeo facilitado (https://youtu.be/VyLpqgXjbnU) en el artículo. Se aplica además el
+vídeo facilitado (https://youtu.be/XOGS8dDb1_o) en el artículo. Se aplica además el
 informe de publicación del artículo aportado por el fundador (ubicación, introducción
 fuera del ensayo, tarjeta, vídeo separado, notas editoriales al final).
 

@@ -17,11 +17,13 @@ const F = ctx.NuviaJubilacionFiscal;
 const cerca = (a, b, tol = 0.01, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg || ''} ${a} ≠ ${b}`);
 
 test('IRPF: pensión de 2.000 € × 14 a los 65 años', () => {
-  // 28.000 − bonificación 3.000 = 25.000; 18.080 × 23 % + 6.920 × 28 % = 6.096; − 1.615 = 4.481
+  // 28.000 − bonificación 3.000 = 25.000; 18.080 × 23 % + 6.920 × 28 % = 6.096; − 1.615 = 4.481.
+  // Edad cumplida a 31-12 (04-10-2026): a los 65 ya se aplica la deducción por edad, 393 × (30.000 − 25.000) / 10.000 = 196,50 → 4.284,50.
   const t = M.irpf({ trabajo: 28000, edad: 65 });
   assert.equal(t.bonificacion, 3000);
   assert.equal(t.baseGeneral, 25000);
-  cerca(t.total, 4481);
+  cerca(t.deduccionEdad, 196.5); cerca(t.total, 4284.5);
+  cerca(M.irpf({ trabajo: 28000, edad: 64 }).total, 4481, .01, 'A los 64 no hay deducción por edad');
   assert.equal(t.marginalGeneral, .28);
 });
 
@@ -38,9 +40,12 @@ test('IRPF: minoración solo sobre la cuota general y escala del ahorro', () => 
   assert.equal(t.minoracion, 0, 'La minoración no reduce la cuota del ahorro');
 });
 
-test('IRPF: deducción por edad', () => {
-  assert.equal(M.deduccionEdad(65, 15000), 0, 'Exige más de 65 años');
+test('IRPF: deducción por edad (edad cumplida a 31 de diciembre)', () => {
+  assert.equal(M.deduccionEdad(64, 15000), 0, 'Antes de cumplir 65 no hay deducción');
+  assert.equal(M.deduccionEdad(65, 15000), 393, 'Se aplica ya en el año en que se cumplen 65 (art. 83 NF 13/2013; FAQ 900006436 HFB)');
   assert.equal(M.deduccionEdad(70, 15000), 393);
+  assert.equal(M.deduccionEdad(74, 15000), 393);
+  assert.equal(M.deduccionEdad(75, 15000), 714, 'La mayor, desde el año en que se cumplen 75');
   assert.equal(M.deduccionEdad(80, 15000), 714);
   cerca(M.deduccionEdad(70, 25000), 196.5);
   assert.equal(M.deduccionEdad(70, 30000), 0);
@@ -127,15 +132,19 @@ test('Avisos y límites', () => {
 });
 
 /* ----------------------------------------------------- Regresión Bizkaia -- */
-test('Bizkaia: regresión exacta del motor anterior (23-09-2026)', () => {
-  // Valores producidos por el motor anterior con los mismos datos; Bizkaia no puede moverse.
+test('Bizkaia: regresión exacta del motor (23-09-2026, refijada el 04-10-2026 por la regla de edad a 31-12)', () => {
+  // La refactorización por territorios no movió ninguna cifra de Bizkaia (17 casos comparados campo a campo, 0 diferencias).
+  // El 04-10-2026 se corrigió la deducción por edad (se aplica ya a los 65 y a los 75 cumplidos): solo cambian los casos
+  // con un año a esas edades y base ≤ 30.000 €. Caso inicial: año 1 a los 65 con base 25.000 + ahorro ≈ 1.600 → deducción ≈ 134 €.
   const r = M.calcular({});
   assert.equal(r.cfg.id, 'bizkaia', 'Bizkaia es el territorio por defecto');
-  cerca(r.resumen.netoMensual, 2569.06946, 1e-4);
-  cerca(r.anio1.impuesto, 5053.156984, 1e-4);
+  cerca(r.resumen.netoMensual, 2575.58228, 1e-4);
+  cerca(r.anio1.impuesto, 4975.003139, 1e-4);
+  cerca(r.anio1.impuesto, 5053.156984 - r.anio1.irpf.deduccionEdad, 1e-4, 'Respecto al 23-09 solo cambia la deducción por edad del año 1');
   assert.equal(r.escenarios[0].agotado, 25);
+  // Caso DFB: el cobro no tiene deducción (base > 30.000 €), pero el año «sin cobro» ahora sí la tiene (393 €): el coste del cobro sube 393 €.
   const dfb = M.calcular({ pension: 0, liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, tieneEpsv: true, epsvPre: 89000, epsvPreRent: 27000, epsvPost: 11000, epsvPostRent: 3000, epsvCobro: 'capital' }).capital;
-  cerca(dfb.transitorio.impuesto, 15224.942857, 1e-4); cerca(dfb.nuevo.impuesto, 17401.962586, 1e-4); cerca(dfb.neto, 84775.057143, 1e-4);
+  cerca(dfb.transitorio.impuesto, 15224.942857 + 393, 1e-4); cerca(dfb.nuevo.impuesto, 17794.373086, 1e-4, 'régimen 2026: +392,41 € (la iteración del neto mueve ligeramente los intereses del año)'); cerca(dfb.neto, 84775.057143 - 393, 1e-4);
   const g = M.calcular({ pension: 4000, fondos: 500000, fondosCoste: 200000, acciones: 300000, accionesCoste: 100000, seguros: 50000, segurosCoste: 40000, rentabilidad: 5, inflacion: 3, otrasDeducciones: 300 });
   cerca(g.resumen.netoMensual, 6533.634285, 1e-4); cerca(g.base.filas[5].impuesto, 23904.94121, 1e-4);
   const m = M.calcular({ edad: 60, edadJubilacion: 67, pension: 2200, tieneEpsv: true, epsvPre: 50000, epsvPreRent: 10000, epsvPost: 5000, epsvPostRent: 500, epsvCobro: 'mixto', epsvPctCapital: 30 });
@@ -146,7 +155,7 @@ test('Bizkaia: regresión exacta del motor anterior (23-09-2026)', () => {
 test('Álava y Gipuzkoa: misma escala, minoración, bonificación y deducción por edad que Bizkaia (NF 21/2025 y NF 6/2025)', () => {
   for (const t of ['alava', 'gipuzkoa']) {
     const x = M.irpf({ trabajo: 28000, edad: 65, territorio: t });
-    assert.equal(x.bonificacion, 3000); cerca(x.total, 4481, .01, t);
+    assert.equal(x.bonificacion, 3000); cerca(x.total, 4284.5, .01, t); cerca(M.irpf({ trabajo: 28000, edad: 64, territorio: t }).total, 4481, .01, t);
     cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: t }).cuotaAhorro, 7500 * .19 + 2500 * .20, .01, t);
     assert.equal(M.deduccionEdad(70, 15000, t), 393);
     cerca(M.deduccionEdad(70, 25000, t), 393 - .0393 * 5000, .01, t); // art. 83.2: 393 − 0,0393 × (BI − 20.000)
@@ -214,16 +223,21 @@ test('Navarra: plan de pensiones en capital con la reducción del 40 % solo sobr
 
 /* --------------------------------------------------------------- Estatal -- */
 test('Estatal · escala de referencia: gastos (art. 19.2.f), reducción (art. 20), mínimo a escala (arts. 57, 63 y 65)', () => {
-  // 28.000 − 2.000 gastos = 26.000; sin reducción (≥ 19.747,5). Mínimo 5.550 (65 años no es «superior a 65»).
+  // 28.000 − 2.000 gastos = 26.000; sin reducción (≥ 19.747,5). A los 64, mínimo 5.550.
   // Estatal: escala(26.000) = 2.112,75 + 5.800 × 15 % = 2.982,75; escala(5.550) = 527,25; cuota 2.455,50. Autonómica de referencia: idéntica → total 4.911.
-  const t = M.irpf({ trabajo: 28000, edad: 65, territorio: 'estatal' });
+  const t = M.irpf({ trabajo: 28000, edad: 64, territorio: 'estatal' });
   assert.equal(t.gastos, 2000); assert.equal(t.reduccionTrabajo, 0); assert.equal(t.baseGeneral, 26000); cerca(t.total, 4911);
   cerca(t.marginalGeneral, .30);
-  // A los 70: mínimo 6.700 → escala(6.700) = 636,50 → 2 × (2.982,75 − 636,50) = 4.692,50.
+  // Desde el año en que se cumplen 65 (edad a 31-12): mínimo 6.700 → escala(6.700) = 636,50 → 2 × (2.982,75 − 636,50) = 4.692,50. Igual a los 70.
+  cerca(M.irpf({ trabajo: 28000, edad: 65, territorio: 'estatal' }).total, 4692.5);
   cerca(M.irpf({ trabajo: 28000, edad: 70, territorio: 'estatal' }).total, 4692.5);
-  // 15.000 de trabajo: neto 13.000 → reducción 7.302 → base 5.698; estatal 541,31 − 527,25 = 14,06; total 28,12.
-  const b = M.irpf({ trabajo: 15000, edad: 65, territorio: 'estatal' });
+  // Desde los 75: mínimo 8.100 → escala(8.100) = 769,50 → 2 × (2.982,75 − 769,50) = 4.426,50.
+  cerca(M.irpf({ trabajo: 28000, edad: 75, territorio: 'estatal' }).total, 4426.5);
+  cerca(M.irpf({ trabajo: 28000, edad: 74, territorio: 'estatal' }).total, 4692.5);
+  // 15.000 de trabajo a los 64: neto 13.000 → reducción 7.302 → base 5.698; estatal 541,31 − 527,25 = 14,06; total 28,12. A los 65 el mínimo (6.700) cubre toda la base: 0.
+  const b = M.irpf({ trabajo: 15000, edad: 64, territorio: 'estatal' });
   assert.equal(b.reduccionTrabajo, 7302); cerca(b.baseGeneral, 5698); cerca(b.total, 28.12);
+  cerca(M.irpf({ trabajo: 15000, edad: 65, territorio: 'estatal' }).total, 0);
   // Tramos b) y c) del art. 20: 16.000 → 7.302 − 1,75 × 1.148 = 5.293; 19.000 → 2.364,34 − 1,14 × 1.326,48 = 852,15.
   const P = F.configuracion('estatal').parametros;
   cerca(F.reduccionTrabajoComun(P, 16000, 0), 7302 - 1.75 * 1148); cerca(F.reduccionTrabajoComun(P, 19000, 0), 2364.34 - 1.14 * 1326.48);
@@ -251,7 +265,20 @@ test('Una comunidad «en preparación», un territorio desconocido o vacío no c
   assert.equal(M.calcular({ territorio: 'estatal', ccaa: 'atlantida' }).estado, 'desconocida');
   assert.equal(M.calcular({ territorio: 'estatal' }).cfg.ccaa.id, 'referencia', 'Sin comunidad, el estatal usa la escala de referencia');
   assert.equal(F.CCAA.filter((c) => c.estado === 'verificada').length, 1, 'En la fase 1 solo calcula la escala de referencia');
-  assert.equal(F.CCAA.length, 18, '15 comunidades de régimen común + Ceuta y Melilla + referencia');
+  assert.equal(F.CCAA.length, 16, '15 comunidades de régimen común + referencia');
+  assert.ok(!F.CCAA.some((c) => /ceuta|melilla/i.test(c.id)), 'Ceuta y Melilla no se ofrecen (fuera de alcance por decisión del fundador)');
+  assert.equal(F.FUERA_DE_ALCANCE.map((x) => x.id).join(','), 'ceuta,melilla');
+  assert.equal(M.calcular({ territorio: 'estatal', ccaa: 'ceuta' }).estado, 'desconocida', 'Un parámetro ceuta en la URL no calcula');
+  assert.ok(F.limites(F.configuracion('estatal')).some((l) => /Ceuta y Melilla quedan fuera/.test(l)), 'El límite se declara en el estatal');
+});
+
+test('Navarra y estatal: plazos de la gestora verificados (art. 10 RD 304/2004)', () => {
+  for (const t of ['navarra', 'estatal']) {
+    const tr = F.territorio(t).tramitacion;
+    assert.equal(tr.estado, 'verificada', t);
+    assert.match(tr.plazo, /15 días hábiles/); assert.match(tr.plazo, /7 días hábiles/); assert.match(tr.plazo, /30 días hábiles/);
+    assert.ok(F.territorio(t).fuentes.some((f) => /BOE-A-2004-3453/.test(f.href)), t + ': cita el RD 304/2004 en el BOE');
+  }
 });
 
 test('Módulo fiscal: cada territorio verificado cita fuentes con fecha y declara sus límites', () => {

@@ -101,7 +101,8 @@ test('Guía fiscal · Navarra y estatal: planes de pensiones, reducción del 40 
     assert.equal(matriz.length, 3, 'Mixta muestra las tres filas del modelo con reducción');
     assert.equal(G.checklist(cfg, F.textos(cfg))[1], 'Tengo el desglose anterior y posterior a ' + corte + '.');
     assert.match(G.componerFiscal(c.state, 'https://x.test/'), new RegExp(dt.replace('.', '\\.') + '|anteriores a ' + corte));
-    assert.ok(txt.includes('En preparación'), t + ': los plazos de pago no confirmados se marcan en preparación');
+    assert.ok(txt.includes('15 días hábiles') && txt.includes('7 días hábiles'), t + ': plazos del art. 10 del RD 304/2004');
+    assert.ok(!/Plazos de pago\s*En preparación/.test(txt), t + ': los plazos ya no están en preparación');
   }
   assert.match(texto(G.fiscal(componente(conTerritorio({ modo: 'capital', check: {} }, 'estatal', 'referencia')))), /art\. 65/);
 });

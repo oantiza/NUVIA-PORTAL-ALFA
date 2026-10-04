@@ -646,7 +646,7 @@
     const enCuota = t.desglose.cuota.filter((x) => x.importe > 0.5);
     const textoDed = t.deducciones > 0.5
       ? frag('Deducciones en la cuota (' + enCuota.map((x) => x.etiqueta.toLocaleLowerCase('es-ES')).join(', ') + '): ', h('strong', { className: 'is-pos' }, '+' + m(t.deducciones)))
-      : (res.entrada.edadJubilacion <= 65 ? T.edadDeduccion : 'Sin deducciones en la cuota este año.');
+      : (res.entrada.edadJubilacion < 65 ? T.edadDeduccion : 'Sin deducciones en la cuota este año.');
     return h('article', { className: 'jb-card jb-tax' },
       h('p', { className: 'jb-kicker' }, 'Primer año · al mes · ' + T.nombre),
       h('h3', null, 'Qué impuesto se aplica a cada ingreso'),

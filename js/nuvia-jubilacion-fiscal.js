@@ -26,8 +26,9 @@
    Fecha de consulta de todas las fuentes: 04-10-2026 (ejercicio IRPF 2026).
    Fuera de alcance en todas las fases: deducciones autonómicas del régimen
    común y deducciones propias de los territorios forales (alquiler, hijos,
-   vivienda…), y la deducción navarra del art. 68 por pensiones de jubilación
-   inferiores a 15.400 €.
+   vivienda…), la deducción navarra del art. 68 por pensiones de jubilación
+   inferiores a 15.400 €, y Ceuta y Melilla (decisión del fundador de
+   04-10-2026: su deducción del 60 % del art. 68.4 LIRPF no está modelada).
    ========================================================================== */
 (function (global) {
   'use strict';
@@ -72,6 +73,12 @@
     { k: 'Gobierno Vasco', t: 'Régimen de aportaciones y prestaciones 2025-2026', href: 'https://www.euskadi.eus/contenidos/documentacion/reforma_fiscal/es_def/REGIMEN-DE-LAS-APORTACIONES-Y-PRESTACIONES-25_2026.-25.06.205.pdf', d: 'Cuadro comparativo de los tres territorios históricos tras la reforma fiscal.' },
     { k: 'Registro público', t: 'Registro de EPSV de Euskadi', href: 'https://www.euskadi.eus/registro-epsv/web01-tramite/es/', d: 'Acceso al registro oficial de entidades de previsión social voluntaria.' },
   ];
+
+  /* Plazos de la gestora del plan de pensiones (art. 10 del Reglamento de
+     planes y fondos de pensiones, RD 304/2004; BOE consolidado, consulta
+     04-10-2026). Compartido por Navarra y territorio común. */
+  const PLAZO_RD304 = 'Según el art. 10 del Reglamento de planes y fondos de pensiones (RD 304/2004), la entidad gestora debe notificar el reconocimiento del derecho a la prestación en un máximo de 15 días hábiles desde que se presenta la documentación completa, y abonar la prestación en forma de capital inmediato en un máximo de 7 días hábiles desde esa presentación. En planes de empleo de prestación definida el plazo de pago puede ampliarse hasta 30 días hábiles cuando la cuantificación exige la intervención de un tercero.';
+  const F_RD304 = { k: 'BOE · texto consolidado', t: 'Real Decreto 304/2004, Reglamento de planes y fondos de pensiones', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2004-3453&tn=1', d: 'Art. 10: plazos de reconocimiento (15 días hábiles) y pago (7 días hábiles) de las prestaciones.' };
 
   /* ------------------------------------------------ Parámetros modelo vasco */
   const VASCO = {
@@ -182,8 +189,9 @@
         { k: 'BOE 20-02-2026', t: 'Ley Foral 17/2025 de modificación de diversos impuestos', href: 'https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-3910', d: 'Deducción por trabajo y mínimo personal con efectos 1-1-2026.' },
         { k: 'Hacienda Foral de Navarra', t: 'Manuales de Renta y Patrimonio', href: 'https://www.navarra.es/es/hacienda/renta-y-patrimonio/manuales', d: 'Manual teórico de la campaña 2025 (actualizado a 2-2-2026): reducciones del art. 17.2 y DT 25.ª.' },
         { k: 'Hacienda Foral de Navarra', t: 'Portal de Hacienda Foral de Navarra', href: 'https://hacienda.navarra.es', d: 'Sede y servicios de la Hacienda Foral.' },
+        F_RD304,
       ],
-      tramitacion: { estado: 'parcial', entidad: 'La prestación se solicita a la entidad gestora del plan de pensiones, conforme a sus especificaciones. La Hacienda Foral de Navarra no publica un impreso propio para el rescate: la reducción del 40 % de la DT 25.ª se aplica en la autoliquidación del IRPF.', plazo: 'La normativa estatal de planes y fondos de pensiones (Real Decreto 304/2004) fija los plazos de pago de la entidad gestora; esta guía no los detalla hasta contrastarlos en fuente oficial.' },
+      tramitacion: { estado: 'verificada', entidad: 'La prestación se solicita a la entidad gestora del plan de pensiones, conforme a sus especificaciones. La Hacienda Foral de Navarra no publica un impreso propio para el rescate: la reducción del 40 % de la DT 25.ª se aplica en la autoliquidación del IRPF.', plazo: PLAZO_RD304 },
     },
     {
       id: 'estatal', nombre: 'Estatal (territorio común)', corto: 'Estatal', etiqueta: 'Estatal · territorio común (AEAT)', modelo: 'comun', estado: 'verificada', ejercicio: EJERCICIO, consulta: CONSULTA,
@@ -216,17 +224,19 @@
         { k: 'BOE · texto consolidado', t: 'Real Decreto 439/2007, Reglamento del IRPF', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2007-6820&tn=1', d: 'Desarrollo reglamentario.' },
         { k: 'AEAT · Manual Renta 2025', t: 'Régimen transitorio de las prestaciones en capital', href: 'https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c03-rendimientos-trabajo/rendimiento-neto-trabajo-integrar-base-imponible/fase-1-determinacion-rendimiento-integro-trabajo/reducciones-aplicables-sobre-determinados-rendimientos-integros/c-regimen-transitorio-reducciones-aplicable-prestaciones/prestaciones-percibidas-forma-capital-derivadas.html', d: 'Condiciones del 40 % para aportaciones anteriores a 2007.' },
         { k: 'AEAT', t: 'Manual práctico Renta 2025', href: 'https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025.html', d: 'Último manual publicado (la Renta 2026 se declara en 2027).' },
+        F_RD304,
       ],
-      tramitacion: { estado: 'parcial', entidad: 'La prestación se solicita a la entidad gestora del plan de pensiones, conforme a sus especificaciones. La Agencia Tributaria no publica un impreso propio para el rescate: la reducción del 40 % de la DT 12.ª se aplica en la declaración del IRPF.', plazo: 'El Reglamento de planes y fondos de pensiones (Real Decreto 304/2004) fija los plazos de pago de la entidad gestora; esta guía no los detalla hasta contrastarlos en fuente oficial.' },
+      tramitacion: { estado: 'verificada', entidad: 'La prestación se solicita a la entidad gestora del plan de pensiones, conforme a sus especificaciones. La Agencia Tributaria no publica un impreso propio para el rescate: la reducción del 40 % de la DT 12.ª se aplica en la declaración del IRPF.', plazo: PLAZO_RD304 },
     },
   ];
 
   /* ------------------------------------------- Comunidades autónomas ------ */
   /* Fase 1: solo la escala de referencia calcula. Añadir una comunidad en la
      fase 2 = añadir aquí su escala autonómica verificada y su fuente, y poner
-     estado 'verificada'. Ceuta y Melilla quedan en preparación: su escala
-     autonómica es la del art. 65 (DA 32.ª), pero la deducción del 60 % por
-     rentas obtenidas allí (art. 68.4) no está modelada. */
+     estado 'verificada'. Ceuta y Melilla quedan FUERA del alcance por decisión
+     del fundador (04-10-2026): su escala autonómica es la del art. 65 (DA
+     32.ª), pero la deducción del 60 % por rentas obtenidas allí (art. 68.4)
+     no está modelada, así que no se ofrecen en el selector. */
   const CCAA = [
     { id: 'referencia', nombre: 'Escala de referencia (art. 65 LIRPF)', corto: 'Escala de referencia', estado: 'verificada', referencia: true,
       descripcion: 'Escala del art. 65 de la Ley 35/2006, la que la ley aplica a los residentes en el extranjero y, por la DA 32.ª, a Ceuta y Melilla. No es la escala de ninguna comunidad autónoma: sirve solo como referencia hasta que cada comunidad esté verificada.',
@@ -247,8 +257,12 @@
     { id: 'madrid', nombre: 'Comunidad de Madrid', estado: 'en-preparacion' },
     { id: 'murcia', nombre: 'Región de Murcia', estado: 'en-preparacion' },
     { id: 'rioja', nombre: 'La Rioja', estado: 'en-preparacion' },
-    { id: 'ceuta', nombre: 'Ceuta', estado: 'en-preparacion', nota: 'Escala autonómica confirmada (art. 65 por la DA 32.ª), pero la deducción del 60 % por rentas obtenidas en Ceuta (art. 68.4) no está modelada.' },
-    { id: 'melilla', nombre: 'Melilla', estado: 'en-preparacion', nota: 'Escala autonómica confirmada (art. 65 por la DA 32.ª), pero la deducción del 60 % por rentas obtenidas en Melilla (art. 68.4) no está modelada.' },
+  ];
+  /* Territorios de régimen común que quedan fuera del simulador (no aparecen
+     en el selector). Se declaran en los límites visibles. */
+  const FUERA_DE_ALCANCE = [
+    { id: 'ceuta', nombre: 'Ceuta', motivo: 'Deducción del 60 % por rentas obtenidas en Ceuta (art. 68.4 LIRPF) no modelada.' },
+    { id: 'melilla', nombre: 'Melilla', motivo: 'Deducción del 60 % por rentas obtenidas en Melilla (art. 68.4 LIRPF) no modelada.' },
   ];
 
   const TERRITORIO_DEFECTO = 'bizkaia';
@@ -292,10 +306,13 @@
     return Math.min(t, Math.max(0, importe));
   }
 
+  /* Edad: la que se tiene cumplida a 31 de diciembre (fecha de devengo). La
+     deducción se aplica ya en el año en que se cumplen 65 (y la mayor, 75);
+     criterio de las Haciendas forales (p. ej. FAQ 900006436 de la HFB). */
   function deduccionEdad(P, edad, baseTotal) {
     const e = P.edad; const b = pos(baseTotal);
-    if (num(edad) <= e.desde || b >= e.base2) return 0;
-    const completa = num(edad) > e.mayor ? e.importeMayor : e.importe;
+    if (num(edad) < e.desde || b >= e.base2) return 0;
+    const completa = num(edad) >= e.mayor ? e.importeMayor : e.importe;
     if (b <= e.base1) return completa;
     return Math.max(0, completa - completa * (b - e.base1) / (e.base2 - e.base1));
   }
@@ -385,9 +402,11 @@
     return Math.max(0, importe);
   }
 
+  /* Edad cumplida a 31 de diciembre (fecha de devengo): el aumento se aplica
+     ya en el año en que se cumplen 65 y 75 (Manual de Renta de la AEAT). */
   function minimoPersonalComun(P, edad) {
     const m = P.minimo; const e = num(edad);
-    return m.base + (e > 65 ? m.edad65 : 0) + (e > 75 ? m.edad75 : 0);
+    return m.base + (e >= 65 ? m.edad65 : 0) + (e >= 75 ? m.edad75 : 0);
   }
 
   /* cfg.escalaAutonomica es la escala de la comunidad (o la de referencia). */
@@ -532,7 +551,7 @@
     if (cfg.modelo === 'vasco') return [
       'Minoración de cuota: ' + eur(P.minoracion) + ' sobre la cuota general.',
       'Bonificación del trabajo: ' + eur(P.bonificacion.maxima) + ' hasta ' + eur(P.bonificacion.umbral1) + ' de rendimientos, bajando hasta ' + eur(P.bonificacion.minima) + ' a partir de ' + eur(P.bonificacion.umbral2) + ' (' + eur(P.bonificacion.minima) + ' si otras rentas superan ' + eur(P.bonificacion.otrasRentas) + ').',
-      'Deducción por edad: ' + eur(P.edad.importe) + ' (más de ' + P.edad.desde + ' años) o ' + eur(P.edad.importeMayor) + ' (más de ' + P.edad.mayor + ') con base de hasta ' + eur(P.edad.base1) + ', que se reduce hasta desaparecer a ' + eur(P.edad.base2) + '.',
+      'Deducción por edad: ' + eur(P.edad.importe) + ' (desde el año en que se cumplen ' + P.edad.desde + ') o ' + eur(P.edad.importeMayor) + ' (desde los ' + P.edad.mayor + ') con base de hasta ' + eur(P.edad.base1) + ', que se reduce hasta desaparecer a ' + eur(P.edad.base2) + '. La edad es la cumplida a 31 de diciembre.',
       'EPSV en capital: ' + Math.round(pv.capital * 100) + ' % en el primer cobro por contingencia (' + Math.round(pv.capitalTransitorio * 100) + ' % en régimen transitorio para lo aportado hasta ' + (pv.corte - 1) + '), hasta ' + eur(pv.limite) + '.',
       'EPSV en renta vitalicia o temporal de ' + pv.rentaMinimaAnios + ' años o más: rentabilidad exenta' + (pv.exencionRentaMax ? ', con el límite del ' + Math.round(pv.exencionRentaMax * 100) + ' % de la renta' : '') + '.',
     ];
@@ -546,7 +565,7 @@
     return [
       'Gastos deducibles del trabajo: ' + eur(P.gastos) + ' (art. 19.2.f).',
       'Reducción por rendimientos del trabajo (art. 20): 7.302 € hasta 14.852 €, decreciente hasta desaparecer a 19.747,5 €; no se aplica si otras rentas superan 6.500 €.',
-      'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' a partir de 66 años y otros ' + eur(P.minimo.edad75) + ' a partir de 76; se aplica «a escala» en la parte estatal y en la autonómica.',
+      'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal y en la autonómica.',
       'Plan de pensiones: la prestación es rendimiento del trabajo al 100 %. En capital, la parte que deriva de aportaciones anteriores a ' + pv.corte + ' se reduce un ' + Math.round(pv.reduccion * 100) + ' % (DT 12.ª) si el cobro se produce en el año de la jubilación o en los dos siguientes y han pasado más de dos años desde la primera aportación.',
       'Escala autonómica: ' + (cfg.ccaa && cfg.ccaa.referencia ? 'la de referencia del art. 65 LIRPF, que no es la de ninguna comunidad autónoma.' : (cfg.ccaa ? cfg.ccaa.nombre : 'sin comunidad') + '.'),
       'Sin deducción estatal por edad; la DA 61.ª (deducción por rendimientos del trabajo) no alcanza a las pensiones.',
@@ -556,7 +575,10 @@
   /* Límites comunes a todos los territorios, para avisos e informes. */
   function limites(cfg) {
     const l = ['No incluye deducciones autonómicas del régimen común ni deducciones propias de los territorios forales (alquiler, hijos, vivienda…).'];
-    if (cfg && cfg.modelo === 'comun') l.push(cfg.ccaa && cfg.ccaa.referencia ? 'La escala autonómica usada es la de referencia del art. 65 LIRPF; la de cada comunidad autónoma está en preparación.' : 'La escala autonómica aplicada es la de ' + (cfg.ccaa ? cfg.ccaa.nombre : 'la comunidad elegida') + '.');
+    if (cfg && cfg.modelo === 'comun') {
+      l.push(cfg.ccaa && cfg.ccaa.referencia ? 'La escala autonómica usada es la de referencia del art. 65 LIRPF; la de cada comunidad autónoma está en preparación.' : 'La escala autonómica aplicada es la de ' + (cfg.ccaa ? cfg.ccaa.nombre : 'la comunidad elegida') + '.');
+      l.push('Ceuta y Melilla quedan fuera del simulador: la deducción del 60 % por rentas obtenidas allí (art. 68.4 LIRPF) no está modelada.');
+    }
     if (cfg && cfg.modelo === 'navarra') l.push('No se calcula la deducción del art. 68 por pensiones de jubilación contributivas inferiores a 15.400 €.');
     if (cfg && cfg.modelo !== 'vasco') l.push('Solo se modela la contingencia de jubilación del plan de pensiones; otras contingencias (invalidez, dependencia) tienen reglas propias que no se calculan.');
     return l;
@@ -594,7 +616,7 @@
           { v: 'temporal', t: 'Renta temporal', d: 'Cuantía constante durante los años que elijas. Tributa como rendimiento del trabajo.' },
           { v: 'vitalicia', t: 'Renta vitalicia', d: 'Cuantía constante hasta la edad del plan. Tributa como rendimiento del trabajo.' }],
       fiscalRenta: vasco ? 'Lo que aportaste tributa como trabajo; la rentabilidad, en la base del ahorro o exenta según la renta.' : 'Todo el cobro tributa como rendimiento del trabajo.',
-      edadDeduccion: cfg.modelo === 'vasco' ? 'La deducción por edad empieza a partir de los ' + (cfg.parametros.edad.desde + 1) + ' años.' : cfg.modelo === 'navarra' ? 'El mínimo personal aumenta desde los 65 y desde los 75 años.' : 'El mínimo del contribuyente aumenta a partir de los 66 y de los 76 años.',
+      edadDeduccion: cfg.modelo === 'vasco' ? 'La deducción por edad se aplica desde el año en que se cumplen ' + cfg.parametros.edad.desde + ' años.' : cfg.modelo === 'navarra' ? 'El mínimo personal aumenta desde los 65 y desde los 75 años.' : 'El mínimo del contribuyente aumenta desde los 65 y desde los 75 años.',
       pasoTres: cfg.modelo === 'vasco'
         ? 'Cada ingreso va a su base: la pensión y las aportaciones de la EPSV a la general; ganancias, intereses y rentabilidad de la EPSV a la del ahorro; lo que aportaste no tributa. Se aplican la bonificación del trabajo, la minoración de ' + eurN(cfg.parametros.minoracion) + ' y la deducción por edad.'
         : cfg.modelo === 'navarra'
@@ -604,7 +626,7 @@
   }
 
   const api = {
-    CONSULTA, EJERCICIO, TERRITORIOS, CCAA, TERRITORIO_DEFECTO, CCAA_DEFECTO,
+    CONSULTA, EJERCICIO, TERRITORIOS, CCAA, FUERA_DE_ALCANCE, TERRITORIO_DEFECTO, CCAA_DEFECTO,
     ESCALAS: { ESCALA_GENERAL_VASCA, ESCALA_AHORRO_VASCA, ESCALA_GENERAL_NAVARRA, ESCALA_AHORRO_NAVARRA, ESCALA_GENERAL_ESTATAL, ESCALA_ART65, ESCALA_AHORRO_COMUN },
     territorio, comunidad, configuracion, disponible, nombreCompleto,
     escala, irpf, bonificacionTrabajo, deduccionEdad, deduccionTrabajoNavarra, minimoPersonalNavarra, reduccionTrabajoComun, minimoPersonalComun,

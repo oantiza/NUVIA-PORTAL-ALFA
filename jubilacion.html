@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Simulador de jubilación de NUVIA para Bizkaia: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
+<meta name="description" content="Simulador de jubilación de NUVIA para Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
 
 <!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/jubilacion.html -->
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/jubilacion.html">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
 <meta property="og:title" content="NUVIA · Jubilación">
-<meta property="og:description" content="Simulador de jubilación de NUVIA para Bizkaia: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
+<meta property="og:description" content="Simulador de jubilación de NUVIA para Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/jubilacion.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NUVIA · Jubilación">
-<meta name="twitter:description" content="Simulador de jubilación de NUVIA para Bizkaia: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
+<meta name="twitter:description" content="Simulador de jubilación de NUVIA para Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: calcula tu ingreso mensual neto, el IRPF de cada año y cuánto te duran los ahorros, con informe imprimible.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
@@ -45,8 +45,9 @@
      están, no toca el CDN. Ver js/vendor/DESCARGAR.md. -->
 <script defer src="js/vendor/react.production.min.js"></script>
 <script defer src="js/vendor/react-dom.production.min.js"></script>
-<!-- Simulador de jubilación: motor, gráficos, informe e interfaz. Van antes
+<!-- Simulador de jubilación: parámetros fiscales por territorio, motor, gráficos, informe e interfaz. Van antes
      de support.js para estar disponibles en el primer pintado. -->
+<script defer src="js/nuvia-jubilacion-fiscal.js"></script>
 <script defer src="js/nuvia-jubilacion-motor.js"></script>
 <script defer src="js/nuvia-jubilacion-graficos.js"></script>
 <script defer src="js/nuvia-jubilacion-informe.js"></script>
@@ -127,7 +128,7 @@
           <h1>Jubilación</h1>
           <p class="nv-hero__lead">Entiende cuánto podrías cobrar al mes, después de impuestos, y cuánto podrían durar tus ahorros.</p>
           <div class="viv-pill-row">
-            <span class="nv-tag">Solo Bizkaia</span>
+            <span class="nv-tag">Bizkaia · Álava · Gipuzkoa · Navarra · Estatal</span>
             <span class="jub-tag-dark">Reglas fiscales 2026</span>
             <span class="jub-tag-dark">Cálculo local, sin envío de datos</span>
           </div>
@@ -143,11 +144,11 @@
         <div class="jub-howto__list">
           <div class="jub-howto__step">
             <span class="jub-howto__num">01</span>
-            <p class="jub-howto__text"><strong class="jub-howto__title">Cuéntanos tu punto de partida</strong>Edad, pensión, ahorros y, si la tienes, tu EPSV. Empieza con un ejemplo ficticio que puedes cambiar.</p>
+            <p class="jub-howto__text"><strong class="jub-howto__title">Elige tu residencia fiscal y cuéntanos tu punto de partida</strong>Edad, pensión, ahorros y, si la tienes, tu EPSV o tu plan de pensiones. Empieza con un ejemplo ficticio que puedes cambiar.</p>
           </div>
           <div class="jub-howto__step">
             <span class="jub-howto__num">02</span>
-            <p class="jub-howto__text"><strong class="jub-howto__title">Mira el resultado al momento</strong>Cada cambio recalcula el bruto, el IRPF y lo que te queda, año a año.</p>
+            <p class="jub-howto__text"><strong class="jub-howto__title">Mira el resultado al momento</strong>Cada cambio recalcula el bruto, el IRPF de tu territorio y lo que te queda, año a año.</p>
           </div>
           <div class="jub-howto__step">
             <span class="jub-howto__num">03</span>
@@ -190,12 +191,12 @@
           <article class="nv-card">
             <h3>Guía de planificación</h3>
             <p>Ordena las decisiones clave, identifica qué información necesitas reunir y construye tu hoja de ruta paso a paso.</p>
-            <a class="nv-btn nv-btn--primary" href="guia-planificacion.html">Crear mi hoja de ruta →</a>
+            <a class="nv-btn nv-btn--primary" href="guia-planificacion.html" data-jub-territorio="guia-planificacion.html">Crear mi hoja de ruta →</a>
           </article>
           <article class="nv-card">
-            <h3>Fiscalidad y rescate de la EPSV</h3>
-            <p>Compara el cobro en capital, en renta o mixto, y entiende el tratamiento fiscal de cada opción antes de decidir.</p>
-            <a class="nv-btn nv-btn--primary" href="guia-fiscal.html">Explorar opciones de rescate →</a>
+            <h3>Fiscalidad y rescate de la EPSV o del plan de pensiones</h3>
+            <p>Compara el cobro en capital, en renta o mixto, y entiende el tratamiento fiscal de cada opción en tu territorio antes de decidir.</p>
+            <a class="nv-btn nv-btn--primary" href="guia-fiscal.html" data-jub-territorio="guia-fiscal.html">Explorar opciones de rescate →</a>
           </article>
         </div>
       </div>
@@ -275,15 +276,17 @@
 /* El componente solo guarda el estado; la interfaz la construye
    window.NuviaJubilacionUI (js/nuvia-jubilacion-ui.js). */
 class Component extends DCLogic {
-  state = { s: null, paso: 0, vista: 'hoy', sel: 0 };
+  state = { s: null, paso: 0, vista: 'hoy', sel: 0, avisoTerritorio: null };
   componentDidMount() { document.title = 'Simulador de jubilación | NUVIA'; }
   renderVals() {
     const ui = typeof window !== 'undefined' ? window.NuviaJubilacionUI : null;
     if (ui && !this.state.s) {
-      // jubilacion.html?caso=dfb abre el simulador con el caso práctico de la DFB (enlace desde la guía fiscal).
-      let s0 = ui.estadoInicial();
-      try { if (new URLSearchParams(location.search).get('caso') === 'dfb') { s0 = ui.casoDFB(s0); this.state.paso = 2; } } catch (e) { /* sin location */ }
-      this.state.s = s0;
+      // ?territorio=…&ccaa=… fija la residencia fiscal; ?caso=dfb abre el caso práctico
+      // de la DFB (solo en Bizkaia). Un valor desconocido no calcula: lo dice el selector.
+      const leido = ui.desdeURL(ui.estadoInicial(), typeof location !== 'undefined' ? location.search : '');
+      this.state.s = leido.s;
+      if (leido.paso !== null && leido.paso !== undefined) this.state.paso = leido.paso;
+      if (leido.aviso) this.state.avisoTerritorio = leido.aviso;
     }
     return { app: ui ? ui.render(this) : null };
   }

@@ -65,7 +65,10 @@ const CONTENIDO = {
   'mercados.html':         [['.markets-macro__item', 5], ['.markets-secondary-card', 3]],
   'mercados.html?vista=cotizaciones': [['.markets-lab__quote', 16], ['.markets-lab__chip', 5]],
   'curso.html':            [['.curso-resultado', 4], ['.curso-campo', 7]],
-  'jubilacion.html':       [['.jb-stepper__btn', 4], ['.jb-field__box', 1], ['.jb-live__num', 1]],
+  'jubilacion.html':       [['.jb-stepper__btn', 4], ['.jb-field__box', 1], ['.jb-live__num', 1], ['.jb-terr', 1], ['.jb-terr .jb-choice', 5]],
+  // Territorios (04-10-2026): Navarra calcula con su normativa; una comunidad «en preparación» no calcula y lo dice.
+  'jubilacion.html?territorio=navarra#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-tax__col', 3], ['.jb-terr .jb-choice.is-on', 1]],
+  'jubilacion.html?territorio=estatal&ccaa=madrid': [['.jb-terr', 1], ['.jb-estado', 1], ['#jb-terr-ccaa', 1]],
   'vivienda.html':         [['.nv-field__box', 12], ['.viv-pill--dark', 2]],
   'lecturas.html':         [['.lecturas-card', 4]],
   'fiscalidad.html':       [['.fiscal-dato', 9]],
@@ -86,8 +89,9 @@ const CONTENIDO = {
   'guia-calendario.html':  [['.gt-title', 1]],
   'guia-ahorro.html':      [['.gt-title', 1]],
   'guia-sucesiones.html':  [['.gt-title', 1]],
-  'guia-planificacion.html': [['.jb-stepper__btn', 4], ['.jg-ring', 1], ['.jg-route3 li', 3]],
-  'guia-fiscal.html':      [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8]],
+  'guia-planificacion.html': [['.jb-stepper__btn', 4], ['.jg-ring', 1], ['.jg-route3 li', 3], ['.jb-terr', 1]],
+  'guia-fiscal.html':      [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['.jb-terr', 1]],
+  'guia-fiscal.html?territorio=estatal&ccaa=referencia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1]],
   'que-es-nuvia.html':     [['#que-nuvia-title', 1], ['.about-world__item', 5], ['.about-value', 4]],
   'economia.html':         [['h1', 1], ['.nv-space-tool-card', 3]],
   'patrimonio.html':       [['h1', 1], ['.nv-space-tool-card', 4]],
@@ -128,6 +132,8 @@ const PAGINAS_BASE = [
   'academia.html?tab=fundamentos', 'academia.html?tab=calculadora',
   'jubilacion.html#resultados', 'mercados.html?vista=informes',
   'mercados.html?vista=informes&tipo=semanal',
+  'jubilacion.html?territorio=navarra#resultados', 'jubilacion.html?territorio=estatal&ccaa=madrid',
+  'guia-fiscal.html?territorio=estatal&ccaa=referencia',
 ];
 const filtroPaginas = (process.argv[4] || '').split(',').map((item) => item.trim()).filter(Boolean);
 const PAGINAS = filtroPaginas.length ? PAGINAS_BASE.filter((pagina) => filtroPaginas.includes(pagina)) : PAGINAS_BASE;
@@ -418,7 +424,7 @@ for (const ancho of ANCHOS) {
     // Escenario de prueba local: los resultados existen solo tras calcular.
     // Jubilación: el análisis se calcula al cargar; se espera a que el gráfico
     // se redibuje con el ancho real de su contenedor.
-    if (pag === 'jubilacion.html#resultados') {
+    if (/^jubilacion\.html.*#resultados$/.test(pag)) {
       await p.locator('#resultados .jb-chart--saldos svg').waitFor({state:'visible'});
       await p.waitForTimeout(300);
     }

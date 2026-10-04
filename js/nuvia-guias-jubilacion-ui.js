@@ -4,13 +4,39 @@
    Mismo lenguaje visual que el simulador de jubilación: pasos guiados, panel
    de resumen al momento, tarjetas con iconos y un informe imprimible. Reutiliza
    las piezas de js/nuvia-jubilacion-ui.js (NuviaJubilacionUI.kit) y el motor
-   fiscal (NuviaJubilacion) para el ejemplo del caso práctico de la DFB.
+   fiscal (NuviaJubilacion) para los casos prácticos. Los textos, la matriz
+   fiscal, el caso práctico, la tramitación y las fuentes dependen de la
+   residencia fiscal (NuviaJubilacionFiscal), que llega por la URL
+   (?territorio=…&ccaa=…) y puede cambiarse en el selector de cada guía.
+   El caso práctico de la DFB solo se muestra en Bizkaia; en los demás
+   territorios se usa un ejemplo ficticio, identificado como tal.
    Expone globalThis.NuviaGuiasJubilacion.
    ========================================================================== */
 (function (global) {
   'use strict';
 
   const K = () => global.NuviaJubilacionUI.kit;
+  const F = () => global.NuviaJubilacionFiscal;
+  const M = () => global.NuviaJubilacion;
+
+  /* ------------------------------------------------- Residencia fiscal ---- */
+  function territorioInicial(search) {
+    const Fx = F(); const r = K().desdeURL({ territorio: Fx.TERRITORIO_DEFECTO, ccaa: Fx.CCAA_DEFECTO, casoDfb: false }, search);
+    return { territorio: r.s.territorio, ccaa: r.s.ccaa, avisoTerritorio: r.aviso };
+  }
+  const cfgDe = (st) => F().configuracion(st.territorio === undefined ? F().TERRITORIO_DEFECTO : st.territorio, st.ccaa === undefined ? F().CCAA_DEFECTO : st.ccaa);
+  const textosDe = (cfg) => (cfg && F().disponible(cfg) ? F().textos(cfg) : null);
+  function selector(comp, st) {
+    K().sincronizarEnlaces({ territorio: st.territorio, ccaa: st.ccaa });
+    return K().SelectorTerritorio({ valor: { territorio: st.territorio, ccaa: st.ccaa }, aviso: st.avisoTerritorio || null, compacto: true, idBase: 'jg-terr',
+      onChange: (t, c) => { const n = K().cambiarTerritorio({ territorio: st.territorio, ccaa: st.ccaa, casoDfb: false }, t, c); comp.setState({ territorio: n.territorio, ccaa: n.ccaa, avisoTerritorio: null, vistaCaso: null }); } });
+  }
+  function estadoNoDisponible(st) {
+    const cfg = cfgDe(st);
+    const msg = !st.territorio ? 'Elige tu residencia fiscal para ver la guía con su normativa.' : !cfg ? 'No reconocemos el territorio «' + st.territorio + '». Elige tu residencia fiscal en el selector.' : cfg.estado === 'desconocida' ? 'No reconocemos la comunidad autónoma indicada. Elige una en el selector.' : (cfg.ccaa ? cfg.ccaa.nombre : cfg.nombre) + ' está en preparación: su escala autonómica aún no se ha verificado en fuente oficial. Puedes consultar la guía con la escala de referencia (art. 65 LIRPF), que no es la de tu comunidad.';
+    return h('div', { className: 'jb-estado', role: 'status', 'aria-live': 'polite' }, icono('info'), h('div', null, h('strong', null, cfg && cfg.estado === 'en-preparacion' ? 'En preparación' : 'Residencia fiscal sin determinar'), h('p', null, msg)));
+  }
+  const enlace = (href, st) => K().urlCon(href, { territorio: st.territorio, ccaa: st.ccaa });
   const h = (...a) => global.React.createElement(...a);
   const frag = (...k) => h(global.React.Fragment, null, ...k);
   const icono = (n, c) => K().icono(n, c);
@@ -74,14 +100,14 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
     piezas: [
       { id: 'retirement-age', icono: 'calendario', label: 'Edad o fecha objetivo', detail: 'Cuándo te gustaría iniciar esta etapa.' },
       { id: 'public-pension', icono: 'persona', label: 'Estimación de pensión pública', detail: 'Una cifra actualizada o un rango razonable.' },
-      { id: 'savings', icono: 'hucha', label: 'Ahorro y previsión acumulados', detail: 'EPSV, planes y otros recursos destinados a jubilación.' },
+      { id: 'savings', icono: 'hucha', label: 'Ahorro y previsión acumulados', detail: 'EPSV, planes de pensiones y otros recursos destinados a jubilación.' },
       { id: 'expenses', icono: 'lista', label: 'Presupuesto de vida futura', detail: 'Gastos esenciales, discrecionales y extraordinarios.' },
       { id: 'housing', icono: 'casa', label: 'Vivienda y deudas previstas', detail: 'Hipoteca, alquiler, reformas o cambio de residencia.' },
       { id: 'family', icono: 'familia', label: 'Compromisos familiares', detail: 'Personas dependientes, ayuda a hijos o legado.' },
     ],
     pasos: [
       { number: '01', icono: 'objetivo', eyebrow: 'Visión personal', title: 'Define tu jubilación', description: 'La planificación empieza por una vida concreta, no por una cifra aislada.', questions: ['¿A qué edad quieres jubilarte?', '¿Dónde y cómo imaginas tu vida cotidiana?', '¿Qué compromisos familiares seguirán activos?'], outcome: 'Una fecha objetivo y una descripción sencilla del nivel de vida deseado.' },
-      { number: '02', icono: 'persona', eyebrow: 'Fuentes de ingreso', title: 'Construye tu mapa de ingresos', description: 'Reúne todos los flujos que podrán sostener el presupuesto de jubilación.', questions: ['Pensión pública estimada', 'EPSV y otros sistemas de previsión', 'Alquileres, rentas u otros ingresos recurrentes'], outcome: 'Una visión mensual y anual de los ingresos previsibles.' },
+      { number: '02', icono: 'persona', eyebrow: 'Fuentes de ingreso', title: 'Construye tu mapa de ingresos', description: 'Reúne todos los flujos que podrán sostener el presupuesto de jubilación.', questions: ['Pensión pública estimada', 'EPSV, planes de pensiones y otros sistemas de previsión', 'Alquileres, rentas u otros ingresos recurrentes'], outcome: 'Una visión mensual y anual de los ingresos previsibles.' },
       { number: '03', icono: 'lista', eyebrow: 'Coste de vida', title: 'Estima tus gastos futuros', description: 'Separa el presupuesto estable de los gastos que pueden aparecer de forma puntual.', questions: ['Gastos esenciales del hogar', 'Ocio, viajes y ayuda familiar', 'Salud, dependencia, reformas e imprevistos'], outcome: 'Un presupuesto base, otro deseado y una reserva extraordinaria.' },
       { number: '04', icono: 'balanza', eyebrow: 'Suficiencia', title: 'Identifica la brecha', description: 'Compara ingresos y gastos para saber qué debe cubrir tu ahorro acumulado.', questions: ['Diferencia mensual entre ingresos y gastos', 'Duración prudente del horizonte', 'Efecto de la inflación sobre el presupuesto'], outcome: 'Una necesidad anual que puedas llevar al simulador de NUVIA.' },
       { number: '05', icono: 'casa', eyebrow: 'Arquitectura patrimonial', title: 'Ordena el patrimonio', description: 'Asigna una función clara a la liquidez, la vivienda y el ahorro de largo plazo.', questions: ['Reserva para los próximos años', 'Deudas que seguirán vigentes', 'Patrimonio destinado a uso, renta o legado'], outcome: 'Un mapa patrimonial por función, sin necesidad de elegir productos concretos.' },
@@ -125,7 +151,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
   }
 
   function planificacion(comp) {
-    if (!global.React || !global.NuviaJubilacionUI) return null;
+    if (!global.React || !global.NuviaJubilacionUI || !F()) return null;
     const st = comp.state; const e = estadoPlan(st); const p = st.paso || 0;
     const set = (o) => comp.setState(o);
     const toggle = (campo, id) => set({ [campo]: Object.assign({}, st[campo], { [id]: !(st[campo] || {})[id] }) });
@@ -137,6 +163,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
     ];
     const cuerpo = [pasoMomento, pasoPiezas, pasoDecisiones, pasoAcciones][p]({ st, e, set, toggle });
     return h('div', { className: 'jb jg' },
+      selector(comp, st),
       h('div', { className: 'jb-work' },
         h('div', { className: 'jb-steps' },
           h('div', { className: 'jb-steps__top' }, h('p', { className: 'jb-kicker' }, 'Tu hoja de ruta · 4 pasos'),
@@ -154,7 +181,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
                 : h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir mi hoja de ruta')))),
         h('aside', { className: 'jb-live', 'aria-label': 'Resumen de tu hoja de ruta' }, resumenPlan(st, e))),
       riesgosPlan(),
-      siguientes('planificacion'));
+      siguientes('planificacion', st));
   }
 
   function pasoMomento({ st, e, set }) {
@@ -213,28 +240,30 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
       h('div', { className: 'jg-next', 'aria-live': 'polite' }, h('p', { className: 'jb-kicker' }, 'Próxima acción'), h('p', null, e.proxima)),
       h('div', { className: 'jb-live__actions' },
         h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir mi hoja de ruta'),
-        h('a', { className: 'nv-btn nv-btn--soft', href: 'jubilacion.html' }, 'Calcular en el simulador →')),
+        h('a', { className: 'nv-btn nv-btn--soft', href: enlace('jubilacion.html', st) }, 'Calcular en el simulador →')),
       h('p', { className: 'jb-muted jg-privacy' }, 'No se guarda nada: tu selección solo vive mientras tengas abierta esta página.'));
   }
 
   function riesgosPlan() {
     return h('section', { className: 'jg-section', 'aria-labelledby': 'jg-riesgos' },
-      h('p', { className: 'jb-kicker' }, 'Riesgos que conviene anticipar'),
+      h('p', { className: 'jb-kicker' }, 'Riesgos que hay que anticipar'),
       h('h2', { id: 'jg-riesgos', className: 'jg-h2' }, 'Un buen plan también prepara lo inesperado'),
       h('div', { className: 'jg-grid-3' }, PLAN.riesgos.map((r) => h('article', { key: r.titulo, className: 'jg-card' },
         h('span', { className: 'jg-card__icon' }, icono(r.icono)), h('h3', null, r.titulo), h('p', { className: 'jb-note' }, r.descripcion),
         h('p', { className: 'jg-card__foot' }, h('strong', null, 'Cómo prepararlo: '), r.respuesta)))));
   }
 
-  function siguientes(desde) {
+  function siguientes(desde, st) {
+    const cfg = cfgDe(st), T = textosDe(cfg);
+    const conDfb = desde === 'fiscal' && cfg && cfg.caso === 'dfb';
     const card = (href, ic, k, t, d, cta) => h('a', { className: 'jg-next-card', href }, h('span', { className: 'jg-card__icon' }, icono(ic)),
       h('span', { className: 'jg-next-card__text' }, h('span', { className: 'jb-kicker' }, k), h('strong', null, t), h('span', null, d)), h('span', { className: 'jg-next-card__cta' }, cta, ' →'));
     return h('section', { className: 'jg-section', 'aria-label': 'Siguientes pasos' },
       h('div', { className: 'jg-grid-2' },
-        card('jubilacion.html' + (desde === 'fiscal' ? '?caso=dfb' : ''), 'calculo', 'Siguiente paso · Calcular', desde === 'fiscal' ? 'Pruébalo con números' : 'Convierte la hoja de ruta en escenarios', desde === 'fiscal' ? 'El simulador compara capital, renta y combinaciones con tu pensión y tus ahorros. Se abre con el caso práctico de la DFB cargado.' : 'Introduce tus datos en el simulador para estimar ingresos, impuestos y hasta cuándo te llega el dinero.', 'Abrir el simulador'),
+        card(enlace('jubilacion.html' + (conDfb ? '?caso=dfb' : ''), st), 'calculo', 'Siguiente paso · Calcular', desde === 'fiscal' ? 'Pruébalo con números' : 'Convierte la hoja de ruta en escenarios', desde === 'fiscal' ? 'El simulador compara capital, renta y combinaciones con tu pensión y tus ahorros.' + (conDfb ? ' Se abre con el caso práctico de la DFB cargado.' : '') : 'Introduce tus datos en el simulador para estimar ingresos, impuestos y hasta cuándo te llega el dinero.', 'Abrir el simulador'),
         desde === 'fiscal'
-          ? card('guia-planificacion.html', 'ruta', 'Antes · Ordenar', 'Tu hoja de ruta de jubilación', 'Seis decisiones en orden, las piezas que necesitas y una lista de acciones imprimible.', 'Ver la guía')
-          : card('guia-fiscal.html', 'escudo', 'Último paso · Ejecutar', 'Prepara el rescate de tu EPSV', 'Compara capital, renta y modalidad mixta, y su tratamiento fiscal en Bizkaia.', 'Ver fiscalidad y rescate')));
+          ? card(enlace('guia-planificacion.html', st), 'ruta', 'Antes · Ordenar', 'Tu hoja de ruta de jubilación', 'Seis decisiones en orden, las piezas que necesitas y una lista de acciones imprimible.', 'Ver la guía')
+          : card(enlace('guia-fiscal.html', st), 'escudo', 'Último paso · Ejecutar', 'Prepara el rescate de ' + (T ? T.tu : 'tu EPSV o plan de pensiones'), 'Compara capital, renta y modalidad mixta, y su tratamiento fiscal en ' + (T ? T.nombre : 'tu territorio') + '.', 'Ver fiscalidad y rescate')));
   }
 
   function componerPlan(st, base) {
@@ -247,199 +276,255 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
 <div class="g2"><section class="blk"><h3>Piezas de partida · ${e.nP}/6</h3><ul>${PLAN.piezas.map((p) => li((st.listas || {})[p.id], p.label)).join('')}</ul></section>
 <section class="blk"><h3>Acciones · ${e.nA}/8</h3><ul>${PLAN.acciones.map((a) => li((st.hechas || {})[a.id], a.label)).join('')}</ul></section></div>
 <section class="blk"><h3>Seis decisiones · ${e.nD}/6 revisadas</h3><ul>${PLAN.pasos.map((p, i) => li((st.revisadas || {})[i], p.number + ' · ' + p.title, 'Resultado: ' + p.outcome)).join('')}</ul></section>
-<section class="blk"><h3>Riesgos que conviene anticipar</h3><div class="g3">${PLAN.riesgos.map((r) => `<div><strong>${esc(r.titulo)}</strong><br><span class="nota">${esc(r.respuesta)}</span></div>`).join('')}</div></section>
+<section class="blk"><h3>Riesgos que hay que anticipar</h3><div class="g3">${PLAN.riesgos.map((r) => `<div><strong>${esc(r.titulo)}</strong><br><span class="nota">${esc(r.respuesta)}</span></div>`).join('')}</div></section>
 <p class="foot">Guía educativa y orientativa de NUVIA. No constituye asesoramiento financiero, fiscal o jurídico y debe adaptarse a la situación personal, familiar y patrimonial de cada persona.</p></body></html>`;
   }
   const imprimirPlan = (st) => imprimirHTML(componerPlan(st, global.location ? global.location.href : ''));
 
   /* ======================================================================
-     GUÍA 2 · FISCALIDAD Y RESCATE DE LA EPSV
+     GUÍA 2 · FISCALIDAD Y RESCATE DE LA EPSV O DEL PLAN DE PENSIONES
+     Todo lo que depende de la normativa sale de cfg (NuviaJubilacionFiscal)
+     y de T = textos(cfg). Nada de aquí se escribe pensando en un territorio.
      ====================================================================== */
-  const MODOS = {
-    capital: { t: 'Capital', k: 'Cobro único o parcial', icono: 'monedas', texto: 'Aporta liquidez inmediata para cancelar deuda, realizar una compra relevante o reorganizar el patrimonio. Puede concentrar más renta fiscal en un solo ejercicio.', ojo: 'Conviene revisar especialmente la parte generada antes de 2026 y si se cumplen los requisitos del régimen transitorio.' },
-    renta: { t: 'Renta', k: 'Cobros periódicos', icono: 'reloj', texto: 'Convierte el ahorro en un complemento periódico de ingresos y permite acompasar el cobro al presupuesto de jubilación. Su tratamiento depende de la duración y de cómo se haya configurado la renta.', ojo: 'En el caso práctico oficial, la diferencia entre una renta de al menos 15 años y otra de menor duración es fiscalmente relevante.' },
-    mixta: { t: 'Mixta', k: 'Combinación', icono: 'balanza', texto: 'Combina un capital inicial con cobros posteriores. Puede equilibrar liquidez, estabilidad de ingresos y distribución temporal de la tributación.', ojo: 'Exige separar bien cada tramo y documentar qué derechos corresponden al periodo anterior y posterior a 2026.' },
-  };
-  /* Tratamiento según el caso práctico de la DFB. clase: trabajo | ahorro | exento */
-  const TRATAMIENTO = [
-    { id: 'renta15', t: 'Renta de 15 años o más, constante', ap: ['trabajo', 'Trabajo al 100 %, a medida que se cobra'], re: ['exento', 'Exenta'] },
-    { id: 'rentacorta', t: 'Renta de menor duración', ap: ['trabajo', 'Trabajo al 100 %, a medida que se cobra'], re: ['ahorro', 'Capital mobiliario al 100 %'] },
-    { id: 'capital', t: 'Capital sin régimen transitorio', ap: ['trabajo', 'Trabajo integrado al 70 %'], re: ['ahorro', 'Capital mobiliario al 100 %'] },
-    { id: 'transitorio', t: 'Capital con régimen transitorio', ap: ['trabajo', 'Tramo anterior a 2026 al 60 % (aportación y rentabilidad); posterior al 70 %'], re: ['ahorro', 'Solo la rentabilidad posterior a 2026, al 100 %'] },
-  ];
-  const PREGUNTAS = ['¿Cuánta liquidez necesitas realmente el primer año?', '¿Qué otros ingresos tendrás en el ejercicio del cobro?', '¿Qué parte de tus derechos corresponde a aportaciones anteriores a 2026?', '¿Has aplicado antes una reducción por cobro en capital?', '¿Prefieres estabilidad mensual o mayor control sobre el capital?'];
-  const TRAMITE = [
-    { ic: 'documento', t: 'Pide el desglose a tu EPSV', d: 'Solicita derechos consolidados, aportaciones y rendimientos separados, con identificación de la parte generada hasta el 31 de diciembre de 2025 y desde el 1 de enero de 2026.' },
-    { ic: 'escudo', t: 'Acredita la contingencia', d: 'Aporta la resolución o certificado correspondiente a jubilación, incapacidad, dependencia, fallecimiento u otra contingencia admitida, junto con la identificación del beneficiario.' },
-    { ic: 'calendario', t: 'Elige modalidad y fechas', d: 'Define si el cobro será en capital, renta o mixto. Antes de firmar, revisa el impacto conjunto con pensión, salario, alquileres y otras rentas del ejercicio.' },
-    { ic: 'firma', t: 'Presenta la solicitud completa', d: 'Formaliza la petición conforme a los estatutos y al reglamento de prestaciones de la entidad. Conserva copia fechada de la solicitud y de todos los justificantes.' },
-    { ic: 'lista', t: 'Guarda la trazabilidad fiscal', d: 'Conserva el certificado de retenciones y el detalle fiscal de la prestación para contrastarlo al preparar el IRPF y acreditar el régimen aplicado si fuera necesario.' },
-  ];
-  const DOCUMENTOS = ['DNI o documento de identificación.', 'Resolución o certificado de la contingencia.', 'Acreditación de beneficiario, cuando proceda.', 'Formulario de modalidad y cuenta de abono.', 'Desglose fiscal y temporal emitido por la EPSV.', 'Antecedentes de rescates en capital ya realizados.'];
-  const CHECKLIST = ['He confirmado que tributo en Bizkaia.', 'Tengo el desglose anterior y posterior a 2026.', 'He revisado rescates en capital anteriores.', 'He comparado capital, renta y modalidad mixta.', 'He sumado la prestación al resto de ingresos del año.', 'Conozco la retención y sé que no es la cuota final.', 'La solicitud indica fechas e importes con claridad.', 'Conservaré certificados y justificantes fiscales.'];
-  const FUENTES = [
-    { href: 'https://www.bizkaia.eus/es/normativa-tributaria/novedades-tributarias', k: 'Hacienda Foral de Bizkaia', t: 'Novedades y normativa tributaria', d: 'Acceso al marco fiscal vigente y a las disposiciones que desarrollan el tratamiento de los sistemas de previsión social.' },
-    { href: 'https://gidak.bizkaia.eus/content/imagenes/Renta/CASO-PRACTICO-EPSV-26.pdf', k: 'Hacienda Foral de Bizkaia', t: 'Caso práctico EPSV 2026', d: 'El ejemplo oficial de rescate en capital y en renta que resume esta guía.' },
-    { href: 'https://www.euskadi.eus/indice-epsv-normativa/web01-s2oga/es/', k: 'Gobierno Vasco', t: 'Índice oficial de normativa EPSV', d: 'Incluye la Ley 5/2012, el Decreto 203/2015 y sus modificaciones, entre ellas el Decreto 13/2024.' },
-    { href: 'https://www.euskadi.eus/contenidos/informacion/6021/es_2300/adjuntos/2025/DECRETO-2015.203.entrada-en-vigor.2024.04.02.pdf', k: 'Reglamento consolidado', t: 'Prestaciones, modalidades y plazos', d: 'Texto adaptado del Reglamento de la Ley de EPSV con las reglas administrativas aplicables a la solicitud y el pago.' },
-    { href: 'https://www.euskadi.eus/registro-epsv/web01-tramite/es/', k: 'Registro público', t: 'Registro de EPSV de Euskadi', d: 'Información administrativa y acceso al registro oficial de entidades de previsión social voluntaria.' },
-  ];
+  const pctN = (x) => Math.round(x * 100) + ' %';
 
-  /* Bases del caso práctico calculadas con el mismo motor que el simulador. */
-  function casoDFB() {
-    const M = global.NuviaJubilacion; if (!M) return null;
-    const r = M.calcular({ pension: 0, liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, tieneEpsv: true, epsvPre: 89000, epsvPreRent: 27000, epsvPost: 11000, epsvPostRent: 3000, epsvCobro: 'capital' });
-    const c = r.capital;
+  function modos(cfg, T) {
+    const pv = cfg.parametros.prevision;
     return {
-      transitorio: c.transitorio.bases, nuevo: c.nuevo.bases,
-      renta15: { general: 70000, ahorro: 0, exento: 30000 }, rentacorta: { general: 70000, ahorro: 30000, exento: 0 },
+      capital: { t: 'Capital', k: 'Cobro único o parcial', icono: 'monedas', texto: 'Aporta liquidez inmediata para cancelar deuda, realizar una compra relevante o reorganizar el patrimonio. Puede concentrar más renta fiscal en un solo ejercicio.',
+        ojo: T.vasco ? 'Hay que revisar especialmente la parte generada antes de ' + pv.corte + ' y si se cumplen los requisitos del régimen transitorio.' : 'Hay que identificar qué parte de los derechos deriva de aportaciones anteriores a ' + pv.corte + ': solo esa parte puede reducirse un ' + pctN(pv.reduccion) + ', y solo en el año de la jubilación o en los dos siguientes.' },
+      renta: { t: 'Renta', k: 'Cobros periódicos', icono: 'reloj', texto: 'Convierte el ahorro en un complemento periódico de ingresos y permite acompasar el cobro al presupuesto de jubilación.' + (T.vasco ? ' Su tratamiento depende de la duración y de cómo se haya configurado la renta.' : ' Todo lo cobrado es rendimiento del trabajo a medida que se percibe.'),
+        ojo: T.vasco ? 'La diferencia entre una renta de al menos ' + pv.rentaMinimaAnios + ' años de cuantía constante y otra de menor duración es fiscalmente relevante: en la primera la rentabilidad queda exenta' + (pv.exencionRentaMax ? ' hasta el ' + pctN(pv.exencionRentaMax) + ' de la renta' : '') + '.' : 'En renta no existe la reducción del ' + pctN(pv.reduccion) + ': cada cobro tributa íntegro como rendimiento del trabajo en el año en que se percibe.' },
+      mixta: { t: 'Mixta', k: 'Combinación', icono: 'balanza', texto: 'Combina un capital inicial con cobros posteriores. Puede equilibrar liquidez, estabilidad de ingresos y distribución temporal de la tributación.',
+        ojo: T.vasco ? 'Exige separar bien cada tramo y documentar qué derechos corresponden al periodo anterior y posterior a ' + pv.corte + '.' : 'La parte en capital sigue las reglas del capital (reducción solo sobre los derechos anteriores a ' + pv.corte + '); la parte en renta tributa íntegra.' },
     };
   }
 
+  /* Matriz fiscal por modalidad. clase: trabajo | ahorro | exento | reduccion */
+  function tratamiento(cfg, T) {
+    const pv = cfg.parametros.prevision;
+    if (T.vasco) {
+      const ex = 'Exenta' + (pv.exencionRentaMax ? ' (hasta el ' + pctN(pv.exencionRentaMax) + ' de la renta)' : '');
+      return { columnas: ['Modalidad', 'Lo que aportaste', 'La rentabilidad'], filas: [
+        { id: 'renta15', t: 'Renta de ' + pv.rentaMinimaAnios + ' años o más, constante', ap: ['trabajo', 'Trabajo al 100 %, a medida que se cobra'], re: ['exento', ex] },
+        { id: 'rentacorta', t: 'Renta de menor duración', ap: ['trabajo', 'Trabajo al 100 %, a medida que se cobra'], re: ['ahorro', 'Capital mobiliario al 100 %'] },
+        { id: 'capital', t: 'Capital sin régimen transitorio', ap: ['trabajo', 'Trabajo integrado al ' + pctN(pv.capital)], re: ['ahorro', 'Capital mobiliario al 100 %'] },
+        { id: 'transitorio', t: 'Capital con régimen transitorio', ap: ['trabajo', 'Tramo anterior a ' + pv.corte + ' al ' + pctN(pv.capitalTransitorio) + ' (aportación y rentabilidad); posterior al ' + pctN(pv.capital)], re: ['ahorro', 'Solo la rentabilidad posterior a ' + pv.corte + ', al 100 %'] },
+      ] };
+    }
+    return { columnas: ['Modalidad', 'Cómo tributa', 'Base'], filas: [
+      { id: 'renta', t: 'Renta (cualquier duración)', ap: ['trabajo', 'Rendimiento del trabajo al 100 %, a medida que se cobra; sin reducción'], re: ['trabajo', 'Base general'] },
+      { id: 'capital', t: 'Capital · derechos de aportaciones desde ' + pv.corte, ap: ['trabajo', 'Rendimiento del trabajo al 100 %'], re: ['trabajo', 'Base general'] },
+      { id: 'transitorio', t: 'Capital · derechos de aportaciones anteriores a ' + pv.corte, ap: ['reduccion', 'Rendimiento del trabajo con reducción del ' + pctN(pv.reduccion) + ' (cobro en el año de la jubilación o en los dos siguientes; más de 2 años desde la primera aportación)'], re: ['trabajo', 'Base general'] },
+    ] };
+  }
+  const filasModo = (modo, T) => T.vasco
+    ? (modo === 'capital' ? ['transitorio', 'capital'] : modo === 'renta' ? ['renta15', 'rentacorta'] : ['transitorio', 'capital', 'renta15', 'rentacorta'])
+    : (modo === 'capital' ? ['transitorio', 'capital'] : modo === 'renta' ? ['renta'] : ['transitorio', 'capital', 'renta']);
+
+  const PREGUNTAS = (cfg, T) => ['¿Cuánta liquidez necesitas realmente el primer año?', '¿Qué otros ingresos tendrás en el ejercicio del cobro?', '¿Qué parte de tus derechos corresponde a aportaciones anteriores a ' + cfg.parametros.prevision.corte + '?', T.vasco ? '¿Has aplicado antes una reducción por cobro en capital?' : '¿Cobrarás dentro del año de la jubilación o de los dos siguientes?', '¿Prefieres estabilidad mensual o mayor control sobre el capital?'];
+
+  function tramite(cfg, T) {
+    const pv = cfg.parametros.prevision; const ent = T.vasco ? 'tu EPSV' : 'la entidad gestora del plan';
+    return [
+      { ic: 'documento', t: 'Pide el desglose a ' + ent, d: T.vasco ? 'Solicita derechos consolidados, aportaciones y rendimientos separados, con identificación de la parte generada hasta el 31 de diciembre de ' + (pv.corte - 1) + ' y desde el 1 de enero de ' + pv.corte + '.' : 'Solicita el certificado de derechos consolidados con la parte que corresponde a aportaciones realizadas hasta el 31 de diciembre de ' + (pv.corte - 1) + ', que es la que puede acogerse a la reducción del ' + pctN(pv.reduccion) + '.' },
+      { ic: 'escudo', t: 'Acredita la contingencia', d: 'Aporta la resolución o certificado correspondiente a la jubilación' + (T.vasco ? ', incapacidad, dependencia, fallecimiento u otra contingencia admitida' : ' (u otra contingencia prevista en las especificaciones del plan)') + ', junto con la identificación del beneficiario.' },
+      { ic: 'calendario', t: 'Elige modalidad y fechas', d: 'Define si el cobro será en capital, renta o mixto. Antes de firmar, revisa el impacto conjunto con pensión, salario, alquileres y otras rentas del ejercicio' + (T.vasco ? '.' : ', y que el cobro en capital quede dentro del año de la contingencia o de los dos siguientes.') },
+      { ic: 'firma', t: 'Presenta la solicitud completa', d: T.vasco ? 'Formaliza la petición conforme a los estatutos y al reglamento de prestaciones de la entidad. Conserva copia fechada de la solicitud y de todos los justificantes.' : 'Formaliza la petición conforme a las especificaciones del plan y a su reglamento. Conserva copia fechada de la solicitud y de todos los justificantes.' },
+      { ic: 'lista', t: 'Guarda la trazabilidad fiscal', d: 'Conserva el certificado de retenciones y el detalle fiscal de la prestación para contrastarlo al preparar el IRPF y acreditar ' + (T.vasco ? 'el régimen aplicado' : 'la reducción aplicada') + ' si fuera necesario.' },
+    ];
+  }
+  const documentos = (cfg, T) => ['DNI o documento de identificación.', 'Resolución o certificado de la contingencia.', 'Acreditación de beneficiario, cuando proceda.', 'Formulario de modalidad y cuenta de abono.', (T.vasco ? 'Desglose fiscal y temporal emitido por la EPSV.' : 'Certificado de derechos consolidados con la parte anterior a ' + cfg.parametros.prevision.corte + '.'), 'Antecedentes de rescates en capital ya realizados.'];
+  const checklist = (cfg, T) => ['He confirmado que tributo en ' + T.nombre + '.', 'Tengo el desglose anterior y posterior a ' + cfg.parametros.prevision.corte + '.', 'He revisado rescates en capital anteriores.', 'He comparado capital, renta y modalidad mixta.', 'He sumado la prestación al resto de ingresos del año.', 'Conozco la retención y sé que no es la cuota final.', 'La solicitud indica fechas e importes con claridad.', 'Conservaré certificados y justificantes fiscales.'];
+
+  /* ----------------------------------------------------- Casos prácticos -- */
+  /* Bizkaia: caso práctico oficial de la DFB (100.000 €). Para los demás
+     territorios, un ejemplo ficticio, identificado como tal, calculado con el
+     mismo motor que el simulador y verificable a mano. */
+  const CASOS = {
+    dfb: { oficial: true, titulo: 'Caso práctico DFB 2026', total: 100000, entrada: { epsvPre: 89000, epsvPreRent: 27000, epsvPost: 11000, epsvPostRent: 3000 }, bloques: [['Aportado hasta 2025', 62000, 'is-ap1'], ['Rentabilidad hasta 2025', 27000, 'is-re1'], ['Aportado desde 2026', 8000, 'is-ap2'], ['Rentabilidad desde 2026', 3000, 'is-re2']], href: 'https://gidak.bizkaia.eus/content/imagenes/Renta/CASO-PRACTICO-EPSV-26.pdf' },
+    vasco: { oficial: false, titulo: 'Ejemplo ficticio', total: 120000, entrada: { epsvPre: 100000, epsvPreRent: 30000, epsvPost: 20000, epsvPostRent: 5000 }, bloques: [['Aportado hasta 2025', 70000, 'is-ap1'], ['Rentabilidad hasta 2025', 30000, 'is-re1'], ['Aportado desde 2026', 15000, 'is-ap2'], ['Rentabilidad desde 2026', 5000, 'is-re2']] },
+    reduccion: { oficial: false, titulo: 'Ejemplo ficticio', total: 100000, entrada: { epsvPre: 60000, epsvPost: 40000 }, bloques: (corte) => [['Derechos de aportaciones anteriores a ' + corte, 60000, 'is-ap1'], ['Derechos de aportaciones desde ' + corte, 40000, 'is-ap2']] },
+  };
+  function casoDe(cfg) {
+    const Mx = M(); if (!Mx || !cfg) return null;
+    const pv = cfg.parametros.prevision; const vasco = pv.modelo === 'vasco';
+    const c = cfg.caso === 'dfb' ? CASOS.dfb : vasco ? CASOS.vasco : CASOS.reduccion;
+    const base = { territorio: cfg.id, ccaa: cfg.ccaa ? cfg.ccaa.id : undefined, pension: 0, liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, tieneEpsv: true, epsvCobro: 'capital' };
+    const r = Mx.calcular(Object.assign(base, c.entrada));
+    const cap = r.capital; const tot = c.total;
+    const vistas = {};
+    if (vasco) {
+      const rent = c.entrada.epsvPreRent + c.entrada.epsvPostRent, aport = tot - rent;
+      const exentoMax = pv.exencionRentaMax ? Math.min(rent, pv.exencionRentaMax * tot) : rent;
+      vistas.transitorio = { t: 'Capital · régimen transitorio', general: cap.transitorio.bases.general, ahorro: cap.transitorio.bases.ahorro, exento: null, nota: 'La prestación se reparte en proporción a lo aportado: ' + eurN(tot) + ' × ' + eurN(c.bloques[0][1]) + ' / ' + eurN(c.bloques[0][1] + c.bloques[2][1]) + ' = ' + eurN(cap.transitorio.bases.detalle.tramoPre) + ' pertenecen al tramo anterior a ' + pv.corte + ' y se integran al ' + pctN(pv.capitalTransitorio) + '. Del resto (' + eurN(cap.transitorio.bases.detalle.tramoPost) + '), ' + eurN(cap.transitorio.bases.detalle.rentabilidad) + ' de rentabilidad van a la base del ahorro y ' + eurN(cap.transitorio.bases.detalle.aportacion) + ' se integran al ' + pctN(pv.capital) + '.' };
+      vistas.nuevo = { t: 'Capital · régimen ' + pv.corte, general: cap.nuevo.bases.general, ahorro: cap.nuevo.bases.ahorro, exento: null, nota: 'Toda la rentabilidad (' + eurN(rent) + ') va a la base del ahorro y lo aportado (' + eurN(aport) + ') se integra al ' + pctN(pv.capital) + ' en la base general.' };
+      vistas.renta15 = { t: 'Renta de ' + pv.rentaMinimaAnios + ' años o más', general: aport, ahorro: rent - exentoMax, exento: exentoMax, nota: 'Cobrada como renta vitalicia o de al menos ' + pv.rentaMinimaAnios + ' años con cuantía constante, la rentabilidad queda exenta' + (pv.exencionRentaMax ? ' (con el límite del ' + pctN(pv.exencionRentaMax) + ' de la renta' + (rent - exentoMax > .5 ? ': ' + eurN(rent - exentoMax) + ' van a la base del ahorro' : ', que aquí no se alcanza') + ')' : '') + ' y lo aportado tributa como trabajo a medida que se cobra.' };
+      vistas.rentacorta = { t: 'Renta más corta', general: aport, ahorro: rent, exento: 0, nota: 'En una renta más corta, lo aportado tributa como trabajo y la rentabilidad como capital mobiliario, en ambos casos a medida que se cobra.' };
+    } else {
+      const red = cap.bases.detalle.reduccion;
+      vistas.reduccion = { t: 'Capital con reducción del ' + pctN(pv.reduccion), general: cap.bases.general, ahorro: 0, exento: red, etiquetaExento: 'Reducción (no integra)', nota: 'La parte que deriva de aportaciones anteriores a ' + pv.corte + ' (' + eurN(c.entrada.epsvPre) + ') se reduce un ' + pctN(pv.reduccion) + ': ' + eurN(red) + ' no se integran. El resto (' + eurN(c.entrada.epsvPost) + ') tributa íntegro. Base general: ' + eurN(cap.bases.general) + ', todo como rendimiento del trabajo.' };
+      vistas.renta = { t: 'Renta', general: tot, ahorro: 0, exento: 0, nota: 'En forma de renta no hay reducción: los ' + eurN(tot) + ' tributan íntegramente como rendimiento del trabajo a medida que se cobran.' };
+    }
+    return { oficial: c.oficial, titulo: c.titulo, total: tot, bloques: typeof c.bloques === 'function' ? c.bloques(pv.corte) : c.bloques, href: c.href || null, vistas, opciones: Object.keys(vistas).map((k) => [k, vistas[k].t]), capital: cap };
+  }
+  const eurN = (n) => K().eur(n);
+
+  /* Compatibilidad con la versión anterior (pruebas y enlaces): bases del caso DFB. */
+  function casoDFB() {
+    const c = casoDe(F().configuracion('bizkaia')); if (!c) return null;
+    return { transitorio: c.capital.transitorio.bases, nuevo: c.capital.nuevo.bases, renta15: { general: 70000, ahorro: 0, exento: 30000 }, rentacorta: { general: 70000, ahorro: 30000, exento: 0 } };
+  }
+
   function fiscal(comp) {
-    if (!global.React || !global.NuviaJubilacionUI) return null;
+    if (!global.React || !global.NuviaJubilacionUI || !F()) return null;
     const st = comp.state; const set = (o) => comp.setState(o);
+    const cfg = cfgDe(st), T = textosDe(cfg);
+    if (!T) return h('div', { className: 'jb jg' }, selector(comp, st), estadoNoDisponible(st), siguientes('fiscal', st));
     const modo = st.modo || 'capital';
-    const hechos = CHECKLIST.filter((x, i) => (st.check || {})[i]).length;
+    const CHECK = checklist(cfg, T);
+    const hechos = CHECK.filter((x, i) => (st.check || {})[i]).length;
+    const ctx = { st, set, cfg, T, modo, CHECK, hechos };
     return h('div', { className: 'jb jg' },
-      h('p', { className: 'jg-scope' }, icono('info'), h('span', null, h('strong', null, 'Ámbito de esta guía. '), 'Se refiere a EPSV y a contribuyentes sujetos al IRPF de Bizkaia. Es información orientativa, revisada en septiembre de 2026; la situación personal, los estatutos de la entidad y posibles cambios normativos pueden alterar el resultado.')),
+      selector(comp, st),
+      h('p', { className: 'jg-scope' }, icono('info'), h('span', null, h('strong', null, 'Ámbito de esta guía. '), 'Se refiere a ' + (T.vasco ? 'EPSV' : 'planes de pensiones') + ' y a contribuyentes sujetos al ' + cfg.irpf + ' (' + cfg.hacienda + (cfg.ccaa ? ' · ' + cfg.ccaa.nombre : '') + '). Es información orientativa, revisada en octubre de 2026 con fuentes consultadas el ' + cfg.consulta + '; la situación personal, los estatutos o especificaciones de la entidad y posibles cambios normativos pueden alterar el resultado. ' + F().limites(cfg).join(' '))),
       h('nav', { className: 'jg-index', 'aria-label': 'Contenido de la guía' },
         [['#ayuda-rescate', '1', 'Cómo elegir'], ['#fiscalidad-2026', '2', 'Fiscalidad 2026'], ['#tramite-administrativo', '3', 'Tramitación'], ['#checklist-rescate', '4', 'Checklist'], ['#normativa-oficial', '5', 'Normativa']].map(([a, n, t]) => h('a', { key: a, href: a }, h('span', null, n), t))),
-      seccionElegir(st, set, modo),
-      seccionFiscal(st, set),
-      seccionTramite(),
-      seccionChecklist(st, set, hechos),
-      seccionNormativa(),
-      h('p', { className: 'jg-scope jg-scope--warn' }, icono('alerta'), h('span', null, h('strong', null, 'Importante. '), 'Esta guía no sustituye el análisis fiscal individual ni la documentación contractual de tu EPSV. Antes de ordenar el cobro, confirma con la entidad y, cuando proceda, con un asesor fiscal, el régimen aplicable a tu expediente concreto.')),
-      siguientes('fiscal'));
+      seccionElegir(ctx),
+      seccionFiscal(ctx),
+      seccionTramite(ctx),
+      seccionChecklist(ctx),
+      seccionNormativa(ctx),
+      h('p', { className: 'jg-scope jg-scope--warn' }, icono('alerta'), h('span', null, h('strong', null, 'Importante. '), 'Esta guía no sustituye el análisis fiscal individual ni la documentación contractual de ' + T.tu + '. Antes de ordenar el cobro, confirma con la entidad y, cuando proceda, con un asesor fiscal, el régimen aplicable a tu expediente concreto.')),
+      siguientes('fiscal', st));
   }
 
   function chip(clase, texto) { return h('span', { className: 'jg-tax jg-tax--' + clase }, texto); }
 
-  function seccionElegir(st, set, modo) {
-    const m = MODOS[modo];
-    const filas = modo === 'capital' ? ['transitorio', 'capital'] : modo === 'renta' ? ['renta15', 'rentacorta'] : ['transitorio', 'capital', 'renta15', 'rentacorta'];
+  function seccionElegir({ st, set, cfg, T, modo }) {
+    const MODOS = modos(cfg, T); const m = MODOS[modo]; const TR = tratamiento(cfg, T); const filas = filasModo(modo, T);
     return h('section', { id: 'ayuda-rescate', className: 'jg-section', 'aria-labelledby': 'jg-elegir' },
       h('p', { className: 'jb-kicker' }, '1 · Ayuda para decidir'),
       h('h2', { id: 'jg-elegir', className: 'jg-h2' }, 'Tres formas de cobrar. Tres perfiles de decisión'),
-      h('p', { className: 'jb-lead jg-measure' }, 'No existe una modalidad universalmente mejor. La elección depende de tus ingresos del año, tu necesidad de liquidez, la antigüedad de las aportaciones y el modo en que quieras ordenar el patrimonio durante la jubilación.'),
+      h('p', { className: 'jb-lead jg-measure' }, 'Ninguna modalidad es universalmente preferible. La elección depende de tus ingresos del año, tu necesidad de liquidez, la antigüedad de las aportaciones y el modo en que quieras ordenar el patrimonio durante la jubilación.'),
       h('div', { className: 'jb-choices jb-choices--cards jg-cards-3', role: 'radiogroup', 'aria-label': 'Forma de cobro' },
         Object.entries(MODOS).map(([k, x]) => h('button', { key: k, type: 'button', role: 'radio', 'aria-checked': modo === k ? 'true' : 'false', className: 'jb-choice' + (modo === k ? ' is-on' : ''), onClick: () => set({ modo: k }) },
           icono(x.icono), h('span', { className: 'jb-choice__text' }, h('strong', null, x.t), h('span', null, x.k))))),
       h('div', { className: 'jg-detail' },
         h('div', null, h('h3', null, m.t), h('p', { className: 'jb-note' }, m.texto), h('div', { className: 'jb-hint jg-mt' }, icono('info'), h('p', null, m.ojo))),
-        h('div', null, h('p', { className: 'jb-field__label' }, 'Cómo tributa (caso práctico DFB 2026)'),
+        h('div', null, h('p', { className: 'jb-field__label' }, 'Cómo tributa en ' + T.nombre + ' (' + cfg.ejercicio + ')'),
           h('div', { className: 'jg-matrix', role: 'table', 'aria-label': 'Tratamiento fiscal por modalidad' },
-            h('div', { className: 'jg-matrix__row jg-matrix__row--head', role: 'row' }, h('span', { role: 'columnheader' }, 'Modalidad'), h('span', { role: 'columnheader' }, 'Lo que aportaste'), h('span', { role: 'columnheader' }, 'La rentabilidad')),
-            TRATAMIENTO.filter((x) => filas.includes(x.id)).map((x) => h('div', { key: x.id, className: 'jg-matrix__row', role: 'row' },
+            h('div', { className: 'jg-matrix__row jg-matrix__row--head', role: 'row' }, TR.columnas.map((c) => h('span', { key: c, role: 'columnheader' }, c))),
+            TR.filas.filter((x) => filas.includes(x.id)).map((x) => h('div', { key: x.id, className: 'jg-matrix__row', role: 'row' },
               h('strong', { role: 'cell' }, x.t), h('span', { role: 'cell' }, chip(x.ap[0], x.ap[1])), h('span', { role: 'cell' }, chip(x.re[0], x.re[1]))))),
-          h('p', { className: 'jg-legend' }, chip('trabajo', 'Base general · 23–49 %'), chip('ahorro', 'Base del ahorro · 19–28 %'), chip('exento', 'Sin IRPF')))),
+          h('p', { className: 'jg-legend' }, chip('trabajo', 'Base general · ' + T.rangoGeneral), T.vasco ? chip('ahorro', 'Base del ahorro · ' + T.rangoAhorro) : chip('reduccion', 'Con reducción del ' + pctN(cfg.parametros.prevision.reduccion)), T.vasco ? chip('exento', 'Sin IRPF') : null))),
       h('div', { className: 'jg-questions' },
         h('h3', null, 'Las cinco preguntas previas'),
-        h('ol', null, PREGUNTAS.map((q, i) => h('li', { key: i }, h('span', { className: 'jg-questions__num' }, String(i + 1)), q)))));
+        h('ol', null, PREGUNTAS(cfg, T).map((q, i) => h('li', { key: i }, h('span', { className: 'jg-questions__num' }, String(i + 1)), q)))));
   }
 
-  function seccionFiscal(st, set) {
-    const K_ = K(); const eur = K_.eur;
-    const caso = casoDFB(); const vista = st.vistaDFB || 'transitorio';
-    const tot = 100000;
-    const bloques = [['Aportado hasta 2025', 62000, 'is-ap1'], ['Rentabilidad hasta 2025', 27000, 'is-re1'], ['Aportado desde 2026', 8000, 'is-ap2'], ['Rentabilidad desde 2026', 3000, 'is-re2']];
-    const opciones = [['transitorio', 'Capital · régimen transitorio'], ['nuevo', 'Capital · régimen 2026'], ['renta15', 'Renta de 15 años o más'], ['rentacorta', 'Renta más corta']];
-    const b = caso ? caso[vista] : null;
-    const gen = b ? b.general : 0, aho = b ? b.ahorro : 0, exe = b ? (b.exento != null ? b.exento : Math.max(0, tot - gen - aho)) : 0;
-    const nota = {
-      transitorio: 'La prestación se reparte en proporción a lo aportado: 100.000 × 62.000 / 70.000 = 88.571 € pertenecen al tramo anterior a 2026 y se integran al 60 %. Del resto (11.429 €), 3.000 € de rentabilidad van a la base del ahorro y 8.429 € se integran al 70 %.',
-      nuevo: 'Toda la rentabilidad (30.000 €) va a la base del ahorro y lo aportado (70.000 €) se integra al 70 % en la base general.',
-      renta15: 'Cobrada como renta vitalicia o de al menos 15 años con cuantía constante, la rentabilidad queda exenta y lo aportado tributa como trabajo a medida que se cobra.',
-      rentacorta: 'En una renta más corta, lo aportado tributa como trabajo y la rentabilidad como capital mobiliario, en ambos casos a medida que se cobra.',
-    }[vista];
+  function seccionFiscal({ st, set, cfg, T }) {
+    const K_ = K(); const eur = K_.eur; const pv = cfg.parametros.prevision;
+    const caso = casoDe(cfg); if (!caso) return null;
+    const vista = caso.vistas[st.vistaCaso] ? st.vistaCaso : (caso.vistas[st.vistaDFB] ? st.vistaDFB : caso.opciones[0][0]);
+    const tot = caso.total; const b = caso.vistas[vista];
+    const gen = b.general, aho = b.ahorro, exe = b.exento != null ? b.exento : Math.max(0, tot - gen - aho);
     const barra = (v, cls, t) => v > 0.5 ? h('span', { className: cls, style: { width: (v / tot * 100) + '%' }, title: t + ': ' + eur(v) }) : null;
+    const etiquetaExe = b.etiquetaExento || (vista.indexOf('renta') === 0 ? 'Exento' : 'No integra (reducción)');
+    const tarjetas = T.vasco ? [
+      ['calendario', 'Derechos anteriores a ' + pv.corte, 'Posible régimen transitorio', 'La normativa de ' + cfg.nombre + ' permite optar por integrar la parte consolidada hasta el 31 de diciembre de ' + (pv.corte - 1) + ' como rendimiento del trabajo al ' + pctN(pv.capitalTransitorio) + ' cuando el rescate en capital reúne las condiciones aplicables.', 'No se aplica automáticamente: deben comprobarse contingencia, modalidad, primera prestación y antecedentes del contribuyente.'],
+      ['balanza', 'Derechos desde ' + pv.corte, 'Aportación y rendimiento se separan', 'En el cobro en capital, la parte procedente de aportaciones se integra como rendimiento del trabajo al ' + pctN(pv.capital) + ', mientras que el rendimiento generado se integra al 100 % como rendimiento del capital mobiliario.', 'Por eso es esencial pedir a la EPSV un certificado que desglose aportaciones, rendimientos y periodos.'],
+    ] : [
+      ['calendario', 'Derechos de aportaciones anteriores a ' + pv.corte, 'Reducción transitoria del ' + pctN(pv.reduccion), 'La ' + (cfg.modelo === 'navarra' ? 'disposición transitoria 25.ª del Texto Refundido navarro' : 'disposición transitoria 12.ª de la Ley 35/2006') + ' conserva la reducción del ' + pctN(pv.reduccion) + ' para la parte de la prestación en capital que corresponde a aportaciones realizadas hasta el 31 de diciembre de ' + (pv.corte - 1) + '.', 'Solo en el ejercicio de la contingencia o en los dos siguientes, y con más de dos años desde la primera aportación.'],
+      ['balanza', 'Derechos desde ' + pv.corte, 'Todo es rendimiento del trabajo', 'La prestación del plan de pensiones, en capital o en renta, se integra al 100 % como rendimiento del trabajo en la base general. No se separa la rentabilidad.', 'Pide a la entidad gestora el certificado que identifica la parte de tus derechos anterior a ' + pv.corte + '.'],
+    ];
     return h('section', { id: 'fiscalidad-2026', className: 'jg-section', 'aria-labelledby': 'jg-fiscal' },
-      h('p', { className: 'jb-kicker' }, '2 · Fiscalidad de Bizkaia'),
-      h('h2', { id: 'jg-fiscal', className: 'jg-h2' }, 'La fecha de generación de los derechos importa'),
-      h('div', { className: 'jg-grid-2' },
-        h('article', { className: 'jg-card' }, h('span', { className: 'jg-card__icon' }, icono('calendario')), h('p', { className: 'jb-kicker' }, 'Derechos anteriores a 2026'), h('h3', null, 'Posible régimen transitorio'),
-          h('p', { className: 'jb-note' }, 'El caso práctico de la Hacienda Foral contempla que la parte consolidada hasta el 31 de diciembre de 2025 pueda integrarse como rendimiento del trabajo al 60 % cuando el rescate en capital reúne las condiciones aplicables.'),
-          h('p', { className: 'jg-card__foot' }, 'No se aplica automáticamente: deben comprobarse contingencia, modalidad, primera prestación y antecedentes del contribuyente.')),
-        h('article', { className: 'jg-card' }, h('span', { className: 'jg-card__icon' }, icono('balanza')), h('p', { className: 'jb-kicker' }, 'Derechos desde 2026'), h('h3', null, 'Aportación y rendimiento se separan'),
-          h('p', { className: 'jb-note' }, 'En el ejemplo oficial de cobro en capital, la parte procedente de aportaciones se integra como rendimiento del trabajo al 70 %, mientras que el rendimiento generado se integra al 100 % como rendimiento del capital mobiliario.'),
-          h('p', { className: 'jg-card__foot' }, 'Por eso es esencial pedir a la EPSV un certificado que desglose aportaciones, rendimientos y periodos.'))),
+      h('p', { className: 'jb-kicker' }, '2 · Fiscalidad de ' + T.nombre),
+      h('h2', { id: 'jg-fiscal', className: 'jg-h2' }, 'La fecha de las aportaciones importa'),
+      h('div', { className: 'jg-grid-2' }, tarjetas.map(([ic, k, t, d, f]) => h('article', { key: k, className: 'jg-card' }, h('span', { className: 'jg-card__icon' }, icono(ic)), h('p', { className: 'jb-kicker' }, k), h('h3', null, t), h('p', { className: 'jb-note' }, d), h('p', { className: 'jg-card__foot' }, f)))),
       h('article', { className: 'jb-card jg-dfb' },
         h('div', { className: 'jb-card__head' },
-          h('div', null, h('p', { className: 'jb-kicker' }, 'Caso práctico DFB 2026'), h('h3', null, 'Los mismos 100.000 €, cuatro formas de tributar'),
-            h('p', { className: 'jb-card__lead' }, 'Así se reparten los derechos del ejemplo oficial y qué parte va a cada base según cómo se cobren. Son bases imponibles, no el impuesto final: ese depende del resto de ingresos del año.')),
-          h('a', { className: 'jb-link', href: 'https://gidak.bizkaia.eus/content/imagenes/Renta/CASO-PRACTICO-EPSV-26.pdf', target: '_blank', rel: 'noopener noreferrer' }, 'Documento oficial ↗')),
-        h('p', { className: 'jb-field__label' }, 'De dónde vienen los 100.000 €'),
-        h('div', { className: 'jg-stack', role: 'img', 'aria-label': bloques.map(([t, v]) => t + ' ' + eur(v)).join(', ') }, bloques.map(([t, v, c]) => h('span', { key: t, className: c, style: { width: (v / tot * 100) + '%' } }))),
-        h('ul', { className: 'jg-stack__legend' }, bloques.map(([t, v, c]) => h('li', { key: t }, h('i', { className: c }), t, h('strong', null, eur(v))))),
-        h('div', { className: 'jg-dfb__switch' }, K_.Opciones({ nombre: 'Forma de cobro del ejemplo', valor: vista, onChange: (v) => set({ vistaDFB: v }), opciones: opciones.map(([v, t]) => ({ v, t })) })),
+          h('div', null, h('p', { className: 'jb-kicker' }, caso.titulo + ' · ' + T.nombre + (caso.oficial ? '' : ' · no es un ejemplo oficial')), h('h3', null, 'Los mismos ' + eur(tot) + ', ' + caso.opciones.length + ' formas de tributar'),
+            h('p', { className: 'jb-card__lead' }, (caso.oficial ? 'Así se reparten los derechos del ejemplo oficial' : 'Así se repartirían los derechos de un caso inventado para ilustrar la norma') + ' y qué parte va a cada base según cómo se cobren. Son bases imponibles, no el impuesto final: ese depende del resto de ingresos del año.' + (caso.oficial ? '' : ' Las cifras se calculan con el motor del simulador y pueden comprobarse a mano.'))),
+          caso.href ? h('a', { className: 'jb-link', href: caso.href, target: '_blank', rel: 'noopener noreferrer' }, 'Documento oficial ↗') : h('span', { className: 'nv-tag nv-tag--pending' }, 'Ejemplo ficticio')),
+        h('p', { className: 'jb-field__label' }, 'De dónde vienen los ' + eur(tot)),
+        h('div', { className: 'jg-stack', role: 'img', 'aria-label': caso.bloques.map(([t, v]) => t + ' ' + eur(v)).join(', ') }, caso.bloques.map(([t, v, c]) => h('span', { key: t, className: c, style: { width: (v / tot * 100) + '%' } }))),
+        h('ul', { className: 'jg-stack__legend' }, caso.bloques.map(([t, v, c]) => h('li', { key: t }, h('i', { className: c }), t, h('strong', null, eur(v))))),
+        h('div', { className: 'jg-dfb__switch' }, K_.Opciones({ nombre: 'Forma de cobro del ejemplo', valor: vista, onChange: (v) => set({ vistaCaso: v, vistaDFB: v }), opciones: caso.opciones.map(([v, t]) => ({ v, t })) })),
         h('div', { className: 'jg-bases' },
           h('div', { className: 'jg-bases__bar', role: 'img', 'aria-label': 'Base general ' + eur(gen) + ', base del ahorro ' + eur(aho) + ', sin tributar ' + eur(exe) },
-            barra(gen, 'is-gen', 'Base general'), barra(aho, 'is-aho', 'Base del ahorro'), barra(exe, 'is-exe', 'No tributa o reducción')),
+            barra(gen, 'is-gen', 'Base general'), barra(aho, 'is-aho', 'Base del ahorro'), barra(exe, 'is-exe', etiquetaExe)),
           h('div', { className: 'jg-bases__figs' },
             h('div', { className: 'is-gen' }, h('span', null, 'Base general'), h('strong', null, eur(gen))),
-            h('div', { className: 'is-aho' }, h('span', null, 'Base del ahorro'), h('strong', null, eur(aho))),
-            h('div', { className: 'is-exe' }, h('span', null, vista.indexOf('renta') === 0 ? 'Exento' : 'No integra (reducción)'), h('strong', null, eur(exe))))),
-        h('p', { className: 'jb-note' }, nota),
-        h('a', { className: 'nv-btn nv-btn--soft jg-cta', href: 'jubilacion.html?caso=dfb' }, 'Ver el impuesto de este caso en el simulador →')));
+            T.vasco ? h('div', { className: 'is-aho' }, h('span', null, 'Base del ahorro'), h('strong', null, eur(aho))) : null,
+            h('div', { className: 'is-exe' }, h('span', null, etiquetaExe), h('strong', null, eur(exe))))),
+        h('p', { className: 'jb-note' }, b.nota),
+        h('a', { className: 'nv-btn nv-btn--soft jg-cta', href: enlace(cfg.caso === 'dfb' ? 'jubilacion.html?caso=dfb' : 'jubilacion.html', st) }, cfg.caso === 'dfb' ? 'Ver el impuesto de este caso en el simulador →' : 'Calcular tu propio caso en el simulador →')));
   }
 
-  function seccionTramite() {
+  function seccionTramite({ cfg, T }) {
+    const tr = cfg.tramitacion || {}; const pendiente = tr.estado !== 'verificada';
     return h('section', { id: 'tramite-administrativo', className: 'jg-section', 'aria-labelledby': 'jg-tramite' },
       h('p', { className: 'jb-kicker' }, '3 · Regulación administrativa'),
       h('h2', { id: 'jg-tramite', className: 'jg-h2' }, 'Del derecho al cobro: cómo preparar la solicitud'),
-      h('p', { className: 'jb-lead jg-measure' }, 'La prestación debe solicitarse a la entidad gestora y acompañarse de documentación completa y suficiente para acreditar la contingencia y la condición de beneficiario.'),
+      h('p', { className: 'jb-lead jg-measure' }, 'La prestación debe solicitarse a la entidad gestora y acompañarse de documentación completa y suficiente para acreditar la contingencia y la condición de beneficiario. ' + (tr.entidad || '')),
       h('div', { className: 'jg-tramite' },
-        h('ol', { className: 'jg-steps5' }, TRAMITE.map((x, i) => h('li', { key: i },
+        h('ol', { className: 'jg-steps5' }, tramite(cfg, T).map((x, i) => h('li', { key: i },
           h('span', { className: 'jg-steps5__dot' }, String(i + 1)),
           h('div', null, h('h3', null, icono(x.ic), x.t), h('p', { className: 'jb-note' }, x.d))))),
         h('div', { className: 'jg-stack-col' },
-          h('aside', { className: 'jg-dark' }, icono('reloj'), h('h3', null, 'Plazos de pago'),
-            h('p', null, 'Con carácter general, el Reglamento de EPSV prevé el abono dentro de los cinco días hábiles siguientes a una solicitud completa. En sistemas de empleo se aplica el plazo previsto en estatutos o reglamento, con el límite del último día del mes siguiente.'),
-            h('p', { className: 'jg-dark__foot' }, 'El cómputo depende de que la documentación sea íntegra y suficiente.')),
+          h('aside', { className: 'jg-dark' }, icono('reloj'), h('h3', null, 'Plazos de pago', pendiente ? h('span', { className: 'nv-tag nv-tag--pending' }, 'En preparación') : null),
+            h('p', null, tr.plazo || 'Plazos pendientes de contrastar en fuente oficial.'),
+            h('p', { className: 'jg-dark__foot' }, pendiente ? 'Los plazos concretos de esta normativa aún no se han contrastado en fuente oficial; consulta las especificaciones de tu plan.' : 'El cómputo depende de que la documentación sea íntegra y suficiente.')),
           h('aside', { className: 'jg-card' }, h('h3', null, 'Documentación habitual'),
-            h('ul', { className: 'jg-docs' }, DOCUMENTOS.map((d) => h('li', { key: d }, icono('documento'), d))),
-            h('p', { className: 'jg-card__foot' }, 'La relación exacta depende de la contingencia, de la entidad y de sus estatutos.')))));
+            h('ul', { className: 'jg-docs' }, documentos(cfg, T).map((d) => h('li', { key: d }, icono('documento'), d))),
+            h('p', { className: 'jg-card__foot' }, 'La relación exacta depende de la contingencia, de la entidad y de sus ' + (T.vasco ? 'estatutos.' : 'especificaciones.'))))));
   }
 
-  function seccionChecklist(st, set, hechos) {
+  function seccionChecklist({ st, set, CHECK, hechos, cfg, T }) {
     const toggle = (i) => set({ check: Object.assign({}, st.check, { [i]: !(st.check || {})[i] }) });
-    const pct = Math.round(hechos / CHECKLIST.length * 100);
+    const pct = Math.round(hechos / CHECK.length * 100);
     return h('section', { id: 'checklist-rescate', className: 'jg-section', 'aria-labelledby': 'jg-check' },
       h('div', { className: 'jb-card jg-checklist' },
         h('div', { className: 'jg-checklist__side' }, h('p', { className: 'jb-kicker' }, '4 · Control previo'), h('h2', { id: 'jg-check', className: 'jg-h2' }, 'Checklist antes de firmar el rescate'),
-          anillo(pct, 112, 'Checklist completado'), h('p', { className: 'jb-note' }, hechos + ' de ' + CHECKLIST.length + ' comprobaciones hechas.'),
+          anillo(pct, 112, 'Checklist completado'), h('p', { className: 'jb-note' }, hechos + ' de ' + CHECK.length + ' comprobaciones hechas.'),
           h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirHTML(componerFiscal(st, global.location ? global.location.href : '')) }, icono('impresora'), 'Imprimir mi checklist')),
-        h('div', { className: 'jg-grid-2' }, CHECKLIST.map((c, i) => tarjetaCheck({ key: i, on: (st.check || {})[i], onClick: () => toggle(i), titulo: c })))));
+        h('div', { className: 'jg-grid-2' }, CHECK.map((c, i) => tarjetaCheck({ key: i, on: (st.check || {})[i], onClick: () => toggle(i), titulo: c })))));
   }
 
-  function seccionNormativa() {
+  function seccionNormativa({ cfg, T }) {
     const col = (k, t, items) => h('article', { className: 'jg-card' }, h('p', { className: 'jb-kicker' }, k), h('h3', null, t), h('ul', { className: 'jg-norma' }, items.map(([n, d]) => h('li', { key: n }, h('strong', null, n), ' ', d))));
+    const admin = T.vasco
+      ? col('Marco administrativo · Euskadi', 'Organización y prestaciones EPSV', [['Ley 5/2012:', 'régimen general de las entidades de previsión social voluntaria.'], ['Decreto 203/2015:', 'Reglamento de desarrollo de la Ley de EPSV.'], ['Decreto 13/2024:', 'modificación del reglamento, integrada en el texto adaptado oficial.'], ['Estatutos y reglamento de prestaciones:', 'concretan las condiciones de cada entidad y plan.']])
+      : col('Marco administrativo · estatal', 'Planes y fondos de pensiones', [['Real Decreto Legislativo 1/2002:', 'Texto Refundido de la Ley de Planes y Fondos de Pensiones (contingencias, derechos, prestaciones).'], ['Real Decreto 304/2004:', 'Reglamento de planes y fondos de pensiones (solicitud y pago de prestaciones).'], ['Especificaciones del plan:', 'concretan las condiciones de cada plan y de su entidad gestora.']]);
     return h('section', { id: 'normativa-oficial', className: 'jg-section', 'aria-labelledby': 'jg-norma' },
       h('p', { className: 'jb-kicker' }, '5 · Normativa y fuentes'),
       h('h2', { id: 'jg-norma', className: 'jg-h2' }, 'La referencia oficial, a un clic'),
-      h('p', { className: 'jb-lead jg-measure' }, 'La fiscalidad corresponde a la normativa foral de Bizkaia; la organización, supervisión y régimen administrativo de las EPSV se apoya en la normativa de Euskadi y en los estatutos de cada entidad.'),
+      h('p', { className: 'jb-lead jg-measure' }, 'La fiscalidad corresponde a ' + (cfg.regimen === 'foral' ? 'la normativa foral de ' + cfg.nombre : 'la Ley 35/2006 del IRPF' + (cfg.ccaa ? ' con la escala autonómica ' + (cfg.ccaa.referencia ? 'de referencia (art. 65)' : 'de ' + cfg.ccaa.nombre) : '')) + '; la organización, supervisión y régimen administrativo de ' + (T.vasco ? 'las EPSV se apoya en la normativa de Euskadi y en los estatutos de cada entidad.' : 'los planes de pensiones se apoya en la normativa estatal de planes y fondos de pensiones y en las especificaciones de cada plan.') + ' Fuentes consultadas el ' + cfg.consulta + '.'),
       h('div', { className: 'jg-grid-2' },
-        col('Marco fiscal · Bizkaia', 'IRPF y previsión social', [['Norma Foral 13/2013:', 'marco general del IRPF de Bizkaia.'], ['Norma Foral 2/2025:', 'revisión fiscal con efectos relevantes desde 2026.'], ['Decreto Foral 47/2014:', 'Reglamento del IRPF, con sus modificaciones vigentes.'], ['Decretos Forales 100/2025 y 133/2025:', 'desarrollo reglamentario de la previsión social y actualización del Reglamento.']]),
-        col('Marco administrativo · Euskadi', 'Organización y prestaciones EPSV', [['Ley 5/2012:', 'régimen general de las entidades de previsión social voluntaria.'], ['Decreto 203/2015:', 'Reglamento de desarrollo de la Ley de EPSV.'], ['Decreto 13/2024:', 'modificación del reglamento, integrada en el texto adaptado oficial.'], ['Estatutos y reglamento de prestaciones:', 'concretan las condiciones de cada entidad y plan.']])),
-      h('div', { className: 'jg-links' }, FUENTES.map((f) => h('a', { key: f.href, className: 'jg-link-card', href: f.href, target: '_blank', rel: 'noopener noreferrer' },
+        col('Marco fiscal · ' + cfg.nombre, 'IRPF y previsión social', cfg.normativa),
+        admin),
+      h('div', { className: 'jg-links' }, cfg.fuentes.map((f) => h('a', { key: f.href, className: 'jg-link-card', href: f.href, target: '_blank', rel: 'noopener noreferrer' },
         h('span', { className: 'jb-kicker' }, f.k), h('strong', null, f.t), h('span', null, f.d), h('span', { className: 'jg-link-card__go' }, icono('enlace'), 'Consultar fuente oficial')))));
   }
 
   function componerFiscal(st, base) {
-    const hechos = CHECKLIST.filter((x, i) => (st.check || {})[i]).length;
+    const cfg = cfgDe(st), T = textosDe(cfg); if (!T) return cabecera(base, 'Checklist del rescate') + '<p>Elige tu residencia fiscal para generar el checklist.</p></body></html>';
+    const CHECK = checklist(cfg, T), MODOS = modos(cfg, T), TR = tratamiento(cfg, T);
+    const hechos = CHECK.filter((x, i) => (st.check || {})[i]).length;
     const li = (on, t) => `<li><span class="${on ? 'ok' : 'no'}">${on ? '✓' : '○'}</span><span>${esc(t)}</span></li>`;
-    return cabecera(base, 'Checklist del rescate de EPSV') + `
-<p class="k">Fiscalidad y rescate de la EPSV · Bizkaia 2026</p><h1>Mi checklist antes de firmar el rescate</h1>
-<p class="lead">Comprobaciones previas, documentación y pasos de la solicitud.</p>
-<div class="hero"><div><p class="k">Comprobaciones hechas</p><strong>${hechos}/${CHECKLIST.length}</strong></div><div><p class="k">Forma de cobro que estás valorando</p><p style="font-size:13pt;color:#fff;font-weight:600">${esc(MODOS[st.modo || 'capital'].t)}</p><p>${esc(MODOS[st.modo || 'capital'].ojo)}</p></div></div>
-<div class="g2"><section class="blk"><h3>Checklist</h3><ul>${CHECKLIST.map((c, i) => li((st.check || {})[i], c)).join('')}</ul></section>
-<section class="blk"><h3>Documentación habitual</h3><ul>${DOCUMENTOS.map((d) => `<li><span>▫</span><span>${esc(d)}</span></li>`).join('')}</ul></section></div>
-<section class="blk"><h3>Cómo tributa cada modalidad (caso práctico DFB 2026)</h3><ul>${TRATAMIENTO.map((x) => `<li><span style="min-width:150pt"><strong>${esc(x.t)}</strong></span><span>Aportado: ${esc(x.ap[1])}<br>Rentabilidad: ${esc(x.re[1])}</span></li>`).join('')}</ul></section>
-<section class="blk"><h3>Pasos de la solicitud</h3><ul>${TRAMITE.map((x, i) => `<li><span class="chip">${i + 1}</span><span><strong>${esc(x.t)}.</strong> ${esc(x.d)}</span></li>`).join('')}</ul></section>
-<section class="blk"><h3>Las cinco preguntas previas</h3><ul>${PREGUNTAS.map((q, i) => `<li><span class="chip">${i + 1}</span><span>${esc(q)}</span></li>`).join('')}</ul></section>
-<p class="foot">Información orientativa para contribuyentes del IRPF de Bizkaia. No sustituye el análisis fiscal individual ni la documentación contractual de la EPSV. Confirma con la entidad y, cuando proceda, con un asesor fiscal el régimen aplicable.</p></body></html>`;
+    return cabecera(base, 'Checklist del rescate') + `
+<p class="k">Fiscalidad y rescate de ${esc(T.la)} · ${esc(T.nombre)} ${cfg.ejercicio}</p><h1>Mi checklist antes de firmar el rescate</h1>
+<p class="lead">Comprobaciones previas, documentación y pasos de la solicitud. Normativa: ${esc(cfg.irpf)} (${esc(cfg.hacienda)}${cfg.ccaa ? ' · ' + esc(cfg.ccaa.nombre) : ''}).</p>
+<div class="hero"><div><p class="k">Comprobaciones hechas</p><strong>${hechos}/${CHECK.length}</strong></div><div><p class="k">Forma de cobro que estás valorando</p><p style="font-size:13pt;color:#fff;font-weight:600">${esc(MODOS[st.modo || 'capital'].t)}</p><p>${esc(MODOS[st.modo || 'capital'].ojo)}</p></div></div>
+<div class="g2"><section class="blk"><h3>Checklist</h3><ul>${CHECK.map((c, i) => li((st.check || {})[i], c)).join('')}</ul></section>
+<section class="blk"><h3>Documentación habitual</h3><ul>${documentos(cfg, T).map((d) => `<li><span>▫</span><span>${esc(d)}</span></li>`).join('')}</ul></section></div>
+<section class="blk"><h3>Cómo tributa cada modalidad (${esc(T.nombre)} ${cfg.ejercicio})</h3><ul>${TR.filas.map((x) => `<li><span style="min-width:150pt"><strong>${esc(x.t)}</strong></span><span>${esc(TR.columnas[1])}: ${esc(x.ap[1])}<br>${esc(TR.columnas[2])}: ${esc(x.re[1])}</span></li>`).join('')}</ul></section>
+<section class="blk"><h3>Pasos de la solicitud</h3><ul>${tramite(cfg, T).map((x, i) => `<li><span class="chip">${i + 1}</span><span><strong>${esc(x.t)}.</strong> ${esc(x.d)}</span></li>`).join('')}</ul></section>
+<section class="blk"><h3>Las cinco preguntas previas</h3><ul>${PREGUNTAS(cfg, T).map((q, i) => `<li><span class="chip">${i + 1}</span><span>${esc(q)}</span></li>`).join('')}</ul></section>
+<section class="blk"><h3>Límites y fuentes</h3><ul>${F().limites(cfg).map((l) => `<li><span>▫</span><span>${esc(l)}</span></li>`).join('')}${cfg.fuentes.slice(0, 3).map((f) => `<li><span>▫</span><span>${esc(f.k)} · ${esc(f.t)} (consultada el ${esc(cfg.consulta)})</span></li>`).join('')}</ul></section>
+<p class="foot">Información orientativa para contribuyentes del ${esc(cfg.irpf)}. No sustituye el análisis fiscal individual ni la documentación contractual de ${esc(T.la)}. Confirma con la entidad y, cuando proceda, con un asesor fiscal el régimen aplicable.</p></body></html>`;
   }
 
-  global.NuviaGuiasJubilacion = { planificacion, fiscal, estadoPlan, casoDFB, componerPlan, componerFiscal };
+  global.NuviaGuiasJubilacion = { planificacion, fiscal, estadoPlan, casoDFB, casoDe, componerPlan, componerFiscal, territorioInicial, tratamiento, checklist };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

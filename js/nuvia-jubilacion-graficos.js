@@ -148,7 +148,7 @@
     const t = f.irpf; const pasos = [];
     pasos.push({ k: 'Pensión bruta', v: mes(f.pension), c: C.pension, tipo: 'suma' });
     if (f.retiradaAhorros > 0.5) pasos.push({ k: 'Retiradas de ahorros', v: mes(f.retiradaAhorros), c: C.ahorros, tipo: 'suma' });
-    if (f.retiradaEpsv > 0.5) pasos.push({ k: 'Cobro de la EPSV', v: mes(f.retiradaEpsv), c: C.epsv, tipo: 'suma' });
+    if (f.retiradaEpsv > 0.5) pasos.push({ k: 'Cobro ' + (op.cobroDe || 'de la EPSV'), v: mes(f.retiradaEpsv), c: C.epsv, tipo: 'suma' });
     if (t.cuotaGeneral > 0.5) pasos.push({ k: 'IRPF base general', v: -mes(t.cuotaGeneral), c: C.irpf, tipo: 'resta' });
     if (t.cuotaAhorro > 0.5) pasos.push({ k: 'IRPF base del ahorro', v: -mes(t.cuotaAhorro), c: C.irpf, tipo: 'resta' });
     if (t.deducciones > 0.5) pasos.push({ k: 'Deducciones', v: mes(t.deducciones), c: C.positivo, tipo: 'suma' });

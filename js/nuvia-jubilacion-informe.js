@@ -112,6 +112,8 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
   function componer(res, op = {}) {
     const G = global.NuviaJubilacionGraficos;
     const o = res.entrada, r = res.resumen, y1 = res.anio1, b = res.base;
+    const cfg = res.cfg, T = res.textos, pv = res.parametros.prevision;
+    const figura = T.Figura, laFig = T.la;
     const vista = op.vista === 'nominal' ? 'nominal' : 'hoy';
     const d = vista === 'hoy' ? y1.deflactor : 1;
     const m = (v) => eur(v / 12 / d);
@@ -132,8 +134,9 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
       ['Horizonte del plan', `Hasta los ${o.edadFin} años` + (o.horizonte === 'esperanza' ? ` (esperanza de vida + ${o.margen})` : '')],
       ['Ahorros e inversiones hoy', eur(ahorrosHoy)],
       ['Uso de los ahorros', o.estrategia === 'conservar' ? 'Vivir de lo que rinden' : 'Gastarlos a lo largo del plan'],
-      ['EPSV', o.tieneEpsv ? `${eur(o.epsvPre + o.epsvPost)}, ${cobro}${o.epsvCobro !== 'capital' ? ' · ' + tipoRenta : ''}` : 'No'],
+      [figura, o.tieneEpsv ? `${eur(o.epsvPre + o.epsvPost)}, ${cobro}${o.epsvCobro !== 'capital' ? ' · ' + tipoRenta : ''}` : 'No'],
       ['Rentabilidad · IPC', `${pct(o.rentabilidad)} · ${pct(o.inflacion)} al año`],
+      ['Residencia fiscal', T.nombre + ' · ' + cfg.irpf + ' ' + cfg.ejercicio],
     ];
     if (o.aniosHastaJubilacion && o.ahorroAnual > 0) datos.splice(5, 0, ['Ahorro anual hasta jubilarte', eur(o.ahorroAnual)]);
     const largo = ([, v]) => String(v).length > 26;
@@ -148,13 +151,14 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
     const hayEpsvTrab = y1.epsvTrabajo > .5, hayEpsvAh = y1.epsvRent - y1.epsvRentExenta > .5, hayExenta = y1.epsvRentExenta > .5;
     const tablaFiscal = `<table class="t"><thead><tr><th>Concepto</th><th>Al mes</th><th>Al año</th></tr></thead><tbody>
       <tr class="grupo"><th colspan="3">Qué tributa y dónde</th></tr>
-      ${fiscal(`Pensión${hayEpsvTrab ? ' y aportaciones de la EPSV' : ''} · base general`, y1.pension + y1.epsvTrabajo)}
+      ${fiscal(`Pensión${hayEpsvTrab ? (T.vasco ? ' y aportaciones de la EPSV' : ' y cobros del plan de pensiones') : ''} · base general`, y1.pension + y1.epsvTrabajo)}
       ${fiscal(`Ganancias e intereses${hayEpsvAh ? ' y rentabilidad de la EPSV' : ''} · base del ahorro`, t.ahorro)}
       ${fiscal(`No tributa: capital propio${hayExenta ? ' y rentabilidad exenta de la EPSV' : ''}`, y1.principal + y1.epsvRentExenta)}
       <tr class="grupo"><th colspan="3">Impuesto</th></tr>
-      ${fiscal('Cuota de la base general (23 % – 49 %)', t.cuotaGeneral, '−', 'neg')}
-      ${fiscal('Cuota de la base del ahorro (19 % – 28 %)', t.cuotaAhorro, '−', 'neg')}
-      ${t.deducciones > .5 ? fiscal('Deducciones aplicadas', t.deducciones, '+', 'pos') : ''}
+      ${t.desglose.general.filter((x) => x.signo === '-' && x.importe > .5).map((x) => fiscal(x.etiqueta, x.importe, '−', 'pos')).join('')}
+      ${fiscal('Cuota de la base general (escala ' + T.rangoGeneral + ')', t.cuotaGeneral, '−', 'neg')}
+      ${fiscal('Cuota de la base del ahorro (escala ' + T.rangoAhorro + ')', t.cuotaAhorro, '−', 'neg')}
+      ${t.deducciones > .5 ? fiscal('Deducciones en la cuota (' + t.desglose.cuota.filter((x) => x.importe > .5).map((x) => x.etiqueta.toLocaleLowerCase('es-ES')).join(', ') + ')', t.deducciones, '+', 'pos') : ''}
       <tr class="tot"><th>IRPF total · ${pct(y1.bruto ? y1.impuesto / y1.bruto : 0)} de lo cobrado en bruto</th><td class="neg">−${esc(m(t.total))}</td><td class="neg">−${esc(a(t.total))}</td></tr>
     </tbody></table>
     <p class="nota">Tipo marginal de la base general: ${pct(t.marginalGeneral)} · tipo marginal de la base del ahorro: ${pct(t.marginalAhorro)}.</p>`;
@@ -178,19 +182,22 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
       return `<tr${e.clave === 'base' ? ' class="fuerte"' : ''}><th${e.clave === 'base' ? ' class="fuerte"' : ''}>${esc(e.nombre)}</th><td>${esc(hip)}</td><td>${esc(cob)}</td><td>${esc(resultado)}</td></tr>`;
     }).join('');
 
-    const cap = res.capital ? `<section class="sec"><div class="sec__h"><em>06</em><h2>Cobro de la EPSV de una vez</h2><small>Comparativa de regímenes</small></div>
-      <table class="t"><thead><tr><th></th><th>Régimen transitorio</th><th>Régimen desde 2026</th></tr></thead><tbody>
-      <tr><th>Cobro bruto</th><td>${eur(res.capital.transitorio.bases.bruto)}</td><td>${eur(res.capital.nuevo.bases.bruto)}</td></tr>
-      <tr><th>Base general · base del ahorro</th><td>${eur(res.capital.transitorio.bases.general)} · ${eur(res.capital.transitorio.bases.ahorro)}</td><td>${eur(res.capital.nuevo.bases.general)} · ${eur(res.capital.nuevo.bases.ahorro)}</td></tr>
-      <tr><th>Impuesto estimado</th><td class="neg">−${eur(res.capital.transitorio.impuesto)}</td><td class="neg">−${eur(res.capital.nuevo.impuesto)}</td></tr>
-      <tr class="tot"><th>Neto</th><td>${eur(res.capital.transitorio.neto)}</td><td>${eur(res.capital.nuevo.neto)}</td></tr></tbody></table>
-      <p class="nota">Aplicado: ${res.capital.elegido === 'transitorio' ? 'régimen transitorio' : 'régimen desde 2026'}${res.capital.automatico ? ' (menor impuesto estimado)' : ''}. El neto se suma a los ahorros del plan.</p></section>` : '';
+    const ops = res.capital ? res.capital.opciones : [];
+    const cap = res.capital ? `<section class="sec"><div class="sec__h"><em>06</em><h2>Cobro ${esc(T.vasco ? 'de la EPSV' : 'del plan de pensiones')} de una vez</h2><small>${ops.length > 1 ? 'Comparativa de regímenes' : 'Rendimiento del trabajo con reducción transitoria'}</small></div>
+      <table class="t"><thead><tr><th></th>${ops.map((x) => `<th>${esc(x.titulo)}</th>`).join('')}</tr></thead><tbody>
+      <tr><th>Cobro bruto</th>${ops.map((x) => `<td>${eur(x.bases.bruto)}</td>`).join('')}</tr>
+      ${T.vasco ? `<tr><th>Base general · base del ahorro</th>${ops.map((x) => `<td>${eur(x.bases.general)} · ${eur(x.bases.ahorro)}</td>`).join('')}</tr>` : `<tr><th>Reducción del ${Math.round(pv.reduccion * 100)} % (parte anterior a ${pv.corte})</th>${ops.map((x) => `<td>−${eur(x.bases.detalle.reduccion)}</td>`).join('')}</tr><tr><th>Tributa en base general</th>${ops.map((x) => `<td>${eur(x.bases.general)}</td>`).join('')}</tr>`}
+      <tr><th>Impuesto estimado</th>${ops.map((x) => `<td class="neg">−${eur(x.impuesto)}</td>`).join('')}</tr>
+      <tr class="tot"><th>Neto</th>${ops.map((x) => `<td>${eur(x.neto)}</td>`).join('')}</tr></tbody></table>
+      <p class="nota">${ops.length > 1 ? `Aplicado: ${esc((ops.find((x) => x.clave === res.capital.elegido) || ops[0]).titulo.toLocaleLowerCase('es-ES'))}${res.capital.automatico ? ' (menor impuesto estimado)' : ''}. ` : (res.capital.bases.conReduccion ? '' : 'Sin reducción: no se cumplen las condiciones o no hay derechos anteriores a ' + pv.corte + '. ')}El neto se suma a los ahorros del plan.</p></section>` : '';
     const nMetodo = res.capital ? '07' : '06';
 
-    const leyenda = [['#2c4f8f', 'Pensión neta'], ['#0797a8', 'Ahorros netos'], ['#d09a2a', 'EPSV neta'], ['#c2413f', 'IRPF']]
-      .filter(([, k]) => k !== 'EPSV neta' || o.tieneEpsv).map(([c, k]) => `<span><i style="background:${c}"></i>${k}</span>`).join('');
+    const leyenda = [['#2c4f8f', 'Pensión neta'], ['#0797a8', 'Ahorros netos'], ['#d09a2a', T.vasco ? 'EPSV neta' : 'Plan neto'], ['#c2413f', 'IRPF']]
+      .filter(([, k], i) => i !== 2 || o.tieneEpsv).map(([c, k]) => `<span><i style="background:${c}"></i>${k}</span>`).join('');
 
-    const cab = `<header class="cab"><img src="${LOGO}" alt="NUVIA Family Wealth"><p><b>Informe de jubilación</b><br>Bizkaia · IRPF 2026 · ${esc(hoy)}</p></header>`;
+    const cab = `<header class="cab"><img src="${LOGO}" alt="NUVIA Family Wealth"><p><b>Informe de jubilación</b><br>${esc(T.nombre)} · ${esc(cfg.irpf)} ${cfg.ejercicio} · ${esc(hoy)}</p></header>`;
+    const fuentes = cfg.fuentes.slice(0, 4).map((f) => `<li>${esc(f.k)} · ${esc(f.t)}: <span style="word-break:break-all">${esc(f.href)}</span></li>`).join('');
+    const limites = res.limites.map((l) => `<li>${esc(l)}</li>`).join('');
     const pie = (n) => `<footer class="pie"><span>Estimación orientativa a partir de los datos introducidos. No constituye asesoramiento financiero, fiscal ni jurídico.</span><span>Página ${n} de 3</span></footer>`;
     const sec = (n, titulo, extra, cuerpo) => `<section class="sec"><div class="sec__h"><em>${n}</em><h2>${titulo}</h2>${extra ? `<small>${extra}</small>` : ''}</div>${cuerpo}</section>`;
 
@@ -202,18 +209,18 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
 <article class="hoja">${cab}<div class="cuerpo">
   <p class="kicker">Tu estimación de jubilación</p>
   <h1>Tu ingreso en la jubilación</h1>
-  <p class="entradilla">${o.aniosHastaJubilacion ? `Al jubilarte a los ${o.edadJubilacion} años` : `Primer año de jubilación, a los ${o.edadJubilacion} años`}. Importes mensuales en ${unidades}, como media de 12 meses, una vez descontado el IRPF de Bizkaia.</p>
+  <p class="entradilla">${o.aniosHastaJubilacion ? `Al jubilarte a los ${o.edadJubilacion} años` : `Primer año de jubilación, a los ${o.edadJubilacion} años`}. Importes mensuales en ${unidades}, como media de 12 meses, una vez descontado el ${esc(cfg.irpf)}.</p>
   <div class="hero">
     <div class="hero__main"><span class="lbl">Ingreso neto mensual</span><strong>${esc(eur(r.netoMensual / d))}</strong><span class="sub">Bruto ${esc(eur(r.brutoMensual / d))} · IRPF ${esc(pct(pctIrpf))}</span><br><span class="dur">${esc(dur)}</span></div>
     <div class="hero__cifras">
       <div><span>Pensión neta</span><b>${esc(m(y1.pensionNeta))}</b></div>
-      <div><span>Retiradas netas (ahorros${o.tieneEpsv ? ' y EPSV' : ''})</span><b>${esc(m(y1.restoNeto))}</b></div>
+      <div><span>Retiradas netas (ahorros${o.tieneEpsv ? ' y ' + esc(T.vasco ? 'EPSV' : 'plan') : ''})</span><b>${esc(m(y1.restoNeto))}</b></div>
       <div><span>Ingreso bruto</span><b>${esc(m(y1.bruto))}</b></div>
       <div class="neg"><span>IRPF estimado</span><b>−${esc(m(y1.impuesto))}</b></div>
     </div>
   </div>
   ${sec('01', 'Tus datos', 'Introducidos en el simulador', `<dl class="datos">${datosHtml}</dl>`)}
-  ${sec('02', 'De lo que cobras a lo que te queda', 'Primer año · al mes', `<div class="chart">${G.cascada(y1, { vista, ancho: 760, alto: 250 })}</div>`)}
+  ${sec('02', 'De lo que cobras a lo que te queda', 'Primer año · al mes', `<div class="chart">${G.cascada(y1, { vista, ancho: 760, alto: 250, cobroDe: T.vasco ? 'de la EPSV' : 'del plan' })}</div>`)}
 </div>${pie(1)}</article>
 
 <article class="hoja">${cab}<div class="cuerpo">
@@ -229,10 +236,12 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
   ${sec(nMetodo, 'Cómo se ha calculado', '', `<ol class="metodo">
     <li>La pensión y las retiradas suben cada año con el IPC indicado. Los importes «de hoy» descuentan esa inflación.</li>
     <li>La retirada de ahorros se calcula para que duren hasta la edad del plan o, si se conserva el capital, se retira solo la rentabilidad por encima del IPC.</li>
-    <li>IRPF de Bizkaia 2026: la pensión y las aportaciones de la EPSV van a la base general; las ganancias, los intereses y la rentabilidad de la EPSV, a la del ahorro.</li>
-    <li>Se aplican la bonificación del trabajo, la minoración de 1.615 € y la deducción por edad. Las escalas se mantienen fijas; no se compensan pérdidas ni se incluyen otros ingresos.</li>
+    <li>${esc(cfg.irpf)} ${cfg.ejercicio} (${esc(cfg.hacienda)} · ${esc(cfg.normaCorta)}${cfg.ccaa ? ' · ' + esc(cfg.ccaa.nombre) : ''}): ${esc(T.pasoTres)}</li>
+    <li>Las escalas se mantienen fijas; no se compensan pérdidas ni se incluyen otros ingresos. Fuentes consultadas el ${esc(cfg.consulta)}.</li>
   </ol>
-  <div class="aviso"><b>Aviso importante.</b> Estimación orientativa elaborada con el simulador de NUVIA a partir de los datos introducidos por el usuario. No es una liquidación tributaria ni constituye asesoramiento financiero, fiscal o jurídico personalizado. Los resultados dependen de hipótesis de rentabilidad e inflación que pueden no cumplirse. Válido solo para contribuyentes del IRPF de Bizkaia.</div>`)}
+  <p class="nota"><b>Normativa y fuentes.</b></p><ul class="nota" style="margin:0 0 3mm;padding-left:4mm">${fuentes}</ul>
+  <p class="nota"><b>Límites de esta estimación.</b></p><ul class="nota" style="margin:0 0 3mm;padding-left:4mm">${limites}</ul>
+  <div class="aviso"><b>Aviso importante.</b> Estimación orientativa elaborada con el simulador de NUVIA a partir de los datos introducidos por el usuario. No es una liquidación tributaria ni constituye asesoramiento financiero, fiscal o jurídico personalizado. Los resultados dependen de hipótesis de rentabilidad e inflación que pueden no cumplirse. Válido solo para contribuyentes del ${esc(cfg.irpf)}${cfg.ccaa ? ' con la escala autonómica indicada' : ''}.</div>`)}
 </div>${pie(3)}</article>
 </body></html>`;
   }

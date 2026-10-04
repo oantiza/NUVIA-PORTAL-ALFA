@@ -44,7 +44,7 @@ test('Jubilación: campos controlados, reinicio y avisos (rediseño 23-09-2026)'
   const code=html.match(/<script[^>]+type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1];
   const React={Fragment:'F',createElement:(t,p,...c)=>({t,p:p||{},c:c.flat(Infinity)})};
   const ctx={React,Intl,setTimeout:()=>{},document:{title:''}}; ctx.window=ctx; ctx.globalThis=ctx;
-  for(const f of ['motor','graficos','informe','ui']) vm.runInNewContext(readFileSync(new URL(`../js/nuvia-jubilacion-${f}.js`,import.meta.url),'utf8'),ctx);
+  for(const f of ['fiscal','motor','graficos','informe','ui']) vm.runInNewContext(readFileSync(new URL(`../js/nuvia-jubilacion-${f}.js`,import.meta.url),'utf8'),ctx);
   class DCLogic {setState(s){this.state={...this.state,...s};}}
   const C=vm.runInNewContext(code+';Component',Object.assign(ctx,{DCLogic}));
   const c=new C();

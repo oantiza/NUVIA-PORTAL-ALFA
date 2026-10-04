@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Guía NUVIA sobre el rescate de una EPSV en Bizkaia: capital, renta o mixta, y su tratamiento fiscal.">
+<meta name="description" content="Guía NUVIA sobre el rescate de una EPSV o de un plan de pensiones en Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: capital, renta o mixta, y su tratamiento fiscal.">
 
 <!-- CORREGIDA: apuntaba a https://oantiza.github.io/NUVIA-WEB-/guia-fiscal.html -->
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/guia-fiscal.html">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
 <meta property="og:title" content="NUVIA · Fiscalidad y rescate de la EPSV">
-<meta property="og:description" content="Guía NUVIA sobre el rescate de una EPSV en Bizkaia: capital, renta o mixta, y su tratamiento fiscal.">
+<meta property="og:description" content="Guía NUVIA sobre el rescate de una EPSV o de un plan de pensiones en Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: capital, renta o mixta, y su tratamiento fiscal.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/guia-fiscal.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -22,7 +22,7 @@
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NUVIA · Fiscalidad y rescate de la EPSV">
-<meta name="twitter:description" content="Guía NUVIA sobre el rescate de una EPSV en Bizkaia: capital, renta o mixta, y su tratamiento fiscal.">
+<meta name="twitter:description" content="Guía NUVIA sobre el rescate de una EPSV o de un plan de pensiones en Bizkaia, Álava, Gipuzkoa, Navarra y territorio común: capital, renta o mixta, y su tratamiento fiscal.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
@@ -43,6 +43,7 @@
 <script defer src="js/vendor/react-dom.production.min.js"></script>
 <!-- Guías de jubilación: mismo sistema que el simulador (motor, interfaz y
      componentes compartidos). Van antes de support.js. -->
+<script defer src="js/nuvia-jubilacion-fiscal.js"></script>
 <script defer src="js/nuvia-jubilacion-motor.js"></script>
 <script defer src="js/nuvia-jubilacion-graficos.js"></script>
 <script defer src="js/nuvia-jubilacion-informe.js"></script>
@@ -119,19 +120,19 @@
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><a href="patrimonio.html">Patrimonio</a></li><li><a href="jubilacion.html">Jubilación</a></li><li><span aria-current="page">Fiscalidad y rescate</span></li></ol></nav>
         <div class="gp-hero__copy">
           <div class="viv-pill-row">
-            <span class="gu-tag-dark">Solo Bizkaia</span>
+            <span class="gu-tag-dark">Bizkaia · Álava · Gipuzkoa · Navarra · Estatal</span>
             <span class="gp-badge">Reglas fiscales 2026</span>
           </div>
           <p class="gp-hero__label">Guía NUVIA · Jubilación</p>
-          <h1 class="gu-hero__title">Fiscalidad del rescate de EPSV</h1>
-          <p class="gu-lead">Una guía práctica para comparar capital, renta y modalidad mixta, preparar la documentación y entender qué cambia con el marco fiscal de Bizkaia en 2026.</p>
+          <h1 class="gu-hero__title">Fiscalidad del rescate de la EPSV o del plan de pensiones</h1>
+          <p class="gu-lead">Una guía práctica para comparar capital, renta y modalidad mixta, preparar la documentación y entender qué cambia con el marco fiscal de tu territorio en 2026: Bizkaia, Álava, Gipuzkoa, Navarra o territorio común.</p>
         </div>
         <div class="gp-hero__aside jg-hero-aside">
           <h2 class="gp-hero__sub">El recorrido de tu jubilación</h2>
             <ol class="jg-route3" aria-label="Recorrido de las herramientas de jubilación">
-            <li><a href="guia-planificacion.html"><span class="jg-route3__num">01</span><span><strong>Ordenar</strong>Hoja de ruta</span></a></li>
-            <li><a href="jubilacion.html"><span class="jg-route3__num">02</span><span><strong>Calcular</strong>Simulador</span></a></li>
-            <li class="is-on" aria-current="page"><span class="jg-route3__num">03</span><span><strong>Ejecutar</strong>Rescate de la EPSV · estás aquí</span></li>
+            <li><a href="guia-planificacion.html" data-jub-territorio="guia-planificacion.html"><span class="jg-route3__num">01</span><span><strong>Ordenar</strong>Hoja de ruta</span></a></li>
+            <li><a href="jubilacion.html" data-jub-territorio="jubilacion.html"><span class="jg-route3__num">02</span><span><strong>Calcular</strong>Simulador</span></a></li>
+            <li class="is-on" aria-current="page"><span class="jg-route3__num">03</span><span><strong>Ejecutar</strong>Rescate de la previsión · estás aquí</span></li>
             </ol>
           <p class="gu-footnote-dark">Una decisión, tres planos: liquidez, fiscalidad y tramitación.</p>
         </div>
@@ -142,7 +143,7 @@
          Rediseño 23-09-2026: la interfaz (modalidades, caso práctico DFB con el
          motor del simulador, tramitación, checklist imprimible y normativa) la
          construye js/nuvia-guias-jubilacion-ui.js. -->
-    <section id="guia-rescate" data-screen-label="Guía fiscal" class="nv-container jb-section" aria-label="Fiscalidad y rescate de la EPSV">
+    <section id="guia-rescate" data-screen-label="Guía fiscal" class="nv-container jb-section" aria-label="Fiscalidad y rescate de la EPSV o del plan de pensiones">
       {{ app }}
       <noscript><p class="gu-text">Esta guía necesita JavaScript para mostrar sus comparativas.</p></noscript>
     </section>
@@ -205,10 +206,12 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 /* Estado de la guía fiscal; la interfaz la construye window.NuviaGuiasJubilacion. */
 class Component extends DCLogic {
-  state = { modo: 'capital', vistaDFB: 'transitorio', check: {} };
+  state = { modo: 'capital', vistaDFB: 'transitorio', vistaCaso: null, check: {}, territorio: undefined, ccaa: undefined, avisoTerritorio: null };
   componentDidMount() { document.title = 'Guía fiscal para la jubilación | NUVIA'; }
   renderVals() {
     const g = typeof window !== 'undefined' ? window.NuviaGuiasJubilacion : null;
+    // ?territorio=…&ccaa=… llega del simulador o de la hoja de ruta; se lee una vez.
+    if (g && this.state.territorio === undefined) Object.assign(this.state, g.territorioInicial(typeof location !== 'undefined' ? location.search : ''));
     return { app: g ? g.fiscal(this) : null };
   }
 }

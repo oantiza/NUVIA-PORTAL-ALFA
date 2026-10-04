@@ -7,12 +7,20 @@
 
    Campos controlados: lo que se ve siempre coincide con el estado, también
    al restablecer o cargar un ejemplo.
+
+   Territorio (04-10-2026): el estado lleva `territorio` (bizkaia · alava ·
+   gipuzkoa · navarra · estatal) y, en el estatal, `ccaa`. Todos los textos
+   que dependen de la normativa salen de NuviaJubilacionFiscal.textos(cfg);
+   aquí no se escribe «Bizkaia» ni «EPSV» fuera del caso práctico de la DFB.
+   La residencia viaja entre páginas en la URL (?territorio=…&ccaa=…), sin
+   guardar nada en el navegador.
    ========================================================================== */
 (function (global) {
   'use strict';
 
   const M = () => global.NuviaJubilacion;
   const G = () => global.NuviaJubilacionGraficos;
+  const F = () => global.NuviaJubilacionFiscal;
   const h = (...a) => global.React.createElement(...a);
   const frag = (...kids) => h(global.React.Fragment, null, ...kids);
 
@@ -31,13 +39,81 @@
   ];
 
   function estadoInicial() {
-    return Object.assign({}, M().DEFECTO, { jubilado: true, activos: { liquidez: true, depositos: false, fondos: true, acciones: true, seguros: false } });
+    return Object.assign({}, M().DEFECTO, { jubilado: true, casoDfb: false, activos: { liquidez: true, depositos: false, fondos: true, acciones: true, seguros: false } });
   }
   function estadoVacio() {
     return Object.assign(estadoInicial(), { pension: 0, liquidez: 0, depositos: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, seguros: 0, segurosCoste: 0, activos: { liquidez: false, depositos: false, fondos: false, acciones: false, seguros: false } });
   }
+  /* El caso práctico de la Hacienda Foral de Bizkaia solo existe en Bizkaia. */
   function casoDFB(s) {
-    return Object.assign({}, s, { tieneEpsv: true, epsvDesglose: 'certificado', epsvPre: 89000, epsvPreRent: 27000, epsvPost: 11000, epsvPostRent: 3000, epsvCobro: 'capital', regimen: 'auto', contingencia: 'jubilacion', primerCobro: true, dosAnios: true });
+    return Object.assign({}, s, { territorio: 'bizkaia', casoDfb: true, tieneEpsv: true, epsvDesglose: 'certificado', epsvPre: 89000, epsvPreRent: 27000, epsvPost: 11000, epsvPostRent: 3000, epsvCobro: 'capital', regimen: 'auto', contingencia: 'jubilacion', primerCobro: true, dosAnios: true });
+  }
+  /* Campos de la previsión social, que cambian de significado con el modelo
+     fiscal (EPSV pre/post 2026 frente a plan de pensiones pre/post 2018 o 2007). */
+  const PREVISION_VACIA = { tieneEpsv: false, epsvPre: 0, epsvPreRent: 0, epsvPost: 0, epsvPostRent: 0, epsvDesglose: 'certificado', epsvCobro: 'renta', epsvPctCapital: 50, epsvRenta: 'flexible', regimen: 'auto', contingencia: 'jubilacion', primerCobro: true, dosAnios: true, casoDfb: false };
+  const modeloDe = (territorio, ccaa) => { const c = F().configuracion(territorio, ccaa); return c ? c.modelo : null; };
+  /* Cambio de residencia fiscal. Si cambia el modelo de previsión o había un
+     caso práctico cargado, la previsión vuelve a cero para que no se mezclen
+     datos de una normativa con otra. */
+  function cambiarTerritorio(s, territorio, ccaa) {
+    const nuevo = Object.assign({}, s, { territorio, ccaa: territorio === 'estatal' ? (ccaa || s.ccaa || F().CCAA_DEFECTO) : s.ccaa });
+    if (s.casoDfb || modeloDe(s.territorio, s.ccaa) !== modeloDe(territorio, nuevo.ccaa)) Object.assign(nuevo, PREVISION_VACIA);
+    return nuevo;
+  }
+  /* Lee ?territorio=…&ccaa=…&caso=dfb de la URL. Un valor desconocido no se
+     corrige en silencio: deja el territorio vacío y lo dice en `aviso`. */
+  /* Lector mínimo de la query (sin URLSearchParams: también corre en Node). */
+  function leerQuery(search) {
+    const q = {}; const txt = String(search || '').replace(/^[?#]/, '').split('#')[0];
+    for (const par of txt.split('&')) { if (!par) continue; const i = par.indexOf('='); const k = decodeURIComponent((i < 0 ? par : par.slice(0, i)).replace(/\+/g, ' ')); const v = i < 0 ? '' : decodeURIComponent(par.slice(i + 1).replace(/\+/g, ' ')); if (!(k in q)) q[k] = v; }
+    return q;
+  }
+  function desdeURL(s, search) {
+    let q; try { q = leerQuery(search); } catch (e) { return { s, aviso: null, paso: null }; }
+    const t = q.territorio || null, c = q.ccaa || null, caso = q.caso || null;
+    let out = Object.assign({}, s), aviso = null, paso = null;
+    if (t) {
+      if (F().territorio(t)) {
+        out = cambiarTerritorio(out, t, c || undefined);
+        if (t === 'estatal' && c && !F().comunidad(c)) aviso = 'No reconocemos la comunidad autónoma «' + c + '» de la dirección: elige la tuya en el selector.';
+      } else { out.territorio = null; aviso = 'No reconocemos el territorio «' + t + '» de la dirección: elige tu residencia fiscal para calcular.'; }
+    }
+    if (caso === 'dfb') {
+      if (out.territorio === 'bizkaia') { out = casoDFB(out); paso = 2; }
+      else aviso = (aviso ? aviso + ' ' : '') + 'El caso práctico de la Hacienda Foral de Bizkaia solo se carga con la residencia fiscal en Bizkaia.';
+    }
+    return { s: out, aviso, paso };
+  }
+  /* Parámetros de URL que comparten el simulador y las guías. */
+  function paramsTerritorio(s) {
+    const p = [];
+    if (s && s.territorio) { p.push('territorio=' + encodeURIComponent(s.territorio)); if (s.territorio === 'estatal' && s.ccaa) p.push('ccaa=' + encodeURIComponent(s.ccaa)); }
+    return p.join('&');
+  }
+  function urlCon(href, s) {
+    const q = paramsTerritorio(s); if (!q) return href;
+    const [ruta, hash] = href.split('#'); const sep = ruta.indexOf('?') >= 0 ? '&' : '?';
+    return ruta + sep + q + (hash ? '#' + hash : '');
+  }
+  /* Mantiene la URL de la página y los enlaces marcados con data-jub-territorio
+     en sintonía con la residencia elegida. Nada se guarda en el navegador. */
+  function sincronizarEnlaces(s) {
+    const doc = global.document; if (!doc || !doc.querySelectorAll) return;
+    try {
+      for (const a of doc.querySelectorAll('a[data-jub-territorio]')) { const base = a.getAttribute('data-jub-territorio') || a.getAttribute('href'); a.setAttribute('data-jub-territorio', base); a.setAttribute('href', urlCon(base, s)); }
+      if (global.history && global.history.replaceState && global.location) {
+        const q = new URLSearchParams(global.location.search);
+        const actual = q.get('territorio') || '', actualC = q.get('ccaa') || '';
+        const deseado = s.territorio || '', deseadoC = s.territorio === 'estatal' ? (s.ccaa || '') : '';
+        if (actual !== deseado || actualC !== deseadoC) {
+          if (deseado) q.set('territorio', deseado); else q.delete('territorio');
+          if (deseadoC) q.set('ccaa', deseadoC); else q.delete('ccaa');
+          if (!(s.casoDfb && deseado === 'bizkaia')) q.delete('caso');
+          const qs = q.toString();
+          global.history.replaceState(null, '', global.location.pathname + (qs ? '?' + qs : '') + global.location.hash);
+        }
+      }
+    } catch (e) { /* sin DOM o sin historial */ }
   }
   function entradaMotor(s) {
     const e = Object.assign({}, s);
@@ -176,7 +252,7 @@
 
   /* ------------------------------------------------------------ Render ---- */
   function render(comp) {
-    if (!global.React || !M() || !G()) return null;
+    if (!global.React || !M() || !G() || !F()) return null;
     const st = comp.state;
     const s = st.s || estadoInicial();
     const set = (k, v) => comp.setState({ s: Object.assign({}, s, { [k]: v }) });
@@ -184,38 +260,84 @@
     const clave = JSON.stringify(s);
     if (!comp._cache || comp._cache.k !== clave) comp._cache = { k: clave, r: M().calcular(entradaMotor(s)) };
     const res = comp._cache.r;
-    const ctx = { comp, st, s, set, setMany, res };
+    const cfg = res.cfg || F().configuracion(s.territorio, s.ccaa);
+    const T = res.disponible ? res.textos : null;
+    const ctx = { comp, st, s, set, setMany, res, cfg, T };
+    sincronizarEnlaces(s);
+    if (!res.disponible) {
+      return h('div', { className: 'jb' },
+        intro(ctx),
+        selectorTerritorio(ctx),
+        h('div', { className: 'jb-estado', role: 'status', 'aria-live': 'polite' },
+          icono('info'),
+          h('div', null,
+            h('strong', null, res.estado === 'en-preparacion' ? 'En preparación' : 'Residencia fiscal sin determinar'),
+            h('p', null, res.mensaje),
+            res.estado === 'en-preparacion' && cfg && cfg.modelo === 'comun'
+              ? h('button', { type: 'button', className: 'nv-btn nv-btn--soft', onClick: () => comp.setState({ s: cambiarTerritorio(s, 'estatal', F().CCAA_DEFECTO) }) }, 'Calcular con la escala de referencia')
+              : null)));
+    }
     return h('div', { className: 'jb' },
       intro(ctx),
+      selectorTerritorio(ctx),
       h('div', { className: 'jb-work', id: 'simulador-pasos' },
         h('div', { className: 'jb-steps' }, pasos(ctx), dock(ctx)),
         h('aside', { className: 'jb-live', 'aria-label': 'Resultado en vivo' }, enVivo(ctx))),
       resultados(ctx));
   }
 
+  /* ------------------------------------------- Residencia fiscal ---------- */
+  /* Selector compartido con las guías (kit.selectorTerritorio). `valor` es
+     {territorio, ccaa}; `onChange` recibe (territorio, ccaa). */
+  function SelectorTerritorio({ valor, onChange, aviso, compacto, idBase }) {
+    const Fx = F(); const id = idBase || 'jb-terr';
+    const t = valor.territorio, cfg = Fx.configuracion(t, valor.ccaa);
+    const estado = !t ? 'sin' : !cfg ? 'desconocido' : cfg.estado;
+    const nombreEstado = { verificada: 'Normativa verificada en fuente oficial', 'en-preparacion': 'En preparación: no calcula', desconocida: 'Comunidad no reconocida', desconocido: 'Territorio no reconocido', sin: 'Elige tu residencia para calcular' }[estado];
+    return h('section', { className: 'jb-terr' + (compacto ? ' jb-terr--compacto' : ''), 'aria-labelledby': id + '-l' },
+      h('div', { className: 'jb-terr__head' },
+        h('div', null, h('p', { className: 'jb-kicker' }, 'Antes de empezar'), h('h3', { id: id + '-l' }, '¿Dónde tienes tu residencia fiscal?')),
+        h('p', { className: 'jb-terr__estado is-' + estado }, h('i', { 'aria-hidden': 'true' }), nombreEstado)),
+      h('div', { className: 'jb-choices', role: 'radiogroup', 'aria-label': 'Residencia fiscal' },
+        Fx.TERRITORIOS.map((x) => h('button', { key: x.id, type: 'button', role: 'radio', 'aria-checked': t === x.id ? 'true' : 'false', className: 'jb-choice' + (t === x.id ? ' is-on' : ''), onClick: () => onChange(x.id, x.id === 'estatal' ? (valor.ccaa || Fx.CCAA_DEFECTO) : undefined) },
+          h('span', { className: 'jb-choice__text' }, h('strong', null, x.corto || x.nombre))))),
+      t === 'estatal' ? h('div', { className: 'jb-terr__ccaa' },
+        h('label', { className: 'jb-field__label', htmlFor: id + '-ccaa' }, 'Comunidad autónoma'),
+        h('select', { id: id + '-ccaa', className: 'jb-select', value: valor.ccaa || Fx.CCAA_DEFECTO, onChange: (e) => onChange('estatal', e.target.value) },
+          Fx.CCAA.map((c) => h('option', { key: c.id, value: c.id }, c.nombre + (c.estado === 'verificada' ? (c.referencia ? ' · no es la de ninguna comunidad' : '') : ' · en preparación')))),
+        h('p', { className: 'jb-note' }, cfg && cfg.ccaa && cfg.ccaa.referencia ? cfg.ccaa.descripcion : cfg && cfg.ccaa && cfg.ccaa.nota ? cfg.ccaa.nota : 'Las comunidades aparecen «en preparación» hasta que su escala autonómica se verifica en fuente oficial. Mientras tanto no calculan.')) : null,
+      cfg && cfg.estado === 'verificada' ? h('p', { className: 'jb-terr__norma' }, 'Normativa aplicada: ', h('strong', null, cfg.irpf + ' ' + cfg.ejercicio), ' · ' + cfg.hacienda + ' · ' + cfg.normaCorta + (cfg.ccaa ? ' · ' + (cfg.ccaa.corto || cfg.ccaa.nombre) : '') + ' · fuentes consultadas el ' + cfg.consulta + '.') : null,
+      aviso ? h('p', { className: 'jb-alert jb-terr__aviso', role: 'status' }, aviso) : null);
+  }
+  function selectorTerritorio({ comp, st, s }) {
+    return SelectorTerritorio({ valor: { territorio: s.territorio, ccaa: s.ccaa }, aviso: st.avisoTerritorio || null,
+      onChange: (t, c) => comp.setState({ s: cambiarTerritorio(s, t, c), avisoTerritorio: null, paso: s.territorio === t ? st.paso : 0 }) });
+  }
+
   /* ---------------------------------------------------- Qué calcula ------- */
-  function intro() {
+  function intro({ T, cfg }) {
     const bloque = (ic, t, d, cls) => h('div', { className: 'jb-flow__item ' + (cls || '') }, h('span', { className: 'jb-flow__icon' }, icono(ic)), h('div', null, h('strong', null, t), h('span', null, d)));
     const op = (t) => h('span', { className: 'jb-flow__op', 'aria-hidden': 'true' }, t);
+    const fig = T ? T.Figura : 'EPSV o plan', tuFig = T ? T.tu : 'tu EPSV o plan de pensiones', irpf = T ? T.irpf : 'IRPF de tu territorio';
     return h('section', { className: 'jb-intro', 'aria-labelledby': 'jb-que-calcula' },
       h('div', { className: 'jb-intro__text' },
         h('p', { className: 'jb-kicker' }, 'Qué calcula este simulador'),
         h('h2', { id: 'jb-que-calcula' }, 'Cuánto dinero tendrás cada mes al jubilarte, después de impuestos'),
-        h('p', null, 'Suma tu pensión y lo que retires de tus ahorros y de tu EPSV, calcula el IRPF de Bizkaia de cada año y te dice cuánto te queda y hasta cuándo te llega el dinero. Los resultados cambian mientras escribes.'),
-        h('p', { className: 'jb-intro__scope' }, h('strong', null, 'Solo para Bizkaia.'), ' Usa las reglas del IRPF foral de 2026; no sirve para Álava, Gipuzkoa, Navarra ni territorio común. Es una estimación orientativa, no asesoramiento.')),
-      h('div', { className: 'jb-flow', role: 'img', 'aria-label': 'Pensión más ahorros más EPSV, menos IRPF, igual a tu ingreso neto mensual' },
+        h('p', null, 'Suma tu pensión y lo que retires de tus ahorros y de ' + tuFig + ', calcula el ' + irpf + ' de cada año y te dice cuánto te queda y hasta cuándo te llega el dinero. Los resultados cambian mientras escribes.'),
+        h('p', { className: 'jb-intro__scope' }, h('strong', null, T ? T.nombre + '.' : 'Cinco territorios.'), ' ' + (T ? T.ambito : 'Elige tu residencia fiscal: Bizkaia, Álava, Gipuzkoa, Navarra o territorio común (escala de referencia).') + ' Es una estimación orientativa, no asesoramiento.')),
+      h('div', { className: 'jb-flow', role: 'img', 'aria-label': 'Pensión más ahorros más ' + fig + ', menos IRPF, igual a tu ingreso neto mensual' },
         bloque('persona', 'Pensión', 'lo que cobras de la Seguridad Social', 'is-pension'), op('+'),
         bloque('hucha', 'Ahorros', 'lo que retiras cada año', 'is-ahorros'), op('+'),
-        bloque('escudo', 'EPSV', 'en renta o de una vez', 'is-epsv'), op('−'),
-        bloque('balanza', '− IRPF', 'escala de Bizkaia 2026', 'is-irpf'), op('='),
+        bloque('escudo', fig, 'en renta o de una vez', 'is-epsv'), op('−'),
+        bloque('balanza', '− IRPF', T ? T.escalaCorta : 'escala de tu territorio', 'is-irpf'), op('='),
         bloque('calculo', 'Neto al mes', 'lo que te queda para vivir', 'is-neto')));
   }
 
   /* -------------------------------------------------------------- Pasos --- */
-  const PASOS = [
+  const PASOS = (T) => [
     { t: 'Tú', d: 'Edad y pensión', ic: 'persona' },
     { t: 'Tus ahorros', d: 'Qué tienes y cómo usarlo', ic: 'hucha' },
-    { t: 'Tu EPSV', d: 'Si tienes, cómo cobrarla', ic: 'escudo' },
+    { t: 'Tu ' + T.figura, d: T.vasco ? 'Si tienes, cómo cobrarla' : 'Si tienes, cómo cobrarlo', ic: 'escudo' },
     { t: 'Supuestos', d: 'Rentabilidad e IPC', ic: 'ajustes' },
   ];
 
@@ -223,34 +345,36 @@
     const o = res.entrada;
     if (i === 0) return o.edad + ' años · ' + f0(num(s.pension)) + ' €/mes';
     if (i === 1) { const t = ACTIVOS.reduce((a, x) => a + (s.activos[x.k] ? num(s[x.valor]) : 0), 0); return t ? eur(t) : 'Sin ahorros'; }
-    if (i === 2) return s.tieneEpsv ? eur(o.epsvPre + o.epsvPost) : 'Sin EPSV';
+    if (i === 2) return s.tieneEpsv ? eur(o.epsvPre + o.epsvPost) : 'Sin ' + res.textos.figura;
     return pct(o.rentabilidad) + ' · IPC ' + pct(o.inflacion);
   }
 
   function pasos(ctx) {
-    const { comp, st, s, setMany, res } = ctx; const p = st.paso || 0;
+    const { comp, st, s, setMany, res, T } = ctx; const p = st.paso || 0;
+    const P = PASOS(T);
     const ir = (i) => comp.setState({ paso: i });
     const cuerpo = [pasoTu, pasoAhorros, pasoEpsv, pasoSupuestos][p](ctx);
+    const conservar = { territorio: s.territorio, ccaa: s.ccaa };
     return frag(
       h('div', { className: 'jb-steps__top' },
         h('p', { className: 'jb-kicker' }, 'Tus datos · 4 pasos'),
         h('div', { className: 'jb-steps__tools' },
-          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: estadoInicial(), paso: 0 }) }, 'Cargar el ejemplo'),
-          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: estadoVacio(), paso: 0 }) }, 'Empezar de cero'))),
+          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoInicial(), conservar), paso: 0 }) }, 'Cargar el ejemplo'),
+          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoVacio(), conservar), paso: 0 }) }, 'Empezar de cero'))),
       h('ol', { className: 'jb-stepper' },
-        PASOS.map((x, i) => h('li', { key: i },
+        P.map((x, i) => h('li', { key: i },
           h('button', { type: 'button', className: 'jb-stepper__btn' + (i === p ? ' is-on' : '') + (i < p ? ' is-done' : ''), 'aria-current': i === p ? 'step' : undefined, onClick: () => ir(i) },
             h('span', { className: 'jb-stepper__num' }, String(i + 1)),
             h('span', { className: 'jb-stepper__txt' }, h('strong', null, x.t), h('span', null, resumenPaso(i, s, res))))))),
-      h('div', { className: 'jb-panel', role: 'group', 'aria-label': 'Paso ' + (p + 1) + ': ' + PASOS[p].t },
+      h('div', { className: 'jb-panel', role: 'group', 'aria-label': 'Paso ' + (p + 1) + ': ' + P[p].t },
         h('header', { className: 'jb-panel__head' },
-          h('span', { className: 'jb-panel__icon' }, icono(PASOS[p].ic)),
-          h('div', null, h('p', { className: 'jb-kicker' }, 'Paso ' + (p + 1) + ' de 4'), h('h3', null, ['Cuéntanos tu punto de partida', '¿Con qué ahorros cuentas?', '¿Tienes una EPSV?', 'Los supuestos del cálculo'][p]))),
+          h('span', { className: 'jb-panel__icon' }, icono(P[p].ic)),
+          h('div', null, h('p', { className: 'jb-kicker' }, 'Paso ' + (p + 1) + ' de 4'), h('h3', null, ['Cuéntanos tu punto de partida', '¿Con qué ahorros cuentas?', '¿Tienes ' + T.una + '?', 'Los supuestos del cálculo'][p]))),
         cuerpo,
         res.avisos.length ? h('div', { className: 'jb-alert', role: 'status' }, res.avisos.map((a, i) => h('p', { key: i }, a))) : null,
         h('footer', { className: 'jb-panel__foot' },
           p > 0 ? h('button', { type: 'button', className: 'nv-btn nv-btn--soft', onClick: () => ir(p - 1) }, '← Anterior') : h('span'),
-          p < 3 ? h('button', { type: 'button', className: 'nv-btn nv-btn--primary', onClick: () => ir(p + 1) }, 'Siguiente: ' + PASOS[p + 1].t + ' →')
+          p < 3 ? h('button', { type: 'button', className: 'nv-btn nv-btn--primary', onClick: () => ir(p + 1) }, 'Siguiente: ' + P[p + 1].t + ' →')
             : h('a', { className: 'nv-btn nv-btn--primary', href: '#resultados' }, 'Ver mi análisis completo ↓'))));
   }
 
@@ -312,59 +436,77 @@
       h('span', { className: 'jb-mini__ap', style: { width: ((t - r) / t * 100) + '%' } }), h('span', { className: 'jb-mini__re', style: { width: (r / t * 100) + '%' } }));
   }
 
-  function pasoEpsv({ comp, s, set, setMany, res }) {
-    const o = res.entrada;
-    const cuerpoEpsv = !s.tieneEpsv ? h('p', { className: 'jb-note' }, 'Sin EPSV, el cálculo usa tu pensión y tus ahorros. Puedes probar cómo funciona con el ', h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'caso práctico de la Hacienda Foral'), '.') : frag(
+  function pasoEpsv({ comp, s, set, setMany, res, cfg, T }) {
+    const o = res.entrada; const pv = cfg.parametros.prevision; const hayCaso = cfg.caso === 'dfb';
+    const enlaceCaso = hayCaso ? h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'caso práctico de la Hacienda Foral de Bizkaia') : null;
+    /* Saldos: en el modelo vasco se pide el desglose aportación/rentabilidad
+       por tramo; en Navarra y en el estatal, la parte de los derechos que
+       deriva de aportaciones anteriores a la fecha de corte (para el 40 %). */
+    const saldosVasco = frag(
       h('div', { className: 'jb-block' },
-        h('p', { className: 'jb-field__label' }, '¿Tienes el certificado de tu EPSV con el desglose?'),
+        h('p', { className: 'jb-field__label' }, '¿Tienes el certificado de ' + T.tu + ' con el desglose?'),
         Opciones({ nombre: 'Certificado de la EPSV', valor: s.epsvDesglose, onChange: (v) => set('epsvDesglose', v), opciones: [{ v: 'certificado', t: 'Sí, lo tengo' }, { v: 'estimacion', t: 'No, estimarlo' }] })),
       s.epsvDesglose === 'certificado'
         ? h('div', { className: 'jb-epsv-grid' },
-          [['Pre', 'Aportado hasta el 31/12/2025', 'Derechos anteriores a 2026'], ['Post', 'Aportado desde el 1/1/2026', 'Derechos desde 2026']].map(([k, sub, tit]) => h('div', { key: k, className: 'jb-epsv-box' },
+          [['Pre', T.etiquetaPre, T.tituloPre], ['Post', T.etiquetaPost, T.tituloPost]].map(([k, sub, tit]) => h('div', { key: k, className: 'jb-epsv-box' },
             h('p', { className: 'jb-epsv-box__title' }, tit, h('span', null, sub)),
             Campo({ id: 'jb-epsv' + k, etiqueta: 'Saldo', valor: s['epsv' + k], unidad: '€', paso: 1000, min: 0, onChange: (v) => set('epsv' + k, v) }),
             Campo({ id: 'jb-epsv' + k + 'Rent', etiqueta: 'De ese saldo, rentabilidad', valor: s['epsv' + k + 'Rent'], unidad: '€', paso: 500, min: 0, onChange: (v) => set('epsv' + k + 'Rent', v) }),
             barraEpsv(s['epsv' + k], s['epsv' + k + 'Rent']))),
           h('p', { className: 'jb-legend-mini jb-span-2' }, h('i', { className: 'is-ap' }), 'Lo que aportaste', h('i', { className: 'is-re' }), 'Rentabilidad generada'))
         : h('div', { className: 'jb-grid-2' },
-          Campo({ id: 'jb-epsvPost2', etiqueta: 'Saldo total de la EPSV', valor: num(s.epsvPre) + num(s.epsvPost), unidad: '€', paso: 1000, min: 0, onChange: (v) => setMany({ epsvPre: v, epsvPost: 0 }) }),
+          Campo({ id: 'jb-epsvPost2', etiqueta: 'Saldo total de ' + T.la, valor: num(s.epsvPre) + num(s.epsvPost), unidad: '€', paso: 1000, min: 0, onChange: (v) => setMany({ epsvPre: v, epsvPost: 0 }) }),
           h('div', { className: 'jb-field' },
             h('p', { className: 'jb-field__label' }, '¿Sabes cuántos años llevas aportando?'),
             Opciones({ nombre: 'Antigüedad', valor: s.antiguedadConocida ? 'si' : 'no', onChange: (v) => set('antiguedadConocida', v === 'si'), opciones: [{ v: 'si', t: 'Sí' }, { v: 'no', t: 'No' }] }),
             s.antiguedadConocida ? Campo({ id: 'jb-antig', etiqueta: 'Años desde la primera aportación', valor: s.antiguedad, unidad: 'años', min: 1, max: 60, paso: 1, onChange: (v) => set('antiguedad', v) }) : null),
-          h('p', { className: 'jb-note jb-span-2' }, 'Sin desglose, Hacienda estima que la rentabilidad es el ', h('strong', null, pct(res.resumen.ratioEpsv, 0)), ' de lo que cobras (1 % por año, máximo 35 %, o 25 % si no conoces la antigüedad).')),
+          h('p', { className: 'jb-note jb-span-2' }, 'Sin desglose, ' + cfg.hacienda + ' estima que la rentabilidad es el ', h('strong', null, pct(res.resumen.ratioEpsv, 0)), ' de lo que cobras (' + Math.round(pv.estimacionAnual * 100) + ' % por año, máximo ' + Math.round(pv.estimacionMaxima * 100) + ' %, o ' + Math.round(pv.estimacionSinAntiguedad * 100) + ' % si no conoces la antigüedad).')));
+    const saldosPlan = frag(
+      h('div', { className: 'jb-epsv-grid' },
+        h('div', { className: 'jb-epsv-box' },
+          h('p', { className: 'jb-epsv-box__title' }, T.tituloPre, h('span', null, T.etiquetaPre)),
+          Campo({ id: 'jb-epsvPre', etiqueta: 'Derechos consolidados', valor: s.epsvPre, unidad: '€', paso: 1000, min: 0, onChange: (v) => set('epsvPre', v), ayuda: 'Te lo certifica la entidad gestora. Si no lo sabes, deja 0: se calcula sin la reducción del ' + Math.round(pv.reduccion * 100) + ' %.' })),
+        h('div', { className: 'jb-epsv-box' },
+          h('p', { className: 'jb-epsv-box__title' }, T.tituloPost, h('span', null, T.etiquetaPost)),
+          Campo({ id: 'jb-epsvPost', etiqueta: 'Derechos consolidados', valor: s.epsvPost, unidad: '€', paso: 1000, min: 0, onChange: (v) => set('epsvPost', v) }))),
+      h('p', { className: 'jb-note' }, 'En ' + cfg.nombre + ' no se separa la rentabilidad: todo lo que cobres de ' + T.la + ' es rendimiento del trabajo. Solo importa qué parte deriva de aportaciones anteriores a ' + pv.corte + ', porque esa parte puede reducirse un ' + Math.round(pv.reduccion * 100) + ' % si la cobras de una vez.'));
+    const contingencias = T.vasco
+      ? [['jubilacion', 'Jubilación'], ['invalidez', 'Invalidez'], ['dependencia', 'Dependencia'], ['enfermedad', 'Enfermedad grave'], ['desempleo', 'Desempleo de larga duración'], ['otro', 'Otro rescate']]
+      : [['jubilacion', 'Jubilación (única contingencia modelada)']];
+    const conReduccion = T.vasco ? o.primerCobro && (o.dosAnios || ['invalidez', 'dependencia'].includes(o.contingencia)) : o.primerCobro && o.dosAnios;
+    const cuerpoEpsv = !s.tieneEpsv ? h('p', { className: 'jb-note' }, 'Sin ' + T.figura + ', el cálculo usa tu pensión y tus ahorros.', hayCaso ? frag(' Puedes probar cómo funciona con el ', enlaceCaso, '.') : null) : frag(
+      T.vasco ? saldosVasco : saldosPlan,
       h('div', { className: 'jb-block' },
-        h('p', { className: 'jb-field__label' }, '¿Cómo la cobrarás?'),
+        h('p', { className: 'jb-field__label' }, T.vasco ? '¿Cómo la cobrarás?' : '¿Cómo lo cobrarás?'),
         Opciones({ nombre: 'Forma de cobro', valor: s.epsvCobro, onChange: (v) => set('epsvCobro', v), grande: true, opciones: [
           { v: 'renta', t: 'En forma de renta', d: 'Cobros periódicos durante años.', icono: 'reloj' },
-          { v: 'capital', t: 'Todo de una vez', d: 'Un cobro único en capital, con reducción fiscal.', icono: 'monedas' },
+          { v: 'capital', t: 'Todo de una vez', d: T.vasco ? 'Un cobro único en capital, con reducción fiscal.' : 'Un cobro único en capital; reducción solo sobre la parte anterior a ' + pv.corte + '.', icono: 'monedas' },
           { v: 'mixto', t: 'Una parte de cada forma', d: 'Eliges qué porcentaje cobras de una vez.', icono: 'balanza' }] }),
         s.epsvCobro === 'mixto' ? Deslizador({ id: 'jb-pctcap', etiqueta: 'Parte que cobras de una vez', valor: s.epsvPctCapital, min: 5, max: 95, paso: 5, unidad: '%', onChange: (v) => set('epsvPctCapital', v) }) : null),
       s.epsvCobro !== 'capital' ? h('div', { className: 'jb-block' },
         h('p', { className: 'jb-field__label' }, 'Tipo de renta'),
-        Opciones({ nombre: 'Tipo de renta', valor: s.epsvRenta, onChange: (v) => set('epsvRenta', v), grande: true, opciones: [
-          { v: 'flexible', t: 'Retiradas periódicas', d: 'Suben con el IPC. La rentabilidad tributa en la base del ahorro.' },
-          { v: 'temporal', t: 'Renta de 15 años o más', d: 'Cuantía constante. La rentabilidad queda exenta.' },
-          { v: 'vitalicia', t: 'Renta vitalicia', d: 'Cuantía constante. La rentabilidad queda exenta.' }] }),
-        s.epsvRenta === 'temporal' ? Deslizador({ id: 'jb-aniosrenta', etiqueta: 'Duración del contrato', valor: s.epsvAniosRenta, min: 15, max: 40, paso: 1, unidad: 'años', onChange: (v) => set('epsvAniosRenta', v) }) : null) : null,
+        Opciones({ nombre: 'Tipo de renta', valor: s.epsvRenta, onChange: (v) => set('epsvRenta', v), grande: true, opciones: T.bloqueRenta }),
+        s.epsvRenta === 'temporal' ? Deslizador({ id: 'jb-aniosrenta', etiqueta: 'Duración del contrato', valor: s.epsvAniosRenta, min: pv.rentaMinimaAnios, max: 40, paso: 1, unidad: 'años', onChange: (v) => set('epsvAniosRenta', v) }) : null) : null,
       s.epsvCobro !== 'renta' ? h('details', { className: 'jb-details' },
-        h('summary', null, 'Condiciones del cobro de una vez', h('span', null, o.primerCobro && (o.dosAnios || ['invalidez', 'dependencia'].includes(o.contingencia)) ? 'Se aplica la reducción (60 % o 70 %)' : 'Sin reducción')),
+        h('summary', null, 'Condiciones del cobro de una vez', h('span', null, conReduccion ? T.reduccionCapital : 'Sin reducción')),
         h('div', { className: 'jb-grid-2' },
           h('div', { className: 'jb-field' }, h('label', { className: 'jb-field__label', htmlFor: 'jb-contingencia' }, 'Motivo del cobro'),
-            h('select', { id: 'jb-contingencia', className: 'jb-select', value: s.contingencia, onChange: (e) => set('contingencia', e.target.value) },
-              [['jubilacion', 'Jubilación'], ['invalidez', 'Invalidez'], ['dependencia', 'Dependencia'], ['enfermedad', 'Enfermedad grave'], ['desempleo', 'Desempleo de larga duración'], ['otro', 'Otro rescate']].map(([v, t]) => h('option', { key: v, value: v }, t)))),
-          h('div', { className: 'jb-field' }, h('label', { className: 'jb-field__label', htmlFor: 'jb-regimen' }, 'Régimen fiscal de lo aportado hasta 2025'),
+            h('select', { id: 'jb-contingencia', className: 'jb-select', value: s.contingencia, disabled: !T.vasco || undefined, onChange: (e) => set('contingencia', e.target.value) },
+              contingencias.map(([v, t]) => h('option', { key: v, value: v }, t)))),
+          T.vasco ? h('div', { className: 'jb-field' }, h('label', { className: 'jb-field__label', htmlFor: 'jb-regimen' }, 'Régimen fiscal de lo aportado hasta ' + (pv.corte - 1)),
             h('select', { id: 'jb-regimen', className: 'jb-select', value: s.regimen, onChange: (e) => set('regimen', e.target.value) },
-              h('option', { value: 'auto' }, 'Automático: el de menor impuesto estimado'), h('option', { value: 'transitorio' }, 'Transitorio: integrar el 60 %'), h('option', { value: 'nuevo' }, 'Desde 2026: aportación al 70 % y rentabilidad aparte'))),
-          Casilla({ id: 'jb-primer', marcado: s.primerCobro, onChange: (v) => set('primerCobro', v), titulo: 'Es el primer cobro en capital por este motivo', texto: 'La reducción solo se aplica una vez por contingencia.' }),
-          Casilla({ id: 'jb-dos', marcado: s.dosAnios, onChange: (v) => set('dosAnios', v), titulo: 'Han pasado más de 2 años desde la primera aportación', texto: 'No se exige en invalidez o dependencia.' }))) : null,
-      h('p', { className: 'jb-note' }, h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'Cargar el caso práctico de la DFB'), ' (100.000 € de derechos cobrados de una vez en 2026).'));
+              h('option', { value: 'auto' }, 'Automático: el de menor impuesto estimado'), h('option', { value: 'transitorio' }, 'Transitorio: integrar el ' + Math.round(pv.capitalTransitorio * 100) + ' %'), h('option', { value: 'nuevo' }, 'Desde ' + pv.corte + ': aportación al ' + Math.round(pv.capital * 100) + ' % y rentabilidad aparte')))
+            : h('div', { className: 'jb-hint' }, icono('info'), h('p', null, 'La reducción del ' + Math.round(pv.reduccion * 100) + ' % (' + (cfg.modelo === 'navarra' ? 'DT 25.ª' : 'DT 12.ª') + ') se aplica a la parte del cobro que deriva de aportaciones anteriores a ' + pv.corte + '. El resto tributa íntegro como rendimiento del trabajo.')),
+          Casilla({ id: 'jb-primer', marcado: s.primerCobro, onChange: (v) => set('primerCobro', v), titulo: T.condicionPrimerCobro, texto: T.condicionPrimerCobroNota }),
+          Casilla({ id: 'jb-dos', marcado: s.dosAnios, onChange: (v) => set('dosAnios', v), titulo: 'Han pasado más de 2 años desde la primera aportación', texto: T.vasco ? 'No se exige en invalidez o dependencia.' : 'Requisito de la reducción.' }))) : null,
+      hayCaso ? h('p', { className: 'jb-note' }, h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'Cargar el caso práctico de la DFB'), ' (100.000 € de derechos cobrados de una vez en 2026).') : null);
     return h('div', { className: 'jb-panel__body' },
-      Opciones({ nombre: '¿Tienes una EPSV?', valor: s.tieneEpsv ? 'si' : 'no', onChange: (v) => set('tieneEpsv', v === 'si'), opciones: [{ v: 'no', t: 'No tengo EPSV' }, { v: 'si', t: 'Sí, tengo una EPSV' }] }),
+      Opciones({ nombre: '¿Tienes ' + T.una + '?', valor: s.tieneEpsv ? 'si' : 'no', onChange: (v) => set('tieneEpsv', v === 'si'), opciones: [{ v: 'no', t: 'No tengo ' + T.figura }, { v: 'si', t: 'Sí, tengo ' + T.una }] }),
       cuerpoEpsv);
   }
 
-  function pasoSupuestos({ s, set }) {
+  function pasoSupuestos({ s, set, cfg }) {
+    const ayudaDed = cfg.modelo === 'vasco' ? 'Por ejemplo, por donativos. La deducción por edad y la minoración ya se aplican solas.' : cfg.modelo === 'navarra' ? 'Por ejemplo, por donativos. La deducción por trabajo y el mínimo personal ya se aplican solos.' : 'Por ejemplo, por donativos. El mínimo personal y la reducción del trabajo ya se aplican solos; no incluye deducciones autonómicas.';
     return h('div', { className: 'jb-panel__body' },
       h('div', { className: 'jb-grid-2' },
         Deslizador({ id: 'jb-rent', etiqueta: 'Rentabilidad anual de tus ahorros', valor: s.rentabilidad, min: 0, max: 7, paso: .5, unidad: '%', onChange: (v) => set('rentabilidad', v), marcas: ['0 %', '2 %', '4 %', '6 %'],
@@ -373,7 +515,7 @@
           ayuda: 'Tu pensión y tus retiradas suben con el IPC cada año. Los resultados «en euros de hoy» descuentan esta subida de precios.' })),
       h('div', { className: 'jb-grid-2' },
         Casilla({ id: 'jb-estres', marcado: s.estres, onChange: (v) => set('estres', v), titulo: 'Probar también un mal comienzo', texto: 'Caída del 12 % el primer año y del 5 % el segundo, con las mismas retiradas. Perder al principio de la jubilación daña más que perder después.' }),
-        Campo({ id: 'jb-otrasded', etiqueta: 'Otras deducciones en la cuota (opcional)', valor: s.otrasDeducciones, unidad: '€/año', paso: 50, min: 0, onChange: (v) => set('otrasDeducciones', v), ayuda: 'Por ejemplo, por donativos. La deducción por edad y la minoración ya se aplican solas.' })));
+        Campo({ id: 'jb-otrasded', etiqueta: 'Otras deducciones en la cuota (opcional)', valor: s.otrasDeducciones, unidad: '€/año', paso: 50, min: 0, onChange: (v) => set('otrasDeducciones', v), ayuda: ayudaDed })));
   }
 
   /* ----------------------------------------------------------- En vivo ---- */
@@ -386,10 +528,12 @@
     return { t: 'Tus ahorros duran hasta los ' + o.edadFin, d: 'Con tu hipótesis de rentabilidad (' + pct(o.rentabilidad) + ').' };
   }
 
+  const etiquetaNeta = (res) => (res.textos.vasco ? 'EPSV neta' : 'Plan neto');
+
   function barraComposicion(res, grande) {
     const y1 = res.anio1; if (!y1) return null;
     const p = G().repartoAnual(y1); const tot = p.pension + p.ahorros + p.epsv + p.irpf || 1;
-    const segs = [['pension', 'Pensión neta'], ['ahorros', 'Ahorros netos'], ['epsv', 'EPSV neta'], ['irpf', 'IRPF']].filter(([k]) => p[k] > 0.5);
+    const segs = [['pension', 'Pensión neta'], ['ahorros', 'Ahorros netos'], ['epsv', etiquetaNeta(res)], ['irpf', 'IRPF']].filter(([k]) => p[k] > 0.5);
     const d = y1.deflactor;
     return h('div', { className: 'jb-compo' + (grande ? ' jb-compo--lg' : '') },
       h('div', { className: 'jb-compo__bar', role: 'img', 'aria-label': segs.map(([k, t]) => t + ' ' + f0(p[k] / 12 / d) + ' € al mes').join(', ') },
@@ -411,7 +555,7 @@
       h('div', { className: 'jb-live__dur' },
         h('div', null, h('strong', null, dur.t), h('span', null, dur.d)),
         res.base.saldoInicial > 1 ? h('div', { className: 'jb-live__spark', dangerouslySetInnerHTML: { __html: G().minilinea(res.base) } }) : null),
-      res.capital ? h('p', { className: 'jb-live__cap' }, 'Cobro de la EPSV de una vez: ', h('strong', null, eur(res.capital.neto)), ' netos, que se suman a tus ahorros.') : null,
+      res.capital ? h('p', { className: 'jb-live__cap' }, 'Cobro de ' + res.textos.la + ' de una vez: ', h('strong', null, eur(res.capital.neto)), ' netos, que se suman a tus ahorros.') : null,
       h('div', { className: 'jb-live__actions' },
         h('a', { className: 'nv-btn nv-btn--primary', href: '#resultados' }, 'Ver el análisis completo'),
         h('button', { type: 'button', className: 'nv-btn nv-btn--soft jb-print', onClick: () => imprimir(ctx) }, icono('impresora'), 'Imprimir informe')));
@@ -452,7 +596,7 @@
       res.capital ? capitalEpsv(res) : null,
       metodo(res),
       tabla(res, vista),
-      h('p', { className: 'jb-disclaimer' }, 'Estimación orientativa con las reglas del IRPF de Bizkaia de 2026, que se mantienen fijas en todos los años. El cálculo se hace en tu navegador y no envía tus datos. No es una liquidación tributaria ni asesoramiento financiero o fiscal personalizado.'));
+      h('p', { className: 'jb-disclaimer' }, 'Estimación orientativa con las reglas del ' + res.textos.irpf + ' de ' + res.cfg.ejercicio + (res.cfg.ccaa ? ' (' + res.cfg.ccaa.nombre + ')' : '') + ', que se mantienen fijas en todos los años. ' + res.limites.join(' ') + ' El cálculo se hace en tu navegador y no envía tus datos. No es una liquidación tributaria ni asesoramiento financiero o fiscal personalizado.'));
   }
 
   function cascadaCard(ctx, vista) {
@@ -461,7 +605,7 @@
       h('p', { className: 'jb-kicker' }, 'Primer año · al mes'),
       h('h3', null, 'De lo que cobras a lo que te queda'),
       h('p', { className: 'jb-card__lead' }, 'Cada barra suma o resta. La última es lo que tendrías para vivir cada mes.'),
-      h('div', { className: 'jb-chart', ref: md.ref, dangerouslySetInnerHTML: { __html: G().cascada(ctx.res.anio1, { vista, ancho: md.ancho, alto: 280 }) } }));
+      h('div', { className: 'jb-chart', ref: md.ref, dangerouslySetInnerHTML: { __html: G().cascada(ctx.res.anio1, { vista, ancho: md.ancho, alto: 280, cobroDe: ctx.T.vasco ? 'de la EPSV' : 'del plan' }) } }));
   }
 
   function ecuacion(res, d) {
@@ -478,36 +622,40 @@
   }
 
   function mapaFiscal(res, d) {
-    const f = res.anio1, t = f.irpf, m = (v) => eur(v / 12 / d);
+    const f = res.anio1, t = f.irpf, T = res.textos, m = (v) => eur(v / 12 / d);
     const fila = (k, v, nota, cls) => h('li', { className: cls || '' }, h('span', null, k, nota ? h('small', null, nota) : null), h('strong', null, v));
+    const filasDesglose = (lista) => lista.filter((x) => x.sub || x.importe > 0.5 || x.clave === 'bonificacion' || x.clave === 'minoracion').map((x) => fila(x.etiqueta, (x.signo === '-' ? '−' : '') + m(x.importe), null, x.sub ? 'is-sub' : ''));
     const gen = [];
     gen.push(fila('Pensión pública', m(f.pension), 'Rendimiento del trabajo'));
-    if (f.epsvTrabajo > 0.5) gen.push(fila('EPSV: parte de aportaciones', m(f.epsvTrabajo), 'Rendimiento del trabajo'));
-    gen.push(fila('Bonificación del trabajo', '−' + m(t.bonificacion)));
-    gen.push(fila('Impuesto según escala', m(t.cuotaGeneralBruta), null, 'is-sub'));
-    gen.push(fila('Minoración de cuota', '−' + m(t.minoracion)));
+    if (f.epsvTrabajo > 0.5) gen.push(fila(T.Figura + (T.vasco ? ': parte de aportaciones' : ': lo que cobras'), m(f.epsvTrabajo), 'Rendimiento del trabajo'));
+    gen.push(...filasDesglose(t.desglose.general));
     const aho = [];
     if (f.ganancia > 0.5) aho.push(fila('Ganancias de lo que vendes', m(f.ganancia), 'Solo la plusvalía de fondos, acciones y seguros'));
     if (f.interes > 0.5) aho.push(fila('Intereses de liquidez y depósitos', m(f.interes), 'Tributan cada año, los retires o no'));
-    if (f.epsvRent - f.epsvRentExenta > 0.5) aho.push(fila('EPSV: rentabilidad', m(f.epsvRent - f.epsvRentExenta), 'Rendimiento del capital mobiliario'));
+    if (f.epsvRent - f.epsvRentExenta > 0.5) aho.push(fila(T.Figura + ': rentabilidad', m(f.epsvRent - f.epsvRentExenta), 'Rendimiento del capital mobiliario'));
     if (!aho.length) aho.push(h('li', { key: 'x', className: 'is-empty' }, 'Este año no tienes rentas en esta base.'));
+    else aho.push(...filasDesglose(t.desglose.ahorro));
     const exento = [];
     if (f.principal > 0.5) exento.push(fila('Tu propio capital', m(f.principal), 'Lo que aportaste o ya tributó: retirarlo no paga IRPF'));
-    if (f.epsvRentExenta > 0.5) exento.push(fila('EPSV: rentabilidad exenta', m(f.epsvRentExenta), 'Renta vitalicia o de 15 años o más'));
+    if (f.epsvRentExenta > 0.5) exento.push(fila(T.Figura + ': rentabilidad exenta', m(f.epsvRentExenta), 'Renta vitalicia o de ' + res.parametros.prevision.rentaMinimaAnios + ' años o más'));
     if (!exento.length) exento.push(h('li', { key: 'x', className: 'is-empty' }, 'Nada este año.'));
     const col = (cls, titulo, escala, items, cuota, marginal) => h('div', { className: 'jb-tax__col ' + cls },
       h('p', { className: 'jb-tax__title' }, titulo, h('span', null, escala)),
       h('ul', null, items),
       cuota !== undefined ? h('p', { className: 'jb-tax__sum' }, h('span', null, 'Impuesto', marginal ? h('small', null, 'Tu tipo marginal: ' + pct(marginal, 1)) : null), h('strong', { className: 'is-neg' }, '−' + m(cuota))) : null);
+    const enCuota = t.desglose.cuota.filter((x) => x.importe > 0.5);
+    const textoDed = t.deducciones > 0.5
+      ? frag('Deducciones en la cuota (' + enCuota.map((x) => x.etiqueta.toLocaleLowerCase('es-ES')).join(', ') + '): ', h('strong', { className: 'is-pos' }, '+' + m(t.deducciones)))
+      : (res.entrada.edadJubilacion <= 65 ? T.edadDeduccion : 'Sin deducciones en la cuota este año.');
     return h('article', { className: 'jb-card jb-tax' },
-      h('p', { className: 'jb-kicker' }, 'Primer año · al mes'),
+      h('p', { className: 'jb-kicker' }, 'Primer año · al mes · ' + T.nombre),
       h('h3', null, 'Qué impuesto se aplica a cada ingreso'),
       h('div', { className: 'jb-tax__grid' },
-        col('is-gen', 'Base general', 'Escala del 23 % al 49 %', gen, t.cuotaGeneral, t.marginalGeneral),
-        col('is-aho', 'Base del ahorro', 'Escala del 19 % al 28 %', aho, t.cuotaAhorro, t.marginalAhorro),
+        col('is-gen', 'Base general', 'Escala ' + T.rangoGeneral, gen, t.cuotaGeneral, t.marginalGeneral),
+        col('is-aho', 'Base del ahorro', 'Escala ' + T.rangoAhorro, aho, t.cuotaAhorro, t.marginalAhorro),
         col('is-exe', 'No tributa', 'Sin IRPF', exento)),
       h('div', { className: 'jb-tax__total' },
-        t.deducciones > 0.5 ? h('span', null, 'Deducciones (edad y otras): ', h('strong', { className: 'is-pos' }, '+' + m(t.deducciones))) : h('span', null, t.deduccionEdad === 0 && res.entrada.edadJubilacion <= 65 ? 'La deducción por edad empieza a partir de los 66 años.' : 'Sin deducciones en la cuota este año.'),
+        h('span', null, textoDed),
         h('span', null, 'IRPF total: ', h('strong', { className: 'is-neg' }, '−' + m(t.total)), ' · ', pct(f.bruto ? f.impuesto / f.bruto : 0), ' de lo que cobras en bruto')));
   }
 
@@ -522,7 +670,7 @@
       h('div', { className: 'jb-card__head' },
         h('div', null, h('p', { className: 'jb-kicker' }, 'Año a año'), h('h3', null, 'Tu ingreso de cada año, bruto y neto'),
           h('p', { className: 'jb-card__lead' }, 'La altura de cada barra es lo que cobras en bruto; la parte roja, el IRPF. Pasa el ratón por un año para ver el detalle.')),
-        h('ul', { className: 'jb-legend' }, [['pension', 'Pensión neta'], ['ahorros', 'Ahorros netos'], ['epsv', 'EPSV neta'], ['irpf', 'IRPF']].map(([k, t]) => h('li', { key: k }, h('i', { className: 'is-' + k }), t)))),
+        h('ul', { className: 'jb-legend' }, [['pension', 'Pensión neta'], ['ahorros', 'Ahorros netos'], ['epsv', etiquetaNeta(res)], ['irpf', 'IRPF']].map(([k, t]) => h('li', { key: k }, h('i', { className: 'is-' + k }), t)))),
       h('div', { className: 'jb-yearly__grid' },
         h('div', { className: 'jb-chart jb-chart--hover jb-chart--ingresos', ref: md.ref, onMouseMove: mover, onClick: mover, dangerouslySetInnerHTML: { __html: G().ingresos(filas, { vista, sel, edadAgotado: res.base.edadAgotado, ancho: md.ancho, alto: 320 }) } }),
         h('div', { className: 'jb-yearly__detail', 'aria-live': 'polite' },
@@ -530,7 +678,7 @@
           h('ul', null,
             h('li', null, h('span', null, 'Pensión bruta'), h('strong', null, m(f.pension))),
             f.retiradaAhorros > 0.5 ? h('li', null, h('span', null, 'Retirada de ahorros'), h('strong', null, m(f.retiradaAhorros))) : null,
-            f.retiradaEpsv > 0.5 ? h('li', null, h('span', null, 'Cobro de la EPSV'), h('strong', null, m(f.retiradaEpsv))) : null,
+            f.retiradaEpsv > 0.5 ? h('li', null, h('span', null, 'Cobro de ' + res.textos.la), h('strong', null, m(f.retiradaEpsv))) : null,
             h('li', { className: 'is-neg' }, h('span', null, 'IRPF'), h('strong', null, '−' + m(f.impuesto))),
             h('li', { className: 'is-total' }, h('span', null, 'Neto al mes'), h('strong', null, m(f.neto)))),
           h('p', { className: 'jb-yearly__saldo' }, 'Ahorros restantes al final del año: ', h('strong', null, eur(f.saldo / (vista === 'hoy' ? f.deflactor * (1 + res.entrada.inflacion) : 1)))),
@@ -558,58 +706,64 @@
   }
 
   function capitalEpsv(res) {
-    const c = res.capital; const max = Math.max(c.transitorio.bases.bruto, 1);
-    const bloque = (k, titulo, sub) => { const x = c[k]; return h('div', { className: 'jb-cap__opt' + (c.elegido === k ? ' is-on' : '') },
-      h('p', { className: 'jb-cap__title' }, titulo, c.elegido === k ? h('span', { className: 'jb-tag' }, c.automatico ? 'Aplicado: menor impuesto estimado' : 'Aplicado') : null),
-      h('p', { className: 'jb-muted' }, sub),
+    const c = res.capital, T = res.textos, pv = res.parametros.prevision; const max = Math.max(c.bruto, 1);
+    const varias = c.opciones.length > 1;
+    const bloque = (op) => { const x = op; return h('div', { key: op.clave, className: 'jb-cap__opt' + (c.elegido === op.clave ? ' is-on' : '') },
+      h('p', { className: 'jb-cap__title' }, op.titulo, varias && c.elegido === op.clave ? h('span', { className: 'jb-tag' }, c.automatico ? 'Aplicado: menor impuesto estimado' : 'Aplicado') : null),
+      h('p', { className: 'jb-muted' }, op.sub),
       h('div', { className: 'jb-cap__bar', role: 'img', 'aria-label': 'Neto ' + eur(x.neto) + ', impuesto ' + eur(x.impuesto) },
         h('span', { className: 'is-neto', style: { width: (x.neto / max * 100) + '%' } }), h('span', { className: 'is-irpf', style: { width: (x.impuesto / max * 100) + '%' } })),
       h('ul', null,
         h('li', null, h('span', null, 'Cobro bruto'), h('strong', null, eur(x.bases.bruto))),
+        !T.vasco && x.bases.detalle && x.bases.detalle.reduccion > 0.5 ? h('li', null, h('span', null, 'Reducción del ' + Math.round(pv.reduccion * 100) + ' % (parte anterior a ' + pv.corte + ')'), h('strong', null, '−' + eur(x.bases.detalle.reduccion))) : null,
         h('li', null, h('span', null, 'Tributa en base general'), h('strong', null, eur(x.bases.general))),
-        h('li', null, h('span', null, 'Tributa en base del ahorro'), h('strong', null, eur(x.bases.ahorro))),
+        T.vasco ? h('li', null, h('span', null, 'Tributa en base del ahorro'), h('strong', null, eur(x.bases.ahorro))) : null,
         h('li', { className: 'is-neg' }, h('span', null, 'Impuesto estimado'), h('strong', null, '−' + eur(x.impuesto))),
         h('li', { className: 'is-total' }, h('span', null, 'Neto'), h('strong', null, eur(x.neto))))); };
+    const nota = T.vasco
+      ? (c.bases.conReduccion ? 'Se aplica la reducción por primer cobro (límite ' + eur(pv.limite) + ').' : 'No se aplica reducción: revisa las condiciones del cobro.')
+      : (c.bases.conReduccion ? 'Se aplica la reducción del ' + Math.round(pv.reduccion * 100) + ' % a la parte que deriva de aportaciones anteriores a ' + pv.corte + '.' : 'No se aplica la reducción del ' + Math.round(pv.reduccion * 100) + ' %: revisa las condiciones del cobro o si tienes derechos anteriores a ' + pv.corte + '.');
     return h('article', { className: 'jb-card' },
-      h('p', { className: 'jb-kicker' }, 'EPSV · cobro de una vez'),
+      h('p', { className: 'jb-kicker' }, T.Figura + ' · cobro de una vez · ' + T.nombre),
       h('h3', null, 'Cuánto te quedaría del cobro en capital'),
-      h('p', { className: 'jb-card__lead' }, 'El impuesto es el que añade este cobro a tu IRPF del primer año. Lo neto se suma a tus ahorros y se reparte en tu plan. ' + (c.transitorio.bases.conReduccion ? 'Se aplica la reducción por primer cobro (límite 300.000 €).' : 'No se aplica reducción: revisa las condiciones del cobro.')),
-      h('div', { className: 'jb-cap' },
-        bloque('transitorio', 'Régimen transitorio', 'Lo aportado hasta 2025 integra el 60 %; lo posterior, aportación al 70 % y rentabilidad aparte.'),
-        bloque('nuevo', 'Régimen desde 2026', 'Aportaciones al 70 % en la base general; toda la rentabilidad en la base del ahorro.')),
-      h('p', { className: 'jb-muted' }, 'La comparación es solo un cálculo; confirma con tu EPSV el régimen que te corresponde.'));
+      h('p', { className: 'jb-card__lead' }, 'El impuesto es el que añade este cobro a tu IRPF del primer año. Lo neto se suma a tus ahorros y se reparte en tu plan. ' + nota),
+      h('div', { className: 'jb-cap' + (varias ? '' : ' jb-cap--una') }, c.opciones.map(bloque)),
+      h('p', { className: 'jb-muted' }, varias ? 'La comparación es solo un cálculo; confirma con ' + T.tu + ' el régimen que te corresponde.' : 'Es solo un cálculo; confirma con la entidad gestora la parte de tus derechos que deriva de aportaciones anteriores a ' + pv.corte + '.'));
   }
 
   function metodo(res) {
-    const P = res.parametros;
+    const P = res.parametros, cfg = res.cfg, T = res.textos;
     const paso = (n, t, d) => h('li', null, h('span', { className: 'jb-method__num' }, n), h('div', null, h('strong', null, t), h('p', null, d)));
-    const tramos = (esc) => esc.map(([desde, tipo], i) => h('tr', { key: i }, h('td', null, i + 1 < esc.length ? eur(desde) + ' – ' + eur(esc[i + 1][0]) : 'Más de ' + eur(desde)), h('td', null, pct(tipo, tipo * 100 % 1 ? 1 : 0))));
+    const tramos = (esc) => esc.map(([desde, tipo], i) => h('tr', { key: i }, h('td', null, i + 1 < esc.length ? eur(desde) + ' – ' + eur(esc[i + 1][0]) : 'Más de ' + eur(desde)), h('td', null, pct(tipo, Math.round(tipo * 1000) % 10 ? 1 : 0))));
+    const limitesLi = res.limites.map((l, i) => h('li', { key: 'l' + i }, l));
     return h('article', { className: 'jb-card jb-method', id: 'metodo' },
-      h('p', { className: 'jb-kicker' }, 'Transparencia'),
+      h('p', { className: 'jb-kicker' }, 'Transparencia · ' + T.nombre),
       h('h3', null, 'Cómo lo calculamos'),
       h('ol', { className: 'jb-method__steps' },
         paso('1', 'Tu punto de partida', 'Tomamos tus saldos de hoy. Si aún no te has jubilado, crecen con la rentabilidad elegida y con tu ahorro anual hasta la jubilación.'),
         paso('2', 'Un plan de retiradas', 'Calculamos la retirada anual que, subiendo con el IPC, agota tus ahorros justo a la edad elegida. Si prefieres conservar el capital, solo se retira la rentabilidad por encima del IPC.'),
-        paso('3', 'El IRPF de cada año', 'Cada ingreso va a su base: la pensión y las aportaciones de la EPSV a la general; ganancias, intereses y rentabilidad de la EPSV a la del ahorro; lo que aportaste no tributa. Se aplican la bonificación del trabajo, la minoración de 1.615 € y la deducción por edad.'),
+        paso('3', 'El IRPF de cada año', T.pasoTres),
         paso('4', 'En euros de hoy', 'Dividimos cada importe por la inflación acumulada para que puedas compararlo con lo que cuesta vivir hoy.')),
       h('div', { className: 'jb-method__cols' },
         h('div', null, h('p', { className: 'jb-field__label' }, 'Qué no tiene en cuenta'),
           h('ul', { className: 'jb-bullets' },
-            h('li', null, 'Las escalas de 2026 se mantienen fijas: si no se actualizan con el IPC, pagarías algo más de lo que muestra.'),
+            h('li', null, 'Las escalas de ' + cfg.ejercicio + ' se mantienen fijas: si no se actualizan con el IPC, pagarías algo más de lo que muestra.'),
+            ...limitesLi,
             h('li', null, 'No compensa pérdidas ni calcula ventas por lotes: usa el coste medio.'),
             h('li', null, 'No incluye otros ingresos (alquileres, trabajo), ni el IRPF de los años antes de jubilarte.'),
             h('li', null, 'La renta vitalicia se reparte hasta la edad del plan; la aseguradora calcula la suya con sus propias tablas.'),
             h('li', null, 'Las rentabilidades son hipótesis: los mercados suben y bajan cada año.'))),
         h('details', { className: 'jb-details' },
-          h('summary', null, 'Parámetros fiscales de Bizkaia 2026', h('span', null, 'Hacienda Foral de Bizkaia')),
+          h('summary', null, 'Parámetros fiscales · ' + T.nombre + ' ' + cfg.ejercicio, h('span', null, cfg.hacienda)),
           h('div', { className: 'jb-params' },
-            h('table', null, h('caption', null, 'Escala de la base general'), h('tbody', null, tramos(P.escalaGeneral))),
-            h('table', null, h('caption', null, 'Escala de la base del ahorro'), h('tbody', null, tramos(P.escalaAhorro)))),
-          h('ul', { className: 'jb-bullets' },
-            h('li', null, 'Minoración de cuota: 1.615 € sobre la cuota general.'),
-            h('li', null, 'Bonificación del trabajo: 8.000 € hasta 14.800 € de rendimientos, bajando hasta 3.000 € a partir de 23.000 € (3.000 € si otras rentas superan 7.500 €).'),
-            h('li', null, 'Deducción por edad: 393 € (más de 65 años) o 714 € (más de 75) con base de hasta 20.000 €, que se reduce hasta desaparecer a 30.000 €.'),
-            h('li', null, 'EPSV en capital: 70 % en el primer cobro por contingencia (60 % en régimen transitorio para lo aportado hasta 2025), hasta 300.000 €.')))));
+            h('table', null, h('caption', null, cfg.modelo === 'comun' ? 'Escala de la base general (estatal + autonómica)' : 'Escala de la base general'), h('tbody', null, tramos(P.escalaGeneralVisible))),
+            h('table', null, h('caption', null, cfg.modelo === 'comun' ? 'Escala de la base del ahorro (estatal + autonómica)' : 'Escala de la base del ahorro'), h('tbody', null, tramos(P.escalaAhorro)))),
+          cfg.modelo === 'comun' ? h('div', { className: 'jb-params' },
+            h('table', null, h('caption', null, 'Parte estatal (art. 63)'), h('tbody', null, tramos(P.escalaGeneral))),
+            h('table', null, h('caption', null, cfg.ccaa && cfg.ccaa.referencia ? 'Escala de referencia (art. 65)' : 'Escala autonómica · ' + (cfg.ccaa ? cfg.ccaa.nombre : '')), h('tbody', null, tramos(P.escalaAutonomica)))) : null,
+          h('ul', { className: 'jb-bullets' }, F().resumenParametros(cfg).map((x, i) => h('li', { key: i }, x))),
+          h('p', { className: 'jb-field__label' }, 'Fuentes oficiales (consultadas el ' + cfg.consulta + ')'),
+          h('ul', { className: 'jb-bullets jb-fuentes' }, cfg.fuentes.map((f) => h('li', { key: f.href }, h('a', { href: f.href, target: '_blank', rel: 'noopener noreferrer' }, f.k + ' · ' + f.t + ' ↗'), f.d ? h('small', null, ' ' + f.d) : null))))));
   }
 
   function tabla(res, vista) {
@@ -618,13 +772,13 @@
       h('summary', null, 'Ver la tabla año a año', h('span', null, vista === 'hoy' ? 'Importes anuales en euros de hoy' : 'Importes anuales en euros de cada año')),
       h('div', { className: 'jb-table-scroll', role: 'region', tabIndex: 0, 'aria-label': 'Tabla año a año' },
         h('table', { className: 'jb-table' },
-          h('thead', null, h('tr', null, ['Edad', 'Pensión bruta', 'Retirada ahorros', 'EPSV', 'Bruto', 'IRPF', 'Neto', 'Neto al mes', 'Ahorros restantes'].map((t) => h('th', { key: t, scope: 'col' }, t)))),
+          h('thead', null, h('tr', null, ['Edad', 'Pensión bruta', 'Retirada ahorros', res.textos.Figura, 'Bruto', 'IRPF', 'Neto', 'Neto al mes', 'Ahorros restantes'].map((t) => h('th', { key: t, scope: 'col' }, t)))),
           h('tbody', null, filas.map((f) => { const d = vista === 'hoy' ? f.deflactor : 1; return h('tr', { key: f.anio },
             h('th', { scope: 'row' }, f.edad), h('td', null, eur(f.pension / d)), h('td', null, eur(f.retiradaAhorros / d)), h('td', null, eur(f.retiradaEpsv / d)), h('td', null, eur(f.bruto / d)),
             h('td', { className: 'is-neg' }, '−' + eur(f.impuesto / d)), h('td', null, eur(f.neto / d)), h('td', null, eur(f.neto / 12 / d)), h('td', null, eur(f.saldo / (vista === 'hoy' ? d * (1 + res.entrada.inflacion) : 1)))); })))));
   }
 
   /* Piezas compartidas con las guías de jubilación (js/nuvia-guias-jubilacion-ui.js). */
-  const kit = { euroTexto, euroValor, h: (...a) => h(...a), frag: (...a) => frag(...a), icono, Opciones, Casilla, f0, eur, pct };
-  global.NuviaJubilacionUI = { render, estadoInicial, estadoVacio, casoDFB, entradaMotor, kit };
+  const kit = { euroTexto, euroValor, h: (...a) => h(...a), frag: (...a) => frag(...a), icono, Opciones, Casilla, f0, eur, pct, SelectorTerritorio, cambiarTerritorio, desdeURL, urlCon, paramsTerritorio, sincronizarEnlaces };
+  global.NuviaJubilacionUI = { render, estadoInicial, estadoVacio, casoDFB, entradaMotor, cambiarTerritorio, desdeURL, urlCon, kit };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

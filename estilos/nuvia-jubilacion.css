@@ -558,3 +558,41 @@
   .jg-matrix__row { grid-template-columns: minmax(0, 1fr); }
   .jg-matrix__row--head { display: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   Residencia fiscal (04-10-2026): selector de territorio compartido por el
+   simulador y las guías, estado «en preparación» y piezas por territorio.
+   --------------------------------------------------------------------------- */
+.jb-terr { display: flex; flex-direction: column; gap: var(--nv-space-4); padding: var(--nv-space-6) var(--nv-space-8); border-radius: var(--nv-radius-lg); background: var(--jb-surface); box-shadow: var(--jb-shadow); }
+.jb-terr--compacto { padding: var(--nv-space-5) var(--nv-space-6); }
+.jb-terr__head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--nv-space-4); flex-wrap: wrap; }
+.jb-terr__head h3 { margin: 0; font-family: var(--nv-font-serif); font-size: var(--nv-title-sm); font-weight: var(--nv-weight-title); color: var(--nv-navy-900); }
+.jb-terr__estado { display: inline-flex; align-items: center; gap: var(--nv-space-2); margin: 0; padding: 4px 12px; border-radius: var(--nv-radius-pill); background: var(--jb-accent-soft); color: var(--nv-navy-900); font-size: var(--nv-label); font-weight: var(--nv-weight-action); }
+.jb-terr__estado i { width: 8px; height: 8px; border-radius: 50%; background: var(--jb-accent); }
+.jb-terr__estado.is-verificada i { background: var(--nv-positive); }
+.jb-terr__estado.is-en-preparacion, .jb-terr__estado.is-sin, .jb-terr__estado.is-desconocido, .jb-terr__estado.is-desconocida { background: var(--nv-surface-technical); }
+.jb-terr__estado.is-en-preparacion i, .jb-terr__estado.is-sin i, .jb-terr__estado.is-desconocido i, .jb-terr__estado.is-desconocida i { background: var(--nv-bronze-500); }
+.jb-terr__ccaa { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--nv-space-2) var(--nv-space-6); align-items: start; }
+.jb-terr__ccaa .jb-field__label { grid-column: 1; }
+.jb-terr__ccaa .jb-select { grid-column: 1; width: 100%; }
+.jb-terr__ccaa .jb-note { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.jb-terr__norma { margin: 0; color: var(--nv-copy); font-size: var(--nv-body-sm); line-height: 1.55; }
+.jb-terr__norma strong { color: var(--nv-navy-900); }
+.jb-terr__aviso { margin: 0; }
+.jb-estado { display: flex; gap: var(--nv-space-4); align-items: flex-start; padding: var(--nv-space-6) var(--nv-space-8); border-radius: var(--nv-radius-lg); border-left: 4px solid var(--nv-bronze-500); background: var(--jb-surface); box-shadow: var(--jb-shadow); color: var(--jb-accent); }
+.jb-estado strong { display: block; margin-bottom: var(--nv-space-1); color: var(--nv-navy-900); font-size: var(--nv-body-lg); font-weight: var(--nv-weight-action); }
+.jb-estado p { margin: 0 0 var(--nv-space-3); color: var(--nv-copy); font-size: var(--nv-body); line-height: 1.6; max-width: 76ch; }
+.jb-cap--una { grid-template-columns: minmax(0, 1fr); }
+.jb-fuentes li { font-size: var(--nv-body-sm); }
+.jb-fuentes a { color: var(--jb-accent); font-weight: var(--nv-weight-action); }
+.jb-fuentes small { color: var(--nv-copy); }
+.jg-tax--reduccion { background: var(--nv-surface-editorial); color: var(--nv-bronze-800); box-shadow: inset 3px 0 0 var(--nv-bronze-500); }
+.jg-dark h3 .nv-tag { margin-left: var(--nv-space-2); vertical-align: middle; }
+@media (max-width: 1024px) {
+  .jb-terr__ccaa { grid-template-columns: minmax(0, 1fr); }
+  .jb-terr__ccaa .jb-note { grid-column: 1; grid-row: auto; }
+}
+@media (max-width: 768px) {
+  .jb-terr { padding: var(--nv-space-5); }
+  .jb-estado { padding: var(--nv-space-5); }
+}

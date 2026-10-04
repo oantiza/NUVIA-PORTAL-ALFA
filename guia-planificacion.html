@@ -43,6 +43,7 @@
 <script defer src="js/vendor/react-dom.production.min.js"></script>
 <!-- Guías de jubilación: mismo sistema que el simulador (motor, interfaz y
      componentes compartidos). Van antes de support.js. -->
+<script defer src="js/nuvia-jubilacion-fiscal.js"></script>
 <script defer src="js/nuvia-jubilacion-motor.js"></script>
 <script defer src="js/nuvia-jubilacion-graficos.js"></script>
 <script defer src="js/nuvia-jubilacion-informe.js"></script>
@@ -127,8 +128,8 @@
           <h2 class="gp-hero__sub">El recorrido de tu jubilación</h2>
             <ol class="jg-route3" aria-label="Recorrido de las herramientas de jubilación">
             <li class="is-on" aria-current="page"><span class="jg-route3__num">01</span><span><strong>Ordenar</strong>Hoja de ruta · estás aquí</span></li>
-            <li><a href="jubilacion.html"><span class="jg-route3__num">02</span><span><strong>Calcular</strong>Simulador</span></a></li>
-            <li><a href="guia-fiscal.html"><span class="jg-route3__num">03</span><span><strong>Ejecutar</strong>Rescate de la EPSV</span></a></li>
+            <li><a href="jubilacion.html" data-jub-territorio="jubilacion.html"><span class="jg-route3__num">02</span><span><strong>Calcular</strong>Simulador</span></a></li>
+            <li><a href="guia-fiscal.html" data-jub-territorio="guia-fiscal.html"><span class="jg-route3__num">03</span><span><strong>Ejecutar</strong>Rescate de la previsión</span></a></li>
             </ol>
           <p class="gu-footnote-dark">No se guardan datos personales: tu selección solo permanece mientras mantengas abierta esta página.</p>
         </div>
@@ -206,10 +207,12 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 /* Estado de la hoja de ruta; la interfaz la construye window.NuviaGuiasJubilacion. */
 class Component extends DCLogic {
-  state = { horizonte: null, listas: {}, revisadas: {}, hechas: {}, paso: 0, decision: 0 };
+  state = { horizonte: null, listas: {}, revisadas: {}, hechas: {}, paso: 0, decision: 0, territorio: undefined, ccaa: undefined, avisoTerritorio: null };
   componentDidMount() { document.title = 'Guía de planificación para la jubilación | NUVIA'; }
   renderVals() {
     const g = typeof window !== 'undefined' ? window.NuviaGuiasJubilacion : null;
+    // ?territorio=…&ccaa=… llega del simulador o de la guía fiscal; se lee una vez.
+    if (g && this.state.territorio === undefined) Object.assign(this.state, g.territorioInicial(typeof location !== 'undefined' ? location.search : ''));
     return { app: g ? g.planificacion(this) : null };
   }
 }

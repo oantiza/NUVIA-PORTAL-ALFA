@@ -41,15 +41,18 @@ Fecha de consulta de todas las fuentes: **04-10-2026**. Ejercicio de referencia:
 
 **No existe escala autonómica supletoria en la Ley 35/2006 desde 2011.** El art. 74.1 remite a la escala «que haya sido aprobada por la Comunidad Autónoma»; el preámbulo de la Ley 22/2009 «excepciona la aplicación supletoria de la normativa estatal en materia de tarifa autonómica»; la antigua DT 15.ª (escala supletoria) solo rigió en 2010 y hoy regula la deducción por alquiler. Lo único asimilable es la **escala del art. 65 LIRPF** (residentes en el extranjero), que la DA 32.ª declara aplicable como escala autonómica a Ceuta y Melilla: 9,5/12/15/18,5/22,5 % en 12.450 / 20.200 / 35.200 / 60.000 €. Sumada a la estatal: 19/24/30/37/45/47 %. Se usa etiquetada literalmente como «Escala de referencia (art. 65 LIRPF) · no es la de ninguna comunidad autónoma»; nunca «supletoria». Fuente: BOE, Ley 35/2006 consolidada, arts. 65 y 74 y DA 32.ª, consultada el 04-10-2026.
 
-### 2.4 Tabla de comunidades autónomas (estado en fase 1)
+### 2.4 Tabla de comunidades autónomas (estado final tras la fase 2)
+
+> **Nota 05-10-2026 · fase 2.** Las 15 comunidades de régimen común, que en la fase 1 figuraban «en preparación» y no calculaban, quedan **verificadas** con su escala autonómica 2026. Fuente: texto consolidado de cada ley en el BOE, contrastado con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026); consulta del 05-10-2026. Siete de ellas aplican, en la parte autonómica, su propio mínimo del contribuyente (art. 56.3 LIRPF). Detalle de escalas, mínimos, fuentes, decisiones del fundador y validación: `docs/JUBILACION_FASE2_CCAA_20261005.md`.
 
 | Comunidad | Estado | Nota |
 |---|---|---|
-| Escala de referencia (art. 65 LIRPF) | verificada | Única opción que calcula en fase 1; etiquetada como referencia, no como comunidad |
-| Andalucía, Aragón, Principado de Asturias, Illes Balears, Canarias, Cantabria, Castilla-La Mancha, Castilla y León, Cataluña, Comunitat Valenciana, Extremadura, Galicia, Comunidad de Madrid, Región de Murcia, La Rioja | en preparación | No calculan; el selector las muestra y el simulador lo dice con claridad y ofrece la escala de referencia |
+| Escala de referencia (art. 65 LIRPF) | verificada | Primera opción del selector, etiquetada como referencia, no como comunidad |
+| Aragón, Cantabria, Castilla-La Mancha, Castilla y León, Cataluña, Extremadura, Región de Murcia, La Rioja | verificada (05-10-2026) | Escala autonómica propia; mínimo del contribuyente estatal (Castilla y León y Cataluña lo fijan con el mismo importe) |
+| Andalucía, Principado de Asturias, Illes Balears, Canarias, Comunitat Valenciana, Galicia, Comunidad de Madrid | verificada (05-10-2026) | Escala autonómica propia y mínimo del contribuyente propio, aplicado solo en la parte autonómica (`minimoAutonomico`) |
 | Ceuta, Melilla | **fuera de alcance** | Decisión del fundador de 04-10-2026 (§7): no aparecen en el selector. Su escala autonómica es la del art. 65 (DA 32.ª), pero la deducción del 60 % del art. 68.4 no está modelada |
 
-Añadir una comunidad en la fase 2 = añadir en `CCAA` (`js/nuvia-jubilacion-fiscal.js`) su `escalaAutonomica` verificada, su `fuente` con fecha y `estado: 'verificada'`. El motor, la interfaz, las guías y el informe no se tocan.
+Añadir una comunidad en la fase 2 = añadir en `CCAA` (`js/nuvia-jubilacion-fiscal.js`) su `escalaAutonomica` verificada, su `fuente` con fecha y `estado: 'verificada'`. El motor, la interfaz, las guías y el informe no se tocan. Así se hizo en la fase 2 (05-10-2026), con la única extensión autorizada del campo `minimoAutonomico` en el módulo fiscal.
 
 ## 3. Cambios
 

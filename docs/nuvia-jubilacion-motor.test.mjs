@@ -2,7 +2,9 @@
    Contrasta el cálculo con importes verificables a mano y con el caso práctico
    de la Hacienda Foral de Bizkaia (CASO-PRACTICO-EPSV-26). Desde el 04-10-2026
    cubre también Álava, Gipuzkoa, Navarra y el estatal (escala de referencia),
-   la regresión exacta de Bizkaia y las entradas «en preparación». Cada cifra
+   la regresión exacta de Bizkaia y las entradas «en preparación». Desde el
+   05-10-2026 (fase 2) cubre las 15 comunidades de régimen común, con su escala
+   autonómica y, en siete de ellas, su mínimo del contribuyente propio. Cada cifra
    esperada se calcula a mano a partir de la norma citada en
    js/nuvia-jubilacion-fiscal.js, nunca a partir de la salida del motor. */
 import test from 'node:test';
@@ -257,14 +259,22 @@ test('Estatal: plan de pensiones en capital con el 40 % de la DT 12.ª solo sobr
 
 /* ------------------------------------------------ Entradas sin verificar -- */
 test('Una comunidad «en preparación», un territorio desconocido o vacío no calculan', () => {
-  const m = M.calcular({ territorio: 'estatal', ccaa: 'madrid' });
-  assert.equal(m.disponible, false); assert.equal(m.estado, 'en-preparacion'); assert.equal(m.resumen, null); assert.equal(m.escenarios.length, 0);
-  assert.match(m.mensaje, /en preparación/);
+  // Desde el 05-10-2026 ninguna comunidad real está «en preparación»: se comprueba con una entrada ficticia que solo existe en esta prueba.
+  const ficticia = { id: 'prueba-en-preparacion', nombre: 'Comunidad de prueba', estado: 'en-preparacion' };
+  F.CCAA.push(ficticia);
+  try {
+    const m = M.calcular({ territorio: 'estatal', ccaa: ficticia.id });
+    assert.equal(m.disponible, false); assert.equal(m.estado, 'en-preparacion'); assert.equal(m.resumen, null); assert.equal(m.escenarios.length, 0);
+    assert.match(m.mensaje, /en preparación/);
+    // Una entrada con escala pero sin estado 'verificada' tampoco calcula.
+    ficticia.escalaAutonomica = F.ESCALAS.ESCALA_ART65;
+    assert.equal(M.calcular({ territorio: 'estatal', ccaa: ficticia.id }).estado, 'en-preparacion');
+  } finally { F.CCAA.pop(); }
   assert.equal(M.calcular({ territorio: 'marte' }).estado, 'desconocido');
   assert.equal(M.calcular({ territorio: null }).estado, 'sin-territorio');
   assert.equal(M.calcular({ territorio: 'estatal', ccaa: 'atlantida' }).estado, 'desconocida');
   assert.equal(M.calcular({ territorio: 'estatal' }).cfg.ccaa.id, 'referencia', 'Sin comunidad, el estatal usa la escala de referencia');
-  assert.equal(F.CCAA.filter((c) => c.estado === 'verificada').length, 1, 'En la fase 1 solo calcula la escala de referencia');
+  assert.equal(F.CCAA.filter((c) => c.estado === 'verificada').length, 16, 'Fase 2 (05-10-2026): la referencia y las 15 comunidades calculan');
   assert.equal(F.CCAA.length, 16, '15 comunidades de régimen común + referencia');
   assert.ok(!F.CCAA.some((c) => /ceuta|melilla/i.test(c.id)), 'Ceuta y Melilla no se ofrecen (fuera de alcance por decisión del fundador)');
   assert.equal(F.FUERA_DE_ALCANCE.map((x) => x.id).join(','), 'ceuta,melilla');
@@ -292,4 +302,147 @@ test('Módulo fiscal: cada territorio verificado cita fuentes con fecha y declar
   }
   assert.ok(F.limites(F.configuracion('estatal')).some((l) => /referencia del art\. 65/.test(l)));
   assert.ok(F.limites(F.configuracion('navarra')).some((l) => /art\. 68/.test(l)));
+});
+
+/* ------------------------------------------- Fase 2 · 15 comunidades -- */
+/* Escalas autonómicas 2026: texto consolidado de cada ley en el BOE (consulta
+   05-10-2026), contrastado con «Tributación Autonómica. Medidas 2026» del
+   Ministerio de Hacienda (23-09-2026). Las cifras esperadas salen de esas
+   tablas, calculadas a mano; nunca de la salida del motor. */
+
+// Cuota íntegra publicada al inicio de cada tramo (columna «Cuota íntegra» de la ley).
+const CUOTAS_PUBLICADAS = {
+  andalucia: [0, 1235, 2207, 4322, 8910],
+  aragon: [0, 1241.89, 2218.39, 4580.89, 7455.79, 8993.29, 13593.29, 15993.29, 25993.29],
+  asturias: [0, 1120.5, 1751.36, 3893.36, 7810.16, 11377.62, 15877.62, 37127.62],
+  baleares: [0, 900, 1800, 3510, 6660, 10840, 15190, 22015, 35077.5],
+  canarias: [0, 1237.32, 1889.83, 4200.11, 8203.88, 16593.85, 24213.1],
+  cantabria: [0, 1105, 1985, 4044, 8508, 15258],
+  'castilla-la-mancha': [0, 1182.75, 2112.75, 4362.75, 8950.75],
+  'castilla-y-leon': [0, 1120.5, 2050.5, 4150.5, 7518.83],
+  cataluna: [0, 1187.5, 2375, 4135, 7935, 15890, 22940, 36415],
+  valenciana: [0, 1056, 2226, 3686, 5386, 7326, 9516, 11956, 19264, 32939, 47114],
+  extremadura: [0, 964.88, 1720.5, 2360.5, 4285.5, 9493.5, 14240.5, 18800.5, 23945.5],
+  galicia: [0, 1168.68, 2110.38, 4215.96, 8779.16],
+  madrid: [0, 1135.79, 1739.53, 3841.42, 7651.1],
+  murcia: [0, 1182.75, 2050.75, 3886.15, 8540.15],
+  rioja: [0, 996, 1817.5, 3857.5, 4711.9, 6541.9, 8441.9, 23141.9],
+};
+
+test('Fase 2: las 15 comunidades verificadas, con fuente oficial fechada, nota y aritmética de la escala comprobada', () => {
+  const comunidades = F.CCAA.filter((c) => !c.referencia);
+  assert.equal(comunidades.length, 15);
+  assert.equal(F.CCAA[0].id, 'referencia', 'La escala de referencia sigue siendo la primera opción');
+  assert.equal(F.CCAA[0].nombre, 'Escala de referencia (art. 65 LIRPF)');
+  for (const c of comunidades) {
+    assert.equal(c.estado, 'verificada', c.id);
+    assert.match(c.fuente.href, /^https:\/\/www\.boe\.es\/buscar\/act\.php\?id=/, c.id + ': texto consolidado en el BOE');
+    assert.equal(c.fuente.consulta, '05-10-2026', c.id);
+    assert.ok(c.nota && /No incluye deducciones autonómicas/.test(c.nota), c.id + ': nota con el límite');
+    const pub = CUOTAS_PUBLICADAS[c.id];
+    assert.equal(pub.length, c.escalaAutonomica.length, c.id + ': mismo número de tramos que la ley');
+    c.escalaAutonomica.forEach(([desde], i) => cerca(F.escala(desde, c.escalaAutonomica).cuota, pub[i], .006, c.id + ' tramo ' + i));
+    // La ley de la comunidad encabeza las fuentes del simulador, las guías y el informe; la referencia conserva las del estatal.
+    const cfg = F.configuracion('estatal', c.id);
+    assert.equal(cfg.fuentes[0].href, c.fuente.href, c.id); assert.match(cfg.fuentes[0].d, /Consultada el 05-10-2026/);
+    assert.equal(cfg.fuentes.length, F.territorio('estatal').fuentes.length + 1);
+    assert.ok(F.limites(cfg).some((l) => l.startsWith('La escala autonómica aplicada es la ' + c.de)), c.id + ': límite');
+    assert.match(c.de, /^(de|del) /, c.id + ': forma con artículo');
+    assert.equal(F.consultaFuentes(cfg), 'el 04-10-2026; la ley autonómica ' + c.de + ', el 05-10-2026', c.id + ': fecha de la fuente');
+    assert.equal(cfg.fuentes[0].consulta, '05-10-2026', c.id);
+    assert.ok(F.limites(cfg).some((l) => /deducciones autonómicas del régimen común/.test(l)), c.id + ': deducciones autonómicas fuera');
+  }
+  assert.equal(JSON.stringify(F.configuracion('estatal', 'referencia').fuentes), JSON.stringify(F.territorio('estatal').fuentes));
+  assert.equal(F.consultaFuentes(F.configuracion('estatal', 'referencia')), 'el 04-10-2026', 'La referencia conserva una sola fecha');
+  assert.equal(F.consultaFuentes(F.configuracion('navarra')), 'el 04-10-2026');
+  assert.equal(F.deComunidad(F.comunidad('asturias')), 'del Principado de Asturias'); assert.equal(F.deComunidad(F.comunidad('baleares')), 'de las Illes Balears');
+  assert.match(F.textos(F.configuracion('estatal', 'valenciana')).ambito, /con la escala autonómica de la Comunitat Valenciana\./);
+  assert.equal(F.CCAA.filter((c) => c.minimoAutonomico).map((c) => c.id).join(','), 'andalucia,asturias,baleares,canarias,valenciana,galicia,madrid');
+});
+
+test('Fase 2: pensión de 28.000 € a los 64 años en cada comunidad (escala estatal + autonómica, menos el mínimo a escala)', () => {
+  // Común a todas: 28.000 − 2.000 gastos = 26.000 de base (sin reducción del art. 20). Parte estatal: 2.982,75 − escala(5.550) 527,25 = 2.455,50.
+  const casos = {
+    andalucia: 4847.45,            // 13.000 × 9,5 % + 8.100 × 12 % + 4.900 × 15 % = 2.942; mínimo propio 5.790 × 9,5 % = 550,05 → 2.391,95
+    aragon: 4865.1375,             // 13.072,50 × 9,5 % + 8.137,50 × 12 % + 4.790 × 15 % = 2.936,8875; 5.550 × 9,5 % = 527,25 → 2.409,6375
+    asturias: 4818.406,            // 12.450 × 9 % + 5.257,20 × 12 % + 8.292,80 × 14 % = 2.912,356; mínimo propio 6.105 × 9 % = 549,45 → 2.362,906
+    baleares: 4896,                // 10.000 × 9 % + 8.000 × 11,25 % + 8.000 × 14,25 % = 2.940; a los 64 el mínimo es 5.550 × 9 % = 499,50 → 2.440,50
+    canarias: 4761.71,             // 13.748 × 9 % + 5.674 × 11,5 % + 6.578 × 14 % = 2.810,75; mínimo propio 5.606 × 9 % = 504,54 → 2.306,21
+    cantabria: 4693.75,            // 13.000 × 8,5 % + 8.000 × 11 % + 5.000 × 14,5 % = 2.710; 5.550 × 8,5 % = 471,75 → 2.238,25
+    'castilla-la-mancha': 4911,    // misma escala que el art. 65: 2.982,75 − 527,25 = 2.455,50 (igual que la escala de referencia)
+    'castilla-y-leon': 4818.5,     // 12.450 × 9 % + 7.750 × 12 % + 5.800 × 14 % = 2.862,50; 5.550 × 9 % = 499,50 → 2.363
+    cataluna: 4943.25,             // 12.500 × 9,5 % + 9.500 × 12,5 % + 4.000 × 16 % = 3.015; 5.550 × 9,5 % = 527,25 → 2.487,75
+    valenciana: 4728.26,           // 12.000 × 8,8 % + 10.000 × 11,7 % + 4.000 × 14,6 % = 2.810; mínimo propio 6.105 × 8,8 % = 537,24 → 2.272,76
+    extremadura: 4700.875,         // 12.450 × 7,75 % + 7.750 × 9,75 % + 4.000 × 16 % + 1.800 × 17,5 % = 2.675,50; 5.550 × 7,75 % = 430,125 → 2.245,375
+    galicia: 4779.648725,          // 12.985,35 × 9 % + 8.083,25 × 11,65 % + 4.931,40 × 14,9 % = 2.845,158725; mínimo propio 5.789 × 9 % = 521,01 → 2.324,148725
+    madrid: 4584.11868,            // 13.362,22 × 8,5 % + 5.642,41 × 10,7 % + 6.995,37 × 12,8 % = 2.634,93393; mínimo propio 5.956,65 × 8,5 % = 506,31525 → 2.128,61868
+    murcia: 4750.4,                // 12.450 × 9,5 % + 7.750 × 11,2 % + 5.800 × 13,3 % = 2.822,15; 5.550 × 9,5 % = 527,25 → 2.294,90
+    rioja: 4617.8,                 // 12.450 × 8 % + 7.750 × 10,6 % + 5.800 × 13,6 % = 2.606,30; 5.550 × 8 % = 444 → 2.162,30
+  };
+  assert.equal(Object.keys(casos).length, 15);
+  for (const [id, esperado] of Object.entries(casos)) {
+    const t = M.irpf({ trabajo: 28000, edad: 64, territorio: 'estatal', ccaa: id });
+    assert.equal(t.baseGeneral, 26000, id); assert.equal(t.minimoPersonal, 5550, id + ': la parte estatal conserva el mínimo del art. 57');
+    cerca(t.total, esperado, .01, id);
+    const r = M.calcular({ territorio: 'estatal', ccaa: id });
+    assert.equal(r.disponible !== false, true, id + ': calcula'); assert.ok(r.resumen && r.resumen.netoMensual > 0, id);
+  }
+});
+
+test('Fase 2: mínimo autonómico propio a los 65 años (solo en la parte autonómica; la estatal sigue con 6.700 €)', () => {
+  // Parte estatal a los 65: 2.982,75 − escala(6.700) 636,50 = 2.346,25.
+  const casos = {
+    andalucia: [6990, 4624.2],          // 5.790 + 1.200 = 6.990 → 6.990 × 9,5 % = 664,05; 2.942 − 664,05 = 2.277,95
+    asturias: [7370, 4595.306],         // 6.105 + 1.265 = 7.370 → 7.370 × 9 % = 663,30; 2.912,356 − 663,30 = 2.249,056
+    baleares: [7370, 4622.95],          // lectura AEAT: 6.105 + 1.265 = 7.370 → 663,30; 2.940 − 663,30 = 2.276,70
+    canarias: [6768, 4547.88],          // 5.606 + 1.162 = 6.768 → 609,12; 2.810,75 − 609,12 = 2.201,63
+    valenciana: [7370, 4507.69],        // 6.105 + 1.265 = 7.370 → 7.370 × 8,8 % = 648,56; 2.810 − 648,56 = 2.161,44
+    galicia: [6988, 4562.488725],       // 5.789 + 1.199 = 6.988 → 628,92; 2.845,158725 − 628,92 = 2.216,238725
+    madrid: [7190.91, 4369.95658],      // 5.956,65 + 1.234,26 = 7.190,91 → 7.190,91 × 8,5 % = 611,22735; 2.634,93393 − 611,22735 = 2.023,70658
+  };
+  for (const [id, [minimoA, esperado]] of Object.entries(casos)) {
+    const t = M.irpf({ trabajo: 28000, edad: 65, territorio: 'estatal', ccaa: id });
+    assert.equal(t.minimoPersonal, 6700, id); cerca(t.minimoAutonomico, minimoA, 1e-9, id); cerca(t.total, esperado, .01, id);
+    assert.match(t.desglose.general.find((x) => x.clave === 'minimo').etiqueta, /estatal 6\.700 € · autonómico/, id);
+  }
+  // Desde los 75: Madrid 7.190,91 + 1.502,58 = 8.693,49; Baleares 7.370 + 1.540 = 8.910; Andalucía 6.990 + 1.460 = 8.450.
+  cerca(M.irpf({ trabajo: 28000, edad: 75, territorio: 'estatal', ccaa: 'madrid' }).minimoAutonomico, 8693.49, 1e-9);
+  cerca(M.irpf({ trabajo: 28000, edad: 75, territorio: 'estatal', ccaa: 'baleares' }).minimoAutonomico, 8910, 1e-9);
+  cerca(M.irpf({ trabajo: 28000, edad: 76, territorio: 'estatal', ccaa: 'andalucia' }).minimoAutonomico, 8450, 1e-9);
+  // Baleares a los 64: sin incremento, 5.550 como el estatal (la etiqueta no distingue partes).
+  assert.equal(M.irpf({ trabajo: 28000, edad: 64, territorio: 'estatal', ccaa: 'baleares' }).minimoAutonomico, 5550);
+  const cfgM = F.configuracion('estatal', 'madrid');
+  assert.ok(F.resumenParametros(cfgM).some((l) => l.includes('mínimo propio de la Comunidad de Madrid (art. 56.3): 5.956,65 € (7.190,91 € desde los 65 y 8.693,49 € desde los 75)')));
+  assert.ok(F.limites(cfgM).some((l) => /^La escala autonómica aplicada es la de la Comunidad de Madrid, con su mínimo del contribuyente propio en la parte autonómica/.test(l)));
+});
+
+test('Fase 2: el mínimo autonómico en la base del ahorro (arts. 56.2, 66 y 76)', () => {
+  // Madrid, solo ahorro 10.000 € a los 60: escala conjunta 6.000 × 19 % + 4.000 × 21 % = 1.980 (990 estatal + 990 autonómica).
+  // Estatal: 990 − 5.550 × 9,5 % (527,25) = 462,75. Autonómica: 990 − 5.956,65 × 9,5 % (565,88175) = 424,11825. Total 886,86825.
+  cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: 'estatal', ccaa: 'madrid' }).total, 886.86825, 1e-6);
+  // Base general 5.700 € (trabajo 15.002: 13.002 − 7.302) y 2.000 € de ahorro, Madrid a los 60.
+  // Estatal: el mínimo 5.550 cabe en la general → 5.700 × 9,5 % − 527,25 = 14,25; ahorro 2.000 × 9,5 % = 190.
+  // Autonómica: 5.700 del mínimo propio absorben toda la general (0) y 256,65 pasan al ahorro: 190 − 256,65 × 9,5 % = 165,61825.
+  const x = M.irpf({ trabajo: 15002, ahorro: 2000, edad: 60, territorio: 'estatal', ccaa: 'madrid' });
+  cerca(x.baseGeneral, 5700, 1e-9); cerca(x.cuotaGeneral, 14.25, 1e-6); cerca(x.cuotaAhorro, 190 + 165.61825, 1e-6); cerca(x.total, 369.86825, 1e-6);
+  // Con la escala de referencia el mismo caso da exactamente lo de antes: 14,25 × 2 + 2.000 × 19 % = 408,50.
+  cerca(M.irpf({ trabajo: 15002, ahorro: 2000, edad: 60, territorio: 'estatal' }).total, 408.5, 1e-9);
+  cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: 'estatal' }).total, 925.5, 1e-9);
+});
+
+test('Fase 2: regresión · la referencia y las comunidades sin mínimo propio calculan exactamente como antes', () => {
+  // Castilla-La Mancha tiene la misma escala que el art. 65 y no tiene mínimo propio: todo debe coincidir con la referencia.
+  const entradas = [{}, { edad: 60, edadJubilacion: 67, pension: 2200, fondos: 300000, fondosCoste: 200000 }, { pension: 1500, tieneEpsv: true, epsvPre: 60000, epsvPost: 40000, epsvCobro: 'capital' }, { pension: 0, liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, otrasDeducciones: 0 }];
+  for (const e of entradas) {
+    const ref = M.calcular(Object.assign({ territorio: 'estatal', ccaa: 'referencia' }, e)), clm = M.calcular(Object.assign({ territorio: 'estatal', ccaa: 'castilla-la-mancha' }, e));
+    assert.equal(clm.resumen.netoMensual, ref.resumen.netoMensual); assert.equal(clm.anio1.impuesto, ref.anio1.impuesto);
+    assert.equal(JSON.stringify(clm.base.filas.map((f) => f.impuesto)), JSON.stringify(ref.base.filas.map((f) => f.impuesto)));
+  }
+  for (const id of ['referencia', 'aragon', 'cantabria', 'castilla-la-mancha', 'castilla-y-leon', 'cataluna', 'extremadura', 'murcia', 'rioja']) {
+    const cfg = F.configuracion('estatal', id);
+    assert.equal(cfg.minimoAutonomico, null, id);
+    const t = F.irpf(cfg, { trabajo: 28000, edad: 70 });
+    assert.equal(t.minimoAutonomico, t.minimoPersonal, id); assert.match(t.desglose.general.find((x) => x.clave === 'minimo').etiqueta, /^Mínimo personal a escala \(6\.700 €\)$/, id);
+    assert.ok(F.resumenParametros(cfg).some((l) => /se aplica «a escala» en la parte estatal y en la autonómica\.$/.test(l)), id);
+  }
 });

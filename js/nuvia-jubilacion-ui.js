@@ -306,7 +306,7 @@
         h('select', { id: id + '-ccaa', className: 'jb-select', value: valor.ccaa || Fx.CCAA_DEFECTO, onChange: (e) => onChange('estatal', e.target.value) },
           Fx.CCAA.map((c) => h('option', { key: c.id, value: c.id }, c.nombre + (c.estado === 'verificada' ? (c.referencia ? ' · no es la de ninguna comunidad' : '') : ' · en preparación')))),
         h('p', { className: 'jb-note' }, cfg && cfg.ccaa && cfg.ccaa.referencia ? cfg.ccaa.descripcion : cfg && cfg.ccaa && cfg.ccaa.nota ? cfg.ccaa.nota : 'Las comunidades aparecen «en preparación» hasta que su escala autonómica se verifica en fuente oficial. Mientras tanto no calculan.')) : null,
-      cfg && cfg.estado === 'verificada' ? h('p', { className: 'jb-terr__norma' }, 'Normativa aplicada: ', h('strong', null, cfg.irpf + ' ' + cfg.ejercicio), ' · ' + cfg.hacienda + ' · ' + cfg.normaCorta + (cfg.ccaa ? ' · ' + (cfg.ccaa.corto || cfg.ccaa.nombre) : '') + ' · fuentes consultadas el ' + cfg.consulta + '.') : null,
+      cfg && cfg.estado === 'verificada' ? h('p', { className: 'jb-terr__norma' }, 'Normativa aplicada: ', h('strong', null, cfg.irpf + ' ' + cfg.ejercicio), ' · ' + cfg.hacienda + ' · ' + cfg.normaCorta + (cfg.ccaa ? ' · ' + (cfg.ccaa.corto || cfg.ccaa.nombre) : '') + ' · fuentes consultadas ' + F().consultaFuentes(cfg) + '.') : null,
       aviso ? h('p', { className: 'jb-alert jb-terr__aviso', role: 'status' }, aviso) : null);
   }
   function selectorTerritorio({ comp, st, s }) {
@@ -762,7 +762,7 @@
             h('table', null, h('caption', null, 'Parte estatal (art. 63)'), h('tbody', null, tramos(P.escalaGeneral))),
             h('table', null, h('caption', null, cfg.ccaa && cfg.ccaa.referencia ? 'Escala de referencia (art. 65)' : 'Escala autonómica · ' + (cfg.ccaa ? cfg.ccaa.nombre : '')), h('tbody', null, tramos(P.escalaAutonomica)))) : null,
           h('ul', { className: 'jb-bullets' }, F().resumenParametros(cfg).map((x, i) => h('li', { key: i }, x))),
-          h('p', { className: 'jb-field__label' }, 'Fuentes oficiales (consultadas el ' + cfg.consulta + ')'),
+          h('p', { className: 'jb-field__label' }, 'Fuentes oficiales (consultadas ' + F().consultaFuentes(cfg) + ')'),
           h('ul', { className: 'jb-bullets jb-fuentes' }, cfg.fuentes.map((f) => h('li', { key: f.href }, h('a', { href: f.href, target: '_blank', rel: 'noopener noreferrer' }, f.k + ' · ' + f.t + ' ↗'), f.d ? h('small', null, ' ' + f.d) : null))))));
   }
 

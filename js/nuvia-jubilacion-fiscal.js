@@ -20,10 +20,21 @@
    bloque de datos a CCAA con su escala y su fuente; el motor no se toca.
 
    Estado de cada entrada: 'verificada' (fuente oficial consultada y citada) o
-   'en-preparacion' (no calcula; la interfaz lo dice). Nada se calcula con una
+   'en-preparacion' (no calcula; la interfaz lo dice; desde el 05-10-2026 no
+   queda ninguna comunidad en ese estado). Nada se calcula con una
    entrada que no esté verificada.
 
-   Fecha de consulta de todas las fuentes: 04-10-2026 (ejercicio IRPF 2026).
+   Fecha de consulta de todas las fuentes: 04-10-2026 (ejercicio IRPF 2026),
+   salvo las escalas y mínimos de las comunidades autónomas (fase 2): 05-10-2026.
+
+   Fase 2 (05-10-2026): las 15 comunidades de régimen común quedan verificadas
+   con su escala autonómica 2026 (texto consolidado de su ley en el BOE,
+   contrastado con «Tributación Autonómica. Medidas 2026» del Ministerio de
+   Hacienda, actualizado a 23-09-2026). Siete de ellas fijan un mínimo del
+   contribuyente propio (art. 56.3 LIRPF y art. 46.1.a Ley 22/2009): se guarda
+   en minimoAutonomico { base, edad65, edad75 } y se aplica SOLO en la parte
+   autonómica (art. 74.1.2.º y parte autonómica del ahorro); la parte estatal
+   conserva el mínimo del art. 57.
    Fuera de alcance en todas las fases: deducciones autonómicas del régimen
    común y deducciones propias de los territorios forales (alquiler, hijos,
    vivienda…), la deducción navarra del art. 68 por pensiones de jubilación
@@ -34,6 +45,7 @@
   'use strict';
 
   const CONSULTA = '04-10-2026';
+  const CONSULTA_CCAA = '05-10-2026';
   const EJERCICIO = 2026;
 
   const num = (v, d = 0) => { const n = Number(v); return Number.isFinite(n) ? n : d; };
@@ -41,6 +53,8 @@
   /* Importes con punto de miles, como en el resto del simulador (es-ES no separa los miles por debajo de 10.000). */
   const miles = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   const eurN = (n) => miles(n) + ' €';
+  /* Con céntimos solo si los hay (p. ej. el mínimo de Madrid, 5.956,65 €). */
+  const eurD = (n) => { const c = Math.round(num(n) * 100); return c % 100 ? miles(Math.floor(c / 100)) + ',' + String(c % 100).padStart(2, '0') + ' €' : eurN(n); };
 
   /* ------------------------------------------------------------ Escalas --- */
   /* Cada escala es una lista [desde, tipo]; la cuota se acumula tramo a tramo. */
@@ -231,32 +245,96 @@
   ];
 
   /* ------------------------------------------- Comunidades autónomas ------ */
-  /* Fase 1: solo la escala de referencia calcula. Añadir una comunidad en la
-     fase 2 = añadir aquí su escala autonómica verificada y su fuente, y poner
-     estado 'verificada'. Ceuta y Melilla quedan FUERA del alcance por decisión
+  /* Fase 1: solo la escala de referencia calculaba. Fase 2 (05-10-2026): las
+     15 comunidades quedan verificadas, cada una con su escala autonómica 2026
+     ([desde, tipo], cuotas acumuladas comprobadas contra la tabla publicada),
+     su fuente (texto consolidado en el BOE) y, si la tiene, su mínimo del
+     contribuyente propio (minimoAutonomico: importes del art. 57 que la
+     comunidad sustituye; solo afecta a la parte autonómica). Una comunidad
+     'en-preparacion' no calcula. Ceuta y Melilla quedan FUERA del alcance por decisión
      del fundador (04-10-2026): su escala autonómica es la del art. 65 (DA
      32.ª), pero la deducción del 60 % por rentas obtenidas allí (art. 68.4)
      no está modelada, así que no se ofrecen en el selector. */
   const CCAA = [
     { id: 'referencia', nombre: 'Escala de referencia (art. 65 LIRPF)', corto: 'Escala de referencia', estado: 'verificada', referencia: true,
-      descripcion: 'Escala del art. 65 de la Ley 35/2006, la que la ley aplica a los residentes en el extranjero y, por la DA 32.ª, a Ceuta y Melilla. No es la escala de ninguna comunidad autónoma: sirve solo como referencia hasta que cada comunidad esté verificada.',
+      descripcion: 'Escala del art. 65 de la Ley 35/2006, la que la ley aplica a los residentes en el extranjero y, por la DA 32.ª, a Ceuta y Melilla. No es la escala de ninguna comunidad autónoma: sirve solo como referencia.',
       escalaAutonomica: ESCALA_ART65,
       fuente: { k: 'BOE · Ley 35/2006', t: 'Art. 65 y DA 32.ª', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764&tn=1&p=20260930#a65', consulta: CONSULTA } },
-    { id: 'andalucia', nombre: 'Andalucía', estado: 'en-preparacion' },
-    { id: 'aragon', nombre: 'Aragón', estado: 'en-preparacion' },
-    { id: 'asturias', nombre: 'Principado de Asturias', estado: 'en-preparacion' },
-    { id: 'baleares', nombre: 'Illes Balears', estado: 'en-preparacion' },
-    { id: 'canarias', nombre: 'Canarias', estado: 'en-preparacion' },
-    { id: 'cantabria', nombre: 'Cantabria', estado: 'en-preparacion' },
-    { id: 'castilla-la-mancha', nombre: 'Castilla-La Mancha', estado: 'en-preparacion' },
-    { id: 'castilla-y-leon', nombre: 'Castilla y León', estado: 'en-preparacion' },
-    { id: 'cataluna', nombre: 'Cataluña', estado: 'en-preparacion' },
-    { id: 'valenciana', nombre: 'Comunitat Valenciana', estado: 'en-preparacion' },
-    { id: 'extremadura', nombre: 'Extremadura', estado: 'en-preparacion' },
-    { id: 'galicia', nombre: 'Galicia', estado: 'en-preparacion' },
-    { id: 'madrid', nombre: 'Comunidad de Madrid', estado: 'en-preparacion' },
-    { id: 'murcia', nombre: 'Región de Murcia', estado: 'en-preparacion' },
-    { id: 'rioja', nombre: 'La Rioja', estado: 'en-preparacion' },
+    { id: 'andalucia', nombre: 'Andalucía', de: 'de Andalucía', estado: 'verificada',
+      nota: 'Escala autonómica de Andalucía para 2026 (Ley 5/2021, art. 23) y mínimo del contribuyente propio (art. 23 bis), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .095], [13000, .12], [21100, .15], [35200, .185], [60000, .225]],
+      minimoAutonomico: { base: 5790, edad65: 1200, edad75: 1460 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Ley 5/2021 de Tributos Cedidos de Andalucía', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2021-17915&tn=1', d: 'Art. 23 (escala, redacción del Decreto-ley 7/2022) y art. 23 bis (mínimo personal y familiar); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'aragon', nombre: 'Aragón', de: 'de Aragón', estado: 'verificada',
+      nota: 'Escala autonómica de Aragón para 2026 (Decreto Legislativo 1/2005, art. 110-1). Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .095], [13072.5, .12], [21210, .15], [36960, .185], [52500, .205], [60000, .23], [80000, .24], [90000, .25], [130000, .255]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2005, texto refundido de tributos cedidos de Aragón', href: 'https://www.boe.es/buscar/act.php?id=BOA-d-2005-90006&tn=1', d: 'Art. 110-1 (escala, redacción de la Ley 17/2023); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'asturias', nombre: 'Principado de Asturias', de: 'del Principado de Asturias', estado: 'verificada',
+      nota: 'Escala autonómica del Principado de Asturias para 2026 (Decreto Legislativo 2/2014, art. 2) y mínimo del contribuyente propio (art. 2 bis), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .09], [12450, .12], [17707.2, .14], [33007.2, .192], [53407.2, .215], [70000, .225], [90000, .25], [175000, .26]],
+      minimoAutonomico: { base: 6105, edad65: 1265, edad75: 1540 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 2/2014, texto refundido de tributos cedidos del Principado de Asturias', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2015-945&tn=1', d: 'Art. 2 (escala) y art. 2 bis (mínimo del contribuyente), redacción de la Ley 3/2025; contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'baleares', nombre: 'Illes Balears', de: 'de las Illes Balears', estado: 'verificada',
+      nota: 'Escala autonómica de las Illes Balears para 2026 (Decreto Legislativo 1/2014, art. 1) y mínimo del contribuyente mayor de 65 y de 75 años incrementado un 10 % (art. 2), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .09], [10000, .1125], [18000, .1425], [30000, .175], [48000, .19], [70000, .2175], [90000, .2275], [120000, .2375], [175000, .2475]],
+      /* Art. 2: +10 % al mínimo del contribuyente mayor de 65 y de 75 años. Lectura
+         de la AEAT (Manual Renta 2025; decisión del fundador de 05-10-2026): 5.550 €
+         con carácter general; desde 65, 6.105 + 1.265 = 7.370 € (incremento 1.820 €);
+         desde 75, 1.540 € más (8.910 €). */
+      minimoAutonomico: { base: 5550, edad65: 1820, edad75: 1540 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2014, texto refundido de tributos cedidos de las Illes Balears', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2014-6925&tn=1', d: 'Art. 1 (escala, redacción de la Ley 12/2023) y art. 2 (incremento del mínimo); importes del mínimo según el Manual práctico de Renta 2025 de la AEAT; contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'canarias', nombre: 'Canarias', de: 'de Canarias', estado: 'verificada',
+      nota: 'Escala autonómica de Canarias para 2026 (Decreto Legislativo 1/2009, art. 18 bis) y mínimo del contribuyente propio (art. 18 quater), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .09], [13748, .115], [19422, .14], [35924, .185], [57566, .235], [93268, .25], [123745, .26]],
+      minimoAutonomico: { base: 5606, edad65: 1162, edad75: 1414 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2009, texto refundido de tributos cedidos de Canarias', href: 'https://www.boe.es/buscar/act.php?id=BOC-j-2009-90008&tn=1', d: 'Art. 18 bis (escala, redacción de la Ley 9/2025) y art. 18 quater (mínimo del contribuyente); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'cantabria', nombre: 'Cantabria', de: 'de Cantabria', estado: 'verificada',
+      nota: 'Escala autonómica de Cantabria para 2026 (Decreto Legislativo 62/2008, art. 1). Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .085], [13000, .11], [21000, .145], [35200, .18], [60000, .225], [90000, .245]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 62/2008, texto refundido de tributos cedidos de Cantabria', href: 'https://www.boe.es/buscar/act.php?id=BOCT-c-2008-90028&tn=1', d: 'Art. 1 (escala, redacción de la Ley 3/2023); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'castilla-la-mancha', nombre: 'Castilla-La Mancha', de: 'de Castilla-La Mancha', estado: 'verificada',
+      nota: 'Escala autonómica de Castilla-La Mancha para 2026 (Ley 8/2013, art. 13 bis), con los mismos tramos y tipos que la del art. 65 LIRPF. Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .095], [12450, .12], [20200, .15], [35200, .185], [60000, .225]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Ley 8/2013 de Medidas Tributarias de Castilla-La Mancha', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2014-1368&tn=1', d: 'Art. 13 bis (escala, introducido por la Ley 9/2014); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'castilla-y-leon', nombre: 'Castilla y León', de: 'de Castilla y León', estado: 'verificada',
+      nota: 'Escala autonómica de Castilla y León para 2026 (Decreto Legislativo 1/2013, art. 1). Su mínimo del contribuyente (art. 1 bis) coincide con el estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .09], [12450, .12], [20200, .14], [35200, .185], [53407.2, .215]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2013, texto refundido de tributos cedidos de Castilla y León', href: 'https://www.boe.es/buscar/act.php?id=BOCL-h-2013-90254&tn=1', d: 'Art. 1 (escala, redacción de la Ley 2/2022) y art. 1 bis (mínimos iguales a los estatales); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'cataluna', nombre: 'Cataluña', de: 'de Cataluña', estado: 'verificada',
+      nota: 'Escala autonómica de Cataluña para 2026 (libro sexto del Código tributario, art. 611-1). Su mínimo del contribuyente (art. 611-2, 5.550 €) coincide con el estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .095], [12500, .125], [22000, .16], [33000, .19], [53000, .215], [90000, .235], [120000, .245], [175000, .255]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2024, libro sexto del Código tributario de Cataluña', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2024-6951&tn=1', d: 'Art. 611-1 (escala, redacción del Decreto-ley 5/2025) y art. 611-2 (mínimo del contribuyente); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'valenciana', nombre: 'Comunitat Valenciana', de: 'de la Comunitat Valenciana', estado: 'verificada',
+      nota: 'Escala autonómica de la Comunitat Valenciana para 2026 (Ley 13/1997, art. 2, en la redacción de la Ley 5/2026) y mínimo del contribuyente propio (art. 2 bis), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      /* Ley 5/2026, art. 18: escala con efectos desde el 1-1-2026. Su DT 3.ª fija otra
+         escala desde el 1-1-2027; el simulador mantiene fijas las reglas de 2026. */
+      escalaAutonomica: [[0, .088], [12000, .117], [22000, .146], [32000, .17], [42000, .194], [52000, .219], [62000, .244], [72000, .261], [100000, .2735], [150000, .2835], [200000, .2935]],
+      minimoAutonomico: { base: 6105, edad65: 1265, edad75: 1540 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Ley 13/1997 del tramo autonómico del IRPF de la Comunitat Valenciana', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-1998-8202&tn=1', d: 'Art. 2 (escala, redacción de la Ley 5/2026 con efectos desde el 1-1-2026) y art. 2 bis (mínimo personal y familiar); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'extremadura', nombre: 'Extremadura', de: 'de Extremadura', estado: 'verificada',
+      nota: 'Escala autonómica de Extremadura para 2026 (Decreto Legislativo 1/2018, art. 1, en la redacción de la Ley 2/2026). Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .0775], [12450, .0975], [20200, .16], [24200, .175], [35200, .21], [60000, .235], [80200, .24], [99200, .245], [120200, .25]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2018, texto refundido de tributos cedidos de Extremadura', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2018-8159&tn=1', d: 'Art. 1 (escala, redacción de la Ley 2/2026 con efectos desde el 1-1-2026); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'galicia', nombre: 'Galicia', de: 'de Galicia', estado: 'verificada',
+      nota: 'Escala autonómica de Galicia para 2026 (Decreto Legislativo 1/2011, art. 4) y mínimo del contribuyente propio (art. 4 bis), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .09], [12985.35, .1165], [21068.6, .149], [35200, .184], [60000, .225]],
+      minimoAutonomico: { base: 5789, edad65: 1199, edad75: 1460 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2011, texto refundido de tributos cedidos de Galicia', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2011-18161&tn=1', d: 'Art. 4 (escala, redacción de la Ley 7/2022) y art. 4 bis (mínimo personal y familiar); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'madrid', nombre: 'Comunidad de Madrid', de: 'de la Comunidad de Madrid', estado: 'verificada',
+      nota: 'Escala autonómica de la Comunidad de Madrid para 2026 (Decreto Legislativo 1/2010, art. 1) y mínimo del contribuyente propio (art. 2), que se aplica solo en la parte autonómica. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .085], [13362.22, .107], [19004.63, .128], [35425.68, .174], [57320.4, .205]],
+      minimoAutonomico: { base: 5956.65, edad65: 1234.26, edad75: 1502.58 },
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2010, texto refundido de tributos cedidos de la Comunidad de Madrid', href: 'https://www.boe.es/buscar/act.php?id=BOCM-m-2010-90068&tn=1', d: 'Art. 1 (escala) y art. 2 (mínimo del contribuyente), redacción de la Ley 13/2023; contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'murcia', nombre: 'Región de Murcia', de: 'de la Región de Murcia', estado: 'verificada',
+      nota: 'Escala autonómica de la Región de Murcia para 2026 (Decreto Legislativo 1/2010, art. 2). Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      escalaAutonomica: [[0, .095], [12450, .112], [20200, .133], [34000, .179], [60000, .225]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Decreto Legislativo 1/2010, texto refundido de tributos cedidos de la Región de Murcia', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2011-10542&tn=1', d: 'Art. 2 (escala, redacción de la Ley 14/2018); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
+    { id: 'rioja', nombre: 'La Rioja', de: 'de La Rioja', estado: 'verificada',
+      nota: 'Escala autonómica de La Rioja para 2026 (Ley 10/2017, art. 31). Mínimo del contribuyente estatal. No incluye deducciones autonómicas.',
+      /* Art. 31 ter: deflactación si el IPC de La Rioja de diciembre supera el 3 %;
+         diciembre de 2025 fue el 2,6 % (INE), así que no opera en 2026. */
+      escalaAutonomica: [[0, .08], [12450, .106], [20200, .136], [35200, .178], [40000, .183], [50000, .19], [60000, .245], [120000, .27]],
+      fuente: { k: 'BOE · texto consolidado', t: 'Ley 10/2017 de tributos propios y cedidos de La Rioja', href: 'https://www.boe.es/buscar/act.php?id=BOE-A-2017-13750&tn=1', d: 'Art. 31 (escala, redacción de la Ley 13/2023); contrastada con «Tributación Autonómica. Medidas 2026» del Ministerio de Hacienda (actualizado a 23-09-2026).', consulta: CONSULTA_CCAA } },
   ];
   /* Territorios de régimen común que quedan fuera del simulador (no aparecen
      en el selector). Se declaran en los límites visibles. */
@@ -269,6 +347,9 @@
   const CCAA_DEFECTO = 'referencia';
 
   const territorio = (id) => TERRITORIOS.find((t) => t.id === id) || null;
+  /* «de la Comunidad de Madrid», «del Principado de Asturias»…: forma con
+     artículo para los textos (campo de, o «de» + nombre si no lo hay). */
+  const deComunidad = (c) => (c && c.de) || 'de ' + (c ? c.nombre : 'la comunidad elegida');
   const comunidad = (id) => CCAA.find((c) => c.id === id) || null;
 
   /* Configuración efectiva para el motor. Devuelve null si el territorio no
@@ -276,17 +357,29 @@
      devuelve estado 'en-preparacion' y el motor no calcula. */
   function configuracion(idTerritorio, idCcaa) {
     const t = territorio(idTerritorio); if (!t) return null;
-    const cfg = Object.assign({}, t, { ccaa: null, escalaAutonomica: null });
+    const cfg = Object.assign({}, t, { ccaa: null, escalaAutonomica: null, minimoAutonomico: null });
     if (t.modelo === 'comun') {
       const c = comunidad(idCcaa || CCAA_DEFECTO);
       if (!c) return Object.assign(cfg, { estado: 'desconocida', ccaa: { id: idCcaa, nombre: 'Comunidad no reconocida', estado: 'desconocida' } });
       cfg.ccaa = c;
       cfg.escalaAutonomica = c.escalaAutonomica || null;
+      cfg.minimoAutonomico = c.minimoAutonomico || null;
       if (c.estado !== 'verificada' || !cfg.escalaAutonomica) cfg.estado = 'en-preparacion';
+      /* La ley de la comunidad encabeza las fuentes (decisión del fundador de
+         05-10-2026), para que el simulador, las guías y el informe la citen. */
+      else if (!c.referencia && c.fuente) cfg.fuentes = [{ k: c.fuente.k, t: c.fuente.t, href: c.fuente.href, d: (c.fuente.d ? c.fuente.d + ' ' : '') + 'Consultada el ' + c.fuente.consulta + '.', consulta: c.fuente.consulta }].concat(t.fuentes);
     }
     return cfg;
   }
   const disponible = (cfg) => !!cfg && cfg.estado === 'verificada';
+
+  /* Fecha de consulta de las fuentes para los textos («fuentes consultadas
+     …»). Si la ley de la comunidad se consultó otro día, se da su fecha. */
+  function consultaFuentes(cfg) {
+    if (!cfg) return '';
+    const c = cfg.ccaa, fc = c && !c.referencia && c.estado === 'verificada' && c.fuente ? c.fuente.consulta : null;
+    return 'el ' + cfg.consulta + (fc && fc !== cfg.consulta ? '; la ley autonómica ' + deComunidad(c) + ', el ' + fc : '');
+  }
 
   /* Nombre completo para rótulos: «Bizkaia», «Estatal · Escala de referencia». */
   function nombreCompleto(cfg) {
@@ -409,28 +502,38 @@
     return m.base + (e >= 65 ? m.edad65 : 0) + (e >= 75 ? m.edad75 : 0);
   }
 
-  /* cfg.escalaAutonomica es la escala de la comunidad (o la de referencia). */
-  function irpfComun(P, escalaAutonomica, { trabajo, ahorro, edad, otrasDeducciones }) {
+  /* cfg.escalaAutonomica es la escala de la comunidad (o la de referencia).
+     minimoAutonomico (opcional) son los importes del mínimo del contribuyente
+     que fija la comunidad (art. 56.3 LIRPF): se usan solo en la parte
+     autonómica. El mínimo se reparte primero en la base general y el resto en
+     la del ahorro (art. 56.2), por separado para cada parte. En el ahorro, la
+     escala estatal (art. 66) y la autonómica (art. 76) son idénticas, cada una
+     la mitad de ESCALA_AHORRO_COMUN: por eso el mínimo a escala del ahorro es
+     la media de aplicar la escala conjunta al resto estatal y al autonómico.
+     Sin mínimo propio, ambos restos coinciden y el resultado es el de antes. */
+  function irpfComun(P, escalaAutonomica, { trabajo, ahorro, edad, otrasDeducciones }, minimoAutonomico) {
     const t = pos(trabajo), a = pos(ahorro);
     const gastos = Math.min(t, P.gastos);
     const rn = t - gastos;
     const reduccion = Math.min(rn, reduccionTrabajoComun(P, rn, a));
     const baseGeneral = Math.max(0, rn - reduccion);
     const minimo = minimoPersonalComun(P, edad);
+    const minimoA = minimoAutonomico ? minimoPersonalComun({ minimo: minimoAutonomico }, edad) : minimo;
     const minGen = Math.min(minimo, baseGeneral), minAho = Math.min(a, minimo - minGen);
+    const minGenA = Math.min(minimoA, baseGeneral), minAhoA = Math.min(a, minimoA - minGenA);
     const gE = escala(baseGeneral, P.escalaGeneral), gA = escala(baseGeneral, escalaAutonomica);
     const cuotaGeneralBruta = gE.cuota + gA.cuota;
-    const minimoEscala = escala(minGen, P.escalaGeneral).cuota + escala(minGen, escalaAutonomica).cuota;
+    const minimoEscala = escala(minGen, P.escalaGeneral).cuota + escala(minGenA, escalaAutonomica).cuota;
     const cuotaGeneral = Math.max(0, cuotaGeneralBruta - minimoEscala);
     const s = escala(a, P.escalaAhorro);
-    const minimoAhorro = escala(minAho, P.escalaAhorro).cuota;
+    const minimoAhorro = (escala(minAho, P.escalaAhorro).cuota + escala(minAhoA, P.escalaAhorro).cuota) / 2;
     const cuotaAhorro = Math.max(0, s.cuota - minimoAhorro);
     const bruta = cuotaGeneral + cuotaAhorro;
     const deducciones = Math.min(bruta, pos(otrasDeducciones));
     const total = bruta - deducciones;
     return {
       trabajo: t, ahorro: a, bonificacion: 0, gastos, reduccionTrabajo: reduccion, baseGeneral, cuotaGeneralBruta, minoracion: 0, cuotaGeneral,
-      cuotaAhorro, cuotaAhorroBruta: s.cuota, minimoPersonal: minimo, minimoEscala, minimoAhorro, deduccionEdad: 0, otrasDeducciones: pos(otrasDeducciones), deducciones, total,
+      cuotaAhorro, cuotaAhorroBruta: s.cuota, minimoPersonal: minimo, minimoAutonomico: minimoA, minimoEscala, minimoAhorro, deduccionEdad: 0, otrasDeducciones: pos(otrasDeducciones), deducciones, total,
       marginalGeneral: baseGeneral > 0 ? gE.marginal + gA.marginal : 0, marginalAhorro: a > 0 ? s.marginal : 0,
       efectivo: t + a > 0 ? total / (t + a) : 0,
       desglose: {
@@ -438,7 +541,7 @@
           { clave: 'gastos', etiqueta: 'Gastos deducibles (art. 19.2.f)', importe: gastos, signo: '-' },
           { clave: 'reduccion', etiqueta: 'Reducción por rendimientos del trabajo', importe: reduccion, signo: '-' },
           { clave: 'escala', etiqueta: 'Impuesto según escala estatal + autonómica', importe: cuotaGeneralBruta, sub: true },
-          { clave: 'minimo', etiqueta: 'Mínimo personal a escala (' + eurN(minimo) + ')', importe: minimoEscala, signo: '-' },
+          { clave: 'minimo', etiqueta: 'Mínimo personal a escala (' + (minimoA !== minimo ? 'estatal ' + eurN(minimo) + ' · autonómico ' + eurD(minimoA) : eurN(minimo)) + ')', importe: minimoEscala, signo: '-' },
         ],
         ahorro: minimoAhorro > .5 ? [{ clave: 'minimo-ahorro', etiqueta: 'Resto del mínimo personal a escala', importe: minimoAhorro, signo: '-' }] : [],
         cuota: [{ clave: 'otras', etiqueta: 'Otras deducciones', importe: pos(otrasDeducciones) }],
@@ -451,7 +554,7 @@
     const P = cfg.parametros;
     if (cfg.modelo === 'vasco') return irpfVasco(P, rentas);
     if (cfg.modelo === 'navarra') return irpfNavarra(P, rentas);
-    return irpfComun(P, cfg.escalaAutonomica, rentas);
+    return irpfComun(P, cfg.escalaAutonomica, rentas, cfg.minimoAutonomico);
   }
 
   /* ------------------------------------------ Previsión social: la renta -- */
@@ -565,7 +668,9 @@
     return [
       'Gastos deducibles del trabajo: ' + eur(P.gastos) + ' (art. 19.2.f).',
       'Reducción por rendimientos del trabajo (art. 20): 7.302 € hasta 14.852 €, decreciente hasta desaparecer a 19.747,5 €; no se aplica si otras rentas superan 6.500 €.',
-      'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal y en la autonómica.',
+      cfg.minimoAutonomico
+        ? 'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal. En la parte autonómica se aplica, también «a escala», el mínimo propio ' + deComunidad(cfg.ccaa) + ' (art. 56.3): ' + eurD(cfg.minimoAutonomico.base) + ' (' + eurD(cfg.minimoAutonomico.base + cfg.minimoAutonomico.edad65) + ' desde los 65 y ' + eurD(cfg.minimoAutonomico.base + cfg.minimoAutonomico.edad65 + cfg.minimoAutonomico.edad75) + ' desde los 75).'
+        : 'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal y en la autonómica.',
       'Plan de pensiones: la prestación es rendimiento del trabajo al 100 %. En capital, la parte que deriva de aportaciones anteriores a ' + pv.corte + ' se reduce un ' + Math.round(pv.reduccion * 100) + ' % (DT 12.ª) si el cobro se produce en el año de la jubilación o en los dos siguientes y han pasado más de dos años desde la primera aportación.',
       'Escala autonómica: ' + (cfg.ccaa && cfg.ccaa.referencia ? 'la de referencia del art. 65 LIRPF, que no es la de ninguna comunidad autónoma.' : (cfg.ccaa ? cfg.ccaa.nombre : 'sin comunidad') + '.'),
       'Sin deducción estatal por edad; la DA 61.ª (deducción por rendimientos del trabajo) no alcanza a las pensiones.',
@@ -576,7 +681,7 @@
   function limites(cfg) {
     const l = ['No incluye deducciones autonómicas del régimen común ni deducciones propias de los territorios forales (alquiler, hijos, vivienda…).'];
     if (cfg && cfg.modelo === 'comun') {
-      l.push(cfg.ccaa && cfg.ccaa.referencia ? 'La escala autonómica usada es la de referencia del art. 65 LIRPF; la de cada comunidad autónoma está en preparación.' : 'La escala autonómica aplicada es la de ' + (cfg.ccaa ? cfg.ccaa.nombre : 'la comunidad elegida') + '.');
+      l.push(cfg.ccaa && cfg.ccaa.referencia ? 'La escala autonómica usada es la de referencia del art. 65 LIRPF, que no es la de ninguna comunidad autónoma.' : 'La escala autonómica aplicada es la ' + deComunidad(cfg.ccaa) + (cfg.minimoAutonomico ? ', con su mínimo del contribuyente propio en la parte autonómica (art. 56.3 LIRPF).' : '.'));
       l.push('Ceuta y Melilla quedan fuera del simulador: la deducción del 60 % por rentas obtenidas allí (art. 68.4 LIRPF) no está modelada.');
     }
     if (cfg && cfg.modelo === 'navarra') l.push('No se calcula la deducción del art. 68 por pensiones de jubilación contributivas inferiores a 15.400 €.');
@@ -598,7 +703,7 @@
       irpf: cfg.irpf, ejercicio: cfg.ejercicio, nombre: nombreCompleto(cfg),
       escalaCorta: 'escala ' + (cfg.modelo === 'comun' ? 'estatal + autonómica' : 'de ' + cfg.nombre) + ' ' + cfg.ejercicio,
       ambito: cfg.modelo === 'comun'
-        ? 'Usa las reglas del IRPF estatal de ' + cfg.ejercicio + ' con la escala autonómica ' + (cfg.ccaa && cfg.ccaa.referencia ? 'de referencia del art. 65 LIRPF (no la de tu comunidad, que está en preparación)' : 'de ' + (cfg.ccaa ? cfg.ccaa.nombre : 'tu comunidad')) + '. No incluye deducciones autonómicas.'
+        ? 'Usa las reglas del IRPF estatal de ' + cfg.ejercicio + ' con la escala autonómica ' + (cfg.ccaa && cfg.ccaa.referencia ? 'de referencia del art. 65 LIRPF (no la de ninguna comunidad autónoma)' : deComunidad(cfg.ccaa)) + '. No incluye deducciones autonómicas.'
         : 'Usa las reglas del ' + cfg.irpf + ' de ' + cfg.ejercicio + ' (' + cfg.hacienda + '). No incluye deducciones forales propias (alquiler, hijos, vivienda…).',
       rangoGeneral: rangoEscala(escalaGeneralVisible(cfg)),
       rangoAhorro: rangoEscala(cfg.parametros.escalaAhorro),
@@ -628,7 +733,7 @@
   const api = {
     CONSULTA, EJERCICIO, TERRITORIOS, CCAA, FUERA_DE_ALCANCE, TERRITORIO_DEFECTO, CCAA_DEFECTO,
     ESCALAS: { ESCALA_GENERAL_VASCA, ESCALA_AHORRO_VASCA, ESCALA_GENERAL_NAVARRA, ESCALA_AHORRO_NAVARRA, ESCALA_GENERAL_ESTATAL, ESCALA_ART65, ESCALA_AHORRO_COMUN },
-    territorio, comunidad, configuracion, disponible, nombreCompleto,
+    territorio, comunidad, configuracion, disponible, nombreCompleto, deComunidad, consultaFuentes,
     escala, irpf, bonificacionTrabajo, deduccionEdad, deduccionTrabajoNavarra, minimoPersonalNavarra, reduccionTrabajoComun, minimoPersonalComun,
     rentaPeriodica, opcionesCapital, basesCapitalVasco, basesCapitalReduccion, ratioEstimado,
     escalaGeneralVisible, resumenParametros, limites, textos,

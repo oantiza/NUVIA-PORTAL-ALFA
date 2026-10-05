@@ -387,7 +387,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
     const ctx = { st, set, cfg, T, modo, CHECK, hechos };
     return h('div', { className: 'jb jg' },
       selector(comp, st),
-      h('p', { className: 'jg-scope' }, icono('info'), h('span', null, h('strong', null, 'Ámbito de esta guía. '), 'Se refiere a ' + (T.vasco ? 'EPSV' : 'planes de pensiones') + ' y a contribuyentes sujetos al ' + cfg.irpf + ' (' + cfg.hacienda + (cfg.ccaa ? ' · ' + cfg.ccaa.nombre : '') + '). Es información orientativa, revisada en octubre de 2026 con fuentes consultadas el ' + cfg.consulta + '; la situación personal, los estatutos o especificaciones de la entidad y posibles cambios normativos pueden alterar el resultado. ' + F().limites(cfg).join(' '))),
+      h('p', { className: 'jg-scope' }, icono('info'), h('span', null, h('strong', null, 'Ámbito de esta guía. '), 'Se refiere a ' + (T.vasco ? 'EPSV' : 'planes de pensiones') + ' y a contribuyentes sujetos al ' + cfg.irpf + ' (' + cfg.hacienda + (cfg.ccaa ? ' · ' + cfg.ccaa.nombre : '') + '). Es información orientativa, revisada en octubre de 2026 con fuentes consultadas ' + F().consultaFuentes(cfg) + '; la situación personal, los estatutos o especificaciones de la entidad y posibles cambios normativos pueden alterar el resultado. ' + F().limites(cfg).join(' '))),
       h('nav', { className: 'jg-index', 'aria-label': 'Contenido de la guía' },
         [['#ayuda-rescate', '1', 'Cómo elegir'], ['#fiscalidad-2026', '2', 'Fiscalidad 2026'], ['#tramite-administrativo', '3', 'Tramitación'], ['#checklist-rescate', '4', 'Checklist'], ['#normativa-oficial', '5', 'Normativa']].map(([a, n, t]) => h('a', { key: a, href: a }, h('span', null, n), t))),
       seccionElegir(ctx),
@@ -500,7 +500,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
     return h('section', { id: 'normativa-oficial', className: 'jg-section', 'aria-labelledby': 'jg-norma' },
       h('p', { className: 'jb-kicker' }, '5 · Normativa y fuentes'),
       h('h2', { id: 'jg-norma', className: 'jg-h2' }, 'La referencia oficial, a un clic'),
-      h('p', { className: 'jb-lead jg-measure' }, 'La fiscalidad corresponde a ' + (cfg.regimen === 'foral' ? 'la normativa foral de ' + cfg.nombre : 'la Ley 35/2006 del IRPF' + (cfg.ccaa ? ' con la escala autonómica ' + (cfg.ccaa.referencia ? 'de referencia (art. 65)' : 'de ' + cfg.ccaa.nombre) : '')) + '; la organización, supervisión y régimen administrativo de ' + (T.vasco ? 'las EPSV se apoya en la normativa de Euskadi y en los estatutos de cada entidad.' : 'los planes de pensiones se apoya en la normativa estatal de planes y fondos de pensiones y en las especificaciones de cada plan.') + ' Fuentes consultadas el ' + cfg.consulta + '.'),
+      h('p', { className: 'jb-lead jg-measure' }, 'La fiscalidad corresponde a ' + (cfg.regimen === 'foral' ? 'la normativa foral de ' + cfg.nombre : 'la Ley 35/2006 del IRPF' + (cfg.ccaa ? ' con la escala autonómica ' + (cfg.ccaa.referencia ? 'de referencia (art. 65)' : F().deComunidad(cfg.ccaa)) : '')) + '; la organización, supervisión y régimen administrativo de ' + (T.vasco ? 'las EPSV se apoya en la normativa de Euskadi y en los estatutos de cada entidad.' : 'los planes de pensiones se apoya en la normativa estatal de planes y fondos de pensiones y en las especificaciones de cada plan.') + ' Fuentes consultadas el ' + cfg.consulta + '.'),
       h('div', { className: 'jg-grid-2' },
         col('Marco fiscal · ' + cfg.nombre, 'IRPF y previsión social', cfg.normativa),
         admin),
@@ -522,7 +522,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
 <section class="blk"><h3>Cómo tributa cada modalidad (${esc(T.nombre)} ${cfg.ejercicio})</h3><ul>${TR.filas.map((x) => `<li><span style="min-width:150pt"><strong>${esc(x.t)}</strong></span><span>${esc(TR.columnas[1])}: ${esc(x.ap[1])}<br>${esc(TR.columnas[2])}: ${esc(x.re[1])}</span></li>`).join('')}</ul></section>
 <section class="blk"><h3>Pasos de la solicitud</h3><ul>${tramite(cfg, T).map((x, i) => `<li><span class="chip">${i + 1}</span><span><strong>${esc(x.t)}.</strong> ${esc(x.d)}</span></li>`).join('')}</ul></section>
 <section class="blk"><h3>Las cinco preguntas previas</h3><ul>${PREGUNTAS(cfg, T).map((q, i) => `<li><span class="chip">${i + 1}</span><span>${esc(q)}</span></li>`).join('')}</ul></section>
-<section class="blk"><h3>Límites y fuentes</h3><ul>${F().limites(cfg).map((l) => `<li><span>▫</span><span>${esc(l)}</span></li>`).join('')}${cfg.fuentes.slice(0, 3).map((f) => `<li><span>▫</span><span>${esc(f.k)} · ${esc(f.t)} (consultada el ${esc(cfg.consulta)})</span></li>`).join('')}</ul></section>
+<section class="blk"><h3>Límites y fuentes</h3><ul>${F().limites(cfg).map((l) => `<li><span>▫</span><span>${esc(l)}</span></li>`).join('')}${cfg.fuentes.slice(0, 3).map((f) => `<li><span>▫</span><span>${esc(f.k)} · ${esc(f.t)} (consultada el ${esc(f.consulta || cfg.consulta)})</span></li>`).join('')}</ul></section>
 <p class="foot">Información orientativa para contribuyentes del ${esc(cfg.irpf)}. No sustituye el análisis fiscal individual ni la documentación contractual de ${esc(T.la)}. Confirma con la entidad y, cuando proceda, con un asesor fiscal el régimen aplicable.</p></body></html>`;
   }
 

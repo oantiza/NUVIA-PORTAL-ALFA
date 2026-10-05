@@ -18,6 +18,9 @@ const texto = (n) => typeof n === 'string' ? n : n && n.c ? n.c.map(texto).join(
 const componente = (estado) => { const c = { state: estado, setState(o) { this.state = { ...this.state, ...o }; } }; return c; };
 const conTerritorio = (estado, t, ccaa) => Object.assign(estado, { territorio: t, ccaa: ccaa || 'referencia', avisoTerritorio: null });
 const cerca = (a, b, tol = 0.05, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg || ''} ${a} ≠ ${b}`);
+/* Desde el 05-10-2026 ninguna comunidad real está «en preparación»: el estado se
+   prueba con una entrada ficticia que solo existe mientras dura la prueba. */
+const conComunidadEnPreparacion = (fn) => { F.CCAA.push({ id: 'prueba-en-preparacion', nombre: 'Comunidad de prueba', estado: 'en-preparacion' }); try { return fn('prueba-en-preparacion'); } finally { F.CCAA.pop(); } };
 
 test('Hoja de ruta: progreso y próxima acción', () => {
   assert.equal(G.estadoPlan({}).progreso, 0);
@@ -114,10 +117,23 @@ test('Guía fiscal: territorio desde la URL, comunidad en preparación y paráme
   assert.equal(raro.territorio, null); assert.match(raro.avisoTerritorio, /No reconocemos el territorio/);
   const txt = texto(G.fiscal(componente(Object.assign({ modo: 'capital', check: {} }, raro))));
   assert.match(txt, /Residencia fiscal sin determinar/); assert.doesNotMatch(txt, /Caso práctico/);
+  conComunidadEnPreparacion((id) => {
+    const prep = componente(Object.assign({ modo: 'capital', check: {} }, G.territorioInicial('?territorio=estatal&ccaa=' + id)));
+    const tp = texto(G.fiscal(prep));
+    assert.match(tp, /En preparación/); assert.doesNotMatch(tp, /Ejemplo ficticio/);
+    assert.equal(buscar(G.fiscal(prep), (n) => n.t === 'select').length, 1, 'El selector de comunidad sigue disponible');
+  });
+  // Fase 2 (05-10-2026): Madrid calcula con su escala y su mínimo, y la guía cita su ley en primer lugar.
   const madrid = componente(Object.assign({ modo: 'capital', check: {} }, G.territorioInicial('?territorio=estatal&ccaa=madrid')));
   const tm = texto(G.fiscal(madrid));
-  assert.match(tm, /En preparación/); assert.doesNotMatch(tm, /Ejemplo ficticio/);
-  assert.equal(buscar(G.fiscal(madrid), (n) => n.t === 'select').length, 1, 'El selector de comunidad sigue disponible');
+  assert.doesNotMatch(tm, /En preparación/); assert.match(tm, /Ejemplo ficticio/); assert.match(tm, /Comunidad de Madrid/);
+  const enlaces = buscar(G.fiscal(madrid), (n) => n.t === 'a' && /BOCM-m-2010-90068/.test(n.p.href || ''));
+  assert.ok(enlaces.length >= 1, 'La guía enlaza el texto consolidado de la ley madrileña');
+  assert.match(tm, /con la escala autonómica de la Comunidad de Madrid;/, 'Nombre de la comunidad con artículo');
+  assert.doesNotMatch(tm, /de Comunidad de Madrid/);
+  assert.match(tm, /fuentes consultadas el 04-10-2026; la ley autonómica de la Comunidad de Madrid, el 05-10-2026/, 'Fecha de consulta de la ley autonómica');
+  const ast = texto(G.fiscal(componente(Object.assign({ modo: 'capital', check: {} }, G.territorioInicial('?territorio=estatal&ccaa=asturias')))));
+  assert.match(ast, /con la escala autonómica del Principado de Asturias;/);
 });
 
 test('Simulador: selector de residencia, caso DFB solo en Bizkaia y previsión que no se mezcla al cambiar', () => {
@@ -134,12 +150,23 @@ test('Simulador: selector de residencia, caso DFB solo en Bizkaia y previsión q
   assert.equal(UI.cambiarTerritorio(conEpsv, 'estatal').ccaa, 'referencia');
   assert.equal(UI.urlCon('guia-fiscal.html', { territorio: 'estatal', ccaa: 'referencia' }), 'guia-fiscal.html?territorio=estatal&ccaa=referencia');
   assert.equal(UI.urlCon('jubilacion.html?caso=dfb', { territorio: 'bizkaia' }), 'jubilacion.html?caso=dfb&territorio=bizkaia');
-  const comp = componente({ s: Object.assign(UI.estadoInicial(), { territorio: 'estatal', ccaa: 'madrid' }), paso: 0, vista: 'hoy', sel: 0 });
-  const arbol = UI.render(comp); const txt = texto(arbol);
-  assert.match(txt, /En preparación/); assert.equal(buscar(arbol, (n) => n.p && n.p.className === 'jb-live__num').length, 0, 'Sin cifras cuando no calcula');
-  buscar(arbol, (n) => n.t === 'button' && texto(n).includes('Calcular con la escala de referencia'))[0].p.onClick();
-  assert.equal(comp.state.s.ccaa, 'referencia');
-  assert.equal(buscar(UI.render(comp), (n) => n.p && n.p.className === 'jb-live__num').length, 1);
+  conComunidadEnPreparacion((id) => {
+    const comp = componente({ s: Object.assign(UI.estadoInicial(), { territorio: 'estatal', ccaa: id }), paso: 0, vista: 'hoy', sel: 0 });
+    const arbol = UI.render(comp); const txt = texto(arbol);
+    assert.match(txt, /En preparación/); assert.equal(buscar(arbol, (n) => n.p && n.p.className === 'jb-live__num').length, 0, 'Sin cifras cuando no calcula');
+    buscar(arbol, (n) => n.t === 'button' && texto(n).includes('Calcular con la escala de referencia'))[0].p.onClick();
+    assert.equal(comp.state.s.ccaa, 'referencia');
+    assert.equal(buscar(UI.render(comp), (n) => n.p && n.p.className === 'jb-live__num').length, 1);
+  });
+  // Fase 2: una comunidad verificada calcula, muestra su nota bajo el selector y ninguna opción dice «en preparación».
+  for (const id of ['madrid', 'valenciana', 'cataluna']) {
+    const comp = componente({ s: Object.assign(UI.estadoInicial(), { territorio: 'estatal', ccaa: id }), paso: 0, vista: 'hoy', sel: 0 });
+    const arbol = UI.render(comp); const txt = texto(arbol);
+    assert.equal(buscar(arbol, (n) => n.p && n.p.className === 'jb-live__num').length, 1, id + ': calcula');
+    assert.ok(txt.includes(F.comunidad(id).nota), id + ': nota bajo el selector');
+    assert.doesNotMatch(txt, /en preparación/i, id);
+    assert.ok(txt.includes('fuentes consultadas el 04-10-2026; la ley autonómica ' + F.comunidad(id).de + ', el 05-10-2026'), id + ': fecha de la ley autonómica');
+  }
   for (const t of ['bizkaia', 'alava', 'gipuzkoa', 'navarra', 'estatal']) {
     const c = componente({ s: Object.assign(UI.estadoInicial(), { territorio: t, tieneEpsv: true, epsvPre: 40000, epsvPreRent: 10000, epsvPost: 10000, epsvPostRent: 1000, epsvCobro: 'mixto' }), paso: 2, vista: 'hoy', sel: 0 });
     const tx = texto(UI.render(c));

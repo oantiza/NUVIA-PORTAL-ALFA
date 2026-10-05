@@ -66,9 +66,12 @@ const CONTENIDO = {
   'mercados.html?vista=cotizaciones': [['.markets-lab__quote', 16], ['.markets-lab__chip', 5]],
   'curso.html':            [['.curso-resultado', 4], ['.curso-campo', 7]],
   'jubilacion.html':       [['.jb-stepper__btn', 4], ['.jb-field__box', 1], ['.jb-live__num', 1], ['.jb-terr', 1], ['.jb-terr .jb-choice', 5]],
-  // Territorios (04-10-2026): Navarra calcula con su normativa; una comunidad «en preparación» no calcula y lo dice.
+  // Territorios (04-10-2026): Navarra calcula con su normativa. El estado «en preparación» de una comunidad se prueba en docs/nuvia-guias-jubilacion.test.mjs (entrada ficticia).
   'jubilacion.html?territorio=navarra#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-tax__col', 3], ['.jb-terr .jb-choice.is-on', 1]],
-  'jubilacion.html?territorio=estatal&ccaa=madrid': [['.jb-terr', 1], ['.jb-estado', 1], ['#jb-terr-ccaa', 1]],
+  // Fase 2 (05-10-2026): las 15 comunidades calculan con su escala; Madrid y Valencia con su mínimo propio, Cataluña sin él.
+  'jubilacion.html?territorio=estatal&ccaa=madrid#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-tax__col', 3], ['#jb-terr-ccaa', 1], ['.jb-terr__norma', 1]],
+  'jubilacion.html?territorio=estatal&ccaa=valenciana#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-tax__col', 3], ['#jb-terr-ccaa', 1], ['.jb-terr__norma', 1]],
+  'jubilacion.html?territorio=estatal&ccaa=cataluna#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-tax__col', 3], ['#jb-terr-ccaa', 1], ['.jb-terr__norma', 1]],
   'vivienda.html':         [['.nv-field__box', 12], ['.viv-pill--dark', 2]],
   'lecturas.html':         [['.lecturas-card', 4]],
   'fiscalidad.html':       [['.fiscal-dato', 9]],
@@ -92,6 +95,8 @@ const CONTENIDO = {
   'guia-planificacion.html': [['.jb-stepper__btn', 4], ['.jg-ring', 1], ['.jg-route3 li', 3], ['.jb-terr', 1]],
   'guia-fiscal.html':      [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['.jb-terr', 1]],
   'guia-fiscal.html?territorio=estatal&ccaa=referencia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1]],
+  'guia-fiscal.html?territorio=estatal&ccaa=madrid': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1], ['a[href*="BOCM-m-2010-90068"]', 1]],
+  'guia-fiscal.html?territorio=estatal&ccaa=andalucia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1], ['a[href*="BOE-A-2021-17915"]', 1]],
   'que-es-nuvia.html':     [['#que-nuvia-title', 1], ['.about-world__item', 5], ['.about-value', 4]],
   'economia.html':         [['h1', 1], ['.nv-space-tool-card', 3]],
   'patrimonio.html':       [['h1', 1], ['.nv-space-tool-card', 4]],
@@ -132,8 +137,10 @@ const PAGINAS_BASE = [
   'academia.html?tab=fundamentos', 'academia.html?tab=calculadora',
   'jubilacion.html#resultados', 'mercados.html?vista=informes',
   'mercados.html?vista=informes&tipo=semanal',
-  'jubilacion.html?territorio=navarra#resultados', 'jubilacion.html?territorio=estatal&ccaa=madrid',
-  'guia-fiscal.html?territorio=estatal&ccaa=referencia',
+  'jubilacion.html?territorio=navarra#resultados', 'jubilacion.html?territorio=estatal&ccaa=madrid#resultados',
+  'jubilacion.html?territorio=estatal&ccaa=valenciana#resultados', 'jubilacion.html?territorio=estatal&ccaa=cataluna#resultados',
+  'guia-fiscal.html?territorio=estatal&ccaa=referencia', 'guia-fiscal.html?territorio=estatal&ccaa=madrid',
+  'guia-fiscal.html?territorio=estatal&ccaa=andalucia',
 ];
 const filtroPaginas = (process.argv[4] || '').split(',').map((item) => item.trim()).filter(Boolean);
 const PAGINAS = filtroPaginas.length ? PAGINAS_BASE.filter((pagina) => filtroPaginas.includes(pagina)) : PAGINAS_BASE;

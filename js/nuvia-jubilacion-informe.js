@@ -237,7 +237,7 @@ ol.metodo li::before { content: counter(m, decimal-leading-zero); position: abso
     <li>La pensión y las retiradas suben cada año con el IPC indicado. Los importes «de hoy» descuentan esa inflación.</li>
     <li>La retirada de ahorros se calcula para que duren hasta la edad del plan o, si se conserva el capital, se retira solo la rentabilidad por encima del IPC.</li>
     <li>${esc(cfg.irpf)} ${cfg.ejercicio} (${esc(cfg.hacienda)} · ${esc(cfg.normaCorta)}${cfg.ccaa ? ' · ' + esc(cfg.ccaa.nombre) : ''}): ${esc(T.pasoTres)}</li>
-    <li>Las escalas se mantienen fijas; no se compensan pérdidas ni se incluyen otros ingresos. Fuentes consultadas el ${esc(cfg.consulta)}.</li>
+    <li>Las escalas se mantienen fijas; no se compensan pérdidas ni se incluyen otros ingresos. Fuentes consultadas ${esc(global.NuviaJubilacionFiscal ? global.NuviaJubilacionFiscal.consultaFuentes(cfg) : 'el ' + cfg.consulta)}.</li>
   </ol>
   <p class="nota"><b>Normativa y fuentes.</b></p><ul class="nota" style="margin:0 0 3mm;padding-left:4mm">${fuentes}</ul>
   <p class="nota"><b>Límites de esta estimación.</b></p><ul class="nota" style="margin:0 0 3mm;padding-left:4mm">${limites}</ul>

@@ -1,0 +1,243 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-05",
+  "fecha": "2026-10-05",
+  "fechaIso": "2026-10-05T00:00:00.000Z",
+  "generadoIso": "2026-10-05T13:12:30.467Z",
+  "titular": "Las bolsas suben tras el dato de empleo estadounidense y la expectativa de pausa en los tipos",
+  "entradilla": "Los principales índices bursátiles cerraron al alza tras conocerse una creación de empleo en Estados Unidos menor a la esperada. Esta ralentización laboral ha reducido las presiones de inflación, lo que favorece una pausa en las subidas de los tipos de interés por parte de la Reserva Federal.",
+  "hechos": [
+    {
+      "texto": "El índice S&P 500 cerró la sesión con un avance de 56,27 puntos, hasta los 7.722,72 puntos, impulsado por el dato laboral de septiembre.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El índice IBEX 35 sumó un 0,42 %, terminando la jornada en 19.085,30 puntos, en línea con la tendencia europea.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El indicador europeo Euro Stoxx 50 registró una subida del 1,02 %, situándose en 6.238,50 puntos al cierre.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El índice alemán DAX se incrementó un 1,17 % hasta los 25.231,20 puntos en su cierre consolidado, favorecido por las perspectivas del sector tecnológico.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta variable: IBEX 35",
+      "valor": "19.085,30 puntos",
+      "referencia": "2026-10-02, BME",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Renta variable: S&P 500",
+      "valor": "7.722,72 puntos",
+      "referencia": "2026-10-02, S&P Global",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Deuda soberana: Bono de EE. UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta fuente del Tesoro en el catálogo",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas: EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "Falta fuente del BCE en el catálogo",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias primas: Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Falta fuente de ICE en el catálogo",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-05",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Índice de Precios Industriales (PPI) de agosto",
+      "anterior": null,
+      "porQueImporta": "Permite anticipar las presiones de inflación antes de que lleguen al consumidor final.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Producción Industrial (IPI) de agosto",
+      "anterior": null,
+      "porQueImporta": "Mide la evolución de la actividad en las fábricas sin contar la construcción.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "10:30",
+      "region": "España",
+      "que": "Subasta de Letras del Tesoro a 6 y 12 meses",
+      "anterior": "3,00 % a 6 meses y 3,09 % a 12 meses en septiembre",
+      "porQueImporta": "Fija el coste que asume el Estado para financiarse a corto plazo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-07",
+      "hora": "20:00",
+      "region": "EEUU",
+      "que": "Actas de la Reserva Federal (FOMC)",
+      "anterior": null,
+      "porQueImporta": "Muestra las opiniones de los responsables monetarios sobre la economía y los tipos de interés.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Las principales bolsas occidentales han cerrado la sesión con subidas generalizadas tras digerir los últimos datos laborales de Estados Unidos. El índice S&P 500 avanzó gracias a una cifra de creación de empleo menor a la esperada, mientras que en Europa el Euro Stoxx 50 y el DAX alemán siguieron la misma senda optimista.",
+        "En el mercado de materias primas, el precio del petróleo Brent ha superado la barrera de los 102 dólares por barril debido a los problemas en las instalaciones de refino y en el Estrecho de Ormuz. Esta presión energética mantiene alerta a los inversores ante el riesgo de mayores costes operativos para las empresas."
+      ],
+      "fuentes": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La ralentización en la creación de puestos de trabajo en Estados Unidos es un síntoma de que la economía se enfría ligeramente. Esto resulta fundamental porque resta fuerza a la inflación y apoya la idea de que los bancos centrales, en particular la Reserva Federal, mantendrán estables los tipos de interés (el precio que cobran por prestar dinero a los bancos).",
+        "Por otro lado, el sector de la tecnología ha mostrado gran fortaleza porque los beneficios empresariales se mantienen sólidos. Al frenarse las rentabilidades de la deuda soberana (el interés de los bonos emitidos por los Estados), las empresas que dependen de grandes inversiones tecnológicas encuentran un entorno más favorable para su financiación."
+      ],
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En los próximos días, los mercados prestarán especial atención a la evolución de los costes industriales en Europa y a las comparecencias de diversos miembros de la Reserva Federal. Estas intervenciones servirán para confirmar si, tal y como descuentan los contratos de futuros bursátiles y sugieren diversos analistas, la autoridad monetaria pausará definitivamente el actual encarecimiento del crédito."
+      ],
+      "fuentes": [
+        5
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/madrid/2026/10/02/1_18_0_20261002.pdf"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5t/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/weekly-outlook-dont-panic-despite-autumn-fluctuations"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+    },
+    {
+      "titulo": "Reserva Federal de San Luis (FRED)",
+      "url": "https://fred.stlouisfed.org/series/sp500"
+    },
+    {
+      "titulo": "gurufocus.com",
+      "url": "https://www.gurufocus.com/economic_indicators/63/sp-500-index"
+    },
+    {
+      "titulo": "moomoo.com",
+      "url": "https://www.moomoo.com/stock/.SPX-US?chain_id=Name1K9-3FXPhg.1l19ok0&global_content=%7B%22promote_id%22%3A13764%2C%22sub_promote_id%22%3A57%2C%22f%22%3A%22www.moomoo.com%2Fhans%2Fstock%2F09638-HK%2Fcompany%22%7D"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 9
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-05",
+    "hasta": "2026-10-05",
+    "corteIso": "2026-10-05T13:12:30.467Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Freno en el empleo estadounidense",
+      "texto": "La economía de Estados Unidos añadió 29.000 puestos de trabajo en septiembre, cifra que apunta a una ralentización. Esto es clave porque quita presión a los precios y sugiere que los tipos de interés podrían mantenerse sin cambios.",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "Avance de la tecnología",
+      "texto": "El índice tecnológico Nasdaq 100 alcanzó un máximo histórico sostenido por la firmeza en los beneficios empresariales. Las rentabilidades de la deuda soberana (el interés que pagan los países por financiarse) se han moderado, dando respiro a este sector.",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "Presión en la energía",
+      "texto": "El petróleo Brent superó los 102 dólares por barril debido a las tensiones en las rutas marítimas de suministro. Esto importa porque los altos costes energéticos amenazan los beneficios empresariales y pueden lastrar la actividad económica global.",
+      "fuentes": [
+        5
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Tipos de interés",
+      "definicion": "Es el coste de pedir dinero prestado o la recompensa por ahorrarlo, fijado por los bancos centrales para controlar la economía."
+    },
+    {
+      "termino": "Deuda soberana",
+      "definicion": "Conjunto de bonos y obligaciones que emite un Estado para financiarse en los mercados financieros."
+    },
+    {
+      "termino": "Beneficios empresariales",
+      "definicion": "Las ganancias netas que obtiene una compañía tras descontar todos sus gastos e impuestos, clave para valorar el desempeño de sus acciones."
+    },
+    {
+      "termino": "Inflación",
+      "definicion": "Aumento generalizado y continuado de los precios de los bienes y servicios en una economía durante un período de tiempo."
+    }
+  ]
+}

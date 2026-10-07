@@ -1,0 +1,290 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-07",
+  "fecha": "2026-10-07",
+  "fechaIso": "2026-10-07T00:00:00.000Z",
+  "generadoIso": "2026-10-07T12:26:51.229Z",
+  "titular": "La Bolsa española avanza hasta los 19.444 puntos mientras la rentabilidad de la deuda se estabiliza",
+  "entradilla": "El índice bursátil español cerró la sesión con una subida moderada, respaldado por una leve relajación en el mercado de bonos. Los rendimientos de la deuda soberana frenaron su escalada tras conocerse unos datos económicos menos dinámicos en Estados Unidos que mitigaron la volatilidad general.",
+  "hechos": [
+    {
+      "texto": "El índice bursátil español IBEX 35 cerró la sesión con un avance de 144,50 puntos hasta alcanzar los 19.444,20 puntos.",
+      "fecha": "2026-10-06",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice S&P 500 del mercado estadounidense avanzó un 0,58 % al término de la jornada, ampliando la subida de 56,27 puntos de la sesión precedente.",
+      "fecha": "2026-10-06",
+      "fuentes": [
+        6,
+        7
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono español a 10 años descendió en 5 puntos básicos, situándose en el 4,13 %.",
+      "fecha": "2026-10-05",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "texto": "El diferencial de la deuda española respecto al bono alemán de referencia (prima de riesgo) se fijó en 56 puntos básicos.",
+      "fecha": "2026-10-05",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad implícita VIX descendió un 1,35 % hasta los 15,31 puntos, impulsado por una moderación en la tensión de los mercados de deuda.",
+      "fecha": "2026-10-06",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable: IBEX 35",
+      "valor": "19.444,20 puntos",
+      "referencia": "2026-10-06 (BME)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: Euro Stoxx 50",
+      "valor": "Sin contrastar",
+      "referencia": "El emisor oficial no facilita el cierre en abierto sin suscripción",
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: S&P 500",
+      "valor": "7.722,72 puntos",
+      "referencia": "2026-10-05 (S&P Global)",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Deuda Soberana: Bono español a 10 años",
+      "valor": "4,13 %",
+      "referencia": "2026-10-05 (Banco de España)",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "etiqueta": "Volatilidad: Índice VIX",
+      "valor": "15,31 puntos",
+      "referencia": "2026-10-06 (Cboe)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Materias Primas: Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Precio diario de liquidación sin acceso público primario contrastable",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas: EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "La cifra oficial no pertenece a las fuentes de mercado primarias habilitadas",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-07",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Publicación del índice de producción de servicios",
+      "anterior": "null",
+      "porQueImporta": "Permite medir la actividad del sector terciario en el continente europeo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-07",
+      "hora": "08:00",
+      "region": "Alemania",
+      "que": "Subasta de bonos federales a 7 años",
+      "anterior": "null",
+      "porQueImporta": "Determina el coste de emisión de la deuda estatal alemana en el tramo intermedio de la curva.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-08",
+      "hora": "14:00",
+      "region": "España",
+      "que": "Límite de peticiones minoristas para la subasta de Letras del Tesoro",
+      "anterior": "null",
+      "porQueImporta": "Ayuda a controlar el calendario de financiación a corto plazo del Estado español.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-09",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Estadística de Transporte de Personas",
+      "anterior": "null",
+      "porQueImporta": "Actúa como indicador coyuntural del uso de las redes de transporte y de la movilidad económica general.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-09",
+      "hora": "null",
+      "region": "Alemania",
+      "que": "Liquidación del bono federal a 7 años",
+      "anterior": "null",
+      "porQueImporta": "Supone la entrada formal en balance del volumen adjudicado de deuda federal.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "El índice bursátil español avanzó de manera sólida, superando la barrera de los 19.400 puntos en una sesión caracterizada por la reducción de las tensiones financieras a nivel internacional. El mercado accionario sumó más de 144 puntos de incremento, en sintonía con las alzas registradas en las bolsas de Estados Unidos.",
+        "En el mercado de deuda, la rentabilidad exigida al bono español a diez años experimentó un ligero descenso tras las fuertes subidas de las jornadas previas. Esta dinámica de estabilización se reprodujo en otros grandes mercados mundiales, lo que favoreció un clima más amable para los inversores."
+      ],
+      "fuentes": [
+        1,
+        6,
+        7,
+        12
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La estabilización en los rendimientos de la deuda soberana es fundamental porque reduce la presión sobre el coste de los préstamos para las familias y las corporaciones. Según datos recientes, esta contención responde a una cierta moderación en los indicadores de empleo y precios de la economía estadounidense, lo que mitiga el riesgo de subidas drásticas en los tipos de interés mundiales.",
+        "Además, el índice VIX (un barómetro que refleja la volatilidad o la agitación esperada en el mercado estadounidense) registró un nuevo descenso durante la jornada. Un menor nivel de fluctuaciones previstas suele proporcionar un entorno más propicio para la actividad económica y para la planificación a largo plazo."
+      ],
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días, el foco se desplazará hacia los datos de actividad del sector servicios en la zona del euro, que ayudarán a medir el pulso real del consumo y la economía continental tras las últimas decisiones de los bancos centrales. Asimismo, Alemania acudirá a los mercados primarios con nuevas subastas de deuda federal.",
+        "En España, las miradas estarán puestas en las estadísticas sobre el transporte de viajeros y en la creación de nuevas empresas, unos indicadores que permiten calibrar el estado de salud del tejido productivo y la vitalidad comercial nacional."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/euro-stoxx-50-index-to-undergo-methodology-changes-from-2027/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-consultation-results-for-the-euro-stoxx-50-index-and-stoxx-regional-blue-chip-indices/"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/volume_snapshot/"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/de/market-activity/stocks/dgac.u"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/fr/market-activity/stocks/host/news-headlines"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/nkave/archives/news/20260930E_1.pdf"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/index/profile?cid=1&idx=nk225"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/?promo=AMNL10"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/"
+    },
+    {
+      "titulo": "Banco de España",
+      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/pdf/si_1_2.pdf"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-07",
+    "hasta": "2026-10-07",
+    "corteIso": "2026-10-07T12:26:51.228Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Avance bursátil en España",
+      "texto": "El índice IBEX 35 repuntó impulsado por una relajación general en las tasas de interés internacionales. El mercado español superó los 19.400 puntos en un entorno de menor turbulencia, reflejando una demanda sólida.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "Freno de la volatilidad",
+      "texto": "El índice que mide las fluctuaciones esperadas en el mercado estadounidense retrocedió durante la jornada. Esta calma ayudó a estabilizar el coste de financiación a ambos lados del Atlántico.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "titulo": "Alivio en la deuda nacional",
+      "texto": "La rentabilidad del bono español a diez años se redujo ligeramente. Esta caída reduce la presión sobre el coste de endeudamiento del Estado a largo plazo y mejora las condiciones de liquidez.",
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "rentabilidad del bono",
+      "definicion": "Es el interés efectivo que recibe un inversor por prestar su dinero a un Estado o empresa mediante la adquisición de títulos de deuda."
+    },
+    {
+      "termino": "volatilidad",
+      "definicion": "Es la medida de la rapidez y magnitud con la que cambian los precios de un activo financiero en un período determinado; una cifra alta indica mayores oscilaciones y riesgo percibido."
+    },
+    {
+      "termino": "prima de riesgo",
+      "definicion": "Es el diferencial o sobrecoste de interés que se exige a la deuda de un país frente a la de otro considerado más seguro, habitualmente Alemania en el caso europeo."
+    },
+    {
+      "termino": "punto básico",
+      "definicion": "Es la centésima parte de un punto porcentual (0,01 %); se utiliza para expresar pequeñas variaciones en los tipos de interés sin lugar a ambigüedades."
+    }
+  ]
+}

@@ -62,7 +62,7 @@ assert.match(essay,/<p class="bn-essay__lead">En esta serie de vídeos/,'La entr
 assert.match(essay,/llevar vida directamente al corazón/);
 assert.match(essay,/en la mente, que/);
 assert.match(essay,/nos acompaña a diario: la respiración/);
-assert.match(essay,/hablar\. ¿Podemos dejar de respirar\?/);
+assert.match(essay,/incluso hablar\.<\/p>\s*<p>¿Pero podemos dejar de respirar\?<\/p>/,'La pregunta «¿Pero podemos dejar de respirar?» va en línea aparte');
 assert.doesNotMatch(essay,/adentro|vida llevándola|La respiración, como el equilibrio|\[equilibrio\?\]|\[llevar\?\]/);
 assert.equal((essay.match(/<li>/g)||[]).length,5);
 const breathingSection=read('respiracion-relajacion.html');

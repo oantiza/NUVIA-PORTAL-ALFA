@@ -1,0 +1,262 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-08",
+  "fecha": "2026-10-08",
+  "fechaIso": "2026-10-08T00:00:00.000Z",
+  "generadoIso": "2026-10-08T12:41:31.549Z",
+  "titular": "El sector bancario frena a las bolsas europeas mientras el petróleo se consolida sobre los 100 dólares",
+  "entradilla": "Los principales índices bursátiles europeos y estadounidenses terminaron la sesión del 7 de octubre de 2026 con descensos, arrastrados por la presión sobre las entidades financieras. En paralelo, la rentabilidad de la deuda pública se mantiene elevada y el precio del crudo refleja la tensión internacional.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 finalizó la sesión del 7 de octubre de 2026 en 19.118,00 puntos, lo que supone un descenso del 1,68 %, arrastrado por el impacto de los costes de financiación en el sector bancario.",
+      "fecha": "2026-10-07",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El indicador europeo Euro Stoxx 50 se situó en 6.180,29 puntos al cierre del 7 de octubre de 2026, con una caída del 1,47 % ante las mayores primas exigidas en el entorno crediticio.",
+      "fecha": "2026-10-07",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "En Estados Unidos, el índice S&P 500 retrocedió un 0,22 % hasta los 7.801,77 puntos al terminar la jornada del 7 de octubre de 2026, presionado por las tensiones en las curvas de los bonos soberanos.",
+      "fecha": "2026-10-07",
+      "fuentes": [
+        7
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable: IBEX 35",
+      "valor": "19.118,00 puntos",
+      "referencia": "2026-10-07 Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: Euro Stoxx 50",
+      "valor": "6.180,29 puntos",
+      "referencia": "2026-10-07 STOXX",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: S&P 500",
+      "valor": "7.801,77 puntos",
+      "referencia": "2026-10-07 S&P Global",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "Renta Fija: Bono de España a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-07 Banco de España. Pendiente de consolidación vespertina",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias Primas: Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-07 Intercontinental Exchange. Sin enlace primario documentado",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas: EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-07 Banco Central Europeo. Sin enlace primario documentado",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-08",
+      "hora": "08:00",
+      "region": "Eurozona",
+      "que": "Balanza Comercial y Flujos de Exportación de Alemania (agosto)",
+      "anterior": null,
+      "porQueImporta": "Determina la contribución del sector exterior alemán a la economía de la zona euro.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-08",
+      "hora": "13:30",
+      "region": "Eurozona",
+      "que": "Cuentas de la Reunión de Política Monetaria del BCE",
+      "anterior": null,
+      "porQueImporta": "Detalla las posiciones internas sobre la inflación energética y los tipos de interés.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-08",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Solicitudes Semanales de Prestación por Desempleo",
+      "anterior": "225.000 solicitudes en la semana precedente",
+      "porQueImporta": "Actúa como un indicador adelantado sobre la firmeza del mercado laboral estadounidense.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-08",
+      "hora": "19:00",
+      "region": "EEUU",
+      "que": "Subasta de Bonos del Tesoro a 30 años",
+      "anterior": null,
+      "porQueImporta": "Evalúa la capacidad del mercado para absorber nueva deuda a plazo ultra-largo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-09",
+      "hora": "08:00",
+      "region": "Eurozona",
+      "que": "Índices de Precios en la Construcción y Turismo Interior de Alemania",
+      "anterior": null,
+      "porQueImporta": "Mide la evolución de los costes de edificación residencial y el gasto turístico interno.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-09",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Estadística de Transporte de Viajeros (agosto)",
+      "anterior": "Cifras de transporte de julio de 2026",
+      "porQueImporta": "Evalúa el volumen de movilidad urbana e interurbana durante la campaña estival.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales mercados de renta variable europeos y estadounidenses cerraron la sesión del 7 de octubre de 2026 con descensos generalizados. El sector bancario lideró estas caídas en el continente europeo, arrastrado por la presión que ejerce el encarecimiento de la financiación sobre las entidades.",
+        "En el ámbito de la deuda soberana, la rentabilidad exigida a los bonos gubernamentales se mantiene en niveles muy elevados. Al mismo tiempo, las materias primas energéticas continúan bajo tensión, con el barril de crudo afianzado por encima de la cota de los cien dólares ante la persistencia de tensiones geopolíticas en Oriente Medio."
+      ],
+      "fuentes": [
+        1,
+        3,
+        7
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La convergencia de unos costes de financiación más altos y el encarecimiento sostenido de la energía supone un reto de primer orden para el crecimiento económico. Las tensiones en el transporte marítimo dificultan el suministro internacional, lo que introduce un sobrecoste en toda la cadena de producción.",
+        "El Banco Central Europeo ha advertido en sus actas del 8 de octubre de 2026 de que la presión sobre el precio de los combustibles está elevando las expectativas generales sobre el coste de la vida. Esta dinámica obliga a vigilar de cerca una posible transmisión hacia los sueldos de los trabajadores."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La agenda de los próximos días concentra su atención en los indicadores de comercio exterior e industria en Alemania, que resultan fundamentales para medir la fortaleza de la principal economía de la zona del euro. También se desgranarán los detalles del último encuentro del Banco Central Europeo sobre política monetaria.",
+        "En Estados Unidos, el mercado seguirá la evolución semanal de las solicitudes de prestaciones por desempleo, un indicador clave para medir la firmeza de su mercado laboral. Igualmente, se examinará de cerca la capacidad de absorción de la nueva emisión de deuda pública a muy largo plazo por parte del Tesoro."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-net-return-es0si0000062.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/mercados-y-cotizaciones/estadisticas/boletines-e-informes/madrid.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-consultation-results-for-the-euro-stoxx-50-index-and-stoxx-regional-blue-chip-indices/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse?_type=iNAVs&_search=commerzbank"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.cashmarket.deutsche-boerse.com/cash-de/Informieren/frankfurter-wertpapierboerse-regelwerke/sanktionen"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-de/investor-relations/aktie-und-anleihen/aktienrueckkauf-25174"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "edgeconsultancykw.com",
+      "url": "https://edgeconsultancykw.com/europe-market-wrap-7-october-2026/"
+    },
+    {
+      "titulo": "247wallst.com",
+      "url": "https://247wallst.com/cards/london-s-dip-is-shallow-next-to-frankfurt-where-the-dax-gav-ftse-market-bell-01m4d6y0q9a22ejz83epebvr5f"
+    },
+    {
+      "titulo": "algotradealert.substack.com",
+      "url": "https://algotradealert.substack.com/p/stock-market-morning-update-wednesday-5bd"
+    },
+    {
+      "titulo": "etp.morganstanley.com",
+      "url": "https://etp.morganstanley.com/fr/en/product-details/de000mr968n7"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-flash-latest",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 11
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-08",
+    "hasta": "2026-10-08",
+    "corteIso": "2026-10-08T12:41:31.549Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "La banca lastra los índices",
+      "texto": "El índice de los bancos europeos retrocedió el 7 de octubre de 2026 debido al encarecimiento de su financiación en los mercados de capitales. Esta dinámica afectó negativamente a la bolsa española, que cedió un 1,68 %.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "Presión del crudo",
+      "texto": "El precio del barril de petróleo se consolida en niveles altos. Las autoridades internacionales advierten de que el riesgo en Oriente Medio sigue tensionando los suministros globales pese a la liberación de reservas.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Preocupación por la energía",
+      "texto": "El Banco Central Europeo indica que el precio de los combustibles desplaza al alza las expectativas del coste de la vida. De momento, la institución no aprecia un traspaso directo de este efecto hacia los salarios.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "rentabilidad",
+      "definicion": "Interés implícito que se obtiene al poseer un título de deuda y mantenerlo hasta su vencimiento."
+    },
+    {
+      "termino": "deuda soberana",
+      "definicion": "Conjunto de bonos y obligaciones emitidos por un Estado para financiarse en los mercados."
+    },
+    {
+      "termino": "renta variable",
+      "definicion": "Mercado compuesto por acciones de empresas, donde no existe una rentabilidad garantizada ni devolución íntegra del capital invertido."
+    },
+    {
+      "termino": "materias primas",
+      "definicion": "Recursos naturales o bienes básicos que se negocian en los mercados globales, como el petróleo, el gas o el oro."
+    }
+  ]
+}

@@ -4911,3 +4911,12 @@ ul.markets-archive { list-style: none; margin: 0; padding: 0; }
   .markets-more-news__head { flex-direction: column; gap: var(--nv-space-1); }
   .markets-more-news { margin-top: var(--nv-space-8); }
 }
+
+/* ══ IMPRESIÓN ═════════════════════════════════════════════════════════════
+   Formato de papel común a todo el portal. Hasta el 12-10-2026 vivía en
+   nuvia-market-reports.css, que entonces cargaban todas las páginas; al dejar
+   esa hoja solo en Mercados y Economía, la regla pasa aquí para que ninguna
+   página pierda el A4. support.js inyecta después su propio margen. */
+@media print {
+  @page { size: A4; margin: 15mm; }
+}

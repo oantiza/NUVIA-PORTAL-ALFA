@@ -62,14 +62,17 @@ Cada colaborador figura en `colaboradores.html` (`.nv-colaborador`, con `id` pro
 ```
 estilos/nuvia-tokens.css        variables (color, tipografía, espaciado, superficies, medidas)
 estilos/nuvia-components.css    componentes compartidos
-estilos/nuvia-pages.css         entrada que importa, en este orden:
+estilos/nuvia-pages.css         entrada común de las páginas hijas, que importa en este orden:
+    nuvia-pages-foundations.css → nuvia-pages-content.css → nuvia-page-entry.css
+estilos/nuvia-pages-lab.css     entrada de cartera.html (sustituye a la común en esa página):
     nuvia-pages-foundations.css → nuvia-pages-cartera.css → nuvia-pages-content.css
-    → nuvia-page-entry.css → nuvia-market-reports.css
+    → nuvia-page-entry.css   (page-entry debe ir después de cartera: redefine la cabecera)
+estilos/nuvia-market-reports.css  solo en mercados.html y economia.html, tras nuvia-pages.css
 hojas de página (solo donde se usan): nuvia-subseccion.css, nuvia-bienestar.css,
     nuvia-retirement.css, nuvia-jubilacion.css, nuvia-fiscal.css, nuvia-guias-fiscales.css, nuvia-pib.css
 ```
 
-Reglas: buscar antes una clase existente con la misma función; lo compartido va a `nuvia-components.css`, lo propio de una composición a su módulo o a una hoja de página con **prefijo propio** (`.bn-` Bienestar, `.jub-` Jubilación, `.viv-` Vivienda, `.tm-` Temas, `.pib-` PIB…). No se crean variables locales de color: todo sale de `nuvia-tokens.css`. `docs/nuvia-page-styles.test.mjs` protege el orden de los módulos.
+Reglas: buscar antes una clase existente con la misma función; lo compartido va a `nuvia-components.css`, lo propio de una composición a su módulo o a una hoja de página con **prefijo propio** (`.bn-` Bienestar, `.jub-` Jubilación, `.viv-` Vivienda, `.tm-` Temas, `.pib-` PIB…). No se crean variables locales de color: todo sale de `nuvia-tokens.css`. `docs/nuvia-page-styles.test.mjs` protege el orden de los módulos y qué página carga qué entrada (12-10-2026: Cartera e informes ya no se cargan en todas las páginas).
 
 ### 3.2 Color (tokens)
 

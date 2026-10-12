@@ -1,8 +1,9 @@
-/* NUVIA · Entrada modular de estilos de página.
-   Orden de cascada: fundamentos → cartera → contenidos → entradas de página. */
+/* NUVIA · Entrada modular de estilos de página (común a todas las páginas hijas).
+   Orden de cascada: fundamentos → contenidos → entradas de página.
+   Cartera carga su propia entrada (nuvia-pages-lab.css) para conservar el orden
+   fundamentos → cartera → contenidos → entradas; los informes de mercado enlazan
+   nuvia-market-reports.css solo en mercados.html y economia.html. */
 @import url("nuvia-pages-foundations.css");
-@import url("nuvia-pages-cartera.css");
 @import url("nuvia-pages-content.css");
 
 @import url("nuvia-page-entry.css");
-@import url("nuvia-market-reports.css");

@@ -1,0 +1,10 @@
+/* NUVIA · Entrada de estilos de cartera.html (laboratorio de cartera y empresas).
+   Sustituye a nuvia-pages.css en esa página: misma cascada que el resto de
+   páginas hijas, con la hoja de Cartera entre fundamentos y contenidos, antes
+   de las entradas de página (nuvia-page-entry.css redefine
+   .nuvia-analysis-eyebrow y .nuvia-analysis-lead y debe seguir ganando). */
+@import url("nuvia-pages-foundations.css");
+@import url("nuvia-pages-cartera.css");
+@import url("nuvia-pages-content.css");
+
+@import url("nuvia-page-entry.css");

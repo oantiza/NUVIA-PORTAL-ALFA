@@ -17,8 +17,7 @@
 
 **Páginas:** `index.html` (referencia visual del portal), `_plantilla.html` (cáscara única), `colaboradores.html`, `que-es-nuvia.html`, `metodologia.html`, `independencia.html`, `sistema-visual.html` (muestra del sistema; no es una página del sitio).
 
-**Estilos:** `estilos/nuvia-tokens.css`, `estilos/nuvia-components.css`, `estilos/nuvia-pages.css` y sus importaciones (`nuvia-pages-foundations.css`, `nuvia-pages-content.css`, `nuvia-page-entry.css`), `estilos/nuvia-subseccion.css` (cabecera compacta de página hija), `estilos/fuentes/`.
-Nota: `nuvia-pages.css` importa hoy también `nuvia-pages-cartera.css` y `nuvia-market-reports.css`; su separación está prevista en el plan de organización (paso 5).
+**Estilos:** `estilos/nuvia-tokens.css`, `estilos/nuvia-components.css`, `estilos/nuvia-pages.css` (entrada común: `nuvia-pages-foundations.css` → `nuvia-pages-content.css` → `nuvia-page-entry.css`), `estilos/nuvia-subseccion.css` (cabecera compacta de página hija), `estilos/fuentes/`. Las hojas de Cartera (`nuvia-pages-lab.css` → `nuvia-pages-cartera.css`) y de informes (`nuvia-market-reports.css`) pertenecen a sus módulos y solo se cargan en sus páginas (desde el 12-10-2026).
 
 **Comportamiento:** `support.js`, `nuvia-site-unified.js`, `web2-integration.js`, `js/vendor/`.
 

@@ -261,7 +261,7 @@
   .nv-report__agenda-days, .nv-report__agenda-days--2, .nv-report__agenda-days--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media print {
-  @page { size: A4; margin: 15mm; }
+  /* El formato de papel (@page A4, 15 mm) es común a todo el portal y vive en nuvia-pages-foundations.css. */
   .nv-report { border: 0; border-radius: 0; box-shadow: none; background: var(--nv-white); font-size: 11pt; overflow: visible; }
   .nv-report__header { background: var(--nv-white); border-top: 4px solid var(--nv-navy-900); }
   .nv-report .nv-report__title, .nv-report .nv-report__masthead .nv-report__eyebrow, .nv-report__period, .nv-report .nv-report__lead, .nv-report__edition, .nv-report__reading { color: var(--nv-text); }

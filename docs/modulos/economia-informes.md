@@ -23,7 +23,7 @@
 
 **Portada y noticias:** `scripts/update-daily-news.mjs`, `scripts/update-index-quotes.mjs`, `scripts/update-macro-data.mjs`, `scripts/news-editorial.mjs`, `scripts/check-economia-entry.mjs`.
 
-**Render:** `js/nuvia-market-reports.js`, `js/nuvia-market-reports-render.mjs`, `estilos/nuvia-market-reports.css`.
+**Render:** `js/nuvia-market-reports.js`, `js/nuvia-market-reports-render.mjs`, `estilos/nuvia-market-reports.css` (enlazada solo en `mercados.html` y `economia.html`, tras `nuvia-pages.css`; los informes descargables la incrustan desde `scripts/informes-mercado/plantilla-html.mjs`, que declara además su propio `@page` A4). Si cambia la hoja o la plantilla, las dos ediciones vigentes de `core/downloads/informes/` deben regenerarse (`test:informes` lo exige).
 
 **Pruebas:** `docs/nuvia-informes-mercado.test.mjs`, `nuvia-news-editorial`, `nuvia-news-selection`, `nuvia-economia-entry`.
 

@@ -24,7 +24,7 @@ export function informeAHtml(informe) {
 * { box-sizing:border-box; } body {margin:0;padding:40px 24px;background:var(--nv-cloud);}
 main {max-width:1100px;margin:0 auto;} .volver {display:block;color:var(--nv-text-link);font:14px var(--nv-font-sans);margin:0 0 24px;}
 a:focus-visible, summary:focus-visible {outline:2px solid var(--nv-text);outline-offset:4px;}
-@media print {body {padding:0;} .volver {display:none;} }
+@media print {@page {size:A4;margin:15mm;} body {padding:0;} .volver {display:none;} }
 </style></head><body><main>
 <a class="volver" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/mercados.html?vista=informes">← Informes de mercado · NUVIA</a>
 ${renderInforme(informe, { independiente: true })}

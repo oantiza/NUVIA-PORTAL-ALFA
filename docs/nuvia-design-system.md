@@ -12,13 +12,25 @@ el orden de carga de cada página y la cascada vigente:
 | --- | --- |
 | `estilos/nuvia-tokens.css` | Variables globales de color, tipografía, espaciado, superficies y medidas; fuentes autoalojadas. |
 | `estilos/nuvia-components.css` | Componentes compartidos: contenedores, botones, tarjetas, campos, estados, tablas y progresos. |
-| `estilos/nuvia-pages.css` | Entrada que importa los tres módulos de páginas, sin cambiar su orden. |
+| `estilos/nuvia-pages.css` | Entrada común: fundamentos → contenidos → entradas de página. |
+| `estilos/nuvia-pages-lab.css` | Entrada de `cartera.html`: fundamentos → cartera → contenidos → entradas de página. |
+| `estilos/nuvia-market-reports.css` | Informes de mercado; enlazada solo en `mercados.html` y `economia.html`. |
 | `estilos/nuvia-pages-foundations.css` | Armazón común y el primer grupo de composiciones de página, incluido el curso. |
 | `estilos/nuvia-pages-cartera.css` | Composiciones y herramientas de cartera y análisis. |
 | `estilos/nuvia-pages-content.css` | Vivienda, guías, espacios, portada y demás composiciones del grupo de contenidos. |
 
-`nuvia-pages.css` importa **foundations → cartera → content**. Esta división ya
-existía y no debe sustituirse por una hoja por cada página. Buscar primero el
+Desde el 12-10-2026 la hoja de Cartera y la de informes no se cargan en todas las
+páginas: `nuvia-pages.css` importa **foundations → content → page-entry**;
+`cartera.html` carga `nuvia-pages-lab.css` (**foundations → cartera → content →
+page-entry**, el mismo orden relativo de siempre) y los informes se enlazan donde
+se muestran. Esta división no debe sustituirse por una hoja por cada página.
+
+Reglas globales de impresión: el formato de papel (`@page { size: A4; margin: 15mm; }`)
+es común a todo el portal y vive al final de `nuvia-pages-foundations.css`; los
+informes descargables, que son documentos autónomos, lo declaran en su plantilla
+(`scripts/informes-mercado/plantilla-html.mjs`). Al mover una hoja de sitio hay
+que revisar también sus reglas-arroba globales (`@page`, `@font-face`,
+`@keyframes`), que no dependen de que una clase esté en la página. Buscar primero el
 selector y su bloque temático; añadir junto a las reglas del mismo componente.
 
 La base heredada de `_ds/` forma parte del entorno de las páginas. No se edita

@@ -29,7 +29,7 @@
 
 **Controles:** `scripts/check-company-*.mjs`, `scripts/check-alpha-*.mjs`, `scripts/check-model-*.mjs`, `scripts/check-institution-controls.mjs`, `scripts/check-ohlcv-preparation.mjs`, `scripts/reglas-alfa-local.mjs`, `scripts/sin-maestra.mjs`.
 
-**Estilos:** `estilos/nuvia-pages-cartera.css`; `company-analysis/src/theme*.css`, `company-analysis/src/alfa/theme.css`.
+**Estilos:** `estilos/nuvia-pages-cartera.css`, cargada solo en `cartera.html` a través de la entrada `estilos/nuvia-pages-lab.css` (fundamentos → cartera → contenidos → entradas de página; `nuvia-page-entry.css` redefine `.nuvia-analysis-eyebrow` y `.nuvia-analysis-lead` y debe ir después). Las reglas con ámbito `.nuvia-lab` y `.nv-modelos__tarjeta` no actúan fuera de esta página. `company-analysis/src/theme*.css`, `company-analysis/src/alfa/theme.css`.
 
 **Pruebas:** todo `npm run test:analisis` (cartera, solapamiento, concentración, datos, constructor, resumen, cuenta, análisis, mapa, informe, modelos, etiquetas, mercado-alfa, fase 1, modelos-disponibilidad, guardado-local, interfaz-local, periodo-analisis, fundamentales-alfa, official-observations), `npm run test:reglas` (reglas de Firestore), `docs/ecb-risk-free.test.mjs`, `docs/nuvia-fase1.test.mjs` (crea y borra sus zonas temporales en `output/`).
 

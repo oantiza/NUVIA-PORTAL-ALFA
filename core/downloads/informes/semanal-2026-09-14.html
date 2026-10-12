@@ -188,6 +188,8 @@
 .nv-report__tile--curva .nv-report__tile-delta .nv-report__delta { white-space: nowrap; }
 .nv-report__tile--curva .nv-report__tile-delta > span:not(.nv-report__tile-level):not(.nv-report__delta) { max-width: 12ch; line-height: 1.3; }
 .nv-report__tile--curva .nv-report__tile-source { overflow-wrap: anywhere; }
+/* Dentro de una ficha la cita de la fuente se parte: el título largo de un publicador no cabe en una columna de tablet. */
+.nv-report__tile .nv-report__citation { white-space: normal; overflow-wrap: anywhere; }
 .nv-report__tile-chart--curva svg { max-width: none; }
 .nv-report__curve-grid { stroke: var(--nv-line); stroke-width: 1; }
 .nv-report__curve-now { fill: none; stroke: var(--nv-navy-800); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }

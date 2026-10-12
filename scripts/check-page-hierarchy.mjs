@@ -1,13 +1,10 @@
-/* Jerarquía de lectura: comprobar el resultado pintado, no solo clases en HTML. */
+/* Jerarquía de lectura: comprobar el resultado pintado, no solo clases en HTML.
+   El padre canónico de cada página se declara en scripts/paginas.mjs. */
+import { PORTADAS, padreDe } from './paginas.mjs';
 export async function checkPageHierarchy(page, route) {
   const path = new URL(page.url()).pathname.split('/').pop();
-  const homes = ['index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'lecturas.html', 'sistema-visual.html'];
-  if (homes.includes(path) || route === 'academia.html') return [];
-  const parent = path === 'la-respiracion-como-el-escultor-del-cerebro.html' ? 'respiracion-relajacion.html' : ["respiracion-relajacion.html","movimiento-consciente.html","nutricion-equilibrada.html","descanso-limites-tiempo-propio.html"].includes(path) ? 'bienestar.html' : path === 'cartera.html' || path === 'mercados.html' ? 'economia.html'
-    : path === 'academia.html' || path === 'curso.html' ? 'academia.html'
-    : route.includes('topic=bienestar') ? 'bienestar.html'
-    : ['colaboradores.html', 'metodologia.html', 'independencia.html', 'que-es-nuvia.html'].includes(path) ? 'index.html'
-    : 'patrimonio.html';
+  if (PORTADAS.includes(path) || route === 'academia.html') return [];
+  const parent = route.includes('topic=bienestar') ? 'bienestar.html' : (padreDe(path) ?? 'patrimonio.html');
   const problems = [];
   if (await page.locator('main .nv-entry').count() !== 1) problems.push('Debe haber una sola entrada de página hija');
   if (await page.locator(`.nv-breadcrumb a[href="${parent}"]`).count() !== 1) problems.push(`Falta el regreso al padre canónico: ${parent}`);

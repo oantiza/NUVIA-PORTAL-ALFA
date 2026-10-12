@@ -1,6 +1,6 @@
 # NUVIA Portal Alfa · Guía maestra de diseño y estructura
 
-**Versión:** 1.0 · 03-10-2026 · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
+**Versión:** 1.1 · 12-10-2026 (1.0 · 03-10-2026) · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
 **Carácter:** documento de obligado cumplimiento para toda tarea de diseño, estructura, contenido o código del portal. Si una petición entra en conflicto con esta guía, se consulta al fundador antes de actuar.
 
 Esta guía resume y ordena lo que ya está decidido y construido. Las referencias canónicas siguen siendo `AGENTS.md`, `docs/MARCO_REGULATORIO_OBLIGATORIO.md`, `docs/DEFINICION_NUVIA.md` y `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md`; esta guía no las sustituye, las hace operativas.
@@ -174,11 +174,11 @@ Acentos por espacio (`--nv-space-accent`): verde en Economía y Bienestar, bronc
 
 ## 6. Flujo de trabajo y validación obligatoria
 
-1. Leer `AGENTS.md`, el marco regulatorio y esta guía. Buscar la ficha previa del tema en `docs/`.
+1. Leer `AGENTS.md` (capa 0) y la ficha del módulo en `docs/modulos/`; la ficha indica qué secciones de esta guía y del marco regulatorio aplican y cuándo se leen enteros. Buscar la ficha previa del tema con `docs/INDICE.md`.
 2. Trabajar solo en la carpeta oficial. Reutilizar clases y tokens; nuevo CSS con prefijo propio y solo tokens.
 3. Si se toca cabecera o pie: editar `_plantilla.html` y ejecutar `npm run shell:sync`.
-4. Página nueva: añadirla a `PRESUPUESTO_INLINE` (`scripts/check-consistencia.mjs`, techo 0), a la lista y contratos de `scripts/check-render.mjs`, a las pruebas afectadas en `docs/*.test.mjs`, al menú de su espacio y al sitemap.
-5. Validar: `npm run validate` (cáscara, paridad, sitio estático, consistencia, lenguaje, estilos, navegación, metadatos, confianza, contenido externo, superficies, tarjetas, avisos, jerarquía, entradas de cada espacio, pruebas financieras) y `npm run auditar` / `auditar:completo` (render a 1440…768 px con Chromium de Playwright: contraste, escala, desbordes, estructura, foco, estados, contenido). `npm run build` compila `dist/`.
+4. Página nueva: darla de alta en `scripts/paginas.mjs` (registro único: título, módulo, padre, arquetipo, si es pública) y ejecutar `npm run sitemap:sync`; de ese registro leen la construcción, la consistencia, la auditoría visual, la jerarquía y los metadatos. Aparte, y a propósito: su contrato en `CONTRATOS` de `scripts/check-render.mjs`, el menú de su espacio en `_plantilla.html` (+ `shell:sync`) con su prueba de navegación, y la prueba de entrada de su espacio.
+5. Validar: durante el trabajo, `npm run validate:<módulo>` (`nucleo`, `economia`, `patrimonio`, `bienestar`, `academia`, `cartera`); antes de entregar, `npm run validate` (cáscara, paridad, sitio estático, consistencia, lenguaje, estilos, navegación, metadatos, confianza, contenido externo, superficies, tarjetas, avisos, jerarquía, entradas de cada espacio, pruebas financieras) y `npm run auditar` / `auditar:completo` (render a 1440…768 px con Chromium de Playwright: contraste, escala, desbordes, estructura, foco, estados, contenido). `npm run build` compila `dist/`.
 6. Documentar en `docs/<TEMA>_<AAAAMMDD>.md`: orden del fundador, cambios, prueba §12, clasificación interna, validación.
 7. Commit descriptivo en `main` y comprobación de que el flujo de GitHub Actions termina en verde y la web sirve el cambio.
 

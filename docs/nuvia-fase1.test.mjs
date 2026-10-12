@@ -1,7 +1,7 @@
 /** Regresiones de fase 1: sin red ni datos reales. Solo archivos sintéticos en output/. */
 import assert from 'node:assert/strict';
-import { test } from 'node:test';
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { test, after } from 'node:test';
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { creaClienteMaestra, fichaParaModulos, PREFIJO_SERIES } from '../js/nuvia-datos.js';
@@ -159,12 +159,16 @@ test('Exposición RV de cero conocida no se confunde con exposición desconocida
 });
 
 const output = fileURLToPath(new URL('../output/', import.meta.url));
+const zonas = [];
 function zona() {
   mkdirSync(output, { recursive: true });
   const salida = mkdtempSync(join(output, 'fase1-prueba-'));
   mkdirSync(join(salida, 'crudo'));
+  zonas.push(salida);
   return salida;
 }
+// Limpieza de las zonas temporales al terminar, también si alguna prueba falla.
+after(() => { for (const z of zonas) rmSync(z, { recursive: true, force: true }); });
 function json(ruta, obj) { writeFileSync(ruta, JSON.stringify(obj)); }
 function prepara(salida, ids) {
   return ids.map((id) => {

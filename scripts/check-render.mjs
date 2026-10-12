@@ -50,6 +50,7 @@ import { checkWellbeingEntry } from './check-wellbeing-entry.mjs';
 import { checkAcademyEntry } from './check-academy-entry.mjs';
 import { checkReadingsEntry } from './check-readings-entry.mjs';
 import { checkPageHierarchy } from './check-page-hierarchy.mjs';
+import { AUDITABLES } from './paginas.mjs';
 
 const raiz = resolve(process.argv[2] || '.');
 const ANCHOS = (process.argv[3] || '1440').split(',').map(Number);
@@ -118,30 +119,23 @@ const RUIDO_CONOCIDO = /<(polyline|polygon|path|circle|rect|line)>\s+attribute\s
 const RUIDO_EXTERNO = /ERR_TUNNEL|ERR_BLOCKED|ERR_NAME|Failed to load resource|tradingview|fonts\.googleapis|identitytoolkit|Permissions policy violation: compute-pressure is not allowed in this document/i;
 const ERRORES_ESPERADOS = {};
 
-const PAGINAS_BASE = [
-  'movimiento-consciente.html',
-  'nutricion-equilibrada.html',
-  'respiracion-relajacion.html',
-  'descanso-limites-tiempo-propio.html',
-  'la-respiracion-como-el-escultor-del-cerebro.html',
-  'index.html', 'economia.html', 'patrimonio.html', 'bienestar.html', 'colaboradores.html',
-  'metodologia.html', 'independencia.html',
-  'mercados.html', 'cartera.html', 'academia.html', 'curso.html',
+/* Páginas base de la auditoría: el registro (scripts/paginas.mjs) más las vistas
+   y estados que solo existen con parámetros o anclas. Estas rutas adicionales
+   se mantienen aquí porque describen comportamiento, no inventario. */
+const RUTAS_ADICIONALES = [
   'academia.html?tab=activos', 'academia.html?tab=glosario', 'academia.html?tab=pib',
-  'lecturas.html', 'vivienda.html', 'fiscalidad.html', 'jubilacion.html',
-  'temas.html', 'temas.html?topic=jubilacion', 'temas.html?topic=planificacion-patrimonial',
-  'guia-calendario.html', 'guia-ahorro.html', 'guia-sucesiones.html',
-  'guia-planificacion.html', 'guia-fiscal.html', 'sistema-visual.html',
-  'que-es-nuvia.html', 'mercados.html?vista=cotizaciones', 'cartera.html?vista=models',
-  'academia.html?tab=cursos', 'academia.html?tab=esenciales',
-  'academia.html?tab=fundamentos', 'academia.html?tab=calculadora',
-  'jubilacion.html#resultados', 'mercados.html?vista=informes',
-  'mercados.html?vista=informes&tipo=semanal',
-  'jubilacion.html?territorio=navarra#resultados', 'jubilacion.html?territorio=estatal&ccaa=madrid#resultados',
-  'jubilacion.html?territorio=estatal&ccaa=valenciana#resultados', 'jubilacion.html?territorio=estatal&ccaa=cataluna#resultados',
+  'temas.html?topic=jubilacion', 'temas.html?topic=planificacion-patrimonial',
+  'mercados.html?vista=cotizaciones', 'cartera.html?vista=models', 'academia.html?tab=cursos',
+  'academia.html?tab=esenciales', 'academia.html?tab=fundamentos', 'academia.html?tab=calculadora',
+  'jubilacion.html#resultados', 'mercados.html?vista=informes', 'mercados.html?vista=informes&tipo=semanal',
+  'jubilacion.html?territorio=navarra#resultados',
+  'jubilacion.html?territorio=estatal&ccaa=madrid#resultados',
+  'jubilacion.html?territorio=estatal&ccaa=valenciana#resultados',
+  'jubilacion.html?territorio=estatal&ccaa=cataluna#resultados',
   'guia-fiscal.html?territorio=estatal&ccaa=referencia', 'guia-fiscal.html?territorio=estatal&ccaa=madrid',
   'guia-fiscal.html?territorio=estatal&ccaa=andalucia',
 ];
+const PAGINAS_BASE = [...AUDITABLES, ...RUTAS_ADICIONALES];
 const filtroPaginas = (process.argv[4] || '').split(',').map((item) => item.trim()).filter(Boolean);
 const PAGINAS = filtroPaginas.length ? PAGINAS_BASE.filter((pagina) => filtroPaginas.includes(pagina)) : PAGINAS_BASE;
 if (filtroPaginas.length && PAGINAS.length !== filtroPaginas.length) {

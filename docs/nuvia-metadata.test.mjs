@@ -2,39 +2,13 @@ import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import sharp from 'sharp';
+import { PUBLICAS, EXCLUIDAS_SITEMAP, BASE_URL } from '../scripts/paginas.mjs';
 
 const root = resolve(process.argv[2] || '.');
-const base = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
+const base = BASE_URL;
 const socialImage = `${base}src/assets/social/nuvia-social-card-2026-v1.webp`;
-const pages = new Map([
-  ['movimiento-consciente.html', 'NUVIA · Movimiento consciente'],
-  ['nutricion-equilibrada.html', 'NUVIA · Nutrición equilibrada'],
-  ['respiracion-relajacion.html', 'NUVIA · Respiración y relajación'],
-  ['descanso-limites-tiempo-propio.html', 'NUVIA · Descanso, límites y tiempo propio'],
-  ['la-respiracion-como-el-escultor-del-cerebro.html', 'NUVIA · La respiración como el escultor del cerebro'],
-  ['index.html', 'NUVIA · Entender tu dinero'],
-  ['economia.html', 'NUVIA · Economía y Finanzas'],
-  ['patrimonio.html', 'NUVIA · Patrimonio'],
-  ['bienestar.html', 'NUVIA · Familia, Salud y Bienestar'],
-  ['colaboradores.html', 'NUVIA · Colaboradores'],
-  ['academia.html', 'NUVIA · Academia NUVIA'],
-  ['cartera.html', 'NUVIA · Cartera y analítica'],
-  ['curso.html', 'NUVIA · Dinero con criterio'],
-  ['fiscalidad.html', 'NUVIA · Impuestos'],
-  ['guia-ahorro.html', 'NUVIA · Fiscalidad del ahorro'],
-  ['guia-calendario.html', 'NUVIA · Calendario fiscal'],
-  ['guia-fiscal.html', 'NUVIA · Fiscalidad y rescate de la EPSV'],
-  ['guia-planificacion.html', 'NUVIA · Planificación de la jubilación'],
-  ['guia-sucesiones.html', 'NUVIA · Sucesiones y donaciones'],
-  ['jubilacion.html', 'NUVIA · Jubilación'],
-  ['lecturas.html', 'NUVIA · Lecturas con Criterio'],
-  ['mercados.html', 'NUVIA · Mercados y noticias'],
-  ['metodologia.html', 'NUVIA · Metodología'],
-  ['independencia.html', 'NUVIA · Independencia'],
-  ['que-es-nuvia.html', 'NUVIA · Qué es NUVIA'],
-  ['temas.html', 'NUVIA · Patrimonio'],
-  ['vivienda.html', 'NUVIA · Vivienda y coste de vida'],
-]);
+/* Títulos y páginas públicas: scripts/paginas.mjs (registro único). */
+const pages = new Map(PUBLICAS.map((p) => [p.archivo, p.titulo]));
 
 const sitemap = await readFile(resolve(root, 'sitemap.xml'), 'utf8');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -58,7 +32,7 @@ for (const [file, title] of pages) {
   assert.ok(urls.includes(canonical), `${file}: incluida en sitemap.xml`);
 }
 
-for (const excluded of ['guia-impuestos.html', 'sistema-visual.html', '_plantilla.html']) {
+for (const excluded of [...EXCLUIDAS_SITEMAP, '_plantilla.html']) {
   assert.ok(!urls.some((url) => url.endsWith('/' + excluded)), `${excluded}: excluida del sitemap`);
 }
 

@@ -19,6 +19,7 @@
    ========================================================================== */
 
 import { readFile, readdir } from 'node:fs/promises';
+import { ARCHIVOS } from './paginas.mjs';
 import { resolve, join } from 'node:path';
 
 const root = resolve(process.argv[2] ?? '.');
@@ -42,39 +43,7 @@ const FAMILIA_LOGO = 'nuvia-family-wealth-exact-2026-v2';
 
 /* Techo de atributos style="…" por página.
    Bajar estos números conforme se migra. Cuando una llegue a 0, se congela. */
-const PRESUPUESTO_INLINE = {
-  // Todas las páginas publicadas están en cero. Curso y guía comunican
-  // su porcentaje mediante data-progress; la anchura vive en componentes.
-  'academia.html': 0,
-  'bienestar.html': 0,
-  'descanso-limites-tiempo-propio.html': 0,
-  'la-respiracion-como-el-escultor-del-cerebro.html': 0,
-  'movimiento-consciente.html': 0,
-  'nutricion-equilibrada.html': 0,
-  'respiracion-relajacion.html': 0,
-  'cartera.html': 0,
-  'colaboradores.html': 0,
-  'curso.html': 0,
-  'economia.html': 0,
-  'fiscalidad.html': 0,
-  'guia-fiscal.html': 0,
-  'guia-impuestos.html': 0,
-  'guia-planificacion.html': 0,
-  'guia-sucesiones.html': 0,
-  'guia-ahorro.html': 0,
-  'guia-calendario.html': 0,
-  'index.html': 0,
-  'independencia.html': 0,
-  'jubilacion.html': 0,
-  'lecturas.html': 0,
-  'mercados.html': 0,
-  'metodologia.html': 0,
-  'patrimonio.html': 0,
-  'que-es-nuvia.html': 0,
-  'temas.html': 0,
-  'vivienda.html': 0,
-  'sistema-visual.html': 0,     // muestra del sistema, publicada con noindex
-};
+const PRESUPUESTO_INLINE = Object.fromEntries(ARCHIVOS.map((archivo) => [archivo, 0]));
 
 /* Colores retirados del uso como texto por no llegar a WCAG AA.
    Siguen valiendo como fondo, filete o icono: por eso solo se avisa. */

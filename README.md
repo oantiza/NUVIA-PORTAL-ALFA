@@ -2,7 +2,9 @@
 
 Repositorio oficial y único de la nueva fase Alfa de NUVIA Portal. Todo el trabajo se realiza exclusivamente en esta carpeta. `NUVIA-PORTAL-LAB` está cerrado y ningún proceso de este proyecto debe leerlo, modificarlo, sincronizarlo ni publicarlo.
 
-La estructura canónica de esta fase está definida en [Arquitectura y Estructura Global del Portal](docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md). Se aplica junto con la [Definición canónica de NUVIA](docs/DEFINICION_NUVIA.md) y el [Marco regulatorio obligatorio](docs/MARCO_REGULATORIO_OBLIGATORIO.md).
+La entrada para cualquier tarea es [`AGENTS.md`](AGENTS.md), organizado en capas: lo que se lee siempre, la ficha del módulo en el que se trabaja (`docs/modulos/`) y la lectura completa cuando la tarea lo exige. [`docs/INDICE.md`](docs/INDICE.md) distingue los documentos vigentes de los históricos.
+
+La estructura canónica de esta fase está definida en [Arquitectura y Estructura Global del Portal](docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md). Se aplica junto con la [Definición canónica de NUVIA](docs/DEFINICION_NUVIA.md), la [Guía maestra de diseño y estructura](docs/GUIA_MAESTRA_DISENO_Y_ESTRUCTURA_NUVIA.md) y el [Marco regulatorio obligatorio](docs/MARCO_REGULATORIO_OBLIGATORIO.md).
 
 ## Gobernanza regulatoria
 

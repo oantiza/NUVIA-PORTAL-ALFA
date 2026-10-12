@@ -1,35 +1,8 @@
 /* Contrato de presentación para pruebas. No se carga en el portal ni lee datos. */
-export const VISUAL_ARCHETYPES = {
-  'movimiento-consciente.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'nutricion-equilibrada.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'respiracion-relajacion.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'descanso-limites-tiempo-propio.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'la-respiracion-como-el-escultor-del-cerebro.html': { type: 'editorial', exception: 'Contenido de Cuerpo, mente y salud con entrada común.' },
-  'index.html': { type: 'institucional', exception: 'Portada fotográfica: composición y velos propios.' },
-  'que-es-nuvia.html': { type: 'institucional', exception: 'Cubierta y manifiesto editorial propios.' },
-  'colaboradores.html': { type: 'institucional', exception: 'Equipo editorial y divulgación pedagógica.' },
-  'metodologia.html': { type: 'institucional', exception: 'Transparencia sobre fuentes, cálculos, revisión y límites.' },
-  'independencia.html': { type: 'institucional', exception: 'Compromisos editoriales, comerciales y profesionales.' },
-  'economia.html': { type: 'espacio', exception: 'Home del espacio Economía y Finanzas.' },
-  'patrimonio.html': { type: 'espacio', exception: 'Home del espacio Patrimonio.' },
-  'bienestar.html': { type: 'espacio', exception: 'Home del espacio Familia, Salud y Bienestar.' },
-  'mercados.html': { type: 'espacio' },
-  'academia.html': { type: 'espacio', exception: 'Categorías formativas: colores y leyendas propios.' },
-  'temas.html': { type: 'espacio', exception: 'Vistas de Patrimonio y Bienestar sin cambiar rutas ni estados.' },
-  'cartera.html': { type: 'herramienta', exception: 'Aro de apertura y series analíticas; empresas se revisará en 4B.' },
-  'vivienda.html': { type: 'herramienta' },
-  'fiscalidad.html': { type: 'herramienta' },
-  'jubilacion.html': { type: 'herramienta' },
-  'lecturas.html': { type: 'editorial', exception: 'Lámina ilustrada sin degradado, no héroe institucional.' },
-  'curso.html': { type: 'editorial', exception: 'Cabecera institucional con navegación del curso.' },
-  'guia-ahorro.html': { type: 'editorial', exception: 'Cabecera institucional y panel de contexto.' },
-  'guia-calendario.html': { type: 'editorial', exception: 'Cabecera institucional y panel de contexto.' },
-  'guia-sucesiones.html': { type: 'editorial', exception: 'Cabecera institucional y panel de contexto.' },
-  'guia-fiscal.html': { type: 'editorial', exception: 'Cabecera institucional compacta.' },
-  'guia-planificacion.html': { type: 'editorial', exception: 'Cabecera institucional y recorrido educativo.' },
-  'guia-impuestos.html': { type: 'editorial', exception: 'Redirección a fiscalidad.html#guias; noindex.' },
-  'sistema-visual.html': { type: 'institucional', exception: 'Muestra de componentes, noindex.' },
-};
+import { PAGINAS } from './paginas.mjs';
+
+/* Arquetipo y excepción de cada página: se declaran en scripts/paginas.mjs. */
+export const VISUAL_ARCHETYPES = Object.fromEntries(PAGINAS.map((p) => [p.archivo, p.excepcion ? { type: p.tipo, exception: p.excepcion } : { type: p.tipo }]));
 
 /* Selector, propiedad calculada, valor esperado. Se evalúan solo cajas visibles.
    Las fotos, estados y gráficos no se someten a una sustitución indiscriminada. */

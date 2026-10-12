@@ -19,41 +19,13 @@ import { cp, mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promi
 import { existsSync } from 'node:fs';
 import { resolve, join, relative, dirname } from 'node:path';
 import { referencedAsset } from './site-assets.mjs';
+import { ARCHIVOS } from './paginas.mjs';
 
 const root = resolve(process.cwd());
 const output = resolve(root, 'dist');
 
-const paginas = [
-  'index.html',
-  'academia.html',
-  'cartera.html',
-  'curso.html',
-  'fiscalidad.html',
-  'guia-fiscal.html',
-  'guia-impuestos.html',
-  'guia-planificacion.html',
-  'guia-sucesiones.html',
-  'guia-ahorro.html',
-  'guia-calendario.html',
-  'jubilacion.html',
-  'lecturas.html',
-  'mercados.html',
-  'metodologia.html',
-  'independencia.html',
-  'que-es-nuvia.html',
-  'temas.html',
-  'vivienda.html',
-  'economia.html',
-  'patrimonio.html',
-  'bienestar.html',
-  'movimiento-consciente.html',
-  'nutricion-equilibrada.html',
-  'respiracion-relajacion.html',
-  'descanso-limites-tiempo-propio.html',
-  'la-respiracion-como-el-escultor-del-cerebro.html',
-  'colaboradores.html',
-  'sistema-visual.html',   // se publica con noindex: es la referencia del sistema
-];
+/* Las páginas se declaran en scripts/paginas.mjs (registro único). */
+const paginas = ARCHIVOS;
 
 const ficherosRaiz = [
   'support.js',

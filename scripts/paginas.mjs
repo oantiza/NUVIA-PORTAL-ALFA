@@ -92,6 +92,8 @@ export const PAGINAS = [
     tipo: 'editorial', excepcion: 'Contenido de Cuerpo, mente y salud con entrada común.', publica: true },
   { archivo: 'la-respiracion-como-el-escultor-del-cerebro.html', titulo: 'NUVIA · La respiración como el escultor del cerebro', modulo: 'bienestar', padre: 'respiracion-relajacion.html',
     tipo: 'editorial', excepcion: 'Contenido de Cuerpo, mente y salud con entrada común.', publica: true },
+  { archivo: 'que-es-meditar.html', titulo: 'NUVIA · ¿Qué es meditar?', modulo: 'bienestar', padre: 'respiracion-relajacion.html',
+    tipo: 'editorial', excepcion: 'Contenido de Cuerpo, mente y salud con entrada común.', publica: true },
 
   // ── Nivel 3 · Academia ─────────────────────────────────────────────────────
   { archivo: 'curso.html', titulo: 'NUVIA · Dinero con criterio', modulo: 'academia-lecturas', padre: 'academia.html',

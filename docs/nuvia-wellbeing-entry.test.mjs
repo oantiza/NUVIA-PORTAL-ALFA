@@ -71,4 +71,31 @@ assert.doesNotMatch(breathingSection,/<article class="tm-breathing-essay/);
 assert.doesNotMatch(breathingSection,/En esta serie de vídeos/,'La subsección no lleva la introducción del ensayo');
 assert.match(articlePage,/data-nuvia-external-frame/);
 assert.match(articlePage,/href="https:\/\/youtu.be\/XOGS8dDb1_o" target="_blank" rel="noopener noreferrer"/);
-console.log('Bienestar 5A-3: portada con cuatro temas, fuentes y límites, subsecciones de dos niveles y ensayo verificados.');
+
+/* Segundo ensayo de Isabel Florido Mayor: «¿Qué es meditar?», detrás del de la respiración. */
+const meditarPage=read('que-es-meditar.html');
+const meditar=meditarPage.match(/<article class="tm-breathing-essay[^"]*">([\s\S]*?)<\/article>/)?.[1];
+assert.ok(meditar,'El ensayo sobre meditar debe estar disponible');
+assert.match(meditarPage,/<h1>¿Qué es meditar\?<\/h1>/);
+assert.match(meditar,/Por <strong>Isabel Florido Mayor<\/strong> · <time datetime="2026-10-13">/);
+assert.match(meditar,/<p class="bn-essay__lead">«Meditar es llevar la mirada hacia adentro»<\/p>/,'La cita de la autora encabeza el ensayo');
+const meditarBody=meditar.match(/<div class="tm-breathing-essay__text">([\s\S]*?)<\/div>/)?.[1];
+assert.doesNotMatch(meditarBody,/<h[1-6]\b|<ul\b/,'Texto seguido de la autora, sin epígrafes añadidos');
+assert.match(meditarBody,/^\s*<p>Meditar está de moda\. ¿Qué es meditar\?<\/p>/,'El texto empieza como lo escribió la autora');
+assert.match(meditarBody,/«SALUD y BIENESTAR»/);
+assert.match(meditarBody,/<strong>AQUÍ y AHORA<\/strong>/);
+assert.match(meditarBody,/hacernos amigos de nosotros mismos: ejercitar la mirada limpia/);
+assert.match(meditarBody,/<p>Meditar es volver a casa, para descubrir que todo está bien; recordando que TODO está YA en nuestro interior\.<\/p>\s*$/,'El ensayo termina con la frase final de la autora');
+assert.equal((meditarBody.match(/<p>/g)||[]).length,14,'Catorce párrafos, como en el original');
+assert.match(meditarPage,/data-nuvia-external-frame/);
+assert.match(meditarPage,/youtube-nocookie\.com\/embed\/G-KN9dYWI_U/);
+assert.match(meditarPage,/href="https:\/\/youtu.be\/G-KN9dYWI_U" target="_blank" rel="noopener noreferrer"/);
+assert.match(meditarPage,/no es una revisión de estudios científicos/,'Las notas editoriales separan la reflexión de la evidencia');
+assert.match(meditarPage,/href="la-respiracion-como-el-escultor-del-cerebro.html"><span>← Ensayo anterior/);
+assert.match(articlePage,/href="que-es-meditar.html"><span>Ensayo siguiente →/);
+const order=[...breathingSection.matchAll(/<a class="bn-entry__link" href="([^"]+)"/g)].map(m=>m[1]);
+assert.deepEqual(order,['la-respiracion-como-el-escultor-del-cerebro.html','que-es-meditar.html'],'«¿Qué es meditar?» va detrás del ensayo de la respiración');
+assert.match(breathingSection,/<li class="bn-entry bn-entry--latest">\s*<a class="bn-entry__link" href="que-es-meditar.html"/,'La pieza más reciente lleva la marca de novedad');
+assert.doesNotMatch(breathingSection,/data-nuvia-external-frame/);
+
+console.log('Bienestar 5A-3: portada con cuatro temas, fuentes y límites, subsecciones de dos niveles y dos ensayos verificados.');

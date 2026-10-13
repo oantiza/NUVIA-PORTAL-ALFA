@@ -10,12 +10,13 @@
 | `docs/MARCO_REGULATORIO_OBLIGATORIO.md` | §5 (lenguaje), **§9 (colaboradores, directorios y contactos)**, §11 (datos personales), §12. |
 | `docs/BIENESTAR_REDISENO_20261002.md` | Diseño vigente de portada, subsecciones y artículo. |
 | `docs/FICHA_RESPIRACION_20261002.md` | Modelo de publicación de un artículo con vídeo; sirve de plantilla para los siguientes. |
+| `docs/plantillas/ARTICULO_BIENESTAR.md` | **Plantilla editorial mínima**: qué copiar y qué cambiar para publicar un artículo nuevo (modelo vivo: `que-es-meditar.html`). |
 
 Para editar un artículo existente, seguir las lecturas de esta ficha. Si se crea una página nueva, leer también la ficha del Núcleo, la arquitectura y la guía maestra completas, conforme a la capa 2 de `AGENTS.md`. Los cambios materiales en colaboradores u otros supuestos de la capa 2 requieren además el marco completo.
 
 ## Archivos de este módulo
 
-**Páginas:** `bienestar.html`; subsecciones `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html`; artículos (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`). La antigua `temas.html?topic=bienestar` redirige a la portada.
+**Páginas:** `bienestar.html`; subsecciones `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html`; artículos (`la-respiracion-como-el-escultor-del-cerebro.html`, `que-es-meditar.html`). La antigua `temas.html?topic=bienestar` redirige a la portada.
 
 **Colaboradores:** cada autor figura en `colaboradores.html` (`.nv-colaborador`, `id` propio) con su área, sin titulaciones no aportadas. `colaboradores.html` pertenece al Núcleo; aquí solo se añade o edita la ficha del colaborador.
 
@@ -48,7 +49,7 @@ Incluye entrada de Bienestar, vídeos cerrados hasta pulsar, metadatos, navegaci
 - En la primera página de cada subsección no hay vídeos; solo al entrar en cada artículo.
 - La portada conserva su banda de foto alta y las cuatro tarjetas con encuadre fijado; incluye «Fuentes de consulta y límites» (`.bn-sources`).
 - Divulgación general: nunca diagnóstico, protocolo terapéutico, consejo individual ni titulaciones no aportadas. Aviso visible en el espacio.
-- Colaboradora de bienestar: Isabel Florido Mayor (ficha en `colaboradores.html`; primer ensayo publicado: «La respiración», con vídeo).
+- Colaboradora de bienestar: Isabel Florido Mayor (ficha y foto en `colaboradores.html`). Ensayos publicados en Respiración y relajación, en orden de serie: «La respiración como el escultor del cerebro» (02-10-2026) y «¿Qué es meditar?» (13-10-2026), ambos con vídeo y enlazados entre sí (anterior / siguiente).
 
 ## Historial de este módulo (contexto, no normativa)
 

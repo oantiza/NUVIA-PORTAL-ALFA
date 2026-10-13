@@ -50,6 +50,8 @@ Son los que fijan el estado actual de cada parte; cuando una ficha de fecha post
 **Familia, Salud y Bienestar**
 - `docs/BIENESTAR_REDISENO_20261002.md` — portada, subsecciones y artículo.
 - `docs/FICHA_RESPIRACION_20261002.md` — modelo de publicación de un artículo con vídeo.
+- `docs/MEDITAR_20261013.md` — segundo ensayo de Isabel Florido Mayor, con vídeo (13-10-2026).
+- `docs/plantillas/ARTICULO_BIENESTAR.md` — plantilla editorial mínima para publicar el siguiente artículo.
 
 **Academia NUVIA y Lecturas con Criterio**
 - `docs/PIB_REVISION_20260915.md` — modelo de lección de Conocimientos esenciales.

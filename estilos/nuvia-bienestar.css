@@ -143,6 +143,10 @@
 }
 .bn-player .nv-external-content__placeholder small { font-size: var(--nv-label); opacity: .8; text-shadow: 0 1px 6px rgba(0, 0, 0, .6); }
 .bn-player .nv-external-content__actions { gap: var(--nv-space-3); }
+/* Las portadas llevan título y marca a la izquierda: los controles van abajo a la
+   derecha para no taparlos. */
+.bn-player .nv-external-content__placeholder { align-items: flex-end; max-width: none; text-align: right; padding-right: var(--nv-space-6); }
+.bn-player .nv-external-content__actions { justify-content: flex-end; }
 .bn-player .nv-external-content__placeholder p { font-size: var(--nv-body-sm); }
 .bn-player .nv-external-content__placeholder--dark p { color: var(--nv-white); }
 
@@ -264,6 +268,25 @@
 }
 .bn-editorial p { margin: 0 0 var(--nv-space-2); }
 .bn-editorial a { color: var(--nv-text-link); text-underline-offset: .25em; }
+/* Navegación entre ensayos de la misma subsección (anterior / siguiente). */
+.bn-series { display: flex; margin-top: var(--nv-space-8); }
+.bn-series__link {
+  display: grid;
+  gap: var(--nv-space-1);
+  max-width: 100%;
+  padding: var(--nv-space-4) var(--nv-space-5);
+  border: 1px solid var(--nv-line);
+  border-radius: var(--nv-radius-md);
+  background: var(--nv-surface);
+  color: inherit;
+  text-decoration: none;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.bn-series__link--next { margin-left: auto; text-align: right; }
+.bn-series__link:hover, .bn-series__link:focus-visible { border-color: var(--nv-green-600); background: var(--nv-green-100); }
+.bn-series__link span { color: var(--nv-text-link); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-action); }
+.bn-series__link strong { font-family: var(--nv-font-serif); font-size: var(--nv-body-lg); font-weight: 500; color: var(--nv-text); }
+@media (prefers-reduced-motion: reduce) { .bn-series__link { transition: none; } }
 .bn-article__return { margin-top: var(--nv-space-8); display: flex; flex-wrap: wrap; gap: var(--nv-space-3) var(--nv-space-6); }
 
 /* ── Tablet ─────────────────────────────────────────────────────────────── */

@@ -41,6 +41,8 @@ fuera del ensayo, tarjeta, vídeo separado, notas editoriales al final).
 - Bloque «Sobre la autora» (colaboradora en yoga, respiración, meditación y gestión del
   estrés; sin titulaciones no aportadas) y «Notas editoriales de NUVIA» al final,
   separadas del texto firmado, con la fuente complementaria (NCCIH) y el aviso.
+  *(13-10-2026: el bloque «Sobre la autora» se retira; el nombre de la firma enlaza a
+  `colaboradores.html#isabel-florido`. Ver `MEDITAR_20261013.md`.)*
 - Isabel Florido Mayor se incorpora a `colaboradores.html` (`#isabel-florido`).
 
 ## Imágenes (10 nuevas, ninguna repetida en otra página)

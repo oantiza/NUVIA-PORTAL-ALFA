@@ -20,6 +20,7 @@
 **Estilos:** `estilos/nuvia-tokens.css`, `estilos/nuvia-components.css`, `estilos/nuvia-pages.css` (entrada común: `nuvia-pages-foundations.css` → `nuvia-pages-content.css` → `nuvia-page-entry.css`), `estilos/nuvia-subseccion.css` (cabecera compacta de página hija), `estilos/fuentes/`. Las hojas de Cartera (`nuvia-pages-lab.css` → `nuvia-pages-cartera.css`) y de informes (`nuvia-market-reports.css`) pertenecen a sus módulos y solo se cargan en sus páginas (desde el 12-10-2026).
 
 **Comportamiento:** `support.js`, `nuvia-site-unified.js`, `web2-integration.js`, `js/vendor/`.
+Anclas entre páginas (`pagina.html#id`): como React pinta el contenido después de que el navegador busque el fragmento, `nuvia-site-unified.js` hace el salto una sola vez cuando el destino existe y el lector no ha desplazado la página (13-10-2026). Los destinos llevan `scroll-margin-top` con la altura de la cabecera fija (p. ej. `.nv-colaborador`).
 
 **Imágenes y marca:** `src/assets/home/`, `src/assets/brand/`, `src/assets/social/`, `favicon.svg`; originales de trabajo en `output/imagegen/` (fuera de la publicación).
 

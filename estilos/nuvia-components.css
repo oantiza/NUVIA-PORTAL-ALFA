@@ -1452,6 +1452,7 @@ sc-for {
    Ficha editorial sobria para colaboradores y autores del portal.           */
 .nv-colaborador {
   display: flex;
+  scroll-margin-top: calc(var(--nv-header-height) + var(--nv-space-4));
   flex-direction: column;
   border: 1px solid var(--nv-line);
   border-radius: var(--nv-radius-md);

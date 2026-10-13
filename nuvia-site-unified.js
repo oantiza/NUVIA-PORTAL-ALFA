@@ -319,6 +319,20 @@
     });
   });
 
+  // Anclas al llegar (p. ej. colaboradores.html#isabel-florido): React pinta el
+  // contenido después de que el navegador busque el #fragmento, así que el salto
+  // inicial se pierde. Se hace una sola vez, cuando el destino ya existe y solo si
+  // el lector no ha desplazado la página.
+  let initialHashPending = location.hash.length > 1;
+  const scrollToInitialHash = () => {
+    if (!initialHashPending) return;
+    let target = null;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (error) { initialHashPending = false; }
+    if (!target) return;
+    initialHashPending = false;
+    if (window.scrollY < 4) target.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+
   let scheduled = false;
   const scheduleSync = () => {
     if (scheduled) return;
@@ -326,6 +340,7 @@
     requestAnimationFrame(() => {
       scheduled = false;
       synchronize();
+      scrollToInitialHash();
     });
   };
 

@@ -77,7 +77,11 @@ const meditarPage=read('que-es-meditar.html');
 const meditar=meditarPage.match(/<article class="tm-breathing-essay[^"]*">([\s\S]*?)<\/article>/)?.[1];
 assert.ok(meditar,'El ensayo sobre meditar debe estar disponible');
 assert.match(meditarPage,/<h1>¿Qué es meditar\?<\/h1>/);
-assert.match(meditar,/Por <strong>Isabel Florido Mayor<\/strong> · <time datetime="2026-10-13">/);
+assert.match(meditar,/Por <a class="tm-breathing-essay__author" href="colaboradores.html#isabel-florido"><strong>Isabel Florido Mayor<\/strong><\/a> · <time datetime="2026-10-13">/,'El nombre de la autora lleva a su perfil en Colaboradores');
+for(const page of [articlePage,meditarPage]){
+  assert.doesNotMatch(page,/class="bn-author"|Sobre la autora/,'Sin recuadro «Sobre la autora»: el perfil está en Colaboradores');
+  assert.match(page,/href="colaboradores.html#isabel-florido"><strong>Isabel Florido Mayor/);
+}
 assert.match(meditar,/<p class="bn-essay__lead">«Meditar es llevar la mirada hacia adentro»<\/p>/,'La cita de la autora encabeza el ensayo');
 const meditarBody=meditar.match(/<div class="tm-breathing-essay__text">([\s\S]*?)<\/div>/)?.[1];
 assert.doesNotMatch(meditarBody,/<h[1-6]\b|<ul\b/,'Texto seguido de la autora, sin epígrafes añadidos');

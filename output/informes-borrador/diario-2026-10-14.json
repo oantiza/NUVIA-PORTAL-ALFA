@@ -1,0 +1,254 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-14",
+  "fecha": "2026-10-14",
+  "fechaIso": "2026-10-14T00:00:00.000Z",
+  "generadoIso": "2026-10-14T10:59:38.375Z",
+  "titular": "La temporada de resultados bancarios arranca de forma mixta y las dudas sobre los semiconductores lastran las bolsas",
+  "entradilla": "Los principales índices bursátiles europeos cerraron la sesión con ligeras caídas, penalizados por el retroceso del sector tecnológico internacional tras conocerse avances competitivos en Asia. Paralelamente, los inversores aumentaron la demanda de bonos gubernamentales a la espera de los próximos datos de inflación en las grandes economías.",
+  "hechos": [
+    {
+      "texto": "El índice EURO STOXX 50 cerró la sesión en 6.167,01 puntos con un descenso del 0,55 % respecto a la jornada anterior, en un entorno de caídas internacionales para el sector tecnológico.",
+      "fecha": "2026-10-13",
+      "fuentes": [
+        2,
+        6
+      ]
+    },
+    {
+      "texto": "El IBEX 35 finalizó la jornada con una bajada del 0,39 %, restando 75,10 puntos hasta situarse en los 19.210,70 puntos.",
+      "fecha": "2026-10-13",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice alemán DAX se situó en 25.259,90 puntos tras registrar un mínimo descenso del 0,07 % (17,78 puntos) durante la sesión.",
+      "fecha": "2026-10-13",
+      "fuentes": [
+        8
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (Renta Variable)",
+      "valor": "19.210,70 puntos (variación: -0.39)",
+      "referencia": "13 de octubre de 2026, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50 (Renta Variable)",
+      "valor": "6.167,01 puntos (variación: -0.55)",
+      "referencia": "13 de octubre de 2026, STOXX / Morningstar",
+      "fuentes": [
+        2,
+        6
+      ]
+    },
+    {
+      "etiqueta": "DAX (Renta Variable)",
+      "valor": "25.259,90 puntos (variación: -0.07)",
+      "referencia": "13 de octubre de 2026, Boerse Frankfurt",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años (Deuda Soberana)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de acceso a la fuente primaria en tiempo real",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD (Divisas)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de acceso directo a las fijaciones del BCE",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent (Materias Primas)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación en la fuente primaria (ICE)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-14",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Precios de Consumo (IPC) e IPCA definitivos de septiembre",
+      "anterior": "+4,3 % anual en agosto",
+      "porQueImporta": "Es la medida oficial del coste de la vida que determina la actualización de rentas y pensiones.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-14",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Producción Industrial de agosto",
+      "anterior": "-0,1 % mensual en julio",
+      "porQueImporta": "Sirve como indicador adelantado de la actividad económica del sector secundario en la unión monetaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-14",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Índice de Precios al Consumidor (CPI) de septiembre",
+      "anterior": "+3,4 % anual en agosto",
+      "porQueImporta": "Es una variable fundamental para orientar las futuras decisiones sobre tipos de interés de la Reserva Federal.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-14",
+      "hora": "20:00",
+      "region": "EEUU",
+      "que": "Publicación del Libro Beige de la Reserva Federal",
+      "anterior": null,
+      "porQueImporta": "Ofrece un diagnóstico detallado sobre la actividad económica reciente en los doce distritos del país.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-15",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Índice de Precios al Productor (PPI) de septiembre",
+      "anterior": "+0,4 % mensual en agosto",
+      "porQueImporta": "Mide la evolución de los precios cobrados por los productores, anticipando futuras presiones sobre los márgenes comerciales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-16",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Índice Armonizado de Precios de Consumo definitivo de septiembre",
+      "anterior": "+3,2 % anual en agosto",
+      "porQueImporta": "Es el dato oficial sobre el cual el Banco Central Europeo calibra su objetivo de estabilidad de precios.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Las principales plazas bursátiles internacionales concluyeron la jornada con descensos, lideradas por el sector tecnológico y de semiconductores. El anuncio de avances en el diseño de memorias por parte de una firma competidora en Asia generó dudas en los mercados sobre la capacidad de los fabricantes occidentales para mantener sus niveles de precios y sus previsiones comerciales a medio plazo.",
+        "En paralelo, el comienzo de la temporada de resultados bancarios en Estados Unidos arrojó un balance mixto. Las cifras presentadas reflejaron resistencia en los patrones de consumo, pero revelaron debilidad en el ámbito inmobiliario debido al encarecimiento del crédito. Ante este escenario, los inversores incrementaron la asignación hacia activos de deuda pública, lo que propició descensos en las rentabilidades exigidas a los bonos a largo plazo de varios puntos básicos."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El comportamiento del sector de microchips es fundamental para entender la economía actual, ya que esta industria soporta todo el desarrollo de la inteligencia artificial. La aparición de nuevos competidores asiáticos puede reconfigurar las cuotas de mercado, alterando las proyecciones de ingresos de las grandes corporaciones y moderando el impulso que estas empresas han proporcionado a los índices bursátiles mundiales durante los últimos meses.",
+        "Por otro lado, la firmeza de las cotizaciones energéticas añade presión a la estructura de costes de la industria europea. Con los inventarios de gas natural por debajo de los niveles registrados hace exactamente un año, la dependencia de los factores geopolíticos en Oriente Medio mantiene alerta a las autoridades económicas sobre posibles impactos alcistas tanto en las tarifas eléctricas como en el coste de las manufacturas."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En los próximos días, la atención económica se concentra en los indicadores de inflación a ambos lados del Atlántico. La publicación del Índice de Precios de Consumo en España, junto con los datos análogos en Estados Unidos y la eurozona, proporcionará la medida exacta de las presiones sobre el coste de la vida. Además, la comparecencia de distintos responsables de los bancos centrales servirá para analizar las condiciones financieras previas a sus próximas reuniones ejecutivas."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5e/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5t/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sxxe/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/unscheduled-adjustment-in-sdax-oct-9-2026/"
+    },
+    {
+      "titulo": "morningstar.com",
+      "url": "https://www.morningstar.com/news/dow-jones/202610136562/euro-stoxx-50-index-ends-055-lower-at-616701-data-talk"
+    },
+    {
+      "titulo": "edgeconsultancykw.com",
+      "url": "https://edgeconsultancykw.com/europe-market-wrap-13-october-2026/"
+    },
+    {
+      "titulo": "boerse-frankfurt.de",
+      "url": "https://www.boerse-frankfurt.de/nachrichten/ANALYSE-FLASH-JPMorgan-senkt-Ziel-fuer-LVMH-auf-500-Euro---Neutral-b40e5528-19ad-449a-bc2e-9e632e5cf2f1"
+    },
+    {
+      "titulo": "verifiedinvesting.com",
+      "url": "https://verifiedinvesting.com/blogs/live-show-recap/trading-the-close-market-recap-10-13-2026-s-p-bullish-stack-smh-61-8-bounce-apple-near-all-time-highs"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 9
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-14",
+    "hasta": "2026-10-14",
+    "corteIso": "2026-10-14T10:59:38.375Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Descensos en semiconductores",
+      "texto": "Las empresas de microchips sufrieron caídas bursátiles tras conocerse avances en la tecnología de memoria por parte de una empresa en Asia. Esto plantea un nuevo escenario de competencia y posibles estrechamientos en los márgenes de los fabricantes tradicionales.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Resultados bancarios mixtos",
+      "texto": "La banca estadounidense comenzó a presentar sus cuentas trimestrales con un balance desigual. Las cifras reflejan la resistencia del consumo, pero también tensiones procedentes del encarecimiento acumulado del crédito sobre la actividad inmobiliaria, afectando al margen de intereses.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Demanda de deuda pública",
+      "texto": "Los inversores incrementaron la asignación temporal hacia activos de deuda pública a la espera de los próximos datos de inflación en Estados Unidos y Europa. Las rentabilidades del bono experimentaron descensos de varios puntos básicos en ambos continentes.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Tensión en el suministro energético",
+      "texto": "El precio mayorista del gas natural europeo y el barril de crudo mantuvieron sus avances debido a la situación geopolítica en Oriente Medio. Los inventarios europeos de gas se encuentran en niveles inferiores a los registrados hace un año.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Rentabilidad del bono",
+      "definicion": "Es el interés efectivo que obtiene un inversor por adquirir un título de deuda pública y mantenerlo hasta su vencimiento; se mueve de forma inversa al precio del activo en el mercado."
+    },
+    {
+      "termino": "Punto básico",
+      "definicion": "Unidad de medida equivalente a la centésima parte de un punto porcentual (0,01 %), utilizada habitualmente en los mercados financieros para expresar variaciones en los tipos de interés o en los rendimientos."
+    },
+    {
+      "termino": "Margen de intereses",
+      "definicion": "Diferencia principal en la cuenta de resultados de un banco entre los ingresos que obtiene por los créditos concedidos y los costes que asume por los depósitos y la financiación recibida."
+    },
+    {
+      "termino": "Índice Armonizado de Precios de Consumo",
+      "definicion": "Indicador estadístico que mide la inflación de forma estandarizada en todos los países de la Unión Europea, permitiendo su comparación directa y sirviendo de guía para la política del Banco Central Europeo."
+    }
+  ]
+}

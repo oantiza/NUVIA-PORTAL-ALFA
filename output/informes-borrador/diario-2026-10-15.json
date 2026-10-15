@@ -1,0 +1,299 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-15",
+  "fecha": "2026-10-15",
+  "fechaIso": "2026-10-15T00:00:00.000Z",
+  "generadoIso": "2026-10-15T10:40:56.575Z",
+  "titular": "La inflación estadounidense frena a los mercados y eleva la volatilidad global",
+  "entradilla": "El repunte de los precios en Estados Unidos ha provocado caídas en las bolsas de Wall Street y un aumento generalizado de la volatilidad. Los inversores asimilan la resistencia de la inflación, impulsada por la energía, que altera las previsiones sobre el coste de financiación.",
+  "hechos": [
+    {
+      "texto": "El índice Nasdaq 100 cayó un 2,02 % al cierre de la sesión del 14 de octubre, arrastrado por el ajuste en las empresas tecnológicas.",
+      "fecha": "2026-10-14",
+      "fuentes": [
+        5,
+        8
+      ]
+    },
+    {
+      "texto": "El S&P 500 registró un descenso del 1,11 % en la jornada del 14 de octubre, presionado por el repunte de la inflación estadounidense y el consecuente recalibrado de la Reserva Federal.",
+      "fecha": "2026-10-14",
+      "fuentes": [
+        6,
+        7
+      ]
+    },
+    {
+      "texto": "El IBEX 35 avanzó un 0,10 % y finalizó en los 19.230,70 puntos durante la sesión del 14 de octubre.",
+      "fecha": "2026-10-14",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad VIX se incrementó un 5,89 % el 14 de octubre, alcanzando los 16,17 puntos como reflejo de la reacción del mercado al dato de inflación.",
+      "fecha": "2026-10-14",
+      "fuentes": [
+        6
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (España)",
+      "valor": "19.230,70 puntos",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "DAX 40 (Alemania)",
+      "valor": "25.408,61 puntos",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50 (Zona euro)",
+      "valor": "6.210,19 puntos",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "S&P 500 (EE. UU.)",
+      "valor": "-1,11 %",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        6,
+        7
+      ]
+    },
+    {
+      "etiqueta": "Nasdaq 100 (EE. UU.)",
+      "valor": "-2,02 %",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Índice VIX (Volatilidad)",
+      "valor": "16,17 puntos",
+      "referencia": "2026-10-14",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Bono EE. UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-14 (Pendiente de publicador oficial)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-15",
+      "hora": "11:00",
+      "region": "España",
+      "que": "Subasta de Bonos y Obligaciones del Estado",
+      "anterior": "4,181 % en obligaciones a 10 años",
+      "porQueImporta": "Mide las condiciones y el coste de financiación del sector público en los tramos intermedios de la curva de tipos.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-15",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Índice Armonizado de Precios de Consumo (HICP) de septiembre",
+      "anterior": "1,7 %-2,0 % (estimación preliminar)",
+      "porQueImporta": "Confirma la lectura de precios que supervisa el Banco Central Europeo para definir su política monetaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-15",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Índice de Precios al Productor (PPI) de septiembre",
+      "anterior": "+0,4 % mensual en agosto",
+      "porQueImporta": "Refleja la variación de costes que asumen las empresas en origen y anticipa posibles traslados al consumidor.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-16",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estadísticas de Comercio y Balanza Exterior",
+      "anterior": null,
+      "porQueImporta": "Evalúa el impacto de la factura energética en el saldo comercial de la región comunitaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-16",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Precios de importación y exportación de septiembre",
+      "anterior": "-0,4 % (importación) y -1,3 % (exportación) en julio",
+      "porQueImporta": "Permite comprobar la magnitud de las presiones de costes importadas desde mercados internacionales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-19",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Datos de agregados monetarios y operaciones del Eurosistema",
+      "anterior": null,
+      "porQueImporta": "Muestra el crecimiento de la oferta monetaria y la canalización de recursos financieros en el área.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los mercados de renta variable en Estados Unidos han registrado caídas significativas en la sesión, lideradas por el sector de la tecnología. El repunte de la inflación en la principal economía del mundo ha frenado el optimismo de los inversores, impulsando el índice de volatilidad VIX al alza.",
+        "En contraste, las bolsas europeas han logrado mantener el tono positivo durante la jornada. Índices como el IBEX 35 español o el DAX 40 alemán han cerrado con ligeras subidas, desmarcándose temporalmente de las presiones bajistas originadas al otro lado del Atlántico."
+      ],
+      "fuentes": [
+        1,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La firmeza de la inflación estadounidense al alza complica el escenario de financiación para la economía global. Este encarecimiento sostenido, empujado en septiembre por los precios de la gasolina, obliga a los mercados a recalibrar sus expectativas sobre los tipos de interés, descontando que el precio del dinero seguirá siendo elevado durante un período prolongado.",
+        "Este entorno monetario restrictivo afecta especialmente a las empresas tecnológicas. Los analistas evalúan el alto coste de emitir nueva deuda corporativa para financiar infraestructuras, como las vinculadas a la inteligencia artificial, ante la falta de retornos monetarios inmediatos en sus balances."
+      ],
+      "fuentes": [
+        5,
+        6
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención macroeconómica se centra en la publicación de nuevos datos sobre la evolución de los precios en occidente. Se conocerán los precios de producción industrial en Estados Unidos y las cifras finales de inflación en la zona euro, que actúan como referencias fundamentales para las decisiones de los bancos centrales.",
+        "Además, el Tesoro español acude al mercado primario para financiarse mediante la subasta de bonos. Estas operaciones institucionales fijan referencias vitales en la curva de tipos y permiten medir el coste que debe asumir el Estado para emitir su nueva deuda pública."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/news-research/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/equities/indices"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/epsm"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/insights/posts/cpi-pressures-markets-and-fed-reserves-move-on-interest-rates"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/topic/stocks"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/de/market-activity/stocks/dx.prd/news-headlines"
+    },
+    {
+      "titulo": "bsmarkets.com",
+      "url": "https://www.bsmarkets.com/cs/Satellite?cid=1191407146076&pagename=BSMarkets2%2FPage%2FPage_Interna_WFG_Template&language=es_ES"
+    },
+    {
+      "titulo": "portal.thebenchmark.es",
+      "url": "https://portal.thebenchmark.es/economicas/mercados-financieros/ibex-35-hoy-14-de-octubre-2026"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 11
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-15",
+    "hasta": "2026-10-15",
+    "corteIso": "2026-10-15T10:40:56.575Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta las 10:30 CEST del 15 de octubre de 2026. Las cifras que no se han podido contrastar con su publicador primario oficial, como el nivel exacto del bono del Tesoro estadounidense a 10 años, se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Inflación al alza en EE. UU.",
+      "texto": "El índice de precios al consumo estadounidense subió al 3,7 % interanual en septiembre. Este avance se apoya en el encarecimiento de la gasolina y obliga a ajustar las previsiones sobre los tipos de interés.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Caídas en el sector tecnológico",
+      "texto": "Los mercados estadounidenses cerraron a la baja, con descensos destacados en tecnología. Los analistas señalan que el mercado evalúa el coste de emitir deuda en un entorno prolongado de tipos altos.",
+      "fuentes": [
+        5,
+        6
+      ]
+    },
+    {
+      "titulo": "Europa resiste en positivo",
+      "texto": "A diferencia de Estados Unidos, los índices europeos lograron mantener ligeros avances. El índice alemán DAX 40 y el español IBEX 35 cerraron la sesión con subidas moderadas.",
+      "fuentes": [
+        1,
+        4
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Volatilidad",
+      "definicion": "Medida de la intensidad y frecuencia con la que cambia el precio de un activo; cuando aumenta, indica un mayor nivel de riesgo percibido por el mercado."
+    },
+    {
+      "termino": "Tipos de interés",
+      "definicion": "El coste de pedir dinero prestado o la rentabilidad que se obtiene por ahorrarlo, fijado por los bancos centrales para controlar el nivel de precios."
+    },
+    {
+      "termino": "Índice VIX",
+      "definicion": "Indicador que mide la volatilidad esperada en el mercado de valores estadounidense a corto plazo, derivado de las opciones financieras."
+    },
+    {
+      "termino": "Curva de tipos",
+      "definicion": "Representación gráfica que muestra la relación entre la rentabilidad que ofrece la deuda pública y el tiempo que falta hasta su vencimiento."
+    },
+    {
+      "termino": "Mercado primario",
+      "definicion": "Mercado financiero donde se emiten y colocan por primera vez títulos de deuda o acciones, como ocurre en las subastas de los Estados."
+    }
+  ]
+}

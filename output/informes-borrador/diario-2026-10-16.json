@@ -1,0 +1,305 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-16",
+  "fecha": "2026-10-16",
+  "fechaIso": "2026-10-16T00:00:00.000Z",
+  "generadoIso": "2026-10-16T10:27:57.634Z",
+  "titular": "La inquietud por el coste de la deuda reduce el apetito por el riesgo y penaliza al sector tecnológico",
+  "entradilla": "Los mercados internacionales registraron descensos liderados por la tecnología ante la asimilación de unos tipos de interés restrictivos. La presión que ejerce la rentabilidad de la deuda (el rendimiento que ofrecen los bonos) sobre las valoraciones corporativas impulsó una rotación sectorial (un desplazamiento de fondos entre industrias) hacia empresas de corte defensivo.",
+  "hechos": [
+    {
+      "texto": "El índice Nasdaq 100 cerró la sesión con una contracción de 524,55 puntos, penalizado por la reducción de exposición a firmas tecnológicas.",
+      "fecha": "2026-10-15",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El indicador japonés Nikkei 225 experimentó una caída de 3.318,34 JPY, lastrado por las dudas de los inversores en el ámbito de los semiconductores.",
+      "fecha": "2026-10-15",
+      "fuentes": [
+        1,
+        8
+      ]
+    },
+    {
+      "texto": "El índice alemán DAX registró un nivel intradía de 25.178,31 puntos a media sesión, mientras que su valor definitivo al término de la jornada queda designado como 'Sin contrastar'.",
+      "fecha": "2026-10-15",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono del Tesoro estadounidense a 10 años al término de la sesión se declara 'Sin contrastar' ante la falta de publicación en el repositorio de la entidad.",
+      "fecha": "2026-10-15",
+      "fuentes": [
+        9,
+        10
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Nikkei 225",
+      "valor": "64.425,95 JPY",
+      "referencia": "Cierre 2026-10-15 (Nikkei)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Nasdaq 100",
+      "valor": "29.426,27 puntos",
+      "referencia": "Cierre 2026-10-15 (Nasdaq)",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "DAX",
+      "valor": "25.178,31 puntos",
+      "referencia": "Intradía 2026-10-15 (Deutsche Börse)",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Bono EE. UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-15 (Tesoro EE. UU.)",
+      "fuentes": [
+        9,
+        10
+      ]
+    },
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-15 (BME)",
+      "fuentes": [
+        4,
+        5
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-15 (STOXX)",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-15 (S&P Global)",
+      "fuentes": [
+        7,
+        8
+      ]
+    },
+    {
+      "etiqueta": "EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-15 (BCE)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-16",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Cifras de Negocios en la Industria de agosto",
+      "anterior": null,
+      "porQueImporta": "Aporta visibilidad sobre la facturación de las empresas y la solidez de la demanda interna.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-16",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Índice Armonizado de Precios de Consumo de septiembre",
+      "anterior": null,
+      "porQueImporta": "Condiciona las próximas decisiones de política monetaria en la región.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-16",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Precios de Importación y Exportación de septiembre",
+      "anterior": null,
+      "porQueImporta": "Evalúa si el comercio internacional añade presión de costes al aparato productivo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-19",
+      "hora": null,
+      "region": "España",
+      "que": "Cierre del plazo de reclamaciones al censo electoral",
+      "anterior": null,
+      "porQueImporta": "Constituye un trámite administrativo esencial de cara a las próximas elecciones legislativas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Balanza de Pagos de agosto",
+      "anterior": null,
+      "porQueImporta": "Cuantifica los flujos de inversión exterior y la financiación transfronteriza comunitaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Actualización de agregados del PIB y empleo del segundo trimestre",
+      "anterior": null,
+      "porQueImporta": "Permite verificar el dinamismo laboral real y la evolución de la inversión.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Informe de Empleo Estatal de septiembre",
+      "anterior": null,
+      "porQueImporta": "Identifica la dispersión geográfica del mercado de trabajo y su efecto en la renta disponible.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La sesión estuvo dominada por la rotación sectorial, que disminuyó la demanda por el segmento tecnológico para buscar estabilidad en otras industrias. Esta dinámica se desató ante la percepción de que la rentabilidad de la deuda continuará elevada durante un tiempo prolongado.",
+        "El índice Nasdaq 100 reflejó esta tendencia con una contracción de 524,55 puntos hasta situarse en los 29.426,27 puntos. En el mercado asiático, la presión fue aún mayor para los fabricantes de semiconductores, lo que arrastró al índice japonés Nikkei 225 a registrar un descenso de 3.318,34 JPY en su liquidación final.",
+        "La evolución de las principales variables macroeconómicas figura en este informe como un conjunto de datos no verificados. Los organismos estadísticos primarios no constan en el registro oficial, por lo que sus cifras no se publican para preservar el rigor del boletín."
+      ],
+      "fuentes": [
+        1,
+        2,
+        8
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El encarecimiento de la financiación altera profundamente las valoraciones corporativas. Cuando los tipos de interés libres de riesgo son altos, el valor actual de los beneficios que prometen las empresas de alto crecimiento disminuye, lo que penaliza de forma directa al sector de la tecnología.",
+        "Este entorno económico fuerza a los agentes financieros a modificar la asignación de sus activos. La transición hacia compañías menos dependientes de la financiación crediticia explica los movimientos dispares registrados entre los distintos sectores empresariales durante la jornada.",
+        "La rigidez en las condiciones monetarias mundiales incide también en el coste que asumen los Gobiernos para captar fondos. Sin embargo, los niveles precisos de las últimas subastas de deuda soberana permanecen bajo el estatus de información no contrastada por limitaciones de acceso."
+      ],
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Los mercados centran su atención en la confirmación de la trayectoria inflacionaria comunitaria. A lo largo del día está prevista la publicación de la estadística final de precios al consumo de la zona del euro, que fijará la base de trabajo para el Banco Central Europeo.",
+        "Por su parte, la agenda en Estados Unidos contempla la difusión de los precios asociados a la importación y exportación. Esta métrica resulta útil para comprobar si el comercio internacional suma presiones de costes sobre el aparato productivo norteamericano.",
+        "En el ámbito nacional, el Instituto Nacional de Estadística ofrecerá los indicadores relativos a la facturación del sector industrial y de servicios. Su publicación aportará visibilidad sobre la solidez de la demanda interna española durante la segunda mitad del verano."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/archives/data"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/Overview/NDX"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/zertifikate?pageID=58"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/ismcaqn/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en/research-insights/podcasts/essential-podcast/the-essential-podcast-episode-5-a-unique-unhappiness-volatility-in-markets"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/10/us-investor-risk-appetite-tempered-as-apprehension-on-rates-october-flash-pmi-to-provide-fresh-market-guidance"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-16",
+    "hasta": "2026-10-16",
+    "corteIso": "2026-10-16T10:27:57.634Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Ajuste en la tecnología",
+      "texto": "Los índices con alta ponderación tecnológica descendieron ante la menor demanda inversora por compañías de crecimiento. El entorno de tipos altos disminuye el valor actual (lo que valen hoy) de sus beneficios futuros.",
+      "fuentes": [
+        1,
+        2,
+        8
+      ]
+    },
+    {
+      "titulo": "Traslado de capitales",
+      "texto": "El encarecimiento de la financiación global propicia el movimiento de flujos hacia sectores con ingresos más estables. Esta dinámica condiciona de manera especial al segmento asiático de los semiconductores.",
+      "fuentes": [
+        1,
+        8
+      ]
+    },
+    {
+      "titulo": "Restricciones de acceso",
+      "texto": "Las referencias macroeconómicas de inflación estadounidense y producción industrial europea se reportan sin contrastar. Sus entidades emisoras no constan en el registro oficial autorizado para este boletín.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Rentabilidad de la deuda",
+      "definicion": "Rendimiento anual que ofrece un bono gubernamental o corporativo a su tenedor si este lo conserva hasta la fecha de su vencimiento."
+    },
+    {
+      "termino": "Rotación sectorial",
+      "definicion": "Desplazamiento del capital de los inversores de un sector económico a otro, generalmente como respuesta a un cambio en el entorno macroeconómico."
+    },
+    {
+      "termino": "Valor actual",
+      "definicion": "Cálculo financiero que permite conocer cuánto valen a día de hoy los flujos de dinero o beneficios que una empresa espera generar en el futuro."
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "SEMANAL",
+  "id": "semanal-2026-10-17",
+  "fecha": "2026-10-17",
+  "fechaIso": "2026-10-17T00:00:00.000Z",
+  "generadoIso": "2026-10-17T11:33:53.030Z",
+  "titular": "La estabilización de la renta fija contrasta con las cesiones del sector tecnológico en las bolsas",
+  "entradilla": "Las dudas sobre la senda monetaria han marcado el ritmo de los mercados internacionales. Esta situación ha provocado salidas de capital en el ámbito tecnológico y reasignaciones hacia la deuda pública, ayudando a moderar las rentabilidades de los bonos.",
+  "hechos": [
+    {
+      "texto": "El IBEX 35 subió un 1,54 % semanal hasta alcanzar los 19.326,30 puntos, desmarcándose de las caídas internacionales.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        1,
+        10
+      ]
+    },
+    {
+      "texto": "El índice estadounidense Nasdaq 100 descendió un 5,00 % en la semana debido a las dudas sobre el uso de deuda en el sector tecnológico.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono alemán a 10 años se redujo en 0,05 puntos porcentuales y cerró la semana en el 3,42 %.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El tipo de cambio del euro frente al dólar avanzó un 0,42 % semanal, alcanzando los 1,1253 dólares.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El precio del oro experimentó un leve descenso del 0,39 % semanal, situándose en 4.189,20 dólares por onza.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "La firma MSCI inició una consulta oficial para evaluar si retira la categoría de mercado emergente al índice de Indonesia.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        5
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Tipos de interés del BCE (facilidad de depósito)",
+      "valor": "2,50 %",
+      "referencia": "2026-10-16",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Rendimiento del bono estadounidense a 10 años",
+      "valor": "5,09 %",
+      "referencia": "2026-10-16",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Tipo de cambio EUR/USD",
+      "valor": "1,1253",
+      "referencia": "2026-10-16",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "IPC de Estados Unidos (anual)",
+      "valor": "Sin contrastar",
+      "referencia": "Septiembre 2026",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-19",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Cifra de Negocios Empresarial de agosto",
+      "anterior": null,
+      "porQueImporta": "Refleja la facturación agregada de la industria, el comercio y los servicios.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-19",
+      "hora": "11:30",
+      "region": "Eurozona",
+      "que": "Subasta de letras del Tesoro a 12 meses por parte del banco central alemán",
+      "anterior": "Hasta 5.000 mln €",
+      "porQueImporta": "Sirve como indicador del coste de financiación a corto plazo del Estado alemán.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Deuda de las Administraciones Públicas del segundo trimestre",
+      "anterior": null,
+      "porQueImporta": "Es una métrica clave para la supervisión de las reglas fiscales europeas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-22",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Peticiones semanales de subsidio por desempleo",
+      "anterior": null,
+      "porQueImporta": "Actúa como un indicador rápido para medir el ritmo de despidos laborales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "09:15",
+      "region": "Eurozona",
+      "que": "Índices PMI preliminares de octubre",
+      "anterior": null,
+      "porQueImporta": "Mide la actividad adelantada del sector privado manufacturero y de servicios.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "La semana en una idea",
+      "parrafos": [
+        "Las dudas sobre el rumbo de la política monetaria han marcado el ritmo de los parqués internacionales. Ante el temor a que los bancos centrales mantengan los tipos de interés (el coste del dinero) en niveles elevados durante más tiempo, el capital se ha desplazado hacia activos con menor volatilidad.",
+        "Este movimiento provocó salidas de capital significativas en el sector tecnológico estadounidense. Como contrapartida, los inversores buscaron refugio en la deuda pública, lo que ayudó a estabilizar las rentabilidades de los bonos en los principales mercados internacionales al cierre de la semana."
+      ],
+      "fuentes": [
+        7,
+        8
+      ]
+    },
+    {
+      "titulo": "Economía y bancos centrales",
+      "parrafos": [
+        "En su comparecencia desde Bangkok, el presidente de la Reserva Federal optó por un tono equilibrado. Aunque advirtió sobre las presiones de costes derivadas de la inteligencia artificial, no dio señales de un endurecimiento inmediato de la política monetaria en Estados Unidos.",
+        "Esta postura tranquilizó al mercado de renta fija. Como consecuencia, los contratos de futuros descuentan una menor presión sobre el banco central para su próxima reunión, lo que permitió que el rendimiento del bono estadounidense a 10 años (el interés que paga el Estado por financiarse) cerrara la semana a la baja.",
+        "En Europa, el Banco Central Europeo mantuvo inalterado su tipo de la facilidad de depósito (la remuneración que ofrece a los bancos por guardar su dinero) en el 2,50 %. Mientras tanto, la falta de publicaciones institucionales contrastables impidió reflejar las últimas cifras de inflación nacional en esta edición."
+      ],
+      "fuentes": [
+        3,
+        8
+      ]
+    },
+    {
+      "titulo": "Mercados",
+      "parrafos": [
+        "Las bolsas estadounidenses protagonizaron los principales descensos de la semana. El índice Nasdaq 100 cedió un 5,00 % debido a las preguntas sobre el uso de deuda en las empresas vinculadas a la inteligencia artificial. Como reflejo de esta situación, el índice VIX (que mide la volatilidad esperada en el mercado) experimentó un notable avance.",
+        "En contraste, el IBEX 35 avanzó un 1,54 % semanal impulsado por factores locales, situándose holgadamente por encima de los 19.300 puntos. Por su parte, la cotización del euro frente al dólar subió un 0,42 % hasta superar la barrera de los 1,12 dólares.",
+        "Además, la firma MSCI inició un procedimiento de consulta para evaluar la retirada de Indonesia de su categoría de mercado emergente (países con economías en rápido desarrollo). Esta posible recalificación generó una severa caída en el índice bursátil de Yakarta debido a las implicaciones para los fondos indexados."
+      ],
+      "fuentes": [
+        1,
+        3,
+        5,
+        7,
+        10
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días, la atención de los mercados se dirigirá hacia los indicadores adelantados de actividad. En la zona euro destacará la publicación de las encuestas a gestores de compras (los llamados PMI), que permitirán evaluar la salud del sector manufacturero y de servicios.",
+        "En el ámbito de la deuda pública, el banco central alemán celebrará una subasta de letras a 12 meses. Esta emisión será clave para calibrar el coste de financiación a corto plazo de la principal economía europea tras las últimas reuniones monetarias internacionales."
+      ],
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "LBMA (precio del oro)",
+      "url": "https://www.lbma.org.uk/"
+    },
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://statistiken.bundesbank.de/statistiken-en/timeseries/BBSSY/D.REN.EUR.A630.000000WT1010.A"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/research-and-insights/blog-post/the-hidden-cost-of-misaligned-proxies-in-index-replication"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "apnews.com",
+      "url": "https://apnews.com/article/wall-street-stocks-dow-nasdaq-c27809783ae3230b44c26e5ee4bea056"
+    },
+    {
+      "titulo": "predictions.propbetedge.ai",
+      "url": "https://predictions.propbetedge.ai/events/how-high-will-the-10y-us-treasury-yield-get-by-oct-16-2026"
+    },
+    {
+      "titulo": "eurex.com",
+      "url": "https://www.eurex.com/ex-en/markets/idx/msci/regional/MSCI-Emerging-Markets-Index-Futures-254370"
+    },
+    {
+      "titulo": "elperiodicodeceuta.es",
+      "url": "https://www.elperiodicodeceuta.es/cierre-ibex-35-al-alza-16-octubre-2026/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-11",
+    "hasta": "2026-10-17",
+    "corteIso": "2026-10-17T11:33:53.030Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Fuerte caída del sector tecnológico",
+      "texto": "El índice Nasdaq 100 registró un descenso notable en la semana. Las dudas sobre la deuda privada para infraestructuras de inteligencia artificial generaron reasignaciones de capital hacia activos considerados más seguros.",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "titulo": "Pausa en las previsiones de tipos",
+      "texto": "Las declaraciones de la Reserva Federal (el banco central de Estados Unidos) rebajaron las expectativas de un endurecimiento inmediato de la política monetaria. Esto estabilizó los rendimientos de la deuda pública al cierre de la semana.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Estabilidad en el precio del oro",
+      "texto": "La cotización del metal precioso cerró con una leve bajada semanal. A pesar de la variación de los últimos días, mantuvo gran parte de sus abultadas subidas acumuladas a lo largo del año.",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "titulo": "Avance bursátil en España",
+      "texto": "El mercado español logró aislarse de los descensos internacionales con una subida superior al uno por ciento. Dinámicas locales permitieron este comportamiento diferenciado frente a los principales índices de Estados Unidos.",
+      "fuentes": [
+        1,
+        10
+      ]
+    }
+  ],
+  "mercados": [
+    {
+      "grupo": "Bolsas",
+      "filas": [
+        {
+          "nombre": "IBEX 35",
+          "nivel": "19.326,30 puntos",
+          "variacion": 1.54,
+          "variacionAnual": 11.66,
+          "nota": null,
+          "fuentes": [
+            1,
+            10
+          ]
+        },
+        {
+          "nombre": "S&P 500",
+          "nivel": "7.659,44 puntos",
+          "variacion": -1.95,
+          "variacionAnual": 11.89,
+          "nota": null,
+          "fuentes": [
+            7
+          ]
+        },
+        {
+          "nombre": "Nasdaq 100",
+          "nivel": "29.181,66 puntos",
+          "variacion": -5,
+          "variacionAnual": null,
+          "nota": "caída por reasignaciones desde el sector tecnológico hacia activos menos volátiles",
+          "fuentes": [
+            7
+          ]
+        },
+        {
+          "nombre": "MSCI Emergentes",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "sin publicación oficial en abierto en la base factual",
+          "fuentes": []
+        }
+      ]
+    },
+    {
+      "grupo": "Deuda pública",
+      "filas": [
+        {
+          "nombre": "Bono alemán a 10 años",
+          "nivel": "3,42 %",
+          "variacion": -0.05,
+          "variacionAnual": 0.92,
+          "nota": null,
+          "fuentes": [
+            4
+          ]
+        },
+        {
+          "nombre": "Bono EE. UU. a 10 años",
+          "nivel": "5,09 %",
+          "variacion": -0.15,
+          "variacionAnual": 0.89,
+          "nota": null,
+          "fuentes": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Divisas",
+      "filas": [
+        {
+          "nombre": "EUR/USD",
+          "nivel": "1,1253",
+          "variacion": 0.42,
+          "variacionAnual": 8.21,
+          "nota": null,
+          "fuentes": [
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Materias primas",
+      "filas": [
+        {
+          "nombre": "Oro",
+          "nivel": "4.189,20 USD/oz",
+          "variacion": -0.39,
+          "variacionAnual": 58.1,
+          "nota": null,
+          "fuentes": [
+            2
+          ]
+        },
+        {
+          "nombre": "Brent",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "sin publicación oficial en la base factual",
+          "fuentes": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Tipos de interés",
+      "definicion": "El precio del dinero. Es el porcentaje que cobran los bancos centrales por prestar a las entidades financieras, afectando al coste de todos los créditos en la economía."
+    },
+    {
+      "termino": "Volatilidad",
+      "definicion": "La variabilidad o inestabilidad de los precios de un activo financiero a lo largo del tiempo. A mayor volatilidad, mayores y más rápidos son los cambios de precio."
+    },
+    {
+      "termino": "Facilidad de depósito",
+      "definicion": "El tipo de interés que el Banco Central Europeo paga a los bancos comerciales por depositar allí su dinero sobrante durante la noche."
+    },
+    {
+      "termino": "Mercado emergente",
+      "definicion": "Países con economías en rápido crecimiento e industrialización, que ofrecen un mayor potencial de desarrollo pero asumen mayores riesgos financieros."
+    }
+  ]
+}

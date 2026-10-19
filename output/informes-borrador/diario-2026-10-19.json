@@ -1,0 +1,255 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-19",
+  "fecha": "2026-10-19",
+  "fechaIso": "2026-10-19T00:00:00.000Z",
+  "generadoIso": "2026-10-19T11:44:04.171Z",
+  "titular": "El sector tecnológico internacional lidera los descensos bursátiles ante el repunte de los costes de la energía.",
+  "entradilla": "La semana ha finalizado con caídas significativas en los índices tecnológicos de Estados Unidos. La presión al alza de los costes energéticos y la tensión geopolítica han incrementado la demanda de coberturas financieras en los mercados internacionales.",
+  "hechos": [
+    {
+      "texto": "El índice Nasdaq 100 descendió 748,05 puntos, equivalentes a un -2,50 %, hasta cerrar en los 29.187,55 puntos el pasado viernes.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El IBEX 35 avanzó 148,60 puntos, lo que supone una subida del +0,77 %, para finalizar la jornada del viernes en los 19.326,30 puntos.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice S&P 500 retrocedió 84,40 puntos, un descenso del -1,09 %, situándose en los 7.659,44 puntos al cierre de la sesión.",
+      "fecha": "2026-10-16",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "texto": "El índice Nikkei 225 cerró la primera sesión asiática de la semana con una bajada de 407,59 puntos, un -0,62 %, hasta los 64.916,70 puntos.",
+      "fecha": "2026-10-19",
+      "fuentes": [
+        3
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19.326,30 puntos",
+      "referencia": "2026-10-16, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "7.659,44 puntos",
+      "referencia": "2026-10-16, S&P Global",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "etiqueta": "Bono del Estado de Alemania a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en la lista de fuentes",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Euro / Dólar (EUR/USD)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en la lista de fuentes",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial en la lista de fuentes",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-19",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Cifra de Negocios Empresarial de agosto",
+      "anterior": "+7,4 % interanual",
+      "porQueImporta": "Evalúa la facturación agregada de los sectores empresariales no financieros para medir su dinamismo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-19",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Balanza de pagos de agosto",
+      "anterior": null,
+      "porQueImporta": "Indicador del saldo exterior corriente y de la relación comercial con el resto del mundo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Indicadores de Confianza Empresarial del cuarto trimestre",
+      "anterior": null,
+      "porQueImporta": "Mide las percepciones y perspectivas de los gestores empresariales de cara al cierre del ejercicio anual.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Empleo y desempleo estatal de septiembre",
+      "anterior": "4,2 %",
+      "porQueImporta": "Monitoriza la distribución territorial de la creación de puestos de trabajo a nivel nacional.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La última jornada bursátil ha reflejado una disparidad evidente entre los mercados europeos y estadounidenses. El índice tecnológico Nasdaq 100 acusó un descenso significativo del -2,50 %, presionado por las dudas sobre el ritmo de los desembolsos en infraestructuras de inteligencia artificial.",
+        "En contraposición, los principales indicadores europeos lograron avances el viernes a pesar de las dudas globales. El IBEX 35 sumó un +0,77 % impulsado por los componentes más tradicionales, mientras que el Euro Stoxx 50 repuntó un +0,54 %.",
+        "Los mercados asiáticos se han sumado a las caídas globales al inicio de la nueva semana de negociación. El índice Nikkei 225 de Tokio ha cerrado su primera sesión del lunes con una bajada del -0,62 %."
+      ],
+      "fuentes": [
+        1,
+        2,
+        3,
+        8,
+        10
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La evolución reciente de los índices muestra una reevaluación de las expectativas empresariales en el ámbito tecnológico. Los inversores vigilan de cerca si los grandes desembolsos asumidos en desarrollos de computación generarán los retornos económicos proyectados a corto plazo.",
+        "Al mismo tiempo, el repunte de las tensiones geopolíticas dificulta el abaratamiento de los productos energéticos a escala global. Este escenario introduce un desafío adicional para las compañías, que encuentran mayores problemas para moderar sus gastos operativos cotidianos de producción.",
+        "Esta confluencia de factores ha desencadenado un alza brusca en la demanda de coberturas, lo que evidencia una gran inquietud general. Este movimiento refleja cómo los participantes financieros buscan resguardar sus carteras de inversión ante posibles turbulencias futuras."
+      ],
+      "fuentes": [
+        6,
+        7,
+        10
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En el plano macroeconómico, los próximos días concentran datos relevantes sobre la salud de los negocios en el entorno europeo, incluyendo las cifras oficiales de facturación del sector de servicios español para el mes de agosto.",
+        "Asimismo, las autoridades publicarán detalles sobre el estado del mercado laboral territorial en Estados Unidos y la evolución de las ganancias salariales semanales, cifras que resultan fundamentales para entender las dinámicas de fondo de los precios y de la actividad general."
+      ],
+      "fuentes": [
+        6
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/History/NDX"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/zertifikate?pageID=52"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/weekly-outlook-quarterly-reports-are-the-next-major-test"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-consultation-results-for-the-euro-stoxx-50-index-and-stoxx-regional-blue-chip-indices/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/spos"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/documents/indexnews/announcements/20261008-1485438/1485438_sp-mlp-indices-update-20261008.pdf"
+    },
+    {
+      "titulo": "timeanddate.com",
+      "url": "https://www.timeanddate.com/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-19",
+    "hasta": "2026-10-19",
+    "corteIso": "2026-10-19T11:44:04.171Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Caídas en el sector tecnológico",
+      "texto": "El índice Nasdaq 100 registró un retroceso notable debido a las dudas sobre el rendimiento de las infraestructuras de inteligencia artificial. Esta tendencia afecta a la valoración general de las compañías más expuestas a estos desembolsos.",
+      "fuentes": [
+        2,
+        10
+      ]
+    },
+    {
+      "titulo": "Repunte de costes energéticos",
+      "texto": "Las tensiones geopolíticas han impulsado las cotizaciones del petróleo, lo que dificulta la moderación de los gastos operativos empresariales. Esto añade un grado adicional de dificultad para mantener la estabilidad de los precios.",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "titulo": "Aumento de coberturas financieras",
+      "texto": "Se ha producido un encarecimiento generalizado de las opciones protectoras ante la incertidumbre global. Los participantes del mercado buscan proteger el valor de sus carteras frente a posibles turbulencias imprevistas.",
+      "fuentes": [
+        6,
+        7
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "inteligencia artificial",
+      "definicion": "Conjunto de sistemas informáticos avanzados cuyo desarrollo en la actualidad requiere grandes desembolsos económicos en servidores e infraestructuras complejas de procesamiento de datos."
+    },
+    {
+      "termino": "coberturas",
+      "definicion": "Instrumentos financieros, como opciones o seguros, utilizados específicamente para proteger el valor de una cartera de inversión frente a movimientos perjudiciales o imprevistos en el mercado."
+    }
+  ]
+}

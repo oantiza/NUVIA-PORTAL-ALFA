@@ -1,0 +1,249 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-20",
+  "fecha": "2026-10-20",
+  "fechaIso": "2026-10-20T00:00:00.000Z",
+  "generadoIso": "2026-10-20T10:49:37.693Z",
+  "titular": "El IBEX 35 retrocede un 1,49 % y mantiene los 19.000 puntos en un entorno de ajuste bursátil europeo",
+  "entradilla": "La bolsa española cerró a la baja lastrada por la tensión en la deuda de Francia. El petróleo se moderó tras las subidas previas, mientras que el sector tecnológico estadounidense impulsó los índices del país norteamericano.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró la sesión con una caída del 1,49 %, descendiendo 287,90 puntos respecto al viernes anterior debido a las tensiones en los mercados de la región.",
+      "fecha": "2026-10-19",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El IBEX 35 fijó su nivel de cierre oficial en 19.039,30 puntos, logrando mantener la barrera de los diecinueve mil puntos al término de la negociación.",
+      "fecha": "2026-10-19",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice Euro Stoxx 50 registró una contracción del 0,96 % en su nivel de cierre respecto a la jornada precedente.",
+      "fecha": "2026-10-19",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "La cotización continua del IBEX 35 a media mañana se situó en 18.967,10 puntos, con un descenso intradía del 0,38 %.",
+      "fecha": "2026-10-20",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (Renta Variable)",
+      "valor": "19.039,30 puntos",
+      "referencia": "Cierre 2026-10-19, BME",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50 (Renta Variable)",
+      "valor": "-0,96 %",
+      "referencia": "Variación diaria 2026-10-19, STOXX",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Bono español a 10 años (Renta Fija)",
+      "valor": "Sin contrastar",
+      "referencia": "Al carecer de fuente oficial directa en la lista para el 2026-10-19",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD (Divisas)",
+      "valor": "Sin contrastar",
+      "referencia": "Al carecer de fuente oficial del BCE en la lista para el 2026-10-19",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent (Materias Primas)",
+      "valor": "Sin contrastar",
+      "referencia": "Al carecer de fuente oficial de ICE en la lista para el 2026-10-19",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-20",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estadísticas financieras trimestrales de las Administraciones Públicas del 2T 2026",
+      "anterior": null,
+      "porQueImporta": "Cuantifica las necesidades brutas de financiación institucional en la región.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-20",
+      "hora": "11:00",
+      "region": "España",
+      "que": "Difusión de la Encuesta de Salud de España 2025",
+      "anterior": null,
+      "porQueImporta": null,
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-21",
+      "hora": null,
+      "region": "España",
+      "que": "Avance de la Deuda de las Administraciones Públicas de agosto de 2026",
+      "anterior": "99,9 % del PIB en julio de 2026",
+      "porQueImporta": "Evalúa la senda de los pasivos soberanos respecto al tamaño de la economía.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-22",
+      "hora": "10:30",
+      "region": "España",
+      "que": "Subasta ordinaria de Bonos y Obligaciones del Estado",
+      "anterior": null,
+      "porQueImporta": "Determina el rendimiento marginal aceptado y la demanda en subasta primaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-22",
+      "hora": "08:00",
+      "region": "España",
+      "que": "Resultados del tercer trimestre de 2026 de Bankinter",
+      "anterior": null,
+      "porQueImporta": "Inaugura la temporada de difusión contable de la banca, mostrando cómo afectan los tipos de interés a sus márgenes.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La sesión bursátil del lunes estuvo marcada por los descensos en los principales parqués europeos. El IBEX 35 español registró una caída del 1,49 %, lo que le llevó a cerrar en 19.039,30 puntos, mientras que su homólogo europeo cedió cerca de un uno por ciento. Esta evolución rompe temporalmente con la tónica de estabilidad, impulsada por las presiones en los mercados de renta fija.",
+        "En contraste, los índices de Estados Unidos lograron avances destacados, especialmente en el sector de la tecnología. Las acciones de este ámbito atrajeron flujos de capital, revirtiendo parte de los descensos acumulados la semana anterior. Por otro lado, la cotización del petróleo de referencia en Europa bajó, alejándose de los máximos recientes por encima de los 110 dólares por barril."
+      ],
+      "fuentes": [
+        1,
+        5
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La atención económica se centra en la deuda de Francia, donde la rentabilidad del bono repuntó debido a la falta de consenso político para tramitar un ajuste de los presupuestos. Esto eleva la prima de riesgo francesa y genera inquietud respecto al equilibrio fiscal del país en un contexto de financiación más exigente.",
+        "El descenso en el precio del crudo alivia los temores sobre un nuevo repunte generalizado de los precios. Si la energía se encarece, los bancos centrales tienen menos margen para reducir el coste de la financiación, lo que frena el consumo y la inversión. Mientras tanto, el crecimiento del 4,5 % anual en la economía de China confirma que sus fábricas mantienen la actividad global, aunque la demanda de los hogares sigue débil."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante la jornada de hoy, los agentes económicos analizarán las cifras de financiación pública en la eurozona y el resultado de la emisión de bonos verdes en Alemania. Estos instrumentos resultan vitales para evaluar el coste que asumen los Estados al financiar proyectos respetuosos con el medio ambiente.",
+        "En los próximos días, el foco se trasladará a las cuentas de las empresas españolas, con el inicio de las publicaciones de la banca. Además, se conocerá el nivel de deuda pública española y se evaluará cómo asimila el mercado primario las subastas del Estado con rendimientos por encima del cuatro por ciento."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/madrid/2026/10/19/1_18_0_20261019.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/madrid/2026/10/19/1_7_0_20261019.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/home.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-consultation-results-for-the-euro-stoxx-50-index-and-stoxx-regional-blue-chip-indices/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/euro-stoxx-50-index-to-undergo-methodology-changes-from-2027/"
+    },
+    {
+      "titulo": "capital.es",
+      "url": "https://capital.es/economia/mercados-e-inversion/el-ibex-35-mantiene-los-19-000-puntos-pese-a-caer-un-149-por-las-tensiones-en-francia/227812/"
+    },
+    {
+      "titulo": "cantabriaeconomica.com",
+      "url": "https://www.cantabriaeconomica.com/la-economia-hoy/el-ibex-35-sostiene-los-19-000-puntos-pese-a-caer-un-149-por-las-tensiones-en-francia/"
+    },
+    {
+      "titulo": "forbes.es",
+      "url": "https://forbes.es/ultima-hora/1045248/el-ibex-35-abre-en-tablas-y-mantiene-los-19-200-puntos-con-el-petroleo-a-la-baja-en-104-dolares/"
+    },
+    {
+      "titulo": "elnacional.cat",
+      "url": "https://www.elnacional.cat/oneconomia/es/mercados/ibex-35-aguanta-19000-puntos-en-jornada-gris-por-tensiones-en-francia_1711939_102.html"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-20",
+    "hasta": "2026-10-20",
+    "corteIso": "2026-10-20T10:49:37.693Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Retroceso en bolsas europeas",
+      "texto": "El mercado español y sus equivalentes europeos registraron caídas en la primera sesión de la semana. Las dudas sobre la capacidad de ajuste presupuestario en Francia elevaron el rendimiento de su deuda pública, afectando al ánimo inversor.",
+      "fuentes": [
+        1,
+        5
+      ]
+    },
+    {
+      "titulo": "Moderación del petróleo",
+      "texto": "El barril de Brent bajó un 2,43 % tras haber alcanzado los 110 dólares la semana pasada. Esta corrección da un leve respiro a las expectativas de inflación, un factor clave para las decisiones de los bancos centrales.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Avance tecnológico estadounidense",
+      "texto": "Los índices bursátiles norteamericanos rebotaron impulsados por las empresas de tecnología. Los analistas atribuyen este movimiento a una reevaluación del gasto en inteligencia artificial antes de que se publiquen los resultados trimestrales.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Crecimiento económico en China",
+      "texto": "La economía china creció un 4,5 % anual en el tercer trimestre del año. Este repunte se basó en la manufactura y las exportaciones, sectores que compensaron la debilidad del consumo interno y del mercado inmobiliario.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "prima de riesgo",
+      "definicion": "Diferencia entre el interés que se exige a la deuda de un país frente a otro considerado más seguro, habitualmente Alemania."
+    },
+    {
+      "termino": "rentabilidad del bono",
+      "definicion": "El porcentaje de beneficio que obtiene un agente por prestar su dinero a un Estado o empresa mediante la adquisición de sus títulos de deuda."
+    },
+    {
+      "termino": "mercado primario",
+      "definicion": "El espacio financiero donde se emiten y colocan por primera vez los nuevos títulos de deuda o acciones."
+    }
+  ]
+}

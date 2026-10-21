@@ -1,0 +1,247 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-21",
+  "fecha": "2026-10-21",
+  "fechaIso": "2026-10-21T00:00:00.000Z",
+  "generadoIso": "2026-10-21T10:58:30.118Z",
+  "titular": "Los índices estadounidenses avanzan impulsados por resultados corporativos mientras Europa cede por dudas fiscales",
+  "entradilla": "La moderación en los precios de la energía ha aliviado las estimaciones de costes operativos empresariales en Estados Unidos, facilitando el avance de sus principales índices. En Europa, la incertidumbre sobre la disciplina presupuestaria ha frenado el apetito por el riesgo de los inversores.",
+  "hechos": [
+    {
+      "texto": "El índice Euro Stoxx 50 descendió un 0,33 por ciento por la incertidumbre sobre el cumplimiento de las metas fiscales en Francia.",
+      "fecha": "2026-10-20",
+      "fuentes": [
+        4,
+        9
+      ]
+    },
+    {
+      "texto": "El índice S&P 500 avanzó un 0,28 por ciento ante resultados trimestrales favorables en sectores de consumo e industriales.",
+      "fecha": "2026-10-20",
+      "fuentes": [
+        8,
+        9
+      ]
+    },
+    {
+      "texto": "El índice IBEX 35 logró un avance del 0,28 por ciento, aislándose de la tónica descendente del resto de plazas europeas.",
+      "fecha": "2026-10-20",
+      "fuentes": [
+        2,
+        9
+      ]
+    },
+    {
+      "texto": "El índice Nikkei 225 sumó un 0,85 por ciento al cierre de su jornada, liderando las ganancias entre los mercados asiáticos documentados.",
+      "fecha": "2026-10-21",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable - IBEX 35",
+      "valor": "19.092,40 puntos",
+      "referencia": "2026-10-20 (BME)",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - S&P 500",
+      "valor": "7.712,57 puntos",
+      "referencia": "2026-10-20 (La Nación)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Deuda Soberana - Bono Alemania 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Carencia de fuente autorizada",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas - EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "Carencia de fuente autorizada",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias Primas - Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Carencia de fuente autorizada",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-21",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Deuda trimestral y déficit de las Administraciones Públicas (segundo trimestre de 2026)",
+      "anterior": "88,7 % del PIB en el primer trimestre de 2026",
+      "porQueImporta": "Permite cuantificar el endeudamiento público agregado de los países que comparten el euro.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-21",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Ingresos semanales habituales de los asalariados (tercer trimestre de 2026)",
+      "anterior": null,
+      "porQueImporta": "Resulta fundamental para medir el poder adquisitivo real frente a la evolución de los precios.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Encuesta de Ocupación Hotelera y Coyuntura Turística (septiembre de 2026)",
+      "anterior": null,
+      "porQueImporta": "Sirve como anticipo de la actividad turística al cierre de la temporada estival.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Índices preliminares de actividad privada o PMI Flash (octubre de 2026)",
+      "anterior": null,
+      "porQueImporta": "Ofrece un panorama adelantado sobre el nivel de dinamismo económico del último trimestre del año.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales índices de renta variable en Estados Unidos han registrado avances en la última jornada, impulsados por la presentación de resultados corporativos favorables en sectores vinculados al consumo y la industria, lo que ha contrarrestado las caídas en las grandes empresas de tecnología. Por su parte, en Europa, los mercados bursátiles han anotado descensos generales en un contexto marcado por el debate presupuestario y las movilizaciones en Francia.",
+        "El índice Euro Stoxx 50 ha retrocedido un 0,33 por ciento, mientras que el S&P 500 sumó un 0,28 por ciento. El mercado español ha logrado evitar los descensos continentales, de modo que el IBEX 35 finalizó con una subida del 0,28 por ciento. En Asia, la bolsa japonesa destacó con un repunte del 0,85 por ciento en el índice Nikkei 225, marcando el mayor incremento documentado oficialmente en la jornada."
+      ],
+      "fuentes": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La evolución de la sesión evidencia cómo el abaratamiento temporal del petróleo reduce las estimaciones de costes operativos para el tejido empresarial, un factor que fomenta el flujo de capital hacia sectores tradicionales en detrimento de los activos tecnológicos. Al depender menos de la financiación externa para sus grandes proyectos, estas firmas logran captar el interés de los inversores ante el actual nivel de tipos de interés.",
+        "Por el lado europeo, el estancamiento de las cotizaciones refleja la preocupación por la estabilidad de las finanzas públicas. Cuando existen dudas sobre la disciplina fiscal de un país con un peso sistémico como Francia, la demanda tiende a orientarse hacia activos de renta fija (bonos soberanos), considerados de menor riesgo en momentos de tensión."
+      ],
+      "fuentes": [
+        8,
+        9
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante la presente jornada, Eurostat publicará la ratio de deuda pública de la eurozona correspondiente al segundo trimestre de 2026, un indicador clave para medir el margen de maniobra fiscal de los Estados miembros. En paralelo, Estados Unidos difundirá los datos de ingresos salariales, fundamentales para calibrar las futuras decisiones de su banco central.",
+        "Hacia el final de la semana, la atención se desplazará a los índices de actividad privada (PMI Flash) europeos de octubre, los cuales permitirán observar la temperatura real de la economía en el inicio del último trimestre del año. Debido a la carencia de las fuentes oficiales originales en la documentación técnica, varias cifras primarias se declaran como carentes de contraste público."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/stoxx-announces-consultation-results-for-the-euro-stoxx-50-index-and-stoxx-regional-blue-chip-indices/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5egb/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/dax/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "moltbook.com",
+      "url": "https://moltbook.com/post/4e1c6021-a0dc-4a5f-9078-6c42f09796bf"
+    },
+    {
+      "titulo": "lanacion.com.ar",
+      "url": "https://www.lanacion.com.ar/usa/how-major-us-stock-indexes-fared-tuesday-10202026-nid20102026/"
+    },
+    {
+      "titulo": "elboletin.com",
+      "url": "https://www.elboletin.com/las-bolsas-europeas-cierran-en-rojo-pese-al-rebote-de-wall-street/"
+    },
+    {
+      "titulo": "boerse-duesseldorf.de",
+      "url": "https://www.boerse-duesseldorf.de/indizes/DE0008469008/dax-performance-index/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-21",
+    "hasta": "2026-10-21",
+    "corteIso": "2026-10-21T10:58:30.118Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Resultados corporativos heterogéneos",
+      "texto": "Las empresas estadounidenses vinculadas a la industria presentaron avances trimestrales, compensando los descensos en grandes firmas de tecnología. Este flujo de capital respaldó el avance de los principales índices en Nueva York.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Dudas fiscales en la eurozona",
+      "texto": "Los mercados bursátiles del continente registraron descensos moderados debido a la inquietud por los presupuestos de Francia. Ante la incertidumbre, aumentó la preferencia por la deuda soberana frente a las acciones.",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "titulo": "Moderación del crudo",
+      "texto": "El petróleo redujo su cotización tras alcanzar máximos intradía, mitigando el temor a mayores costes para el tejido empresarial. Este abaratamiento apoyó la recuperación de la bolsa estadounidense durante la sesión.",
+      "fuentes": [
+        9
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "renta fija",
+      "definicion": "Instrumentos de deuda emitidos por entidades públicas o privadas, como los bonos, que prometen el pago de intereses periódicos y la devolución del capital en una fecha determinada."
+    },
+    {
+      "termino": "flujo de capital",
+      "definicion": "Movimiento de dinero de los inversores que se traslada entre diferentes clases de activos o mercados financieros en busca de protección o rentabilidad."
+    },
+    {
+      "termino": "PMI Flash",
+      "definicion": "Índice adelantado que mide el nivel de actividad del sector privado mediante encuestas a directivos empresariales; un valor superior a los 50 puntos indica expansión económica."
+    }
+  ]
+}

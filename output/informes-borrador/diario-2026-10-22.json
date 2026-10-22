@@ -1,0 +1,296 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-22",
+  "fecha": "2026-10-22",
+  "fechaIso": "2026-10-22T00:00:00.000Z",
+  "generadoIso": "2026-10-22T11:00:01.908Z",
+  "titular": "Los resultados empresariales del sector tecnológico y manufacturero impulsan las bolsas",
+  "entradilla": "Las principales bolsas mundiales avanzaron respaldadas por las cifras de negocio presentadas por grandes empresas tecnológicas y manufactureras. Este dinamismo compensó la presión derivada del encarecimiento de las materias primas energéticas motivado por la coyuntura en Oriente Medio.",
+  "hechos": [
+    {
+      "texto": "El índice Nasdaq-100 avanzó 357,44 puntos (+1,21 %) respaldado por las perspectivas comerciales reportadas por diversos fabricantes de equipos tecnológicos.",
+      "fecha": "2026-10-21",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El índice IBEX 35 cerró con una subida de 231,10 puntos (+1,21 %), apoyado en la revisión al alza de los beneficios operativos en el sector industrial europeo.",
+      "fecha": "2026-10-21",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad VIX descendió 0,62 puntos (-3,58 %), lo que reflejó una disminución de la agitación a corto plazo entre los participantes del mercado bursátil.",
+      "fecha": "2026-10-21",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "La rentabilidad exigida al bono del Tesoro estadounidense a diez años alcanzó el 5,12 %, consolidando la presión sobre los rendimientos de la deuda a largo plazo.",
+      "fecha": "2026-10-20",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "texto": "El índice de la bolsa de Tokio, Nikkei 225, registró un descenso de 1.713,40 yenes (-2,65 %) al cierre de su sesión asiática.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        5
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19.323,50 puntos",
+      "referencia": "2026-10-21 (BME Exchange)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-21 (Falta de nivel numérico exacto en portal abierto)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Rentabilidad bono España 10 años",
+      "valor": "4,02 %",
+      "referencia": "2026-10-20 (Banco de España)",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "etiqueta": "Rentabilidad bono EE. UU. 10 años",
+      "valor": "5,12 %",
+      "referencia": "2026-10-20 (US Treasury)",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "etiqueta": "EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-21 (Fuente no habilitada en listado base)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-21 (Fuente no habilitada en listado base)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-22",
+      "hora": "11:30",
+      "region": "Eurozona",
+      "que": "Anuncio de emisión de deuda pública a diez años del banco central alemán",
+      "anterior": null,
+      "porQueImporta": "Supone la fijación de las condiciones del activo soberano que sirve como principal referencia para el continente europeo.",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "fecha": "2026-10-22",
+      "hora": "19:40",
+      "region": "EEUU",
+      "que": "Operación de gestión de liquidez de deuda pública ligada a la inflación",
+      "anterior": null,
+      "porQueImporta": "Permite ajustar el control de la liquidez secundaria en la curva de tipos reales estadounidense.",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "10:00",
+      "region": "España",
+      "que": "Publicación del Indicador Multidimensional de Calidad de Vida (INE)",
+      "anterior": null,
+      "porQueImporta": "Aporta una métrica estructural sobre el bienestar social y el entorno socioeconómico de la población.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-26",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Recepción de ofertas para la subasta de deuda federal alemana",
+      "anterior": null,
+      "porQueImporta": "Constituye el primer paso formal para la adjudicación de deuda pública de la mayor economía europea en el mercado.",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "fecha": "2026-10-26",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Indicadores del marco de gobernanza económica comunitaria (Eurostat)",
+      "anterior": null,
+      "porQueImporta": "Sirve para la fiscalización del cumplimiento de las nuevas reglas presupuestarias de los Estados miembros.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La jornada bursátil del 21 de octubre concluyó con ascensos generalizados en los principales mercados mundiales, con la notable excepción de la plaza japonesa. El índice tecnológico Nasdaq-100 avanzó un 1,21 %, impulsado por las sólidas cuentas presentadas por los fabricantes de equipos y vehículos. De igual manera, el índice español IBEX 35 repuntó un 1,21 %, apoyado en las previsiones positivas mostradas por el sector manufacturero europeo.",
+        "Por su parte, los precios de las materias primas energéticas mantuvieron su tendencia al alza debido a las sanciones aplicadas sobre canales de exportación en Oriente Medio. Paralelamente, el índice VIX (un barómetro que mide las variaciones esperadas en bolsa a corto plazo) descendió con claridad, lo que reflejó una menor agitación entre los participantes del mercado estadounidense."
+      ],
+      "fuentes": [
+        1,
+        2,
+        3,
+        5,
+        10
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Los recientes informes de resultados han despejado dudas esenciales sobre el estado del ciclo económico global. Las elevadas inversiones de capital requeridas para el desarrollo de la inteligencia artificial generaban inquietud sobre los márgenes empresariales; sin embargo, las últimas presentaciones evidenciaron una rentabilidad operativa superior a la esperada por los analistas.",
+        "Además, a pesar de que los datos fiscales de la eurozona mostraron un repunte del déficit público, los mercados de renta fija absorbieron las emisiones estatales de manera ordenada. La prima de riesgo de España (el diferencial exigido frente a Alemania) se mantuvo contenida en 62 puntos básicos, lo que estabilizó la curva de tipos y mitigó los temores sobre una posible fragmentación financiera en Europa."
+      ],
+      "fuentes": [
+        3,
+        9
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En los próximos días, la atención estadística se trasladará hacia el ámbito de la financiación pública y la cohesión territorial. El banco central alemán anunciará las condiciones de sus nuevas emisiones de deuda a diez años, un activo fundamental de referencia para todo el sistema financiero europeo. Por otro lado, las autoridades evaluarán la evolución macroeconómica regional tras las últimas perturbaciones experimentadas."
+      ],
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/Overview/NDX"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/insights/posts/technology-stocks-pop-lead-nasdaq-higher"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/891800/msci-em-emerging-markets-index-2"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/is5ir4td/"
+    },
+    {
+      "titulo": "Banco de España",
+      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/pdf/si_1_2.pdf"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026&ref=nestree.io"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/1012672/6354ecbababf4ad8a3651644cf562832/472B63F073F071307366337C94F8C870/2026-10-22-ankuendigung-download.pdf"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-22",
+    "hasta": "2026-10-22",
+    "corteIso": "2026-10-22T11:00:01.908Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Impulso tecnológico",
+      "texto": "Las cuentas trimestrales presentadas por firmas estadounidenses redujeron la inquietud sobre las inversiones en inteligencia artificial. Esto favoreció la recuperación de los índices bursátiles ligados a la tecnología.",
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "titulo": "Resistencia en Europa",
+      "texto": "Compañías industriales y de consumo revisaron al alza sus expectativas de beneficios. Esta firmeza operativa mitigó el impacto negativo que ejercen los altos costes energéticos sobre la industria manufacturera.",
+      "fuentes": [
+        7,
+        8
+      ]
+    },
+    {
+      "titulo": "Absorción de deuda",
+      "texto": "A pesar del incremento en el déficit público comunitario, el mercado soberano adquirió las nuevas emisiones estatales de forma ordenada. La rentabilidad exigida a los bonos gubernamentales se mantuvo libre de tensiones.",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "titulo": "Tensión energética",
+      "texto": "Las cotizaciones del gas natural y el petróleo repuntaron en los mercados. Las sanciones financieras internacionales aplicadas sobre diferentes canales de exportación en Oriente Medio sostienen la presión sobre los costes globales.",
+      "fuentes": [
+        10
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "índice VIX",
+      "definicion": "Indicador que mide la volatilidad implícita o las variaciones bruscas esperadas a corto plazo en el mercado de valores estadounidense, reflejando el nivel de inquietud."
+    },
+    {
+      "termino": "prima de riesgo",
+      "definicion": "Diferencial de rentabilidad que los inversores exigen a la deuda pública de un país en comparación con la de otro considerado más solvente, habitualmente Alemania."
+    },
+    {
+      "termino": "puntos básicos",
+      "definicion": "Unidad de medida equivalente a una centésima de punto porcentual, utilizada para expresar cambios en los tipos de interés o rentabilidades."
+    },
+    {
+      "termino": "curva de tipos",
+      "definicion": "Línea gráfica que muestra la relación entre la rentabilidad de los bonos de renta fija y su plazo de vencimiento, sirviendo como termómetro de las expectativas económicas."
+    }
+  ]
+}

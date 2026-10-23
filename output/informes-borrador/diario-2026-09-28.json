@@ -1,0 +1,251 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-28",
+  "fecha": "2026-09-28",
+  "fechaIso": "2026-09-28T00:00:00.000Z",
+  "generadoIso": "2026-09-28T12:31:18.522Z",
+  "titular": "Las bolsas europeas avanzan gracias a la tregua arancelaria mientras resurge la tensión naviera",
+  "entradilla": "Los principales índices bursátiles cerraron la semana con alzas impulsados por una moratoria comercial entre Washington y Pekín. Sin embargo, el reciente rechazo estadounidense a un alto el fuego en el estrecho de Ormuz presiona los mercados energéticos.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró la sesión ordinaria en 19.700,10 puntos, anotando un avance del 0,65 % respecto a la jornada anterior.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        1,
+        6
+      ]
+    },
+    {
+      "texto": "El índice DAX 40 alemán finalizó la jornada de contratación en 25.408,64 puntos, anotando una revalorización del 0,56 %.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "Durante las negociaciones del viernes, el índice español IBEX 35 llegó a alcanzar un nivel máximo intradía de 19.819,10 puntos antes de estabilizarse en el cierre.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice Euro Stoxx 50 registró avances impulsado por las expectativas provisionales de un pacto de paz con Irán, antes de conocerse el rechazo formal el fin de semana.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        9
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable: IBEX 35",
+      "valor": "19.700,10 puntos",
+      "referencia": "2026-09-25 (Bolsas y Mercados Españoles)",
+      "fuentes": [
+        1,
+        6
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: DAX 40",
+      "valor": "25.408,64 puntos",
+      "referencia": "2026-09-25 (Deutsche Börse)",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: Euro Stoxx 50",
+      "valor": "Sin contrastar",
+      "referencia": "Falta cierre numérico oficial en texto abierto",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Renta Fija: Bono EE. UU. 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas: EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias Primas: Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicador oficial",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-28",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Estadística de Hipotecas (INE)",
+      "anterior": "+10,8 % anual en junio",
+      "porQueImporta": "Refleja la transmisión de las condiciones monetarias a la demanda crediticia residencial.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-28",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Indicadores de Condiciones de Vida y Hogares (Eurostat)",
+      "anterior": null,
+      "porQueImporta": "Medición de la renta disponible y presiones de gasto en el ámbito de la Unión Europea.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Indicador Adelantado del IPC y del IPCA (INE)",
+      "anterior": "4,3 % anual en agosto",
+      "porQueImporta": "Lectura preliminar de la inflación nacional para contrastar la repercusión de los costes energéticos.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Economic Sentiment Indicator y Confianza Sectorial (Comisión Europea)",
+      "anterior": null,
+      "porQueImporta": "Barómetro de expectativas sobre la actividad en servicios, industria y consumo doméstico.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta JOLTS de vacantes de trabajo (BLS)",
+      "anterior": null,
+      "porQueImporta": "Evaluación del volumen de vacantes, un elemento central para el análisis salarial de la autoridad monetaria.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "El cierre de la semana bursátil registró avances en los principales parqués europeos, apoyados inicialmente en las expectativas de estabilidad geopolítica. El índice IBEX 35 de España y el DAX 40 de Alemania cerraron con incrementos la sesión del viernes.",
+        "Sin embargo, durante el fin de semana, Estados Unidos rechazó una propuesta técnica de alto el fuego planteada por Irán en relación con el tránsito por el estrecho de Ormuz, lo que disipó el optimismo inicial de los inversores sobre un pacto inminente.",
+        "En el ámbito comercial, Washington y Pekín acordaron extender su moratoria de aranceles hasta enero de 2027. Esta decisión elimina la amenaza de recargos aduaneros inmediatos y beneficia de forma directa a la actividad del sector industrial a escala global."
+      ],
+      "fuentes": [
+        1,
+        3,
+        9
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El rechazo a la tregua en Oriente Medio mantiene vigente el riesgo de interrupciones en las rutas navales clave para el comercio energético mundial. Esta situación ejerce una presión directa sobre los mercados de materias primas y los costes de producción.",
+        "A su vez, los inversores asimilan un entorno de financiación cada vez más estricto. El aumento generalizado en la rentabilidad de la deuda pública refleja que los participantes del mercado descuentan tipos de interés elevados durante un período prolongado.",
+        "Este encarecimiento estructural del crédito supone un obstáculo para las valoraciones corporativas y exige a las compañías demostrar una solidez financiera mayor para atraer capital, marcando así el ritmo al que avanza la economía productiva de la región."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante la jornada del lunes, el Instituto Nacional de Estadística de España difunde los datos de la estadística de hipotecas correspondientes al mes de julio, un indicador fundamental que refleja la demanda crediticia residencial de los hogares.",
+        "A lo largo de la semana, los mercados centrarán su atención en la inflación adelantada de España y Alemania, datos determinantes para calibrar la evolución de los precios en la zona euro antes de la próxima reunión de política monetaria del Banco Central Europeo.",
+        "Por último, en Estados Unidos se publicará la encuesta JOLTS de vacantes de empleo, un barómetro que las autoridades monetarias observan muy de cerca para evaluar la presión salarial y decidir el rumbo futuro de los costes de financiación."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse?_type=iNAVs&_search=commerzbank"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/DAX-FLASH-Kaum-Bewegung-auf-Rekordniveau-bb02125e-1459-49ee-aa14-fe42fd4be033"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://careers.spglobal.com/jobs/331903?lang=en-us"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://careers.spglobal.com/Ratingsforwardoctobervirtual/jobs/331522"
+    },
+    {
+      "titulo": "facebook.com",
+      "url": "https://www.facebook.com/elforodeceuta/posts/-ibex-35-25-de-septiembre-de-2026-al-alza-cerr%C3%B3-en-1970010-puntos-con-una-subida/1767150235416359/"
+    },
+    {
+      "titulo": "onvista.de",
+      "url": "https://www.onvista.de/news/2026/09-25-aktien-frankfurt-schluss-dax-beendet-durchwachsene-woche-freundlich-0-10-26557617"
+    },
+    {
+      "titulo": "finanzen.ch",
+      "url": "https://www.finanzen.ch/nachrichten/aktien/dax-handel-aktuell-dax-zum-handelsstart-im-plus-1036573464"
+    },
+    {
+      "titulo": "negocios.com",
+      "url": "https://www.negocios.com/articulo/mercados/euro-stoxx-50-sube-fuerza-esperanzas-paz-iran/20260925175711494492.amp.html"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 9
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-28",
+    "hasta": "2026-09-28",
+    "corteIso": "2026-09-28T12:31:18.522Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Tensión naval en Oriente Medio",
+      "texto": "Estados Unidos rechazó una propuesta de tregua condicionada en el estrecho de Ormuz planteada por Irán. Esta negativa disipó el optimismo de la sesión del viernes y mantiene el riesgo de bloqueos sobre el suministro energético marítimo.",
+      "fuentes": [
+        9
+      ]
+    },
+    {
+      "titulo": "Presión en la deuda pública",
+      "texto": "La rentabilidad que los inversores exigen para prestar a largo plazo a Estados Unidos y Europa alcanzó cotas máximas de varios ejercicios. Este endurecimiento del crédito incrementa los costes de financiación corporativa y dificulta el avance de las acciones.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Prórroga en la guerra comercial",
+      "texto": "Washington y Pekín acordaron extender su moratoria de aranceles hasta enero de 2027. La medida mitiga el impacto de costes aduaneros inmediatos sobre el comercio internacional y aporta visibilidad a las corporaciones del sector industrial.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "rentabilidad de la deuda pública",
+      "definicion": "Porcentaje de interés que los inversores exigen a un Estado a cambio de prestarle dinero mediante la adquisición de títulos a un plazo determinado."
+    },
+    {
+      "termino": "aranceles",
+      "definicion": "Impuestos que aplica un Gobierno a los bienes y servicios importados desde el extranjero, lo que encarece su coste para las empresas y los consumidores finales."
+    },
+    {
+      "termino": "encuesta JOLTS",
+      "definicion": "Informe del Gobierno estadounidense que mide el número de vacantes de empleo disponibles; sirve para evaluar la fortaleza y las tensiones del mercado laboral."
+    }
+  ]
+}

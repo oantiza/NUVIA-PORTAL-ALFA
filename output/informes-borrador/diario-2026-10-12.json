@@ -1,0 +1,294 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-12",
+  "fecha": "2026-10-12",
+  "fechaIso": "2026-10-12T00:00:00.000Z",
+  "generadoIso": "2026-10-12T14:04:04.235Z",
+  "titular": "La disipación del temor geopolítico estabiliza los índices bursátiles en el arranque semanal",
+  "entradilla": "Los mercados de renta variable consolidan sus niveles tras las recientes comunicaciones gubernamentales sobre Oriente Medio. La actividad financiera se reduce notablemente al inicio de semana por las festividades oficiales en España, Estados Unidos y Japón.",
+  "hechos": [
+    {
+      "texto": "El índice bursátil español IBEX 35 cerró la sesión con una subida del 0,55 %, situándose en los 19.033,10 puntos.",
+      "fecha": "2026-10-09",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El índice S&P 500 registró un nivel de 7.811,54 puntos, anotando un incremento del 0,59 % ante el alivio de las tensiones en las rutas marítimas globales.",
+      "fecha": "2026-10-09",
+      "fuentes": [
+        7,
+        8
+      ]
+    },
+    {
+      "texto": "El tipo de cambio de referencia del euro frente al dólar estadounidense avanzó un 0,18 % hasta fijarse en 1,1206 dólares.",
+      "fecha": "2026-10-09",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice japonés Nikkei 225 bajó 11,19 puntos y despidió la jornada de negociación en los 69.030,92 puntos.",
+      "fecha": "2026-10-09",
+      "fuentes": [
+        10
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19.033,10 puntos",
+      "referencia": "2026-10-09 (BME Exchange)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "7.811,54 puntos",
+      "referencia": "2026-10-09 (S&P Global)",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "Nikkei 225",
+      "valor": "69.030,92 puntos",
+      "referencia": "2026-10-09 (Nikkei Inc.)",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "DAX",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-09 (carencia de canal primario abierto)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Bono de EEUU a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-09 (carencia de publicación primaria validada)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD",
+      "valor": "1,1206 dólares",
+      "referencia": "2026-10-09 (BCE)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "EUR/JPY",
+      "valor": "177,34 yenes",
+      "referencia": "2026-10-09 (BCE)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-09 (carencia de acceso libre en el operador del mercado)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-12",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Estadística de tipos de interés a largo plazo de la zona del euro",
+      "anterior": "Rendimiento de deuda soberana AAA a 10 años en el 3,52 %",
+      "porQueImporta": "Actúa como indicador oficial de los costes de financiación de los Estados europeos.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-12",
+      "hora": null,
+      "region": "Japón",
+      "que": "Festividad del Día del Deporte (mercados de acciones cerrados)",
+      "anterior": null,
+      "porQueImporta": "Repercute en los volúmenes de negociación asiáticos al suspender la actividad al contado.",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "fecha": "2026-10-13",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Estadística de Sociedades Mercantiles de agosto",
+      "anterior": "Julio de 2026",
+      "porQueImporta": "Refleja la constitución de empresas y sirve como termómetro de la inversión productiva.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-13",
+      "hora": "12:00",
+      "region": "EEUU",
+      "que": "Índice de Optimismo de las Pequeñas Empresas NFIB de septiembre",
+      "anterior": null,
+      "porQueImporta": "Representa las presiones de costes laborales y los planes de contratación empresariales.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "fecha": "2026-10-14",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índice de Precios de Consumo (IPC) de septiembre",
+      "anterior": "Tasa general anual del +4,3 %",
+      "porQueImporta": "Proporciona la confirmación definitiva del nivel de encarecimiento en bienes de consumo y energía.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-14",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Índice de Precios de Consumo (CPI) de septiembre",
+      "anterior": "Tasa general anual en torno al 3,4 %",
+      "porQueImporta": "Constituye una variable imprescindible para anticipar las decisiones de la política monetaria estadounidense.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales índices de renta variable han consolidado sus niveles durante la última sesión completa, apoyados por una reducción de las fricciones geopolíticas inmediatas. La confirmación de contactos diplomáticos en Estados Unidos ha calmado temporalmente los mercados financieros occidentales, favoreciendo cierres positivos.",
+        "En el ámbito de las materias primas, el avance del huracán Isaías hacia el Golfo de México ha generado expectativas sobre posibles interrupciones en la industria de extracción. Esta amenaza meteorológica permite que el precio del crudo internacional resista alrededor de los 105 dólares por barril."
+      ],
+      "fuentes": [
+        7,
+        8
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Las decisiones y comunicaciones de los bancos centrales siguen marcando el rumbo económico. Las recientes actas de la Reserva Federal exponen los debates sobre la estabilidad monetaria, mientras los mercados descuentan que la entidad evitará una nueva subida de los tipos de interés (el precio oficial del dinero) en su reunión de octubre.",
+        "A escala nacional, el Banco de España ha advertido de que el déficit estructural limita la capacidad del Estado frente a posibles crisis futuras. Un encarecimiento en los costes de la financiación exterior supondría un impacto directo para el erario público, a pesar del actual desempeño positivo del producto interior bruto."
+      ],
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "El inicio de semana transcurre con menor profundidad negociadora por el triple cierre festivo internacional. La bolsa de Japón interrumpe sus operaciones por el Día del Deporte, el mercado de deuda de Estados Unidos cierra en observancia de su festividad federal, y España conmemora su fiesta nacional.",
+        "A partir del miércoles, la atención virará hacia los datos definitivos de inflación, con las publicaciones del IPC tanto en España como en Estados Unidos. Estos registros determinarán el alcance del encarecimiento en alimentos y energía, influyendo en las expectativas macroeconómicas de otoño."
+      ],
+      "fuentes": [
+        3
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/valencia/2025/11/20/4_72_0_20251120.pdf"
+    },
+    {
+      "titulo": "Japan Exchange Group",
+      "url": "https://www.jpx.co.jp/english/corporate/about-jpx/calendar/"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-de/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/unscheduled-adjustment-in-sdax-oct-9-2026/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/economic-institute/chartstopper-100926"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/authors/nasdaqcom"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/index"
+    },
+    {
+      "titulo": "wiki-calendar.com",
+      "url": "https://www.wiki-calendar.com/october-calendars.html"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 11
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-12",
+    "hasta": "2026-10-12",
+    "corteIso": "2026-10-12T14:04:04.235Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Pausa en la tensión geopolítica",
+      "texto": "La administración estadounidense ha descartado acciones bélicas inminentes tras establecer contactos con las autoridades de Irán. Esta circunstancia ha contenido la prima de riesgo geopolítico y ha apoyado la estabilización de los principales índices bursátiles en el mercado occidental.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Tipos de interés en Estados Unidos",
+      "texto": "Las actas de la Reserva Federal muestran consenso sobre su última reunión, pero los mercados descuentan la ausencia de un nuevo incremento monetario en octubre. Este escenario ha contribuido a frenar las oscilaciones en la curva de tipos soberana norteamericana.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Isaías amenaza las infraestructuras",
+      "texto": "La tormenta Isaías ha alcanzado la categoría 3 en su progresión hacia las zonas de extracción de hidrocarburos del Golfo de México. La posibilidad de que el huracán afecte temporalmente al suministro mantiene el barril de crudo anclado en torno a los 105 dólares.",
+      "fuentes": [
+        7,
+        8
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "prima de riesgo geopolítico",
+      "definicion": "Compensación adicional que exigen los inversores por asumir la incertidumbre generada por conflictos internacionales o inestabilidad política."
+    },
+    {
+      "termino": "déficit estructural",
+      "definicion": "Desajuste constante en las cuentas públicas de un Estado, que ocurre cuando los gastos superan de forma crónica a los ingresos al margen del ciclo económico."
+    },
+    {
+      "termino": "actas de la Reserva Federal",
+      "definicion": "Documento oficial que refleja los debates, posturas y argumentos de los miembros del banco central de Estados Unidos durante sus reuniones."
+    }
+  ]
+}

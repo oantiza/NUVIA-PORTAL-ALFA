@@ -1,0 +1,303 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-06",
+  "fecha": "2026-10-06",
+  "fechaIso": "2026-10-06T00:00:00.000Z",
+  "generadoIso": "2026-10-06T12:33:46.520Z",
+  "titular": "El índice Nikkei japonés avanza un 1,05 % impulsado por cambios en su composición sectorial",
+  "entradilla": "La bolsa de Japón lideró los movimientos del día tras la incorporación de tres nuevas empresas a su índice principal. En paralelo, los rendimientos de la deuda soberana a largo plazo en Estados Unidos repuntaron ante la persistencia de la inflación y los últimos ajustes monetarios.",
+  "hechos": [
+    {
+      "texto": "El índice Nikkei 225 cerró con una subida diaria del 1,05 %, situándose en 70.683,98 yenes, tras la inclusión de nuevas empresas ordinarias.",
+      "fecha": "2026-10-06",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El IBEX 35 español registró un avance diario del 0,42 % para finalizar la jornada en 19.085,30 puntos.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono del Tesoro de Estados Unidos a 10 años aumentó 0,03 puntos porcentuales, alcanzando el 5,31 % ante la persistencia inflacionaria y el ajuste de los tipos de interés oficiales.",
+      "fecha": "2026-10-05",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El diferencial de la deuda española a 10 años frente a la alemana (conocido como prima de riesgo) se situó en 0,56 puntos porcentuales.",
+      "fecha": "2026-10-02",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El tipo de cambio oficial del euro frente al dólar estadounidense descendió un 0,19 %, fijándose en 1,1204 dólares por euro.",
+      "fecha": "2026-10-05",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "19.085,30 puntos",
+      "referencia": "2026-10-02 (BME)",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "6.241,00 puntos",
+      "referencia": "2026-10-05 (STOXX)",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "DAX 40",
+      "valor": "25.246,00 puntos",
+      "referencia": "2026-10-05 (Deutsche Börse)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Nikkei 225",
+      "valor": "70.683,98 yenes",
+      "referencia": "2026-10-06 (Nikkei Inc.)",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años",
+      "valor": "5,31 %",
+      "referencia": "2026-10-05 (Reserva Federal)",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Bono de España a 10 años",
+      "valor": "4,13 %",
+      "referencia": "2026-10-05 (Banco de España)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Prima de riesgo de España",
+      "valor": "0,56 puntos porcentuales",
+      "referencia": "2026-10-02 (Banco de España)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Euro / Dólar (EUR/USD)",
+      "valor": "1,1204 dólares",
+      "referencia": "2026-10-05 (BCE)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Euro / Yen (EUR/JPY)",
+      "valor": "177,28 yenes",
+      "referencia": "2026-10-05 (BCE)",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-06",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Producción Industrial (IPI)",
+      "anterior": "+2,3 % interanual en julio",
+      "porQueImporta": "Mide el volumen de producción en la industria excluyendo el sector de la construcción.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "11:30",
+      "region": "Alemania",
+      "que": "Subasta de pagarés del Tesoro Federal",
+      "anterior": null,
+      "porQueImporta": "Muestra el coste de financiación a corto plazo para el Estado alemán.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-06",
+      "hora": "15:00",
+      "region": "Alemania",
+      "que": "Comparecencia institucional del Bundesbank",
+      "anterior": null,
+      "porQueImporta": "Expone la situación de la estabilidad financiera en la principal economía europea.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-07",
+      "hora": "10:00",
+      "region": "España",
+      "que": "Liquidación de operaciones de deuda del Estado",
+      "anterior": null,
+      "porQueImporta": "Sirve de referencia para calcular el coste de la deuda pública a diferentes plazos.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "fecha": "2026-10-08",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estadísticas de transporte aéreo comercial",
+      "anterior": null,
+      "porQueImporta": "Ayuda a vigilar la actividad económica en el sector de los servicios europeos.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La jornada ha estado marcada por el avance de las bolsas asiáticas, destacando el índice bursátil japonés Nikkei 225. Este mercado subió un 1,05 % tras actualizar la lista de empresas que lo componen, un proceso que altera los flujos de inversión pasiva.",
+        "En los mercados de deuda, el rendimiento del bono del Tesoro estadounidense (el interés que exigen los inversores por prestar dinero al Estado) alcanzó el 5,31 %. Este aumento se explica por una inflación persistente y los ajustes en los tipos de interés oficiales efectuados recientemente."
+      ],
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Los cambios en las normas de los índices bursátiles (como la eliminación del límite de peso por sector en el Euro Stoxx 50) son fundamentales para la economía, ya que determinan hacia dónde se dirige el dinero de los fondos de inversión que replican estas referencias.",
+        "Por otro lado, el encarecimiento de la financiación a largo plazo en Estados Unidos eleva los costes de los préstamos para empresas y ciudadanos. Esto frena el consumo y la inversión empresarial, un mecanismo que sirve para moderar las presiones sobre los precios."
+      ],
+      "fuentes": [
+        2,
+        7
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención se dirigirá en las próximas jornadas hacia la evolución de la industria y los servicios en Europa. La publicación de los datos de producción industrial en España y las evaluaciones del banco central alemán aportarán nuevas métricas sobre la vitalidad del continente.",
+        "Además, la liquidación de las subastas de deuda del Estado español servirá para evaluar el apetito de los inversores por los títulos nacionales en un entorno de rendimientos elevados a nivel internacional."
+      ],
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/shared/pdf/eurofxref.pdf"
+    },
+    {
+      "titulo": "Reserva Federal de Estados Unidos",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "Banco de España",
+      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/pdf/si_1_2.pdf"
+    },
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-usd.en.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5edd/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse/bitcoin"
+    },
+    {
+      "titulo": "ycharts.com",
+      "url": "https://ycharts.com/indicators/10_year_treasury_rate"
+    },
+    {
+      "titulo": "newsquawk.com",
+      "url": "https://www.newsquawk.com/headlines/newsquawk-daily-european-equity-opening-news---6th-october-2026"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.7-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 10
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-06",
+    "hasta": "2026-10-06",
+    "corteIso": "2026-10-06T12:33:46.520Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Avance bursátil en Japón",
+      "texto": "El índice Nikkei 225 sumó un 1,05 % tras actualizar las empresas que lo componen. Este proceso técnico refleja la reordenación de los sectores tecnológicos y de materiales básicos.",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "titulo": "Repunte de la deuda estadounidense",
+      "texto": "El rendimiento del bono del Tesoro de Estados Unidos a 10 años (el interés que exige el mercado para prestar dinero al país) subió al 5,31 %. Los analistas atribuyen este movimiento a la inflación persistente y las recientes decisiones del banco central.",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "titulo": "Cambios en las reglas del Euro Stoxx",
+      "texto": "El proveedor del índice europeo Euro Stoxx 50 ha eliminado el límite de peso por sector. Esta medida cambiará de forma gradual cómo se ponderan las mayores empresas europeas a partir de 2027.",
+      "fuentes": [
+        7
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Índice bursátil",
+      "definicion": "Una cesta de acciones que representa el valor conjunto de un mercado o sector, sirviendo de termómetro para su evolución."
+    },
+    {
+      "termino": "Rendimiento del bono",
+      "definicion": "La ganancia anualizada que obtiene un inversor si mantiene la deuda pública o privada adquirida hasta su fecha de vencimiento."
+    },
+    {
+      "termino": "Tipos de interés oficiales",
+      "definicion": "El coste del dinero que establecen los bancos centrales para prestar a las entidades financieras, afectando al crédito de toda la economía."
+    },
+    {
+      "termino": "Prima de riesgo",
+      "definicion": "La diferencia extra de rentabilidad que exigen los inversores para adquirir la deuda de un país frente a la de otro considerado más seguro, habitualmente Alemania."
+    }
+  ]
+}

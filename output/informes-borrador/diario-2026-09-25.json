@@ -1,0 +1,285 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-25",
+  "fecha": "2026-09-25",
+  "fechaIso": "2026-09-25T00:00:00.000Z",
+  "generadoIso": "2026-09-25T10:55:51.229Z",
+  "titular": "Las dudas sobre los tipos de interés frenan los mercados occidentales mientras Asia avanza por acuerdos comerciales",
+  "entradilla": "Los mercados bursátiles afrontan una jornada de pausa ante el repunte en el coste de la deuda estatal. La reducción de la tensión arancelaria entre Estados Unidos y China aporta, por el contrario, un claro estímulo a los parqués asiáticos.",
+  "hechos": [
+    {
+      "texto": "El índice bursátil Nikkei 225 subió un +1,30 % en la sesión asiática, cerrando en 66.364,20 puntos debido al optimismo por la extensión de la tregua arancelaria entre Estados Unidos y China.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        1,
+        2
+      ]
+    },
+    {
+      "texto": "El indicador europeo EURO STOXX Select 50 EUR registró una variación del -0,32 %, marcando un nivel de 592,92 puntos al cierre de la jornada por la preocupación ante mayores costes de financiación.",
+      "fecha": "2026-09-24",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El índice MSCI Emerging Markets acumula una revalorización del +30,59 % en la comparativa de los últimos doce meses.",
+      "fecha": "2026-09-24",
+      "fuentes": [
+        3,
+        4
+      ]
+    },
+    {
+      "texto": "El fondo indexado Acción IBEX 35 ETF cerró la jornada en 19,5720 euros por participación, frente a los 19,6380 euros del día previo, reflejando el tono de consolidación general del mercado.",
+      "fecha": "2026-09-24",
+      "fuentes": [
+        11
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable - Nikkei 225",
+      "valor": "66.364,20 puntos",
+      "referencia": "2026-09-25 (Nikkei Inc.)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - EURO STOXX Select 50 EUR",
+      "valor": "592,92 puntos",
+      "referencia": "2026-09-24 (STOXX Ltd.)",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable - S&P 500",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-24 (Falta cifra en fuente primaria)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Renta Fija - Bono alemán a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-24 (Falta publicador oficial en fuentes)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Renta Fija - Bono estadounidense a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-24 (Falta publicador oficial en fuentes)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Divisas - EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-24 (Falta publicador oficial en fuentes)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Materias Primas - Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "2026-09-25 (Falta publicador oficial en fuentes)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-25",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Informe mensual Eurostatistics de septiembre de 2026",
+      "anterior": null,
+      "porQueImporta": "Proporciona una síntesis integral de los indicadores económicos comunes para la región.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-25",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Informe sobre costes de compensación no dineraria (marzo 2026)",
+      "anterior": null,
+      "porQueImporta": "Aporta información relevante para vigilar la estructura de costes laborales en las empresas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-28",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estadística de condiciones de vida y población",
+      "anterior": null,
+      "porQueImporta": "Provee insumos demográficos clave para las cuentas de consumo agregado europeas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Indicador de Sentimiento Económico (ESI) y confianza empresarial de septiembre",
+      "anterior": null,
+      "porQueImporta": "Permite evaluar la actividad fabril frente al encarecimiento de la energía.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta de puestos vacantes y rotación laboral (JOLTS) de agosto",
+      "anterior": null,
+      "porQueImporta": "Ayuda a calibrar la tensión de la demanda de empleo y sus efectos en los precios.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales índices bursátiles de Asia han cerrado la semana con fuertes avances, liderados por el mercado japonés. Este movimiento responde al acercamiento entre las autoridades de Estados Unidos y China, que han extendido su tregua arancelaria hasta principios del próximo año.",
+        "En el continente europeo, la jornada bursátil transcurre con mayor contención y leves caídas. Los inversores vigilan con atención la deuda soberana (los bonos que emiten los países para financiarse), donde la rentabilidad exigida ha experimentado un repunte en las últimas sesiones.",
+        "Por su parte, la bolsa española opera bajo los recientes ajustes ordinarios de su indicador principal, adaptándose a la nueva configuración de las empresas cotizadas. Las operaciones sobre fondos de inversión que replican este índice reflejan ligeros descensos respecto al día anterior."
+      ],
+      "fuentes": [
+        1,
+        7,
+        8,
+        9,
+        11,
+        12
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La evolución simultánea del precio del crudo y de los intereses de la deuda ilustra una relación que condiciona a toda la economía. Cuando las tensiones en Oriente Medio elevan la cotización del petróleo, se genera presión directa sobre la inflación global en los próximos meses.",
+        "Ante este escenario, los contratos de futuros descuentan un coste del dinero alto durante más tiempo del previsto. Unos intereses más elevados encarecen la financiación de familias y empresas, limitando el margen para que las acciones sigan subiendo con la misma intensidad."
+      ],
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La agenda macroeconómica de los próximos días pone el foco en los datos laborales y de confianza empresarial. Al cierre de esta semana, se difunden las cifras sobre los costes laborales no dinerarios en los Estados Unidos, una pieza más para entender el impacto de la inflación.",
+        "A principios de la próxima semana, las instituciones europeas darán a conocer el sentimiento económico y la confianza de la industria. Estos datos permiten evaluar cómo resiste la actividad productiva frente al encarecimiento de la energía y las condiciones financieras estrictas."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/index/profile"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/nkave/archives/news/20260908E_1.pdf"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/891800/msci-em-emerging-markets-index-2"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/group/emerging-markets-indexes"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks/googn"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sxxsegt/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/weekly-outlook-surprisingly-calm"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/dam/descargas/indices/notices/index-manager/ag1526eng-revision.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/descargas/boletines/barcelona/2026/09/24/2_49_1_20260924.pdf"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/mercados-y-cotizaciones.html"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-25",
+    "hasta": "2026-09-25",
+    "corteIso": "2026-09-25T10:55:51.228Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Avances comerciales en Asia",
+      "texto": "Estados Unidos y China han acordado extender su tregua arancelaria hasta principios del próximo año. Este acercamiento impulsa a los mercados de la región asiática, destacando las alzas en Japón.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "El coste de la deuda sube",
+      "texto": "La rentabilidad exigida a los bonos de los Estados Unidos y Alemania aumenta frente a la sesión previa. Esto frena el entusiasmo en las bolsas occidentales por el temor a una financiación más cara.",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "titulo": "Revisión en el mercado español",
+      "texto": "El principal índice de la bolsa española opera bajo su nueva composición ordinaria. Los participantes se adaptan a los recientes ajustes de las empresas que forman el indicador.",
+      "fuentes": [
+        9,
+        12
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Tregua arancelaria",
+      "definicion": "Suspensión temporal de los impuestos que un país cobra por los bienes importados de otro, utilizada para facilitar negociaciones comerciales."
+    },
+    {
+      "termino": "Deuda soberana",
+      "definicion": "Conjunto de bonos y obligaciones que emite el Estado para financiar sus gastos públicos. Los inversores exigen una rentabilidad a cambio de prestar este capital."
+    },
+    {
+      "termino": "Fondos de inversión que replican este índice",
+      "definicion": "También conocidos como fondos indexados, son instrumentos que agrupan capital para invertir en las mismas acciones, y en la misma proporción, que un índice bursátil concreto."
+    },
+    {
+      "termino": "Rentabilidad",
+      "definicion": "El interés o beneficio que obtiene un inversor por prestar su dinero a un país o empresa a través de la adquisición de sus títulos de deuda."
+    },
+    {
+      "termino": "Sentimiento económico",
+      "definicion": "Indicador que mide el grado de optimismo o pesimismo que tienen los empresarios y consumidores sobre la situación actual y futura de la economía."
+    }
+  ]
+}

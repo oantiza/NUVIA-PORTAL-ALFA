@@ -1,0 +1,295 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-29",
+  "fecha": "2026-09-29",
+  "fechaIso": "2026-09-29T00:00:00.000Z",
+  "generadoIso": "2026-09-29T11:55:46.056Z",
+  "titular": "El encarecimiento de la energía eleva los rendimientos de la deuda y arrastra a los índices bursátiles a nivel global",
+  "entradilla": "El bloqueo diplomático en Oriente Medio ha impulsado el precio del petróleo y reactivado las presiones sobre la inflación. Este escenario provoca un aumento en los costes de financiación soberana y caídas en los principales mercados de valores de Europa, Asia y Estados Unidos.",
+  "hechos": [
+    {
+      "texto": "El índice estadounidense S&P 500 finalizó la jornada con un descenso del 0,77 % hasta los 7.683,93 puntos, en un contexto de repunte de los rendimientos de la deuda soberana.",
+      "fecha": "2026-09-28",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "El índice alemán DAX registró una caída del 0,13 % hasta situarse en los 25.374,42 puntos, arrastrado de forma directa por la debilidad mostrada en el mercado norteamericano.",
+      "fecha": "2026-09-28",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El índice japonés Nikkei 225 bajó un 0,73 % para finalizar la sesión en 65.877,62 yenes, afectado por el retroceso generalizado en el resto de plazas financieras internacionales.",
+      "fecha": "2026-09-28",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El índice MSCI Emerging Markets cerró en un nivel de 2.958,84 puntos, consolidando un avance acumulado cercano al 50 % durante los últimos doce meses de cotización.",
+      "fecha": "2026-09-28",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "El interés oficial constante del bono del Tesoro estadounidense a 10 años se situó en el 5,17 %, marcando cotas no observadas desde hace casi dos décadas ante el endurecimiento de las condiciones financieras.",
+      "fecha": "2026-09-25",
+      "fuentes": [
+        10
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "S&P 500 (EE. UU.)",
+      "valor": "7.683,93 puntos",
+      "referencia": "2026-09-28, S&P Global",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "DAX (Alemania)",
+      "valor": "25.374,42 puntos",
+      "referencia": "2026-09-28, Deutsche Börse",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Nikkei 225 (Japón)",
+      "valor": "65.877,62 yenes",
+      "referencia": "2026-09-28, Nikkei Indexes",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "MSCI Emerging Markets",
+      "valor": "2.958,84 puntos",
+      "referencia": "2026-09-28, MSCI",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Bono EE. UU. 10 años",
+      "valor": "5,17 %",
+      "referencia": "2026-09-25, Reserva Federal",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "IBEX 35 (España)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación en abierto por parte de BME para la jornada del 2026-09-28",
+      "fuentes": [
+        1,
+        2
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50",
+      "valor": "Sin contrastar",
+      "referencia": "Falta de publicación en abierto del índice de contado agregado por parte de STOXX para el 2026-09-28",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-29",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Indicador adelantado del IPC e IPCA de septiembre",
+      "anterior": "4,3 % anual en agosto",
+      "porQueImporta": "Anticipa las tensiones de precios en la economía y sirve de base para el cálculo de las rentabilidades reales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Comercio al por Menor de agosto",
+      "anterior": "Crecimiento plano interanual",
+      "porQueImporta": "Mide la salud de la demanda interna y la capacidad de consumo de los hogares en bienes comerciales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-29",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta de Puestos Vacantes y Rotación Laboral (JOLTS) de agosto",
+      "anterior": "7,67 millones de puestos vacantes en julio",
+      "porQueImporta": "Evalúa la presión de la demanda empresarial sobre la oferta laboral, clave para proyectar los futuros costes salariales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-30",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Cuentas Trimestrales no Financieras del segundo trimestre",
+      "anterior": "Datos del primer trimestre de 2026",
+      "porQueImporta": "Proporciona la magnitud de la tasa de ahorro de las familias y la capacidad de financiación de la economía frente al exterior.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-01",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar del Índice Armonizado de Precios de Consumo (IPCA) de septiembre",
+      "anterior": "3,2 % anual en agosto",
+      "porQueImporta": "Es la magnitud agregada principal que guía las deliberaciones sobre la política de tipos de interés del Banco Central Europeo.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La sesión ha estado marcada por las caídas generalizadas en las principales plazas financieras a nivel mundial. Los selectivos de Wall Street, Europa y Japón cerraron la jornada con descensos, perjudicados por el notable repunte de los rendimientos de la deuda gubernamental y por el encarecimiento de los recursos energéticos.",
+        "Dentro del tejido corporativo, el ámbito tecnológico ha evidenciado una marcada divergencia entre sus principales actores. Mientras determinadas compañías logran sostener sus cotizaciones mediante anuncios de adquisiciones masivas de acciones propias, otras entidades se ven penalizadas ante las crecientes dudas del mercado sobre los abultados desembolsos requeridos para desplegar infraestructuras de inteligencia artificial."
+      ],
+      "fuentes": [
+        3,
+        5,
+        7,
+        11
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El avance sostenido en los precios de los hidrocarburos tiene el efecto directo de reactivar las expectativas de inflación global. Cuando la energía se encarece, los costes operativos de la industria manufacturera aumentan y se reduce al mismo tiempo la capacidad de gasto de los hogares, un binomio que termina frenando el impulso económico general.",
+        "De manera simultánea, la tensión que se experimenta en las curvas de tipos (la representación gráfica de los rendimientos de la deuda para distintos plazos de tiempo) encarece notablemente la financiación empresarial e hipotecaria. Estos mayores costes de endeudamiento dificultan el crecimiento de los beneficios y limitan la holgura de las valoraciones en los activos de renta variable."
+      ],
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante los próximos días, el foco principal de atención recaerá en los datos adelantados de inflación, tanto para la economía española como para el conjunto de la zona del euro. Estas publicaciones resultan fundamentales para que los ciudadanos y las empresas puedan calibrar la efectividad de las medidas monetarias adoptadas hasta la fecha por las autoridades europeas.",
+        "Asimismo, en Estados Unidos se darán a conocer diversas estadísticas sobre la demanda de mano de obra y la rotación en las plantillas empresariales. Conocer el equilibrio real entre los puestos de trabajo disponibles y la cantidad de trabajadores dispuestos a cubrirlos es determinante para poder anticipar futuras presiones en los costes salariales del país."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Aktien-Frankfurt-Schluss-Dax-rutscht-mit-US-Schwaeche-knapp-ins-Minus-7a140717-fe65-4698-b1ad-4467403f5adc"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5nfe/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/History/NDX"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/archives/data"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/701519/msci-em-emerging-markets-index"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/749357/msci-emerging-markets-50-index"
+    },
+    {
+      "titulo": "Reserva Federal de Estados Unidos",
+      "url": "https://www.federalreserve.gov/releases/h15/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/nachrichten/Boerse-Stuttgart-Metas-KI-Agent-befeuert-Tech-Rallye-07f7439b-3ce6-45a5-9849-b6eaffc0e6d7"
+    },
+    {
+      "titulo": "barchart.com",
+      "url": "https://www.barchart.com/story/news/4840245/how-major-us-stock-indexes-fared-monday-9-28-2026"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-29",
+    "hasta": "2026-09-29",
+    "corteIso": "2026-09-29T11:55:46.056Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Presión en la deuda soberana",
+      "texto": "Los rendimientos de los bonos gubernamentales a diez años han repuntado tras el alza de los costes energéticos. Unos mayores costes de financiación dificultan la expansión económica y limitan el margen de crecimiento operativo de las empresas.",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "titulo": "Descensos en las bolsas globales",
+      "texto": "Los principales índices de Wall Street, Europa y Japón han cerrado la sesión con caídas generalizadas. La subida de los rendimientos de la deuda (rentabilidad del bono) reduce el atractivo relativo de la renta variable para los inversores.",
+      "fuentes": [
+        3,
+        5,
+        7
+      ]
+    },
+    {
+      "titulo": "Divergencia en el sector tecnológico",
+      "texto": "Las grandes corporaciones tecnológicas muestran comportamientos mixtos en el mercado. El sector se divide entre aquellas que anuncian adquisiciones de acciones propias y las que afrontan dudas por los elevados desembolsos exigidos para mantener infraestructuras de inteligencia artificial.",
+      "fuentes": [
+        11
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "rentabilidad del bono",
+      "definicion": "El interés efectivo que obtiene un inversor por financiar a un Estado o a una empresa privada. Esta magnitud siempre se mueve de forma inversa al precio del título en el mercado."
+    },
+    {
+      "termino": "curvas de tipos",
+      "definicion": "Una representación gráfica que ordena y muestra los rendimientos que ofrece la deuda de un mismo emisor para diferentes plazos de vencimiento, desde unos pocos meses hasta varias décadas."
+    },
+    {
+      "termino": "renta variable",
+      "definicion": "Conjunto de activos financieros, principalmente compuesto por las acciones de las empresas cotizadas, cuyos rendimientos futuros no están garantizados y dependen íntegramente de la evolución del negocio."
+    },
+    {
+      "termino": "adquisiciones de acciones propias",
+      "definicion": "Práctica financiera mediante la cual una empresa adquiere sus propios títulos en el mercado para posteriormente amortizarlos, lo que reduce el número total de acciones en circulación y eleva la participación de los socios restantes."
+    }
+  ]
+}

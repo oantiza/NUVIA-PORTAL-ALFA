@@ -1,0 +1,242 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-09-21",
+  "fecha": "2026-09-21",
+  "fechaIso": "2026-09-21T00:00:00.000Z",
+  "generadoIso": "2026-09-21T11:36:04.468Z",
+  "titular": "Las bolsas europeas retroceden arrastradas por el vencimiento de derivados y la escalada de la deuda.",
+  "entradilla": "La sesión bursátil finalizó con descensos generalizados en Europa, marcada por el reajuste de las carteras tras el fin de los contratos trimestrales. El aumento generalizado del interés que pagan los Estados por financiarse incrementó el coste del dinero para las empresas, presionando las cotizaciones a la baja.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 retrocedió 318,00 puntos (-1,60 %) hasta los 19.513,80 puntos el 18 de septiembre de 2026, presionado por los cambios de carteras vinculados a la liquidación trimestral de contratos financieros.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "texto": "El indicador alemán DAX cayó un 1,60 % hasta situarse en los 25.304,06 puntos al cierre de la sesión del 18 de septiembre de 2026.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El índice europeo EURO STOXX 50 disminuyó 86,70 puntos (-1,37 %) el 18 de septiembre de 2026 hasta los 6.236,20 puntos.",
+      "fecha": "2026-09-18",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "La tasa anual de la actividad del sector de servicios en España registró un incremento del 5,1 % en julio de 2026.",
+      "fecha": "2026-07-31",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "-1,60 %",
+      "referencia": "2026-09-18 (BME Exchange)",
+      "fuentes": [
+        2,
+        3
+      ]
+    },
+    {
+      "etiqueta": "DAX",
+      "valor": "-1,60 %",
+      "referencia": "2026-09-18 (Deutsche Börse)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50",
+      "valor": "-1,37 %",
+      "referencia": "2026-09-18 (Morningstar)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Actividad del Sector Servicios (España)",
+      "valor": "+5,1 % interanual",
+      "referencia": "Julio 2026 (INE)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Bono Español a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Ausencia de fuente primaria oficial provista",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent",
+      "valor": "Sin contrastar",
+      "referencia": "Ausencia de fuente primaria oficial provista",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-09-21",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Indicadores de actividad del sector servicios (IASS)",
+      "anterior": "+5,1 % interanual",
+      "porQueImporta": "Determina la evolución y la salud del sector terciario al inicio del período estival.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "fecha": "2026-09-22",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estadísticas de precios de los combustibles e importaciones de bienes energéticos",
+      "anterior": null,
+      "porQueImporta": "Permite medir la factura energética exterior comunitaria y su efecto en los costes de producción.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-09-23",
+      "hora": "09:15",
+      "region": "Eurozona",
+      "que": "Índice de gestores de compras (PMI) manufacturero y de servicios",
+      "anterior": null,
+      "porQueImporta": "Constituye un indicador adelantado de la evolución del crecimiento económico en la región.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La sesión bursátil del viernes en Europa y España culminó con caídas notables. El índice español IBEX 35 retrocedió impulsado por los descensos de empresas industriales y de telefonía. Esta jornada coincidió con el vencimiento trimestral de derivados (la liquidación de los contratos de futuros), un evento que eleva la negociación bursátil y acentúa los movimientos diarios por la reorganización de los fondos de inversión.",
+        "Por su parte, el banco central japonés acordó elevar su tipo de interés de referencia del 1,00 % al 1,25 %. Esta decisión hizo avanzar al índice nipón, tras atenuarse las expectativas del mercado sobre un ciclo rápido de nuevas alzas que fortalezcan en exceso a su moneda local.",
+        "En el mercado de materias primas, el coste del barril de petróleo experimentó descensos diarios. Este movimiento se vio facilitado por los avances en la recuperación parcial de las vías de transporte de crudo en la zona de Oriente Próximo y las reservas alternativas."
+      ],
+      "fuentes": [
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El repunte del rendimiento del bono soberano a largo plazo resulta fundamental para entender la evolución de los mercados. Unos bonos con un interés mayor elevan el coste de los préstamos de las compañías y disminuyen el valor actual de sus ingresos futuros, dificultando el avance de las acciones.",
+        "La relajación puntual en los precios del petróleo contribuye a atenuar las presiones sobre los gastos corporativos. No obstante, las restricciones logísticas de transporte mantienen vivo el riesgo de posibles subidas de tarifas energéticas a nivel global."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante la semana, los mercados vigilarán de cerca la publicación de datos de la economía real. En España, el Instituto Nacional de Estadística reporta las cifras de negocios del área industrial, un registro imprescindible para medir el dinamismo y la evolución del sector productivo.",
+        "A nivel comunitario, se divulgarán los índices PMI, unas encuestas que funcionan como un termómetro adelantado sobre la posible expansión o contracción económica del territorio europeo en su conjunto.",
+        "Por último, en Estados Unidos se comunicará el índice semanal de las solicitudes de préstamos hipotecarios. Este reporte permitirá comprobar cómo impacta el alto coste de la deuda pública en las peticiones de crédito de la ciudadanía."
+      ],
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Instituto Nacional de Estadística",
+      "url": "https://www.ine.es/"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/mercados-y-cotizaciones/acciones/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "alponiente.com",
+      "url": "https://alponiente.com/resumen-economico-de-la-semana-del-14-al-18-de-septiembre-de-2026/"
+    },
+    {
+      "titulo": "meff.es",
+      "url": "https://www.meff.es/esp/?fbclid=PAZXh0bgNhZW0CMTEAAaa5K-LG8uHlnwXFvsA6Amj7T5o3tZXGcyFFwwRwnw0abMSyEYsS5To2hxk_aem_IhWahIEgSLddunGOJBg7Ww"
+    },
+    {
+      "titulo": "elperiodicodeceuta.es",
+      "url": "https://www.elperiodicodeceuta.es/cierre-ibex-35-bolsa-espana-hoy-viernes-18-de-septiembre-de-2026/"
+    },
+    {
+      "titulo": "morningstar.com",
+      "url": "https://www.morningstar.com/news/dow-jones/202609185055/euro-stoxx-50-index-ends-the-week-141-lower-at-623620-data-talk"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 8
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-09-21",
+    "hasta": "2026-09-21",
+    "corteIso": "2026-09-21T11:36:04.468Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Vencimiento trimestral de derivados",
+      "texto": "La liquidación simultánea de contratos financieros generó altos volúmenes de negociación en Europa. Este fenómeno habitual modifica las carteras de los fondos de inversión y acentúa los movimientos de las bolsas al margen de los datos económicos.",
+      "fuentes": [
+        3,
+        6
+      ]
+    },
+    {
+      "titulo": "Aumento de tipos en Japón",
+      "texto": "El banco central de Japón elevó el precio del dinero al 1,25 %. La medida impulsó al principal índice japonés al atenuar las expectativas del mercado sobre futuras subidas de tipos inmediatas.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Escalada de la deuda a largo plazo",
+      "texto": "Los intereses de los bonos a largo plazo alcanzaron niveles altos en Estados Unidos y Europa. Esto eleva el coste del capital para las empresas y lastró los índices europeos durante la sesión.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Vencimiento trimestral de derivados",
+      "definicion": "Jornada en la que expiran los contratos financieros sobre acciones e índices bursátiles. Obliga a liquidar acuerdos o renovarlos, aumentando la negociación y la volatilidad del mercado."
+    },
+    {
+      "termino": "Rendimiento del bono",
+      "definicion": "El porcentaje de beneficio anual que recibe un inversor por prestar su dinero a un Estado o empresa mediante la adquisición de títulos de su deuda."
+    },
+    {
+      "termino": "Tipo de interés de referencia",
+      "definicion": "El precio que establece un banco central para prestar dinero a los demás bancos. Impacta directamente en lo que cuestan los créditos e hipotecas para toda la economía."
+    },
+    {
+      "termino": "PMI",
+      "definicion": "Índice basado en encuestas a directivos que evalúa la salud económica de un sector. Si el dato supera los cincuenta puntos indica crecimiento productivo, mientras que una cifra inferior señala deterioro."
+    }
+  ]
+}

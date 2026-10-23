@@ -1,0 +1,273 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-23",
+  "fecha": "2026-10-23",
+  "fechaIso": "2026-10-23T00:00:00.000Z",
+  "generadoIso": "2026-10-23T10:50:47.924Z",
+  "titular": "Caídas bursátiles internacionales por las tecnológicas y repunte del rendimiento en la deuda pública de Francia.",
+  "entradilla": "Los principales índices de renta variable cerraron la sesión del 22 de octubre con descensos, arrastrados por los resultados corporativos del sector tecnológico. Al mismo tiempo, el coste de financiación de Francia registró su nivel más alto desde el año 2002 ante las dificultades políticas del país.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 finalizó la jornada con un descenso diario de 410,00 puntos, lo que equivale a una bajada del 2,12 %.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El indicador europeo EURO STOXX 50 clausuró la sesión con una pérdida de 116,90 puntos, anotando un retroceso del 1,89 %.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El índice bursátil alemán DAX 40 cedió 273,29 puntos durante la jornada, lo que significó un descenso diario del 1,07 %.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono del Tesoro estadounidense a diez años disminuyó 18 puntos básicos, hasta establecerse en el 4,96 %.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El índice VIX de volatilidad repuntó 2,12 puntos respecto a su nivel previo, alcanzando los 18,80 puntos al cierre oficial.",
+      "fecha": "2026-10-22",
+      "fuentes": [
+        5
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "18913.50 puntos",
+      "referencia": "2026-10-22 Bolsas y Mercados Españoles",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50",
+      "valor": "6090.36 puntos",
+      "referencia": "2026-10-22 STOXX",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "DAX 40",
+      "valor": "25371.75 puntos",
+      "referencia": "2026-10-22 Deutsche Börse",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años",
+      "valor": "4.96",
+      "referencia": "2026-10-22 Tesoro de EE. UU.",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "EUR/USD",
+      "valor": "1.1205 USD",
+      "referencia": "2026-10-22 BCE",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Índice VIX de volatilidad",
+      "valor": "18.80 puntos",
+      "referencia": "2026-10-22 Cboe",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Oro (LBMA Gold Price)",
+      "valor": "null",
+      "referencia": "Sin contrastar (acceso restringido a subasta)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-23",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Coyuntura Turística Hotelera de septiembre",
+      "anterior": "Índice de Precios Hoteleros al +6,2 % interanual",
+      "porQueImporta": "Indicador adelantado del impacto y aportación del turismo a la economía española",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "10:00",
+      "region": "España",
+      "que": "Indicador Multidimensional de Calidad de Vida (2025)",
+      "anterior": "101,44 puntos",
+      "porQueImporta": "Medición estadística de las condiciones materiales y el bienestar social en el país",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "15:45",
+      "region": "EEUU",
+      "que": "PMI manufacturero y de servicios preliminar de octubre",
+      "anterior": "Manufacturero 55,9",
+      "porQueImporta": "Termómetro directo de la actividad privada y el volumen de nuevos contratos empresariales",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-23",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Índice de Sentimiento del Consumidor de la Universidad de Michigan",
+      "anterior": "48,1 puntos",
+      "porQueImporta": "Referencia clave para proyectar el gasto de consumo privado y las expectativas de inflación",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-26",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Indicadores de cofinanciación y gasto en defensa (2025)",
+      "anterior": "null",
+      "porQueImporta": "Permite la supervisión de las partidas de gasto presupuestario no sujetas a restricciones",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-27",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Tablas de Origen y Destino de la Unión Europea (2024)",
+      "anterior": "null",
+      "porQueImporta": "Ofrece un diagnóstico estructural sobre la solidez de las cadenas de valor intraeuropeas",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "El 22 de octubre de 2026, los mercados de acciones registraron caídas generalizadas. El movimiento a la baja estuvo encabezado por el sector tecnológico, justo tras conocerse que la compañía Meta Platforms aumentará sustancialmente sus gastos en infraestructura de inteligencia artificial hasta alcanzar los 135.000 millones de dólares. A su vez, el sector bancario español experimentó marcados descensos; la entidad Bankinter cedió un 7,56 % en la sesión a pesar de haber anunciado de forma oficial un aumento del 11 % en sus beneficios netos durante los primeros nueve meses del año.",
+        "En los mercados de renta fija, los grandes inversores orientaron sus flujos monetarios hacia los bonos de Estados Unidos y de Alemania. Como resultado, la rentabilidad del bono del Tesoro estadounidense a diez años (el interés real que ofrece este título a sus tenedores) cayó 18 puntos básicos hasta situarse en el 4,96 %. Por el contrario, el coste de la deuda pública de Francia a diez años rebasó de forma inusual el 5,00 % ante las recientes protestas laborales y el escrutinio de las agencias calificadoras sobre sus cuentas estatales."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Los analistas del sector observan un evidente cambio en las prioridades de los inversores. Christoph Müller, experto de DZ Bank, detalla que los mercados exigen en la actualidad una mayor visibilidad sobre los flujos de caja reales que generará la inteligencia artificial a corto plazo, cuestionando así los grandes desembolsos iniciales. Por su parte, JJ Kinahan, de Cboe Global Markets, argumenta que se ha producido una notable redistribución de liquidez hacia sectores defensivos que presentan una menor exposición a los vaivenes del ciclo económico, destacando los bienes de consumo de primera necesidad y las infraestructuras de comunicaciones.",
+        "En el entorno europeo, las dificultades institucionales que atraviesa Francia aumentan los riesgos sobre su capacidad para cumplir los estrictos objetivos de reducción de déficit, tal y como advierten desde la firma ING Research. A este complicado panorama financiero se le suma la tensión en el mercado energético, dado que el barril de petróleo Brent rozó los 112 dólares el 22 de octubre tras varios incidentes de suministro en Oriente Próximo. Ulrich Wortberg, desde Helaba, indica que un mayor coste de la energía amenaza con elevar la inflación y dificulta futuras rebajas de los tipos rectores en Occidente."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "Durante el transcurso del 23 de octubre de 2026, la atención estadística se desplaza de lleno hacia la actividad del sector privado de los Estados Unidos con la publicación del índice PMI (un indicador basado en encuestas a directivos que mide la salud general de la economía). Posteriormente, se divulgará el sentimiento de los consumidores estadounidenses, una pieza fundamental para prever la fortaleza futura de su consumo interno. En el territorio nacional, el Instituto Nacional de Estadística publica a primera hora los datos de coyuntura turística hotelera, los cuales sirven para anticipar el peso real del turismo en el producto interior bruto español."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/archives/summary"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/tradable-products/vix/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/SXLV5GT/?factsheet=true&d=2026-10"
+    },
+    {
+      "titulo": "google.com",
+      "url": "https://www.google.com/finance/beta/quote/I:INDEXBME?hl=es"
+    },
+    {
+      "titulo": "bsmarkets.com",
+      "url": "https://www.bsmarkets.com/cs/Satellite?cid=1191407146076&pagename=BSMarkets2%2FPage%2FPage_Interna_WFG_Template&language=es_ES"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 9
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-23",
+    "hasta": "2026-10-23",
+    "corteIso": "2026-10-23T10:50:47.924Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Tecnológicas e inteligencia artificial",
+      "texto": "Las bolsas internacionales sufrieron caídas lideradas por el sector tecnológico tras las previsiones de gasto en infraestructura de Meta Platforms. Según explica DZ Bank, los inversores exigen ahora una monetización real a corto plazo de estas inversiones tecnológicas.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Tensión en la deuda francesa",
+      "texto": "El rendimiento del bono soberano de Francia a diez años superó la barrera del cinco por ciento debido al riesgo fiscal. ING Research señala que los problemas institucionales reducen la viabilidad del plan de consolidación presupuestaria del Gobierno galo.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Geopolítica y costes energéticos",
+      "texto": "El precio del petróleo Brent experimentó repuntes intradía vinculados a tensiones en Oriente Próximo. Desde Helaba apuntan que un mayor coste de la energía dificulta las bajadas de los tipos rectores al añadir presión constante sobre los precios al consumo.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "punto básico",
+      "definicion": "Unidad de medida matemática equivalente a la centésima parte de un punto porcentual, empleada habitualmente en finanzas para expresar variaciones precisas en los tipos de interés."
+    },
+    {
+      "termino": "rentabilidad del bono",
+      "definicion": "El interés real que recibe un inversor por adquirir un título de deuda pública, cuyo porcentaje de beneficio evoluciona en los mercados de forma estrictamente inversa a su precio."
+    },
+    {
+      "termino": "PMI",
+      "definicion": "Índice económico que refleja la evolución del sector privado basándose en encuestas mensuales realizadas a los gestores de compras sobre niveles de producción, empleo y nuevos pedidos."
+    },
+    {
+      "termino": "tipo rector",
+      "definicion": "El tipo de interés oficial fijado por un banco central de referencia, el cual sirve como base fundamental para determinar el coste general del crédito dentro del sistema financiero."
+    }
+  ]
+}

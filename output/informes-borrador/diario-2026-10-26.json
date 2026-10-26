@@ -1,0 +1,286 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-26",
+  "fecha": "2026-10-26",
+  "fechaIso": "2026-10-26T00:00:00.000Z",
+  "generadoIso": "2026-10-26T12:02:49.427Z",
+  "titular": "Los índices de tecnología frenan su avance y las plazas bursátiles operan sin dirección clara.",
+  "entradilla": "El mercado de acciones mostró oscilaciones moderadas ante la ausencia de anuncios del Banco Central Europeo. Los índices tecnológicos en Estados Unidos terminaron sin apenas variación, mientras que los parqués asiáticos registraron descensos al inicio de la semana.",
+  "hechos": [
+    {
+      "texto": "El índice tecnológico Nasdaq 100 cerró en 28.957,53 puntos, con una variación del 0,00 % tras oscilar más de 300 puntos durante el día.",
+      "fecha": "2026-10-23",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "texto": "El índice japonés Nikkei 225 descendió 503,51 puntos, equivalente a un retroceso del 0,80 %, hasta situarse en los 62.189,65 puntos.",
+      "fecha": "2026-10-26",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El índice IBEX 35 español avanzó 76,30 puntos, lo que representa una subida del 0,40 %, y cerró en 18.989,80 puntos.",
+      "fecha": "2026-10-23",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice estadounidense S&P 500 finalizó la jornada en 7.623,68 puntos, anotando un descenso del 0,52 % en su versión de retorno de precio.",
+      "fecha": "2026-10-23",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "texto": "El índice EURO STOXX 50 cedió 18,79 puntos, lo que supone un descenso del 0,31 % respecto a la sesión anterior.",
+      "fecha": "2026-10-23",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (España)",
+      "valor": "18.989,80 puntos",
+      "referencia": "2026-10-23, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "EURO STOXX 50 (Europa)",
+      "valor": "6.068 puntos",
+      "referencia": "2026-10-23, STOXX",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "DAX (Alemania)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-23, Deutsche Börse",
+      "fuentes": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "etiqueta": "S&P 500 (Estados Unidos)",
+      "valor": "7.623,68 puntos",
+      "referencia": "2026-10-23, S&P Global",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Nasdaq 100 (Estados Unidos)",
+      "valor": "28.957,53 puntos",
+      "referencia": "2026-10-23, Nasdaq",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "Nikkei 225 (Japón)",
+      "valor": "62.189,65 puntos",
+      "referencia": "2026-10-26, Nikkei Inc.",
+      "fuentes": [
+        2
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-26",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Precios Industriales (IPRI) de septiembre",
+      "anterior": "+13,2 % anual",
+      "porQueImporta": "Muestra las tensiones en los costes de las fábricas antes de llegar al consumidor general.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-27",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Encuesta de Población Activa (EPA) del tercer trimestre",
+      "anterior": "9,87 % de desempleo",
+      "porQueImporta": "Permite examinar la creación de puestos de trabajo y la actividad real de la economía española.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-27",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Desarrollos monetarios (agregado M3) de septiembre",
+      "anterior": "+3,5 % anual",
+      "porQueImporta": "Cuantifica el flujo de financiación bancaria que fluye de forma efectiva hacia el sector privado.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-28",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Reunión de política monetaria del Banco Central Europeo (día 1)",
+      "anterior": null,
+      "porQueImporta": "Fija el precio de la liquidez para el sistema bancario e influye en los costes de las hipotecas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-28",
+      "hora": "15:00",
+      "region": "EEUU",
+      "que": "Encuesta de Ofertas de Empleo y Rotación Laboral (JOLTS)",
+      "anterior": null,
+      "porQueImporta": "Mide el volumen de puestos de trabajo vacantes y ofrece pistas sobre las presiones salariales.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los mercados financieros (plataformas donde se intercambian activos de valor) mostraron un comportamiento dispar al cierre de la semana occidental y en el inicio de la sesión asiática.",
+        "El índice Nasdaq 100 de Estados Unidos concluyó la jornada sin variación porcentual, tras registrar movimientos intensos de más de 300 puntos, mientras que en Europa el IBEX 35 cerró con un suave avance.",
+        "Por su parte, el índice japonés Nikkei 225 inició la nueva semana con descensos acusados en la plaza bursátil de Tokio, rompiendo la tendencia de estabilidad observada en otros puntos geográficos."
+      ],
+      "fuentes": [
+        1,
+        2,
+        10
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El estancamiento en las empresas tecnológicas estadounidenses refleja una reevaluación del elevado gasto en inteligencia artificial (sistemas informáticos avanzados) y su impacto en la contabilidad.",
+        "La ausencia de una tendencia definida en los mercados coincide con el periodo de discreción del Banco Central Europeo, justo antes de su inminente reunión institucional para debatir sobre la política monetaria."
+      ],
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "En las próximas sesiones, la atención se concentra casi en exclusiva en la próxima reunión del Banco Central Europeo, que establecerá los tipos de interés (el coste que se paga por el dinero).",
+        "Además, se difunden estadísticas detalladas sobre el mercado laboral en España y la cantidad de efectivo en circulación en la zona del euro, que ayudan a medir el pulso y ritmo de la economía real."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/unscheduled-adjustment-in-the-mdax-oct-23-2026/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/swd60v/"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/weekly-outlook-new-tech-earnings-meet-ai-concerns"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/suchergebnisse?_type=iNAVs&_search=commerzbank"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/History/NDX"
+    },
+    {
+      "titulo": "timeanddate.com",
+      "url": "https://www.timeanddate.com/"
+    },
+    {
+      "titulo": "bolsamania.com",
+      "url": "https://www.bolsamania.com/indice/IBEX-35"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-26",
+    "hasta": "2026-10-26",
+    "corteIso": "2026-10-26T12:02:49.427Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Pausa en el sector tecnológico",
+      "texto": "El índice Nasdaq 100 de Estados Unidos terminó la sesión plana tras evaluar los elevados costes que exigen los nuevos desarrollos de inteligencia artificial.",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "titulo": "Caídas en el mercado asiático",
+      "texto": "El índice japonés Nikkei 225 cerró con un descenso notable en la primera sesión de la semana, reflejando un ajuste en la región asiática.",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "titulo": "Estabilidad en la bolsa española",
+      "texto": "El índice IBEX 35 logró un ligero avance frente a los retrocesos de otros grandes mercados, manteniendo un nivel estable de cotización.",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "mercados financieros",
+      "definicion": "Plataformas físicas o digitales donde se intercambian activos económicos como las acciones de empresas o los bonos de deuda."
+    },
+    {
+      "termino": "inteligencia artificial",
+      "definicion": "Sistemas informáticos avanzados cuyo desarrollo exige elevadas inversiones iniciales a las compañías del sector tecnológico."
+    },
+    {
+      "termino": "política monetaria",
+      "definicion": "Conjunto de decisiones que toma un banco central para controlar la cantidad de dinero en circulación y los costes de financiación de un país."
+    },
+    {
+      "termino": "tipos de interés",
+      "definicion": "El coste que debe pagarse por pedir dinero prestado, fijado habitualmente como referencia oficial por los bancos centrales."
+    }
+  ]
+}

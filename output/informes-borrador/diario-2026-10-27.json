@@ -1,0 +1,280 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-27",
+  "fecha": "2026-10-27",
+  "fechaIso": "2026-10-27T00:00:00.000Z",
+  "generadoIso": "2026-10-27T11:24:08.804Z",
+  "titular": "El interés del bono estadounidense alcanza el cinco por ciento ante la presión energética",
+  "entradilla": "Los mercados de deuda reflejan la inquietud por el suministro de petróleo con subidas en sus rendimientos. Mientras tanto, las bolsas de Estados Unidos avanzan impulsadas por las expectativas en el sector tecnológico.",
+  "hechos": [
+    {
+      "texto": "El índice tecnológico Nasdaq 100 cerró la sesión con un avance del +1,09 %, situándose en 29.302,67 puntos impulsado por el sector de la tecnología.",
+      "fecha": "2026-10-26",
+      "fuentes": [
+        6
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono estadounidense a diez años alcanzó el 5,00 % debido a las tensiones en rutas marítimas estratégicas y la evolución del petróleo.",
+      "fecha": "2026-10-26",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "texto": "El índice bursátil alemán DAX registró un descenso del -0,75 %, finalizando la jornada en 25.181,65 puntos.",
+      "fecha": "2026-10-26",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "texto": "El índice Nikkei 225 de Tokio experimentó un alza del +1,73 %, culminando la sesión asiática en 63.268,37 yenes.",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        8
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (España)",
+      "valor": "19.033,30 puntos",
+      "referencia": "2026-10-26 (BME)",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "DAX (Alemania)",
+      "valor": "25.181,65 puntos",
+      "referencia": "2026-10-26 (STOXX)",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "S&P 500 (Estados Unidos)",
+      "valor": "7.676,77 puntos",
+      "referencia": "2026-10-26 (S&P Global)",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "etiqueta": "Nikkei 225 (Japón)",
+      "valor": "63.268,37 yenes",
+      "referencia": "2026-10-27 (Nikkei)",
+      "fuentes": [
+        8
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años",
+      "valor": "5,00 %",
+      "referencia": "2026-10-26 (Tesoro EE. UU.)",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "Bono de España a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-26",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-27",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Encuesta de Población Activa (EPA) del tercer trimestre de 2026",
+      "anterior": "10,45 % de tasa de paro",
+      "porQueImporta": "Medición oficial de la evolución del empleo y el mercado laboral en el país.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-27",
+      "hora": "10:00",
+      "region": "Eurozona",
+      "que": "Encuesta de préstamos bancarios del Banco Central Europeo",
+      "anterior": null,
+      "porQueImporta": "Permite conocer si los bancos están facilitando o restringiendo el crédito a la economía real.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-28",
+      "hora": "11:30",
+      "region": "Alemania",
+      "que": "Subasta de deuda pública a diez años",
+      "anterior": "3,58 % de rendimiento medio",
+      "porQueImporta": "Sirve como termómetro para medir el coste de financiación del activo considerado más seguro en Europa.",
+      "fuentes": [
+        12
+      ]
+    },
+    {
+      "fecha": "2026-10-28",
+      "hora": "20:00",
+      "region": "EEUU",
+      "que": "Decisión de política monetaria de la Reserva Federal (FOMC)",
+      "anterior": "límite superior en el 4,00 %",
+      "porQueImporta": "Determina el coste del dinero de la principal economía del mundo, afectando a las finanzas globales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-29",
+      "hora": "14:15",
+      "region": "Eurozona",
+      "que": "Decisiones de política monetaria del Banco Central Europeo",
+      "anterior": "tipo de la facilidad de depósito en 2,50 %",
+      "porQueImporta": "Fija las condiciones monetarias y el coste de financiación para los países que comparten el euro.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La jornada financiera ha estado marcada por una clara diferencia de comportamiento entre las bolsas y los mercados de deuda. En Estados Unidos, los principales índices de acciones han registrado ganancias notables, impulsados especialmente por las empresas del sector tecnológico.",
+        "El índice Nasdaq 100 lideró estas subidas mientras los inversores ajustaban sus carteras ante las inminentes reuniones de los bancos centrales. En contraste, la renta fija (instrumentos de deuda como los bonos) ha sufrido presiones a la baja en sus precios, lo que eleva su rendimiento de forma automática."
+      ],
+      "fuentes": [
+        6,
+        10
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "El rendimiento del bono del Tesoro estadounidense a diez años, un indicador clave de la deuda soberana (préstamos que emite un Estado), escaló hasta el 5,00 %. Este incremento responde a la inquietud internacional por las rutas comerciales de petróleo y el coste de la energía.",
+        "Cuando el petróleo sube por tensiones geopolíticas, se reactiva el temor a un repunte de la inflación (subida general de los precios). Esto presiona a los bancos centrales para mantener los tipos de interés (el coste oficial del dinero) elevados, encareciendo así el crédito para las familias y las empresas."
+      ],
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención global se dirige hacia la Reserva Federal (banco central de Estados Unidos) y el Banco Central Europeo, que anunciarán en breve sus decisiones de política monetaria. Sus posturas definirán las condiciones financieras y el rumbo de la economía en el medio plazo.",
+        "A nivel europeo, el Tesoro de Alemania emitirá nueva deuda a diez años mediante una subasta pública. Este evento servirá para comprobar el apetito de los inversores por los activos considerados más seguros, en un momento donde las entidades bancarias están restringiendo el acceso a la financiación privada."
+      ],
+      "fuentes": [
+        12
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-de/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/sx5e/"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://stoxx.com/index/dax/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/index-family/equity/us-equity/"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/891800/msci-em-emerging-markets-index-2"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/972686/10bb61043d2b43093ae43015344ffe08/472B63F073F071307366337C94F8C870/2026-10-data.pdf"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/964916/dcd980529ff6fc4028b1ceaeeab52ada/472B63F073F071307366337C94F8C870/2026-10-27-ausschreibung-download.pdf"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-27",
+    "hasta": "2026-10-27",
+    "corteIso": "2026-10-27T11:24:08.804Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Tensión en la deuda",
+      "texto": "El rendimiento del bono del Tesoro de Estados Unidos a diez años ha escalado hasta el 5,00 %. Este movimiento refleja el nerviosismo por la seguridad de las rutas comerciales de energía en Oriente Medio.",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "titulo": "Avances en Wall Street",
+      "texto": "Los principales índices bursátiles estadounidenses han cerrado con subidas, lideradas por el sector tecnológico. El mercado se posiciona antes de las inminentes decisiones de los bancos centrales.",
+      "fuentes": [
+        5,
+        6
+      ]
+    },
+    {
+      "titulo": "El crédito se endurece",
+      "texto": "Los bancos de la zona del euro han restringido aún más los requisitos para otorgar financiación a familias y empresas. Las entidades justifican esta postura por el incremento del riesgo económico internacional.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Renta fija",
+      "definicion": "Instrumentos de deuda emitidos por Estados o empresas para financiarse, cuyos intereses suelen conocerse de antemano."
+    },
+    {
+      "termino": "Deuda soberana",
+      "definicion": "Conjunto de préstamos o bonos emitidos por un Estado para financiar sus gastos públicos."
+    },
+    {
+      "termino": "Inflación",
+      "definicion": "Aumento generalizado y continuo de los precios de los bienes y servicios de una economía durante un período de tiempo."
+    },
+    {
+      "termino": "Tipos de interés",
+      "definicion": "El porcentaje que las instituciones financieras cobran por prestar dinero o pagan por los depósitos."
+    },
+    {
+      "termino": "Reserva Federal",
+      "definicion": "El banco central de los Estados Unidos, encargado de dirigir la política monetaria del país y supervisar su sistema bancario."
+    }
+  ]
+}

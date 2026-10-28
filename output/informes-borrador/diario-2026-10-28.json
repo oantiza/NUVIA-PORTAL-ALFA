@@ -1,0 +1,278 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-10-28",
+  "fecha": "2026-10-28",
+  "fechaIso": "2026-10-28T00:00:00.000Z",
+  "generadoIso": "2026-10-28T11:57:28.060Z",
+  "titular": "La bolsa española supera los 19.160 puntos en una jornada de avisos empresariales en el sector europeo del automóvil",
+  "entradilla": "Los principales mercados de acciones registraron alzas generalizadas, lideradas por los avances en Asia y España. En el plano corporativo, las reducciones de expectativas en la industria del automóvil reflejaron diversas dificultades operativas. Por su parte, los datos laborales españoles mostraron un mercado capaz de atraer nuevos trabajadores sin absorberlos por completo.",
+  "hechos": [
+    {
+      "texto": "El índice Nikkei 225 japonés avanzó 1.078,72 puntos (+1,73 %) en la sesión del 27 de octubre.",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "texto": "El índice IBEX 35 cerró con un incremento de 127,30 puntos (+0,67 %).",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice S&P 500 finalizó la jornada de cotización con una subida del +0,60 %.",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El índice Euro Stoxx 50 registró una bajada del -0,36 % al cierre.",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "Mercedes-Benz Group AG comunicó una reducción formal en sus proyecciones operativas debido a los costes previstos para el cierre del ejercicio y la situación en China.",
+      "fecha": "2026-10-27",
+      "fuentes": [
+        2
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35 (Renta variable)",
+      "valor": "19.160,60 puntos",
+      "referencia": "2026-10-27 BME",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "S&P 500 (Renta variable)",
+      "valor": "7.722,60 puntos",
+      "referencia": "2026-10-27 S&P Global",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "Bono de EE. UU. a 10 años (Deuda)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-27 (falta cierre formal en fuentes de referencia)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD (Divisas)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-27 (carencia de fuente oficial en listado de contraste)",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent (Materias primas)",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-27 (carencia de fuente oficial en listado de contraste)",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-10-28",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Cuentas trimestrales no financieras de los sectores institucionales",
+      "anterior": "14,2 % en el trimestre anterior",
+      "porQueImporta": "Permite conocer la renta disponible y la capacidad de ahorro de las familias europeas.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-28",
+      "hora": "15:00",
+      "region": "EEUU",
+      "que": "Empleo y Desempleo en Áreas Metropolitanas",
+      "anterior": null,
+      "porQueImporta": "Facilita el seguimiento de la dispersión geográfica en la creación de puestos de trabajo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-29",
+      "hora": "14:15",
+      "region": "Eurozona",
+      "que": "Decisiones de política monetaria y tipos de interés",
+      "anterior": "2,50 % en la facilidad de depósito",
+      "porQueImporta": "Determina las condiciones de financiación y el coste del dinero para los bancos comerciales.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-29",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Índices de Comercio al por Menor",
+      "anterior": null,
+      "porQueImporta": "Funciona como indicador mensual de la evolución del consumo privado en el país.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-30",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Avance del Índice de Precios de Consumo (IPC)",
+      "anterior": "+4,9 % interanual en septiembre de 2026",
+      "porQueImporta": "Estima de forma preliminar la evolución del coste de la vida y las presiones sobre los precios.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-10-30",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar del Producto Interior Bruto (PIB)",
+      "anterior": "+0,4 % intertrimestral en el segundo trimestre de 2026",
+      "porQueImporta": "Constituye el primer cálculo oficial sobre el desempeño de la actividad económica regional.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "La jornada en los mercados de acciones ha mostrado un tono mayoritariamente positivo en las principales plazas internacionales. En España, el índice IBEX 35 logró un avance destacado, superando los 19.160 puntos. De forma similar, los mercados asiáticos y estadounidenses registraron alzas, lideradas por el fuerte empuje del Nikkei 225 japonés.",
+        "En el panorama empresarial, la sesión ha estado marcada por las comunicaciones del sector automovilístico europeo. Mercedes-Benz publicó una revisión a la baja de sus estimaciones de negocio, atribuyendo esta decisión a los desafíos operativos en China y al encarecimiento de los componentes de cara al cuarto trimestre.",
+        "En el ámbito macroeconómico, los datos sobre la ocupación y el crédito han cobrado protagonismo, si bien las cifras precisas carecen de contraste en las fuentes habilitadas de este documento. Se documenta un incremento simultáneo del empleo y del paro en España por el gran aumento de la población activa (personas en edad de trabajar que buscan o tienen empleo), así como un endurecimiento de los préstamos bancarios a las empresas en la eurozona."
+      ],
+      "fuentes": [
+        1,
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La evolución de las condiciones de financiación demuestra cómo el coste oficial del dinero sigue impactando en el tejido productivo. Cuando los bancos exigen mayores requisitos para conceder préstamos, las compañías encuentran más obstáculos para financiar nuevas inversiones, lo que puede ralentizar el dinamismo económico general a medio plazo.",
+        "La divergencia en las estadísticas laborales ilustra un fenómeno demográfico relevante. El hecho de que la creación de puestos de trabajo no logre absorber a todas las personas que entran a buscar empleo (población activa) explica el aparente contrasentido de que aumenten los ocupados y, simultáneamente, los desempleados.",
+        "Las rebajas de expectativas en el automóvil evidencian la vulnerabilidad de la industria manufacturera ante los factores internacionales. Las dificultades comerciales en Asia y el repunte de los costes de aprovisionamiento estrechan los beneficios empresariales, condicionando la salud financiera de estas grandes corporaciones."
+      ],
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención durante los próximos días se dirige a las nuevas decisiones monetarias en Europa. El Banco Central Europeo celebra su encuentro institucional para definir los tipos de interés oficiales (coste del dinero), una medida que determina directamente el coste de los créditos y las hipotecas en toda la zona del euro.",
+        "En el terreno estadístico, se espera la publicación de las estimaciones preliminares del crecimiento económico (Producto Interior Bruto o PIB) correspondientes al tercer trimestre, tanto para España como para la eurozona. Esta variable permitirá calibrar la resistencia del nivel de actividad y del consumo.",
+        "Por último, se conocerán los datos adelantados del Índice de Precios de Consumo (IPC) en España. Este indicador resulta fundamental para comprobar si el repunte de los costes de la energía presiona al alza el coste de la vida generalizado para los hogares."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.deutsche-boerse.com/dbg-en/"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/en"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/derivatives"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://www.nasdaq.com/market-activity/stocks"
+    },
+    {
+      "titulo": "Nasdaq",
+      "url": "https://indexes.nasdaq.com/Index/Overview/XNDX"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/archives/data"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/cz/nkave/index/profile"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/downloads/web/msci-com/indexes/index-resources/index-licensing-for-derivatives/index-solutions-newsletter-june-2026.pdf"
+    },
+    {
+      "titulo": "bsmarkets.com",
+      "url": "https://www.bsmarkets.com/cs/Satellite?cid=1191407146076&pagename=BSMarkets2%2FPage%2FPage_Interna_WFG_Template&language=es_ES"
+    },
+    {
+      "titulo": "cincodias.elpais.com",
+      "url": "https://cincodias.elpais.com/mercados/bolsa/ibex-35/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 11
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-28",
+    "hasta": "2026-10-28",
+    "corteIso": "2026-10-28T11:57:28.060Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Ajustes en el sector automovilístico",
+      "texto": "Mercedes-Benz rebajó sus perspectivas de negocio por el encarecimiento de los materiales y el contexto en China. Este movimiento refleja la presión actual sobre la capacidad productiva y los márgenes del tejido industrial europeo.",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "titulo": "Dinámica del mercado laboral",
+      "texto": "La economía española incorpora personas dispuestas a trabajar a un ritmo superior al de creación de empleos, lo que genera aumentos simultáneos de ocupación y desempleo. Es un reflejo de la expansión demográfica activa, pendiente de validación exacta en este informe.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Endurecimiento del crédito",
+      "texto": "Los bancos de la eurozona reportan requisitos más estrictos para financiar a las corporaciones. Esta menor tolerancia al riesgo, ligada al coste oficial del dinero, dificulta la inversión empresarial a medio plazo.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Acciones",
+      "definicion": "Partes iguales en las que se divide el capital de una empresa, otorgando a su poseedor derechos económicos y de decisión."
+    },
+    {
+      "termino": "Población activa",
+      "definicion": "Suma de todas las personas en edad de trabajar que tienen un empleo o que lo buscan activamente en un territorio."
+    },
+    {
+      "termino": "Tipos de interés",
+      "definicion": "El coste que se asume al pedir dinero prestado o el rendimiento que se obtiene al prestarlo, expresado habitualmente como porcentaje."
+    },
+    {
+      "termino": "PIB",
+      "definicion": "Producto Interior Bruto, indicador que mide el valor total de todos los bienes y servicios producidos en un país durante un período de tiempo."
+    },
+    {
+      "termino": "IPC",
+      "definicion": "Índice de Precios de Consumo, medida estadística que refleja la evolución del coste de una cesta de bienes y servicios representativa del consumo de las familias."
+    }
+  ]
+}

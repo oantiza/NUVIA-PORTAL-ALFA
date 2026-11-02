@@ -1,0 +1,281 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-11-02",
+  "fecha": "2026-11-02",
+  "fechaIso": "2026-11-02T00:00:00.000Z",
+  "generadoIso": "2026-11-02T14:24:38.264Z",
+  "titular": "La tecnología y la energía condicionan las plazas globales ante la pausa en los tipos de interés",
+  "entradilla": "Las bolsas despiden los últimos días con caídas por la exigencia de resultados inmediatos a las empresas tecnológicas. Al mismo tiempo, las tensiones geopolíticas encarecen el petróleo, lo que frena el alivio de la inflación y apuntala la cautela de los bancos centrales.",
+  "hechos": [
+    {
+      "texto": "El índice IBEX 35 cerró la jornada del 30 de octubre en los 18.652,90 puntos, lo que representa un descenso diario del 1,09 % arrastrado por la aversión global al riesgo tecnológico.",
+      "fecha": "2026-10-30",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El índice japonés Nikkei 225 finalizó la sesión asiática del 2 de noviembre en 63.081,86 puntos, anotando una bajada del 0,33 % respecto a su jornada precedente.",
+      "fecha": "2026-11-02",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "La rentabilidad exigida al bono de Estados Unidos a 10 años (deuda emitida por el Estado) alcanzó el 4,94 % anual al término de la sesión del 30 de octubre.",
+      "fecha": "2026-10-30",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "texto": "El rendimiento del bono español a 10 años se estableció en el 4,03 % anual el 29 de octubre, anotando un recorte diario de un punto básico (0,01 puntos porcentuales).",
+      "fecha": "2026-10-29",
+      "fuentes": [
+        11
+      ]
+    },
+    {
+      "texto": "La prima de riesgo de España, indicador que mide el diferencial de rendimiento a 10 años frente al bono de Alemania, se contrajo hasta los 0,71 puntos porcentuales el 29 de octubre.",
+      "fecha": "2026-10-29",
+      "fuentes": [
+        11
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Renta Variable: IBEX 35",
+      "valor": "18.652,90 puntos",
+      "referencia": "2026-10-30, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: Nikkei 225",
+      "valor": "63.081,86 puntos",
+      "referencia": "2026-11-02, Nikkei Indexes",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Renta Variable: Euro Stoxx 50",
+      "valor": "Sin contrastar",
+      "referencia": "2026-10-30, STOXX (cifra no disponible en abierto)",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "etiqueta": "Deuda Pública: Bono EE. UU. 10 años",
+      "valor": "4,94 % anual",
+      "referencia": "2026-10-30, Tesoro de Estados Unidos",
+      "fuentes": [
+        10
+      ]
+    },
+    {
+      "etiqueta": "Deuda Pública: Bono España 10 años",
+      "valor": "4,03 % anual",
+      "referencia": "2026-10-29, Banco de España",
+      "fuentes": [
+        11
+      ]
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-11-02",
+      "hora": null,
+      "region": "Eurozona",
+      "que": "Informe de tipos de interés aplicados por entidades de crédito (septiembre)",
+      "anterior": null,
+      "porQueImporta": "Muestra el coste de financiación real que soportan las empresas y las familias.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Encuesta de Ocupación en Alojamientos Turísticos Extrahoteleros de septiembre",
+      "anterior": "Cifras de agosto 2026",
+      "porQueImporta": "Permite observar el nivel de actividad turística del sector servicios al cierre del verano.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": null,
+      "region": "España",
+      "que": "Subasta ordinaria de Letras del Tesoro a 6 y 12 meses",
+      "anterior": "Tipo marginal de 2,798 % y 3,026 %",
+      "porQueImporta": "Fija la referencia del coste de financiación a corto plazo para el Estado.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Pernoctaciones en alojamientos turísticos en la Unión Europea (agosto)",
+      "anterior": null,
+      "porQueImporta": "Ofrece una comparativa comunitaria sobre la pujanza de los flujos de turismo transfronterizo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta de Ofertas de Empleo (JOLTS) de septiembre",
+      "anterior": null,
+      "porQueImporta": "Evalúa el nivel de rigidez en el mercado laboral, un dato esencial para la política monetaria.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-04",
+      "hora": "09:00",
+      "region": "España",
+      "que": "Estadística de Movimientos Turísticos en Fronteras de septiembre",
+      "anterior": null,
+      "porQueImporta": "Determina el volumen de entradas de viajeros y su efecto sobre la balanza nacional.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-04",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar del Índice de Precios de Consumo Armonizado (octubre)",
+      "anterior": "3,8 % interanual",
+      "porQueImporta": "Constituye el indicador principal para que la autoridad monetaria calibre sus decisiones futuras.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Las plazas bursátiles occidentales finalizaron la jornada del 30 de octubre con caídas generales, marcadas por un duro correctivo en el sector de la tecnología. La demanda de una rentabilidad clara que justifique las abultadas inversiones en inteligencia artificial motivó un desplazamiento del capital hacia otras parcelas de la economía.",
+        "En el ámbito de la energía, el barril de petróleo encareció su coste hasta rebasar los 117 dólares como respuesta a las fricciones geopolíticas incesantes en Oriente Próximo. Este encarecimiento, unido a la extracción no autorizada de 6.300 millones de dólares en una plataforma de activos digitales, deprimió la tolerancia al riesgo."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "Las autoridades monetarias del Banco Central Europeo y la Reserva Federal estadounidense reafirmaron su actitud prudente al mantener intactos los tipos de interés durante la semana. Sus respectivos comités observan con precaución que los elevados costes de la energía dificulten la contención general de los precios.",
+        "Por otro lado, la confirmación oficial sobre el fin del mandato de la actual presidencia del Banco Central Europeo en febrero de 2027 inaugura un proceso sucesorio de gran calado. Esta transición concentra la atención ciudadana para comprender qué rumbo adoptará la política de financiación en el bloque europeo a medio plazo."
+      ],
+      "fuentes": []
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "El foco macroeconómico se orienta este miércoles hacia la publicación del índice de precios de consumo armonizado (IPCA) en Europa. Este termómetro de la inflación resulta vital para descifrar si el encarecimiento de la vida empieza a remitir de forma estructural o se asienta en niveles altos.",
+        "Además, la jornada del martes revelará la cantidad de vacantes laborales sin cubrir en Estados Unidos. Se trata de un dato imprescindible para que el banco central mida el vigor de la contratación y anticipe las posibles alzas de los salarios derivadas de la falta de personal."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave"
+    },
+    {
+      "titulo": "Nikkei Indexes",
+      "url": "https://indexes.nikkei.co.jp/en/nkave/index/profile"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/891800/msci-em-emerging-markets-index"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://www.msci.com/indexes/index/765680/msci-emerging-markets-top-30-select-50-points-decrement-index?lang=fr"
+    },
+    {
+      "titulo": "MSCI",
+      "url": "https://app2.msci.com/eqb/custom_indexes/custom_performance.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://www.stoxx.com/index-updates"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://www.cashmarket.deutsche-boerse.com/cash-en/Stay-Informed/newsroom/Xetra-Frankfurt-Newsboard/XETR-DIVIDEND-INTEREST-INFORMATION-30.10.2026-US1746101054-5671756"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://www.spglobal.com/spdji/en/indices/equity/sp-500/"
+    },
+    {
+      "titulo": "Tesoro de Estados Unidos",
+      "url": "https://home.treasury.gov/"
+    },
+    {
+      "titulo": "Banco de España",
+      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/pdf/si_1_2.pdf"
+    },
+    {
+      "titulo": "Bundesbank",
+      "url": "https://www.bundesbank.de/resource/blob/650724/cc1ca109281f7756f1c6e48e70bbd5d5/472B63F073F071307366337C94F8C870/zsbwp-data.pdf"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 12
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-11-02",
+    "hasta": "2026-11-02",
+    "corteIso": "2026-11-02T14:24:38.264Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Ajuste tecnológico global",
+      "texto": "Las firmas dedicadas a la fabricación de semiconductores sufrieron notables descensos bursátiles en los últimos compases de octubre. El mercado exige ahora retornos financieros demostrables para respaldar las inmensas inversiones previas en inteligencia artificial.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Coste oficial inalterado",
+      "texto": "La Reserva Federal estadounidense y el Banco Central Europeo decidieron mantener estables los tipos de interés (el precio oficial del dinero) durante la semana pasada. Ambos organismos vigilan de cerca el repunte de los costes energéticos.",
+      "fuentes": []
+    },
+    {
+      "titulo": "Presión en la energía",
+      "texto": "El barril de crudo prolonga su encarecimiento ante las fricciones ininterrumpidas en Oriente Próximo. Este aumento de costes amenaza con filtrarse a los precios generales de los bienes de consumo.",
+      "fuentes": []
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Tipos de interés",
+      "definicion": "Es el coste oficial que se cobra por ceder dinero prestado durante un plazo de tiempo definido, marcando la referencia para todo el sistema bancario."
+    },
+    {
+      "termino": "Punto básico",
+      "definicion": "Equivale a una centésima de punto porcentual (0,01 %). Se utiliza en los mercados financieros para expresar con precisión los pequeños cambios en el rendimiento de los activos."
+    },
+    {
+      "termino": "Prima de riesgo",
+      "definicion": "Mide el recargo de rentabilidad que se exige a la deuda soberana de un país frente a la de otro considerado mucho más fiable, que en Europa suele ser Alemania."
+    },
+    {
+      "termino": "IPCA",
+      "definicion": "El Índice de Precios de Consumo Armonizado es una métrica que calcula la evolución de la inflación con normas idénticas en toda la Unión Europea, posibilitando su comparación directa."
+    }
+  ]
+}

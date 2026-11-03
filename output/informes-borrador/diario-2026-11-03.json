@@ -1,0 +1,253 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "DIARIO",
+  "id": "diario-2026-11-03",
+  "fecha": "2026-11-03",
+  "fechaIso": "2026-11-03T00:00:00.000Z",
+  "generadoIso": "2026-11-03T13:24:41.426Z",
+  "titular": "La caída de la energía impulsa a las bolsas europeas mientras Estados Unidos vota",
+  "entradilla": "Los mercados bursátiles europeos cerraron la jornada al alza gracias a la reducción en los costes del petróleo y el gas natural. En contraste, los índices de Estados Unidos reflejaron resultados mixtos ante el inicio de sus elecciones legislativas y las dudas alrededor de las grandes empresas tecnológicas.",
+  "hechos": [
+    {
+      "texto": "El índice de la bolsa española IBEX 35 repuntó un +1,63 % al cierre, impulsado, según apuntan los analistas, por la demanda de compañías bancarias y de transporte ante un escenario de menor presión en los precios de la energía.",
+      "fecha": "2026-11-02",
+      "fuentes": [
+        1,
+        7
+      ]
+    },
+    {
+      "texto": "El índice europeo Euro Stoxx 50 registró un avance del +0,73 % en sintonía con la relajación en los mercados energéticos mundiales y la entrada de flujos hacia sectores no tecnológicos.",
+      "fecha": "2026-11-02",
+      "fuentes": [
+        2,
+        7
+      ]
+    },
+    {
+      "texto": "El indicador S&P 500 de Estados Unidos retrocedió un -0,51 %, arrastrado por la desconfianza de los participantes del mercado hacia las firmas tecnológicas de gran capitalización.",
+      "fecha": "2026-11-02",
+      "fuentes": [
+        4,
+        7
+      ]
+    },
+    {
+      "texto": "El volumen negociado en la renta variable española ascendió a 405.744 millones de euros entre enero y octubre de 2026, lo que representa un aumento del +30,1 % frente al mismo período del año anterior.",
+      "fecha": "2026-11-03",
+      "fuentes": [
+        1
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "IBEX 35",
+      "valor": "18.957,80 puntos",
+      "referencia": "2026-11-02, Bolsas y Mercados Españoles",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Euro Stoxx 50",
+      "valor": "6.176,06 puntos",
+      "referencia": "2026-11-02, STOXX",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "DAX 40",
+      "valor": "25.981,09 puntos",
+      "referencia": "2026-11-02, Deutsche Börse",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "etiqueta": "S&P 500",
+      "valor": "7.541,40 puntos",
+      "referencia": "2026-11-02, S&P Global",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "Bono del Tesoro de EE. UU. a 10 años",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación del Departamento del Tesoro en las fuentes habilitadas",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "EUR/USD",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación del Banco Central Europeo en las fuentes habilitadas",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Petróleo Brent (Enero 2027)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación oficial de ICE en las fuentes habilitadas",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-11-03",
+      "hora": null,
+      "region": "EEUU",
+      "que": "Elecciones de mitad de mandato (Midterm Elections)",
+      "anterior": null,
+      "porQueImporta": "Define el futuro control del Congreso y la dirección de la política presupuestaria del país.",
+      "fuentes": [
+        6,
+        8
+      ]
+    },
+    {
+      "fecha": "2026-11-04",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación preliminar del Índice Armonizado de Precios de Consumo (IAPC) de octubre de 2026 por Eurostat",
+      "anterior": "+3,8 % interanual en septiembre",
+      "porQueImporta": "Constituye la referencia estadística fundamental para las decisiones sobre tipos de interés del Banco Central Europeo.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-05",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Precios de Producción Industrial (IPP) de septiembre de 2026 por Eurostat",
+      "anterior": "+1,9 % mensual en agosto",
+      "porQueImporta": "Sirve para anticipar las presiones sobre el coste de los productos antes de llegar al consumidor final.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "Qué ha pasado",
+      "parrafos": [
+        "Los principales índices bursátiles de Europa cerraron con avances consistentes durante la jornada del lunes, liderados por el mercado español que ascendió más de un punto porcentual en su índice general.",
+        "En el lado opuesto, el mercado de Estados Unidos experimentó una sesión de descensos en los valores informáticos debido a las persistentes dudas sobre las grandes inversiones corporativas recientes.",
+        "Estos movimientos divergentes en la renta variable estuvieron acompañados por un descenso significativo y generalizado en los mercados internacionales del crudo y del gas natural europeo."
+      ],
+      "fuentes": [
+        1,
+        4,
+        7
+      ]
+    },
+    {
+      "titulo": "Por qué importa",
+      "parrafos": [
+        "La bajada en los costes de las materias primas resulta fundamental para relajar las expectativas de inflación a largo plazo entre las principales economías del territorio europeo.",
+        "Un menor encarecimiento del coste de la vida reduce la presión sobre las autoridades para mantener los tipos de interés en niveles restrictivos que dificulten el crecimiento de la actividad económica.",
+        "Mientras tanto, la preocupación en Estados Unidos por la lentitud para rentabilizar las nuevas infraestructuras tecnológicas está propiciando un traslado de fondos hacia los sectores más tradicionales."
+      ],
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La jornada del martes está marcada en el calendario por las elecciones legislativas en Estados Unidos, cuyo resultado determinará la composición de las dos cámaras de representación y la influencia normativa.",
+        "A lo largo de los próximos días, los participantes del mercado también dirigirán su atención a la estimación adelantada sobre la evolución de los precios de consumo en la zona euro de este último mes.",
+        "Esta publicación estadística actuará como un elemento clave para que el Banco Central Europeo diseñe la hoja de ruta de su política monetaria de cara a los próximos meses de la temporada invernal."
+      ],
+      "fuentes": [
+        6,
+        8
+      ]
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/en/bme-exchange/indices/ibex/historical/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "STOXX",
+      "url": "https://www.stoxx.com/methodology"
+    },
+    {
+      "titulo": "Deutsche Börse",
+      "url": "https://live.deutsche-boerse.com/news/deutsche-boerse-group-introduces-24-7-trading-for-dax-40-stocks-on-360x"
+    },
+    {
+      "titulo": "S&P Global",
+      "url": "https://press.spglobal.com/2026-10-30-Okta-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "titulo": "bolsamania.com",
+      "url": "https://www.bolsamania.com/indice/IBEX-35"
+    },
+    {
+      "titulo": "bolsamania.com",
+      "url": "https://www.bolsamania.com/noticias/cronica-ibex/lunes-2-noviembre-2026-intensa-semana-midterms--23976862.html"
+    },
+    {
+      "titulo": "elboletin.com",
+      "url": "https://www.elboletin.com/las-bolsas-europeas-abren-con-cautela-el-petroleo-da-aire-pero-la-tecnologia-frena-el-rebote/"
+    },
+    {
+      "titulo": "elfinanciero.com.mx",
+      "url": "https://www.elfinanciero.com.mx/mercados/2026/11/02/bmv-wall-street-hoy-2-de-noviembre-de-2026/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 8
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-11-03",
+    "hasta": "2026-11-03",
+    "corteIso": "2026-11-03T13:24:41.426Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Alivio en la factura energética",
+      "texto": "El precio del petróleo y el gas natural en Europa se redujo de manera notable en los mercados internacionales. Esta situación rebajó la inquietud sobre la evolución futura de la inflación e impulsó a las compañías más tradicionales.",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "titulo": "Dudas en el sector tecnológico",
+      "texto": "Las empresas ligadas a la informática e internet sufrieron recortes en su cotización. Distintas firmas de inversión vinculan esta caída al temor sobre la rentabilidad a corto plazo del enorme capital destinado a nuevos centros de procesamiento de datos.",
+      "fuentes": [
+        7
+      ]
+    },
+    {
+      "titulo": "Elecciones de mitad de mandato",
+      "texto": "El electorado de Estados Unidos elige a sus representantes legislativos. La futura distribución de poder entre los principales partidos será determinante para trazar las políticas de gasto e impuestos del país.",
+      "fuentes": [
+        6,
+        8
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "renta variable",
+      "definicion": "Conjunto de activos financieros, como las acciones de empresas, cuya rentabilidad no está garantizada y depende de los resultados del negocio y de los movimientos del mercado."
+    },
+    {
+      "termino": "inflación",
+      "definicion": "El aumento generalizado y sostenido de los precios de los bienes y servicios en una economía durante un período de tiempo determinado."
+    },
+    {
+      "termino": "tipos de interés",
+      "definicion": "El coste que se paga por pedir dinero prestado o la ganancia que se obtiene por prestarlo, habitualmente fijado por los bancos centrales para tratar de mantener el equilibrio económico."
+    }
+  ]
+}

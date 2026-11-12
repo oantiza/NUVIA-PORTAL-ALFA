@@ -6,6 +6,8 @@ Este archivo es la entrada única para cualquier persona, programa o asistente q
 
 ## Capa 0 · Siempre
 
+**Publicación de correcciones autorizada · 12-11-2026:** «Perfecto, publica esta versión corregida en GitHub Pages, con los vídeos actualizados y todas las correcciones, manteniendo el diseño.» Autoriza commit, envío a `main` y despliegue oficial de la versión verificada en `docs/CORRECCION_FUNCIONAL_Y_VALIDACION_20261112.md`. Sustituye su restricción anterior de no publicación. Se conservan diseño, contenidos y funcionalidades; se excluyen trabajos ajenos y escrituras en Firebase. Acta: `docs/PUBLICACION_CORRECCIONES_FUNCIONALES_20261112.md`.
+
 **Publicación del logo común autorizada · 12-11-2026:** «Perfecto, publica esta versión en GitHub Pages con el mismo logo en las cabeceras de las cuatro webs y los espacios comunes.» Autoriza commit, envío a `main` y flujo oficial del cambio de marca ya validado, manteniendo el resto del diseño. Acta: `docs/LOGO_COMUN_CABECERAS_NUVIA_20261112.md`. No incluye trabajos ajenos ni Firebase.
 
 **Publicación de la versión revisada autorizada · 12-11-2026:** «Perfecto, publica esta versión en GitHub Pages con el logo ampliado y sin “Ecosistema” en la cabecera.» Autoriza commit, envío a `main` y flujo oficial de la versión local revisada, incluidos los textos originales recuperados y la firma oficial ampliada. No incluye trabajos locales ajenos ni Firebase. Acta: `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md`.

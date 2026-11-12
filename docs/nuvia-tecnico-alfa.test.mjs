@@ -76,6 +76,39 @@ test('lector: solo la empresa elegida, seis años naturales, sin autenticación 
   assert.equal(t.calls.length, 8); assert.equal(d.points.length, 6); assert.equal(d.lastDate, '2026-09-02');
   assert.deepEqual(Object.keys(d).sort(), ['currency','fetchedAt','lastDate','loadedAt','points']);
 });
+test('lector: el orden de claves recibido no crea una revisión distinta ni altera la serie', async () => {
+  const expected = await readPrices(entry, transport());
+  const reordered = transport({ alter: (d, { year, assetReads }) => {
+    if (Number.isInteger(year)) return;
+    d.history.coverage = assetReads === 1
+      ? { counts: { valid: 6, missing: 0 }, years: [2021, 2026] }
+      : { years: [2021, 2026], counts: { missing: 0, valid: 6 } };
+    if (assetReads === 2) {
+      d.history = Object.fromEntries(Object.entries(d.history).reverse());
+      d.source = Object.fromEntries(Object.entries(d.source).reverse());
+    }
+  } });
+  assert.deepEqual(await readPrices(entry, reordered), expected);
+  assert.equal(reordered.calls.length, 8, 'Mantiene la segunda lectura de la ficha para comprobar la revisión');
+});
+test('lector: cambios reales de versión, cobertura o secuencia siguen rechazándose', async () => {
+  const changes = [
+    d => { d.updated_at = '2026-09-04T00:00:00Z'; },
+    d => { d.source.fetched_at = '2026-09-03T20:00:00Z'; },
+    d => { d.history.first_date = '2021-01-03'; },
+    d => { d.history.coverage.counts.valid = 7; },
+    d => { d.history.coverage.years.reverse(); },
+    d => { delete d.history.coverage.counts.missing; },
+  ];
+  for (const change of changes) {
+    const t = transport({ alter: (d, { year, assetReads }) => {
+      if (Number.isInteger(year)) return;
+      d.history.coverage = { counts: { valid: 6, missing: 0 }, years: [2021, 2026] };
+      if (assetReads === 2) change(d);
+    } });
+    await assert.rejects(readPrices(entry, t), { code: 'prices', message: /han cambiado durante la consulta/ });
+  }
+});
 test('lector: alias aprobado de Ferrovial usa la identidad actual', async () => {
   const e = { assetId: 'NL0015001FS8', isin: 'NL0015001FS8', symbol: 'FER.MC', quoteCurrency: 'EUR' };
   const t = transport({ e }); await readPrices({ ...e, assetId: 'ES0118900010', isin: 'ES0118900010' }, t);

@@ -43,3 +43,13 @@ La orden autoriza el commit y envío de esta versión aprobada a `main`, con pub
 El árbol preparado para Git debe coincidir con las fuentes validadas. Quedan fuera los ocho documentos audiovisuales ajenos, sus dos referencias del índice, el prototipo histórico y los directorios de salida. `dist/` se construye en Actions. Se conserva el cierre documentado del despliegue anterior como antecedente.
 
 El flujo oficial repite la validación, construcción y auditoría de tablet antes de desplegar. Se comprobará el SHA de la ejecución y su resultado, las 28 páginas públicas, la misma firma oficial en sus cabeceras y las dimensiones adaptativas en la hoja de estilos. Los recibos se guardan en `output/publicacion-logos-comunes-20261112/`. La publicación no añade funciones, datos personales, cálculos ni integraciones, por lo que mantiene la prueba del §12 anterior. No se modifica Firebase.
+
+## Cierre de publicación comprobado
+
+- Commit publicado: `07e8ad408045bc00d5e7f0cd6fb288e34c90d52a`, enviado a `main` sin forzar la historia.
+- [Ejecución 43254798546](https://github.com/oantiza/NUVIA-PORTAL-ALFA/actions/runs/43254798546): construcción, validación completa, auditoría de tablet y despliegue finalizados con `success`; SHA coincidente con la versión aprobada.
+- Las 28 páginas públicas responden correctamente y sus cabeceras contienen el mismo SVG oficial. Las 27 cabeceras contextualizadas incluyen las dimensiones base de 240 × 60 px; Inicio conserva 280 × 70 px y sus textos originales.
+- La hoja `estilos/ecosistema/webs.css`, con los tres tamaños adaptativos, y el SVG públicos coinciden con las fuentes aprobadas, normalizando únicamente finales de línea.
+- Evidencias: `verificacion-publica.json` y `recibo-despliegue.json` en `output/publicacion-logos-comunes-20261112/`. No se publicaron trabajos ajenos ni se modificó Firebase.
+
+Este cierre se registra localmente después de verificar el despliegue; no provoca una segunda publicación solo documental.

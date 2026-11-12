@@ -786,12 +786,15 @@
   var NOT_INLINE_SELECTOR = ":not(" + [...INLINE_TEXT_TAGS].join(",") + ")";
   function walkElement(el, host) {
     const realTag = RAW_UNWRAP[el.localName] || el.localName;
+    // HTMLTemplateElement stores its inert children in .content, not childNodes.
+    // Keep that static fragment intact until the explicit external-content action clones it.
+    const templateContent = realTag === "template" ? el.innerHTML : null;
     const tplId = el.getAttribute("data-dc-tpl");
     const inlineOnly = el.childNodes.length > 0 && !NEVER_CONTENT_KEYED.has(realTag) && el.querySelector(NOT_INLINE_SELECTOR) === null;
     const keySuffix = inlineOnly ? "|" + contentKey(el) : "";
     const { propGetters, pseudoClasses } = collectProps(el, "dom", host);
     const deckKeyed = isDeckMountTag(el) ? walkDeckChildren(el, host) : null;
-    const kids = deckKeyed ? deckKeyed.kids : walkChildren(el, host);
+    const kids = templateContent !== null ? [] : deckKeyed ? deckKeyed.kids : walkChildren(el, host);
     const kidKeys = deckKeyed?.keys ?? null;
     return (vals, ctx, key) => {
       const props = {
@@ -808,6 +811,10 @@
       }
       if (pseudoClasses.length) {
         props.className = [props.className, ...pseudoClasses].filter(Boolean).join(" ");
+      }
+      if (templateContent !== null) {
+        props.dangerouslySetInnerHTML = { __html: templateContent };
+        return h(realTag, props);
       }
       return h(realTag, props, ...renderDeckKids(kids, kidKeys, vals, ctx));
     };

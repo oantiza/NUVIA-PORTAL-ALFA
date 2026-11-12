@@ -8,7 +8,10 @@ function validateAsset(asset, entry) {
   if (!validDay(asset.history?.first_date) || !validDay(asset.history?.last_date) || asset.history.first_date > asset.history.last_date
     || !Number.isFinite(Date.parse(asset.updated_at)) || !Number.isFinite(Date.parse(asset.source.fetched_at))) fail('La fecha o cobertura del historial no está acreditada en la ficha.');
 }
-const revision = asset => JSON.stringify([asset.updated_at, asset.source?.fetched_at, asset.history]);
+// Firestore no garantiza el orden de las claves de sus mapas; el orden de las listas sí importa.
+const stable = value => Array.isArray(value) ? value.map(stable) : value && typeof value === 'object'
+  ? Object.fromEntries(Object.keys(value).sort().map(key => [key, stable(value[key])])) : value;
+const revision = asset => JSON.stringify(stable([asset.updated_at, asset.source?.fetched_at, asset.history]));
 export async function readPrices(rawEntry, { fetchFn = fetch, signal } = {}) {
   const entry = entradaActual(rawEntry);
   if (!/^[A-Z]{2}[A-Z0-9]{10}$/.test(entry?.assetId) || entry.isin !== entry.assetId

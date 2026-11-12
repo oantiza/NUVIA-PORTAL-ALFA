@@ -203,6 +203,8 @@
   const loadTradingView = async (host) => {
     const template = host.querySelector('template');
     if (!template) throw new Error('No se encontró la plantilla del panel de mercado.');
+    const content = template.content.cloneNode(true);
+    if (!content.querySelector('tv-market-overview')) throw new Error('No se encontró el contenido del panel de mercado. Puedes abrir TradingView con el enlace alternativo.');
     if (!tradingViewLoader) {
       tradingViewLoader = new Promise((resolveLoad, rejectLoad) => {
         const script = document.createElement('script');
@@ -215,7 +217,7 @@
     }
     await tradingViewLoader;
     await customElements.whenDefined('tv-market-overview');
-    host.replaceChildren(template.content.cloneNode(true));
+    host.replaceChildren(content);
     host.dataset.nuviaExternalLoaded = 'true';
   };
 

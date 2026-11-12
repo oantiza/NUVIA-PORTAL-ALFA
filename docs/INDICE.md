@@ -40,6 +40,13 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md` — publicación autorizada de la versión revisada, textos originales y logo ampliado sin rótulo; alcance, validación y seguimiento del despliegue.
 - `docs/LOGO_COMUN_CABECERAS_NUVIA_20261112.md` — mismo logo oficial en las cuatro webs, interiores y espacios comunes; tamaños adaptados, sin cambios en el resto del diseño.
+- `docs/REVISION_PUBLICA_CABECERAS_Y_MENUS_20261112.md` — revisión de la web publicada: 28 páginas y diez vistas adicionales, 194 combinaciones de escritorio y tablet sin incidencias; diseño conservado.
+- `docs/REVISION_FUNCIONAL_PUBLICA_20261112.md` — revisión de enlaces, calculadoras y herramientas publicadas en escritorio/tablet; cobertura, incidencias reproducibles y correcciones propuestas, sin modificar el diseño.
+- `docs/CORRECCION_FUNCIONAL_Y_VALIDACION_20261112.md` — cierre local de las incidencias, cinco vídeos aportados por el fundador, conservación del diseño y comprobaciones funcionales de escritorio/tablet; sin publicar.
+- `docs/CORRECCION_REPRODUCTORES_20261112.md` — asociación del vídeo al capítulo y conservación de la plantilla inerte de TradingView; regresión y proveedores reales.
+- `docs/CORRECCION_SERIE_CIERRES_20261112.md` — comparación estable de versiones en Empresas, sin alterar datos ni perder la detección de cambios reales.
+- `docs/CORRECCION_ENLACES_OFICIALES_20261112.md` — recuperación de cuatro destinos oficiales, identidad de las fuentes e informes sincronizados.
+- `docs/PUBLICACION_CORRECCIONES_FUNCIONALES_20261112.md` — orden posterior de publicación de las correcciones y vídeos actualizados; alcance del commit, validación y comprobación en GitHub Pages, manteniendo el diseño.
 
 ## 3. Documentos vigentes por módulo
 

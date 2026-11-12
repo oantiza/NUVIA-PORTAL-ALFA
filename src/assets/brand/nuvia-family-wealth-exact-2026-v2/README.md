@@ -9,6 +9,8 @@ píxeles, las texturas, las proporciones, la `N`, las tres hojas, el nombre
 
 ## Logotipos
 
+Actualización del fundador, 12-11-2026: `logo-horizontal-lineal-v0402.svg` es una copia vectorial íntegra de **NUVIA Logo v04.02 - 11 - Horizontal Lineal.svg**, del pack facilitado en G:. Se usa únicamente en la cabecera de Inicio según su referencia. SHA-256: `3046be77e11ada907ba985f27dcf26e6c1ac092566590f32679efb4ff54d28f2`. Este nuevo original vectorial se incorpora junto a los archivos anteriores; no es una vectorización de los PNG descritos debajo.
+
 - `nuvia-family-wealth-horizontal-master-white.png`: máster aprobado intacto.
 - `nuvia-family-wealth-horizontal-transparent.png`: extracción transparente.
 - `nuvia-family-wealth-horizontal-reversed.png`: aplicación para fondos oscuros.

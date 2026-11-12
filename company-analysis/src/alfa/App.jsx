@@ -11,6 +11,16 @@ import { displayWarnings } from '../../alfa/metadata.mjs';
 import { companyDisplayName } from '../../alfa/display-name.mjs';
 
 const tabs = ['Resumen', 'Fundamentales', 'Técnico', 'Informe'];
+export function CompanyIdentityNotice({ entry, onRetry }) {
+  const conflict = entry.state === 'isin_conflict';
+  const trace = conflict ? `ISIN del catálogo: ${entry.isin}. Archivo: ${entry.identityCandidates.map(c => `${c.symbol} · ${c.isin || 'sin ISIN'}`).join('; ')}. Estado de la ficha: ${entry.state}. La discrepancia se conserva sin cambiar el universo.` : null;
+  return <div className="alpha-notice" role="status">
+    <h3>{conflict ? 'Identidad pendiente de revisión' : 'No hay fundamentales cargados para esta identidad en la base propia'}</h3>
+    <p>{conflict ? 'Los identificadores del catálogo y del archivo no coinciden. Las cifras de esas identidades no se han unido. Puedes consultar los identificadores en el detalle o reintentar la consulta.' : 'Esto no demuestra que el proveedor no tenga cobertura. Puede haber una carga o revisión de identidad pendiente. No se sustituyen las cifras por ceros ni por las de otra empresa.'}</p>
+    {conflict && <><details className="alpha-identity-details screen-only"><summary>Ver identificadores y estado de la ficha</summary><p>{trace}</p></details><p className="print-only">{trace}</p></>}
+    <button className="alpha-button" onClick={onRetry}>Reintentar consulta</button>
+  </div>;
+}
 export default function AlphaApp() {
   const [snapshot, setSnapshot] = useState(null), [error, setError] = useState(''), [retry, setRetry] = useState(0);
   const [query, setQuery] = useState(''), [symbol, setSymbol] = useState(() => new URLSearchParams(location.search).get('symbol') || '');
@@ -71,7 +81,7 @@ export default function AlphaApp() {
   }
   return <div className="alpha-root">
     <header className="alpha-hero">
-      <p className="eyebrow">NUVIA · Economía y Finanzas</p>
+      <p className="eyebrow">NUVIA · Economía y finanzas</p>
       <h1>Análisis de empresas</h1><p>Comprender una empresa a través de sus cifras y su historial de precios.</p>
       <p className="alpha-source">Alfa · Sin cuentas · Fundamentales y precios históricos de EODHD en la base propia de NUVIA. Se consulta la última carga disponible; no son datos en tiempo real.</p>
     </header>
@@ -115,11 +125,7 @@ export default function AlphaApp() {
         </header>
         {(!current || current.state === 'loading') && <p role="status">Consultando los fundamentales en la base propia…</p>}
         {current?.state === 'error' && <div className="alpha-notice" role="alert"><p>{current.error}</p><button className="alpha-button" onClick={() => setCompanyRetry(n => n + 1)}>Reintentar consulta</button></div>}
-        {current?.state === 'missing' && <div className="alpha-notice" role="status">
-          <h3>{entry.state === 'isin_conflict' ? 'Los identificadores del catálogo y del archivo no coinciden' : 'No hay fundamentales cargados para esta identidad en la base propia'}</h3>
-          <p>{entry.state === 'isin_conflict' ? `ISIN del catálogo: ${entry.isin}. Archivo: ${entry.identityCandidates.map(c => `${c.symbol} · ${c.isin || 'sin ISIN'}`).join('; ')}. La decisión sobre esta identidad está pendiente de consulta al fundador; no se cambia el universo.` : 'Esto no demuestra que el proveedor no tenga cobertura. Puede haber una carga o revisión de identidad pendiente. No se sustituyen las cifras por ceros ni por las de otra empresa.'}</p>
-          <button className="alpha-button" onClick={() => setCompanyRetry(n => n + 1)}>Reintentar consulta</button>
-        </div>}
+        {current?.state === 'missing' && <CompanyIdentityNotice entry={entry} onRetry={() => setCompanyRetry(n => n + 1)} />}
         <div className="alpha-toolbar screen-only">
           <div className="tabs" role="tablist" aria-label="Contenido de la empresa">{tabs.map((name, index) => <button role="tab" id={`alpha-tab-${index}`} key={name} className={`tab${tab === name ? ' active' : ''}`} aria-selected={tab === name} aria-controls="alpha-panel" tabIndex={tab === name ? 0 : -1} onClick={() => setTab(name)} onKeyDown={e => {
             const next = e.key === 'ArrowRight' ? (index + 1) % tabs.length : e.key === 'ArrowLeft' ? (index + tabs.length - 1) % tabs.length : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;

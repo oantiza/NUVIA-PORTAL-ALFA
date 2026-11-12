@@ -1,4 +1,4 @@
-// Observatorio editorial · portada principal de Economía y Finanzas.
+// Observatorio editorial · portada principal de Economía y finanzas.
 const escape = (value) => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
 const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
 
@@ -13,7 +13,7 @@ export function renderEconomia(site) {
 
   return `<section class="ec-opening web-wrap" aria-labelledby="ec-title">
     <div class="ec-opening-copy">
-      <p class="ec-intro-line">Economía y Finanzas</p>
+      <p class="ec-intro-line">Economía y finanzas</p>
       <h1 id="ec-title">Entender lo que<br>mueve el mundo.</h1>
       <p class="ec-lead">Detrás de cada dato hay algo que cambia nuestra vida. Pon la actualidad, los mercados y tu dinero en perspectiva.</p>
       <div class="ec-opening-actions">
@@ -26,7 +26,7 @@ export function renderEconomia(site) {
     </div>
   </section>
 
-  <section class="ec-observatory web-wrap" id="recursos" aria-label="Recursos de Economía y Finanzas">
+  <section class="ec-observatory web-wrap" id="recursos" aria-label="Recursos de Economía y finanzas">
     <div class="ec-context" aria-labelledby="ec-context-title">
       <div class="ec-section-intro">
         <h2 id="ec-context-title">Seguir el contexto.</h2>
@@ -40,7 +40,7 @@ export function renderEconomia(site) {
         <h2 id="ec-analysis-title">Explorar los datos.</h2>
         <p>Herramientas para observar, comparar y comprender.</p>
       </div>
-      ${entry('cartera', 'Cartera y analítica', 'Explora la composición y el riesgo de una cartera o consulta las carteras modelo. Los métodos y límites acompañan al análisis.', 'Abrir el análisis de cartera')}
+      ${entry('cartera', 'Análisis de cartera', 'Explora la composición y el riesgo de una cartera o consulta las carteras modelo. Los métodos y límites acompañan al análisis.', 'Abrir el análisis de cartera')}
       ${entry('empresas', 'Análisis y valoración de empresas', 'Busca una empresa y consulta sus cuentas, ratios e históricos, con la procedencia y la fecha de los datos.', 'Buscar una empresa')}
     </div>
   </section>

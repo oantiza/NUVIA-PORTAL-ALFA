@@ -49,7 +49,8 @@ export async function checkNavigationAndCards(page, route) {
     const group = groups.first();
     const summary = group.locator('summary');
     const shared = await header.evaluate(el => el.classList.contains('web-header--shared'));
-    if (!same(await hrefs(group.locator('a')), shared ? webs : ['index.html', ...webs, ...common, ...institutional])) problems.push('El selector no contiene las cuatro webs y los accesos globales previstos');
+    if (!same(await hrefs(group.locator('a')), ['index.html', ...webs, ...common, ...institutional])) problems.push('El selector no contiene las cuatro webs y los accesos globales previstos');
+    if (!(await summary.textContent()).startsWith('Explorar NUVIA')) problems.push('El selector global debe tener el mismo nombre en todas las páginas');
     const local = header.locator('.web-local a');
     if (await local.count() !== (shared ? 4 : 5)) problems.push('La navegación contextual ha perdido destinos');
     if (shared && !same(await hrefs(local), ['index.html', ...common, 'que-es-nuvia.html'])) problems.push('Los espacios comunes deben ofrecer portada, Lecturas, Colaboradores y Qué es NUVIA');

@@ -30,7 +30,8 @@ assert.ok(hero.includes('class="nv-space-editorial"'), 'El paisaje se extiende h
 assert.ok(!hero.includes('nv-hero--institutional'), 'La petición sustituye el fondo azul solo en Lecturas');
 assert.ok(!page.includes('lecturas-con-criterio-escena-compacta.webp'), 'Se retira la escena anterior con Wealth Management');
 assert.match(hero, /<h1 id="lecturas-title">Lecturas con Criterio<\/h1>/, 'Un título HTML visible y accesible con escala controlable');
-assert.ok(hero.includes('<p>Historias sencillas de interés duradero</p>'), 'Se conserva el lema sin botón');
+assert.ok(page.includes('Historias sencillas de interés duradero'), 'Se conserva el lema en el relato editorial después del catálogo');
+assert.ok(page.indexOf('id="seleccion-lecturas"') < page.indexOf('Historias sencillas de interés duradero'), 'El catálogo aparece antes del relato editorial');
 assert.equal((page.match(/<h1\b/g) ?? []).length, 1, 'Un único título principal');
 assert.ok(hero.includes('aria-labelledby="lecturas-title"'));
 assert.ok(hero.includes('aria-label="Ruta de navegación"'), 'Se conserva la navegación de contexto');

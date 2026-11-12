@@ -39,3 +39,13 @@ Las comprobaciones locales de navegador se aislaron de APIs externas; no acredit
 El commit de esta acta identifica las fuentes autorizadas. El resultado del despliegue se comprueba en [las ejecuciones del flujo oficial](https://github.com/oantiza/NUVIA-PORTAL-ALFA/actions/workflows/pages.yml), exigiendo que el SHA desplegado coincida con el commit enviado y que el paso «Publicar en GitHub Pages» finalice correctamente.
 
 Después se verifica la URL pública: nueva portada, cuatro destinos, espacios comunes, rutas interiores y recursos publicados. La evidencia local y el recibo del despliegue se guardan en `output/publicacion-ecosistema-20261112/`, fuera del artefacto. Esta acta registra la autorización y el procedimiento; el éxito de publicación se acredita mediante Actions y la comprobación pública, no mediante una aprobación humana simulada.
+
+## Cierre comprobado · 12-11-2026
+
+- Commit publicado: `9727ef57499211772a82a24dcdc38346a788eb83`, enviado a `main` sin forzar la historia.
+- [Ejecución 43229859469](https://github.com/oantiza/NUVIA-PORTAL-ALFA/actions/runs/43229859469): validación, construcción, tablet y despliegue finalizados con `success`.
+- Comparación pública: las 28 páginas y 12 recursos principales coinciden con el artefacto efectivamente publicado. Se usa el artefacto de Actions porque el flujo refresca los datos y el bloque de cierres de Mercados.
+- Diez vistas públicas abiertas sin errores JavaScript ni respuestas HTTP fallidas del mismo origen; portada con cuatro accesos y dos espacios comunes, calculadora e integración de Empresas visibles.
+- Portada pública abierta en el navegador del fundador. Evidencias: `verificacion-publica.json`, `recibo-despliegue.json` y `portada-publicada.png` en la carpeta de salida indicada.
+
+La auditoría posterior de claridad y diseño se documenta separadamente en `AUDITORIA_INTEGRAL_CLARIDAD_Y_DISENO_20261112.md`; sus propuestas no forman parte del commit desplegado.

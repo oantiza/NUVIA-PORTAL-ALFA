@@ -1,5 +1,7 @@
 # NUVIA Portal Alfa · Guía maestra de diseño y estructura
 
+**Claridad e identidad · 12-11-2026:** la orden «Sigue», posterior a la auditoría y a la libertad expresa para mejorar diseño y textos, aplica la marca pública **NUVIA** y el descriptor «Conocimiento para la vida en familia». «Explorar NUVIA» es el selector global único; «Inicio NUVIA», el regreso común. El acta [Aplicación de la auditoría](APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md) registra el alcance y las validaciones.
+
 **Versión:** 1.2 · 12-11-2026 (1.1 · 12-10-2026; 1.0 · 03-10-2026) · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
 **Carácter:** documento de obligado cumplimiento para toda tarea de diseño, estructura, contenido o código del portal. Si una petición entra en conflicto con esta guía, se consulta al fundador antes de actuar.
 
@@ -32,7 +34,7 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 | Nivel | Qué es | Páginas |
 |---|---|---|
-| 1 · Entrada | Ecosistema NUVIA: portada común que distribuye a cuatro webs | `index.html` |
+| 1 · Entrada | NUVIA: portada común que distribuye a cuatro webs | `index.html` |
 | 2 · Cuatro webs | Portadas con identidad propia y mapa de accesos | `economia.html`, `patrimonio.html`, `bienestar.html`, `academia.html` |
 | 3 · Páginas hijas | Herramientas, subsecciones, guías, cursos y artículos | `mercados.html`, `cartera.html`, `vivienda.html`, `jubilacion.html`, `fiscalidad.html`, `temas.html?topic=…`, `guia-*.html`, `curso.html`, subsecciones de Bienestar, artículos |
 | Comunes | Lecturas con Criterio y Colaboradores, accesibles desde el conjunto del ecosistema | `lecturas.html`, `colaboradores.html` |
@@ -40,15 +42,15 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 ### 2.2 Las cuatro webs y los espacios comunes (mapa vigente)
 
-- **Economía y Finanzas** (`economia.html`): Informes (`mercados.html?vista=informes`), Mercados y noticias, Cartera, Análisis y valoración de empresas (`cartera.html?vista=companies`, módulo `company-analysis/`).
+- **Economía y finanzas** (`economia.html`): Informes (`mercados.html?vista=informes`), Mercados y noticias, Cartera, Análisis y valoración de empresas (`cartera.html?vista=companies`, módulo `company-analysis/`).
 - **Patrimonio** (`patrimonio.html`): Vivienda y coste de vida, Jubilación, Impuestos (`fiscalidad.html` y `guia-*.html`), Planificación patrimonial (`temas.html?topic=planificacion-patrimonial`).
-- **Familia, Salud y Bienestar** (`bienestar.html`): la portada es a la vez el índice de Cuerpo, mente y salud, con cuatro subsecciones propias, en este orden: `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html` (Familia y trabajo se retiró el 03-10-2026; la antigua página intermedia `temas.html?topic=bienestar` redirige a la portada y sus anclas a cada subsección). Cada subsección lista sus publicaciones como filas a lo ancho (`.bn-entries`); cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
-- **Academia NUVIA** (`academia.html`): Conocimientos esenciales, Cursos, Fundamentos, Activos, Interés compuesto, Glosario (vistas `?tab=…`) y `curso.html`.
+- **Familia y bienestar** (`bienestar.html`): la portada es a la vez el índice de Cuerpo, mente y salud, con cuatro subsecciones propias, en este orden: `respiracion-relajacion.html`, `movimiento-consciente.html`, `nutricion-equilibrada.html`, `descanso-limites-tiempo-propio.html` (Familia y trabajo se retiró el 03-10-2026; la antigua página intermedia `temas.html?topic=bienestar` redirige a la portada y sus anclas a cada subsección). Cada subsección lista sus publicaciones como filas a lo ancho (`.bn-entries`); cada artículo tiene página propia (p. ej. `la-respiracion-como-el-escultor-del-cerebro.html`).
+- **Academia NUVIA** (`academia.html`): Conceptos esenciales, Cursos, Fundamentos, Activos, Interés compuesto, Glosario (vistas `?tab=…`) y `curso.html`.
 - **Lecturas con Criterio** (`lecturas.html`): catálogo y fichas; conserva su diseño editorial propio (excepción expresa).
 
 ### 2.3 Recorrido y jerarquía de una página hija
 
-`Ecosistema NUVIA › Web › Página › [Artículo]`. Toda página hija lleva ruta de navegación (`.nv-breadcrumb`), un único `<h1>` visible, una explicación breve y, si procede, controles o navegación local. Academia contiene dos ramas excluyentes de plantilla, cada una con su título; el navegador muestra una sola. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
+`Inicio NUVIA › Web › Página › [Artículo]`. Toda página hija lleva ruta de navegación (`.nv-breadcrumb`), un único `<h1>` visible, una explicación breve y, si procede, controles o navegación local. Academia contiene dos ramas excluyentes de plantilla, cada una con su título; el navegador muestra una sola. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
 
 ### 2.4 Cáscara común (cabecera y pie)
 

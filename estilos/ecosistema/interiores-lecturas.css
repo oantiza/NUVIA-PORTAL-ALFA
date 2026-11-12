@@ -53,7 +53,7 @@
   body[data-eco-theme="lecturas"] main .nv-space-editorial__body .home26-plate__cta:hover { background: var(--nv-surface-editorial-strong); }
 
   /* Los tres accesos temáticos siguen siendo filtros del mismo catálogo. */
-  body[data-eco-theme="lecturas"] main .nv-library-welcome { padding-block: 48px 40px; }
+  body[data-eco-theme="lecturas"] main .nv-library-welcome { padding-block: 40px; }
   body[data-eco-theme="lecturas"] main .nv-library-welcome .nv-section-heading { margin-bottom: 26px; gap: 36px; }
   body[data-eco-theme="lecturas"] main .nv-library-welcome .nv-section-heading h2 {
     font-family: var(--nv-font-serif);
@@ -98,7 +98,7 @@
   body[data-eco-theme="lecturas"] main .lecturas-filters button[aria-pressed="true"] { background: var(--nv-bronze-800); border-color: var(--nv-bronze-800); color: var(--nv-text-on-dark); }
   body[data-eco-theme="lecturas"] main .lecturas-filters button:not([aria-pressed="true"]):hover { background: var(--nv-surface-editorial-strong); border-color: var(--nv-bronze-700); }
   body[data-eco-theme="lecturas"] main .lecturas-catalog-note { font-size: 13px; line-height: 1.65; }
-  body[data-eco-theme="lecturas"] main .lecturas-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 30px; }
+  body[data-eco-theme="lecturas"] main .lecturas-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 24px; }
   body[data-eco-theme="lecturas"] main .lecturas-card {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 290px minmax(0, 1fr);

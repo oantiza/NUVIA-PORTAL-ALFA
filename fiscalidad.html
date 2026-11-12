@@ -60,10 +60,10 @@
 <div class="nuvia-page">
 
   <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
-    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-brand" href="index.html" aria-label="NUVIA: inicio"><span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png" width="44" height="44" alt=""><span class="nv-brand-word">NUVIA</span></span></a>
     <a class="web-name" href="patrimonio.html">Patrimonio</a>
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
-  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a href="patrimonio.html">Portada</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar NUVIA"><a href="index.html">Inicio NUVIA</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a aria-label="Inicio de Patrimonio" href="patrimonio.html">Inicio</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
 
   <main id="contenido" class="fiscal-page">
 
@@ -79,7 +79,7 @@
           <div>
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol>
-                <li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li>
+                <li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li>
                 <li><a href="patrimonio.html">Patrimonio</a></li>
                 <li><span aria-current="page">Impuestos</span></li>
               </ol>
@@ -93,6 +93,7 @@
               Tu año fiscal, ordenado: qué vence, cuánto pesa cada decisión y
               qué revisar antes de mover tu patrimonio.
             </p>
+            <sc-if value="{{ hayTerritorio }}" hint-placeholder-val="{{ true }}"><div class="nv-hero__actions pa-tool-actions"><a class="nv-btn nv-btn--accent" href="#ejemplo-ahorro">Ir al simulador</a><a class="nv-btn nv-btn--soft" href="#guias">Ver las guías</a></div></sc-if>
           </div>
 
           <div class="fiscal-hero__media">
@@ -116,7 +117,7 @@
                         aria-describedby="ayuda-residencia">
                   <option value="sin-seleccion" disabled="{{ true }}">Selecciona tu territorio</option>
                   <option value="bizkaia">Bizkaia</option>
-                  <option value="araba">Araba / Álava</option>
+                  <option value="araba">Álava / Araba</option>
                   <option value="gipuzkoa">Gipuzkoa</option>
                   <option value="navarra">Navarra</option>
                   <option value="common-territory">Territorio común</option>
@@ -137,6 +138,7 @@
                   <p class="fiscal-selector__help">{{ ayudaSinTerritorio }}</p>
                 </sc-if>
               </div>
+              <sc-if value="{{ hayRetorno }}" hint-placeholder-val="{{ false }}"><a class="pa-territory-return" href="{{ retornoHref }}">Volver a {{ retornoNombre }} →</a></sc-if>
             </aside>
           </div>
 
@@ -318,10 +320,11 @@
               </p>
               <label class="fiscal-sim__label" for="sim-importe">Ganancia patrimonial</label>
               <div class="fiscal-sim__amount">
-                <input id="sim-importe" type="text" inputmode="numeric" autocomplete="off"
+                <input id="sim-importe" type="text" inputmode="numeric" autocomplete="off" aria-describedby="sim-importe-ayuda"
                        key="{{ simClaveTexto }}" defaultValue="{{ simTexto }}" onChange="{{ simEscribir }}">
                 <span class="fiscal-sim__eur" aria-hidden="true">€</span>
               </div>
+              <p id="sim-importe-ayuda" class="pa-tool-note">Importe en euros enteros, sin decimales; hasta 5.000.000 €. Las cifras iniciales son un ejemplo editable.</p>
               <input class="fiscal-sim__range" type="range" min="1000" max="400000" step="1000"
                      key="{{ simClaveRango }}" defaultValue="{{ simRango }}" onChange="{{ simDeslizar }}" aria-label="Ajustar la ganancia">
               <div class="fiscal-sim__chips" role="group" aria-label="Importes de ejemplo">
@@ -408,7 +411,7 @@
 
   </main>
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 
 </div>
 </x-dc>
@@ -434,7 +437,7 @@ class Component extends DCLogic {
         ],
       },
       'araba': {
-        nombre: 'Araba / Álava', regimen: 'Normativa foral', autoridad: 'Hacienda Foral de Álava',
+        nombre: 'Álava / Araba', regimen: 'Normativa foral', autoridad: 'Hacienda Foral de Álava',
         intro: 'La normativa y el calendario de la Hacienda Foral de Álava tienen fechas y procedimientos propios. Confirma la competencia territorial y no reutilices automáticamente los plazos de otro territorio foral.',
         fuenteLabel: 'Portal tributario de Álava', fuenteHref: 'https://web.araba.eus/es/hacienda',
         tarjetas: [
@@ -699,7 +702,12 @@ class Component extends DCLogic {
     }));
     const agenda = x ? this.agenda(x, t.nombre) : this.agenda({ hitos: [], renta: [{ m: 1, d: 1 }, { m: 1, d: 1 }] }, '');
 
+    // El retorno solo admite las tres guías locales; no acepta destinos externos.
+    const retornos = { 'guia-ahorro.html': 'Fiscalidad del ahorro', 'guia-calendario.html': 'Calendario fiscal', 'guia-sucesiones.html': 'Sucesiones y donaciones' };
+    const retorno = new URLSearchParams(window.location.search).get('volver');
+    const hayRetorno = Object.prototype.hasOwnProperty.call(retornos, retorno);
     return {
+      hayRetorno, retornoHref: hayRetorno ? retorno : '#', retornoNombre: hayRetorno ? retornos[retorno] : '',
       seleccion,
       cambiarTerritorio: (e) => {
         const jurisdiction = e.target.value;

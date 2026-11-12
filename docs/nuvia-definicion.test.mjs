@@ -41,9 +41,9 @@ assert.match(pageRaw, /<link rel="canonical" href="https:\/\/oantiza\.github\.io
 assert.match(pageRaw, /NUVIA informa, explica y calcula\.[\s\S]*Tú comprendes y decides\./,
   'El principio central canónico ocupa un bloque visible');
 for (const space of [
-  'Economía y Finanzas',
+  'Economía y finanzas',
   'Patrimonio',
-  'Familia, Salud y Bienestar',
+  'Familia y bienestar',
   'Academia NUVIA',
   'Lecturas con Criterio',
 ]) {

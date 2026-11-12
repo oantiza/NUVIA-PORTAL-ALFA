@@ -1,5 +1,5 @@
 /* Colaboradores · retratos y voces del ecosistema.
-   Capa de presentación local: mismo contenido, orden, fotografía y enlaces.
+   Personas y áreas de trabajo diferenciadas; biografías, fotografía y enlaces conservados.
    Los colores proceden de los tokens NUVIA; la impresión conserva su CSS original. */
 @media screen {
   body[data-eco-theme="colaboradores"] {
@@ -86,6 +86,8 @@
     gap: 0;
     border-top: 1px solid var(--nv-line-strong);
   }
+  body[data-eco-theme="colaboradores"] .nv-collaboration-areas { margin-top: 54px; scroll-margin-top: 24px; }
+  body[data-eco-theme="colaboradores"] .nv-colaborador--area .nv-colaborador__avatar { border-radius: 6px; height: 108px; }
   body[data-eco-theme="colaboradores"] .nv-colaborador {
     display: grid;
     grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);

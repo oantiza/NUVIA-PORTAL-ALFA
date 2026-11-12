@@ -14,27 +14,27 @@ const part = (html, tag, attribute) => html.match(new RegExp(`<${tag}\\b[^>]*${a
 // Expectativas independientes del generador y de _plantilla.html: una lista
 // incorrecta en la fuente canónica debe fallar, no reproducirse en esta prueba.
 const webs = [
-  ['economia.html', 'Economía y Finanzas'], ['patrimonio.html', 'Patrimonio'],
-  ['bienestar.html', 'Familia, Salud y Bienestar'], ['academia.html', 'Academia NUVIA']
+  ['economia.html', 'Economía y finanzas'], ['patrimonio.html', 'Patrimonio'],
+  ['bienestar.html', 'Familia y bienestar'], ['academia.html', 'Academia NUVIA']
 ];
 const common = [['lecturas.html', 'Lecturas con Criterio'], ['colaboradores.html', 'Colaboradores']];
-const institutional = [['que-es-nuvia.html', 'Qué es NUVIA'], ['metodologia.html', 'Metodología'], ['independencia.html', 'Independencia']];
+const institutional = [['que-es-nuvia.html', 'Qué es NUVIA'], ['metodologia.html', 'Cómo trabajamos'], ['independencia.html', 'Independencia']];
 const families = {
   economia: {
     pages: ['economia.html', 'mercados.html', 'cartera.html'],
-    links: [['economia.html', 'Portada'], ['mercados.html?vista=informes#lectura-informe', 'Informes'], ['mercados.html', 'Mercados'], ['cartera.html', 'Cartera'], ['cartera.html?vista=companies', 'Empresas']]
+    links: [['economia.html', 'Inicio'], ['mercados.html?vista=informes#lectura-informe', 'Informes'], ['mercados.html', 'Mercados'], ['cartera.html', 'Cartera'], ['cartera.html?vista=companies', 'Empresas']]
   },
   patrimonio: {
     pages: ['patrimonio.html', 'vivienda.html', 'jubilacion.html', 'fiscalidad.html', 'temas.html', 'guia-fiscal.html', 'guia-planificacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html'],
-    links: [['patrimonio.html', 'Portada'], ['vivienda.html', 'Vivienda'], ['jubilacion.html', 'Jubilación'], ['fiscalidad.html', 'Impuestos'], ['temas.html?topic=planificacion-patrimonial', 'Planificación']]
+    links: [['patrimonio.html', 'Inicio'], ['vivienda.html', 'Vivienda'], ['jubilacion.html', 'Jubilación'], ['fiscalidad.html', 'Impuestos'], ['temas.html?topic=planificacion-patrimonial', 'Planificación']]
   },
   bienestar: {
     pages: ['bienestar.html', 'respiracion-relajacion.html', 'movimiento-consciente.html', 'nutricion-equilibrada.html', 'descanso-limites-tiempo-propio.html', 'la-respiracion-como-el-escultor-del-cerebro.html', 'que-es-meditar.html'],
-    links: [['bienestar.html', 'Portada'], ['respiracion-relajacion.html', 'Respiración'], ['movimiento-consciente.html', 'Movimiento'], ['nutricion-equilibrada.html', 'Nutrición'], ['descanso-limites-tiempo-propio.html', 'Descanso']]
+    links: [['bienestar.html', 'Inicio'], ['respiracion-relajacion.html', 'Respiración'], ['movimiento-consciente.html', 'Movimiento'], ['nutricion-equilibrada.html', 'Nutrición'], ['descanso-limites-tiempo-propio.html', 'Descanso']]
   },
   academia: {
     pages: ['academia.html', 'curso.html'],
-    links: [['academia.html', 'Portada'], ['academia.html?tab=esenciales', 'Esenciales'], ['academia.html?tab=cursos', 'Cursos'], ['academia.html?tab=calculadora', 'Interés compuesto'], ['academia.html?tab=glosario', 'Glosario']]
+    links: [['academia.html', 'Inicio'], ['academia.html?tab=esenciales', 'Conceptos'], ['academia.html?tab=cursos', 'Cursos'], ['academia.html?tab=calculadora', 'Interés compuesto'], ['academia.html?tab=glosario', 'Glosario']]
   }
 };
 const expectedPages = ['index.html', ...Object.values(families).flatMap(family => family.pages), ...common.map(([href]) => href), ...institutional.map(([href]) => href)];
@@ -59,19 +59,19 @@ for (const name of expectedPages) {
     const selector = part(header, 'details', 'class="eco-switch"');
     const local = part(header, 'nav', 'class="web-local"');
     assert.equal((header.match(/<details\b/g) || []).length, 1, `${name}: un selector nativo del ecosistema`);
-    assert.match(selector, /<summary>[^<]+(?:<span[^>]*>[^<]+<\/span>)?<\/summary>/, `${name}: selector con nombre visible`);
-    assert.deepEqual(linksIn(selector), family ? [['index.html', 'Portada del ecosistema'], ...webs, ...common, ...institutional] : webs, `${name}: cuatro webs y destinos globales`);
-    assert.deepEqual(linksIn(local), family ? family.links : [['index.html', 'Portada del ecosistema'], ...common, institutional[0]], `${name}: navegación contextual completa`);
+    assert.match(selector, /<summary>Explorar NUVIA <span aria-hidden="true">⌄<\/span><\/summary>/, `${name}: mismo nombre visible del selector en todos los interiores`);
+    assert.deepEqual(linksIn(selector), [['index.html', 'Inicio NUVIA'], ...webs, ...common, ...institutional], `${name}: cuatro webs y destinos globales`);
+    assert.deepEqual(linksIn(local), family ? family.links : [['index.html', 'Inicio NUVIA'], ...common, institutional[0]], `${name}: navegación contextual completa`);
     assert.deepEqual(linksIn(footer).map(([href]) => href), ['index.html', ...common.map(([href]) => href), ...institutional.map(([href]) => href)], `${name}: regreso, dos espacios comunes e información institucional`);
     for (const sentence of [
       'NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.',
       'Contenido educativo e informativo.', 'No constituye asesoramiento financiero, fiscal o jurídico personalizado.',
-      '© 2026 NUVIA Family Wealth. Todos los derechos reservados.',
+      '© 2026 NUVIA. Todos los derechos reservados.',
       'Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.'
     ]) assert.ok(footer.includes(sentence), `${name}: aviso institucional conservado: ${sentence}`);
     if (!webs.some(([href]) => href === name)) {
       const breadcrumb = part(html, 'nav', 'class="[^"]*nv-breadcrumb[^"]*"');
-      assert.match(breadcrumb, /<a href="index.html" data-main-menu-return>Ecosistema NUVIA<\/a>/, `${name}: regreso explícito al ecosistema`);
+      assert.match(breadcrumb, /<a href="index.html" data-main-menu-return>Inicio NUVIA<\/a>/, `${name}: regreso explícito al ecosistema`);
       assert.equal((html.match(/data-main-menu-return/g) || []).length, 1, `${name}: regreso de breadcrumb único`);
     }
   }
@@ -92,7 +92,7 @@ for (const [name, fixture] of [
   ['CRLF', homeLf.replaceAll('\n', '\r\n')],
   ['mixto', homeLf.replaceAll('\n', '\r\n').replace(HEADER_PATTERN, fragment => fragment.replaceAll('\r\n', '\n'))]
 ]) {
-  const stale = fixture.replace('>Ecosistema</span>', '>Navegación anterior</span>')
+  const stale = fixture.replace('class="hub-brand-logo"', 'class="marca-anterior"')
     .replace('Conocimiento para la vida en familia.', 'Pie anterior.');
   assert.notEqual(stale, fixture, `${name}: el caso contiene cambios reales de cáscara`);
   const corrected = applySiteShell(stale, 'index.html', { definition });
@@ -105,12 +105,22 @@ assert.deepEqual(doors.map(([, href]) => href), webs.map(([href]) => href), 'El 
 doors.forEach(([, , label], index) => assert.ok(label.startsWith(webs[index][1] + ':'), 'Cada puerta identifica su destino'));
 assert.deepEqual(linksIn(part(home, 'section', 'class="hub-connections"')), common, 'Lecturas y Colaboradores son dos espacios comunes');
 assert.match(home, /id="webs"/, 'Ancla estable para las cuatro webs');
+const tools = part(home, 'section', 'class="hub-tools"');
+assert.match(tools, /<details>\s*<summary>/, 'Índice de herramientas con control nativo accesible');
+assert.deepEqual(linksIn(tools).map(([href]) => href), [
+  'vivienda.html#simulador-vivienda', 'jubilacion.html#simulador-jubilacion', 'fiscalidad.html#guias',
+  'academia.html?tab=calculadora#simulador-interes', 'cartera.html#laboratorio', 'cartera.html?vista=companies#suite-nuvia'
+], 'Seis accesos concretos a las herramientas conservadas, sin convertirlas en otra web');
+for (const [href] of linksIn(tools)) {
+  const url = new URL(href, 'https://nuvia.local/');
+  assert.ok(sources.get(url.pathname.slice(1)).includes(`id="${url.hash.slice(1)}"`), `Destino real del índice: ${href}`);
+}
 const about = sources.get('que-es-nuvia.html');
 assert.match(about, /<h1 id="que-nuvia-title"><span>¿Qué es<\/span> NUVIA\?<\/h1>/, 'Título institucional conservado');
 assert.match(about, /NUVIA es un lugar donde las familias aprenden a entender su dinero\./, 'Definición principal publicada');
 assert.match(about, /No constituye asesoramiento financiero, fiscal o jurídico personalizado\./, 'Aviso de alcance conservado');
 assert.match(about, /href="que-es-nuvia\.html" aria-current="page">Qué es NUVIA<\/a>/, 'Identifica la página institucional activa');
-assert.match(about, /href="index\.html#webs">Explorar las cuatro webs/, 'Regreso institucional a las cuatro webs');
+assert.match(about, /href="index\.html#webs">Explorar NUVIA/, 'Regreso institucional a las cuatro webs');
 const aboutWebs = part(about, 'div', 'class="about-world__list"');
 const aboutCommon = part(about, 'div', 'class="about-world__list about-world__list--common"');
 assert.deepEqual(linksIn(aboutWebs).map(([href]) => href), webs.map(([href]) => href), 'Qué es NUVIA presenta cuatro webs');

@@ -8,22 +8,22 @@ const read = (file) => readFileSync(resolve(root, file), 'utf8');
 const breadcrumb = (file) => read(file).match(/<nav class="[^"]*\bnv-breadcrumb\b[^"]*"[\s\S]*?<\/nav>/)?.[0] || '';
 const pages = ['vivienda.html', 'fiscalidad.html', 'jubilacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html', 'guia-fiscal.html', 'guia-planificacion.html'];
 for (const file of pages) {
-  assert.match(breadcrumb(file), /href="index.html" data-main-menu-return>Ecosistema NUVIA<\/a>/, `${file}: regreso inequívoco a la portada común`);
+  assert.match(breadcrumb(file), /href="index.html" data-main-menu-return>Inicio NUVIA<\/a>/, `${file}: regreso inequívoco a la portada común`);
   assert.ok(breadcrumb(file).includes('<a href="patrimonio.html">Patrimonio</a>'), `${file}: espacio padre explícito`);
   assert.doesNotMatch(breadcrumb(file), /Temas clave/);
 }
-assert.match(breadcrumb('cartera.html'), /href="economia.html">Economía y Finanzas<\/a>/);
-assert.match(breadcrumb('academia.html'), /aria-current="page">Academia NUVIA<\/span>/);
+assert.match(breadcrumb('cartera.html'), /href="economia.html">Economía y finanzas<\/a>/);
+assert.match(breadcrumb('academia.html'), /aria-current="page">\{\{ entradaTitulo \}\}<\/span>/);
 assert.match(breadcrumb('curso.html'), /href="academia.html">Academia NUVIA<\/a>/);
 assert.doesNotMatch(breadcrumb('curso.html'), /<details|lecturas.html/);
 assert.doesNotMatch(breadcrumb('lecturas.html'), /Academia|academia.html|<details/);
 assert.match(breadcrumb('lecturas.html'), /aria-current="page">Lecturas con Criterio<\/span>/);
 
 for (const file of ['mercados.html', 'cartera.html', 'academia.html', 'curso.html', 'lecturas.html', 'colaboradores.html', 'que-es-nuvia.html', 'metodologia.html', 'independencia.html', 'temas.html', 'respiracion-relajacion.html', 'movimiento-consciente.html', 'nutricion-equilibrada.html', 'descanso-limites-tiempo-propio.html', 'la-respiracion-como-el-escultor-del-cerebro.html', 'que-es-meditar.html']) {
-  assert.match(breadcrumb(file), /href="index.html" data-main-menu-return>Ecosistema NUVIA<\/a>/, `${file}: regreso a Ecosistema NUVIA conservado`);
+  assert.match(breadcrumb(file), /href="index.html" data-main-menu-return>Inicio NUVIA<\/a>/, `${file}: regreso a Ecosistema NUVIA conservado`);
 }
 for (const file of ['la-respiracion-como-el-escultor-del-cerebro.html', 'que-es-meditar.html']) {
-  assert.match(breadcrumb(file), /href="bienestar.html">Familia, Salud y Bienestar<\/a>/, `${file}: web de origen explícita`);
+  assert.match(breadcrumb(file), /href="bienestar.html">Familia y bienestar<\/a>/, `${file}: web de origen explícita`);
   assert.match(breadcrumb(file), /href="respiracion-relajacion.html">Respiración y relajación<\/a>/, `${file}: subsección de origen explícita`);
 }
 

@@ -2,17 +2,27 @@
 documento: Definición canónica de NUVIA
 estado: Documento vivo, sujeto a retoques finales
 ultima_actualizacion: 2026-11-12
+nomenclatura_publica_20261112:
+  orden: "Sigue"
+  contexto: Continuación de las propuestas de la auditoría integral, tras la libertad expresa para mejorar nombres, textos, diseño y herramientas
+  marca: NUVIA
+  descriptor: Conocimiento para la vida en familia
+  menu_global: Explorar NUVIA
+  regreso_global: Inicio NUVIA
+  bienestar: Familia y bienestar
+  descriptor_bienestar: Salud, hábitos y vida cotidiana
+  criterio: Ecosistema se conserva como idea descriptiva; la interfaz usa NUVIA como nombre del conjunto
 estructura_principal_20261112:
   estado: Publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions
   orden: Integrar la maqueta como nueva versión principal de NUVIA Portal Alfa, manteniendo todos los contenidos, calculadoras y funcionalidades, sin publicarla todavía
   orden_posterior_publicacion: "Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes."
   acta_publicacion: docs/PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md
   alcance: Publicación autorizada de la versión integrada mediante GitHub Actions y GitHub Pages; el resultado se registra en el acta de publicación
-  portada_comun: Ecosistema NUVIA
+  portada_comun: NUVIA
   webs:
-    - Economía y Finanzas
+    - Economía y finanzas
     - Patrimonio
-    - Familia, Salud y Bienestar
+    - Familia y bienestar
     - Academia NUVIA
   espacios_comunes:
     - Lecturas con Criterio
@@ -21,8 +31,8 @@ estructura_principal_20261112:
   criterio: Las cuatro webs tienen identidad y navegación propias bajo una portada común; Lecturas con Criterio y Colaboradores son accesibles desde el conjunto del ecosistema
   continuidad: Se conservan los contenidos, las calculadoras, las funcionalidades y la independencia de NUVIA; se mantiene el repositorio único y el alojamiento estático
   copy_intro: >-
-    Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio,
-    Familia, Salud y Bienestar y Academia NUVIA. Lecturas con Criterio y
+    NUVIA reúne cuatro webs: Economía y finanzas, Patrimonio,
+    Familia y bienestar y Academia NUVIA. Lecturas con Criterio y
     Colaboradores son espacios comunes, y Qué es NUVIA presenta el propósito,
     los valores y los límites del proyecto.
   copy_colaboradores: >-
@@ -46,17 +56,17 @@ Pensamos a largo plazo, como piensan las familias: comprender lo que se tiene, c
 
 ## Qué vas a encontrar
 
-Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas con Criterio y Colaboradores son espacios comunes, y Qué es NUVIA presenta el propósito, los valores y los límites del proyecto.
+NUVIA reúne cuatro webs: Economía y finanzas, Patrimonio, Familia y bienestar y Academia NUVIA. Lecturas con Criterio y Colaboradores son espacios comunes, y Qué es NUVIA presenta el propósito, los valores y los límites del proyecto.
 
 ### Las cuatro webs
 
-**Economía y Finanzas**: economía, mercados y noticias explicados en lenguaje claro; qué significan la inflación, los tipos de interés o las cotizaciones, y cómo afectan a tu día a día. También incluye cartera y analítica descriptiva para comprender la composición, el riesgo y los escenarios, sin convertir el resultado en una recomendación.
+**Economía y finanzas**: economía, mercados y noticias explicados en lenguaje claro; qué significan la inflación, los tipos de interés o las cotizaciones, y cómo afectan a tu día a día. También incluye cartera y analítica descriptiva para comprender la composición, el riesgo y los escenarios, sin convertir el resultado en una recomendación.
 
 **Patrimonio**: guías y simuladores sobre vivienda y coste de vida, impuestos, jubilación y planificación patrimonial educativa, con los datos y los supuestos siempre a la vista.
 
-**Familia, Salud y Bienestar**: contenidos generales y basados en fuentes solventes sobre familia, cuerpo, hábitos, mente y bienestar, sin diagnóstico ni consejo sanitario individual.
+**Familia y bienestar**: contenidos generales y basados en fuentes solventes sobre familia, cuerpo, hábitos, mente y bienestar, sin diagnóstico ni consejo sanitario individual. Su descriptor es «Salud, hábitos y vida cotidiana».
 
-**Academia NUVIA**: conocimientos esenciales, guías, vídeos, herramientas de aprendizaje y cursos para avanzar a tu ritmo, empieces desde donde empieces. Saber es patrimonio.
+**Academia NUVIA**: conceptos esenciales, guías, vídeos, herramientas de aprendizaje y cursos para avanzar a tu ritmo, empieces desde donde empieces. Saber es patrimonio.
 
 ### Espacios comunes
 

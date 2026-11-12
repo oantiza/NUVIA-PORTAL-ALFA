@@ -1,4 +1,4 @@
-/* Maqueta Ecosistema · interiores de Academia NUVIA.
+/* Ecosistema · interiores de Academia NUVIA.
    Azul hielo y papel para aprender, con el motor y los estados originales.
    No cambia gráficos, señales de corrección, contenidos ni impresión. */
 @media screen {
@@ -48,6 +48,11 @@
   }
   body[data-eco-theme="academia"] main .ac-learning-back { padding-top: 12px; }
   body[data-eco-theme="academia"] main .ac-learning-back > a { display: inline-flex; align-items: center; min-height: 44px; }
+  body[data-eco-theme="academia"] main .ac-learning-back--end { padding-bottom: 36px; }
+  body[data-eco-theme="academia"] main .ac-entry-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  body[data-eco-theme="academia"] main .ac-route-photo { position: relative; min-height: 0; height: 240px; margin-bottom: 32px; overflow: hidden; border-radius: 4px 32px 4px 4px; }
+  body[data-eco-theme="academia"] main .ac-route-photo img { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  body[data-eco-theme="academia"] main :is(#simulador-interes, #explicacion-interes, #capitulo-actual, .ac-x228) { scroll-margin-top: 24px; }
   body[data-eco-theme="academia"] main .gu-section { padding-bottom: 56px; }
   body[data-eco-theme="academia"] main .ac-learning-back + .gu-section { padding-top: 20px; }
   body[data-eco-theme="academia"] main :is(.gu-card, .gu-card--column, .ac-card) {
@@ -106,6 +111,10 @@
   body[data-eco-theme="academia"] main .ac-x204 { padding: 32px; gap: 32px; }
   body[data-eco-theme="academia"] main .ac-x205 { border-left: 2px solid var(--nv-navy-700); border-radius: 0 4px 4px 0; background: var(--nv-surface-technical); font-weight: 500; }
   body[data-eco-theme="academia"] main .ac-x206 { border-radius: 4px; box-shadow: none; }
+  /* El mensaje previo ocupa su altura natural; solo el vídeo cargado usa 16:9. */
+  body[data-eco-theme="academia"] main :is(.ac-x43, .ac-x206):not(:has(iframe)) { aspect-ratio: auto; }
+  body[data-eco-theme="academia"] main :is(.ac-x43, .ac-x206) .ac-x44:not(:has(iframe)) { position: relative; inset: auto; height: auto; min-height: 260px; }
+  body[data-eco-theme="academia"] main :is(.ac-x43, .ac-x206) .nv-external-content__placeholder { min-height: 0; }
   body[data-eco-theme="academia"] main .ac-x208 { margin-block: 42px 24px; gap: 32px; }
   body[data-eco-theme="academia"] main .ac-x208 > * { min-width: 0; }
   body[data-eco-theme="academia"] main .ac-x209 { gap: 24px; }
@@ -121,6 +130,8 @@
   body[data-eco-theme="academia"] main .ac-x227 { background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: 26px; padding: 4px; }
   body[data-eco-theme="academia"] main .ac-x227 .ac-tab { min-height: 44px; padding-inline: 24px; border-radius: 22px; color: var(--nv-text-soft); }
   body[data-eco-theme="academia"] main .ac-x227 .ac-tab.is-active { background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="academia"] main .ac-glossary-index { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 16px 0 24px; border-bottom: 1px solid var(--nv-line); }
+  body[data-eco-theme="academia"] main .ac-glossary-index a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
   body[data-eco-theme="academia"] main .ac-x229 { min-height: 80px; padding: 24px 20px; }
   body[data-eco-theme="academia"] main .ac-x229:hover { background: var(--nv-surface-technical); }
   body[data-eco-theme="academia"] main .ac-x229[aria-expanded="true"] { background: var(--nv-surface-technical); }
@@ -165,6 +176,9 @@
   body[data-eco-theme="academia"] main .curso-tool > .curso-panel:first-child { background: var(--nv-surface-technical); }
   body[data-eco-theme="academia"] main .curso-panel__title { font-size: 16px; }
   body[data-eco-theme="academia"] main .curso-resultado { border-radius: 4px; }
+  body[data-eco-theme="academia"] main .curso-prioridad { background: var(--nv-surface-editorial); border-color: var(--nv-line); }
+  body[data-eco-theme="academia"] main .curso-prioridad > span { color: var(--nv-navy-700); }
+  body[data-eco-theme="academia"] main .curso-prioridad p { margin: 8px 0 0; color: var(--nv-text-soft); font-size: 14px; line-height: 1.6; }
   body[data-eco-theme="academia"] main :is(.curso-opcion, .curso-radio) { min-height: 48px; border-radius: 4px; }
   body[data-eco-theme="academia"] main :is(.curso-tab, .ac-essential-card, .ac-x229, .ac-tab):focus-visible { outline: 2px solid var(--nv-navy-700); outline-offset: 4px; }
 }
@@ -176,7 +190,8 @@
   body[data-eco-theme="academia"] main .ac-x22 { padding: 30px 28px; }
   body[data-eco-theme="academia"] main .ac-x21 .gu-title-hero { font-size: 38px; }
   body[data-eco-theme="academia"] main .ac-x26 { padding: 28px; }
-  body[data-eco-theme="academia"] main .ac-x204 { padding: 26px; gap: 26px; }
+  body[data-eco-theme="academia"] main .ac-x204 { padding: 26px; gap: 26px; grid-template-columns: minmax(0, 1fr); }
+  body[data-eco-theme="academia"] main .ac-x208 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
   body[data-eco-theme="academia"] main .ac-card > .gu-grid-3 { padding-inline: 24px; padding-bottom: 24px; }
   body[data-eco-theme="academia"] main .ac-x209 { gap: 20px; }
   body[data-eco-theme="academia"] main .ac-x209 > .gu-card { padding: 20px; }

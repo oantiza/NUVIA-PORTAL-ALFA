@@ -1,6 +1,6 @@
 /* Qué es NUVIA · presentación institucional del ecosistema.
-   Capa de pantalla sobre el relato canónico: sin cambios de contenido,
-   orden, destinos, imágenes, comportamiento ni estilos de impresión. */
+   Utilidad antes del manifiesto y ejemplos del método junto al relato canónico.
+   Imágenes, comportamiento y estilos originales de impresión conservados. */
 @media screen {
   body[data-eco-theme="nuvia"] { --eco-accent: var(--nv-green-800); }
   body[data-eco-theme="nuvia"] .about-presentation { background: var(--nv-surface); }
@@ -94,6 +94,33 @@
     font-size: 14px;
   }
   body[data-eco-theme="nuvia"] .about-index a:hover { color: var(--nv-green-800); border-bottom-color: var(--nv-green-800); }
+
+  /* Las preguntas cotidianas llevan a recursos existentes, antes del manifiesto. */
+  body[data-eco-theme="nuvia"] .about-start { padding-block: 36px 42px; background: var(--nv-surface); }
+  body[data-eco-theme="nuvia"] .about-start-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 30px; margin-bottom: 24px; }
+  body[data-eco-theme="nuvia"] .about-start-heading .about-kicker { margin: 0; }
+  body[data-eco-theme="nuvia"] .about-start h2 { margin: 0; font: 400 36px/1.15 var(--nv-font-serif); letter-spacing: -.025em; }
+  body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) > article { display: flex; flex-direction: column; align-items: flex-start; padding-top: 22px; border-top: 1px solid var(--nv-line-strong); }
+  body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) h3 { margin: 0 0 13px; font: 400 28px/1.15 var(--nv-font-serif); letter-spacing: -.02em; color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) p { margin: 0 0 16px; font-size: 15px; line-height: 1.75; color: var(--nv-text-soft); }
+  body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: auto; padding-block: 8px; font-size: 14px; line-height: 1.55; color: var(--nv-green-800); text-decoration: underline; text-underline-offset: 4px; }
+  body[data-eco-theme="nuvia"] .nv-method-examples { padding-block: 38px 44px; background: var(--nv-surface-editorial); }
+  body[data-eco-theme="nuvia"] .nv-method-examples .nv-section-heading { margin-bottom: 24px; }
+  body[data-eco-theme="nuvia"] .nv-method-examples .nv-section-heading > p a { display: inline-flex; align-items: center; min-height: 44px; color: var(--nv-green-800); text-decoration: underline; text-underline-offset: 4px; }
+  body[data-eco-theme="nuvia"] .nv-method-examples__grid .nv-eyebrow { color: var(--nv-green-800); font-size: 12px; margin-bottom: 10px; }
+  body[data-eco-theme="nuvia"] .nv-method-examples a:focus-visible { outline: 2px solid var(--nv-green-700); outline-offset: 4px; }
+
+  /* Los compromisos y el proceso usan la misma lectura editorial, sin alturas vacías. */
+  body[data-eco-theme="nuvia"] .nv-trust-content > .nv-section { padding-block: 42px; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-section-heading { margin-bottom: 28px; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid { gap: 28px 36px; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card { min-height: 0; height: auto; padding: 24px 0 8px; background: transparent; border: 0; border-top: 1px solid var(--nv-line-strong); border-radius: 0; box-shadow: none; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card h3 { margin-block: 16px 12px; font: 400 28px/1.2 var(--nv-font-serif); letter-spacing: -.02em; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card p { font-size: 15px; line-height: 1.75; }
+  body[data-eco-theme="nuvia"] .nv-trust-content .nv-card:hover { transform: none; box-shadow: none; }
 
   /* El manifiesto y el propósito se leen como una conversación, con pausas. */
   body[data-eco-theme="nuvia"] .about-presentation :is(.about-manifesto, .about-purpose, .about-world, .about-values) { padding-block: 64px; }
@@ -271,6 +298,13 @@
     body[data-eco-theme="nuvia"] .about-values__grid { gap: 32px 40px; }
   }
   @media (max-width: 859px) {
+    body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid { gap: 22px 28px; }
+    body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) { grid-template-columns: 1fr; gap: 22px; }
+    body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) > article { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 0 28px; }
+    body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) p { margin-bottom: 8px; }
+    body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) a { grid-column: 2; }
+    body[data-eco-theme="nuvia"] .nv-method-examples__grid .nv-eyebrow { grid-column: 1 / -1; }
     body[data-eco-theme="nuvia"].nuvia-unified .about-hero.nv-entry { min-height: 410px; }
     body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__frame { min-height: 358px; }
     body[data-eco-theme="nuvia"].nuvia-unified .about-hero h1 { font-size: 49px; }

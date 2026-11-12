@@ -72,7 +72,7 @@ ${css.map(file=>`<link rel="stylesheet" href="estilos/ecosistema/${file}.css">`)
 for (const key of ['index', 'economia', 'patrimonio', 'bienestar']) {
   const name = key + '.html';
   const site = sites.find(s=>s.key===key);
-  const description = site?.copy || 'Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas y Colaboradores son espacios comunes.';
+  const description = site?.copy || 'NUVIA: Economía y finanzas, Patrimonio, Familia y bienestar y Academia NUVIA. Información, guías y herramientas para la vida en familia.';
   const main = key==='index' ? renderHub().match(/<main\b[\s\S]*?<\/main>/)[0] : `<main id="contenido" tabindex="-1">${renderers[key](site)}</main>`;
   const previous = await readFile(resolve(root,name),'utf8');
   const header = previous.match(/<header\b[^>]*data-screen-label="Header"[^>]*>[\s\S]*?<\/header>/)?.[0] || '<header data-screen-label="Header"></header>';

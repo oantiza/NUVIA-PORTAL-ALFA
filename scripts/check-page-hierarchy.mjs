@@ -16,16 +16,15 @@ export async function checkPageHierarchy(page, route) {
     return problems;
   }
 
-  /* El recorrido original es una vista de compatibilidad deliberada. No se
-     omite: se comprueban su foto, sus tres pasos y su regreso al ecosistema. */
+  /* El recorrido conserva sus materiales y adopta la entrada de página hija.
+     Se comprueban foto, pasos, regreso y el mismo contrato visual del interior. */
   if (path === 'academia.html' && url.searchParams.get('tab') === 'inicio') {
     for (const [selector, count] of [
-      ['#academy.nv-campus-cover:not(.nv-entry)', 1],
-      ['#academy .home26-plate__figure img', 1],
+      ['#academy.nv-entry', 1],
+      ['.ac-route-photo img', 1],
       ['#ruta-aprendizaje .ac-learning-step', 3],
       ['#academy .nv-breadcrumb a[href="index.html"]', 1],
     ]) if (await page.locator(selector).count() !== count) problems.push(`Recorrido original: se esperan ${count} elementos ${selector}`);
-    return problems;
   }
 
   const parent = route.includes('topic=bienestar') ? 'bienestar.html' : (padreDe(path) ?? 'patrimonio.html');

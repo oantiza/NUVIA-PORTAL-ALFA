@@ -18,13 +18,14 @@ const definitions = {
 export function CompanySummary({ company }) {
   const rows = company.statements.Income_Statement.rows;
   const latest = rows.at(-1);
+  const annualContext = <span className="alpha-kpi-context"><span>{latest?.period ? `Ejercicio cerrado: ${fmtDate(latest.period)}` : 'Ejercicio no disponible'}</span><span>Fuente: {company.source?.provider || 'no informada'} · cuentas anuales</span></span>;
   return <Section eyebrow="Último cierre de resultados disponible" title={latest ? fmtDate(latest.period) : 'Sin resultados anuales'}>
     <p>Cifras originales de la fuente, sin conversión. Moneda declarada para este ejercicio: {latest?.currency || 'no informada'}. Escala contable no indicada.</p>
     <KpiGrid>
-      <Kpi label="Ingresos" value={originalNumber(latest?.totalRevenue)} />
-      <Kpi label="Beneficio neto" value={originalNumber(latest?.netIncome)} />
-      <Kpi label="EBITDA" value={originalNumber(latest?.ebitda)} />
-      <Kpi label="Margen neto" value={fmtPct(marginPercent(latest?.netIncome, latest?.totalRevenue), 1, false)} />
+      <Kpi label="Ingresos" value={originalNumber(latest?.totalRevenue)} sub={annualContext} />
+      <Kpi label="Beneficio neto" value={originalNumber(latest?.netIncome)} sub={annualContext} />
+      <Kpi label="EBITDA" value={originalNumber(latest?.ebitda)} sub={annualContext} />
+      <Kpi label="Margen neto" value={fmtPct(marginPercent(latest?.netIncome, latest?.totalRevenue), 1, false)} sub={annualContext} />
     </KpiGrid>
     <p className="note">Margen neto = beneficio neto / ingresos × 100, del mismo ejercicio. No se calcula si falta un dato o el ingreso es cero.</p>
   </Section>;
@@ -32,20 +33,21 @@ export function CompanySummary({ company }) {
 
 export function CompanyRatios({ company }) {
   const h = company.metrics, v = company.multiples;
+  const snapshotContext = period => <span className="alpha-kpi-context"><span>{period} · cierre no informado</span><span>Fuente: {company.source?.provider || 'no informada'} · instantánea</span></span>;
   return <>
     <Section eyebrow="Ratios históricos del proveedor" title="Múltiplos">
       <KpiGrid>
-        <Kpi label="PER (ttm)" value={fmtRatio(h.PERatio)} />
-        <Kpi label="Precio / Ventas" value={fmtRatio(v.PriceSalesTTM)} />
-        <Kpi label="Precio / Valor contable" value={fmtRatio(v.PriceBookMRQ)} />
-        <Kpi label="EV / Ventas" value={fmtRatio(v.EnterpriseValueRevenue)} />
-        <Kpi label="EV / EBITDA" value={fmtRatio(v.EnterpriseValueEbitda)} />
+        <Kpi label="PER (ttm)" value={fmtRatio(h.PERatio)} sub={snapshotContext('Últimos doce meses')} />
+        <Kpi label="Precio / Ventas" value={fmtRatio(v.PriceSalesTTM)} sub={snapshotContext('Últimos doce meses')} />
+        <Kpi label="Precio / Valor contable" value={fmtRatio(v.PriceBookMRQ)} sub={snapshotContext('Último trimestre del proveedor')} />
+        <Kpi label="EV / Ventas" value={fmtRatio(v.EnterpriseValueRevenue)} sub={snapshotContext('Periodo no informado')} />
+        <Kpi label="EV / EBITDA" value={fmtRatio(v.EnterpriseValueEbitda)} sub={snapshotContext('Periodo no informado')} />
       </KpiGrid>
     </Section>
     <Section eyebrow="Márgenes, rentabilidad contable y crecimiento" title="Resultados y ratios">
       <KpiGrid>
-        <Kpi label="Margen bruto (ttm)" value={fmtPct(marginPercent(h.GrossProfitTTM, h.RevenueTTM), 1, false)} />
-        {[['OperatingMarginTTM', 'Margen operativo'], ['ProfitMargin', 'Margen neto'], ['ReturnOnEquityTTM', 'ROE'], ['ReturnOnAssetsTTM', 'ROA'], ['QuarterlyRevenueGrowthYOY', 'Crec. ingresos (a/a)'], ['QuarterlyEarningsGrowthYOY', 'Crec. beneficio (a/a)']].map(([key, label]) => <Kpi key={key} label={label} value={fmtPct(pct100(h[key]), 1, false)} />)}
+        <Kpi label="Margen bruto (ttm)" value={fmtPct(marginPercent(h.GrossProfitTTM, h.RevenueTTM), 1, false)} sub={snapshotContext('Últimos doce meses')} />
+        {[['OperatingMarginTTM', 'Margen operativo'], ['ProfitMargin', 'Margen neto'], ['ReturnOnEquityTTM', 'ROE'], ['ReturnOnAssetsTTM', 'ROA'], ['QuarterlyRevenueGrowthYOY', 'Crec. ingresos (a/a)'], ['QuarterlyEarningsGrowthYOY', 'Crec. beneficio (a/a)']].map(([key, label]) => <Kpi key={key} label={label} value={fmtPct(pct100(h[key]), 1, false)} sub={snapshotContext(key.endsWith('TTM') ? 'Últimos doce meses' : key.endsWith('YOY') ? 'Variación trimestral a/a' : 'Periodo no informado')} />)}
       </KpiGrid>
       <p className="note">TTM significa últimos doce meses; a/a compara con el mismo periodo del año anterior. Son ratios de la instantánea del proveedor, no recalculados con el precio actual. El cierre exacto de cada ratio no consta en estos archivos. Margen bruto = beneficio bruto TTM / ingresos TTM × 100.</p>
     </Section>

@@ -25,7 +25,7 @@ export const NOTA_MODELOS = 'Cada cartera modelo es una composición fija: '
   + 'las referencias al catálogo en sus criterios corresponden a la fecha de fijación. '
   + 'La disponibilidad actual en la alfa se comprueba por separado. '
   + 'Al seleccionarla se abre el mismo '
-  + 'análisis que en «Mi cartera», con el historial real de 3 años de la '
+  + 'análisis que en «Análisis de cartera», con el historial real de 3 años de la '
   + 'base de datos NUVIA. Si a alguna posición le falta historial, se dice cuál y queda fuera del cálculo.';
 
 /**

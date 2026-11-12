@@ -1,6 +1,6 @@
 export const sites = [
   {
-    key: 'economia', name: 'Economía y Finanzas', short: 'Economía y Finanzas',
+    key: 'economia', name: 'Economía y finanzas', short: 'Economía y finanzas',
     purpose: 'Entender el mundo que mueve tu dinero.',
     copy: 'Actualidad económica, mercados y análisis para poner los datos en contexto y formar tu propio criterio.',
     topics: 'Mercados · Informes · Cartera · Empresas',
@@ -10,10 +10,10 @@ export const sites = [
     resources: [
       ['informes', 'Informes de mercado', 'Lectura y contexto', 'Informe diario y semanal para seguir la evolución de los mercados con fuentes y fecha.', 'mercados.html?vista=informes#lectura-informe', 'Consultar informes'],
       ['mercados', 'Mercados y noticias', 'Actualidad', 'Noticias, indicadores y cotizaciones para comprender el entorno económico.', 'mercados.html', 'Explorar mercados'],
-      ['cartera', 'Cartera y analítica', 'Laboratorio', 'Composición, riesgo y escenarios definidos por ti. Métodos explicados y límites a la vista.', 'cartera.html', 'Abrir el laboratorio'],
+      ['cartera', 'Análisis de cartera', 'Análisis descriptivo', 'Composición, riesgo y escenarios definidos por ti. Métodos explicados y límites a la vista.', 'cartera.html', 'Analizar una cartera'],
       ['empresas', 'Análisis y valoración de empresas', 'Datos y métodos', 'Datos del negocio, información financiera y métodos académicos con fuentes, supuestos y límites identificados.', 'cartera.html?vista=companies', 'Explorar empresas'],
     ],
-    feature: ['¿Un concepto nuevo?', 'Antes de seguir, puedes hacer una pausa en Academia.', 'El glosario y los conocimientos esenciales ayudan a dar sentido a los términos que aparecen en los mercados.', 'academia.html', 'Explorar Academia'],
+    feature: ['¿Un concepto nuevo?', 'Antes de seguir, puedes hacer una pausa en Academia.', 'El glosario y los conceptos esenciales ayudan a dar sentido a los términos que aparecen en los mercados.', 'academia.html', 'Explorar Academia'],
     note: 'Información y análisis descriptivo. Los cálculos no determinan qué comprar, vender o mantener ni la adecuación de una inversión para una persona.'
   },
   {
@@ -28,13 +28,13 @@ export const sites = [
       ['vivienda', 'Vivienda y coste de vida', 'Guía y simulador', 'Explora los costes de la vivienda y su relación con el presupuesto familiar.', 'vivienda.html', 'Explorar vivienda'],
       ['jubilacion', 'Jubilación', 'Guías y simulador', 'Comprende los ingresos futuros y cómo cambian los escenarios bajo distintos supuestos.', 'jubilacion.html', 'Explorar jubilación'],
       ['impuestos', 'Impuestos', 'Guías y herramientas', 'Fiscalidad del ahorro, calendario fiscal, sucesiones y donaciones explicados con claridad.', 'fiscalidad.html', 'Comprender los impuestos'],
-      ['planificacion', 'Planificación patrimonial', 'Guía educativa', 'Relaciona las piezas de la economía familiar y las preguntas que surgen al mirar a largo plazo.', 'temas.html?topic=planificacion-patrimonial', 'Leer la guía'],
+      ['planificacion', 'Planificación patrimonial', 'Espacio en preparación', 'Relaciona las piezas de la economía familiar y las preguntas que surgen al mirar a largo plazo.', 'temas.html?topic=planificacion-patrimonial', 'Ver contenidos previstos'],
     ],
-    feature: ['Aprender a mirar los supuestos', 'Un escenario es una forma de explorar.', 'Las hipótesis ayudan a entender cómo cambia un resultado. No son una predicción ni una decisión tomada por ti.', 'metodologia.html', 'Conocer la metodología'],
+    feature: ['Aprender a mirar los supuestos', 'Un escenario es una forma de explorar.', 'Las hipótesis ayudan a entender cómo cambia un resultado. No son una predicción ni una decisión tomada por ti.', 'metodologia.html', 'Cómo trabajamos'],
     note: 'Contenido educativo e informativo. Las guías y simulaciones no constituyen asesoramiento financiero, fiscal o jurídico personalizado.'
   },
   {
-    key: 'bienestar', name: 'Familia, Salud y Bienestar', short: 'Bienestar',
+    key: 'bienestar', name: 'Familia y bienestar', short: 'Bienestar',
     purpose: 'También importa cómo vivimos.',
     copy: 'Cuerpo, mente, hábitos y tiempo propio. Un espacio de divulgación para aprender y ampliar la mirada sobre el bienestar.',
     topics: 'Respiración · Movimiento · Nutrición · Descanso',
@@ -57,11 +57,11 @@ export const sites = [
     topics: 'Conceptos · Cursos · Interés compuesto · Glosario',
     photo: 'academia-aprender-en-familia-20260909.webp', hero: 'academia-panoramica-20260909.webp',
     intro: 'Elige cómo quieres aprender.', description: 'Una consulta breve, un concepto esencial o un curso: tú eliges el punto de partida.',
-    nav: ['Esenciales', 'Cursos', 'Interés compuesto', 'Glosario'],
+    nav: ['Conceptos', 'Cursos', 'Interés compuesto', 'Glosario'],
     resources: [
-      ['esenciales', 'Conocimientos esenciales', 'Comprender las bases', 'Ideas para entender el dinero, la economía y su relación con la vida cotidiana.', 'academia.html?tab=esenciales', 'Explorar conocimientos'],
+      ['esenciales', 'Conceptos esenciales', 'Comprender las bases', 'Ideas para entender el dinero, la economía y su relación con la vida cotidiana.', 'academia.html?tab=esenciales', 'Explorar conceptos'],
       ['cursos', 'Cursos', 'Aprender con continuidad', 'Accede al catálogo y al curso Dinero con criterio para avanzar a tu ritmo.', 'academia.html?tab=cursos', 'Ver cursos'],
-      ['herramientas', 'Interés compuesto', 'Aprender experimentando', 'Explora el efecto matemático del tiempo, las aportaciones y las hipótesis de rentabilidad.', 'academia.html?tab=calculadora', 'Abrir el simulador'],
+      ['herramientas', 'Interés compuesto', 'Aprender experimentando', 'Explora el efecto matemático del tiempo, las aportaciones y las hipótesis de rentabilidad.', 'academia.html?tab=calculadora#simulador-interes', 'Abrir el simulador'],
       ['glosario', 'Glosario financiero', 'Resolver una duda', 'Consulta el significado de un término y vuelve a tu lectura con más contexto.', 'academia.html?tab=glosario', 'Consultar el glosario'],
     ],
     feature: ['Para seguir profundizando', 'De los fundamentos a los activos financieros.', 'Dos áreas de conocimiento que amplían los conceptos esenciales y ayudan a comprender cómo funcionan los instrumentos.', 'academia.html?tab=fundamentos', 'Explorar fundamentos'],

@@ -24,6 +24,16 @@ Los tokens y las fuentes autoalojadas siguen en `nuvia-tokens.css`. Los interior
 
 ## Capas del portal
 
+### Claridad e identidad · 12-11-2026
+
+La continuación «Sigue» aplica las propuestas de la auditoría: la marca en cabecera une el símbolo N existente y el nombre NUVIA como texto legible. Se conserva Newsreader, la tipografía de lectura y la paleta. `.nv-brand-lockup` vive en componentes; la cáscara se genera desde `_plantilla.html`. Las cuatro webs conservan sus composiciones propias.
+
+La incorporación del pack v04.02 se limita a **Inicio**. Por la última orden del fundador, «quita la palabra ecosistema […] deja solo el logo y dale más protagonismo», la cabecera muestra la firma **11 · Horizontal Lineal** íntegra a 280 × 70 px, sin rótulo adicional ni separador. Conserva el enlace «Qué es NUVIA» y los 102 px de altura. Los interiores y el favicon mantienen su marca previa; los textos originales recuperados de presentación y de las cuatro puertas permanecen intactos. Procedencia y validación: [Cabecera y textos de Inicio](LOGOS_OFICIALES_V0402_20261112.md).
+
+Todos los interiores usan el mismo selector «Explorar NUVIA», con Inicio, cuatro webs, dos espacios comunes y las tres páginas institucionales. «Inicio» en la barra local identifica la web actual; su nombre accesible incluye el área. Las migas dicen «Inicio NUVIA». La portada incorpora un índice desplegable de seis herramientas, separado de las cuatro puertas y los dos espacios comunes.
+
+La prioridad visual es contenido disponible y acciones concretas: libros antes del relato editorial, publicaciones de Bienestar antes del mapa temático, recorridos y glosario con enlaces recuperables. Los simuladores muestran unidades, supuestos y resultados sin convertirlos en instrucciones personales. Las comprobaciones y límites de esta fase figuran en [el acta](APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md).
+
 El portal ya dispone de un sistema CSS propio. Se amplía ese sistema conservando
 el orden de carga de cada página y la cascada vigente:
 

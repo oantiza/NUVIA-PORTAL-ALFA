@@ -178,7 +178,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
             h('footer', { className: 'jb-panel__foot' },
               p > 0 ? h('button', { type: 'button', className: 'nv-btn nv-btn--soft', onClick: () => set({ paso: p - 1 }) }, '← Anterior') : h('span'),
               p < 3 ? h('button', { type: 'button', className: 'nv-btn nv-btn--primary', onClick: () => set({ paso: p + 1 }) }, 'Siguiente: ' + PASOS[p + 1].t + ' →')
-                : h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir mi hoja de ruta')))),
+                : h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir o guardar PDF')))),
         h('aside', { className: 'jb-live', 'aria-label': 'Resumen de tu hoja de ruta' }, resumenPlan(st, e))),
       riesgosPlan(),
       siguientes('planificacion', st));
@@ -239,7 +239,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
       barraProgreso(e.nA, 8, 'Acciones hechas'),
       h('div', { className: 'jg-next', 'aria-live': 'polite' }, h('p', { className: 'jb-kicker' }, 'Próxima acción'), h('p', null, e.proxima)),
       h('div', { className: 'jb-live__actions' },
-        h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir mi hoja de ruta'),
+        h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirPlan(st) }, icono('impresora'), 'Imprimir o guardar PDF'),
         h('a', { className: 'nv-btn nv-btn--soft', href: enlace('jubilacion.html', st) }, 'Calcular en el simulador →')),
       h('p', { className: 'jb-muted jg-privacy' }, 'No se guarda nada: tu selección solo vive mientras tengas abierta esta página.'));
   }
@@ -263,7 +263,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
         card(enlace('jubilacion.html' + (conDfb ? '?caso=dfb' : ''), st), 'calculo', 'Siguiente paso · Calcular', desde === 'fiscal' ? 'Pruébalo con números' : 'Convierte la hoja de ruta en escenarios', desde === 'fiscal' ? 'El simulador compara capital, renta y combinaciones con tu pensión y tus ahorros.' + (conDfb ? ' Se abre con el caso práctico de la DFB cargado.' : '') : 'Introduce tus datos en el simulador para estimar ingresos, impuestos y hasta cuándo te llega el dinero.', 'Abrir el simulador'),
         desde === 'fiscal'
           ? card(enlace('guia-planificacion.html', st), 'ruta', 'Antes · Ordenar', 'Tu hoja de ruta de jubilación', 'Seis decisiones en orden, las piezas que necesitas y una lista de acciones imprimible.', 'Ver la guía')
-          : card(enlace('guia-fiscal.html', st), 'escudo', 'Último paso · Ejecutar', 'Prepara el rescate de ' + (T ? T.tu : 'tu EPSV o plan de pensiones'), 'Compara capital, renta y modalidad mixta, y su tratamiento fiscal en ' + (T ? T.nombre : 'tu territorio') + '.', 'Ver fiscalidad y rescate')));
+          : card(enlace('guia-fiscal.html', st), 'escudo', 'Último paso · Comprender el rescate', 'Prepara el rescate de ' + (T ? T.tu : 'tu EPSV o plan de pensiones'), 'Compara capital, renta y modalidad mixta, y su tratamiento fiscal en ' + (T ? T.nombre : 'tu territorio') + '.', 'Ver fiscalidad y rescate')));
   }
 
   function componerPlan(st, base) {
@@ -389,7 +389,7 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
       selector(comp, st),
       h('p', { className: 'jg-scope' }, icono('info'), h('span', null, h('strong', null, 'Ámbito de esta guía. '), 'Se refiere a ' + (T.vasco ? 'EPSV' : 'planes de pensiones') + ' y a contribuyentes sujetos al ' + cfg.irpf + ' (' + cfg.hacienda + (cfg.ccaa ? ' · ' + cfg.ccaa.nombre : '') + '). Es información orientativa, revisada en octubre de 2026 con fuentes consultadas ' + F().consultaFuentes(cfg) + '; la situación personal, los estatutos o especificaciones de la entidad y posibles cambios normativos pueden alterar el resultado. ' + F().limites(cfg).join(' '))),
       h('nav', { className: 'jg-index', 'aria-label': 'Contenido de la guía' },
-        [['#ayuda-rescate', '1', 'Cómo elegir'], ['#fiscalidad-2026', '2', 'Fiscalidad 2026'], ['#tramite-administrativo', '3', 'Tramitación'], ['#checklist-rescate', '4', 'Checklist'], ['#normativa-oficial', '5', 'Normativa']].map(([a, n, t]) => h('a', { key: a, href: a }, h('span', null, n), t))),
+        [['#ayuda-rescate', '1', 'Cómo elegir'], ['#fiscalidad-2026', '2', 'Fiscalidad 2026'], ['#tramite-administrativo', '3', 'Tramitación'], ['#checklist-rescate', '4', 'Lista de comprobación'], ['#normativa-oficial', '5', 'Normativa']].map(([a, n, t]) => h('a', { key: a, href: a }, h('span', null, n), t))),
       seccionElegir(ctx),
       seccionFiscal(ctx),
       seccionTramite(ctx),
@@ -486,9 +486,9 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
     const pct = Math.round(hechos / CHECK.length * 100);
     return h('section', { id: 'checklist-rescate', className: 'jg-section', 'aria-labelledby': 'jg-check' },
       h('div', { className: 'jb-card jg-checklist' },
-        h('div', { className: 'jg-checklist__side' }, h('p', { className: 'jb-kicker' }, '4 · Control previo'), h('h2', { id: 'jg-check', className: 'jg-h2' }, 'Checklist antes de firmar el rescate'),
-          anillo(pct, 112, 'Checklist completado'), h('p', { className: 'jb-note' }, hechos + ' de ' + CHECK.length + ' comprobaciones hechas.'),
-          h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirHTML(componerFiscal(st, global.location ? global.location.href : '')) }, icono('impresora'), 'Imprimir mi checklist')),
+        h('div', { className: 'jg-checklist__side' }, h('p', { className: 'jb-kicker' }, '4 · Control previo'), h('h2', { id: 'jg-check', className: 'jg-h2' }, 'Lista de comprobación del rescate'),
+          anillo(pct, 112, 'Lista completada'), h('p', { className: 'jb-note' }, hechos + ' de ' + CHECK.length + ' comprobaciones hechas.'),
+          h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimirHTML(componerFiscal(st, global.location ? global.location.href : '')) }, icono('impresora'), 'Imprimir o guardar PDF')),
         h('div', { className: 'jg-grid-2' }, CHECK.map((c, i) => tarjetaCheck({ key: i, on: (st.check || {})[i], onClick: () => toggle(i), titulo: c })))));
   }
 
@@ -509,15 +509,15 @@ ul{margin:0;padding:0;list-style:none}li{display:flex;gap:6pt;padding:2.5pt 0;bo
   }
 
   function componerFiscal(st, base) {
-    const cfg = cfgDe(st), T = textosDe(cfg); if (!T) return cabecera(base, 'Checklist del rescate') + '<p>Elige tu residencia fiscal para generar el checklist.</p></body></html>';
+    const cfg = cfgDe(st), T = textosDe(cfg); if (!T) return cabecera(base, 'Lista de comprobación del rescate') + '<p>Elige tu residencia fiscal para generar la lista de comprobación.</p></body></html>';
     const CHECK = checklist(cfg, T), MODOS = modos(cfg, T), TR = tratamiento(cfg, T);
     const hechos = CHECK.filter((x, i) => (st.check || {})[i]).length;
     const li = (on, t) => `<li><span class="${on ? 'ok' : 'no'}">${on ? '✓' : '○'}</span><span>${esc(t)}</span></li>`;
-    return cabecera(base, 'Checklist del rescate') + `
+    return cabecera(base, 'Lista de comprobación del rescate') + `
 <p class="k">Fiscalidad y rescate de ${esc(T.la)} · ${esc(T.nombre)} ${cfg.ejercicio}</p><h1>Mi checklist antes de firmar el rescate</h1>
 <p class="lead">Comprobaciones previas, documentación y pasos de la solicitud. Normativa: ${esc(cfg.irpf)} (${esc(cfg.hacienda)}${cfg.ccaa ? ' · ' + esc(cfg.ccaa.nombre) : ''}).</p>
 <div class="hero"><div><p class="k">Comprobaciones hechas</p><strong>${hechos}/${CHECK.length}</strong></div><div><p class="k">Forma de cobro que estás valorando</p><p style="font-size:13pt;color:#fff;font-weight:600">${esc(MODOS[st.modo || 'capital'].t)}</p><p>${esc(MODOS[st.modo || 'capital'].ojo)}</p></div></div>
-<div class="g2"><section class="blk"><h3>Checklist</h3><ul>${CHECK.map((c, i) => li((st.check || {})[i], c)).join('')}</ul></section>
+<div class="g2"><section class="blk"><h3>Lista de comprobación</h3><ul>${CHECK.map((c, i) => li((st.check || {})[i], c)).join('')}</ul></section>
 <section class="blk"><h3>Documentación habitual</h3><ul>${documentos(cfg, T).map((d) => `<li><span>▫</span><span>${esc(d)}</span></li>`).join('')}</ul></section></div>
 <section class="blk"><h3>Cómo tributa cada modalidad (${esc(T.nombre)} ${cfg.ejercicio})</h3><ul>${TR.filas.map((x) => `<li><span style="min-width:150pt"><strong>${esc(x.t)}</strong></span><span>${esc(TR.columnas[1])}: ${esc(x.ap[1])}<br>${esc(TR.columnas[2])}: ${esc(x.re[1])}</span></li>`).join('')}</ul></section>
 <section class="blk"><h3>Pasos de la solicitud</h3><ul>${tramite(cfg, T).map((x, i) => `<li><span class="chip">${i + 1}</span><span><strong>${esc(x.t)}.</strong> ${esc(x.d)}</span></li>`).join('')}</ul></section>

@@ -1,6 +1,6 @@
 /* Patrimonio · capa visual del Ecosistema NUVIA principal.
    Se aplica al documento original: conserva contenido, motores y series.
-   La impresión sigue utilizando exclusivamente los estilos originales. */
+   La impresión conserva el contenido y omite solo los nuevos accesos de navegación. */
 @media screen {
   body[data-eco-theme="patrimonio"] {
     --nv-page-accent: var(--nv-bronze-700);
@@ -178,6 +178,52 @@
   }
   body[data-eco-theme="patrimonio"] .fiscal-guia__fig { border-bottom: 1px solid var(--nv-line); }
 
+  /* Accesos de herramienta y retorno al índice: sin capas fijas sobre controles. */
+  body[data-eco-theme="patrimonio"] .pa-tool-actions { flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  body[data-eco-theme="patrimonio"] .pa-tool-actions .nv-btn { white-space: normal; text-align: center; }
+  body[data-eco-theme="patrimonio"] .pa-tool-note,
+  body[data-eco-theme="patrimonio"] .pa-monthly-basis {
+    max-width: 75ch;
+    margin-block: 8px;
+    color: var(--nv-text-soft);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  body[data-eco-theme="patrimonio"] .viv-scenario-toolbar { flex-wrap: wrap; align-items: start; }
+  body[data-eco-theme="patrimonio"] .viv-scenario-toolbar > div:first-child { flex: 1 1 380px; }
+  body[data-eco-theme="patrimonio"] .viv-scenario-toolbar__actions { flex-wrap: wrap; }
+  body[data-eco-theme="patrimonio"] .viv-scenario-toolbar__actions .nv-btn { white-space: normal; }
+  body[data-eco-theme="patrimonio"] :is(.pa-back-index, .pa-territory-return) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--nv-bronze-700);
+    font-size: 14px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  body[data-eco-theme="patrimonio"] :is(.pa-back-index, .pa-territory-return):focus-visible {
+    outline: 2px solid var(--nv-bronze-700);
+    outline-offset: 3px;
+  }
+  body[data-eco-theme="patrimonio"] :is(#indice-guia, #jb-terr-l, #simulador-jubilacion, #hoja-de-ruta, #guia-rescate, #ejemplo-ahorro, #seguir-jubilacion) {
+    scroll-margin-top: calc(var(--nv-header-height) + var(--nv-space-6));
+  }
+  body[data-eco-theme="patrimonio"] .jb-terr .jb-choices { flex-wrap: wrap; }
+  body[data-eco-theme="patrimonio"] .jb-terr .jb-choice { white-space: normal; }
+  body[data-eco-theme="patrimonio"] .gp-hero__grid { row-gap: 24px; }
+  body[data-eco-theme="patrimonio"] .gp-hero__grid > .nv-breadcrumb { margin-bottom: 0; }
+  body[data-eco-theme="patrimonio"] .gp-hero__copy { padding-block: 0; }
+  body[data-eco-theme="patrimonio"] .gp-hero__sub { font-size: var(--nv-body-lg); line-height: 1.5; }
+  body[data-eco-theme="patrimonio"] .jb-terr__head :is(h2, h3) {
+    margin: 0;
+    font-family: var(--nv-font-serif);
+    font-size: var(--nv-title-sm);
+    font-weight: var(--nv-weight-title);
+    color: var(--nv-navy-900);
+  }
+
   @media (max-width: 999px) {
     body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry { padding-block: 24px 30px; }
     body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry h1 { font-size: 40px; }
@@ -196,4 +242,7 @@
     body[data-eco-theme="patrimonio"] .fiscal-hero__media { padding-bottom: 110px; }
     body[data-eco-theme="patrimonio"] :is(.viv-card__head h2, .jb-intro h2, .jg-h2, .gu-title, .gu-h2) { font-size: 26px; }
   }
+}
+@media print {
+  body[data-eco-theme="patrimonio"] :is(.pa-tool-actions, .pa-back-index, .pa-territory-return) { display: none; }
 }

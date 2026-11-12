@@ -59,16 +59,16 @@
 <div class="nuvia-page">
 
   <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
-    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-brand" href="index.html" aria-label="NUVIA: inicio"><span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png" width="44" height="44" alt=""><span class="nv-brand-word">NUVIA</span></span></a>
     <a class="web-name" href="patrimonio.html">Patrimonio</a>
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
-  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a href="patrimonio.html">Portada</a><a href="vivienda.html" aria-current="page">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar NUVIA"><a href="index.html">Inicio NUVIA</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a aria-label="Inicio de Patrimonio" href="patrimonio.html">Inicio</a><a href="vivienda.html" aria-current="page">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
 
 <main id="contenido">
     <section id="vivienda" data-screen-label="Cabecera vivienda" class="nv-hero nv-hero--institutional viv-hero nv-entry nv-sub-hero">
       <div class="nv-container">
         <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-          <ol><li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li><li><a href="patrimonio.html">Patrimonio</a></li><li><span aria-current="page">Vivienda y coste de vida</span></li></ol>
+          <ol><li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li><li><a href="patrimonio.html">Patrimonio</a></li><li><span aria-current="page">Vivienda y coste de vida</span></li></ol>
         </nav>
         <div class="nv-hero__inner nv-sub-hero__grid"><div>
         <span class="nv-eyebrow nv-eyebrow--on-dark">Tema clave · Vivienda y coste de vida</span>
@@ -94,16 +94,16 @@
     </section>
 
     <div id="simulador-vivienda" class="nv-container viv-scenario-toolbar">
-      <p>Escenario de vivienda <span>· Guardado local</span></p>
+      <div><p>Escenario de vivienda <span>· En este navegador</span></p><p class="pa-tool-note">Un escenario guardado. Al guardar, sustituyes el anterior; no se comparte con otros dispositivos.</p><p class="pa-tool-note">Los importes iniciales son un ejemplo editable. Los resultados cambian al modificar los datos.</p></div>
         <div class="viv-scenario-toolbar__actions">
-          <button type="button" onClick="{{ guardar }}" class="nv-btn nv-btn--accent">Guardar escenario</button>
-          <button type="button" onClick="{{ recuperar }}" class="nv-btn nv-btn--outline">Recuperar</button>
+          <button type="button" onClick="{{ guardar }}" class="nv-btn nv-btn--accent">Guardar en este navegador</button>
+          <button type="button" onClick="{{ recuperar }}" class="nv-btn nv-btn--outline">Cargar escenario guardado</button>
           <span role="status" class="viv-hero__status">{{ mensaje }}</span>
         </div>
     </div>
 
     <sc-if value="{{ tabHipoteca }}" hint-placeholder-val="{{ true }}">
-      <section data-screen-label="Calculadora de hipoteca" class="nv-container viv-section">
+      <section data-screen-label="Calculadora de hipoteca" class="nv-container viv-section" key="{{ revisionEscenario }}">
         <div class="viv-card">
           <div class="viv-card__head">
             <p class="viv-result__kicker">Calculadora de hipoteca</p>
@@ -135,8 +135,8 @@
                 <sc-if value="{{ noEsFija }}" hint-placeholder-val="{{ true }}">
                   <div class="nv-field"><label>Índice de referencia</label><div class="nv-field__box"><input name="referenceRate" type="number" step="0.05" max="20" defaultValue="{{ v.referenceRate }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div><p class="nv-field__note">Introduce el valor de referencia que quieras simular.</p></div><div class="nv-field"><label>Diferencial</label><div class="nv-field__box"><input name="spread" type="number" step="0.05" max="10" defaultValue="{{ v.spread }}" onChange="{{ setNum }}"><span class="nv-field__unit">%</span></div></div>
                 </sc-if>
-                <div class="nv-field"><label>Ingresos netos del hogar</label><div class="nv-field__box"><input name="annualHouseholdIncome" type="number" step="1000" defaultValue="{{ v.annualHouseholdIncome }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
-                <div class="nv-field"><label>Otras cuotas de deuda</label><div class="nv-field__box"><input name="monthlyOtherDebt" type="number" step="25" defaultValue="{{ v.monthlyOtherDebt }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
+                <div class="nv-field"><label>Ingresos netos anuales del hogar</label><div class="nv-field__box"><input name="annualHouseholdIncome" type="number" step="1000" defaultValue="{{ v.annualHouseholdIncome }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/año</span></div></div>
+                <div class="nv-field"><label>Otras cuotas mensuales de deuda</label><div class="nv-field__box"><input name="monthlyOtherDebt" type="number" step="25" defaultValue="{{ v.monthlyOtherDebt }}" onChange="{{ setNum }}"><span class="nv-field__unit">€/mes</span></div></div>
               </div>
               <p class="viv-figure">La entrada, impuestos, compraventa y tasación se pagan con recursos propios. Conserva además un colchón separado. La revisión variable se representa con un índice constante: es un escenario, no una predicción.</p>
             </div>
@@ -202,7 +202,7 @@
     </sc-if>
 
     <sc-if value="{{ tabOfertas }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Comparador de ofertas" class="nv-container viv-section">
+      <section data-screen-label="Comparador de ofertas" class="nv-container viv-section" key="{{ revisionEscenario }}">
         <div class="viv-panel">
           <div class="nv-section-heading">
             <div>
@@ -254,7 +254,7 @@
     </sc-if>
 
     <sc-if value="{{ tabCompra }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Compra o alquiler" class="nv-container viv-section">
+      <section data-screen-label="Compra o alquiler" class="nv-container viv-section" key="{{ revisionEscenario }}">
         <div class="viv-card viv-card__split">
           <div class="viv-card__form">
             <p class="viv-result__kicker">Compra o alquiler</p>
@@ -288,7 +288,7 @@
     </sc-if>
 
     <sc-if value="{{ tabAmort }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Amortización anticipada" class="nv-container viv-section">
+      <section data-screen-label="Amortización anticipada" class="nv-container viv-section" key="{{ revisionEscenario }}">
         <div class="viv-panel">
           <p class="viv-result__kicker">Amortización anticipada</p>
           <h2 class="viv-card__title">Reducir cuota o terminar antes</h2>
@@ -324,7 +324,7 @@
     </sc-if>
 
     <sc-if value="{{ tabPresupuesto }}" hint-placeholder-val="{{ false }}">
-      <section data-screen-label="Presupuesto mensual" class="nv-container viv-section">
+      <section data-screen-label="Presupuesto mensual" class="nv-container viv-section" key="{{ revisionEscenario }}">
         <div class="viv-card viv-card__split">
           <div class="viv-card__form">
             <p class="viv-result__kicker">Presupuesto del hogar</p>
@@ -391,14 +391,14 @@
     </section>
   </main>
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 
 </div>
 </x-dc>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
-  state = { tab: 'mortgage', s: null, ofertas: null, msg: '' };
+  state = { tab: 'mortgage', s: null, ofertas: null, msg: '', revisionEscenario: 0 };
   defaults() {
     return { purchasePrice:350000, downPayment:70000, purchaseTaxPercent:8, purchaseOtherCosts:2500, appraisalCost:350,
       mortgageKind:'Mixta', fixedRate:2.45, fixedYears:5, referenceRate:2.25, spread:0.75, years:25,
@@ -464,10 +464,10 @@ class Component extends DCLogic {
   upd(k, val) { this.setState({ s: Object.assign({}, this.s(), { [k]: val }) }); }
   tabs() {
     return [
-      { id:'mortgage', label:'Hipoteca', title:'Calcula una cuota que puedas sostener', summary:'Empieza aquí para saber cuánto tendrías que pedir, qué efectivo necesitas al principio y cómo encajaría la cuota en los ingresos del hogar.', what:'Una hipoteca es un préstamo a largo plazo para financiar parte de la vivienda. La cuota devuelve cada mes una parte del capital y paga intereses.', how:'Introduce el precio, la entrada, los gastos, el plazo y el tipo. La calculadora estima la cuota, los intereses, el esfuerzo mensual y un escenario con tipos más altos.', chips:['Precio y entrada','Tipo y plazo','Ingresos y otras deudas'] },
-      { id:'offers', label:'Ofertas', title:'Compara hipotecas con la misma regla', summary:'Pasa de mirar solo la cuota a entender qué propuesta tiene el coste completo más competitivo y qué compromisos exige.', what:'El comparador coloca hasta tres propuestas bancarias una junto a otra. Así puedes revisar TIN, TAE, comisiones, productos vinculados y coste estimado en euros.', how:'Copia las condiciones de cada FEIN en su columna. NUVIA calcula todas sobre el mismo préstamo y destaca la menor TAE y el menor desembolso conocido.', chips:['FEIN de cada banco','TAE y comisiones','Seguros y vinculaciones'] },
+      { id:'mortgage', label:'Hipoteca', title:'Comprende la cuota y su relación con los ingresos', summary:'Empieza aquí para saber cuánto tendrías que pedir, qué efectivo necesitas al principio y cómo encajaría la cuota en los ingresos del hogar.', what:'Una hipoteca es un préstamo a largo plazo para financiar parte de la vivienda. La cuota devuelve cada mes una parte del capital y paga intereses.', how:'Introduce el precio, la entrada, los gastos, el plazo y el tipo. La calculadora estima la cuota, los intereses, el esfuerzo mensual y un escenario con tipos más altos.', chips:['Precio y entrada','Tipo y plazo','Ingresos y otras deudas'] },
+      { id:'offers', label:'Comparar hipotecas', title:'Compara hipotecas con la misma regla', summary:'Pasa de mirar solo la cuota a entender qué propuesta tiene el coste completo más competitivo y qué compromisos exige.', what:'El comparador coloca hasta tres propuestas bancarias una junto a otra. Así puedes revisar TIN, TAE, comisiones, productos vinculados y coste estimado en euros.', how:'Copia las condiciones de cada FEIN en su columna. NUVIA calcula todas sobre el mismo préstamo y destaca la menor TAE y el menor desembolso conocido.', chips:['FEIN de cada banco','TAE y comisiones','Seguros y vinculaciones'] },
       { id:'buy-rent', label:'Compra o alquiler', title:'Compara las dos opciones a largo plazo', summary:'La mensualidad no cuenta toda la historia: esta vista compara el patrimonio que podrías acumular comprando o alquilando e invirtiendo la diferencia.', what:'Comprar crea patrimonio al amortizar deuda y puede beneficiarse de la revalorización. Alquilar conserva la entrada y los gastos de compra para otros objetivos o inversiones.', how:'Elige un horizonte y plantea supuestos para vivienda, alquiler e inversión. El resultado muestra el patrimonio estimado de cada opción y la diferencia entre ambas.', chips:['Alquiler comparable','Años previstos en la vivienda','Supuestos de evolución'] },
-      { id:'repayment', label:'Amortización', title:'Descubre si compensa adelantar capital', summary:'Simula qué ocurre al utilizar ahorro para reducir una hipoteca que ya está en marcha.', what:'Amortizar anticipadamente significa devolver una parte del préstamo antes de la fecha prevista. Puedes usarlo para pagar menos cada mes o para terminar antes.', how:'Indica el capital pendiente, el tipo, el plazo, la cantidad que aportarías y la posible comisión. Después elige si prefieres reducir cuota o reducir plazo.', chips:['Capital y plazo pendientes','Importe disponible','Comisión del contrato'] },
+      { id:'repayment', label:'Amortización', title:'Simula una amortización anticipada', summary:'Simula qué ocurre al utilizar ahorro para reducir una hipoteca que ya está en marcha.', what:'Amortizar anticipadamente significa devolver una parte del préstamo antes de la fecha prevista. Puedes usarlo para pagar menos cada mes o para terminar antes.', how:'Indica el capital pendiente, el tipo, el plazo, la cantidad que aportarías y la posible comisión. Después elige si prefieres reducir cuota o reducir plazo.', chips:['Capital y plazo pendientes','Importe disponible','Comisión del contrato'] },
       { id:'budget', label:'Presupuesto', title:'Comprueba lo que queda después de la casa', summary:'Convierte la decisión de vivienda en un presupuesto mensual completo, incluyendo costes que no aparecen en la cuota hipotecaria.', what:'El coste de vivir en una casa incluye hipoteca, comunidad, impuestos, seguro, mantenimiento y los gastos habituales del hogar.', how:'Añade los costes de propietario y de vida diaria. NUVIA los resta de los ingresos y muestra el margen mensual disponible para ahorro, objetivos e imprevistos.', chips:['Costes de la vivienda','Gastos de vida diaria','Ingresos del hogar'] },
     ];
   }
@@ -510,9 +510,11 @@ class Component extends DCLogic {
     return {
       v: s,
       mensaje: this.state.msg,
+      // Remontar campos no controlados solo al cargar: defaultValue refleja el escenario recuperado.
+      revisionEscenario: this.state.revisionEscenario || 0,
       setNum: (e) => this.upd(e.target.name, Number(e.target.value) || 0),
-      guardar: () => { try { window.localStorage.setItem('nuvia-vivienda-maqueta-v1', JSON.stringify({ s, ofertas })); this.setState({ msg: 'Escenario guardado en este dispositivo' }); } catch (err) { this.setState({ msg: 'No se pudo guardar' }); } },
-      recuperar: () => { try { const raw = window.localStorage.getItem('nuvia-vivienda-maqueta-v1'); if (!raw) { this.setState({ msg: 'No hay ningún escenario guardado' }); return; } const d = JSON.parse(raw); this.setState({ s: Object.assign(this.defaults(), d.s || {}), ofertas: Array.isArray(d.ofertas) && d.ofertas.length === 3 ? d.ofertas : this.ofs(), msg: 'Escenario recuperado' }); } catch (err) { this.setState({ msg: 'No se pudo recuperar el escenario' }); } },
+      guardar: () => { try { window.localStorage.setItem('nuvia-vivienda-maqueta-v1', JSON.stringify({ s, ofertas })); this.setState({ msg: 'Escenario guardado en este navegador. Sustituye al anterior.' }); } catch (err) { this.setState({ msg: 'No se ha guardado. Comprueba que el navegador permite almacenamiento local y vuelve a intentarlo.' }); } },
+      recuperar: () => { try { const raw = window.localStorage.getItem('nuvia-vivienda-maqueta-v1'); if (!raw) { this.setState({ msg: 'No hay un escenario guardado en este navegador.' }); return; } const d = JSON.parse(raw); this.setState({ s: Object.assign(this.defaults(), d.s || {}), ofertas: Array.isArray(d.ofertas) && d.ofertas.length === 3 ? d.ofertas : this.ofs(), revisionEscenario: (this.state.revisionEscenario || 0) + 1, msg: 'Escenario cargado desde este navegador.' }); } catch (err) { this.setState({ msg: 'No se ha podido cargar el escenario guardado. Puedes seguir con los datos que tienes en pantalla.' }); } },
       pestanas: this.tabs().map(t => ({ label: t.label, pressed: t.id === this.state.tab, abrir: () => this.setState({ tab: t.id }), clase: pill(t.id === this.state.tab) })),
       tabTitulo: tab.title, tabResumen: tab.summary, tabQue: tab.what, tabComo: tab.how, tabChips: tab.chips,
       tabHipoteca: tab.id === 'mortgage', tabOfertas: tab.id === 'offers', tabCompra: tab.id === 'buy-rent', tabAmort: tab.id === 'repayment', tabPresupuesto: tab.id === 'budget',

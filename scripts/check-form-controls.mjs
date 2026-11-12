@@ -1,5 +1,7 @@
-/* Presentación de controles existentes. No envía formularios ni toca datos. */
+/* Presentación de controles existentes. No envía formularios. La regresión
+   de Vivienda guarda datos ficticios solo en un contexto de prueba aislado. */
 import { inspectFieldAlignment } from './check-field-alignment.mjs';
+import { checkViviendaScenario } from './check-vivienda-scenario.mjs';
 export const BUTTONS = '.nv-btn, .curso-btn-outline, .curso-btn-calcular, .curso-btn-marcar, .curso-btn-quiz, .curso-btn-reset';
 export const FIELDS = '.nv-field__box, .nv-select, .curso-campo__input input, .gt-campo select, .gt-campo input';
 
@@ -57,5 +59,6 @@ export async function checkFormControls(page, route) {
   }
   const alignment = await inspectFieldAlignment(page);
   problems.push(...alignment.problems.map(row => `Campos desalineados: ${row.fields.map(f=>f.id || f.label).join(', ')}`));
+  if (route === 'vivienda.html') problems.push(...await checkViviendaScenario(page));
   return problems;
 }

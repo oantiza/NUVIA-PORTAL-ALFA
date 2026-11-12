@@ -1,5 +1,7 @@
 # NUVIA — Arquitectura y Estructura Global del Portal
 
+**Claridad e identidad · 12-11-2026:** la orden «Sigue», posterior a la auditoría y a la libertad expresa para mejorar diseño y textos, aplica la marca pública **NUVIA** y el descriptor «Conocimiento para la vida en familia». «Explorar NUVIA» es el selector global único; «Inicio NUVIA», el regreso común. El acta [Aplicación de la auditoría](APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md) registra el alcance y las validaciones.
+
 ## Arquitectura vigente del Ecosistema NUVIA · 12-11-2026
 
 La primera orden del fundador fue integrar la maqueta del Ecosistema NUVIA como versión principal del repositorio, **sin publicarla todavía**. Esa fase queda documentada en el [acta de integración](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). La organización siguiente sustituye el mapa de cinco espacios de septiembre; el documento anterior se conserva debajo como antecedente.
@@ -8,8 +10,8 @@ La primera orden del fundador fue integrar la maqueta del Ecosistema NUVIA como 
 
 | Nivel | Destinos y rutas |
 |---|---|
-| Portada común | Ecosistema NUVIA, `index.html` |
-| Cuatro webs | Economía y Finanzas (`economia.html`), Patrimonio (`patrimonio.html`), Familia, Salud y Bienestar (`bienestar.html`), Academia NUVIA (`academia.html`) |
+| Portada común | NUVIA, `index.html` |
+| Cuatro webs | Economía y finanzas (`economia.html`), Patrimonio (`patrimonio.html`), Familia y bienestar (`bienestar.html`), Academia NUVIA (`academia.html`) |
 | Contenido especializado | Todas las herramientas, guías, simuladores, artículos y vistas existentes, con sus URL y parámetros |
 | Espacios comunes | Lecturas con Criterio (`lecturas.html`) y Colaboradores (`colaboradores.html`) |
 | Identidad y criterios | Qué es NUVIA, Metodología e Independencia |

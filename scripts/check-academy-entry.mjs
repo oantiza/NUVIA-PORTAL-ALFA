@@ -5,20 +5,23 @@ export async function checkAcademyEntry(page, route) {
   const requested=new URL(start).searchParams.get('tab');
   const tab=requested==='interes'?'calculadora':requested||'portada';
   if(route.startsWith('academia.html')) {
-    const titles={portada:'Academia NUVIA',inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
+    const titles={portada:'Academia NUVIA',inicio:'Recorrido de aprendizaje',esenciales:'Conceptos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
     const title=titles[tab];
     const heading=tab==='portada'?'Saber es patrimonio.':title;
     if(await page.title()!=='NUVIA · '+title || (await page.locator('main h1').innerText()).replace(/\s+/g,' ').trim()!==heading) problems.push('La vista de Academia no tiene título propio');
     if(await page.locator('main').count()!==1 || await page.locator('main h1').count()!==1) problems.push('Academia duplica el contenido principal');
     if(await page.locator('main iframe').count()) problems.push('Academia carga un vídeo sin activación manual');
     if(await page.locator('body.web-page').count()!==Number(tab==='portada')) problems.push('El reset de la portada invade una vista interior');
+    if(tab!=='portada' && await page.locator('.nv-campus-navigation').count()) problems.push('La entrada duplica la navegación local');
   }
   if(route.startsWith('academia.html') && tab==='portada') {
     if(await page.locator('#academy,.ac-learning-step').count()) problems.push('La portada muestra simultáneamente el recorrido anterior');
     for(const next of ['esenciales','cursos','fundamentos','activos','calculadora','glosario']) {
-      await page.locator(`.nv-academia-home a[href="academia.html?tab=${next}"]`).first().focus();
+      const link=page.locator(`.nv-academia-home a[href^="academia.html?tab=${next}"]`).first();
+      const destination=new URL(await link.getAttribute('href'),start).href;
+      await link.focus();
       await page.keyboard.press('Enter');
-      await page.waitForURL(new URL(`academia.html?tab=${next}`,start).href);
+      await page.waitForURL(destination);
       await page.locator('.ac-learning-back a').waitFor({state:'visible'});
       await page.locator('.ac-learning-back a').click();
       await page.waitForURL(new URL('academia.html',start).href);
@@ -51,7 +54,7 @@ export async function checkAcademyEntry(page, route) {
     await page.locator('.ac-opening').waitFor({state:'visible'});
     await page.locator('.nv-academia-home a[href="academia.html?tab=inicio#ruta-aprendizaje"]').click();
     await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
-    await page.locator('.home26-plate__figure').waitFor({state:'visible'});
+    await page.locator('.ac-route-photo').waitFor({state:'visible'});
     await page.goto(start);
     await page.locator('.ac-learning-back a').waitFor({state:'visible'});
   } else {

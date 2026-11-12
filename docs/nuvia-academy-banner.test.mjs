@@ -17,21 +17,21 @@ const main=home.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
 assert.ok(main,'La portada contiene su contenido principal');
 assert.equal((main.match(/<h1\b/g)||[]).length,1);
 assert.match(main,/<h1 id="hub-title">Todo está <em>conectado\.<\/em><\/h1>/);
-assert.match(main,/Cuatro webs\. Una misma mirada\./);
+assert.match(main,/<p class="hub-eyebrow">Cuatro webs\. Una misma mirada\.<\/p>/);
 assert.match(main,/<nav id="webs" class="hub-stage" aria-label="Las cuatro webs de NUVIA">/);
 const doors=[...main.matchAll(/<a class="hub-door\b[^>]*>[\s\S]*?<\/a>/g)].map(match=>match[0]);
 assert.equal(doors.length,4,'La entrada principal contiene exactamente cuatro webs');
 for(const [key,name,action] of [
-  ['economia','Economía y Finanzas','Entrar en Economía'],
+  ['economia','Economía y finanzas','Entrar en Economía'],
   ['patrimonio','Patrimonio','Entrar en Patrimonio'],
-  ['bienestar','Familia, Salud y Bienestar','Entrar en Bienestar'],
+  ['bienestar','Familia y bienestar','Entrar en Bienestar'],
   ['academia','Academia NUVIA','Entrar en Academia'],
 ]) {
   const door=doors.find(html=>html.includes(`hub-door--${key}`));
   assert.ok(door,`${key}: identidad propia`);
   assert.ok(door.includes(`href="${key}.html"`),`${key}: destino directo`);
   assert.ok(door.includes(`aria-label="${name}:`),`${key}: nombre accesible`);
-  assert.ok(door.includes(`<h2>${name.replace('Salud y','Salud<br>y')}</h2>`),`${key}: título legible`);
+  assert.ok(door.includes(`<h2>${name}</h2>`),`${key}: título legible`);
   assert.ok(door.includes(action),`${key}: acción explícita`);
   assert.equal((door.match(/<a\b/g)||[]).length,1,'Un único enlace semántico por entrada');
 }
@@ -83,8 +83,11 @@ assert.match(sharedCss,/\.web-page :where\(svg\)/,'El reset de los iconos queda 
 assert.match(academyCss,/\.ac-opening h1\s*\{[^}]*var\(--nv-font-serif\)/);
 const legacyHero=academy.match(/<section\b[^>]*id="academy"[\s\S]*?<\/section>/)?.[0];
 assert.ok(legacyHero?.includes('nv-space-entry--academy'));
-assert.ok(legacyHero.includes('src/assets/home/academia-aula-ampliada-derecha-20260909.webp'),'El recorrido anterior conserva su imagen');
-assert.ok(legacyHero.includes('{{ pestanas }}')&&legacyHero.includes('{{ p.abrir }}'),'Las pestañas originales siguen conectadas');
+const learningRoute=academy.match(/<section\b[^>]*id="recursos-academia"[\s\S]*?<\/section>/)?.[0];
+assert.ok(learningRoute?.includes('src/assets/home/academia-aula-ampliada-derecha-20260909.webp'),'El recorrido conserva su imagen junto a los materiales');
+assert.match(learningRoute,/class="home26-plate__figure ac-route-photo"/,'La imagen del recorrido tiene una composición propia');
+assert.doesNotMatch(legacyHero,/nv-campus-navigation|\{\{ pestanas \}\}/,'La entrada no duplica la navegación de la cabecera');
+assert.match(academy,/inicio: \['Recorrido de aprendizaje'/,'El recorrido tiene un título diferente de la portada');
 assert.doesNotMatch(academy,/data-academy-intro/);
 const markets=await read('mercados.html');
 for(const id of ['inflation-spain','euribor','ecb-rate','gdp-spain','unemployment-spain'])assert.ok(markets.includes(`data-macro-id="${id}"`),`Mercados conserva ${id}`);

@@ -56,10 +56,10 @@
 <div class="nuvia-page curso-page">
 
   <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
-    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-brand" href="index.html" aria-label="NUVIA: inicio"><span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png" width="44" height="44" alt=""><span class="nv-brand-word">NUVIA</span></span></a>
     <a class="web-name" href="academia.html">Academia NUVIA</a>
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
-  </div><nav class="web-local" data-nav-family="academia" aria-label="Navegación de Academia NUVIA"><div class="web-wrap"><a href="academia.html">Portada</a><a href="academia.html?tab=esenciales">Esenciales</a><a href="academia.html?tab=cursos" aria-current="page">Cursos</a><a href="academia.html?tab=calculadora">Interés compuesto</a><a href="academia.html?tab=glosario">Glosario</a></div></nav></header>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar NUVIA"><a href="index.html">Inicio NUVIA</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="academia" aria-label="Navegación de Academia NUVIA"><div class="web-wrap"><a aria-label="Inicio de Academia NUVIA" href="academia.html">Inicio</a><a href="academia.html?tab=esenciales">Conceptos</a><a href="academia.html?tab=cursos" aria-current="page">Cursos</a><a href="academia.html?tab=calculadora">Interés compuesto</a><a href="academia.html?tab=glosario">Glosario</a></div></nav></header>
 
   <main id="contenido">
 
@@ -74,7 +74,7 @@
           <div>
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol>
-                <li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li>
+                <li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li>
                 <li><a href="academia.html">Academia NUVIA</a></li>
                 <li><a href="academia.html?tab=cursos">Cursos</a></li><li><span aria-current="page">Dinero con criterio</span></li>
               </ol>
@@ -118,7 +118,7 @@
 
 
     <!-- ══ CABECERA DEL CAPÍTULO ═════════════════════════════════════════════ -->
-    <section data-screen-label="Hero del capítulo" class="nv-section nv-section--tight">
+    <section id="capitulo-actual" data-screen-label="Hero del capítulo" class="nv-section nv-section--tight">
       <div class="nv-container">
 
         <div class="curso-cap">
@@ -294,8 +294,8 @@
     <section id="leccion-mapa" data-screen-label="03 Herramienta" class="nv-section curso-leccion" aria-labelledby="titulo-mapa">
       <div class="nv-container">
         <span class="curso-leccion__kicker">03 · Herramienta práctica</span>
-        <h2 id="titulo-mapa">Diagnostica tus cuatro pilares</h2>
-        <p class="curso-leccion__lead">Introduce cifras aproximadas para revisar flujo de caja, deseos, patrimonio y fondo de emergencia. Los datos permanecen en tu dispositivo.</p>
+        <h2 id="titulo-mapa">Comprende cuatro indicadores de un presupuesto</h2>
+        <p class="curso-leccion__lead">Modifica las cifras del ejemplo para observar el margen mensual, la composición del gasto, el patrimonio y la cobertura de gastos. Los datos permanecen en tu dispositivo.</p>
 
         <div class="curso-tool">
 
@@ -326,11 +326,11 @@
               </sc-for>
             </div>
 
-            <button type="button" onClick="{{ calcularMapa }}" class="curso-btn-calcular">Calcular mi mapa →</button>
+            <button type="button" onClick="{{ calcularMapa }}" class="curso-btn-calcular">Calcular el ejemplo →</button>
           </div>
 
           <div class="curso-panel" aria-live="polite">
-            <span class="curso-label">Tu punto de partida</span>
+            <span class="curso-label">Lectura del ejemplo</span>
             <h3>{{ mapaTitulo }}</h3>
             <p class="curso-leccion__lead">{{ mapaDescripcion }}</p>
 
@@ -348,8 +348,8 @@
               <div class="curso-prioridad">
                 <span aria-hidden="true">◎</span>
                 <div>
-                  <span class="curso-label">Primera prioridad orientativa</span>
-                  <strong>{{ prioridad }}</strong>
+                  <span class="curso-label">Qué muestran estas cifras</span>
+                  <p>{{ lecturaIndicadores }}</p>
                 </div>
               </div>
             </sc-if>
@@ -465,8 +465,8 @@
           <div class="curso-sin-practica">
             <span aria-hidden="true">◫</span>
             <div>
-              <strong>03 – 05 · Herramienta, caso práctico y comprobación</strong>
-              <p>Las partes prácticas de este capítulo siguen la misma plantilla modernizada que se muestra en el capítulo 1.</p>
+              <strong>Formatos de este capítulo</strong>
+              <p>Este capítulo incluye vídeo, infografía y apuntes en PDF. Las actividades interactivas están disponibles en el capítulo 1.</p>
             </div>
           </div>
         </div>
@@ -487,6 +487,7 @@
             </div>
           </div>
           <div class="curso-cierre__actions">
+            <sc-if value="{{ haySiguiente }}" hint-placeholder-val="{{ true }}"><a class="curso-btn-outline" href="{{ siguienteHref }}" onClick="{{ irSiguiente }}">{{ siguienteTexto }}</a></sc-if>
             <sc-if value="{{ esCapituloUno }}" hint-placeholder-val="{{ true }}">
               <button type="button" onClick="{{ reiniciar }}" class="curso-btn-reset">↺ Reiniciar capítulo</button>
             </sc-if>
@@ -502,7 +503,7 @@
 
   </main>
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 
 </div>
 </x-dc>
@@ -510,9 +511,33 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;capituloInicial&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;1&quot;, &quot;options&quot;: [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Curso&quot;}, &quot;estadoProgreso&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;nuevo&quot;, &quot;options&quot;: [&quot;nuevo&quot;, &quot;a-medias&quot;, &quot;completado&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Curso&quot;}}">
 class Component extends DCLogic {
   state = {};
+  capituloDeRuta() {
+    const pedido = new URLSearchParams(window.location.search).get('capitulo');
+    const numero = Number(pedido === null ? this.props.capituloInicial ?? '1' : pedido);
+    return Number.isInteger(numero) && numero >= 1 && numero <= 5 ? numero - 1 : 0;
+  }
+  cambiarCapitulo(indice) {
+    this.setState({ capitulo: indice, completadas: [], quizSel: {}, quizComprobado: false, casoSel: null, calculado: false });
+  }
+  abrirCapitulo(indice, evento) {
+    if (evento && (evento.ctrlKey || evento.metaKey || evento.shiftKey || evento.altKey)) return;
+    evento?.preventDefault();
+    if (indice === (this.state.capitulo ?? this.capituloDeRuta())) return;
+    const url = new URL(window.location.href);
+    url.searchParams.set('capitulo', String(indice + 1));
+    url.hash = '';
+    window.history.pushState({}, '', url.pathname + url.search);
+    this.cambiarCapitulo(indice);
+    requestAnimationFrame(() => document.getElementById('capitulo-actual')?.scrollIntoView({ block: 'start' }));
+  }
+  componentDidMount() {
+    this._restaurarCapitulo = () => this.cambiarCapitulo(this.capituloDeRuta());
+    window.addEventListener('popstate', this._restaurarCapitulo);
+  }
+  componentWillUnmount() { window.removeEventListener('popstate', this._restaurarCapitulo); }
   capitulosData() {
     return [
-      { numero: '01', pdf: 'core/downloads/nuvia-academy/capitulo-01-pon-orden-a-tu-dinero.pdf', titulo: 'Pon orden a tu dinero', subtitulo: 'El punto de partida hacia tu tranquilidad financiera', video: '8bkXWpsZ1YI', videoTitulo: 'Pon orden a tu dinero', videoDesc: 'Una introducción visual para comprender las cifras que sostienen tu tranquilidad financiera.', intro: 'Descubre dónde estás, cuánto margen tienes y cuál debería ser tu primera prioridad antes de ahorrar o invertir.', img: 'src/assets/education/financial-course/chapter-01-health-pillars.webp', alt: 'Infografía sobre los cuatro pilares de la salud financiera: flujo de caja, necesidades y deseos, patrimonio neto y fondo de emergencia.' },
+      { numero: '01', pdf: 'core/downloads/nuvia-academy/capitulo-01-pon-orden-a-tu-dinero.pdf', titulo: 'Pon orden a tu dinero', subtitulo: 'El punto de partida hacia tu tranquilidad financiera', video: '8bkXWpsZ1YI', videoTitulo: 'Pon orden a tu dinero', videoDesc: 'Una introducción visual para comprender las cifras que sostienen tu tranquilidad financiera.', intro: 'Comprende cómo se relacionan los ingresos, los gastos, el patrimonio y la cobertura de imprevistos mediante cuatro indicadores.', img: 'src/assets/education/financial-course/chapter-01-health-pillars.webp', alt: 'Infografía sobre los cuatro pilares de la salud financiera: flujo de caja, necesidades y deseos, patrimonio neto y fondo de emergencia.' },
       { numero: '02', pdf: 'core/downloads/nuvia-academy/capitulo-02-ahorrar-con-proposito.pdf', titulo: 'Ahorrar con propósito', subtitulo: 'El arte de construir tu mañana de forma automática', video: 'cwHHU5okGqY', videoTitulo: 'Ahorrar con propósito', videoDesc: 'Descubre cómo convertir el ahorro en un sistema automático conectado con tus objetivos.', intro: 'Ahorrar suele percibirse como una renuncia, pero el ahorro inteligente es una herramienta de diseño financiero: permite decidir hoy qué proyectos y qué tranquilidad tendrá tu familia mañana.', img: 'src/assets/education/financial-course/chapter-02-automatic-saving.webp', alt: 'Infografía sobre ahorro automático, metas financieras, inflación e interés compuesto.' },
       { numero: '03', pdf: 'core/downloads/nuvia-academy/capitulo-03-invertir-sin-apostar.pdf', titulo: 'Invertir sin apostar', subtitulo: 'Cómo poner tu dinero a trabajar con calma y método', video: 'K-AbB3tDmd0', videoTitulo: 'Invertir sin apostar', videoDesc: 'Una introducción al riesgo, el tiempo y la diversificación para invertir con criterio.', intro: 'Invertir con criterio es un proceso disciplinado que relaciona objetivos, plazo, riesgo, diversificación y comportamiento para poner el ahorro a trabajar a favor del bienestar futuro.', img: 'src/assets/education/financial-course/chapter-03-investment-pillars.webp', alt: 'Infografía sobre los cinco pilares de la inversión: mentalidad, riesgo, diversificación, tiempo y control emocional.' },
       { numero: '04', pdf: 'core/downloads/nuvia-academy/capitulo-04-la-economia-en-tu-dia-a-dia.pdf', titulo: 'La economía en tu día a día', subtitulo: 'Cómo entender lo que ocurre en el mundo sin complicarte la vida', video: 'uOrdz0Gi96A', videoTitulo: 'La economía en tu día a día', videoDesc: 'Aprende a traducir inflación, tipos y ciclos económicos a decisiones familiares concretas.', intro: 'Entender la economía significa distinguir lo que afecta realmente a tu bolsillo de lo que es ruido informativo para poder decidir con serenidad.', img: 'src/assets/education/financial-course/chapter-04-economic-survival.webp', alt: 'Infografía que explica tipos de interés, inflación, ciclos económicos y la diferencia entre señal y ruido.' },
@@ -564,7 +589,7 @@ class Component extends DCLogic {
     const euro = (v) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(v);
     const caps = this.capitulosData();
     const seed = this.props.estadoProgreso ?? 'nuevo';
-    const capIdx = this.state.capitulo ?? (Number(this.props.capituloInicial ?? '1') - 1);
+    const capIdx = this.state.capitulo ?? this.capituloDeRuta();
     const cap = caps[capIdx] || caps[0];
     const esC1 = capIdx === 0;
     const seedCompletadas = seed === 'completado' ? ['video', 'notes', 'map', 'case', 'quiz'] : seed === 'a-medias' ? ['video', 'notes'] : [];
@@ -580,13 +605,7 @@ class Component extends DCLogic {
     const patrimonio = dinero.assets + dinero.savings - dinero.debt;
     const baseEsencial = dinero.essentials + dinero.debtPayment;
     const meses = baseEsencial > 0 ? dinero.savings / baseEsencial : 0;
-    const objetivo3m = baseEsencial * 3;
     const pesoDeseos = gastoTotal > 0 ? Math.round((dinero.flexible / gastoTotal) * 100) : 0;
-    const prioridad = margen <= 0 ? 'Crear un margen estable entre ingresos y gastos'
-      : dinero.debt > 0 && meses < 1 ? 'Combinar un pequeño airbag con la reducción de deuda cara'
-      : dinero.debt > 0 ? 'Revisar el coste de tus deudas y reducir las más caras'
-      : meses < 3 ? 'Completar un fondo de emergencia de al menos tres meses'
-      : 'Aumentar activos y asignar el margen a tus objetivos';
     const progreso = Math.round((completadas.length / 5) * 100);
     const preguntasBase = this.preguntasQuiz();
     const puntos = preguntasBase.reduce((total, p, i) => total + (quizSel[i] === p.correcta ? 1 : 0), 0);
@@ -599,10 +618,14 @@ class Component extends DCLogic {
         numero: c.numero, titulo: c.titulo,
         estado: i === capIdx ? 'Capítulo actual' : 'Contenido disponible',
         ariaCurrent: i === capIdx ? 'page' : undefined,
-        abrir: () => this.setState({ capitulo: i, completadas: i === 0 ? completadas : [], quizSel: {}, quizComprobado: false, casoSel: null, calculado: false }),
+        abrir: () => this.abrirCapitulo(i),
         claseTab: 'curso-tab' + (i === capIdx ? ' is-active' : ''),
       })),
       metaCapitulo: 'Capítulo ' + Number(cap.numero) + ' de 5',
+      haySiguiente: capIdx < caps.length - 1,
+      siguienteHref: '?capitulo=' + (capIdx + 2),
+      siguienteTexto: capIdx < caps.length - 1 ? 'Capítulo siguiente: ' + caps[capIdx + 1].titulo + ' →' : '',
+      irSiguiente: (e) => this.abrirCapitulo(capIdx + 1, e),
       numeroCapitulo: String(Number(cap.numero)).padStart(2, '0'),
       tituloCapitulo: cap.titulo,
       subtituloCapitulo: cap.subtitulo,
@@ -646,15 +669,15 @@ class Component extends DCLogic {
       camposFoto: [campo('savings', 'Ahorro disponible', 'Dinero líquido y accesible'), campo('assets', 'Otros activos', 'Inversiones y bienes, sin incluir el ahorro anterior'), campo('debt', 'Deuda pendiente', 'Hipoteca, préstamos, tarjetas…')],
       calcularMapa: () => { this.setState({ calculado: true }); marcar('map'); },
       mapaCalculado: calculado,
-      mapaTitulo: calculado ? 'Este es tu mapa' : 'Completa los datos',
-      mapaDescripcion: calculado ? 'Las cifras son orientativas. Úsalas para identificar la primera prioridad.' : 'Al calcular verás los cuatro pilares de tu situación actual.',
+      mapaTitulo: calculado ? 'Resultados del presupuesto' : 'Explora el ejemplo',
+      mapaDescripcion: calculado ? 'Cada indicador describe una relación entre las cifras introducidas. No determina una acción ni una prioridad personal.' : 'Al calcular verás cuatro indicadores del presupuesto. Puedes cambiar las cifras del ejemplo.',
       resultados: [
-        { etiqueta: 'Margen mensual', valor: calculado ? euro(margen) : '—', ayuda: calculado ? (margen > 0 ? 'Tu economía genera espacio.' : 'Conviene recuperar equilibrio.') : 'Ingresos menos gastos' },
-        { etiqueta: 'Peso de los deseos', valor: calculado ? pesoDeseos + ' %' : '—', ayuda: calculado ? 'Parte del gasto que puedes revisar con mayor libertad.' : 'Deseos frente al gasto total' },
+        { etiqueta: 'Margen mensual', valor: calculado ? euro(margen) : '—', ayuda: 'Ingresos menos gastos esenciales, flexibles y cuotas de deuda.' },
+        { etiqueta: 'Peso de los deseos', valor: calculado ? pesoDeseos + ' %' : '—', ayuda: 'Gastos flexibles divididos entre el gasto total.' },
         { etiqueta: 'Patrimonio neto', valor: calculado ? euro(patrimonio) : '—', ayuda: calculado ? 'Ahorro y activos menos deudas.' : 'Lo que tienes menos lo que debes' },
-        { etiqueta: 'Airbag familiar', valor: calculado ? meses.toFixed(1).replace('.', ',') : '—', ayuda: calculado ? 'Meses cubiertos · objetivo inicial: ' + euro(objetivo3m) : 'Ahorro líquido frente a gastos indispensables' },
+        { etiqueta: 'Meses de cobertura', valor: calculado ? meses.toFixed(1).replace('.', ',') : '—', ayuda: 'Ahorro líquido dividido entre gastos esenciales y cuotas de deuda.' },
       ],
-      prioridad,
+      lecturaIndicadores: 'El margen compara ingresos y gastos mensuales; el patrimonio neto resta las deudas al ahorro y los activos. La cobertura expresa meses de gastos esenciales y cuotas de deuda. No se valoran tipos de interés, condiciones de los préstamos ni circunstancias personales.',
       cifrasCaso: [
         { etiqueta: 'Necesidades', valor: '1.900 €' }, { etiqueta: 'Deseos', valor: '800 €' }, { etiqueta: 'Cuotas de deuda', valor: '300 €' },
         { etiqueta: 'Margen actual', valor: '400 €' }, { etiqueta: 'Ahorro líquido', valor: '1.500 €' }, { etiqueta: 'Patrimonio neto', valor: '3.500 €' },

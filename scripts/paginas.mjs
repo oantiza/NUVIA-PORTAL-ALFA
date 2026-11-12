@@ -35,16 +35,16 @@ export const BASE_URL = 'https://oantiza.github.io/NUVIA-PORTAL-ALFA/';
 
 export const PAGINAS = [
   // ── Nivel 1 · Entrada ──────────────────────────────────────────────────────
-  { archivo: 'index.html', titulo: 'NUVIA · Ecosistema', modulo: 'nucleo', padre: null,
+  { archivo: 'index.html', titulo: 'NUVIA · Conocimiento para la vida en familia', modulo: 'nucleo', padre: null,
     tipo: 'institucional', excepcion: 'Portada común del ecosistema: cuatro webs y dos espacios comunes.', publica: true, lastmod: '2026-11-12' },
 
   // ── Nivel 2 · Las cuatro webs ──────────────────────────────────────────────
-  { archivo: 'economia.html', titulo: 'NUVIA · Economía y Finanzas', modulo: 'economia-informes', padre: null,
-    tipo: 'espacio', excepcion: 'Home del espacio Economía y Finanzas.', publica: true, lastmod: '2026-11-12' },
+  { archivo: 'economia.html', titulo: 'NUVIA · Economía y finanzas', modulo: 'economia-informes', padre: null,
+    tipo: 'espacio', excepcion: 'Home del espacio Economía y finanzas.', publica: true, lastmod: '2026-11-12' },
   { archivo: 'patrimonio.html', titulo: 'NUVIA · Patrimonio', modulo: 'patrimonio', padre: null,
     tipo: 'espacio', excepcion: 'Home del espacio Patrimonio.', publica: true, lastmod: '2026-11-12' },
-  { archivo: 'bienestar.html', titulo: 'NUVIA · Familia, Salud y Bienestar', modulo: 'bienestar', padre: null,
-    tipo: 'espacio', excepcion: 'Home del espacio Familia, Salud y Bienestar.', publica: true, lastmod: '2026-11-12' },
+  { archivo: 'bienestar.html', titulo: 'NUVIA · Familia y bienestar', modulo: 'bienestar', padre: null,
+    tipo: 'espacio', excepcion: 'Home del espacio Familia y bienestar.', publica: true, lastmod: '2026-11-12' },
   // Academia: sus vistas ?tab=… regresan a la propia portada de Academia.
   { archivo: 'academia.html', titulo: 'NUVIA · Academia NUVIA', modulo: 'academia-lecturas', padre: 'academia.html',
     tipo: 'espacio', excepcion: 'Categorías formativas: colores y leyendas propios.', publica: true, lastmod: '2026-11-12' },
@@ -52,10 +52,10 @@ export const PAGINAS = [
   { archivo: 'lecturas.html', titulo: 'NUVIA · Lecturas con Criterio', modulo: 'academia-lecturas', padre: null,
     tipo: 'editorial', excepcion: 'Lámina ilustrada sin degradado, no héroe institucional.', publica: true, lastmod: '2026-11-12' },
 
-  // ── Nivel 3 · Economía y Finanzas ──────────────────────────────────────────
+  // ── Nivel 3 · Economía y finanzas ──────────────────────────────────────────
   { archivo: 'mercados.html', titulo: 'NUVIA · Mercados y noticias', modulo: 'economia-informes', padre: 'economia.html',
     tipo: 'espacio', publica: true, lastmod: '2026-11-12' },
-  { archivo: 'cartera.html', titulo: 'NUVIA · Cartera y analítica', modulo: 'cartera-empresas', padre: 'economia.html',
+  { archivo: 'cartera.html', titulo: 'NUVIA · Análisis de cartera', modulo: 'cartera-empresas', padre: 'economia.html',
     tipo: 'herramienta', excepcion: 'Aro de apertura y series analíticas; empresas se revisará en 4B.', publica: true, lastmod: '2026-11-12' },
 
   // ── Nivel 3 · Patrimonio ───────────────────────────────────────────────────
@@ -82,7 +82,7 @@ export const PAGINAS = [
   { archivo: 'guia-impuestos.html', titulo: null, modulo: 'patrimonio', padre: 'patrimonio.html',
     tipo: 'editorial', excepcion: 'Redirección a fiscalidad.html#guias; noindex.', publica: false, auditar: false },
 
-  // ── Nivel 3 · Familia, Salud y Bienestar ───────────────────────────────────
+  // ── Nivel 3 · Familia y bienestar ───────────────────────────────────
   { archivo: 'respiracion-relajacion.html', titulo: 'NUVIA · Respiración y relajación', modulo: 'bienestar', padre: 'bienestar.html',
     tipo: 'editorial', excepcion: 'Contenido de Cuerpo, mente y salud con entrada común.', publica: true },
   { archivo: 'movimiento-consciente.html', titulo: 'NUVIA · Movimiento consciente', modulo: 'bienestar', padre: 'bienestar.html',
@@ -105,7 +105,7 @@ export const PAGINAS = [
     tipo: 'institucional', excepcion: 'Equipo editorial y divulgación pedagógica.', publica: true, lastmod: '2026-11-12' },
   { archivo: 'que-es-nuvia.html', titulo: 'NUVIA · Qué es NUVIA', modulo: 'nucleo', padre: 'index.html',
     tipo: 'institucional', excepcion: 'Cubierta y manifiesto editorial propios.', publica: true, lastmod: '2026-11-12' },
-  { archivo: 'metodologia.html', titulo: 'NUVIA · Metodología', modulo: 'nucleo', padre: 'index.html',
+  { archivo: 'metodologia.html', titulo: 'NUVIA · Cómo trabajamos', modulo: 'nucleo', padre: 'index.html',
     tipo: 'institucional', excepcion: 'Transparencia sobre fuentes, cálculos, revisión y límites.', publica: true, lastmod: '2026-11-12' },
   { archivo: 'independencia.html', titulo: 'NUVIA · Independencia', modulo: 'nucleo', padre: 'index.html',
     tipo: 'institucional', excepcion: 'Compromisos editoriales, comerciales y profesionales.', publica: true, lastmod: '2026-11-12' },

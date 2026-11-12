@@ -8,7 +8,7 @@ const read=file=>readFileSync(resolve(root,file),'utf8');
 const markets=read('mercados.html'), portfolio=read('cartera.html');
 assert.match(markets,/<h1[^>]*>Mercados y noticias<\/h1>/);
 assert.doesNotMatch(markets,/class="markets-space-nav"|data-economia-area=/);
-assert.match(markets,/<a href="economia.html">Economía y Finanzas<\/a>/);
+assert.match(markets,/<a href="economia.html">Economía y finanzas<\/a>/);
 assert.match(markets,/id="actualidad" class="markets-area-views"/);
 assert.match(markets,/aria-describedby="markets-views-label"/);
 for(const name of ['description','og:description','twitter:description']) {

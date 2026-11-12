@@ -51,10 +51,10 @@
 
 <div class="nuvia-page">
   <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
-    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-brand" href="index.html" aria-label="NUVIA: inicio"><span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png" width="44" height="44" alt=""><span class="nv-brand-word">NUVIA</span></span></a>
     <a class="web-name" href="patrimonio.html">Patrimonio</a>
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
-  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a href="patrimonio.html">Portada</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar NUVIA"><a href="index.html">Inicio NUVIA</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a aria-label="Inicio de Patrimonio" href="patrimonio.html">Inicio</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
 
   <main id="contenido">
 
@@ -65,7 +65,7 @@
           <div>
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol>
-                <li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li>
+                <li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li>
                 <li><a href="patrimonio.html">Patrimonio</a></li>
                 <li><a href="fiscalidad.html#guias">Impuestos</a></li>
                 <li><span aria-current="page">Fiscalidad del ahorro</span></li>
@@ -80,6 +80,7 @@
               Entiende qué hecho genera tributación, cuándo se materializa y qué
               documentación conviene revisar antes de vender, cobrar o traspasar.
             </p>
+            <div class="nv-hero__actions pa-tool-actions"><a class="nv-btn nv-btn--accent" href="#simulador">Ir al simulador</a><a class="nv-btn nv-btn--soft" href="#indice-guia">Ver el índice</a></div>
           </div>
 
           <aside class="nv-hero__aside gt-marco">
@@ -89,7 +90,7 @@
               <li>Ejercicio 2026</li>
               <li class="gt-chips__accent">Contenido orientativo</li>
             </ul>
-            <button type="button" class="gt-print" onClick="{{ imprimir }}">Imprimir guía</button>
+            <button type="button" class="gt-print" onClick="{{ imprimir }}">Imprimir o guardar PDF</button>
           </aside>
         </div>
       </div>
@@ -103,7 +104,7 @@
           <span class="gt-strip__mark" aria-hidden="true">◆</span>
           <span>Normativa de {{ territorio }} · ejercicio 2026</span>
         </span>
-        <a class="gt-strip__change" href="fiscalidad.html">Cambiar de territorio →</a>
+        <a class="gt-strip__change" href="fiscalidad.html?volver=guia-ahorro.html">Cambiar de territorio →</a>
       </div>
 
       <nav class="jg-guides jg-guides--row" aria-label="Guías de Impuestos">
@@ -133,7 +134,7 @@
         </ul>
       </div>
 
-      <nav class="gt-indice" aria-label="Contenido de la guía">
+      <nav id="indice-guia" class="gt-indice" aria-label="Contenido de la guía">
         <span class="gt-indice__label">En esta guía</span>
         <a href="#conceptos">Conceptos esenciales</a>
         <a href="#productos">Productos</a>
@@ -153,6 +154,7 @@
       <section id="conceptos" data-screen-label="01 Conceptos esenciales" class="gu-anchor--sm">
         <p class="gu-kicker">01 · Fundamentos</p>
         <h2 class="gu-title">Conceptos esenciales</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-note">
           <p class="gu-text"><strong class="gu-strong">Qué ejercicio estás viendo.</strong> {{ notaEjercicio }}</p>
@@ -191,6 +193,7 @@
       <section id="productos" data-screen-label="02 Selector por producto" class="gu-anchor--sm">
         <p class="gu-kicker">02 · Qué producto tienes</p>
         <h2 class="gu-title">Selector por producto</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gt-selector" role="tablist" aria-label="Producto">
           <sc-for list="{{ productos }}" as="p" hint-placeholder-count="9">
@@ -217,6 +220,7 @@
       <section id="comparacion" data-screen-label="03 Fondos frente a ETF" class="gu-anchor--sm">
         <p class="gu-kicker">03 · Decisión de vehículo</p>
         <h2 class="gu-title">Fondos frente a ETF</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <p id="ahorro-table-help" class="nv-table-scroll__hint">Si no cabe completa, desplaza la tabla; con teclado, enfócala y usa las flechas.</p>
         <div class="gt-tabla-envoltorio" role="region" tabindex="0" aria-label="Comparación de fondo elegible y ETF" aria-describedby="ahorro-table-help">
@@ -247,6 +251,7 @@
       <section id="compensacion" data-screen-label="04 Compensación" class="gu-anchor--sm">
         <p class="gu-kicker">04 · Orden fiscal</p>
         <h2 class="gu-title">Compensación de ganancias y pérdidas</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-grid-4">
           <article class="gu-card--column gu-card--top">
@@ -292,24 +297,26 @@
       <section id="simulador" data-screen-label="05 Simulador orientativo" class="gu-anchor--sm">
         <p class="gu-kicker">05 · Herramienta pedagógica</p>
         <h2 class="gu-title">Simulador orientativo</h2>
+        <p id="ayuda-importes-ahorro" class="pa-tool-note">Importes en euros. Las cifras iniciales son un ejemplo editable; indica 0 si no hay importe. Los resultados se actualizan al cambiar un campo.</p>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gt-diag">
           <form class="gt-diag__form">
             <div class="gt-campo">
               <label for="sim-ganancias">Ganancias patrimoniales realizadas (€)</label>
-              <input id="sim-ganancias" type="number" min="0" step="0.01" name="realizedGains" defaultValue="{{ v.realizedGains }}" onChange="{{ setNum }}">
+              <input id="sim-ganancias" type="number" aria-describedby="ayuda-importes-ahorro" min="0" step="0.01" name="realizedGains" defaultValue="{{ v.realizedGains }}" onChange="{{ setNum }}">
             </div>
             <div class="gt-campo">
               <label for="sim-perdidas">Pérdidas patrimoniales realizadas (€)</label>
-              <input id="sim-perdidas" type="number" min="0" step="0.01" name="realizedLosses" defaultValue="{{ v.realizedLosses }}" onChange="{{ setNum }}">
+              <input id="sim-perdidas" type="number" aria-describedby="ayuda-importes-ahorro" min="0" step="0.01" name="realizedLosses" defaultValue="{{ v.realizedLosses }}" onChange="{{ setNum }}">
             </div>
             <div class="gt-campo">
               <label for="sim-rendimientos">Rendimientos positivos del ahorro (€)</label>
-              <input id="sim-rendimientos" type="number" min="0" step="0.01" name="savingsIncome" defaultValue="{{ v.savingsIncome }}" onChange="{{ setNum }}">
+              <input id="sim-rendimientos" type="number" aria-describedby="ayuda-importes-ahorro" min="0" step="0.01" name="savingsIncome" defaultValue="{{ v.savingsIncome }}" onChange="{{ setNum }}">
             </div>
             <div class="gt-campo">
               <label for="sim-pendientes">Pérdidas pendientes anteriores (€)</label>
-              <input id="sim-pendientes" type="number" min="0" step="0.01" name="priorPendingLosses" defaultValue="{{ v.priorPendingLosses }}" onChange="{{ setNum }}">
+              <input id="sim-pendientes" type="number" aria-describedby="ayuda-importes-ahorro" min="0" step="0.01" name="priorPendingLosses" defaultValue="{{ v.priorPendingLosses }}" onChange="{{ setNum }}">
             </div>
           </form>
 
@@ -335,9 +342,10 @@
 
 
       <!-- ══ 06 · ANTES DE VENDER ═══════════════════════════════════════════ -->
-      <section id="antes-de-vender" data-screen-label="06 Checklist" class="gu-anchor--sm">
+      <section id="antes-de-vender" data-screen-label="06 Lista de comprobación" class="gu-anchor--sm">
         <p class="gu-kicker">06 · Preparación</p>
-        <h2 class="gu-title">Checklist antes de vender</h2>
+        <h2 class="gu-title">Lista de comprobación antes de vender</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gt-checklist">
           <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="10">
@@ -356,6 +364,7 @@
       <section id="casos" data-screen-label="07 Casos prácticos" class="gu-anchor--sm">
         <p class="gu-kicker">07 · Aplicación</p>
         <h2 class="gu-title">Casos prácticos</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-grid-3">
           <article class="gu-card--column gu-card--top">
@@ -390,6 +399,7 @@
       <section id="preguntas" data-screen-label="08 Preguntas frecuentes" class="gu-anchor--sm">
         <p class="gu-kicker">08 · Cierre</p>
         <h2 class="gu-title">Preguntas frecuentes</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-stack">
           <article class="gu-card">
@@ -434,7 +444,7 @@
   </main>
 
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 </div>
 </x-dc>
 
@@ -464,7 +474,7 @@ class Component extends DCLogic {
         ],
       },
       'araba': {
-        nombre: 'Araba / Álava', nota: NOTA_FORAL,
+        nombre: 'Álava / Araba', nota: NOTA_FORAL,
         fuentes: [
           f('Norma Foral 33/2013 del IRPF de Álava, texto actualizado', 'https://web.araba.eus/documents/d/araba/indice_norma-foral_irpf_cas-4-pdf'),
           f('Información oficial del IRPF de Álava', 'https://web.araba.eus/es/hacienda/renta/informacion'),

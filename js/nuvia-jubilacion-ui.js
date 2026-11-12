@@ -255,8 +255,8 @@
     if (!global.React || !M() || !G() || !F()) return null;
     const st = comp.state;
     const s = st.s || estadoInicial();
-    const set = (k, v) => comp.setState({ s: Object.assign({}, s, { [k]: v }) });
-    const setMany = (o) => comp.setState({ s: Object.assign({}, s, o) });
+    const set = (k, v) => comp.setState({ s: Object.assign({}, s, { [k]: v }), escenarioEditado: true });
+    const setMany = (o) => comp.setState({ s: Object.assign({}, s, o), escenarioEditado: true });
     const clave = JSON.stringify(s);
     if (!comp._cache || comp._cache.k !== clave) comp._cache = { k: clave, r: M().calcular(entradaMotor(s)) };
     const res = comp._cache.r;
@@ -274,7 +274,7 @@
             h('strong', null, res.estado === 'en-preparacion' ? 'En preparación' : 'Residencia fiscal sin determinar'),
             h('p', null, res.mensaje),
             res.estado === 'en-preparacion' && cfg && cfg.modelo === 'comun'
-              ? h('button', { type: 'button', className: 'nv-btn nv-btn--soft', onClick: () => comp.setState({ s: cambiarTerritorio(s, 'estatal', F().CCAA_DEFECTO) }) }, 'Calcular con la escala de referencia')
+              ? h('button', { type: 'button', className: 'nv-btn nv-btn--soft', onClick: () => comp.setState({ s: cambiarTerritorio(s, 'estatal', F().CCAA_DEFECTO), escenarioEditado: true }) }, 'Calcular con la escala de referencia')
               : null)));
     }
     return h('div', { className: 'jb' },
@@ -296,11 +296,11 @@
     const nombreEstado = { verificada: 'Normativa verificada en fuente oficial', 'en-preparacion': 'En preparación: no calcula', desconocida: 'Comunidad no reconocida', desconocido: 'Territorio no reconocido', sin: 'Elige tu residencia para calcular' }[estado];
     return h('section', { className: 'jb-terr' + (compacto ? ' jb-terr--compacto' : ''), 'aria-labelledby': id + '-l' },
       h('div', { className: 'jb-terr__head' },
-        h('div', null, h('p', { className: 'jb-kicker' }, 'Antes de empezar'), h('h3', { id: id + '-l' }, '¿Dónde tienes tu residencia fiscal?')),
+        h('div', null, h('p', { className: 'jb-kicker' }, 'Antes de empezar'), h(compacto ? 'h2' : 'h3', { id: id + '-l' }, '¿Dónde tienes tu residencia fiscal?')),
         h('p', { className: 'jb-terr__estado is-' + estado }, h('i', { 'aria-hidden': 'true' }), nombreEstado)),
       h('div', { className: 'jb-choices', role: 'radiogroup', 'aria-label': 'Residencia fiscal' },
         Fx.TERRITORIOS.map((x) => h('button', { key: x.id, type: 'button', role: 'radio', 'aria-checked': t === x.id ? 'true' : 'false', className: 'jb-choice' + (t === x.id ? ' is-on' : ''), onClick: () => onChange(x.id, x.id === 'estatal' ? (valor.ccaa || Fx.CCAA_DEFECTO) : undefined) },
-          h('span', { className: 'jb-choice__text' }, h('strong', null, x.corto || x.nombre))))),
+          h('span', { className: 'jb-choice__text' }, h('strong', null, x.id === 'estatal' ? 'Territorio común' : x.id === 'alava' ? 'Álava / Araba' : x.corto || x.nombre))))),
       t === 'estatal' ? h('div', { className: 'jb-terr__ccaa' },
         h('label', { className: 'jb-field__label', htmlFor: id + '-ccaa' }, 'Comunidad autónoma'),
         h('select', { id: id + '-ccaa', className: 'jb-select', value: valor.ccaa || Fx.CCAA_DEFECTO, onChange: (e) => onChange('estatal', e.target.value) },
@@ -311,7 +311,7 @@
   }
   function selectorTerritorio({ comp, st, s }) {
     return SelectorTerritorio({ valor: { territorio: s.territorio, ccaa: s.ccaa }, aviso: st.avisoTerritorio || null,
-      onChange: (t, c) => comp.setState({ s: cambiarTerritorio(s, t, c), avisoTerritorio: null, paso: s.territorio === t ? st.paso : 0 }) });
+      onChange: (t, c) => comp.setState({ s: cambiarTerritorio(s, t, c), escenarioEditado: true, avisoTerritorio: null, paso: s.territorio === t ? st.paso : 0 }) });
   }
 
   /* ---------------------------------------------------- Qué calcula ------- */
@@ -343,7 +343,7 @@
 
   function resumenPaso(i, s, res) {
     const o = res.entrada;
-    if (i === 0) return o.edad + ' años · ' + f0(num(s.pension)) + ' €/mes';
+    if (i === 0) return o.edad + ' años · ' + f0(num(s.pension)) + ' €/paga';
     if (i === 1) { const t = ACTIVOS.reduce((a, x) => a + (s.activos[x.k] ? num(s[x.valor]) : 0), 0); return t ? eur(t) : 'Sin ahorros'; }
     if (i === 2) return s.tieneEpsv ? eur(o.epsvPre + o.epsvPost) : 'Sin ' + res.textos.figura;
     return pct(o.rentabilidad) + ' · IPC ' + pct(o.inflacion);
@@ -359,8 +359,8 @@
       h('div', { className: 'jb-steps__top' },
         h('p', { className: 'jb-kicker' }, 'Tus datos · 4 pasos'),
         h('div', { className: 'jb-steps__tools' },
-          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoInicial(), conservar), paso: 0 }) }, 'Cargar el ejemplo'),
-          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoVacio(), conservar), paso: 0 }) }, 'Empezar de cero'))),
+          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoInicial(), conservar), paso: 0, escenarioEditado: false }) }, 'Cargar el ejemplo'),
+          h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: Object.assign(estadoVacio(), conservar), paso: 0, escenarioEditado: true }) }, 'Empezar de cero'))),
       h('ol', { className: 'jb-stepper' },
         P.map((x, i) => h('li', { key: i },
           h('button', { type: 'button', className: 'jb-stepper__btn' + (i === p ? ' is-on' : '') + (i < p ? ' is-done' : ''), 'aria-current': i === p ? 'step' : undefined, onClick: () => ir(i) },
@@ -389,8 +389,8 @@
             opciones: [{ v: 'si', t: 'Sí, o me jubilo ya' }, { v: 'no', t: 'Todavía no' }] }),
           !s.jubilado ? Deslizador({ id: 'jb-edadjub', etiqueta: 'Me jubilaré a los', valor: s.edadJubilacion, min: Math.min(75, num(s.edad) || 40), max: 75, paso: 1, unidad: 'años', onChange: (v) => set('edadJubilacion', v) }) : null)),
       h('div', { className: 'jb-grid-2' },
-        Campo({ id: 'jb-pension', etiqueta: 'Pensión pública bruta al mes', valor: s.pension, unidad: '€/mes', paso: 50, min: 0, onChange: (v) => set('pension', v),
-          ayuda: 'Antes de impuestos, en cada una de las 14 pagas. ' + (s.jubilado ? 'La tienes en tu carta de revalorización.' : 'Pon la estimación en euros de hoy (simulador de la Seguridad Social).') }),
+        Campo({ id: 'jb-pension', etiqueta: 'Pensión pública bruta por paga', valor: s.pension, unidad: '€/paga', paso: 50, min: 0, onChange: (v) => set('pension', v),
+          ayuda: '14 pagas al año, antes de impuestos. ' + (s.jubilado ? 'La tienes en tu carta de revalorización.' : 'Pon la estimación en euros de hoy (simulador de la Seguridad Social).') }),
         h('div', { className: 'jb-hint' }, icono('info'), h('p', null, 'Al año son ', h('strong', null, eur(num(s.pension) * 14)), ' brutos. Tu pensión subirá cada año con el IPC que elijas en el paso 4.'))),
       h('div', { className: 'jb-block' },
         h('p', { className: 'jb-field__label' }, '¿Hasta qué edad quieres que te duren los ahorros?'),
@@ -438,7 +438,7 @@
 
   function pasoEpsv({ comp, s, set, setMany, res, cfg, T }) {
     const o = res.entrada; const pv = cfg.parametros.prevision; const hayCaso = cfg.caso === 'dfb';
-    const enlaceCaso = hayCaso ? h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'caso práctico de la Hacienda Foral de Bizkaia') : null;
+    const enlaceCaso = hayCaso ? h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s), escenarioEditado: false }) }, 'caso práctico de la Hacienda Foral de Bizkaia') : null;
     /* Saldos: en el modelo vasco se pide el desglose aportación/rentabilidad
        por tramo; en Navarra y en el estatal, la parte de los derechos que
        deriva de aportaciones anteriores a la fecha de corte (para el 40 %). */
@@ -499,7 +499,7 @@
             : h('div', { className: 'jb-hint' }, icono('info'), h('p', null, 'La reducción del ' + Math.round(pv.reduccion * 100) + ' % (' + (cfg.modelo === 'navarra' ? 'DT 25.ª' : 'DT 12.ª') + ') se aplica a la parte del cobro que deriva de aportaciones anteriores a ' + pv.corte + '. El resto tributa íntegro como rendimiento del trabajo.')),
           Casilla({ id: 'jb-primer', marcado: s.primerCobro, onChange: (v) => set('primerCobro', v), titulo: T.condicionPrimerCobro, texto: T.condicionPrimerCobroNota }),
           Casilla({ id: 'jb-dos', marcado: s.dosAnios, onChange: (v) => set('dosAnios', v), titulo: 'Han pasado más de 2 años desde la primera aportación', texto: T.vasco ? 'No se exige en invalidez o dependencia.' : 'Requisito de la reducción.' }))) : null,
-      hayCaso ? h('p', { className: 'jb-note' }, h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s) }) }, 'Cargar el caso práctico de la DFB'), ' (100.000 € de derechos cobrados de una vez en 2026).') : null);
+      hayCaso ? h('p', { className: 'jb-note' }, h('button', { type: 'button', className: 'jb-link', onClick: () => comp.setState({ s: casoDFB(s), escenarioEditado: false }) }, 'Cargar el caso práctico de la DFB'), ' (100.000 € de derechos cobrados de una vez en 2026).') : null);
     return h('div', { className: 'jb-panel__body' },
       Opciones({ nombre: '¿Tienes ' + T.una + '?', valor: s.tieneEpsv ? 'si' : 'no', onChange: (v) => set('tieneEpsv', v === 'si'), opciones: [{ v: 'no', t: 'No tengo ' + T.figura }, { v: 'si', t: 'Sí, tengo ' + T.una }] }),
       cuerpoEpsv);
@@ -545,9 +545,10 @@
     const { res } = ctx; const r = res.resumen; const d = r.deflactor1; const dur = estadoDuracion(res);
     const o = res.entrada;
     return h('div', { className: 'jb-live__card' },
-      h('p', { className: 'jb-kicker' }, 'Tu resultado, al momento'),
-      h('p', { className: 'jb-live__label' }, 'Ingreso neto al mes', h('span', null, o.aniosHastaJubilacion ? ' · al jubilarte, en euros de hoy' : ' · primer año')),
+      h('p', { className: 'jb-kicker pa-scenario-state' }, (ctx.st.escenarioEditado ? 'Escenario editado' : ctx.s.casoDfb ? 'Caso práctico DFB' : 'Ejemplo editable') + ' · al momento'),
+      h('p', { className: 'jb-live__label' }, 'Ingreso neto · media mensual', h('span', null, o.aniosHastaJubilacion ? ' · al jubilarte, en euros de hoy' : ' · primer año')),
       h('p', { className: 'jb-live__num', 'aria-live': 'polite' }, f0(r.netoMensual / d), h('span', null, ' €/mes')),
+      h('p', { className: 'jb-note pa-monthly-basis' }, 'Total del año dividido entre 12. La pensión se cobra en 14 pagas.'),
       h('div', { className: 'jb-live__row' },
         h('span', null, 'Bruto ', h('strong', null, eur(r.brutoMensual / d))),
         h('span', null, 'IRPF ', h('strong', { className: 'is-neg' }, '−' + eur(r.impuestoMensual / d)), ' (' + pct(r.brutoMensual ? r.impuestoMensual / r.brutoMensual : 0) + ')')),
@@ -558,7 +559,7 @@
       res.capital ? h('p', { className: 'jb-live__cap' }, 'Cobro de ' + res.textos.la + ' de una vez: ', h('strong', null, eur(res.capital.neto)), ' netos, que se suman a tus ahorros.') : null,
       h('div', { className: 'jb-live__actions' },
         h('a', { className: 'nv-btn nv-btn--primary', href: '#resultados' }, 'Ver el análisis completo'),
-        h('button', { type: 'button', className: 'nv-btn nv-btn--soft jb-print', onClick: () => imprimir(ctx) }, icono('impresora'), 'Imprimir informe')));
+        h('button', { type: 'button', className: 'nv-btn nv-btn--soft jb-print', onClick: () => imprimir(ctx) }, icono('impresora'), 'Imprimir o guardar PDF')));
   }
 
   /* Barra fija inferior en tableta: el resultado sigue a la vista mientras se
@@ -587,7 +588,7 @@
           h('p', null, o.aniosHastaJubilacion ? 'Te jubilas a los ' + o.edadJubilacion + ' (dentro de ' + o.aniosHastaJubilacion + ' años). ' : 'Primer año de jubilación, a los ' + o.edadJubilacion + '. ', 'El plan llega hasta los ' + o.edadFin + ' años.')),
         h('div', { className: 'jb-results__tools' },
           Opciones({ nombre: 'Unidades', valor: vista, onChange: (v) => comp.setState({ vista: v }), opciones: [{ v: 'hoy', t: 'Euros de hoy' }, { v: 'nominal', t: 'Euros de cada año' }] }),
-          h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimir(ctx) }, icono('impresora'), 'Imprimir informe'))),
+          h('button', { type: 'button', className: 'nv-btn nv-btn--primary jb-print', onClick: () => imprimir(ctx) }, icono('impresora'), 'Imprimir o guardar PDF'))),
       ecuacion(res, d),
       cascadaCard(ctx, vista),
       mapaFiscal(res, d),

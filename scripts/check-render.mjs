@@ -79,7 +79,7 @@ const CONTENIDO = {
   'cartera.html':          [['.nuvia-analysis-tabs a', 3]],
   'cartera.html?vista=models': [['.nv-modelos__tarjeta', 4], ['.nuvia-analysis-tabs a', 3]],
   'academia.html':         [['#ac-title', 1, true], ['.ac-foundations', 1, true], ['.ac-course', 1, true], ['.ac-glossary', 1, true], ['.ac-experiment', 1, true], ['.ac-deepen', 1, true], ['a[href="academia.html?tab=inicio#ruta-aprendizaje"]', 1]],
-  'academia.html?tab=inicio': [['.ac-strong', 1], ['.viv-pill', 2], ['.ac-x10', 1], ['#ruta-aprendizaje .ac-learning-step', 3, true]],
+  'academia.html?tab=inicio': [['.nv-entry', 1, true], ['.ac-route-photo', 1, true], ['.ac-strong', 1], ['.ac-x10', 1], ['#ruta-aprendizaje .ac-learning-step', 3, true]],
   'academia.html?tab=activos': [['.ac-subtab', 3], ['[role="tabpanel"]', 1]],
   'academia.html?tab=glosario': [['.ac-tab', 2], ['[role="tabpanel"]', 1]],
   'academia.html?tab=cursos': [['.ac-x21', 1]],
@@ -247,13 +247,16 @@ const MEDIR = ({ ESC, surfaces, typeScales, titleContract, numericSizes }) => {
   /* La cabecera puede envolver en tablet, pero ninguno de sus elementos
      visibles puede invadir a otro. Se miden cajas reales, no anchos teóricos. */
   const cabecera = [...document.querySelectorAll(
-    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details, .hub-brand, .hub-brand-caption, .hub-about, .web-header-row > .web-brand, .web-header-row > .web-name, .web-header-row > .eco-switch, .web-local a'
+    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details, .hub-brand, .hub-about, .web-header-row > .web-brand, .web-header-row > .web-name, .web-header-row > .eco-switch, .web-local a'
   )].filter((el) => {
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
     return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
   });
-  if (document.body.matches('.hub-page, .web-page, [data-eco-theme]') && cabecera.length < 3) {
+  if (document.body.matches('.hub-page') && (cabecera.length !== 2 || document.querySelector('.hub-header')?.children.length !== 2)) {
+    salida.colisiones.push('La cabecera de Inicio debe ofrecer únicamente el logo y el acceso a Qué es NUVIA');
+  }
+  if (document.body.matches('.web-page, [data-eco-theme]') && cabecera.length < 3) {
     salida.colisiones.push('La cabecera del ecosistema no ofrece sus tres elementos auditables');
   }
   for (let i = 0; i < cabecera.length; i++) {
@@ -423,6 +426,7 @@ const MEDIR = ({ ESC, surfaces, typeScales, titleContract, numericSizes }) => {
     if (el.matches('body[data-eco-theme="lecturas"] .nv-library-welcome')) expected = [48, 40];
     if (el.matches('body[data-eco-theme="lecturas"] #seleccion-lecturas')) expected = [40, 56];
     if (el.matches('body[data-eco-theme="lecturas"] #comunidad-lecturas')) expected = [0, 48];
+    if (el.matches('body[data-eco-theme="nuvia"] .nv-trust-content > .nv-section')) expected = [42, 42];
     if (parseFloat(cs.paddingTop) !== expected[0] || parseFloat(cs.paddingBottom) !== expected[1]) {
       salida.estructura.push(`sección compacta ${el.className}: ${cs.paddingTop}/${cs.paddingBottom}; se esperan ${expected[0]}px/${expected[1]}px`);
     }

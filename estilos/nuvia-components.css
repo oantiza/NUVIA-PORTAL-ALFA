@@ -1656,3 +1656,7 @@ sc-for {
 @media (prefers-reduced-motion: reduce) {
   .nv-home-polish :is(a, button) { transition: none; }
 }
+/* Marca común: símbolo existente y nombre legible en todos los tamaños. */
+.nv-brand-lockup { display: inline-flex; align-items: center; gap: 8px; color: var(--nv-navy-900); }
+.nv-brand-lockup .nv-brand-mark { display: block; width: 44px; height: 44px; object-fit: contain; flex: 0 0 auto; }
+.nv-brand-lockup .nv-brand-word { font: 500 32px/1 var(--nv-font-serif); letter-spacing: .035em; }

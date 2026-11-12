@@ -6,6 +6,7 @@
 .bi-opening-description { padding-bottom: 2px; }
 .bi-opening-description > p { font-size: 16px; max-width: 40ch; line-height: 1.8; color: var(--nv-text-soft); }
 .bi-opening-description .web-link { margin-top: 16px; color: var(--bi-accent); }
+.bi-opening-description > .bi-descriptor { color: var(--bi-accent); font-size: 14px; font-weight: 500; margin-bottom: 10px; }
 .bi-photo { position: relative; width: 100%; height: 395px; border-radius: 4px 4px 130px 4px; overflow: hidden; }
 .bi-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .bi-photo figcaption { position: absolute; left: 28px; bottom: 27px; background: var(--nv-surface); color: var(--bi-accent); padding: 15px 24px; font: 400 26px/1.2 var(--nv-font-serif); border-radius: 2px; }
@@ -29,7 +30,8 @@
 .bi-symbol--nutricion::after { border-width: 0 0 0 1px; width: 1px; height: 30px; top: 9px; left: 23px; transform: rotate(35deg); }
 .bi-symbol--descanso::before { width: 37px; height: 37px; border-radius: 50%; inset: 4px; }
 .bi-symbol--descanso::after { width: 29px; height: 29px; top: 0; right: 0; border: 0; border-radius: 50%; background: var(--nv-surface); }
-.bi-reading { background: var(--nv-green-100); }
+.bi-reading { background: var(--nv-green-100); margin-top: 42px; scroll-margin-top: 24px; }
+.bi-reading-intro .web-link { margin-top: 18px; color: var(--bi-accent); font-size: 14px; }
 .bi-reading-inner { display: grid; grid-template-columns: .85fr 1.15fr; gap: 95px; padding-block: 51px; }
 .bi-reading-intro h2 { font-size: 49px; color: var(--bi-accent); }
 .bi-reading-intro > p:last-child { max-width: 30ch; font-size: 15px; color: var(--nv-text-soft); line-height: 1.8; margin-top: 22px; }

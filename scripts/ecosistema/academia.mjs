@@ -15,7 +15,7 @@ export function renderAcademia(site) {
       <p class="ac-opening-name">Academia NUVIA</p>
       <h1 id="ac-title">Saber es<br>patrimonio.</h1>
       <p class="ac-opening-description">Hay ideas que cambian nuestra forma de mirar. Empieza por lo que te da curiosidad y aprende a tu ritmo.</p>
-      <a class="web-button ac-start" href="${href('esenciales')}">Ver conocimientos esenciales ${arrow}</a>
+      <a class="web-button ac-start" href="${href('esenciales')}">Ver conceptos esenciales ${arrow}</a>
       <a class="ac-quiet-link" href="#recursos">Ver las áreas de Academia <span aria-hidden="true">↓</span></a>
     </div>
   </section>
@@ -30,7 +30,7 @@ export function renderAcademia(site) {
         <p class="ac-intention">Quiero entender las bases</p>
         <h3>El dinero también<br>se aprende.</h3>
         <p>Conceptos esenciales explicados desde el principio, con lenguaje claro y su relación con la vida cotidiana.</p>
-        <a class="web-link" href="${href('esenciales')}">Abrir conocimientos esenciales ${arrow}</a>
+        <a class="web-link" href="${href('esenciales')}">Abrir conceptos esenciales ${arrow}</a>
       </article>
       <div class="ac-desk-notes">
         <article id="cursos" class="ac-course">

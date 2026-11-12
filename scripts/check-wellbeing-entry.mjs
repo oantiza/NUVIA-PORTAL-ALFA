@@ -1,4 +1,4 @@
-/* Presentación y rutas locales de Familia, Salud y Bienestar; no abre fuentes externas ni recopila información. */
+/* Presentación y rutas locales de Familia y bienestar; no abre fuentes externas ni recopila información. */
 export async function checkWellbeingEntry(page, route) {
   if(route.startsWith('temas.html')) {
     return await page.locator('.tm-wellbeing-nav,#bienestar-ambitos,#bienestar-fuentes,.tm-pillars').count() ? ['Bienestar invade una vista de Patrimonio'] : [];
@@ -6,7 +6,7 @@ export async function checkWellbeingEntry(page, route) {
   if(route!=='bienestar.html') return [];
   const problems=[], start=page.url();
   if(await page.locator('main h1').textContent()!=='También importacómo vivimos.') problems.push('Apertura incorrecta de la web');
-  if(await page.locator('.web-name').textContent()!=='Familia, Salud y Bienestar') problems.push('Nombre incorrecto de la web');
+  if(await page.locator('.web-name').textContent()!=='Familia y bienestar') problems.push('Nombre incorrecto de la web');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
   const topicLinks=page.locator('#recursos .bi-topic a');
   if(await topicLinks.count()!==4) problems.push('Faltan los cuatro accesos a subsecciones');

@@ -160,7 +160,7 @@ async function suiteFixture(view = 'portfolio') {
 }
 test('integración: carga empresas al seleccionarlas y conserva el iframe al cambiar de vista', async () => {
   const suite = await suiteFixture();
-  assert.equal(suite.nodes.get('analysis-title').textContent, 'Mi cartera');
+  assert.equal(suite.nodes.get('analysis-title').textContent, 'Análisis de cartera');
   assert.equal(suite.loads, 0); assert.equal(suite.nodes.get('suite-nuvia').hidden, true);
   suite.click('companies'); assert.equal(suite.loads, 1); assert.equal(suite.nodes.get('suite-nuvia').hidden, false);
   assert.equal(suite.nodes.get('analysis-title').textContent, 'Análisis y valoración de empresas');

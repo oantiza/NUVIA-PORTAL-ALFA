@@ -9,7 +9,8 @@ const root=resolve(process.argv[2]||'.');
 const academy=readFileSync(resolve(root,'academia.html'),'utf8');
 const course=readFileSync(resolve(root,'curso.html'),'utf8');
 class DCLogic {props={};setState(s,callback){Object.assign(this.state,s);callback?.();}}
-const component=(html,window={location:{search:'',hash:''}})=>runInNewContext(html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1]+'; Component',{DCLogic,Intl,URL,URLSearchParams,React:{createElement:(type,props)=>({type,props})},window});
+const localWindow=()=>{let url=new URL('https://example.test/academia.html');return {get location(){return url;},history:{pushState(_s,_t,next){url=new URL(next,url);},replaceState(_s,_t,next){url=new URL(next,url);}},scrollTo(){}};};
+const component=(html,window=localWindow())=>runInNewContext(html.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)[1]+'; Component',{DCLogic,Intl,URL,URLSearchParams,React:{createElement:(type,props)=>({type,props})},requestAnimationFrame(){},window});
 const Academy=component(academy), Course=component(course);
 assert.ok(academy.includes("document.title = 'NUVIA · ' + this.entrada()[0]"));
 assert.doesNotMatch(academy,/Academia Nuvia|seguimiento del progreso/);
@@ -22,7 +23,7 @@ assert.equal(academy.split(homeEnd).length,2,'Un único final de la portada gene
 assert.equal(academy.split(homeStart)[1].split(homeEnd)[0].replaceAll('\r\n','\n'),
   '\n'+renderAcademia(sites.find(site=>site.key==='academia')).replaceAll('\r\n','\n')+'\n',
   'La rama de portada coincide con su fuente de generación');
-assert.match(academy,/<a href="index.html" data-main-menu-return>Ecosistema NUVIA<\/a>/);
+assert.match(academy,/<a href="index.html" data-main-menu-return>Inicio NUVIA<\/a>/);
 assert.match(academy,/href="academia.html\?tab=inicio#ruta-aprendizaje"/,'La nueva portada ofrece el recorrido completo');
 assert.equal(new Academy().state.tab,'portada','Sin parámetro se presenta la nueva portada');
 for(const [query,hash,expected] of [
@@ -39,7 +40,7 @@ for(const [query,hash,expected] of [
   assert.equal(values.esInteriorAcademia,expected!=='portada');
 }
 let currentUrl=new URL('https://example.test/NUVIA-PORTAL-ALFA/academia.html?from=curso#ruta-aprendizaje');
-const navigation={get location(){return currentUrl;},history:{replaceState(_state,_title,next){currentUrl=new URL(next,currentUrl);}},scrollTo(){}};
+const navigation={get location(){return currentUrl;},history:{replaceState(_state,_title,next){currentUrl=new URL(next,currentUrl);},pushState(_state,_title,next){currentUrl=new URL(next,currentUrl);}},scrollTo(){}};
 const RoutedAcademy=component(academy,navigation), routed=new RoutedAcademy();
 routed.normalizarRutaLegada(routed.state.tab);
 assert.equal(currentUrl.search,'?from=curso&tab=inicio');
@@ -62,11 +63,11 @@ assert.match(route,/sin orden obligatorio ni prueba de nivel/);
 for(const tab of ['inicio','cursos','esenciales','fundamentos','activos','calculadora','glosario','pib']) {
   const a=new Academy(); a.state.tab=tab;
   assert.equal(a.renderVals().mostrarRegreso,tab!=='inicio',tab);
-  const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
+  const titles={inicio:'Recorrido de aprendizaje',esenciales:'Conceptos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
   assert.equal(a.renderVals().entradaTitulo,titles[tab]);
-  assert.equal(a.renderVals().claseCabecera.includes('nv-entry'),tab!=='inicio');
+  assert.equal(a.renderVals().claseCabecera.includes('nv-entry'),true,'Cada contenido tiene entrada compacta');
 }
-assert.match(academy, /class="nv-container ac-learning-back"[\s\S]*?href="academia.html"/);
+assert.match(academy, /class="nv-container ac-learning-back ac-learning-back--end"[\s\S]*?href="academia.html"/);
 assert.ok(course.includes('href="academia.html?tab=inicio#ruta-aprendizaje"'));
 assert.match(academy,/los capítulos 2 a 5 ofrecen vídeos y apuntes/);
 assert.match(course,/&quot;estadoProgreso&quot;: \{[^}]*&quot;default&quot;: &quot;nuevo&quot;/);

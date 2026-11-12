@@ -25,7 +25,7 @@ export function readShellDefinition(templateHtml) {
   for (const item of links) {
     if (!item?.href || item.href.startsWith('/') || /^(?:[a-z]+:|\.\.)/i.test(item.href)) throw new Error('_plantilla.html: la navegación debe usar rutas relativas públicas');
   }
-  if (!definition.footer?.paragraphs?.length || !definition.brand?.logo || !definition.hub?.caption) throw new Error('_plantilla.html: marca o avisos incompletos');
+  if (!definition.footer?.paragraphs?.length || !definition.brand?.logo || !definition.hub?.logo || !Number.isFinite(definition.hub.logoWidth) || definition.hub.logoWidth <= 0 || !Number.isFinite(definition.hub.logoHeight) || definition.hub.logoHeight <= 0) throw new Error('_plantilla.html: marca o avisos incompletos');
   return definition;
 }
 
@@ -86,13 +86,12 @@ function sectionLocation(pageName, search, site, pages) {
 
 function brandImage(definition) {
   const brand = definition.brand;
-  return `<img src="${escape(brand.logo)}" width="${brand.width}" height="${brand.height}" alt="${escape(brand.alt)}" loading="lazy">`;
+  return `<span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="${escape(brand.logo)}" width="${brand.width}" height="${brand.height}" alt=""><span class="nv-brand-word">NUVIA</span></span>`;
 }
 
 function hubHeader(definition) {
   return `<header data-screen-label="Header" class="hub-header">
-    <a class="hub-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}" aria-current="page">${brandImage(definition)}</a>
-    <span class="hub-brand-caption">${escape(definition.hub.caption)}</span>
+    <a class="hub-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}" aria-current="page"><img class="hub-brand-logo" src="${escape(definition.hub.logo)}" width="${definition.hub.logoWidth}" height="${definition.hub.logoHeight}" alt="NUVIA Family Wealth"></a>
     <a class="hub-about" href="${escape(definition.hub.about.href)}">${escape(definition.hub.about.label)} <span class="hub-about-arrow">${arrow}</span></a>
   </header>`;
 }
@@ -105,24 +104,24 @@ function hubFooter(definition) {
 }
 
 function ecosystemMenu(definition, current) {
-  return `<nav aria-label="Explorar el ecosistema">${link({ href: definition.brand.href, label: 'Portada del ecosistema' }, current)}<span class="eco-switch-label">Las cuatro webs</span>${definition.webs.map(site => link({ href: site.home, label: site.name }, current)).join('')}<span class="eco-switch-label">Espacios comunes</span>${definition.common.map(item => link(item, current)).join('')}<span class="eco-switch-label">Conoce NUVIA</span>${definition.institutional.map(item => link(item, current)).join('')}</nav>`;
+  return `<nav aria-label="Explorar NUVIA">${link({ href: definition.brand.href, label: 'Inicio NUVIA' }, current)}<span class="eco-switch-label">Las cuatro webs</span>${definition.webs.map(site => link({ href: site.home, label: site.name }, current)).join('')}<span class="eco-switch-label">Espacios comunes</span>${definition.common.map(item => link(item, current)).join('')}<span class="eco-switch-label">Conoce NUVIA</span>${definition.institutional.map(item => link(item, current)).join('')}</nav>`;
 }
 
 function webHeader(definition, site, current, section) {
   return `<header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
     <a class="web-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}">${brandImage(definition)}</a>
     ${link({ href: site.home, label: site.name }, current, ' class="web-name"')}
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary>${ecosystemMenu(definition, current)}</details>
-  </div><nav class="web-local" data-nav-family="${escape(site.key)}" aria-label="Navegación de ${escape(site.name)}"><div class="web-wrap">${link({ href: site.home, label: 'Portada' }, section)}${site.nav.map(item => link(item, section)).join('')}</div></nav></header>`;
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary>${ecosystemMenu(definition, current)}</details>
+  </div><nav class="web-local" data-nav-family="${escape(site.key)}" aria-label="Navegación de ${escape(site.name)}"><div class="web-wrap">${link({ href: site.home, label: 'Inicio' }, section, ` aria-label="Inicio de ${escape(site.name)}"`)}${site.nav.map(item => link(item, section)).join('')}</div></nav></header>`;
 }
 
 function sharedHeader(definition, current) {
   const about = definition.institutional.find(item => item.href === definition.hub.about.href);
   return `<header data-screen-label="Header" class="web-header web-header--shared"><div class="web-wrap web-header-row">
     <a class="web-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}">${brandImage(definition)}</a>
-    <a class="web-name" href="${escape(definition.brand.href)}">Ecosistema NUVIA</a>
-    <details class="eco-switch"><summary>Las cuatro webs <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar las cuatro webs">${definition.webs.map(site => link({ href: site.home, label: site.name }, current)).join('')}</nav></details>
-  </div><nav class="web-local" aria-label="Espacios compartidos de NUVIA"><div class="web-wrap">${link({ href: definition.brand.href, label: 'Portada del ecosistema' }, current)}${[...definition.common, about].map(item => link(item, current)).join('')}</div></nav></header>`;
+    <a class="web-name" href="${escape(definition.brand.href)}">Espacios comunes</a>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary>${ecosystemMenu(definition, current)}</details>
+  </div><nav class="web-local" aria-label="Espacios compartidos de NUVIA"><div class="web-wrap">${link({ href: definition.brand.href, label: 'Inicio NUVIA' }, current)}${[...definition.common, about].map(item => link(item, current)).join('')}</div></nav></header>`;
 }
 
 function webFooter(definition, current) {

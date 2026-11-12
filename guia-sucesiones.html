@@ -51,10 +51,10 @@
 
 <div class="nuvia-page">
   <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
-    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-brand" href="index.html" aria-label="NUVIA: inicio"><span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png" width="44" height="44" alt=""><span class="nv-brand-word">NUVIA</span></span></a>
     <a class="web-name" href="patrimonio.html">Patrimonio</a>
-    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
-  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a href="patrimonio.html">Portada</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
+    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar NUVIA"><a href="index.html">Inicio NUVIA</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a aria-label="Inicio de Patrimonio" href="patrimonio.html">Inicio</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html" aria-current="page">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
 
   <main id="contenido">
 
@@ -69,7 +69,7 @@
           <div>
 <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
               <ol>
-                <li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li>
+                <li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li>
                 <li><a href="patrimonio.html">Patrimonio</a></li>
                 <li><a href="fiscalidad.html#guias">Impuestos</a></li>
                 <li><span aria-current="page">Sucesiones y donaciones</span></li>
@@ -85,6 +85,7 @@
               transmisión en {{ territorio }} sin convertir una guía educativa en
               una recomendación automática.
             </p>
+            <div class="nv-hero__actions pa-tool-actions"><a class="nv-btn nv-btn--accent" href="#diagnostico">Ver qué revisar</a><a class="nv-btn nv-btn--soft" href="#indice-guia">Ver el índice</a></div>
           </div>
 
           <aside class="nv-hero__aside gt-marco">
@@ -94,7 +95,7 @@
               <li>Ejercicio 2026</li>
               <li class="gt-chips__accent">Contenido orientativo</li>
             </ul>
-            <button type="button" class="gt-print" onClick="{{ imprimir }}">Imprimir guía</button>
+            <button type="button" class="gt-print" onClick="{{ imprimir }}">Imprimir o guardar PDF</button>
           </aside>
         </div>
       </div>
@@ -108,7 +109,7 @@
           <span class="gt-strip__mark" aria-hidden="true">◆</span>
           <span>Normativa de {{ territorio }} · ejercicio 2026</span>
         </span>
-        <a class="gt-strip__change" href="fiscalidad.html">Cambiar de territorio →</a>
+        <a class="gt-strip__change" href="fiscalidad.html?volver=guia-sucesiones.html">Cambiar de territorio →</a>
       </div>
 
       <nav class="jg-guides jg-guides--row" aria-label="Guías de Impuestos">
@@ -138,7 +139,7 @@
         </ul>
       </div>
 
-      <nav class="gt-indice" aria-label="Contenido de la guía">
+      <nav id="indice-guia" class="gt-indice" aria-label="Contenido de la guía">
         <span class="gt-indice__label">En esta guía</span>
         <a href="#comparar">Comparar alternativas</a>
         <a href="#inventario">Componer el patrimonio</a>
@@ -146,7 +147,7 @@
         <a href="#planificacion">Testamento y planificación</a>
         <a href="#donaciones">Donaciones</a>
         <a href="#liquidez">Liquidez</a>
-        <a href="#diagnostico">Diagnóstico</a>
+        <a href="#diagnostico">Aspectos que revisar</a>
         <a href="#preguntas">Preguntas frecuentes</a>
       </nav>
     </section>
@@ -158,6 +159,7 @@
       <section id="comparar" data-screen-label="01 Comparar alternativas" class="gu-anchor--sm">
         <p class="gu-kicker">01 · Decisión</p>
         <h2 class="gu-title">Heredar, donar o mantener</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <p id="sucesiones-table-help" class="nv-table-scroll__hint">Si no cabe completa, desplaza la tabla; con teclado, enfócala y usa las flechas.</p>
         <div class="gt-tabla-envoltorio" role="region" tabindex="0" aria-label="Comparación de heredar, donar y mantener" aria-describedby="sucesiones-table-help">
@@ -225,6 +227,7 @@
       <section id="inventario" data-screen-label="02 Componer el patrimonio" class="gu-anchor--sm">
         <p class="gu-kicker">02 · Inventario</p>
         <h2 class="gu-title">¿Qué compone el patrimonio?</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-grid-4">
           <article class="gu-card--column gu-card--top">
@@ -267,6 +270,7 @@
       <section id="proceso" data-screen-label="03 Proceso sucesorio" class="gu-anchor--sm">
         <p class="gu-kicker">03 · Orden de trabajo</p>
         <h2 class="gu-title">Proceso sucesorio en diez pasos</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <ol class="gt-pasos">
           <li class="gu-row--plain"><span class="gu-num">01</span><div><p class="gu-block-strong">Certificados iniciales</p><p class="gu-muted">Obtener defunción y últimas voluntades; comprobar seguros cuando proceda.</p></div></li>
@@ -291,6 +295,7 @@
       <section id="planificacion" data-screen-label="04 Testamento y planificación" class="gu-anchor--sm">
         <p class="gu-kicker">04 · Preparación</p>
         <h2 class="gu-title">Testamento y planificación</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-grid-3">
           <article class="gu-card--column gu-card--top">
@@ -325,6 +330,7 @@
       <section id="donaciones" data-screen-label="05 Donaciones" class="gu-anchor--sm">
         <p class="gu-kicker">05 · Transmitir en vida</p>
         <h2 class="gu-title">Donaciones: qué revisar</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-grid-4">
           <article class="gu-card--column gu-card--top">
@@ -357,6 +363,7 @@
       <section id="liquidez" data-screen-label="06 Liquidez" class="gu-anchor--sm">
         <p class="gu-kicker">06 · Punto crítico</p>
         <h2 class="gu-title">Liquidez antes de transmitir</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-split">
           <div class="gu-dark">
@@ -386,7 +393,8 @@
            ═══════════════════════════════════════════════════════════════════ -->
       <section id="diagnostico" data-screen-label="07 Diagnóstico" class="gu-anchor--sm">
         <p class="gu-kicker">07 · Herramienta orientativa</p>
-        <h2 class="gu-title">Diagnóstico de complejidad</h2>
+        <h2 class="gu-title">Aspectos que revisar</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gt-diag">
           <form class="gt-diag__form">
@@ -470,6 +478,7 @@
       <section id="preguntas" data-screen-label="08 Preguntas frecuentes" class="gu-anchor--sm">
         <p class="gu-kicker">08 · Cierre</p>
         <h2 class="gu-title">Preguntas frecuentes</h2>
+        <a class="pa-back-index" href="#indice-guia">↑ Volver al índice</a>
 
         <div class="gu-stack">
           <article class="gu-card">
@@ -514,7 +523,7 @@
   </main>
 
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 </div>
 </x-dc>
 
@@ -559,7 +568,7 @@ class Component extends DCLogic {
         ],
       },
       'araba': {
-        nombre: 'Araba / Álava',
+        nombre: 'Álava / Araba',
         plazos: 'En Álava, el plazo ordinario de sucesiones es de seis meses. Se prorroga automáticamente otros seis meses, con intereses desde el fin del plazo ordinario. Si existe causa legítima, puede solicitarse una prórroga extraordinaria de seis meses más, con intereses y un recargo del 5 %. Las donaciones disponen de treinta días hábiles desde el día siguiente al hecho imponible.',
         fuentes: [
           f('Sucesiones y donaciones de Álava', 'https://web.araba.eus/es/hacienda/sucesiones-y-donaciones'),

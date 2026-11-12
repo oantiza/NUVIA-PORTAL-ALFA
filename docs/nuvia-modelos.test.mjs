@@ -85,8 +85,8 @@ console.log('\n— Prueba de la sección 5 sobre todos los textos del bloque —
     NOTA_MODELOS.includes('no hay botón') && NOTA_MODELOS.includes('ni enlace para contratarla'));
   comprueba('La nota declara la identidad y la fuente',
     NOTA_MODELOS.includes('la misma para cualquiera') && NOTA_MODELOS.includes('base de datos NUVIA'));
-  comprueba('La nota declara que se abre el mismo análisis que en «Mi cartera»',
-    NOTA_MODELOS.includes('mismo análisis') && NOTA_MODELOS.includes('Mi cartera'));
+  comprueba('La nota declara que se abre el mismo análisis que en «Análisis de cartera»',
+    NOTA_MODELOS.includes('mismo análisis') && NOTA_MODELOS.includes('Análisis de cartera'));
 }
 
 if (fallos) {

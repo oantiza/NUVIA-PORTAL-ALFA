@@ -32,6 +32,14 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 | Academia NUVIA y Lecturas con Criterio | `docs/modulos/academia-lecturas.md` |
 | Mi cartera y Análisis y valoración de empresas | `docs/modulos/cartera-empresas.md` |
 
+- `docs/APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md` — continuación autorizada «Sigue»: marca NUVIA, navegación común, accesos, controles y resultados de validación.
+- `docs/PATRIMONIO_CLARIDAD_Y_MANEJO_20261112.md` — claridad de unidades, accesos y guardado local; equivalencia numérica.
+- `docs/ACADEMIA_CLARIDAD_Y_RECORRIDOS_20261112.md` — resultados, rutas recuperables y disponibilidad real del curso.
+- `docs/CLARIDAD_EDITORIAL_Y_ESPACIOS_COMUNES_20261112.md` — contenidos disponibles antes del relato, con textos firmados íntegros.
+- `docs/CLARIDAD_PERIODOS_E_IDENTIDAD_EMPRESAS_20261112.md` — períodos y fuentes junto a cada indicador, identidad pendiente con trazabilidad íntegra.
+- `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
+- `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md` — publicación autorizada de la versión revisada, textos originales y logo ampliado sin rótulo; alcance, validación y seguimiento del despliegue.
+
 ## 3. Documentos vigentes por módulo
 
 Son los que fijan el estado actual de cada parte; cuando una ficha de fecha posterior sustituye a otra, aquí figura la posterior.
@@ -78,6 +86,10 @@ Son los que fijan el estado actual de cada parte; cuando una ficha de fecha post
 - `docs/fixtures/`, `docs/evidence/`, `docs/previews/`, `docs/visuales/`: datos y capturas que usan las pruebas y las fichas.
 - `docs/backend-recuperado/`: copia de referencia; no se ejecuta.
 - `docs/pdf/`: PDF regenerables (ignorados por git).
+
+### Auditoría de claridad y diseño · 12-11-2026
+
+- `docs/AUDITORIA_INTEGRAL_CLARIDAD_Y_DISENO_20261112.md` — análisis solicitado por el fundador tras la integración; propuestas de marca, navegación, herramientas y contenidos, con evidencia y prioridades. No sustituye la definición ni el diseño publicado; la aplicación posterior se registra en el acta de claridad.
 
 ## 5. Documentos históricos
 

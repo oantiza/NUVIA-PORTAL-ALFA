@@ -33,3 +33,13 @@ Actions repite la construcción, validación completa y auditoría de tablet. Ma
 Base anterior publicada: `9727ef57499211772a82a24dcdc38346a788eb83`. Se comprueba el estado remoto antes de enviar y no se fuerza la historia. Se exige que el SHA del flujo oficial coincida con el commit enviado y que el paso de GitHub Pages finalice correctamente.
 
 Después se comprueban la URL pública, el logo y sus dimensiones, la ausencia del rótulo en la cabecera, los textos conservados y los destinos de las cuatro webs y espacios comunes. Los identificadores de commit, ejecución y despliegue, así como la evidencia pública, se guardan en `output/publicacion-claridad-logo-20261112/`. Este documento registra autorización y alcance; el éxito se acredita con el resultado real de Actions y la comprobación pública.
+
+## Cierre comprobado · 12-11-2026
+
+- Commit publicado: `4fe28d40fa4a3b1e0342fff934e4eb719b151e42`, enviado a `main` sin forzar la historia.
+- [Ejecución 43247243915](https://github.com/oantiza/NUVIA-PORTAL-ALFA/actions/runs/43247243915): construcción, validación completa, auditoría de tablet y publicación finalizadas con `success`; SHA coincidente con la versión aprobada.
+- Las 28 páginas públicas responden correctamente. Inicio conserva los siete accesos a las cuatro webs, Lecturas, Colaboradores y Qué es NUVIA, junto a sus textos originales.
+- La cabecera pública contiene el SVG oficial a 280 × 70 px, sin «Ecosistema» ni separador. El SVG y la hoja de estilos publicados coinciden con los recursos aprobados, normalizando únicamente finales de línea.
+- Evidencias: `recibo-despliegue.json`, `verificacion-publica.json` e `index-publicado.html` en `output/publicacion-claridad-logo-20261112/`. No se realizaron escrituras en Firebase ni se incluyeron los documentos audiovisuales o prototipos ajenos.
+
+Esta anotación de cierre se registra localmente después de comprobar el despliegue, para evitar una nueva publicación que solo añadiría el resultado de la anterior.

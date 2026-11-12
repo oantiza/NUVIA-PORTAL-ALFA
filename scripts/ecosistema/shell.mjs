@@ -86,7 +86,7 @@ function sectionLocation(pageName, search, site, pages) {
 
 function brandImage(definition) {
   const brand = definition.brand;
-  return `<span class="nv-brand-lockup" aria-hidden="true"><img class="nv-brand-mark" src="${escape(brand.logo)}" width="${brand.width}" height="${brand.height}" alt=""><span class="nv-brand-word">NUVIA</span></span>`;
+  return `<img class="web-brand-logo" src="${escape(brand.logo)}" width="${brand.width}" height="${brand.height}" alt="${escape(brand.alt)}">`;
 }
 
 function hubHeader(definition) {

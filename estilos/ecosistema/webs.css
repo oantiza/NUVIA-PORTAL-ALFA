@@ -14,7 +14,7 @@
 .web-header { position: relative; z-index: 10; background: var(--nv-surface); }
 .web-header-row { display: flex; align-items: center; gap: 27px; min-height: 100px; }
 .web-brand { display: flex; align-items: center; min-height: 56px; flex-shrink: 0; }
-.web-brand .nv-brand-mark { width: 44px; height: 44px; }
+.web-brand-logo { display: block; width: 240px; height: 60px; object-fit: contain; }
 .web-name { display: flex; align-items: center; min-height: 44px; padding-left: 27px; border-left: 1px solid var(--nv-line-strong); font: 400 25px/1.1 var(--nv-font-serif); }
 .eco-switch { position: relative; margin-left: auto; flex-shrink: 0; font-size: 14px; }
 .eco-switch summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 20px; min-height: 46px; padding: 0 16px; border: 1px solid var(--nv-line-strong); border-radius: 24px; }
@@ -54,6 +54,7 @@
 .web-prototype-note { color: var(--nv-text-muted); }
 @media (max-width: 999px) {
   .web-header-row { gap: 20px; }
+  .web-brand-logo { width: 216px; height: 54px; }
   .web-name { padding-left: 20px; font-size: 23px; }
   .web-footer-top { align-items: flex-start; }
   .web-footer-top nav { gap: 12px; flex-wrap: wrap; max-width: 365px; justify-content: flex-end; }
@@ -61,7 +62,7 @@
 @media (max-width: 819px) {
   .web-header-row { gap: 17px; }
   .web-name { padding-left: 17px; font-size: 22px; max-width: 250px; }
-  .web-brand .nv-brand-mark { width: 40px; height: 40px; }
+  .web-brand-logo { width: 192px; height: 48px; }
   .eco-switch summary { gap: 14px; padding-inline: 13px; }
   .web-local > div { gap: 28px; }
   .web-footer-top nav { max-width: 330px; }

@@ -39,6 +39,7 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/CLARIDAD_PERIODOS_E_IDENTIDAD_EMPRESAS_20261112.md` — períodos y fuentes junto a cada indicador, identidad pendiente con trazabilidad íntegra.
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md` — publicación autorizada de la versión revisada, textos originales y logo ampliado sin rótulo; alcance, validación y seguimiento del despliegue.
+- `docs/LOGO_COMUN_CABECERAS_NUVIA_20261112.md` — mismo logo oficial en las cuatro webs, interiores y espacios comunes; tamaños adaptados, sin cambios en el resto del diseño.
 
 ## 3. Documentos vigentes por módulo
 

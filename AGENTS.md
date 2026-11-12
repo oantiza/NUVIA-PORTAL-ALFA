@@ -6,6 +6,8 @@ Este archivo es la entrada única para cualquier persona, programa o asistente q
 
 ## Capa 0 · Siempre
 
+**Publicación del logo común autorizada · 12-11-2026:** «Perfecto, publica esta versión en GitHub Pages con el mismo logo en las cabeceras de las cuatro webs y los espacios comunes.» Autoriza commit, envío a `main` y flujo oficial del cambio de marca ya validado, manteniendo el resto del diseño. Acta: `docs/LOGO_COMUN_CABECERAS_NUVIA_20261112.md`. No incluye trabajos ajenos ni Firebase.
+
 **Publicación de la versión revisada autorizada · 12-11-2026:** «Perfecto, publica esta versión en GitHub Pages con el logo ampliado y sin “Ecosistema” en la cabecera.» Autoriza commit, envío a `main` y flujo oficial de la versión local revisada, incluidos los textos originales recuperados y la firma oficial ampliada. No incluye trabajos locales ajenos ni Firebase. Acta: `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md`.
 
 **Actualización de claridad · 12-11-2026:** tras la auditoría integral, el fundador ordena «Sigue». Marca pública: **NUVIA**, descriptor «Conocimiento para la vida en familia»; cuatro webs: Economía y finanzas, Patrimonio, Familia y bienestar y Academia NUVIA. Lecturas con Criterio y Colaboradores son comunes. Menú global único: «Explorar NUVIA»; regreso: «Inicio NUVIA». El acta `docs/APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md` documenta alcance, controles y estado real de entrega. La palabra ecosistema describe la relación entre webs, no es necesaria para navegar.

@@ -36,67 +36,26 @@
 <script defer src="js/vendor/react-dom.production.min.js"></script>
 <script defer src="support.js"></script>
 <script defer src="nuvia-site-unified.js"></script>
+<link rel="stylesheet" href="estilos/ecosistema/webs.css">
+<link rel="stylesheet" href="estilos/ecosistema/interiores.css">
+<link rel="stylesheet" href="estilos/ecosistema/interiores-nuvia.css">
+<script defer src="js/nuvia-ecosistema.js"></script>
 </head>
-<body class="nuvia-design-lab">
+<body class="nuvia-design-lab" data-eco-theme="nuvia">
 <x-dc>
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
 <div class="nuvia-page">
 
-  <header data-screen-label="Header" class="nuvia-site-header">
-    <div class="nuvia-site-header__inner">
-      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
-        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
-      </a>
-      <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
-        <details class="nuvia-site-nav__topics" data-nav-area="economia">
-          <summary>Economía y Finanzas</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="economia.html">Portada de Economía</a>
-            <a href="mercados.html?vista=informes#lectura-informe">Informes</a>
-            <a href="mercados.html">Mercados y noticias</a>
-            <a href="cartera.html">Cartera</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
-          <summary>Patrimonio</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="patrimonio.html">Portada de Patrimonio</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="jubilacion.html">Jubilación</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
-          <summary>Familia, Salud y Bienestar</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="respiracion-relajacion.html">Respiración y relajación</a>
-            <a href="movimiento-consciente.html">Movimiento consciente</a>
-            <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
-            <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="academy">
-          <summary>Academia NUVIA</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="academia.html">Portada de Academia</a>
-            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
-            <a href="academia.html?tab=cursos">Cursos</a>
-          </div>
-        </details>
-        <a href="lecturas.html">Lecturas con Criterio</a>
-        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
-        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
-      </nav>
-    </div>
-  </header>
+  <header data-screen-label="Header" class="web-header web-header--shared"><div class="web-wrap web-header-row">
+    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-name" href="index.html">Ecosistema NUVIA</a>
+    <details class="eco-switch"><summary>Las cuatro webs <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar las cuatro webs"><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a></nav></details>
+  </div><nav class="web-local" aria-label="Espacios compartidos de NUVIA"><div class="web-wrap"><a href="index.html">Portada del ecosistema</a><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></div></nav></header>
 
   <main id="contenido">
     <section data-screen-label="Cabecera Metodología" class="nv-hero nv-hero--institutional nv-entry">
       <div class="nv-container">
-        <nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Metodología</span></li></ol></nav>
+        <nav class="nv-breadcrumb" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li><li><span aria-current="page">Metodología</span></li></ol></nav>
         <div class="nv-hero__inner nv-hero__inner--simple"><div>
           <p class="nv-eyebrow nv-eyebrow--on-dark">Rigor y transparencia</p>
           <h1>Cómo trabaja NUVIA</h1>
@@ -145,52 +104,7 @@
     <section class="nv-section nv-section--tight"><div class="nv-container"><p class="nv-disclaimer nv-reading">NUVIA informa, explica y calcula. Tú comprendes y decides. El contenido es educativo e informativo y no constituye asesoramiento financiero, fiscal o jurídico personalizado.</p></div></section>
   </main>
 
-  <footer data-screen-label="Footer" class="nuvia-site-footer">
-    <div class="nuvia-site-footer__inner">
-      <div class="nuvia-site-footer__grid">
-        <div class="nuvia-site-footer__brand">
-          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
-               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
-          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="economia.html">Economía y Finanzas</a>
-            <a href="patrimonio.html">Patrimonio</a>
-            <a href="bienestar.html">Familia, Salud y Bienestar</a>
-            <a href="academia.html">Academia NUVIA</a>
-            <a href="lecturas.html">Lecturas con Criterio</a>
-          </div>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="cartera.html">Cartera y analítica</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="jubilacion.html">Jubilación</a>
-          </div>
-        </div>
-        <div class="nuvia-site-footer__info-column">
-          <h2 class="nuvia-site-footer__heading">Información</h2>
-          <div class="nuvia-site-footer__info">
-            <a href="colaboradores.html">Colaboradores</a>
-            <a href="que-es-nuvia.html">Qué es NUVIA</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="independencia.html">Independencia</a>
-            <span>Contenido educativo e informativo.</span>
-            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="nuvia-site-footer__legal">
-        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
-        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
-      </div>
-    </div>
-  </footer>
+  <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html" aria-current="page">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 
 </div>
 </x-dc>

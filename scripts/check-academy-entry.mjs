@@ -2,20 +2,45 @@
 export async function checkAcademyEntry(page, route) {
   if(!route.startsWith('academia.html') && route!=='curso.html') return [];
   const problems=[], start=page.url();
+  const requested=new URL(start).searchParams.get('tab');
+  const tab=requested==='interes'?'calculadora':requested||'portada';
   if(route.startsWith('academia.html')) {
-    const titles={inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
-    const title=titles[new URL(start).searchParams.get('tab')||'inicio'];
-    if(await page.title()!=='NUVIA · '+title || (await page.locator('main h1').textContent()).trim()!==title) problems.push('La vista de Academia no tiene título propio');
+    const titles={portada:'Academia NUVIA',inicio:'Academia NUVIA',esenciales:'Conocimientos esenciales',cursos:'Cursos',fundamentos:'Fundamentos de inversión',activos:'Activos financieros',calculadora:'Interés compuesto',glosario:'Glosario financiero',pib:'El PIB, explicado desde cero'};
+    const title=titles[tab];
+    const heading=tab==='portada'?'Saber es patrimonio.':title;
+    if(await page.title()!=='NUVIA · '+title || (await page.locator('main h1').innerText()).replace(/\s+/g,' ').trim()!==heading) problems.push('La vista de Academia no tiene título propio');
+    if(await page.locator('main').count()!==1 || await page.locator('main h1').count()!==1) problems.push('Academia duplica el contenido principal');
+    if(await page.locator('main iframe').count()) problems.push('Academia carga un vídeo sin activación manual');
+    if(await page.locator('body.web-page').count()!==Number(tab==='portada')) problems.push('El reset de la portada invade una vista interior');
   }
-  if(route==='academia.html') {
-    if(await page.locator('.ac-learning-step').count()!==3) problems.push('Faltan los tres pasos opcionales');
-    for(const tab of ['fundamentos','activos','calculadora','glosario']) {
-      await page.locator(`#ruta-aprendizaje a[href="academia.html?tab=${tab}"]`).focus();
+  if(route.startsWith('academia.html') && tab==='portada') {
+    if(await page.locator('#academy,.ac-learning-step').count()) problems.push('La portada muestra simultáneamente el recorrido anterior');
+    for(const next of ['esenciales','cursos','fundamentos','activos','calculadora','glosario']) {
+      await page.locator(`.nv-academia-home a[href="academia.html?tab=${next}"]`).first().focus();
       await page.keyboard.press('Enter');
-      await page.waitForURL(new URL(`academia.html?tab=${tab}`,start).href);
+      await page.waitForURL(new URL(`academia.html?tab=${next}`,start).href);
       await page.locator('.ac-learning-back a').waitFor({state:'visible'});
       await page.locator('.ac-learning-back a').click();
       await page.waitForURL(new URL('academia.html',start).href);
+      await page.locator('.ac-opening').waitFor({state:'visible'});
+    }
+    await page.locator('.nv-academia-home a[href="academia.html?tab=inicio#ruta-aprendizaje"]').click();
+    await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
+    await page.reload();
+    await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
+    if(await page.locator('.ac-learning-step').count()!==3) problems.push('El recorrido completo no se conserva al recargar');
+    await page.goto(start);
+    await page.locator('.ac-opening').waitFor({state:'visible'});
+  } else if(route.startsWith('academia.html') && tab==='inicio') {
+    if(await page.locator('.ac-learning-step').count()!==3) problems.push('Faltan los tres pasos opcionales');
+    for(const next of ['fundamentos','activos','calculadora','glosario']) {
+      await page.locator(`#ruta-aprendizaje a[href="academia.html?tab=${next}"]`).focus();
+      await page.keyboard.press('Enter');
+      await page.waitForURL(new URL(`academia.html?tab=${next}`,start).href);
+      await page.locator('.ac-learning-back a').waitFor({state:'visible'});
+      await page.locator('.ac-learning-back a').click();
+      await page.waitForURL(new URL('academia.html',start).href);
+      await page.locator('.nv-academia-home a[href="academia.html?tab=inicio#ruta-aprendizaje"]').click();
       await page.locator('.ac-learning-step').first().waitFor({state:'visible'});
     }
     await page.goto(start);
@@ -23,6 +48,8 @@ export async function checkAcademyEntry(page, route) {
   } else if(route.startsWith('academia.html')) {
     await page.locator('.ac-learning-back a').click();
     await page.waitForURL(new URL('academia.html',start).href);
+    await page.locator('.ac-opening').waitFor({state:'visible'});
+    await page.locator('.nv-academia-home a[href="academia.html?tab=inicio#ruta-aprendizaje"]').click();
     await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
     await page.locator('.home26-plate__figure').waitFor({state:'visible'});
     await page.goto(start);
@@ -47,7 +74,7 @@ export async function checkAcademyEntry(page, route) {
       }
     }
     await page.locator('.ac-learning-back a').click();
-    await page.waitForURL(new URL('academia.html#ruta-aprendizaje',start).href);
+    await page.waitForURL(new URL('academia.html?tab=inicio#ruta-aprendizaje',start).href);
     await page.locator('#ruta-aprendizaje').waitFor({state:'visible'});
     await page.goto(start);
     await page.locator('.curso-progreso strong').waitFor({state:'visible'});

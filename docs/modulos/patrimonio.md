@@ -2,6 +2,14 @@
 
 **Qué es:** la portada del espacio y sus páginas hijas: Vivienda y coste de vida, Jubilación (simulador multiterritorio, guías e informe imprimible), Impuestos (página y guías) y Planificación patrimonial. Mezcla contenido editorial con motores de cálculo; los motores viven en `js/` separados del texto.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Patrimonio es una de las cuatro webs del Ecosistema NUVIA, con Lecturas con Criterio y Colaboradores como dos espacios comunes. La primera integración de la versión principal se realizó en el único repositorio ALFA, **sin publicar todavía**; el [acta de integración](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md) contiene el alcance y la prueba del §12. Se actualiza la presentación aprobada, conservando las órdenes anteriores sobre cálculos, territorios y fuentes.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+Fuentes de portada: `scripts/ecosistema/patrimonio.mjs` y `estilos/ecosistema/patrimonio.css`. Los interiores añaden `estilos/ecosistema/interiores.css` e `interiores-patrimonio.css` al final de la cascada existente, con ámbito de pantalla y `body[data-eco-theme="patrimonio"]`. Vivienda, Jubilación, Impuestos y Planificación conservan rutas, parámetros, calculadoras, guías y la impresión original. Cabecera, pie y compatibilidad de anclas se mantienen desde Núcleo.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

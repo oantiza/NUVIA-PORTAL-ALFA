@@ -50,6 +50,7 @@ cards.forEach((card,i)=>assert.ok(card[2].includes(`href="${targets[i]}"`)));
 assert.equal(cards.filter(m=>m[2].includes('nv-tag--pending')).length,1);
 assert.match(cards[3][2],/Todavía no hay un cuestionario/);
 assert.doesNotMatch(cards.map(m=>m[2]).join(''),/<input|<form|<textarea/);
-assert.match(read('index.html'),/class="home26-plate__cta" href="patrimonio.html">Accede a Patrimonio/);
+assert.match(read('index.html'),/class="hub-door eco-portal hub-door--patrimonio" href="patrimonio.html"/,'El ecosistema abre la web de Patrimonio');
+for(const target of targets)assert.ok(read('patrimonio.html').includes(`href="${target}"`),'La web conserva el acceso a '+target);
 assert.doesNotMatch(html.match(/<meta name="description"[^>]+>/)[0],/bienestar/i);
 console.log('Patrimonio 5A-1: portada, cuatro ámbitos, disponibilidad, vistas y alias conservados.');

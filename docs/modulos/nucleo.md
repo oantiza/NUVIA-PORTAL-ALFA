@@ -3,6 +3,17 @@
 **Qué es:** todo lo que comparten las demás secciones: la cáscara (cabecera y pie), el sistema visual (tokens, componentes, plantillas de página), la Home global, las páginas institucionales, el proceso de construcción y publicación.
 **Regla:** lo común **solo se modifica desde este módulo**. Un cambio en cabecera, pie, tokens o componentes afecta a las 29 páginas y se revisa en todos los espacios.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Por la primera orden del fundador, la composición aprobada se integró como versión principal local: cuatro webs (Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar, Academia NUVIA) y dos espacios comunes (Lecturas con Criterio y Colaboradores), dentro del único repositorio ALFA. Esa primera orden estableció integrarla **sin publicar todavía**. El [acta de integración](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md) recoge el alcance y la prueba del §12. Esta orden actualiza las prescripciones visuales anteriores; se conservan sus antecedentes, los contenidos y los límites del marco.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+- Fuentes principales: `scripts/ecosistema/{hub,economia,patrimonio,bienestar,academia,sitios}.mjs`; `generar-portadas.mjs` regenera las portadas y solo la rama marcada de Academia. `hub.mjs` entrega exclusivamente su `<main>`.
+- Cáscara canónica: `_plantilla.html` → `scripts/ecosistema/shell.mjs` → `scripts/site-shell.mjs` y `npm run shell:sync`. Los interiores no se editan para cambiar cabecera o pie. La portada común tiene cabecera propia; las cuatro webs y los espacios comunes usan navegación contextual.
+- Recursos: `estilos/ecosistema/` (hub, cáscara, identidades e interiores), `js/nuvia-ecosistema.js` (menú, estados activos y compatibilidad de rutas), `src/assets/ecosistema/`. Las páginas principales no dependen de `prototipos/`.
+- Regeneración local: `node scripts/ecosistema/generar-portadas.mjs`, después `npm run shell:sync` y las comprobaciones de esta ficha. Se mantienen escritorio/tablet, rutas relativas y una sola compilación estática; regenerar o validar no publica.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

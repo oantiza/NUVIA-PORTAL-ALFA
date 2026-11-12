@@ -42,70 +42,110 @@
 <script defer src="js/vendor/react-dom.production.min.js"></script>
 <script defer src="support.js"></script>
 <script defer src="nuvia-site-unified.js"></script>
+<link rel="stylesheet" href="estilos/ecosistema/webs.css">
+<link rel="stylesheet" href="estilos/ecosistema/academia.css">
+<link rel="stylesheet" href="estilos/ecosistema/interiores.css">
+<link rel="stylesheet" href="estilos/ecosistema/interiores-academia.css">
+<script defer src="js/nuvia-ecosistema.js"></script>
 </head>
-<body class="nuvia-design-lab nv-home-polish nv-campus-page">
+<body class="nuvia-design-lab nv-home-polish nv-campus-page" data-eco-theme="academia">
 <x-dc>
 <a class="nv-skip-link" href="#contenido">Ir al contenido</a>
 
 <div class="nuvia-page">
 
   <!-- ============ HEADER ============ -->
-  <header data-screen-label="Header" class="nuvia-site-header">
-    <div class="nuvia-site-header__inner">
-      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
-        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
-             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
-      </a>
-            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
-        <details class="nuvia-site-nav__topics" data-nav-area="economia">
-          <summary>Economía y Finanzas</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="economia.html">Portada de Economía</a>
-            <a href="mercados.html?vista=informes#lectura-informe">Informes</a>
-            <a href="mercados.html">Mercados y noticias</a>
-            <a href="cartera.html">Cartera</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
-          <summary>Patrimonio</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="patrimonio.html">Portada de Patrimonio</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="jubilacion.html">Jubilación</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
-          <summary>Familia, Salud y Bienestar</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="respiracion-relajacion.html">Respiración y relajación</a>
-            <a href="movimiento-consciente.html">Movimiento consciente</a>
-            <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
-            <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="academy">
-          <summary>Academia NUVIA</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="academia.html">Portada de Academia</a>
-            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
-            <a href="academia.html?tab=cursos">Cursos</a>
-          </div>
-        </details>
-        <a href="lecturas.html">Lecturas con Criterio</a>
-        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
-        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
-      </nav>
-    </div>
-  </header>
+  <header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
+    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-name" href="academia.html" aria-current="page">Academia NUVIA</a>
+    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html" aria-current="page">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="academia" aria-label="Navegación de Academia NUVIA"><div class="web-wrap"><a href="academia.html" aria-current="page">Portada</a><a href="academia.html?tab=esenciales">Esenciales</a><a href="academia.html?tab=cursos">Cursos</a><a href="academia.html?tab=calculadora">Interés compuesto</a><a href="academia.html?tab=glosario">Glosario</a></div></nav></header>
 
   <main id="contenido">
+    <sc-if value="{{ esPortada }}" hint-placeholder-val="{{ true }}">
+      <div class="nv-academia-home">
+<!-- ACADEMIA PORTADA: INICIO -->
+<section class="ac-opening web-wrap" aria-labelledby="ac-title">
+    <div class="ac-studio" aria-hidden="true">
+      <div class="ac-studio-window"></div>
+      <img src="src/assets/ecosistema/academia-ideas.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
+    </div>
+    <div class="ac-opening-copy">
+      <p class="ac-opening-name">Academia NUVIA</p>
+      <h1 id="ac-title">Saber es<br>patrimonio.</h1>
+      <p class="ac-opening-description">Hay ideas que cambian nuestra forma de mirar. Empieza por lo que te da curiosidad y aprende a tu ritmo.</p>
+      <a class="web-button ac-start" href="academia.html?tab=esenciales">Ver conocimientos esenciales <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a class="ac-quiet-link" href="#recursos">Ver las áreas de Academia <span aria-hidden="true">↓</span></a>
+    </div>
+  </section>
+
+  <section id="recursos" class="ac-workshop web-wrap" aria-labelledby="ac-workshop-title">
+    <div class="ac-section-heading">
+      <h2 id="ac-workshop-title">Cada pregunta abre un camino.</h2>
+      <p>Desde una palabra que no conoces hasta un concepto que quieres entender de verdad.</p>
+    </div>
+    <div class="ac-learning-desk">
+      <article class="ac-foundations" id="esenciales">
+        <p class="ac-intention">Quiero entender las bases</p>
+        <h3>El dinero también<br>se aprende.</h3>
+        <p>Conceptos esenciales explicados desde el principio, con lenguaje claro y su relación con la vida cotidiana.</p>
+        <a class="web-link" href="academia.html?tab=esenciales">Abrir conocimientos esenciales <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </article>
+      <div class="ac-desk-notes">
+        <article id="cursos" class="ac-course">
+          <p class="ac-intention">Quiero seguir un recorrido</p>
+          <h3>Dinero con criterio</h3>
+          <p>El curso disponible reúne cinco capítulos con vídeos y apuntes para avanzar a tu ritmo.</p>
+          <a class="web-link" href="academia.html?tab=cursos">Ver el programa del curso <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </article>
+        <article id="glosario" class="ac-glossary">
+          <div>
+            <p class="ac-intention">Tengo una duda concreta</p>
+            <h3>Una palabra,<br> una explicación.</h3>
+          </div>
+          <div>
+            <p>Consulta un término en el glosario y vuelve a tu lectura con más contexto.</p>
+            <a class="web-link" href="academia.html?tab=glosario">Consultar el glosario <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="ac-experiment" id="herramientas" aria-labelledby="ac-experiment-title">
+    <div class="web-wrap ac-experiment-inner">
+      <div class="ac-experiment-copy">
+        <p class="ac-intention">Aprender experimentando</p>
+        <h2 id="ac-experiment-title">¿Qué cambia<br>cuando pasa el tiempo?</h2>
+      </div>
+      <div class="ac-experiment-action">
+        <p>Explora el interés compuesto. Cambia el plazo, las aportaciones y la hipótesis de rentabilidad para comprender su efecto matemático.</p>
+        <a class="web-button" href="academia.html?tab=calculadora">Simular el interés compuesto <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <p class="ac-experiment-note">Los resultados ilustran supuestos; no predicen una rentabilidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ac-deepen web-wrap" aria-labelledby="ac-deepen-title">
+    <div>
+      <h2 id="ac-deepen-title">La curiosidad no termina aquí.</h2>
+      <p>Amplía las bases o explora cómo funcionan los instrumentos financieros.</p>
+      <a class="ac-quiet-link" href="academia.html?tab=inicio#ruta-aprendizaje">Ver el recorrido de aprendizaje <span aria-hidden="true">→</span></a>
+    </div>
+    <nav aria-label="Más áreas de Academia">
+      <a href="academia.html?tab=fundamentos">Fundamentos de inversión <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="academia.html?tab=activos">Activos financieros <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </nav>
+  </section>
+  <aside class="ac-note web-wrap" aria-label="Alcance educativo"><p>Formación y herramientas educativas. Los ejemplos y simulaciones explican conceptos; no constituyen recomendaciones de inversión.</p></aside>
+<!-- ACADEMIA PORTADA: FIN -->
+</div>
+    </sc-if>
+    <sc-if value="{{ esInteriorAcademia }}" hint-placeholder-val="{{ false }}">
+<!-- ACADEMIA ORIGINAL: INICIO -->
     <!-- ============ CABECERA ============ -->
     <section id="academy" data-screen-label="Cabecera Academia NUVIA" class="{{ claseCabecera }}" aria-labelledby="academy-title">
-      <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}"><li><span aria-current="page">Academia NUVIA</span></li></sc-if><sc-if value="{{ mostrarRegreso }}" hint-placeholder-val="{{ false }}"><li><a href="academia.html">Academia NUVIA</a></li><li><span aria-current="page">{{ entradaTitulo }}</span></li></sc-if></ol></nav>
+      <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación"><ol><li><a href="index.html" data-main-menu-return>Ecosistema NUVIA</a></li><sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}"><li><span aria-current="page">Academia NUVIA</span></li></sc-if><sc-if value="{{ mostrarRegreso }}" hint-placeholder-val="{{ false }}"><li><a href="academia.html">Academia NUVIA</a></li><li><span aria-current="page">{{ entradaTitulo }}</span></li></sc-if></ol></nav>
       <div class="home26-plate home26-plate--light home26-plate--reverse nv-space-entry nv-space-entry--academy">
         <sc-if value="{{ esInicio }}" hint-placeholder-val="{{ true }}">
           <div class="home26-plate__figure">
@@ -915,55 +955,12 @@
         </div>
       </section>
     </sc-if>
+  <!-- ACADEMIA ORIGINAL: FIN -->
+    </sc-if>
   </main>
 
   <!-- ============ FOOTER ============ -->
-    <footer data-screen-label="Footer" class="nuvia-site-footer">
-    <div class="nuvia-site-footer__inner">
-      <div class="nuvia-site-footer__grid">
-        <div class="nuvia-site-footer__brand">
-          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
-               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
-          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="economia.html">Economía y Finanzas</a>
-            <a href="patrimonio.html">Patrimonio</a>
-            <a href="bienestar.html">Familia, Salud y Bienestar</a>
-            <a href="academia.html">Academia NUVIA</a>
-            <a href="lecturas.html">Lecturas con Criterio</a>
-          </div>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="cartera.html">Cartera y analítica</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="jubilacion.html">Jubilación</a>
-          </div>
-        </div>
-        <div class="nuvia-site-footer__info-column">
-          <h2 class="nuvia-site-footer__heading">Información</h2>
-          <div class="nuvia-site-footer__info">
-            <a href="colaboradores.html">Colaboradores</a>
-            <a href="que-es-nuvia.html">Qué es NUVIA</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="independencia.html">Independencia</a>
-            <span>Contenido educativo e informativo.</span>
-            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="nuvia-site-footer__legal">
-        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
-        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
-      </div>
-    </div>
-  </footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 
 </div>
 
@@ -971,9 +968,22 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
-  state = { tab: 'inicio', activosSub: 'seguridad', sub: 'conceptos', abiertos: {}, c: null };
+  state = { tab: this.tabInicial(), activosSub: 'seguridad', sub: 'conceptos', abiertos: {}, c: null };
+  // Una sola aplicación estática: la portada nueva y las vistas originales.
+  tabInicial() {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('tab');
+    const tab = raw === 'interes' ? 'calculadora' : raw;
+    if (['portada', 'inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(tab)) return tab;
+    let hash = '';
+    try { hash = decodeURIComponent(window.location.hash.slice(1)); } catch {}
+    if (hash === 'glosario') return 'glosario';
+    if (['ruta-aprendizaje', 'ruta-aprendizaje-titulo'].includes(hash)) return 'inicio';
+    return params.has('tab') ? 'inicio' : 'portada';
+  }
   entrada() {
     const entradas = {
+      portada: ['Academia NUVIA', 'Formación', 'Saber es patrimonio.'],
       inicio: ['Academia NUVIA', 'Formación', 'Saber es patrimonio. El espacio de conocimiento de NUVIA para entender el dinero con calma. Consulta un concepto o aprende paso a paso con guías, vídeos y herramientas.'],
       esenciales: ['Conocimientos esenciales', 'Guías y herramientas', 'Conceptos y herramientas para comprender la economía, el ahorro y la inversión.'],
       cursos: ['Cursos', 'Aprender paso a paso', 'Explora los cursos disponibles, sus capítulos, vídeos y materiales de apoyo.'],
@@ -985,26 +995,51 @@ class Component extends DCLogic {
     };
     return entradas[this.state.tab] || entradas.inicio;
   }
-  sincronizaEntrada() { document.title = 'NUVIA · ' + this.entrada()[0]; }
+  sincronizaEntrada() {
+    document.title = 'NUVIA · ' + this.entrada()[0];
+    const portada = this.state.tab === 'portada';
+    document.body.dataset.ecoTheme = 'academia';
+    document.body.dataset.ecoView = portada ? 'portada' : 'interior';
+    for (const name of ['web-page', 'web-page--academia']) document.body.classList.toggle(name, portada);
+    for (const name of ['nuvia-design-lab', 'nv-home-polish', 'nv-campus-page']) document.body.classList.toggle(name, !portada);
+  }
   componentDidUpdate() { this.sincronizaEntrada(); }
   cDefaults() { return { initialCapital: 10000, periodicContribution: 300, contributionFrequency: 'monthly', years: 20, expectedReturn: 6.5, inflationRate: 2, taxRate: 21, annualIncrease: 0 }; }
+  normalizarRutaLegada(tab) {
+    const url = new URL(window.location.href);
+    let hash = '';
+    try { hash = decodeURIComponent(url.hash.slice(1)); } catch {}
+    if (!url.searchParams.has('tab') && ['ruta-aprendizaje', 'ruta-aprendizaje-titulo', 'glosario'].includes(hash)) {
+      url.searchParams.set('tab', tab);
+      window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+  }
+  restaurarAncla() {
+    let hash = '';
+    try { hash = decodeURIComponent(window.location.hash.slice(1)); } catch {}
+    if (this.state.tab === 'inicio' && ['ruta-aprendizaje', 'ruta-aprendizaje-titulo'].includes(hash)) {
+      requestAnimationFrame(() => document.getElementById(hash)?.scrollIntoView({ block: 'start' }));
+    }
+  }
   componentDidMount() {
     this.sincronizaEntrada();
-    const raw = new URLSearchParams(window.location.search).get('tab');
-    const p = raw === 'interes' ? 'calculadora' : raw;
-    const hash = window.location.hash.replace('#', '');
-    if (p && ['inicio', 'cursos', 'esenciales', 'fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(p)) this.setState({ tab: p });
-    else if (hash === 'glosario') this.setState({ tab: 'glosario' });
-    this.sincronizaEntrada();
-    // El montaje del componente reemplaza el ancla inicial del HTML.
-    // Recuperar el destino después del render, sin mover el interior del hero.
-    if (hash === 'ruta-aprendizaje' && (!p || p === 'inicio')) {
-      requestAnimationFrame(() => document.getElementById('ruta-aprendizaje')?.scrollIntoView({ block: 'start' }));
-    }
+    this.normalizarRutaLegada(this.state.tab);
+    this.restaurarAncla();
+    this._sincronizarRuta = () => {
+      const tab = this.tabInicial();
+      this.normalizarRutaLegada(tab);
+      this.setState({ tab }, () => this.restaurarAncla());
+    };
+    window.addEventListener('popstate', this._sincronizarRuta);
+    window.addEventListener('hashchange', this._sincronizarRuta);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this._sincronizarRuta);
+    window.removeEventListener('hashchange', this._sincronizarRuta);
   }
   abrirTab(tab) {
     const url = new URL(window.location.href);
-    if (tab === 'inicio') url.searchParams.delete('tab');
+    if (tab === 'portada') url.searchParams.delete('tab');
     else url.searchParams.set('tab', tab);
     url.hash = '';
     window.history.replaceState({}, '', url.pathname + url.search);
@@ -1122,7 +1157,8 @@ class Component extends DCLogic {
         abrir: () => this.abrirTab(id),
         clase: pill(id === tab || (id === 'esenciales' && ['fundamentos', 'activos', 'calculadora', 'glosario', 'pib'].includes(tab))),
       })),
-      esInicio: tab === 'inicio', esCursos: tab === 'cursos', esEsenciales: tab === 'esenciales', mostrarRegreso: tab !== 'inicio',
+      esPortada: tab === 'portada', esInteriorAcademia: tab !== 'portada',
+      esInicio: tab === 'inicio', esCursos: tab === 'cursos', esEsenciales: tab === 'esenciales', mostrarRegreso: tab !== 'inicio' && tab !== 'portada',
       esPIB: tab === 'pib',
       irPIB: () => this.abrirTab('pib'),
       esFundamentos: tab === 'fundamentos', esActivos: tab === 'activos', esCalculadora: tab === 'calculadora', esGlosario: tab === 'glosario',

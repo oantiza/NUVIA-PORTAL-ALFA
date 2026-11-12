@@ -28,21 +28,25 @@ const taxGuideRedirect = await readFile(resolve(root, 'guia-impuestos.html'), 'u
 const readingsPage = await readFile(resolve(root, 'lecturas.html'), 'utf8');
 
 const expectedHomeLinks = [
-  'href="vivienda.html"',
-  'href="fiscalidad.html"',
-  'href="mercados.html"',
+  'href="economia.html"',
+  'href="patrimonio.html"',
+  'href="bienestar.html"',
+  'href="academia.html"',
   'href="lecturas.html"',
+  'href="colaboradores.html"',
 ];
 for (const link of expectedHomeLinks) {
   if (!web2Home.includes(link)) throw new Error(`Falta el acceso de portada: ${link}`);
 }
 /* Acepta `defer` y la ruta con o sin `./`: la portada ahora la carga diferida,
    que no bloquea el parseo. Lo que importa es que la integración esté. */
-if (!/<script[^>]*\ssrc="\.?\/?web2-integration\.js(?:\?[^"]+)?"[^>]*><\/script>/.test(web2Home)) {
-  throw new Error('La portada no carga la integración de contenido diario y mercados');
+if (!/<script[^>]*\ssrc="\.?\/?web2-integration\.js(?:\?[^"]+)?"[^>]*><\/script>/.test(marketsPage)) {
+  throw new Error('Mercados no carga la integración original de contenido diario');
 }
-if (!/<a href="mercados\.html"[^>]*>Mercados y noticias<\/a>/.test(web2Home)) {
-  throw new Error('El acceso principal de Mercados no abre la página de mercados');
+const economyHome=await readFile(resolve(root,'economia.html'),'utf8');
+const wealthHome=await readFile(resolve(root,'patrimonio.html'),'utf8');
+for (const [html,links] of [[economyHome,['mercados.html','cartera.html','cartera.html?vista=companies']],[wealthHome,['vivienda.html','fiscalidad.html','jubilacion.html']]]) {
+  for (const href of links) if(!html.includes(`href="${href}"`))throw new Error('Se perdió el acceso desde la web a '+href);
 }
 if (/<a href="#noticia"[^>]*>Noticia del día<\/a>/.test(web2Home)) {
   throw new Error('La navegación principal todavía muestra el acceso Noticia del día');
@@ -134,12 +138,12 @@ if (!portfolioPage.includes('id="nuvia-company-frame"') || !portfolioPage.includ
 if (portfolioPage.includes('id="empresas-en-preparacion"')) throw new Error('No debe reaparecer el estado editorial retirado de empresas');
 /* Antes esto se comprobaba en temas.html, pero vivía dentro de un
    <sc-if value="{{ false }}"> que nunca se renderizaba: el contrato validaba
-   código muerto. Ahora se comprueba en la navegación común de la portada,
-   que es donde el acceso existe de verdad. */
-if (!web2Home.includes('cartera.html?vista=companies')) {
+   código muerto. Se comprueba en la web de Economía, accesible desde el hub,
+   que es donde se presentan sus herramientas en el ecosistema. */
+if (!economyHome.includes('cartera.html?vista=companies')) {
   throw new Error('Falta el acceso a la vista de análisis de empresas');
 }
-if (!/href="cartera\.html"/.test(web2Home)) {
+if (!/href="cartera\.html"/.test(economyHome)) {
   throw new Error('Falta el acceso a la vista de cartera');
 }
 for (const [title, guide] of [
@@ -178,20 +182,21 @@ for (const [title, guide] of [
    estilos del markup, así que la portada no podía sistematizarse sin romper la
    validación.
 
-   Ahora se comprueba lo que de verdad importa: que la portada siga usando el
-   héroe fotográfico del sistema, su titular y el banner editorial. El aspecto
-   lo garantizan los tokens; esto garantiza la estructura. */
+   Orden 12-11-2026: se comprueba la portada aprobada del ecosistema y sus
+   accesos, en lugar del héroe y los cinco banners de la estructura anterior. */
 const marcadoresPortada = [
-  'nv-hero nv-hero--photo home-hero',
-  'Información clara,<br>decisiones con propósito.',
-  'class="home-lecturas"',
-  'id="patrimonio"',
+  'class="hub-page"',
+  'Todo está <em>conectado.</em>',
+  'class="hub-connections"',
+  'id="webs"',
 ];
 for (const marcador of marcadoresPortada) {
   if (!web2Home.includes(marcador)) {
     throw new Error(`La portada ya no respeta su estructura de diseño: ${marcador}`);
   }
 }
+if ((web2Home.match(/class="hub-door eco-portal hub-door--/g)||[]).length!==4) throw new Error('El ecosistema debe ofrecer exactamente cuatro webs');
+if (/cinco espacios|Cinco puertas|prototipos\/|plan\.html/.test(web2Home))throw new Error('La portada principal conserva restos de la propuesta o de la estructura anterior');
 
 const daily = JSON.parse(await readFile(resolve(root, 'data/daily-content.json'), 'utf8'));
 if (!daily.dailyEconomicNews?.title || !Array.isArray(daily.dailyMacroIndicators) || daily.dailyMacroIndicators.length < 5) {

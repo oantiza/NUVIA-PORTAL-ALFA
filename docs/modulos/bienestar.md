@@ -2,6 +2,14 @@
 
 **Qué es:** la portada del espacio (que es a la vez el índice de Cuerpo, mente y salud), sus cuatro subsecciones y los artículos y vídeos de colaboradores. Es un módulo **editorial**: su trabajo habitual es publicar una pieza nueva en la subsección que le corresponde.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Familia, Salud y Bienestar es una de las cuatro webs del Ecosistema NUVIA; Lecturas con Criterio y Colaboradores son los dos espacios comunes. La primera integración utilizó el único repositorio ALFA y se realizó **sin publicar todavía**, según el [acta y prueba del §12](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). La portada aprobada sustituye las prescripciones visuales anteriores de banda fotográfica; las órdenes editoriales, sanitarias y de atribución continúan vigentes.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+Portada: `scripts/ecosistema/bienestar.mjs` y `estilos/ecosistema/bienestar.css`. Subsecciones y artículos: `estilos/ecosistema/interiores.css` e `interiores-bienestar.css`, añadidos tras los estilos originales y limitados a pantalla. Se conservan los cuatro temas, el orden de la serie, textos firmados, fuentes, fotografías, contactos y vídeos que solo cargan al pulsar. La presentación común de `colaboradores.html` se mantiene en Núcleo mediante `interiores-colaboradores.css`.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

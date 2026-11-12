@@ -10,10 +10,10 @@ const titles=['Respiración y relajación','Movimiento consciente','Nutrición e
 
 /* Portada de Bienestar: cuatro temas en orden, fuentes y límites explícitos. */
 const home=read('bienestar.html');
-const cards=[...home.matchAll(/<a class="nv-space-tool-card nv-space-tool-card--photo" href="([a-z-]+)\.html">/g)].map(m=>m[1]);
+const cards=[...home.matchAll(/<article class="bi-topic"[\s\S]*?<a class="web-link" href="([a-z-]+)\.html">/g)].map(m=>m[1]);
 assert.deepEqual(cards,wellbeingTopics,'Las cuatro tarjetas siguen el orden canónico');
 for(const title of titles) assert.ok(home.includes(`<h3>${title}</h3>`),title);
-assert.match(home,/Cuatro temas de cuidado cotidiano/);
+assert.match(home,/Cuatro formas de explorar\./);
 assert.doesNotMatch(home,/Los cuatro pilares|Cuidar lo que no cabe en una cuenta|familia-trabajo|topic=bienestar/);
 for(const url of ['https://www.who.int/es/health-topics','https://medlineplus.gov/spanish/healthtopics.html']) {
   assert.ok(home.includes(`href="${url}" target="_blank" rel="noopener noreferrer"`),url);
@@ -27,7 +27,7 @@ assert.doesNotMatch(home.match(/<main\b[\s\S]*?<\/main>/)[0],/<form\b|<input\b|<
 for(const id of wellbeingTopics) {
   const child=read(id+'.html');
   assert.match(child,/Artículos y contenidos/);
-  assert.match(child,/href="bienestar.html#pilares-bienestar"/,id+' vuelve a la portada');
+  assert.match(child,/href="bienestar.html#recursos"/,id+' vuelve a los cuatro temas de la portada');
   assert.doesNotMatch(child.match(/<main\b[\s\S]*?<\/main>/)[0],/topic=bienestar|familia-trabajo/,id+' no conserva el nivel retirado');
   assert.doesNotMatch(child,/data-nuvia-external-frame/,'Las subsecciones no incrustan vídeos: solo las páginas de lectura');
 }

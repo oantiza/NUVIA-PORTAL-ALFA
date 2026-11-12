@@ -1,0 +1,202 @@
+/* Ecosistema NUVIA · Lecturas con Criterio.
+   Una biblioteca de cubiertas, papel y lectura: conserva el paisaje editorial,
+   las cuatro fichas, su orden, los filtros y el diálogo nativo del catálogo.
+   Solo pantalla; no modifica las reglas originales de impresión. */
+@media screen {
+  body[data-eco-theme="lecturas"] { --eco-accent: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] main { background: var(--nv-surface); }
+  body[data-eco-theme="lecturas"] main .lecturas-hero { background: var(--nv-surface); }
+  body[data-eco-theme="lecturas"] main .lecturas-hero__navigation.nv-space-trail { padding-block: 14px 18px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial .lecturas-hero__banner {
+    height: 260px;
+    aspect-ratio: auto;
+    border-top: 1px solid var(--nv-line);
+    border-bottom: 1px solid var(--nv-line);
+    background: var(--nv-surface-editorial);
+  }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial .lecturas-hero__banner::before { background: var(--nv-surface-editorial); }
+  /* Las capas del emblema y la firma contienen márgenes blancos de origen.
+     Su recorte original solo coincide con el paisaje en un lienzo 2120 × 404.
+     Escalamos el conjunto completo, no cada capa al alto del nuevo hero. */
+  body[data-eco-theme="lecturas"] main .nv-reading-artwork {
+    width: min(78%, 1100px);
+    height: auto;
+    aspect-ratio: 2120 / 404;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial .lecturas-hero__text { width: 54%; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial h1 {
+    max-width: 12ch;
+    color: var(--nv-navy-900);
+    font-family: var(--nv-font-serif);
+    font-size: clamp(48px, 4.7vw, 68px);
+    font-weight: 400;
+    letter-spacing: -.04em;
+    line-height: 1.02;
+  }
+  body[data-eco-theme="lecturas"] main .lecturas-hero__divider { width: 44px; height: 1px; margin-block: 19px 13px; background: var(--nv-bronze-600); }
+  body[data-eco-theme="lecturas"] main .lecturas-hero__text p { font-size: 22px; font-weight: 400; color: var(--nv-text-soft); }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body { background: var(--nv-surface); border-bottom: 1px solid var(--nv-line); }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body > .nv-container { align-items: center; justify-content: space-between; gap: 44px; padding-block: 26px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body .home26-plate__copy { max-width: 72ch; margin: 0; font-size: 16px; line-height: 1.7; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body .home26-plate__cta {
+    flex: 0 0 auto;
+    min-height: 44px;
+    border-radius: 6px;
+    padding: 12px 18px;
+    border: 1px solid var(--nv-bronze-700);
+    color: var(--nv-bronze-800);
+    font-size: 14px;
+    margin: 0;
+  }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body .home26-plate__cta:hover { background: var(--nv-surface-editorial-strong); }
+
+  /* Los tres accesos temáticos siguen siendo filtros del mismo catálogo. */
+  body[data-eco-theme="lecturas"] main .nv-library-welcome { padding-block: 48px 40px; }
+  body[data-eco-theme="lecturas"] main .nv-library-welcome .nv-section-heading { margin-bottom: 26px; gap: 36px; }
+  body[data-eco-theme="lecturas"] main .nv-library-welcome .nv-section-heading h2 {
+    font-family: var(--nv-font-serif);
+    font-size: 37px;
+    font-weight: 400;
+    letter-spacing: -.03em;
+    line-height: 1.12;
+  }
+  body[data-eco-theme="lecturas"] main :is(.nv-library-welcome, .lecturas-editorial) .nv-eyebrow { font-size: 12px; text-transform: none; letter-spacing: 0; color: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] main .nv-library-collections { gap: 28px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections > a {
+    padding: 22px 0 14px;
+    border: 0;
+    border-top: 1px solid var(--nv-bronze-200);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--nv-surface);
+  }
+  body[data-eco-theme="lecturas"] main .nv-library-collections > a:hover { transform: none; box-shadow: none; border-top-color: var(--nv-bronze-700); }
+  body[data-eco-theme="lecturas"] main .nv-library-collections__label { color: var(--nv-text-muted); font-size: 12px; font-weight: 400; letter-spacing: 0; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections h3 { font-family: var(--nv-font-serif); font-size: 29px; line-height: 1.12; font-weight: 400; letter-spacing: -.02em; margin-block: 13px 14px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections p { font-size: 14px; line-height: 1.75; margin-bottom: 16px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections__action { min-height: 44px; align-items: center; color: var(--nv-bronze-800); font-size: 14px; }
+
+  /* Una balda continua: la cubierta identifica cada obra, sin jerarquía de mérito. */
+  body[data-eco-theme="lecturas"] main #seleccion-lecturas { padding-block: 40px 56px; background: var(--nv-surface-editorial); }
+  body[data-eco-theme="lecturas"] main .lecturas-intro { max-width: 78ch; margin-bottom: 24px; }
+  body[data-eco-theme="lecturas"] main :is(.lecturas-intro, .lecturas-editorial) h2 { font-family: var(--nv-font-serif); font-size: 38px; font-weight: 400; letter-spacing: -.03em; line-height: 1.13; }
+  body[data-eco-theme="lecturas"] main .lecturas-intro > p { line-height: 1.75; }
+  body[data-eco-theme="lecturas"] main .lecturas-section-nav { gap: 12px 26px; }
+  body[data-eco-theme="lecturas"] main .lecturas-section-nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] main .lecturas-filters { gap: 12px; }
+  body[data-eco-theme="lecturas"] main .lecturas-filters .nv-btn {
+    min-height: 44px;
+    border-radius: 6px;
+    padding: 11px 18px;
+    background: var(--nv-surface);
+    border: 1px solid var(--nv-line-strong);
+    color: var(--nv-text-soft);
+    font-size: 14px;
+  }
+  body[data-eco-theme="lecturas"] main .lecturas-filters button[aria-pressed="true"] { background: var(--nv-bronze-800); border-color: var(--nv-bronze-800); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="lecturas"] main .lecturas-filters button:not([aria-pressed="true"]):hover { background: var(--nv-surface-editorial-strong); border-color: var(--nv-bronze-700); }
+  body[data-eco-theme="lecturas"] main .lecturas-catalog-note { font-size: 13px; line-height: 1.65; }
+  body[data-eco-theme="lecturas"] main .lecturas-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 30px; }
+  body[data-eco-theme="lecturas"] main .lecturas-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 290px minmax(0, 1fr);
+    gap: 22px;
+    padding: 0 0 24px;
+    border: 0;
+    border-bottom: 1px solid var(--nv-bronze-200);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+  body[data-eco-theme="lecturas"] main .lecturas-card:hover { transform: none; box-shadow: none; border-bottom-color: var(--nv-bronze-700); }
+  body[data-eco-theme="lecturas"] main .lecturas-card__cover { height: 290px; padding: 6px 14px 12px; border-radius: 0; background: transparent; overflow: visible; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__cover img { max-width: 100%; object-fit: contain; filter: drop-shadow(0 10px 9px color-mix(in srgb, var(--nv-navy-900) 16%, transparent)); }
+  body[data-eco-theme="lecturas"] main .lecturas-card__index { gap: 14px; margin-block: 0 14px; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__index strong { font-size: 20px; color: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] main .lecturas-card__category { color: var(--nv-text-muted); font-size: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__title { font-family: var(--nv-font-serif); font-size: 29px; font-weight: 400; line-height: 1.12; letter-spacing: -.025em; color: var(--nv-navy-900); }
+  body[data-eco-theme="lecturas"] main .lecturas-card__author { margin-top: 6px; color: var(--nv-bronze-800); font-size: 14px; font-weight: 500; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__summary { font-size: 14px; line-height: 1.75; margin-block: 16px 18px; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__meta { align-items: flex-start; justify-content: flex-start; gap: 4px 12px; flex-direction: column; }
+  body[data-eco-theme="lecturas"] main .lecturas-summary-button {
+    min-height: 44px;
+    border-radius: 6px;
+    padding: 11px 18px;
+    border: 1px solid var(--nv-bronze-700);
+    background: var(--nv-surface);
+    color: var(--nv-bronze-800);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  body[data-eco-theme="lecturas"] main .lecturas-summary-button:hover { border-color: var(--nv-bronze-800); background: var(--nv-surface-editorial-strong); }
+  body[data-eco-theme="lecturas"] main .lecturas-store-link { min-height: 44px; font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--nv-text-soft); border-bottom: 0; text-decoration: underline; text-decoration-color: var(--nv-line-strong); text-underline-offset: 4px; }
+
+  /* El contexto editorial conserva su presencia y su secuencia completa. */
+  body[data-eco-theme="lecturas"] main .lecturas-editorial { padding-block: 48px; }
+  body[data-eco-theme="lecturas"] main .lecturas-editorial-lead { max-width: 76ch; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] main .lecturas-criteria-grid { gap: 32px; margin-top: 30px; }
+  body[data-eco-theme="lecturas"] main .lecturas-criteria-grid article { padding: 22px 0 0; border: 0; border-top: 1px solid var(--nv-bronze-200); border-radius: 0; background: transparent; }
+  body[data-eco-theme="lecturas"] main .lecturas-editorial h3 { font-family: var(--nv-font-serif); font-size: 27px; font-weight: 400; letter-spacing: -.02em; line-height: 1.2; }
+  body[data-eco-theme="lecturas"] main .lecturas-criteria-grid p { font-size: 15px; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] main .lecturas-editorial-note { max-width: 88ch; margin-top: 32px; padding: 26px 28px; border: 1px solid var(--nv-line); border-radius: 4px; background: var(--nv-surface-editorial); }
+  body[data-eco-theme="lecturas"] main .lecturas-editorial-note p { font-size: 14px; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] main #comunidad-lecturas { padding-top: 0; }
+  body[data-eco-theme="lecturas"] main .lecturas-community { padding: 30px 0 0; border: 0; border-top: 1px solid var(--nv-line-strong); border-radius: 0; background: var(--nv-surface); }
+  body[data-eco-theme="lecturas"] main .lecturas-community p { max-width: 78ch; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] main .lecturas-community > a { display: inline-flex; align-items: center; min-height: 44px; gap: 12px; font-size: 14px; color: var(--nv-bronze-800); }
+
+  /* Ficha nativa: no se altera [open], la gestión de foco ni el cierre con Escape. */
+  body[data-eco-theme="lecturas"] .lecturas-book-dialog { width: min(1020px, calc(100vw - 64px)); max-height: calc(100vh - 64px); padding: 0; border: 1px solid var(--nv-line); border-radius: 6px; background: var(--nv-surface); }
+  body[data-eco-theme="lecturas"] .lecturas-book-dialog::backdrop { background: color-mix(in srgb, var(--nv-navy-950) 62%, transparent); backdrop-filter: blur(4px); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-shell { grid-template-columns: 300px minmax(0, 1fr); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-cover { align-items: start; padding: 70px 36px 40px; background: var(--nv-surface-editorial); border-right: 1px solid var(--nv-line); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-cover img { max-height: 360px; filter: drop-shadow(0 12px 12px color-mix(in srgb, var(--nv-navy-900) 18%, transparent)); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-content { padding: 62px 42px 38px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-close { width: 44px; height: 44px; border-radius: 6px; top: 14px; right: 14px; font-size: 24px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-category { font-size: 12px; text-transform: none; letter-spacing: 0; color: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-title { max-width: 20ch; font-size: 42px; font-weight: 400; line-height: 1.08; letter-spacing: -.035em; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-author { font-size: 15px; color: var(--nv-bronze-800); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-summary p { font-size: 16px; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-heading { font-family: var(--nv-font-serif); font-size: 25px; font-weight: 400; text-transform: none; letter-spacing: -.015em; line-height: 1.2; }
+  body[data-eco-theme="lecturas"] :is(.lecturas-dialog-note, .lecturas-dialog-points) { font-size: 14px; line-height: 1.75; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-points li::before { background: var(--nv-bronze-600); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-store { min-height: 44px; border-radius: 6px; border-color: var(--nv-bronze-700); color: var(--nv-bronze-800); font-size: 14px; }
+  body[data-eco-theme="lecturas"] :is(.lecturas-summary-button, .lecturas-dialog-close, .lecturas-dialog-store, .lecturas-filters button, .nv-library-collections > a):focus-visible { outline: 2px solid var(--nv-bronze-800); outline-offset: 4px; }
+}
+
+@media screen and (max-width: 1179px) {
+  body[data-eco-theme="lecturas"] main .nv-space-editorial .lecturas-hero__banner { height: 238px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial h1 { font-size: 56px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body > .nv-container { gap: 28px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body .home26-plate__copy { font-size: 15px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections { gap: 22px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections h3 { font-size: 26px; }
+  body[data-eco-theme="lecturas"] main .lecturas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 32px; }
+  body[data-eco-theme="lecturas"] main .lecturas-card { grid-template-columns: minmax(0, 1fr); grid-template-rows: 290px minmax(0, 1fr); }
+  body[data-eco-theme="lecturas"] main .lecturas-card__cover { height: 290px; }
+  body[data-eco-theme="lecturas"] main .lecturas-card__cover img { max-width: 220px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-shell { grid-template-columns: 230px minmax(0, 1fr); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-cover { padding-inline: 26px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-content { padding: 62px 30px 30px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-title { font-size: 36px; }
+}
+
+@media screen and (max-width: 899px) {
+  body[data-eco-theme="lecturas"] main .nv-space-editorial .lecturas-hero__banner { height: 220px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial h1 { font-size: 50px; }
+  body[data-eco-theme="lecturas"] main .lecturas-hero__text p { font-size: 19px; }
+  body[data-eco-theme="lecturas"] main .nv-space-editorial__body > .nv-container { flex-wrap: wrap; gap: 18px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections { gap: 20px; }
+  body[data-eco-theme="lecturas"] main .nv-library-collections h3 { font-size: 25px; }
+  body[data-eco-theme="lecturas"] main .nv-library-welcome .nv-section-heading h2 { font-size: 33px; }
+  body[data-eco-theme="lecturas"] main :is(.lecturas-intro, .lecturas-editorial) h2 { font-size: 34px; }
+  body[data-eco-theme="lecturas"] .lecturas-book-dialog { width: calc(100vw - 48px); max-height: calc(100vh - 48px); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-shell { grid-template-columns: 200px minmax(0, 1fr); }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-cover { padding-inline: 22px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-content { padding-inline: 28px; }
+  body[data-eco-theme="lecturas"] .lecturas-dialog-title { font-size: 34px; }
+}

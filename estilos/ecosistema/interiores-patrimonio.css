@@ -1,0 +1,199 @@
+/* Patrimonio · capa visual del Ecosistema NUVIA principal.
+   Se aplica al documento original: conserva contenido, motores y series.
+   La impresión sigue utilizando exclusivamente los estilos originales. */
+@media screen {
+  body[data-eco-theme="patrimonio"] {
+    --nv-page-accent: var(--nv-bronze-700);
+    --nv-page-accent-soft: var(--nv-surface-editorial);
+  }
+
+  /* Una apertura en papel, emparentada con la portada y más compacta. */
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry {
+    padding-block: 28px 36px;
+    background: color-mix(in srgb, var(--nv-surface-editorial) 72%, var(--nv-surface));
+    border-bottom: 1px solid var(--nv-line);
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry h1 {
+    max-width: 19ch;
+    margin-block: 13px 20px;
+    font: 400 clamp(42px, 3.8vw, 55px)/1.07 var(--nv-font-serif);
+    letter-spacing: -.035em;
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry :is(.nv-eyebrow, .gp-hero__label) {
+    color: var(--nv-bronze-700);
+    font-weight: 500;
+    letter-spacing: .04em;
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry :is(.nv-hero__lead, .gp-hero__desc, .gu-lead) {
+    max-width: 61ch;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--nv-text-soft);
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry .nv-breadcrumb {
+    margin-bottom: 24px;
+    font-size: 12px;
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.nv-sub-hero .nv-sub-hero__grid,
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.fiscal-hero .nv-hero__inner {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+    gap: 54px;
+  }
+  body[data-eco-theme="patrimonio"] .nv-sub-hero__media {
+    width: 100%;
+    max-width: 370px;
+    margin: 0;
+    justify-self: end;
+  }
+  body[data-eco-theme="patrimonio"] :is(.nv-sub-hero__media, .fiscal-hero__media)::before { content: none; }
+  body[data-eco-theme="patrimonio"] :is(.nv-sub-hero__img, .fiscal-hero__img) {
+    height: 285px;
+    border-radius: 46% 46% 5px 5px;
+    box-shadow: none;
+    object-fit: cover;
+  }
+  body[data-eco-theme="patrimonio"] .fiscal-hero__media { padding-bottom: 58px; }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry :is(.nv-hero__aside, .gt-marco, .gp-hero__aside, .jub-howto, .fiscal-selector) {
+    padding: 24px;
+    border: 1px solid var(--nv-line-strong);
+    border-radius: 6px;
+    background: var(--nv-surface);
+    box-shadow: none;
+  }
+  body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.fiscal-hero .fiscal-selector {
+    left: -24px;
+    width: min(330px, 100%);
+    padding: 18px 22px;
+    border-top: 3px solid var(--nv-bronze-700);
+  }
+
+  /* Estructura de lectura: menos sombras, bordes nítidos y títulos de libro. */
+  body[data-eco-theme="patrimonio"] :is(.viv-card, .viv-panel, .jb-intro, .jb-panel, .jb-live__card, .jg-card, .jg-next-card, .gu-card, .gt-aprender, .gt-filtros, .gt-diag__form, .gt-diag__salida, .gt-ficha, .gt-tabla-envoltorio, .fiscal-agenda__card, .fiscal-guia.nv-card, .fiscal-errores, .tm-card) {
+    border: 1px solid var(--nv-line);
+    border-radius: 8px;
+    box-shadow: none;
+  }
+  body[data-eco-theme="patrimonio"] :is(.viv-card, .viv-panel, .jb-intro, .jb-panel, .jg-card, .jg-next-card, .gu-card, .gt-aprender, .gt-filtros, .gt-diag__form, .gt-diag__salida, .gt-ficha, .gt-tabla-envoltorio, .tm-card) {
+    background: var(--nv-surface);
+  }
+  body[data-eco-theme="patrimonio"] :is(.viv-card__head h2, .viv-panel > h2, .jb-intro h2, .jb-panel__head h3, .jg-h2, .gu-title, .gu-h2, .fiscal-bloque__head h2, .tm-card h2) {
+    font-family: var(--nv-font-serif);
+    font-size: 29px;
+    line-height: 1.18;
+    font-weight: 400;
+    letter-spacing: -.02em;
+  }
+  body[data-eco-theme="patrimonio"] :is(.jg-card h3, .jg-next-card h3, .fiscal-guia__body h3) {
+    font-family: var(--nv-font-serif);
+    font-size: 25px;
+    line-height: 1.25;
+    font-weight: 400;
+  }
+  body[data-eco-theme="patrimonio"] :is(.viv-card__head, .jb-panel__head) { padding-block: 26px 20px; }
+  body[data-eco-theme="patrimonio"] :is(.viv-card__head, .jb-panel__foot, .jg-route__pane, .viv-card__aside) {
+    background: color-mix(in srgb, var(--nv-surface-editorial) 45%, var(--nv-surface));
+  }
+  body[data-eco-theme="patrimonio"] :is(.jb-intro, .gt-aprender) { border-top: 3px solid var(--nv-bronze-700); }
+  body[data-eco-theme="patrimonio"] :is(.jb-live__card, .gt-ficha) { border-top: 3px solid var(--nv-bronze-700); }
+  body[data-eco-theme="patrimonio"] .viv-scenario-toolbar {
+    gap: 12px;
+    padding: 17px 22px;
+    border: 1px solid var(--nv-line);
+    border-radius: 6px;
+    background: var(--nv-surface-editorial);
+  }
+  body[data-eco-theme="patrimonio"] :is(.jb-stepper__btn, .jg-route__btn, .jg-route3 li > a, .jg-route3 li.is-on) {
+    border-radius: 6px;
+    box-shadow: none;
+  }
+  body[data-eco-theme="patrimonio"] .jb-stepper__btn.is-on,
+  body[data-eco-theme="patrimonio"] .jg-route__btn.is-on,
+  body[data-eco-theme="patrimonio"] .jg-route3 li.is-on > a,
+  body[data-eco-theme="patrimonio"]:not(.jg-fiscal) .jg-route3 li.is-on {
+    border-color: var(--nv-bronze-700);
+    background: var(--nv-surface-editorial);
+    box-shadow: inset 3px 0 0 var(--nv-bronze-700);
+  }
+  body[data-eco-theme="patrimonio"] .jg-route3 li.is-on .jg-route3__num,
+  body[data-eco-theme="patrimonio"] .jb-stepper__btn.is-on .jb-stepper__num,
+  body[data-eco-theme="patrimonio"] .jg-route__btn.is-on:not(.is-done) .jg-route__num {
+    background: var(--nv-bronze-700);
+    color: var(--nv-text-on-dark);
+  }
+
+  /* Campos y selección: el bronce identifica interacción, no resultados. */
+  body[data-eco-theme="patrimonio"] :is(.nv-field__box, .jb-field__box, .jb-select, .gt-campo input, .gt-campo select, .fiscal-selector__field select) {
+    border-radius: var(--nv-control-radius);
+    font-variant-numeric: tabular-nums;
+  }
+  body[data-eco-theme="patrimonio"] :is(.nv-field__box, .jb-field__box):not(:has([aria-invalid="true"], :disabled, [readonly])),
+  body[data-eco-theme="patrimonio"] :is(.jb-select, .gt-campo input, .gt-campo select, .fiscal-selector__field select):not([aria-invalid="true"]):not(:disabled):not([readonly]) {
+    border-color: var(--nv-control-border);
+  }
+  body[data-eco-theme="patrimonio"] :is(.jb-select, .gt-campo input, .gt-campo select, .fiscal-selector__field select):focus-visible,
+  body[data-eco-theme="patrimonio"] :is(.nv-field__box, .jb-field__box):focus-within {
+    outline: 2px solid var(--nv-bronze-700);
+    outline-offset: 3px;
+  }
+  body[data-eco-theme="patrimonio"] :is(.jb-choice, .viv-pill, .gt-selector__opcion) { min-height: 44px; }
+  body[data-eco-theme="patrimonio"] :is(.jb-choice.is-on, .viv-pill.is-active, .gt-selector__opcion.is-active) {
+    border-color: var(--nv-bronze-700);
+    background: var(--nv-bronze-700);
+    color: var(--nv-text-on-dark);
+  }
+  body[data-eco-theme="patrimonio"] .jb-choice.is-on :is(strong, span, small) { color: inherit; }
+  body[data-eco-theme="patrimonio"] .jb-choices--cards .jb-choice.is-on .jb-choice__text span { color: var(--nv-text-on-dark); }
+  body[data-eco-theme="patrimonio"] :is(.jb-check, .gt-casilla):not(.gt-casilla--revisado) { border-radius: 6px; }
+  body[data-eco-theme="patrimonio"] .gt-casilla:not(.gt-casilla--revisado):has(input:checked) {
+    border-color: var(--nv-bronze-700);
+    background: var(--nv-surface-editorial);
+  }
+  body[data-eco-theme="patrimonio"] :is(.gt-casilla input, .jb-check input) { accent-color: var(--nv-bronze-700); }
+
+  /* Guías: índice legible, ritmo editorial y tablas con cabecera en papel. */
+  body[data-eco-theme="patrimonio"] :is(.gu-kicker, .gt-strip__mark, .gt-ficha__datos dt, .gt-reset) { color: var(--nv-bronze-700); }
+  body[data-eco-theme="patrimonio"] .gu-kicker::before { background: var(--nv-bronze-700); }
+  body[data-eco-theme="patrimonio"] .gt-indice { gap: 10px; }
+  body[data-eco-theme="patrimonio"] .gt-indice a {
+    min-height: 44px;
+    border-radius: 6px;
+    border-color: var(--nv-line-strong);
+  }
+  body[data-eco-theme="patrimonio"] .gt-indice a::before {
+    color: var(--nv-bronze-700);
+    background: var(--nv-surface-editorial);
+  }
+  body[data-eco-theme="patrimonio"] .gt-indice a:hover { border-color: var(--nv-bronze-700); }
+  body[data-eco-theme="patrimonio"] :is(.gt-tabla thead th, .viv-table__head) {
+    background: var(--nv-surface-editorial);
+    color: var(--nv-text);
+  }
+  body[data-eco-theme="patrimonio"] .gt-fuentes__lista li { border-radius: 6px; box-shadow: none; }
+  body[data-eco-theme="patrimonio"] :is(.gu-dark, .gu-split, .gt-resultado, .fiscal-sim) { border-radius: 8px; box-shadow: none; }
+  body[data-eco-theme="patrimonio"] .fiscal-guia.nv-card:hover {
+    border-color: var(--nv-bronze-700);
+    box-shadow: none;
+    transform: none;
+  }
+  body[data-eco-theme="patrimonio"] .fiscal-guia__fig { border-bottom: 1px solid var(--nv-line); }
+
+  @media (max-width: 999px) {
+    body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry { padding-block: 24px 30px; }
+    body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry h1 { font-size: 40px; }
+    body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.nv-sub-hero .nv-sub-hero__grid,
+    body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.fiscal-hero .nv-hero__inner {
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      gap: 30px;
+    }
+    body[data-eco-theme="patrimonio"] :is(.nv-sub-hero__img, .fiscal-hero__img) { height: 250px; }
+    body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry.fiscal-hero .fiscal-selector {
+      left: 0;
+      width: 100%;
+      margin-inline: 0;
+      padding: 16px;
+    }
+    body[data-eco-theme="patrimonio"] .fiscal-hero__media { padding-bottom: 110px; }
+    body[data-eco-theme="patrimonio"] :is(.viv-card__head h2, .jb-intro h2, .jg-h2, .gu-title, .gu-h2) { font-size: 26px; }
+  }
+}

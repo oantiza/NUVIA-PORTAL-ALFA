@@ -9,7 +9,7 @@ partir de cero.
 Copiar `que-es-meditar.html` y cambiar, en este orden:
 
 1. `<head>`: `description`, `canonical`, `og:*` y `twitter:*` (url, título, descripción) y `<title>NUVIA · <Título></title>`.
-2. Ruta: `Inicio › Familia, Salud y Bienestar › <Subsección> › <Título>`.
+2. Ruta: `Ecosistema NUVIA › Familia, Salud y Bienestar › <Subsección> › <Título>`.
 3. Cabecera: eyebrow con la subsección; `<h1>`; `bn-article__meta` «Ensayo|Artículo · N min de lectura · Con vídeo».
 4. `<article class="tm-breathing-essay bn-essay">`: firma y `<time datetime="AAAA-MM-DD">` (fecha de publicación); `bn-essay__lead` solo si el autor aporta entradilla o cita; cuerpo íntegro, un `<p>` por párrafo, sin epígrafes añadidos, con los énfasis del original.
 5. Vídeo (si hay): ID en `data-src` (`youtube-nocookie.com/embed/<ID>?autoplay=1&rel=0`) y en «Abrir en YouTube»; `data-title`; portada local 1280 × 720 en `src/assets/home/bienestar-video-<tema>-portada-AAAAMMDD.webp`. Comprobar antes que el vídeo no está en Privado.
@@ -24,6 +24,7 @@ Añadir un `<li class="bn-entry">` en `.bn-entries` en el lugar que indique el f
 ## 3. Registro, contratos y pruebas
 
 - `scripts/paginas.mjs`: alta con `modulo: 'bienestar'`, `padre: '<subsección>.html'`, `tipo: 'editorial'`, misma `excepcion`, `publica: true`; después `npm run sitemap:sync`.
+- `npm run shell:sync`: aplicar la cabecera y el pie contextuales desde `_plantilla.html`; no editarlos en el artículo individual.
 - `scripts/check-render.mjs` → `CONTRATOS`: `[['h1',1],['.tm-breathing-essay',1],['.bn-player',1],['.tm-breathing-essay__author',1],['.bn-series__link',N]]`; subir el recuento de `.bn-entry` de la subsección.
 - `docs/nuvia-wellbeing-entry.test.mjs`: bloque del artículo (H1, firma, primer y último párrafo, recuento de párrafos, vídeo, notas, orden en la subsección).
 

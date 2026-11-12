@@ -1,6 +1,6 @@
 # Índice de documentación · NUVIA Portal Alfa
 
-**Actualizado:** 12-10-2026. Este índice dice **qué documento manda en cada tema** y cuáles son actas históricas. No mueve ningún archivo: todo sigue en `docs/`. Los históricos se conservan como registro de decisiones y verificaciones; no se usan como norma salvo que una ficha de módulo los cite.
+**Actualizado:** 12-11-2026. Este índice dice **qué documento manda en cada tema** y cuáles son actas históricas. No mueve ningún archivo: todo sigue en `docs/`. Los históricos se conservan como registro de decisiones y verificaciones; no se usan como norma salvo que una ficha de módulo los cite.
 
 Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/` → documentos de esta lista según la tarea.
 
@@ -13,8 +13,10 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 | `AGENTS.md` | Entrada única, capas 0-1-2 y órdenes del fundador íntegras | Siempre |
 | `docs/ORDENES_PERMANENTES_FUNDADOR_ALFA_20260903.md` | Orden del fundador, texto íntegro | Siempre (resumida en la capa 0) |
 | `docs/MARCO_REGULATORIO_OBLIGATORIO.md` (v1.2) | Norma superior del proyecto | Secciones según ficha; entero en Cartera y empresas y ante cualquier función nueva |
-| `docs/GUIA_MAESTRA_DISENO_Y_ESTRUCTURA_NUVIA.md` (v1.1, 12-10-2026) | Guía operativa de diseño, estructura, contenido y validación | §1 siempre; entera en Núcleo y ante páginas nuevas |
-| `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md` | Estructura canónica (niveles, cinco espacios, cabecera) | Estructura, navegación, páginas nuevas |
+| `docs/GUIA_MAESTRA_DISENO_Y_ESTRUCTURA_NUVIA.md` (v1.2, 12-11-2026) | Guía operativa de diseño, estructura, contenido y validación | §1 siempre; entera en Núcleo y ante páginas nuevas |
+| `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md` | Estructura canónica (cuatro webs y dos espacios comunes; antecedentes conservados) | Estructura, navegación, páginas nuevas |
+| `docs/INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md` | Orden e integración de la nueva versión principal local, sin publicación | Fuentes, continuidad funcional y comprobaciones del ecosistema |
+| `docs/PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md` | Orden posterior de publicación en GitHub Pages | Alcance del commit, validaciones y verificación de producción |
 | `docs/DEFINICION_NUVIA.md` | Documento vivo: qué es NUVIA | Textos de presentación y comunicación |
 | `docs/nuvia-design-system.md` | Organización de las hojas de estilo | Cualquier cambio de CSS |
 | `docs/IDEAS_FUTURAS_NO_ACTIVAS_NUVIA_20260901.md` | Registro de ideas no activas | Antes de proponer algo «nuevo» |
@@ -242,3 +244,17 @@ Actas, entregas, verificaciones, planes y fichas de fecha concreta. Registran c�
 | `REVISION_ENTREGA_LOCAL_20260903.md` | 2026-09-07 | NUVIA · Revisión de procedencia y entrega local |
 | `VERIFICACION_BASE_LISTA_20260902.md` | 2026-09-07 | Verificación de la base lista · NUVIA |
 | `VERIFICACION_ENTREGA_2B_CLAUDE_FABLE_5_1_20260902.md` | 2026-09-07 | NUVIA · Verificación independiente de la Entrega 2b (base propia de la alfa) · 2 de septie |
+
+## Antecedentes de la integración del ecosistema · 12-11-2026
+
+Estas actas documentan la maqueta previa y su [integración principal](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). La [orden posterior de publicación](PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) autoriza su despliegue en GitHub Pages. Se conservan como antecedentes.
+
+- [Textos y navegación del ecosistema](TEXTOS_Y_NAVEGACION_ECOSISTEMA_20261112.md): revisión más reciente; cuatro webs, dos espacios comunes, información institucional y compatibilidad de rutas, con conservación de contenidos y funciones.
+
+- [Plan del Ecosistema NUVIA](PLAN_ECOSISTEMA_NUVIA_20261112.md): portada común, cuatro webs, Lecturas y Colaboradores transversales, dirección visual, alternativas técnicas y transición.
+- [Validación de la propuesta](VALIDACION_ECOSISTEMA_NUVIA_20261112.md): alcance real, pruebas ejecutadas y límites de la maqueta local.
+- Prototipo navegable: conservado como material local en `prototipos/ecosistema-nuvia-20261112/`; sus fuentes de producción se encuentran en `scripts/ecosistema/` y los HTML principales.
+- [Rediseño de la portada del ecosistema](REDISENO_PORTADA_ECOSISTEMA_20261112.md): nueva composición original solicitada por el fundador; sustituye únicamente el diseño inicial del hub local.
+- [Rediseño de las cuatro webs](REDISENO_CUATRO_WEBS_ECOSISTEMA_20261112.md): personalidad de cada portada, imágenes originales, navegación común y validación de la maqueta.
+- [Adaptación de los interiores](ADAPTACION_INTERIORES_ECOSISTEMA_20261112.md): integración local de contenidos y motores originales en las cuatro identidades, navegación completa y pruebas de conservación.
+- [Espacios compartidos](ESPACIOS_COMPARTIDOS_ECOSISTEMA_20261112.md): Lecturas, Colaboradores y Qué es NUVIA adaptados al ecosistema, con contenido íntegro y validación de fichas, navegación e impresión.

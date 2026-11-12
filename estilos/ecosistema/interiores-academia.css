@@ -1,0 +1,187 @@
+/* Maqueta Ecosistema · interiores de Academia NUVIA.
+   Azul hielo y papel para aprender, con el motor y los estados originales.
+   No cambia gráficos, señales de corrección, contenidos ni impresión. */
+@media screen {
+  body[data-eco-theme="academia"] main { background: var(--nv-surface); }
+  body[data-eco-theme="academia"] main .nv-entry {
+    padding-block: 20px 32px;
+    background: var(--nv-surface-technical);
+    border-bottom: 1px solid var(--nv-line);
+  }
+  body[data-eco-theme="academia"] main .nv-entry .nv-breadcrumb { margin-bottom: 26px; }
+  body[data-eco-theme="academia"] main .nv-entry :is(h1, .home26-plate__title) {
+    max-width: 24ch;
+    margin-block: 12px 16px;
+    color: var(--nv-navy-900);
+    font-family: var(--nv-font-serif);
+    font-size: clamp(42px, 4vw, 58px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -.035em;
+  }
+  body[data-eco-theme="academia"] main .nv-entry :is(.nv-eyebrow, .nv-eyebrow--on-dark) {
+    color: var(--nv-text-soft);
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: .01em;
+  }
+  body[data-eco-theme="academia"] main .nv-entry :is(.nv-hero__lead, .home26-plate__copy) {
+    max-width: 72ch;
+    color: var(--nv-text-soft);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  body[data-eco-theme="academia"] main .nv-campus-cover.nv-entry .home26-plate { background: transparent; }
+  body[data-eco-theme="academia"] main .nv-campus-cover.nv-entry .nv-campus-navigation .ac-x04 { padding-top: 24px; gap: 10px; }
+  body[data-eco-theme="academia"] main .nv-campus-cover.nv-entry .ac-x04 button {
+    min-height: 44px;
+    padding-inline: 22px;
+    border-radius: 24px;
+    border: 1px solid var(--nv-line-strong);
+    background: var(--nv-surface);
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="academia"] main .nv-campus-cover.nv-entry .ac-x04 button.is-active {
+    background: var(--nv-navy-900);
+    border-color: var(--nv-navy-900);
+    color: var(--nv-text-on-dark);
+  }
+  body[data-eco-theme="academia"] main .ac-learning-back { padding-top: 12px; }
+  body[data-eco-theme="academia"] main .ac-learning-back > a { display: inline-flex; align-items: center; min-height: 44px; }
+  body[data-eco-theme="academia"] main .gu-section { padding-bottom: 56px; }
+  body[data-eco-theme="academia"] main .ac-learning-back + .gu-section { padding-top: 20px; }
+  body[data-eco-theme="academia"] main :is(.gu-card, .gu-card--column, .ac-card) {
+    border: 1px solid var(--nv-line);
+    border-radius: 5px;
+    box-shadow: none;
+  }
+  body[data-eco-theme="academia"] main :is(.ac-tint, .ac-outline) { border-radius: 5px; }
+  body[data-eco-theme="academia"] main .ac-outline--paper { background: var(--nv-surface-editorial); }
+  body[data-eco-theme="academia"] main .ac-card > .gu-grid-3 { padding: 0 28px 28px; }
+  body[data-eco-theme="academia"] main :is(.ac-title, .gu-title, .gu-title-sm) { font-weight: 400; letter-spacing: -.025em; }
+  body[data-eco-theme="academia"] main .ac-essentials-grid { gap: 24px; }
+  body[data-eco-theme="academia"] main .ac-essential-card {
+    padding: 30px 26px;
+    border-radius: 4px 28px 4px 4px;
+    background: var(--nv-surface-technical);
+    border-color: var(--nv-line);
+    box-shadow: none;
+  }
+  body[data-eco-theme="academia"] main .ac-essential-card:nth-child(even) { background: var(--nv-surface-editorial); }
+  body[data-eco-theme="academia"] main .ac-essential-card::before { background: var(--nv-line-strong); }
+  body[data-eco-theme="academia"] main .ac-essential-card .ac-term {
+    font-family: var(--nv-font-serif);
+    font-size: 29px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+  }
+  body[data-eco-theme="academia"] main .ac-essential-card .ac-def-text { font-size: 15px; line-height: 1.7; }
+  body[data-eco-theme="academia"] main .ac-essential-card:hover { border-color: var(--nv-navy-700); box-shadow: none; transform: none; }
+
+  /* El curso se presenta como un cuaderno abierto, conservando su programa. */
+  body[data-eco-theme="academia"] main .ac-x21 {
+    border: 1px solid var(--nv-line);
+    border-radius: 4px 40px 4px 4px;
+    background: var(--nv-surface-technical);
+    box-shadow: none;
+  }
+  body[data-eco-theme="academia"] main .ac-x21 .gu-title-hero { color: var(--nv-navy-900); font-weight: 400; font-size: 44px; line-height: 1.1; }
+  body[data-eco-theme="academia"] main .ac-x21 .gu-lead { color: var(--nv-text-soft); line-height: 1.7; }
+  body[data-eco-theme="academia"] main .ac-x23 {
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: var(--nv-text-soft);
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  body[data-eco-theme="academia"] main .ac-x24 .ac-chip-outline { color: var(--nv-navy-900); border-color: var(--nv-line-strong); background: transparent; }
+  body[data-eco-theme="academia"] main .ac-x25 { min-height: 48px; border-radius: 26px; border: 1px solid var(--nv-navy-900); background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="academia"] main .ac-x25:hover { background: var(--nv-navy-800); }
+  body[data-eco-theme="academia"] main .ac-x26 { background: var(--nv-surface-editorial); border-color: var(--nv-line); }
+
+  /* El simulador conserva valores, colores de series y medidas del gráfico. */
+  body[data-eco-theme="academia"] main .ac-x204 { padding: 32px; gap: 32px; }
+  body[data-eco-theme="academia"] main .ac-x205 { border-left: 2px solid var(--nv-navy-700); border-radius: 0 4px 4px 0; background: var(--nv-surface-technical); font-weight: 500; }
+  body[data-eco-theme="academia"] main .ac-x206 { border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="academia"] main .ac-x208 { margin-block: 42px 24px; gap: 32px; }
+  body[data-eco-theme="academia"] main .ac-x208 > * { min-width: 0; }
+  body[data-eco-theme="academia"] main .ac-x209 { gap: 24px; }
+  body[data-eco-theme="academia"] main .ac-x209 > .gu-card { background: var(--nv-surface-technical); padding: 24px; }
+  body[data-eco-theme="academia"] main :is(.ac-x210, .ac-x215) { font-size: 16px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+  body[data-eco-theme="academia"] main .ac-x209 :is(.nv-field__box, .nv-select) { background: var(--nv-surface); border-color: var(--nv-control-border); border-radius: 12px; min-height: 44px; font-size: 14px; }
+  body[data-eco-theme="academia"] main .ac-x209 input[type="range"] { min-height: 44px; }
+  body[data-eco-theme="academia"] main .ac-x216 { border: 1px solid var(--nv-line); border-radius: 5px; background: var(--nv-surface-editorial); }
+  body[data-eco-theme="academia"] main .ac-x223 { border-radius: 5px; }
+
+  /* Glosario: cada término sigue siendo un acordeón operable por teclado. */
+  body[data-eco-theme="academia"] main .ac-x226 { padding: 12px 0 28px; text-align: left; }
+  body[data-eco-theme="academia"] main .ac-x227 { background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: 26px; padding: 4px; }
+  body[data-eco-theme="academia"] main .ac-x227 .ac-tab { min-height: 44px; padding-inline: 24px; border-radius: 22px; color: var(--nv-text-soft); }
+  body[data-eco-theme="academia"] main .ac-x227 .ac-tab.is-active { background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="academia"] main .ac-x229 { min-height: 80px; padding: 24px 20px; }
+  body[data-eco-theme="academia"] main .ac-x229:hover { background: var(--nv-surface-technical); }
+  body[data-eco-theme="academia"] main .ac-x229[aria-expanded="true"] { background: var(--nv-surface-technical); }
+  body[data-eco-theme="academia"] main .ac-x231 { font-family: var(--nv-font-serif); font-size: 30px; line-height: 1.2; }
+  body[data-eco-theme="academia"] main .ac-x232 { font-size: 12px; text-transform: none; letter-spacing: 0; }
+  body[data-eco-theme="academia"] main .ac-accordion__body { padding: 20px 24px 28px; }
+  body[data-eco-theme="academia"] main .ac-x233 { background: var(--nv-surface-technical); border-radius: 4px; padding: 22px 24px; }
+
+  /* Lección del PIB: lectura, ejemplos y tablas en una misma secuencia. */
+  body[data-eco-theme="academia"] main .pib-watch { border-radius: 4px 36px 4px 4px; background: var(--nv-surface-technical); padding: 32px; }
+  body[data-eco-theme="academia"] main .pib-lesson h2 { font-size: 34px; font-weight: 400; letter-spacing: -.025em; }
+  body[data-eco-theme="academia"] main .pib-index { gap: 12px 28px; padding-block: 20px; }
+  body[data-eco-theme="academia"] main .pib-section { padding-top: 44px; }
+  body[data-eco-theme="academia"] main .pib-three .ac-tint { background: var(--nv-surface-technical); border-radius: 4px; }
+  body[data-eco-theme="academia"] main :is(.pib-equation, .pib-takeaway) { background: var(--nv-surface-editorial); border-radius: 4px; }
+  body[data-eco-theme="academia"] main .pib-table { border: 1px solid var(--nv-line); }
+  body[data-eco-theme="academia"] main .pib-table thead { background: var(--nv-surface-technical); }
+
+  /* Curso: jerarquía de capítulos y cuaderno de trabajo sin tocar resultados. */
+  body[data-eco-theme="academia"] main .curso-ruta { background: var(--nv-surface); border-color: var(--nv-line); border-radius: 28px; }
+  body[data-eco-theme="academia"] main .curso-ruta__volver { display: inline-flex; align-items: center; min-height: 44px; background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="academia"] main .curso-ruta__actual { color: var(--nv-text-soft); }
+  body[data-eco-theme="academia"] main .curso-programa { gap: 12px; }
+  body[data-eco-theme="academia"] main .curso-tab { min-height: 80px; padding: 18px 14px; background: var(--nv-surface); border-radius: 4px; }
+  body[data-eco-theme="academia"] main .curso-tab.is-active { border-color: var(--nv-navy-700); background: var(--nv-surface-technical); box-shadow: inset 0 -3px var(--nv-navy-700); }
+  body[data-eco-theme="academia"] main .curso-tab:hover { transform: none; border-color: var(--nv-navy-700); }
+  body[data-eco-theme="academia"] main .curso-cap { padding: 34px 40px; background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: 4px 40px 4px 4px; box-shadow: none; }
+  body[data-eco-theme="academia"] main .curso-cap::before { background: var(--nv-line-strong); height: 1px; }
+  body[data-eco-theme="academia"] main .curso-cap h2 { font-family: var(--nv-font-serif); font-size: 46px; font-weight: 400; line-height: 1.1; letter-spacing: -.03em; }
+  body[data-eco-theme="academia"] main :is(.curso-cap__kicker, .curso-leccion__kicker) { font-size: 12px; text-transform: none; letter-spacing: .01em; color: var(--nv-text-soft); }
+  body[data-eco-theme="academia"] main .curso-cap__intro { max-width: 64ch; line-height: 1.7; }
+  body[data-eco-theme="academia"] main .curso-pasos { border: 1px solid var(--nv-line); border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="academia"] main .curso-paso { min-height: 44px; }
+  body[data-eco-theme="academia"] main :is(.curso-panel, .curso-directrices, .curso-pregunta, .curso-figura) { border: 1px solid var(--nv-line); border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="academia"] main .curso-leccion h2 { font-family: var(--nv-font-serif); font-size: 36px; font-weight: 400; letter-spacing: -.025em; }
+  body[data-eco-theme="academia"] main .curso-leccion__lead { font-size: 16px; line-height: 1.7; }
+  body[data-eco-theme="academia"] main .curso-nota { border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="academia"] main .curso-nota[open] { background: var(--nv-surface-technical); }
+  body[data-eco-theme="academia"] main .curso-nota > summary { min-height: 64px; }
+  body[data-eco-theme="academia"] main .curso-nota__title small { white-space: normal; }
+  body[data-eco-theme="academia"] main .curso-formula { background: var(--nv-surface-editorial); border-radius: 4px; }
+  body[data-eco-theme="academia"] main .curso-tool > .curso-panel:first-child { background: var(--nv-surface-technical); }
+  body[data-eco-theme="academia"] main .curso-panel__title { font-size: 16px; }
+  body[data-eco-theme="academia"] main .curso-resultado { border-radius: 4px; }
+  body[data-eco-theme="academia"] main :is(.curso-opcion, .curso-radio) { min-height: 48px; border-radius: 4px; }
+  body[data-eco-theme="academia"] main :is(.curso-tab, .ac-essential-card, .ac-x229, .ac-tab):focus-visible { outline: 2px solid var(--nv-navy-700); outline-offset: 4px; }
+}
+
+@media screen and (max-width: 1023px) {
+  body[data-eco-theme="academia"] main .nv-entry :is(h1, .home26-plate__title) { font-size: 44px; }
+  body[data-eco-theme="academia"] main .ac-essential-card { padding: 24px 20px; }
+  body[data-eco-theme="academia"] main .ac-essential-card .ac-term { font-size: 27px; }
+  body[data-eco-theme="academia"] main .ac-x22 { padding: 30px 28px; }
+  body[data-eco-theme="academia"] main .ac-x21 .gu-title-hero { font-size: 38px; }
+  body[data-eco-theme="academia"] main .ac-x26 { padding: 28px; }
+  body[data-eco-theme="academia"] main .ac-x204 { padding: 26px; gap: 26px; }
+  body[data-eco-theme="academia"] main .ac-card > .gu-grid-3 { padding-inline: 24px; padding-bottom: 24px; }
+  body[data-eco-theme="academia"] main .ac-x209 { gap: 20px; }
+  body[data-eco-theme="academia"] main .ac-x209 > .gu-card { padding: 20px; }
+  body[data-eco-theme="academia"] main .curso-programa { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  body[data-eco-theme="academia"] main .curso-cap { padding: 28px; }
+  body[data-eco-theme="academia"] main .curso-cap h2 { font-size: 40px; }
+  body[data-eco-theme="academia"] main .curso-leccion h2 { font-size: 32px; }
+}

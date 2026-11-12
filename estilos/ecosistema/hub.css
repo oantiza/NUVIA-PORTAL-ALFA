@@ -1,0 +1,99 @@
+/* Ecosistema NUVIA · portada principal integrada por orden del 12-11-2026.
+   El color y las fuentes siguen los tokens de marca. */
+.hub-page {
+  margin: 0;
+  color: var(--nv-navy-900);
+  background: color-mix(in srgb, var(--nv-surface-editorial) 38%, var(--nv-surface));
+  font: 16px/1.5 var(--nv-font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+.hub-page *, .hub-page *::before, .hub-page *::after { box-sizing: border-box; }
+.hub-page a { color: inherit; text-decoration: none; }
+.hub-page p, .hub-page h1, .hub-page h2 { margin: 0; }
+.hub-page a:focus-visible { outline: 3px solid var(--nv-green-700); outline-offset: 7px; border-radius: 3px; }
+.hub-page main:focus { outline: none; }
+.hub-page svg { width: 22px; height: 22px; flex: 0 0 auto; stroke: currentColor; stroke-width: 1.3; }
+.hub-skip { position: fixed; left: 24px; top: -80px; z-index: 20; display: flex; min-height: 48px; align-items: center; padding: 8px 18px; background: var(--nv-surface); border: 1px solid var(--nv-line-strong); }
+.hub-skip:focus { top: 16px; }
+.hub-header { display: flex; align-items: center; gap: 28px; max-width: 1536px; margin: auto; padding: 23px 5%; min-height: 102px; }
+.hub-brand { display: flex; min-height: 56px; align-items: center; flex: 0 0 auto; }
+.hub-brand img { width: 137px; height: 56px; display: block; }
+.hub-brand-caption { font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; border-left: 1px solid var(--nv-line-strong); padding: 7px 0 7px 28px; }
+.hub-about { margin-left: auto; display: inline-flex; align-items: center; gap: 16px; min-height: 48px; font-size: 14px; }
+.hub-about-arrow { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--nv-line-strong); border-radius: 50%; transition: background .2s, transform .2s; }
+.hub-about:hover .hub-about-arrow { background: var(--nv-green-100); transform: rotate(-35deg); }
+.hub-intro { text-align: center; padding: 36px 30px 0; }
+.hub-eyebrow { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; color: var(--nv-text-soft); }
+.hub-intro h1 { font: 400 clamp(58px, 7.25vw, 104px)/1.06 var(--nv-font-serif); letter-spacing: -.055em; margin-top: 21px; }
+.hub-intro h1 em { font-style: normal; color: var(--nv-green-800); }
+.hub-intro-copy { margin-top: 19px !important; font-size: 15px; line-height: 1.8; color: var(--nv-text-soft); }
+.hub-stage { position: relative; display: grid; grid-template-columns: 290px 1fr 290px; grid-template-rows: 1fr 1fr; column-gap: 28px; row-gap: 32px; width: min(1180px, 88%); min-height: 450px; margin: 20px auto 0; padding-block: 39px 27px; }
+.hub-art { --hub-art-size: 470px; position: absolute; inset: 0; margin: auto; width: calc(var(--hub-art-size) * 1.3); height: calc(var(--hub-art-size) * 1.3); display: grid; place-items: center; pointer-events: none; }
+.hub-art img { position: relative; display: block; width: var(--hub-art-size); height: var(--hub-art-size); object-fit: contain; filter: drop-shadow(0 25px 26px color-mix(in srgb, var(--nv-navy-900) 9%, transparent)); transform: rotate(-8deg); transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+.hub-art-halo { position: absolute; inset: calc((100% - var(--hub-art-size) * .86) / 2); border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--nv-bronze-200) 28%, transparent), transparent 69%); transition: transform .65s ease; }
+.hub-door { --door-accent: var(--nv-navy-700); position: relative; align-self: start; display: block; padding: 18px 0 9px; border-top: 1px solid var(--nv-line-strong); transition: transform .25s ease, border-color .25s ease; }
+.hub-door--economia { grid-column: 1; grid-row: 1; }
+.hub-door--patrimonio { --door-accent: var(--nv-bronze-700); grid-column: 3; grid-row: 1; }
+.hub-door--bienestar { --door-accent: var(--nv-green-700); grid-column: 1; grid-row: 2; }
+.hub-door--academia { --door-accent: var(--nv-navy-700); grid-column: 3; grid-row: 2; }
+.hub-door-marker { position: absolute; top: -4px; left: 0; width: 7px; height: 7px; border-radius: 50%; background: var(--door-accent); }
+.hub-door h2 { font: 400 33px/1.08 var(--nv-font-serif); letter-spacing: -.03em; }
+.hub-door p { font-size: 13px; line-height: 1.65; color: var(--nv-text-soft); max-width: 28ch; margin-top: 11px; }
+.hub-door-action { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 44px; margin-top: 7px; font-size: 12px; font-weight: 500; color: var(--door-accent); }
+.hub-door-action svg { transition: transform .25s ease; width: 21px; height: 21px; }
+.hub-door:hover, .hub-door:focus-visible { transform: translateY(-4px); border-top-color: var(--door-accent); }
+.hub-door:hover .hub-door-action svg, .hub-door:focus-visible .hub-door-action svg { transform: translateX(5px); }
+.hub-stage:has(.hub-door--economia:is(:hover,:focus-visible)) .hub-art img { transform: rotate(-13deg) scale(1.035); }
+.hub-stage:has(.hub-door--patrimonio:is(:hover,:focus-visible)) .hub-art img { transform: rotate(-3deg) scale(1.035); }
+.hub-stage:has(.hub-door--bienestar:is(:hover,:focus-visible)) .hub-art img { transform: rotate(-12deg) scale(1.035); }
+.hub-stage:has(.hub-door--academia:is(:hover,:focus-visible)) .hub-art img { transform: rotate(-2deg) scale(1.035); }
+.hub-stage:has(.hub-door:is(:hover,:focus-visible)) .hub-art-halo { transform: scale(1.15); }
+.hub-connections { display: flex; align-items: center; justify-content: center; gap: 36px; padding: 31px 24px 39px; }
+.hub-connections > p { font: 400 24px/1.2 var(--nv-font-serif); letter-spacing: -.025em; }
+.hub-connections nav { display: flex; align-items: center; gap: 30px; border-left: 1px solid var(--nv-line-strong); padding-left: 36px; }
+.hub-connections a { min-height: 44px; display: inline-flex; align-items: center; gap: 16px; font-size: 13px; }
+.hub-connections a:hover { color: var(--nv-green-800); text-decoration: underline; text-underline-offset: 6px; }
+.hub-connections svg { width: 18px; height: 18px; }
+.hub-footer { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding: 9px 0; width: 90%; max-width: 1382px; margin: auto; border-top: 1px solid var(--nv-line); color: var(--nv-text-muted); font-size: 12px; }
+.hub-footer a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; }
+.hub-footer a:hover { color: var(--nv-navy-900); }
+.hub-footer svg { width: 16px; height: 16px; }
+@media (min-width: 1500px) {
+  .hub-intro { padding-top: 49px; }
+  .hub-stage { margin-top: 35px; }
+}
+@media (max-width: 1179px) {
+  .hub-stage { grid-template-columns: 245px 1fr 245px; column-gap: 18px; min-height: 424px; width: 90%; }
+  .hub-art { --hub-art-size: 392px; }
+  .hub-door h2 { font-size: 29px; }
+  .hub-door p { max-width: 25ch; }
+}
+@media (max-width: 999px) {
+  .hub-header { padding-inline: 5%; }
+  .hub-intro { padding-top: 26px; }
+  .hub-stage { grid-template-columns: 215px 1fr 215px; column-gap: 12px; }
+  .hub-art { --hub-art-size: 340px; }
+  .hub-door h2 { font-size: 27px; }
+  .hub-connections { gap: 24px; }
+  .hub-connections nav { gap: 22px; padding-left: 24px; }
+}
+@media (max-width: 859px) {
+  .hub-intro h1 { font-size: 66px; }
+  .hub-stage { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 305px auto auto; column-gap: 62px; row-gap: 8px; padding: 0; width: 83%; margin-top: 13px; }
+  .hub-art { --hub-art-size: 305px; top: calc(var(--hub-art-size) * -.15); bottom: auto; }
+  .hub-door--economia { grid-column: 1; grid-row: 2; }
+  .hub-door--patrimonio { grid-column: 2; grid-row: 2; }
+  .hub-door--bienestar { grid-column: 1; grid-row: 3; }
+  .hub-door--academia { grid-column: 2; grid-row: 3; }
+  .hub-door { align-self: stretch; }
+  .hub-door h2 { font-size: 30px; }
+  .hub-door p { max-width: 27ch; }
+  .hub-door-action { margin-top: 4px; }
+  .hub-connections { padding-block: 28px; gap: 19px; }
+  .hub-connections > p { font-size: 21px; }
+  .hub-connections nav { padding-left: 19px; gap: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hub-page *, .hub-page *::before, .hub-page *::after { transition: none !important; animation: none !important; }
+  .hub-page .hub-door, .hub-page .hub-art img { transform: none !important; }
+}

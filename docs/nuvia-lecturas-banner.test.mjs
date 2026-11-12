@@ -5,30 +5,19 @@ import {resolve} from 'node:path';
 import {readPageStylesSync} from '../scripts/read-page-styles.mjs';
 
 const root = resolve(process.argv[2] ?? resolve(import.meta.dirname, '..'));
-const homeAsset = 'src/assets/home/lecturas-con-criterio-banner-sin-boton.webp';
 const heroAsset = 'src/assets/home/lecturas-con-criterio-fondo-compacto-family-wealth.webp';
 const retiredAsset = 'src/assets/home/lecturas-con-criterio-canva-family-wealth.png';
 const home = await readFile(resolve(root, 'index.html'), 'utf8');
-const section = home.match(/<section\b[^>]*id="lecturas-con-criterio"[\s\S]*?<\/section>/)?.[0];
-assert.ok(section?.includes(`src="${homeAsset}"`), 'Inicio usa el banner aportado por el usuario');
-assert.ok(section.includes('href="lecturas.html"'), 'El banner conserva el acceso a Lecturas');
-assert.doesNotMatch(section, /nv-section-heading|titulo-lecturas|<h2\b/,
-  'El banner sustituye la cabecera exterior y elimina su espacio');
-assert.match(section, /<div class="home-lecturas">/,
-  'La ilustración permanece completa dentro de su propio lienzo');
-assert.equal((section.match(/<a\b/g) ?? []).length, 1, 'Lecturas tiene un único enlace');
-assert.match(section, /class="home26-plate__cta home-lecturas__cta" href="lecturas\.html">Accede a Lecturas con Criterio/,
-  'Lecturas comparte el acceso descriptivo de los otros cuatro espacios');
-assert.ok(section.includes('alt="Lecturas con Criterio. Historias sencillas de interés duradero."'),
-  'La imagen tiene alternativa informativa');
-assert.ok(section.includes('width="2120" height="404"'), 'Se reserva la proporción exacta del banner sin botón');
-assert.ok(!section.includes('lecturas-con-criterio-banner-approved.jpeg'), 'No reintroducir la imagen con letras deformadas');
-assert.ok(!section.includes(retiredAsset), 'No reintroducir el PNG con el antiguo botón dibujado');
-assert.equal(home.split(homeAsset).length - 1, 1, 'La imagen solo aparece una vez');
-const homeBannerBytes = await readFile(resolve(root, homeAsset));
-assert.equal(createHash('sha256').update(homeBannerBytes).digest('hex'),
-  '59768e8b2f5a5ac19001c4a3d6cf9cd7b4e2568c7b5758f03eb0015a81dda02a',
-  'El banner aportado debe conservarse sin editar');
+// Orden 12-11-2026: Lecturas pasa del quinto banner a un espacio común.
+const section = home.match(/<section class="hub-connections"[\s\S]*?<\/section>/)?.[0];
+assert.ok(section, 'El ecosistema presenta un grupo propio de espacios comunes');
+assert.equal((section.match(/href="lecturas.html"/g)||[]).length,1,'Un acceso descriptivo a Lecturas');
+assert.equal((section.match(/href="colaboradores.html"/g)||[]).length,1,'Colaboradores comparte el grupo transversal');
+assert.equal((section.match(/<a\b/g)||[]).length,2,'Solo los dos espacios comunes');
+assert.match(section,/>Lecturas con Criterio /,'Etiqueta legible, no un botón rasterizado');
+assert.doesNotMatch(home, /hub-door--lecturas|cinco espacios|Cinco puertas|lecturas-con-criterio-banner-approved.jpeg/,'Lecturas no se presenta como quinta web');
+const hubCSS=await readFile(resolve(root,'estilos/ecosistema/hub.css'),'utf8');
+assert.match(hubCSS,/:focus-visible\s*\{[^}]*outline:/,'Los enlaces del ecosistema tienen foco visible');
 const page = await readFile(resolve(root, 'lecturas.html'), 'utf8');
 assert.ok(page.includes('estilos/nuvia-pages.css?v=lecturas-sin-degradado-20260901'), 'La cabecera debe cargar los estilos nuevos sin reutilizar la caché anterior');
 const hero = page.match(/<section\b[^>]*id="lecturas"[\s\S]*?<\/section>/)?.[0];

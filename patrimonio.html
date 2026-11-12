@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Espacio de Patrimonio en NUVIA: vivienda, jubilación, fiscalidad y planificación patrimonial para ordenar la economía del hogar con perspectiva y tranquilidad.">
+<title>NUVIA · Patrimonio</title>
+<meta name="description" content="Vivienda, impuestos y jubilación. Guías y simuladores para mirar tu economía familiar con perspectiva.">
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/patrimonio.html">
-
 <!-- NUVIA SOCIAL META: START -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
 <meta property="og:title" content="NUVIA · Patrimonio">
-<meta property="og:description" content="Espacio de Patrimonio en NUVIA: vivienda, jubilación, fiscalidad y planificación patrimonial para ordenar la economía del hogar con perspectiva y tranquilidad.">
+<meta property="og:description" content="Vivienda, impuestos y jubilación. Guías y simuladores para mirar tu economía familiar con perspectiva.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/patrimonio.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -20,247 +20,30 @@
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NUVIA · Patrimonio">
-<meta name="twitter:description" content="Espacio de Patrimonio en NUVIA: vivienda, jubilación, fiscalidad y planificación patrimonial para ordenar la economía del hogar con perspectiva y tranquilidad.">
+<meta name="twitter:description" content="Vivienda, impuestos y jubilación. Guías y simuladores para mirar tu economía familiar con perspectiva.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
-
-<title>NUVIA · Patrimonio</title>
-
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
-
+<link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
 
-<script defer src="js/vendor/react.production.min.js"></script>
-<script defer src="js/vendor/react-dom.production.min.js"></script>
-<script defer src="support.js"></script>
-<script defer src="nuvia-site-unified.js"></script>
+<link rel="stylesheet" href="estilos/ecosistema/webs.css">
+<link rel="stylesheet" href="estilos/ecosistema/patrimonio.css">
+<script defer src="js/nuvia-ecosistema.js"></script>
 </head>
-
-<body class="nuvia-design-lab nv-home-polish nv-space-page nv-space-page--patrimonio">
-<x-dc>
-
-<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
-
-<div class="nuvia-page">
-
-  <header data-screen-label="Header" class="nuvia-site-header">
-    <div class="nuvia-site-header__inner">
-      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
-        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
-             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
-      </a>
-            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
-        <details class="nuvia-site-nav__topics" data-nav-area="economia">
-          <summary>Economía y Finanzas</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="economia.html">Portada de Economía</a>
-            <a href="mercados.html?vista=informes#lectura-informe">Informes</a>
-            <a href="mercados.html">Mercados y noticias</a>
-            <a href="cartera.html">Cartera</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
-          <summary>Patrimonio</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="patrimonio.html">Portada de Patrimonio</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="jubilacion.html">Jubilación</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
-          <summary>Familia, Salud y Bienestar</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="respiracion-relajacion.html">Respiración y relajación</a>
-            <a href="movimiento-consciente.html">Movimiento consciente</a>
-            <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
-            <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="academy">
-          <summary>Academia NUVIA</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="academia.html">Portada de Academia</a>
-            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
-            <a href="academia.html?tab=cursos">Cursos</a>
-          </div>
-        </details>
-        <a href="lecturas.html">Lecturas con Criterio</a>
-        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
-        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="contenido">
-
-    <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación">
-      <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Patrimonio</span></li></ol>
-    </nav>
-    <section data-screen-label="Cabecera Patrimonio" class="home26-plate home26-plate--light home26-plate--reverse nv-space-entry nv-space-entry--heritage" aria-labelledby="patrimonio-title">
-      <div class="home26-plate__figure">
-        <img class="home26-plate__art" src="src/assets/home/patrimonio-panoramica-20260909.webp" alt="" aria-hidden="true" width="2172" height="724" fetchpriority="high" decoding="async">
-      </div>
-      <div class="home26-plate__body">
-        <p class="nv-eyebrow">Decisiones de fondo</p>
-        <h1 id="patrimonio-title" class="home26-plate__title">Patrimonio</h1>
-        <p class="home26-plate__copy">Vivienda, jubilación, impuestos y planificación: información clara y simuladores para cuidar la economía del hogar con perspectiva y tranquilidad.</p>
-      </div>
-    </section>
-
-    <div class="nv-container nv-space-intro">
-      <section class="nv-space-insight" aria-labelledby="patrimonio-concepto">
-        <div><p class="nv-eyebrow">Una mirada de conjunto</p><h2 id="patrimonio-concepto">Tus cifras forman parte de una misma historia.</h2></div>
-        <div class="nv-space-insight__items">
-          <div><h3>El presente</h3><p>Ingresos, vivienda y gastos: el punto de partida de la economía familiar.</p></div>
-          <div><h3>El futuro</h3><p>El tiempo y los supuestos ayudan a poner en perspectiva distintos escenarios.</p></div>
-          <div><h3>El legado</h3><p>Comprender también significa compartir conocimiento con quienes vienen detrás.</p></div>
-        </div>
-      </section>
-    </div>
-
-    <section id="recursos-patrimonio" class="nv-section nv-section--tight nv-space-resources" aria-labelledby="titulo-recursos-patrimonio">
-      <div class="nv-container">
-        <div class="nv-section-heading">
-          <div>
-            <p class="nv-eyebrow">Ámbitos familiares</p>
-            <h2 id="titulo-recursos-patrimonio">Simuladores y guías patrimoniales</h2>
-          </div>
-          <p>
-            Cuatro pilares para ordenar las decisiones de largo plazo de la familia sin dejarse llevar
-            por urgencias o mensajes comerciales.
-          </p>
-        </div>
-
-        <div class="nv-card-grid nv-card-grid--2">
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="vivienda.html">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/patrimonio-card-vivienda-20260922.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7"/></svg></span>
-            <span class="nv-space-tool-card__badge">Simulador Financiero</span>
-            <h3>Vivienda y coste de vida</h3>
-            <p>
-              Explora la cuota hipotecaria, los gastos de compraventa y su relación con el presupuesto.
-              Compara escenarios de tipos e importes con tus propios supuestos.
-            </p>
-            <span class="nv-space-tool-card__action">Calcular cuota y gastos <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="jubilacion.html">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/patrimonio-card-jubilacion-20260922.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 3"/></svg></span>
-            <span class="nv-space-tool-card__badge">Simulador de Futuro</span>
-            <h3>Jubilación</h3>
-            <p>
-              Simula ingresos y gastos futuros y observa cómo cambian con el tiempo.
-              Entiende las diferencias entre una estimación de pensión y los escenarios que introduces.
-            </p>
-            <span class="nv-space-tool-card__action">Simular jubilación <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="fiscalidad.html">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/patrimonio-card-impuestos-20260922.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h3M14 11h2M8 15h3M14 15h2M8 18h3M14 18h2"/></svg></span>
-            <span class="nv-space-tool-card__badge">Guía y Fiscalidad</span>
-            <h3>Impuestos</h3>
-            <p>
-              Comprende cómo funciona el IRPF, la escala general frente a la del ahorro, la tributación
-              de fondos y el tratamiento fiscal de los planes de pensiones y EPSV.
-            </p>
-            <span class="nv-space-tool-card__action">Consultar fiscalidad <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="temas.html?topic=planificacion-patrimonial">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/patrimonio-card-planificacion-20260922.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4h6a3 3 0 0 1 3 3v14a4 4 0 0 0-4-2H3V4Zm18 0h-6a3 3 0 0 0-3 3v14a4 4 0 0 1 4-2h5V4Z"/></svg></span>
-            <span class="nv-space-tool-card__badge">Guías Didácticas</span>
-            <h3>Planificación patrimonial y guías</h3>
-            <p>
-              Accede a las guías monográficas de ahorro progresivo, calendario fiscal del contribuyente,
-              transmisión patrimonial (sucesiones y herencias) y etapas vitales familiares.
-            </p>
-            <span class="nv-space-tool-card__action">Ver guías patrimoniales <span aria-hidden="true">→</span></span>
-          </a>
-
-        </div>
-
-
-        <div class="nv-note nv-section-space" role="note">
-          <p>
-            <strong>Escenarios para comprender:</strong>
-            Los resultados dependen de los datos y supuestos introducidos. Consulta la metodología y los límites
-            de cada herramienta; una simulación no determina qué decisión es adecuada para tu familia.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <nav class="nv-container nv-space-next" aria-label="Otros espacios de NUVIA">
-      <p>Sigue explorando NUVIA</p>
-      <a href="economia.html">Economía <span aria-hidden="true">→</span></a>
-      <a href="bienestar.html">Familia y bienestar <span aria-hidden="true">→</span></a>
-      <a href="academia.html">Academia <span aria-hidden="true">→</span></a>
-      <a href="lecturas.html">Lecturas <span aria-hidden="true">→</span></a>
-    </nav>
-  </main>
-
-    <footer data-screen-label="Footer" class="nuvia-site-footer">
-    <div class="nuvia-site-footer__inner">
-      <div class="nuvia-site-footer__grid">
-        <div class="nuvia-site-footer__brand">
-          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
-               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
-          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="economia.html">Economía y Finanzas</a>
-            <a href="patrimonio.html">Patrimonio</a>
-            <a href="bienestar.html">Familia, Salud y Bienestar</a>
-            <a href="academia.html">Academia NUVIA</a>
-            <a href="lecturas.html">Lecturas con Criterio</a>
-          </div>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="cartera.html">Cartera y analítica</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="jubilacion.html">Jubilación</a>
-          </div>
-        </div>
-        <div class="nuvia-site-footer__info-column">
-          <h2 class="nuvia-site-footer__heading">Información</h2>
-          <div class="nuvia-site-footer__info">
-            <a href="colaboradores.html">Colaboradores</a>
-            <a href="que-es-nuvia.html">Qué es NUVIA</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="independencia.html">Independencia</a>
-            <span>Contenido educativo e informativo.</span>
-            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="nuvia-site-footer__legal">
-        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
-        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
-      </div>
-    </div>
-  </footer>
-
-</div>
-</x-dc>
+<body class="web-page web-page--patrimonio">
+<a class="web-skip" href="#contenido">Saltar al contenido</a>
+<header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
+    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-name" href="patrimonio.html" aria-current="page">Patrimonio</a>
+    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html">Economía y Finanzas</a><a href="patrimonio.html" aria-current="page">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="patrimonio" aria-label="Navegación de Patrimonio"><div class="web-wrap"><a href="patrimonio.html" aria-current="page">Portada</a><a href="vivienda.html">Vivienda</a><a href="jubilacion.html">Jubilación</a><a href="fiscalidad.html">Impuestos</a><a href="temas.html?topic=planificacion-patrimonial">Planificación</a></div></nav></header>
+<main id="contenido" tabindex="-1"><section class="pa-opening"><div class="web-wrap pa-opening-inner"><div class="pa-opening-copy"><p class="pa-name">Patrimonio</p><h1>Lo que construyes,<br>con perspectiva.</h1><p class="pa-lead">Un hogar, una nueva etapa, el futuro de tu familia. Comprende las piezas de tu patrimonio y cómo se relacionan.</p><a class="web-button pa-start" href="#recursos">Ver las áreas de Patrimonio <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a><p class="pa-signature">La vida cambia. Las preguntas también.</p></div><figure class="pa-photo"><img src="src/assets/ecosistema/patrimonio-hogar.webp" alt="" width="1000" height="1250" fetchpriority="high" decoding="async"></figure></div></section>
+  <section class="web-wrap pa-areas" id="recursos" aria-labelledby="pa-areas-title"><div class="pa-areas-intro"><h2 id="pa-areas-title">Una visión<br>de conjunto.</h2><p>Vivienda, jubilación, impuestos y planificación. Elige una guía o un simulador para empezar.</p></div><div class="pa-areas-list"><article class="pa-area" id="vivienda"><div><p class="pa-kind">Guía y simulador</p><h3><a href="vivienda.html">Vivienda y coste de vida</a></h3></div><div><p>Explora los costes de la vivienda y su relación con el presupuesto familiar.</p><a class="web-link" href="vivienda.html">Explorar vivienda <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article><article class="pa-area" id="jubilacion"><div><p class="pa-kind">Guías y simulador</p><h3><a href="jubilacion.html">Jubilación</a></h3></div><div><p>Comprende los ingresos futuros y cómo cambian los escenarios bajo distintos supuestos.</p><a class="web-link" href="jubilacion.html">Explorar jubilación <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article><article class="pa-area" id="impuestos"><div><p class="pa-kind">Guías y herramientas</p><h3><a href="fiscalidad.html">Impuestos</a></h3></div><div><p>Fiscalidad del ahorro, calendario fiscal, sucesiones y donaciones explicados con claridad.</p><a class="web-link" href="fiscalidad.html">Comprender los impuestos <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article><article class="pa-area" id="planificacion"><div><p class="pa-kind">Guía educativa</p><h3><a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a></h3></div><div><p>Relaciona las piezas de la economía familiar y las preguntas que surgen al mirar a largo plazo.</p><a class="web-link" href="temas.html?topic=planificacion-patrimonial">Leer la guía <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></article></div></section>
+  <section class="pa-perspective"><div class="web-wrap pa-perspective-inner"><h2>Mirar a largo plazo<br>empieza por entender.</h2><div><p>Una simulación permite ver qué cambia cuando cambian los supuestos. Es una forma de explorar escenarios, con sus fuentes y sus límites a la vista.</p><a class="web-link" href="metodologia.html">Conocer la metodología <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div></div></section>
+  <aside class="web-wrap pa-note"><p>Contenido educativo e informativo. Las guías y simulaciones no constituyen asesoramiento financiero, fiscal o jurídico personalizado.</p></aside></main>
+<footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 </body>
 </html>

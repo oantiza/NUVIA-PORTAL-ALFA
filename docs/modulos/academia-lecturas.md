@@ -2,6 +2,14 @@
 
 **Qué es:** dos espacios editoriales de formación y lectura. Academia reúne lecciones, cursos, fundamentos, activos, el simulador de interés compuesto y el glosario; Lecturas es la biblioteca con criterio editorial propio. Se tratan juntos porque comparten forma de trabajo (publicar y ordenar contenido) y porque ninguno tiene motores de cálculo financieros más allá del interés compuesto.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Academia NUVIA es una de las cuatro webs; Lecturas con Criterio y Colaboradores son los dos espacios comunes del ecosistema. Compartir esta ficha no convierte Lecturas en una subsección de Academia ni en una quinta web. La primera integración conservó el único repositorio ALFA y se realizó **sin publicar todavía**, conforme al [acta y prueba del §12](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). Las órdenes anteriores de contenido, independencia y controles se mantienen.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+`scripts/ecosistema/academia.mjs` genera exclusivamente la rama marcada de portada en `academia.html`: sin parámetros abre la nueva entrada; `?tab=inicio` conserva el recorrido anterior. Las demás vistas, lecciones, curso, glosario, interés compuesto, progreso y anclas siguen disponibles en el mismo documento y controlador. Estilos: `estilos/ecosistema/academia.css`, `interiores-academia.css` e `interiores-lecturas.css`, sobre la cáscara común. Lecturas conserva sus cuatro fichas, diálogos, portadas completas y enlaces; el comportamiento compartido vive en `js/nuvia-ecosistema.js` bajo Núcleo.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

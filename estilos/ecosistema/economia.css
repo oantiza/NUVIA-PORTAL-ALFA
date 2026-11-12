@@ -1,0 +1,74 @@
+/* Economía · un observatorio editorial, conectado con la pieza del ecosistema. */
+.ec-opening { display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(0, .76fr); align-items: center; gap: 18px; min-height: 492px; padding-block: 34px 42px; }
+.ec-opening-copy { position: relative; z-index: 1; }
+.ec-intro-line { font-size: 14px; color: var(--nv-text-soft); margin: 0 0 22px; }
+.ec-opening h1 { font: 400 clamp(58px, 6.05vw, 86px)/.99 var(--nv-font-serif); letter-spacing: -.052em; color: var(--nv-navy-900); margin: 0; }
+.ec-lead { font-size: 16px; line-height: 1.8; max-width: 47ch; color: var(--nv-text-soft); margin: 25px 0 0; }
+.ec-opening-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 27px; }
+.ec-opening-actions a { margin: 0; }
+.ec-primary { background: var(--nv-navy-900); color: var(--nv-white); border-color: var(--nv-navy-900); }
+.ec-primary:hover { background: var(--nv-navy-800); color: var(--nv-white); }
+.ec-secondary { color: var(--nv-navy-900); }
+.ec-lens { display: grid; place-items: center; min-width: 0; }
+.ec-lens img { display: block; width: 100%; max-width: 452px; height: auto; filter: drop-shadow(0 20px 22px color-mix(in srgb, var(--nv-navy-900) 8%, transparent)); }
+.ec-opening svg, .ec-entry svg, .ec-learning svg { width: 21px; height: 21px; flex: 0 0 auto; stroke: currentColor; stroke-width: 1.35; }
+.ec-observatory { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-block: 24px 28px; }
+.ec-context { padding: 27px 0 21px; }
+.ec-analysis { background: var(--nv-navy-900); color: var(--nv-white); padding: 27px 34px 21px; border-radius: 3px 34px 3px 3px; }
+.ec-section-intro h2 { font: 400 39px/1.1 var(--nv-font-serif); letter-spacing: -.035em; margin: 0; }
+.ec-section-intro > p { font-size: 14px; line-height: 1.65; color: var(--nv-text-soft); margin: 12px 0 22px; max-width: 42ch; }
+.ec-analysis .ec-section-intro > p { color: var(--nv-mist); }
+.ec-entry { border-top: 1px solid var(--nv-line-strong); padding-top: 13px; margin-top: 13px; }
+.ec-entry h3 { margin: 0; font: 400 29px/1.1 var(--nv-font-serif); letter-spacing: -.02em; }
+.ec-entry h3 a { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: inherit; padding-block: 6px; text-decoration: none; }
+.ec-entry h3 a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.ec-entry > p { max-width: 48ch; font-size: 14px; line-height: 1.75; color: var(--nv-text-soft); margin: 9px 0 3px; }
+.ec-entry-action { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; font-weight: 500; color: var(--nv-navy-700); text-underline-offset: 4px; }
+.ec-entry-action:hover { text-decoration: underline; }
+.ec-analysis .ec-entry { border-color: color-mix(in srgb, var(--nv-white) 28%, transparent); }
+.ec-analysis .ec-entry > p { color: var(--nv-mist); }
+.ec-analysis .ec-entry-action { color: var(--nv-white); }
+.ec-analysis a:focus-visible { outline-color: var(--nv-white); }
+.ec-learning { display: flex; justify-content: space-between; align-items: center; gap: 42px; border-top: 1px solid var(--nv-line); padding-block: 38px; margin-top: 27px; }
+.ec-learning h2 { font: 400 35px/1.12 var(--nv-font-serif); letter-spacing: -.035em; margin: 0; }
+.ec-learning p { max-width: 63ch; font-size: 14px; line-height: 1.7; color: var(--nv-text-soft); margin: 12px 0 0; }
+.ec-learning > a { flex: 0 0 auto; }
+.ec-note { color: var(--nv-text-muted); padding-bottom: 28px; }
+.ec-note p { max-width: 95ch; font-size: 12px; line-height: 1.7; margin: 0; }
+@media (max-width: 1179px) {
+  .ec-opening { min-height: 450px; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
+  .ec-opening h1 { font-size: clamp(58px, 6.1vw, 74px); }
+  .ec-opening-actions { gap: 18px; }
+  .ec-observatory { gap: 34px; }
+  .ec-analysis { padding-inline: 27px; }
+  .ec-section-intro h2 { font-size: 35px; }
+}
+@media (max-width: 959px) {
+  .ec-opening { grid-template-columns: minmax(0, 1.38fr) minmax(0, .82fr); gap: 0; padding-block: 34px; min-height: 435px; }
+  .ec-opening h1 { font-size: 59px; }
+  .ec-intro-line { margin-bottom: 17px; }
+  .ec-lead { font-size: 15px; max-width: 40ch; margin-top: 20px; }
+  .ec-lens { align-self: center; }
+  .ec-opening-actions { gap: 6px 19px; margin-top: 20px; }
+  .ec-observatory { gap: 26px; }
+  .ec-analysis { padding-inline: 23px; }
+  .ec-section-intro h2 { font-size: 32px; }
+  .ec-section-intro > p, .ec-entry > p { font-size: 13px; }
+  .ec-entry h3 { font-size: 25px; }
+  .ec-entry h3 a { gap: 12px; }
+  .ec-learning { gap: 25px; }
+  .ec-learning h2 { font-size: 31px; }
+}
+@media (max-width: 819px) {
+  .ec-opening { grid-template-columns: minmax(0, 1.47fr) minmax(0, .73fr); }
+  .ec-opening h1 { font-size: 55px; }
+  .ec-observatory { gap: 22px; }
+  .ec-analysis { padding-inline: 21px; }
+  .ec-section-intro h2 { font-size: 30px; }
+  .ec-learning { align-items: flex-start; }
+  .ec-learning h2 { font-size: 29px; }
+  .ec-learning p { max-width: 42ch; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ec-opening *, .ec-observatory *, .ec-learning * { transition: none !important; animation: none !important; }
+}

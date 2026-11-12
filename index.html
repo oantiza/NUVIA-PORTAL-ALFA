@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="NUVIA ofrece información financiera clara, herramientas patrimoniales y formación para ayudar a las familias a decidir con perspectiva.">
-
+<title>NUVIA · Ecosistema</title>
+<meta name="description" content="Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas y Colaboradores son espacios comunes.">
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/">
-
 <!-- NUVIA SOCIAL META: START -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
-<meta property="og:title" content="NUVIA · Entender tu dinero">
-<meta property="og:description" content="NUVIA ofrece información financiera clara, herramientas patrimoniales y formación para ayudar a las familias a decidir con perspectiva.">
+<meta property="og:title" content="NUVIA · Ecosistema">
+<meta property="og:description" content="Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas y Colaboradores son espacios comunes.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -20,337 +19,74 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NUVIA · Entender tu dinero">
-<meta name="twitter:description" content="NUVIA ofrece información financiera clara, herramientas patrimoniales y formación para ayudar a las familias a decidir con perspectiva.">
+<meta name="twitter:title" content="NUVIA · Ecosistema">
+<meta name="twitter:description" content="Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas y Colaboradores son espacios comunes.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
-
-<title>NUVIA · Entender tu dinero</title>
-
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
-
+<link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
-<link rel="stylesheet" href="estilos/nuvia-pages.css?v=home-2026-0901-r3">
+<link rel="stylesheet" href="estilos/nuvia-pages.css">
 
-<!-- La imagen del héroe es el LCP: se precarga y no lleva lazy. -->
-<link rel="preload" as="image" href="src/assets/home/hero-family-finance-compact.webp">
-
-<script defer src="web2-integration.js"></script>
-<script defer src="js/vendor/react.production.min.js"></script>
-<script defer src="js/vendor/react-dom.production.min.js"></script>
-<script defer src="support.js"></script>
-<script defer src="nuvia-site-unified.js"></script>
+<link rel="stylesheet" href="estilos/ecosistema/hub.css">
+<script defer src="js/nuvia-ecosistema.js"></script>
 </head>
-
-<body class="nv-home-polish nv-home-main">
-<x-dc>
-
-<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
-
-<div class="nuvia-page">
-
-  <header data-screen-label="Header" class="nuvia-site-header">
-    <div class="nuvia-site-header__inner">
-      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
-        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
-             alt="NUVIA Family Wealth" width="278" height="68" loading="eager">
-      </a>
-            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
-        <details class="nuvia-site-nav__topics" data-nav-area="economia">
-          <summary>Economía y Finanzas</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="economia.html">Portada de Economía</a>
-            <a href="mercados.html?vista=informes#lectura-informe">Informes</a>
-            <a href="mercados.html">Mercados y noticias</a>
-            <a href="cartera.html">Cartera</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
-          <summary>Patrimonio</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="patrimonio.html">Portada de Patrimonio</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="jubilacion.html">Jubilación</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
-          <summary>Familia, Salud y Bienestar</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="respiracion-relajacion.html">Respiración y relajación</a>
-            <a href="movimiento-consciente.html">Movimiento consciente</a>
-            <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
-            <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="academy">
-          <summary>Academia NUVIA</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="academia.html">Portada de Academia</a>
-            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
-            <a href="academia.html?tab=cursos">Cursos</a>
-          </div>
-        </details>
-        <a href="lecturas.html">Lecturas con Criterio</a>
-        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
-        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
-      </nav>
-    </div>
+<body class="hub-page">
+<a class="hub-skip" href="#contenido">Saltar al contenido</a>
+<header data-screen-label="Header" class="hub-header">
+    <a class="hub-brand" href="index.html" aria-label="NUVIA: portada del ecosistema" aria-current="page"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <span class="hub-brand-caption">Ecosistema</span>
+    <a class="hub-about" href="que-es-nuvia.html">Qué es NUVIA <span class="hub-about-arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
   </header>
-
-  <main id="contenido">
-
-    <!-- ══ HÉROE FOTOGRÁFICO ═════════════════════════════════════════════════
-         Mantiene la estructura y la fotografía de la versión publicada. La
-         Entrega 1 aplica el subtítulo educativo y reformula los tres pilares
-         para describir lo que la familia aprende a hacer, no un servicio de
-         gestión o una promesa de resultado ofrecida por NUVIA.
-         ═══════════════════════════════════════════════════════════════════ -->
-    <section id="inicio" data-screen-label="Hero" class="nv-hero nv-hero--photo home-hero">
-      <img class="home-hero__art" src="src/assets/home/hero-family-finance-compact.webp"
-           alt="" aria-hidden="true" width="1920" height="1080" loading="eager" fetchpriority="high">
-      <div class="home-hero__veil" aria-hidden="true"></div>
-
-      <div class="nv-container">
-        <div class="nv-hero__inner">
-          <div>
-            <p class="nv-eyebrow nv-eyebrow--on-dark">Perspectiva · Disciplina · Legado</p>
-
-            <h1>Información clara,<br>decisiones con propósito.</h1>
-
-            <p class="nv-hero__lead">
-              Información, formación y herramientas para familias que quieren comprender su dinero y pensar a largo plazo.
-            </p>
-
-            <div class="nv-hero__actions">
-              <a class="nv-btn nv-btn--accent" href="#espacios">Explorar NUVIA <span aria-hidden="true">→</span></a>
-              <a class="nv-btn nv-btn--soft" href="academia.html">Empezar a aprender</a>
-            </div>
-            <sc-if value="{{ barraPilares }}" hint-placeholder-val="{{ true }}">
-              <div class="home-pillars">
-                <div class="home-pillars__rule" aria-hidden="true"></div>
-                <div class="home-pillars__row">
-                  <div><span class="home-pillars__num">01</span><span class="home-pillars__name">Comprender</span><small>La realidad de tu economía</small></div>
-                  <div><span class="home-pillars__num">02</span><span class="home-pillars__name">Cuidar</span><small>Una mirada a largo plazo</small></div>
-                  <div><span class="home-pillars__num">03</span><span class="home-pillars__name">Transmitir</span><small>Conocimiento y criterio</small></div>
-                </div>
-              </div>
-            </sc-if>
-          </div>
-        </div>
-      </div>
+<main id="contenido" tabindex="-1">
+    <section class="hub-intro" aria-labelledby="hub-title">
+      <p class="hub-eyebrow">Cuatro webs. Una misma mirada.</p>
+      <h1 id="hub-title">Todo está <em>conectado.</em></h1>
+      <p class="hub-intro-copy">Tu dinero, tu familia, lo que sabes y lo que está por venir.<br>Un ecosistema para comprenderlo en conjunto.</p>
     </section>
-
-
-
-    <!-- ══ EL PROYECTO ═══════════════════════════════════════════════════════
-         La única sección puramente tipográfica de la portada, a propósito.
-         Mismos textos que la versión publicada, reorganizados a dos columnas
-         de lectura con los valores en un carril lateral, para que el bloque
-         no ocupe una pantalla entera de prosa. Fondo nube, sin excepción
-         blanca (ficha del fondo unificado de Inicio).
-         ═══════════════════════════════════════════════════════════════════ -->
-    <section id="que-es-nuvia" data-screen-label="Qué es NUVIA" class="nv-section home26-project-section" aria-labelledby="titulo-proyecto">
-      <div class="nv-container">
-        <div class="home26-project">
-          <div>
-            <p class="nv-eyebrow">El proyecto</p>
-            <h2 id="titulo-proyecto" class="home-intro__title">Detrás de cada decisión patrimonial hay una forma de vivir.</h2>
-            <div class="home26-project__body">
-              <p>La vivienda, el ahorro, los impuestos o la jubilación no son asuntos aislados: están relacionados con nuestros proyectos, nuestras responsabilidades y el futuro de quienes nos importan.</p>
-              <p>NUVIA reúne información, formación y herramientas para entender la economía, explorar escenarios y mirar el patrimonio con perspectiva. El conocimiento también forma parte del patrimonio de una familia: un aprendizaje que tiene en cuenta tanto las cifras como la vida que hay detrás.</p>
-            </div>
-            <a class="home26-project__link" href="que-es-nuvia.html">Descubre qué es NUVIA <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="home26-project__aside" aria-label="Valores de NUVIA">
-            <p class="nv-eyebrow nv-eyebrow--editorial">Valores</p>
-            <div class="home26-project__list">
-              <div class="home26-project__item"><span class="home26-project__num">01</span><div><span class="home26-project__name">Claridad</span><p class="nv-value-detail">Entender sin tener que ser experto.</p></div></div>
-              <div class="home26-project__item"><span class="home26-project__num">02</span><div><span class="home26-project__name">Honestidad</span><p class="nv-value-detail">Supuestos y límites siempre a la vista.</p></div></div>
-              <div class="home26-project__item"><span class="home26-project__num">03</span><div><span class="home26-project__name">Independencia</span><p class="nv-value-detail">Información para formar tu propio criterio.</p></div></div>
-            </div>
-          </div>
-        </div>
+    <nav id="webs" class="hub-stage" aria-label="Las cuatro webs de NUVIA">
+      <div class="hub-art" aria-hidden="true">
+        <div class="hub-art-halo"></div>
+        <img src="src/assets/ecosistema/conexiones.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
       </div>
+      <a class="hub-door eco-portal hub-door--economia" href="economia.html" aria-label="Economía y Finanzas: Comprender el mundo que mueve tu dinero.">
+        <span class="hub-door-marker" aria-hidden="true"></span>
+        <h2>Economía y Finanzas</h2>
+        <p>Comprender el mundo que mueve tu dinero.</p>
+        <span class="hub-door-action">Entrar en Economía <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="hub-door eco-portal hub-door--patrimonio" href="patrimonio.html" aria-label="Patrimonio: Dar perspectiva a las grandes decisiones.">
+        <span class="hub-door-marker" aria-hidden="true"></span>
+        <h2>Patrimonio</h2>
+        <p>Dar perspectiva a las grandes decisiones.</p>
+        <span class="hub-door-action">Entrar en Patrimonio <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="hub-door eco-portal hub-door--bienestar" href="bienestar.html" aria-label="Familia, Salud y Bienestar: Ampliar la mirada sobre cómo vivimos.">
+        <span class="hub-door-marker" aria-hidden="true"></span>
+        <h2>Familia, Salud<br>y Bienestar</h2>
+        <p>Ampliar la mirada sobre cómo vivimos.</p>
+        <span class="hub-door-action">Entrar en Bienestar <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+      <a class="hub-door eco-portal hub-door--academia" href="academia.html" aria-label="Academia NUVIA: Aprender hoy. Construir criterio para mañana.">
+        <span class="hub-door-marker" aria-hidden="true"></span>
+        <h2>Academia NUVIA</h2>
+        <p>Aprender hoy. Construir criterio para mañana.</p>
+        <span class="hub-door-action">Entrar en Academia <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+    </nav>
+    <section class="hub-connections" aria-label="Contenidos comunes del ecosistema">
+      <p>La curiosidad nos une.</p>
+      <nav aria-label="Lecturas y colaboradores de NUVIA">
+        <a href="lecturas.html">Lecturas con Criterio <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="colaboradores.html">Colaboradores <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </nav>
     </section>
-
-
-    <!-- ══ LÁMINA 01 · ECONOMÍA Y FINANZAS ═══════════════════════════════════
-         Sustituye el banner editorial por una lámina a sangre. Mismo texto
-         educativo y acceso a economia.html. Los indicadores y el
-         archivo siguen viviendo en Mercados; aquí no se duplica ningún dato.
-         ═══════════════════════════════════════════════════════════════════ -->
-    <div id="espacios" class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Un lugar, cinco espacios</p>
-    </div>
-    <section id="mercados" data-screen-label="Economía y Finanzas" class="nv-container home26-plate home26-plate--bleed" aria-labelledby="titulo-mercados">
-      <img class="home26-plate__art" src="src/assets/markets/secondary-news/wall-street-records.jpg"
-           alt="" aria-hidden="true" width="1200" height="800" loading="lazy">
-      <div class="home26-plate__veil" aria-hidden="true"></div>
-      <div class="home26-plate__body">
-        <h2 id="titulo-mercados" class="home26-plate__title">Economía y Finanzas</h2>
-        <div class="home26-plate__row">
-          <p class="home26-plate__copy">Inflación, tipos de interés, empleo y actividad económica. Cómo los precios, los tipos y el crecimiento se relacionan con el ahorro, la financiación y el poder de compra.</p>
-          <a class="home26-plate__cta" href="economia.html">Accede a Economía y Finanzas <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ══ LÁMINA 02 · PATRIMONIO ════════════════════════════════════════════
-         Composición partida, espejada respecto a Bienestar. Destino único a
-         patrimonio.html: reúne los cuatro ámbitos y su disponibilidad sin
-         convertir vivienda, fiscalidad o jubilación en opciones preferentes;
-         esos destinos siguen en la navegación principal.
-         ═══════════════════════════════════════════════════════════════════ -->
-    <div class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Decisiones de fondo</p>
-    </div>
-    <section id="patrimonio" data-screen-label="Patrimonio" class="nv-container home26-plate home26-plate--light home26-plate--reverse" aria-labelledby="titulo-patrimonio">
-      <div class="home26-plate__figure">
-        <img class="home26-plate__art" src="src/assets/home/patrimonio-family-home-young-family-natural-20260901.webp"
-             alt="" aria-hidden="true" width="1792" height="1024" loading="lazy">
-      </div>
-      <div class="home26-plate__body">
-        <h2 id="titulo-patrimonio" class="home26-plate__title">Patrimonio</h2>
-        <p class="home26-plate__copy">Vivienda, coste de vida, impuestos y jubilación: información y herramientas para entender el presupuesto familiar, comprender las obligaciones fiscales y explorar los ingresos futuros con perspectiva.</p>
-        <a class="home26-plate__cta" href="patrimonio.html">Accede a Patrimonio <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-
-    <!-- ══ LÁMINA 03 · FAMILIA, SALUD Y BIENESTAR ════════════════════════════
-         Sin etiquetas superpuestas, por indicación del fundador. Un único
-         enlace educativo mantiene el acceso a la portada del espacio.
-         Los textos describen temáticas: ningún consejo médico ni terapéutico.
-         ═══════════════════════════════════════════════════════════════════ -->
-    <div class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Vida y equilibrio</p>
-    </div>
-    <section id="familia-salud" data-screen-label="Familia, Salud y Bienestar" class="nv-container home26-plate" aria-labelledby="titulo-familia-salud">
-      <div class="home26-plate__figure">
-        <img class="home26-plate__art" src="src/assets/home/wellbeing-life-balance-banner-v2.webp"
-             alt="" aria-hidden="true" width="1600" height="900" loading="lazy">
-      </div>
-      <div class="home26-plate__body">
-        <h2 id="titulo-familia-salud" class="home26-plate__title">Familia, Salud y Bienestar</h2>
-        <p class="home26-plate__copy">Vida familiar, salud mental y física y equilibrio cotidiano: un espacio para comprender los hábitos, las relaciones y la conciliación entre familia, trabajo y descanso.</p>
-        <a class="home26-plate__cta" href="bienestar.html">Accede a Familia, Salud y Bienestar <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-
-    <!-- Academia utiliza una escena de aprendizaje y el mismo componente
-         fotográfico que los otros espacios. Lecturas conserva su ilustración. -->
-    <div class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Formación</p>
-    </div>
-    <section id="academia" data-screen-label="Academia" class="nv-container home26-plate home26-plate--light home26-plate--reverse" aria-labelledby="titulo-academia">
-      <div class="home26-plate__figure">
-        <img class="home26-plate__art"
-             src="src/assets/home/academia-finanzas-moderna-20260909.webp"
-             alt="" aria-hidden="true" width="2172" height="724" loading="lazy" decoding="async">
-      </div>
-      <div class="home26-plate__body">
-        <h2 id="titulo-academia" class="home26-plate__title">Academia NUVIA</h2>
-        <p class="home26-plate__copy"><strong>Saber es patrimonio.</strong> Conceptos esenciales, guías y cursos para comprender la economía y las decisiones de cada día. Aprende a tu ritmo, empieces desde donde empieces.</p>
-        <a class="home26-plate__cta" href="academia.html">Accede a Academia NUVIA <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-
-    <!-- ══ LECTURAS CON CRITERIO ═════════════════════════════════════════════ -->
-    <div class="nv-container home26-plate-label-wrap">
-      <p class="nv-eyebrow home26-plate-label">Sección editorial</p>
-    </div>
-    <section id="lecturas-con-criterio" data-screen-label="Lecturas con Criterio" class="nv-container home26-plate home26-plate--light home26-panel" aria-label="Lecturas con Criterio">
-      <div class="home-lecturas">
-        <img class="home-lecturas__art" src="src/assets/home/lecturas-con-criterio-banner-sin-boton.webp"
-             alt="Lecturas con Criterio. Historias sencillas de interés duradero."
-             width="2120" height="404" loading="lazy" decoding="async">
-        <img class="nv-reading-emblem" src="src/assets/home/lecturas-emblema-libro-20260908.webp"
-             alt="" aria-hidden="true" width="2171" height="724" loading="lazy" decoding="async">
-      </div>
-      <div class="home26-plate__body home26-panel__body">
-        <p class="home26-plate__copy">La mirada se amplía también leyendo. Libros e ideas sobre dinero, comportamiento y decisiones de largo plazo para profundizar en lo que descubres en NUVIA y desarrollar criterio propio.</p>
-        <a class="home26-plate__cta home-lecturas__cta" href="lecturas.html">Accede a Lecturas con Criterio <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
-
-
-    <div class="home26-band" aria-hidden="true"></div>
-
   </main>
-
-    <footer data-screen-label="Footer" class="nuvia-site-footer">
-    <div class="nuvia-site-footer__inner">
-      <div class="nuvia-site-footer__grid">
-        <div class="nuvia-site-footer__brand">
-          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
-               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
-          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="economia.html">Economía y Finanzas</a>
-            <a href="patrimonio.html">Patrimonio</a>
-            <a href="bienestar.html">Familia, Salud y Bienestar</a>
-            <a href="academia.html">Academia NUVIA</a>
-            <a href="lecturas.html">Lecturas con Criterio</a>
-          </div>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="cartera.html">Cartera y analítica</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="jubilacion.html">Jubilación</a>
-          </div>
-        </div>
-        <div class="nuvia-site-footer__info-column">
-          <h2 class="nuvia-site-footer__heading">Información</h2>
-          <div class="nuvia-site-footer__info">
-            <a href="colaboradores.html">Colaboradores</a>
-            <a href="que-es-nuvia.html">Qué es NUVIA</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="independencia.html">Independencia</a>
-            <span>Contenido educativo e informativo.</span>
-            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="nuvia-site-footer__legal">
-        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
-        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
-      </div>
-    </div>
+<footer data-screen-label="Footer" class="hub-footer">
+    <p>Conocimiento para la vida en familia.</p>
+    <a href="metodologia.html">Metodología <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="independencia.html">Independencia <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </footer>
-
-</div>
-</x-dc>
-
-<script type="text/x-dc" data-dc-script data-props="{&quot;barraPilares&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Hero&quot;}}">
-class Component extends DCLogic {
-  state = { temasOpen: false };
-  renderVals() {
-    return {
-      temasOpen: this.state.temasOpen,
-      abrirTemas: () => this.setState({ temasOpen: true }),
-      cerrarTemas: () => this.setState({ temasOpen: false }),
-      barraPilares: this.props.barraPilares ?? true,
-    };
-  }
-}
-</script>
 </body>
 </html>

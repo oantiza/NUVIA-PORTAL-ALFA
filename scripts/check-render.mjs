@@ -4,13 +4,13 @@
    verdad y mide lo que el usuario ve, porque hay defectos que solo existen una
    vez aplicada la cascada:
 
-     · el suelo tipográfico de 12 px y la escala 12/14/16/18/22/28/36;
+     · el suelo tipográfico de 12 px y las escalas aprobadas por identidad;
      · el contraste AA, componiendo el alfa del texto contra su fondo real;
      · los desbordes horizontales;
      · las fugas del envoltorio de interpolación.
 
-   Necesita Playwright y un Chromium. Si no están, no falla: lo dice y se salta,
-   para que la publicación no dependa de que el entorno tenga navegador.
+   Necesita Playwright y un Chromium. Su ausencia falla la auditoría: no puede
+   darse por validado un render que no se ha observado.
 
        npm run auditar                 · las páginas canónicas a 1440 px
        npm run auditar:completo        · matriz completa de escritorio y tablet
@@ -38,7 +38,7 @@ import { createServer } from 'node:http';
 import { extname } from 'node:path';
 import { createReadStream } from 'node:fs';
 import { stat } from 'node:fs/promises';
-import { SURFACE_CONTRACT } from './nuvia-visual-contract.mjs';
+import { SURFACE_CONTRACT, TYPE_SCALES, TITLE_CONTRACT, NUMERIC_SIZE_CONTRACT } from './nuvia-visual-contract.mjs';
 import { checkNavigationAndCards } from './check-navigation-cards.mjs';
 import { checkFormControls } from './check-form-controls.mjs';
 import { checkTablesAndResults } from './check-tables-results.mjs';
@@ -62,7 +62,7 @@ const ESCALA = [12, 14, 16, 18, 22, 28, 36];
    arranque dejó la tabla de cotizaciones con una fila vacía, todo lo demás
    siguió dando cero y nadie se enteró. Estas cuentas son el mínimo. */
 const CONTENIDO = {
-  'index.html':            [['#mercados .home26-plate__cta', 1], ['#patrimonio .home26-plate__cta', 1], ['#familia-salud .home26-plate__cta', 1], ['#academia .home26-plate__cta[href="academia.html"]', 1], ['#lecturas-con-criterio .home26-plate__cta[href="lecturas.html"]', 1], ['#espacios', 1], ['#que-es-nuvia .home26-project__body', 1]],
+  'index.html':            [['#hub-title', 1, true], ['#webs .hub-door', 4, true], ['#webs .hub-door[href="economia.html"]', 1, true], ['#webs .hub-door[href="patrimonio.html"]', 1, true], ['#webs .hub-door[href="bienestar.html"]', 1, true], ['#webs .hub-door[href="academia.html"]', 1, true], ['.hub-connections a', 2, true], ['.hub-connections a[href="lecturas.html"]', 1, true], ['.hub-connections a[href="colaboradores.html"]', 1, true], ['.hub-about[href="que-es-nuvia.html"]', 1, true]],
   'mercados.html':         [['.markets-macro__item', 5], ['.markets-secondary-card', 3]],
   'mercados.html?vista=cotizaciones': [['.markets-lab__quote', 16], ['.markets-lab__chip', 5]],
   'curso.html':            [['.curso-resultado', 4], ['.curso-campo', 7]],
@@ -78,7 +78,8 @@ const CONTENIDO = {
   'fiscalidad.html':       [['.fiscal-dato', 9]],
   'cartera.html':          [['.nuvia-analysis-tabs a', 3]],
   'cartera.html?vista=models': [['.nv-modelos__tarjeta', 4], ['.nuvia-analysis-tabs a', 3]],
-  'academia.html':         [['.ac-strong', 1], ['.viv-pill', 2], ['.ac-x10', 1]],
+  'academia.html':         [['#ac-title', 1, true], ['.ac-foundations', 1, true], ['.ac-course', 1, true], ['.ac-glossary', 1, true], ['.ac-experiment', 1, true], ['.ac-deepen', 1, true], ['a[href="academia.html?tab=inicio#ruta-aprendizaje"]', 1]],
+  'academia.html?tab=inicio': [['.ac-strong', 1], ['.viv-pill', 2], ['.ac-x10', 1], ['#ruta-aprendizaje .ac-learning-step', 3, true]],
   'academia.html?tab=activos': [['.ac-subtab', 3], ['[role="tabpanel"]', 1]],
   'academia.html?tab=glosario': [['.ac-tab', 2], ['[role="tabpanel"]', 1]],
   'academia.html?tab=cursos': [['.ac-x21', 1]],
@@ -87,7 +88,7 @@ const CONTENIDO = {
   'academia.html?tab=calculadora': [['.ac-compound-chart', 1], ['.ac-compound-chart__plot > span', 5]],
   'jubilacion.html#resultados': [['#resultados', 1], ['#resultados .jb-chart svg', 3], ['.jb-chart--saldos polyline', 4], ['.jb-tax__col', 3]],
   'mercados.html?vista=informes': [['[data-report-reader]', 1], ['[data-report-edition]:not([hidden]) .nv-report', 1], ['[data-report-select]', 2]],
-  'temas.html':            [['.nv-space-tool-card', 4]],
+  'temas.html':            [['.pa-area', 4, true]],
   'temas.html?topic=jubilacion': [['.jb-stepper__btn', 4], ['#familia-legado', 1]],
   'temas.html?topic=planificacion-patrimonial': [['#tema-titulo', 1], ['.tm-pills .viv-pill', 4], ['.tm-card__title', 3]],
   'guia-calendario.html':  [['.gt-title', 1]],
@@ -98,10 +99,10 @@ const CONTENIDO = {
   'guia-fiscal.html?territorio=estatal&ccaa=referencia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1]],
   'guia-fiscal.html?territorio=estatal&ccaa=madrid': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1], ['a[href*="BOCM-m-2010-90068"]', 1]],
   'guia-fiscal.html?territorio=estatal&ccaa=andalucia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1], ['a[href*="BOE-A-2021-17915"]', 1]],
-  'que-es-nuvia.html':     [['#que-nuvia-title', 1], ['.about-world__item', 5], ['.about-value', 4]],
-  'economia.html':         [['h1', 1], ['.nv-space-tool-card', 3]],
-  'patrimonio.html':       [['h1', 1], ['.nv-space-tool-card', 4]],
-  'bienestar.html':        [['h1', 1], ['.nv-space-tool-card', 4], ['.bn-sources .tm-wellbeing-source__link', 2]],
+  'que-es-nuvia.html':     [['#que-nuvia-title', 1, true], ['.about-world__list:not(.about-world__list--common) > .about-world__item', 4, true], ['.about-world__list--common > .about-world__item', 2, true], ['.about-value', 4, true]],
+  'economia.html':         [['h1', 1, true], ['.ec-entry', 4, true], ['#mercados a[href="mercados.html"]', 1], ['#cartera a[href="cartera.html"]', 1], ['#empresas a[href="cartera.html?vista=companies"]', 1]],
+  'patrimonio.html':       [['h1', 1, true], ['.pa-area', 4, true]],
+  'bienestar.html':        [['h1', 1, true], ['.bi-topic', 4, true], ['.bi-sources .tm-wellbeing-source__link', 2, true]],
   'movimiento-consciente.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 4]],
   'nutricion-equilibrada.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-siblings a', 4]],
   'respiracion-relajacion.html': [['h1', 1], ['.nv-sub-hero__img', 1], ['.bn-entry', 2]],
@@ -124,6 +125,7 @@ const ERRORES_ESPERADOS = {};
    y estados que solo existen con parámetros o anclas. Estas rutas adicionales
    se mantienen aquí porque describen comportamiento, no inventario. */
 const RUTAS_ADICIONALES = [
+  'academia.html?tab=inicio',
   'academia.html?tab=activos', 'academia.html?tab=glosario', 'academia.html?tab=pib',
   'temas.html?topic=jubilacion', 'temas.html?topic=planificacion-patrimonial',
   'mercados.html?vista=cotizaciones', 'cartera.html?vista=models', 'academia.html?tab=cursos',
@@ -166,7 +168,7 @@ const servidor = createServer(async (req, res) => {
 await new Promise((ok) => servidor.listen(0, '127.0.0.1', ok));
 const base = `http://127.0.0.1:${servidor.address().port}/`;
 
-const MEDIR = ({ ESC, surfaces }) => {
+const MEDIR = ({ ESC, surfaces, typeScales, titleContract, numericSizes }) => {
   const cv = document.createElement('canvas'); cv.width = cv.height = 1;
   const cx = cv.getContext('2d', { willReadFrequently: true });
   const cache = new Map();
@@ -197,6 +199,7 @@ const MEDIR = ({ ESC, surfaces }) => {
     return acc;
   }
   const salida = { textos: [], pequenos: [], escala: {}, desbordes: [], fugas: {}, colisiones: [], sinNombre: [], ayudasSueltas: [], sinFoco: [], estadosSinSemantica: [], tablists: [], externos: [], estructura: [], superficies: [] };
+  const titleRule = (element) => titleContract.findLast(([selector]) => element.matches(selector));
   let n = 0;
   document.querySelectorAll('body *').forEach((el) => {
     const cs = getComputedStyle(el);
@@ -216,7 +219,10 @@ const MEDIR = ({ ESC, surfaces }) => {
     while (ref && giros < 4 && (!ref.className || /^(sc-interp|sc-if|sc-for)?$/.test(ref.className.toString().trim()))) { ref = ref.parentElement; giros++; }
     const cls = (ref && ref.className ? ref.className.toString() : el.tagName).slice(0, 45);
     if (fs < 12 && !decorativo) salida.pequenos.push(`${fs}px "${t.slice(0, 28)}" [${cls}]`);
-    if (!ESC.includes(fs) && fs < 40 && !decorativo) {
+    const profile = typeScales.findLast(([selector]) => el.closest(selector));
+    const title = el.closest('h1');
+    const exactTitle = title && titleRule(title);
+    if (!(profile ? profile[1] : ESC).includes(fs) && (profile || fs < 40) && !decorativo && !exactTitle) {
       const k = `${fs}px [${cls || el.tagName}]`;
       salida.escala[k] = (salida.escala[k] || 0) + 1;
     }
@@ -241,12 +247,15 @@ const MEDIR = ({ ESC, surfaces }) => {
   /* La cabecera puede envolver en tablet, pero ninguno de sus elementos
      visibles puede invadir a otro. Se miden cajas reales, no anchos teóricos. */
   const cabecera = [...document.querySelectorAll(
-    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details'
+    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details, .hub-brand, .hub-brand-caption, .hub-about, .web-header-row > .web-brand, .web-header-row > .web-name, .web-header-row > .eco-switch, .web-local a'
   )].filter((el) => {
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
     return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0;
   });
+  if (document.body.matches('.hub-page, .web-page, [data-eco-theme]') && cabecera.length < 3) {
+    salida.colisiones.push('La cabecera del ecosistema no ofrece sus tres elementos auditables');
+  }
   for (let i = 0; i < cabecera.length; i++) {
     const a = cabecera[i].getBoundingClientRect();
     for (let j = i + 1; j < cabecera.length; j++) {
@@ -263,6 +272,39 @@ const MEDIR = ({ ESC, surfaces }) => {
     return cs.display !== 'none' && cs.visibility !== 'hidden' && box.width > 0 && box.height > 0
       && !el.closest('[aria-hidden="true"], details:not([open])');
   };
+  /* Los destinos nuevos se someten al mismo mínimo táctil que los controles.
+     No se miden enlaces en línea del texto editorial como botones. */
+  document.querySelectorAll('.hub-page a, .web-header a, .web-header summary, .web-footer a, .web-page main :is(.web-link, .web-button, .ec-entry-action, .ac-quiet-link, .ac-deepen nav a)').forEach((el) => {
+    if (!visible(el) && !el.matches('summary')) return;
+    const box = el.getBoundingClientRect();
+    if (!box.width || !box.height) return;
+    if (box.width < 43.9 || box.height < 43.9) salida.estructura.push(`destino inferior a 44 px: ${el.className || el.textContent.trim().slice(0, 35)} (${box.width.toFixed(1)} × ${box.height.toFixed(1)})`);
+  });
+  if (document.querySelectorAll('main h1').length !== 1) salida.estructura.push('La vista debe mostrar un único título principal');
+  document.querySelectorAll('main h1').forEach((heading) => {
+    const rule = titleRule(heading);
+    if (!rule) {
+      if (document.body.matches('.hub-page, .web-page, [data-eco-theme]')) salida.estructura.push('El título principal del ecosistema no tiene contrato tipográfico');
+      return;
+    }
+    let size = rule[1];
+    for (const [maxWidth, value] of rule[2]) if (innerWidth <= maxWidth) size = value;
+    const probe = document.createElement('span');
+    probe.style.cssText = `position:absolute;display:none;font-family:var(--nv-font-serif);font-size:${size};font-weight:${rule[3] || 400};`;
+    heading.append(probe);
+    try {
+      const actual = getComputedStyle(heading), expected = getComputedStyle(probe);
+      for (const property of ['fontSize', 'fontFamily', 'fontWeight']) {
+        if (actual[property] !== expected[property]) salida.estructura.push(`${rule[0]}: ${property} ${actual[property]}; se espera ${expected[property]}`);
+      }
+    } finally { probe.remove(); }
+  });
+  document.querySelectorAll(numericSizes.map(([selector]) => selector).join(',')).forEach((el) => {
+    if (!visible(el)) return;
+    const [selector, expected] = numericSizes.findLast(([selector]) => el.matches(selector));
+    const actual = parseFloat(getComputedStyle(el).fontSize);
+    if (Math.abs(actual - expected) > .1) salida.estructura.push(`${selector}: cifra a ${actual}px; se esperan ${expected}px originales`);
+  });
   document.querySelectorAll('input:not([type="hidden"]), select, textarea, button').forEach((control) => {
     if (!visible(control)) return;
     const labelledBy = (control.getAttribute('aria-labelledby') || '').split(/\s+/).filter(Boolean)
@@ -353,7 +395,8 @@ const MEDIR = ({ ESC, surfaces }) => {
     const box = el.getBoundingClientRect();
     if (!box.width || !box.height || el.parentElement?.closest('.nv-container')) return;
     const isHeader = el.matches('.nuvia-site-header__inner');
-    const gutter = innerWidth <= (isHeader ? 1319 : 1120) ? 28 : 48;
+    const aboutIndex = el.matches('body[data-eco-theme="nuvia"] .about-index');
+    const gutter = aboutIndex ? (innerWidth <= 1119 ? 32 : 48) : innerWidth <= (isHeader ? 1319 : 1120) ? 28 : 48;
     const expected = Math.min(1240, viewport - 2 * gutter);
     if (Math.abs(box.width - expected) > 1 || Math.abs(box.left - (viewport - expected) / 2) > 1) {
       salida.estructura.push(`${el.className}: ancho ${box.width.toFixed(1)} y borde ${box.left.toFixed(1)}; se esperan ${expected} y ${((viewport - expected) / 2).toFixed(1)}`);
@@ -362,11 +405,26 @@ const MEDIR = ({ ESC, surfaces }) => {
       salida.estructura.push('Cartera: el relleno lateral del hero desplaza el texto respecto al laboratorio');
     }
   });
+  for (const el of document.querySelectorAll('.web-wrap, .hub-stage, .hub-footer, body[data-eco-theme="nuvia"] .about-shell, body[data-eco-theme="nuvia"] .about-hero__frame')) {
+    const box = el.getBoundingClientRect();
+    if (!box.width || !box.height) continue;
+    let expected = Math.min(1240, viewport * .9);
+    if (el.matches('.hub-stage')) expected = innerWidth <= 859 ? viewport * .83 : innerWidth <= 1179 ? viewport * .9 : Math.min(1180, viewport * .88);
+    else if (el.matches('.hub-footer')) expected = Math.min(1382, viewport * .9);
+    else if (el.matches('.about-shell, .about-hero__frame')) expected = Math.min(1240, viewport - (innerWidth <= 1119 ? 64 : 96));
+    if (Math.abs(box.width - expected) > 1 || Math.abs(box.left - (viewport - expected) / 2) > 1) salida.estructura.push(`${el.className}: ancho/borde ${box.width.toFixed(1)}/${box.left.toFixed(1)}; se esperan ${expected.toFixed(1)}/${((viewport - expected) / 2).toFixed(1)}`);
+  }
   document.querySelectorAll('.nv-section--tight').forEach((el) => {
     if (!el.getBoundingClientRect().height) return;
     const cs = getComputedStyle(el);
-    if (parseFloat(cs.paddingTop) !== 48 || parseFloat(cs.paddingBottom) !== 48) {
-      salida.estructura.push(`sección compacta: ${cs.paddingTop}/${cs.paddingBottom}; se esperan 48px/48px`);
+    let expected = [48, 48];
+    if (el.matches('body[data-eco-theme="bienestar"] main .nv-section--tight')) expected = [42, 56];
+    if (el.matches('body[data-eco-theme="colaboradores"] main > .nv-section')) expected = innerWidth <= 850 ? [42, 32] : [62, 48];
+    if (el.matches('body[data-eco-theme="lecturas"] .nv-library-welcome')) expected = [48, 40];
+    if (el.matches('body[data-eco-theme="lecturas"] #seleccion-lecturas')) expected = [40, 56];
+    if (el.matches('body[data-eco-theme="lecturas"] #comunidad-lecturas')) expected = [0, 48];
+    if (parseFloat(cs.paddingTop) !== expected[0] || parseFloat(cs.paddingBottom) !== expected[1]) {
+      salida.estructura.push(`sección compacta ${el.className}: ${cs.paddingTop}/${cs.paddingBottom}; se esperan ${expected[0]}px/${expected[1]}px`);
     }
   });
   /* 4A-3: comparar el valor pintado con el rol, resolviendo las variables en
@@ -450,7 +508,7 @@ for (const ancho of ANCHOS) {
     nuevos.push(...svgProblems);
     await p.keyboard.press('Tab');
     await p.keyboard.press('Shift+Tab');
-    const r = await p.evaluate(MEDIR, { ESC: ESCALA, surfaces: SURFACE_CONTRACT });
+    const r = await p.evaluate(MEDIR, { ESC: ESCALA, surfaces: SURFACE_CONTRACT, typeScales: TYPE_SCALES, titleContract: TITLE_CONTRACT, numericSizes: NUMERIC_SIZE_CONTRACT });
     const fallos = [];
     for (const it of r.textos) {
       let bg = it.bg;
@@ -479,9 +537,9 @@ for (const ancho of ANCHOS) {
     }
     /* ¿está el contenido? */
     const faltan = [];
-    for (const [sel, minimo] of (CONTENIDO[pag] || [])) {
+    for (const [sel, minimo, exacto] of (CONTENIDO[pag] || [])) {
       const n = await p.$$eval(sel, (e) => e.length).catch(() => 0);
-      if (n < minimo) faltan.push(`${sel}: ${n} de ${minimo}`);
+      if (exacto ? n !== minimo : n < minimo) faltan.push(`${sel}: ${n}; se esperan ${exacto ? 'exactamente' : 'al menos'} ${minimo}`);
     }
     const escala = Object.entries(r.escala);
     const fugas = Object.entries(r.fugas);

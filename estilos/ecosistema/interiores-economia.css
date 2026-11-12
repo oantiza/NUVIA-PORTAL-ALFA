@@ -1,0 +1,35 @@
+/* Economía: observatorio editorial y laboratorio. Los datos mantienen su color. */
+@media screen {
+  body[data-eco-theme="economia"] .nv-entry { background: var(--nv-surface); border-bottom: 1px solid var(--nv-line); }
+  body[data-eco-theme="economia"] .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1.25fr) minmax(0,.75fr); gap: 54px; }
+  body[data-eco-theme="economia"] .nv-sub-hero__img { height: 278px; border-radius: 3px 3px 75px 3px; }
+  body[data-eco-theme="economia"] .nuvia-analysis-hero .nv-sub-hero__img { object-fit: contain; border-radius: 8px; background: var(--nv-surface-page); }
+  body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav,.nuvia-analysis-tabs) { background: var(--nv-surface-page); border-radius: 4px; padding: 3px; gap: 2px; }
+  body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav button,.nuvia-analysis-tabs a) { padding: 9px 14px; font-size: 14px; }
+  body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav button,.nuvia-analysis-tabs a):is([aria-current="page"],[aria-pressed="true"]) { background: var(--nv-navy-900); color: var(--nv-text-on-dark); border-radius: 3px; }
+  body[data-eco-theme="economia"] .markets-macro { border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="economia"] .markets-macro__item { box-shadow: none; border-radius: 3px; }
+  body[data-eco-theme="economia"] :is(.markets-secondary-card,.markets-news-card,.markets-lab) { box-shadow: none; border-color: var(--nv-line); border-radius: 4px; }
+  body[data-eco-theme="economia"] :is(.markets-secondary-card__title,.markets-news-card__title,.markets-section-title) { font-family: var(--nv-font-serif); font-weight: 400; }
+  body[data-eco-theme="economia"] :is(.markets-tools-nav,.nv-reports-nav) { gap: 8px; }
+  body[data-eco-theme="economia"] .nv-reports-nav a { min-height: 44px; border-radius: 4px; }
+  body[data-eco-theme="economia"] .nv-report { border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="economia"] .nv-report__header { border-top: 4px solid var(--nv-navy-700); }
+  body[data-eco-theme="economia"] .nv-report-card { border-radius: 4px; box-shadow: none; }
+  body[data-eco-theme="economia"] .nv-report__figures > div { border-radius: 3px; }
+  body[data-eco-theme="economia"] .nv-report__story { gap: 32px; }
+  body[data-eco-theme="economia"] :is(.nv-lab-caja,.nv-modelos__tarjeta) { box-shadow: none; border-radius: 5px; border-color: var(--nv-line-strong); }
+  body[data-eco-theme="economia"] .nv-lab-caja--principal { border-top: 3px solid var(--nv-navy-900); }
+  body[data-eco-theme="economia"] .nv-lab-fase__cabecera h2 { font-family: var(--nv-font-serif); font-weight: 400; letter-spacing: -.025em; }
+  body[data-eco-theme="economia"] .nv-lab-fase__numero { border-radius: 4px; }
+  body[data-eco-theme="economia"] .nv-atajos { padding-block: 8px; }
+  body[data-eco-theme="economia"] .nv-atajos__enlace { min-height: 44px; border-radius: 4px; }
+  body[data-eco-theme="economia"] .nv-aviso-alfa { border-radius: 4px; }
+  body[data-eco-theme="economia"] .nuvia-company-frame { border-radius: 5px; border: 1px solid var(--nv-line); }
+  @media (max-width: 999px) {
+    body[data-eco-theme="economia"] .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1fr) minmax(0,.7fr); gap: 28px; }
+    body[data-eco-theme="economia"] .nv-sub-hero__img { height: 232px; }
+    body[data-eco-theme="economia"] .nuvia-analysis-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1fr); }
+    body[data-eco-theme="economia"] .nv-entry .nuvia-analysis-tabs { width: 100%; }
+  }
+}

@@ -1,0 +1,301 @@
+/* Qué es NUVIA · presentación institucional del ecosistema.
+   Capa de pantalla sobre el relato canónico: sin cambios de contenido,
+   orden, destinos, imágenes, comportamiento ni estilos de impresión. */
+@media screen {
+  body[data-eco-theme="nuvia"] { --eco-accent: var(--nv-green-800); }
+  body[data-eco-theme="nuvia"] .about-presentation { background: var(--nv-surface); }
+  body[data-eco-theme="nuvia"] .about-shell,
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero__frame {
+    width: min(1240px, calc(100% - 96px));
+  }
+  body[data-eco-theme="nuvia"] .about-kicker,
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-kicker {
+    color: var(--nv-green-800);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    gap: 13px;
+  }
+  body[data-eco-theme="nuvia"] .about-kicker > span,
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-kicker > span {
+    width: 32px;
+    height: 32px;
+    border-color: var(--nv-line-strong);
+    color: var(--nv-text-muted);
+    font-size: 12px;
+  }
+
+  /* La imagen y la declaración conviven sin poner texto sobre la fotografía. */
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero.nv-entry {
+    min-height: 455px;
+    padding-block: 22px 30px;
+    background: color-mix(in srgb, var(--nv-surface-editorial) 38%, var(--nv-surface));
+    border-bottom: 0;
+    color: var(--nv-text);
+  }
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__frame {
+    min-height: 403px;
+    grid-template-rows: auto 1fr auto;
+    padding-block: 0;
+  }
+  body[data-eco-theme="nuvia"] .about-hero .about-hero__art {
+    display: block;
+    inset: 76px max(48px, calc((100% - 1240px) / 2)) auto auto;
+    width: min(38%, 485px);
+    height: 325px;
+    border-radius: 130px 12px 130px 12px;
+    object-fit: cover;
+    object-position: 60% center;
+    transform: none;
+  }
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__copy {
+    max-width: 56%;
+    padding-block: 14px 24px;
+    animation: none;
+  }
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero h1 {
+    max-width: none;
+    margin: 22px 0 22px;
+    font: 400 clamp(52px, 4.7vw, 68px)/1.07 var(--nv-font-serif);
+    letter-spacing: -.045em;
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__lead {
+    max-width: 40ch;
+    margin: 0;
+    color: var(--nv-text-soft);
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  body[data-eco-theme="nuvia"] .about-hero__lead strong { font-weight: 400; }
+  body[data-eco-theme="nuvia"] .about-hero :is(.nv-breadcrumb a, .nv-breadcrumb [aria-current="page"], .nv-breadcrumb li + li::before) { color: var(--nv-text-muted); }
+  body[data-eco-theme="nuvia"] .about-hero .nv-breadcrumb a:hover { color: var(--nv-green-800); }
+  body[data-eco-theme="nuvia"] .about-hero .about-hero__scroll {
+    display: flex;
+    max-width: 55%;
+    color: var(--nv-text-muted);
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  body[data-eco-theme="nuvia"] .about-hero__scroll > span { width: 30px; background: var(--nv-green-700); }
+  body[data-eco-theme="nuvia"] .about-index {
+    width: min(1240px, calc(100% - 96px));
+    justify-content: flex-start;
+    gap: 12px 42px;
+    padding-block: 18px;
+    border-bottom: 1px solid var(--nv-line);
+  }
+  body[data-eco-theme="nuvia"] .about-index a {
+    min-height: 44px;
+    border-bottom-color: var(--nv-line-strong);
+    color: var(--nv-navy-900);
+    font-size: 14px;
+  }
+  body[data-eco-theme="nuvia"] .about-index a:hover { color: var(--nv-green-800); border-bottom-color: var(--nv-green-800); }
+
+  /* El manifiesto y el propósito se leen como una conversación, con pausas. */
+  body[data-eco-theme="nuvia"] .about-presentation :is(.about-manifesto, .about-purpose, .about-world, .about-values) { padding-block: 64px; }
+  body[data-eco-theme="nuvia"] .about-manifesto { background: var(--nv-surface); color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-manifesto .about-shell {
+    display: grid;
+    grid-template-columns: 1.08fr .92fr;
+    gap: 26px 72px;
+    align-items: start;
+  }
+  body[data-eco-theme="nuvia"] .about-manifesto .about-kicker { grid-column: 1 / -1; }
+  body[data-eco-theme="nuvia"] .about-manifesto__statement {
+    display: block;
+    max-width: 23ch;
+    margin: 0;
+    font: 400 36px/1.25 var(--nv-font-serif);
+    letter-spacing: -.025em;
+  }
+  body[data-eco-theme="nuvia"] .about-manifesto__statement > span,
+  body[data-eco-theme="nuvia"] .about-manifesto__statement > span:nth-child(n) {
+    display: inline;
+    max-width: none;
+    padding-left: 0;
+    color: inherit;
+    font-style: normal;
+  }
+  body[data-eco-theme="nuvia"] .about-manifesto__body {
+    max-width: 52ch;
+    margin: 5px 0 0;
+    border: 0;
+    padding-left: 0;
+    color: var(--nv-text-soft);
+    font-size: 17px;
+    line-height: 1.85;
+  }
+  body[data-eco-theme="nuvia"] .about-purpose { background: var(--nv-surface-editorial); }
+  body[data-eco-theme="nuvia"] .about-purpose__grid { grid-template-columns: .72fr 1.28fr; gap: 80px; }
+  body[data-eco-theme="nuvia"] .about-purpose__heading { border: 0; padding: 0; }
+  body[data-eco-theme="nuvia"] :is(.about-purpose h2, .about-world h2, .about-values h2) {
+    margin-top: 24px;
+    color: var(--nv-navy-900);
+    font: 400 44px/1.08 var(--nv-font-serif);
+    letter-spacing: -.035em;
+  }
+  body[data-eco-theme="nuvia"] .about-purpose__signature {
+    margin-top: 28px;
+    font-size: 27px;
+    line-height: 1.16;
+    letter-spacing: -.02em;
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="nuvia"] .about-purpose__signature em { color: inherit; font-style: normal; }
+  body[data-eco-theme="nuvia"] .about-purpose__copy p { max-width: 61ch; font-size: 18px; line-height: 1.85; }
+  body[data-eco-theme="nuvia"] .about-purpose__copy p + p { margin-top: 25px; color: var(--nv-text-soft); font-size: 16px; }
+  body[data-eco-theme="nuvia"] .about-purpose__copy strong { font-family: inherit; font-weight: 600; }
+
+  /* Pausa familiar: conserva la foto completa en su lugar, junto a la cita. */
+  body[data-eco-theme="nuvia"] .about-horizon {
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 64px;
+    padding: 64px max(48px, calc((100% - 1240px) / 2));
+    background: var(--nv-surface);
+  }
+  body[data-eco-theme="nuvia"] .about-horizon__art {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    border-radius: 5px 90px 5px 5px;
+    object-fit: contain;
+  }
+  body[data-eco-theme="nuvia"] .about-horizon__veil { background: none; pointer-events: none; }
+  body[data-eco-theme="nuvia"] .about-horizon blockquote {
+    max-width: 30ch;
+    margin: 0;
+    padding: 12px 0 0;
+    color: var(--nv-navy-900);
+    font: 400 31px/1.32 var(--nv-font-serif);
+    letter-spacing: -.025em;
+  }
+  body[data-eco-theme="nuvia"] .about-horizon blockquote > span { color: var(--nv-green-700); margin-bottom: 20px; }
+
+  /* Cuatro webs y, en un grupo propio, los dos espacios comunes. */
+  body[data-eco-theme="nuvia"] .about-common-heading { margin-top: 58px; padding-top: 24px; border-top: 1px solid var(--nv-line-strong); }
+  body[data-eco-theme="nuvia"] .about-common-heading h2 { margin: 0 0 20px; }
+  body[data-eco-theme="nuvia"] .about-common-heading p { max-width: 64ch; margin: 0 0 30px; font-size: 16px; color: var(--nv-text-soft); }
+  body[data-eco-theme="nuvia"] .about-world { background: color-mix(in srgb, var(--nv-surface-technical) 35%, var(--nv-surface)); }
+  body[data-eco-theme="nuvia"] .about-world__heading { grid-template-columns: 1fr 1fr; gap: 12px 80px; margin-bottom: 38px; }
+  body[data-eco-theme="nuvia"] .about-world__heading > p:last-child { max-width: 43ch; margin: 0; font-size: 16px; color: var(--nv-text-soft); }
+  body[data-eco-theme="nuvia"] .about-world__item {
+    grid-template-columns: 42px minmax(0, .82fr) minmax(0, 1.18fr);
+    gap: 10px 30px;
+    padding: 28px 0;
+    border-color: var(--nv-line-strong);
+    transition: background-color .2s ease;
+  }
+  body[data-eco-theme="nuvia"] .about-world__item:hover { padding-inline: 0; background: var(--nv-surface); }
+  body[data-eco-theme="nuvia"] .about-world__item > span { padding-top: 8px; color: var(--nv-text-muted); font-size: 12px; letter-spacing: 0; }
+  body[data-eco-theme="nuvia"] .about-world__item h3 { font-size: 30px; line-height: 1.15; font-weight: 400; }
+  body[data-eco-theme="nuvia"] .about-world__item p { grid-column: 3; grid-row: 1; font-size: 15px; line-height: 1.8; }
+  body[data-eco-theme="nuvia"] .nv-about-space-link { grid-column: 3; grid-row: 2; min-height: 44px; color: var(--nv-green-800); font-size: 14px; }
+  body[data-eco-theme="nuvia"] .nv-about-space-link::after { color: inherit; }
+
+  /* Cuatro valores en una superficie compartida, sin bloques de color pesados. */
+  body[data-eco-theme="nuvia"] .about-values { background: var(--nv-surface); }
+  body[data-eco-theme="nuvia"] .about-values__heading { align-items: center; margin-bottom: 35px; }
+  body[data-eco-theme="nuvia"] .about-values h2 { margin: 0; }
+  body[data-eco-theme="nuvia"] .about-values__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 64px; }
+  body[data-eco-theme="nuvia"] .about-value {
+    display: block;
+    min-height: 0;
+    padding: 25px 0 0;
+    border: 0;
+    border-top: 1px solid var(--nv-line-strong);
+    background: none;
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="nuvia"] .about-value > span {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    color: var(--nv-green-800);
+    font-size: 22px;
+    font-style: normal;
+    opacity: 1;
+  }
+  body[data-eco-theme="nuvia"] .about-value h3 { margin: 17px 0 15px; font-size: 31px; line-height: 1.12; font-weight: 400; }
+  body[data-eco-theme="nuvia"] .about-value p { max-width: 58ch; color: var(--nv-text-soft); font-size: 15px; line-height: 1.8; }
+  body[data-eco-theme="nuvia"] .about-presentation .about-principle { min-height: 0; padding-block: 68px; background: var(--nv-surface-editorial); }
+  body[data-eco-theme="nuvia"] .about-principle p { max-width: 950px; font-size: 43px; line-height: 1.2; font-weight: 400; letter-spacing: -.03em; }
+  body[data-eco-theme="nuvia"] .about-principle p > strong { color: var(--nv-green-800); font-weight: 400; font-style: normal; }
+
+  /* Cierre de marca sobrio; ambos destinos siguen siendo accesibles. */
+  body[data-eco-theme="nuvia"] .about-presentation .about-finale { padding-block: 58px; background: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale__halo { width: min(690px, 80%); box-shadow: none; border-color: var(--nv-line-on-dark); }
+  body[data-eco-theme="nuvia"] .about-finale__content { width: min(900px, calc(100% - 96px)); }
+  body[data-eco-theme="nuvia"] .about-finale__logo { width: 240px; margin-bottom: 28px; }
+  body[data-eco-theme="nuvia"] .about-finale .about-kicker { color: var(--nv-text-on-dark); }
+  body[data-eco-theme="nuvia"] .about-finale .about-kicker > span { border-color: var(--nv-line-on-dark-strong); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="nuvia"] .about-finale__welcome > strong { margin-top: 27px; font-size: 48px; line-height: 1.07; font-weight: 400; }
+  body[data-eco-theme="nuvia"] .about-finale__welcome > span { max-width: 64ch; margin-top: 24px; font-size: 16px; line-height: 1.8; }
+  body[data-eco-theme="nuvia"] .about-finale__actions { gap: 18px; }
+  body[data-eco-theme="nuvia"] .about-finale__link {
+    min-height: 44px;
+    margin-top: 28px;
+    padding: 9px 18px;
+    border: 1px solid var(--nv-text-on-dark);
+    border-radius: 6px;
+    background: var(--nv-surface);
+    color: var(--nv-navy-900);
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  body[data-eco-theme="nuvia"] .about-finale__link--secondary { background: none; color: var(--nv-text-on-dark); border-color: var(--nv-line-on-dark-strong); }
+  body[data-eco-theme="nuvia"] .about-finale__link:hover { color: var(--nv-green-800); background: var(--nv-green-100); }
+  body[data-eco-theme="nuvia"] .about-finale__disclaimer { margin-top: 30px; color: var(--nv-text-on-dark); font-size: 12px; }
+  body[data-eco-theme="nuvia"] .about-presentation a:focus-visible { outline: 3px solid var(--nv-green-700); outline-offset: 5px; }
+  body[data-eco-theme="nuvia"] .about-finale a:focus-visible { outline-color: var(--nv-text-on-dark); }
+
+  @media (max-width: 1119px) {
+    body[data-eco-theme="nuvia"] .about-shell,
+    body[data-eco-theme="nuvia"].nuvia-unified .about-hero__frame,
+    body[data-eco-theme="nuvia"] .about-index { width: calc(100% - 64px); }
+    body[data-eco-theme="nuvia"] .about-hero .about-hero__art { right: 32px; width: 38%; height: 300px; }
+    body[data-eco-theme="nuvia"] .about-manifesto .about-shell { gap: 24px 38px; }
+    body[data-eco-theme="nuvia"] .about-purpose__grid { gap: 44px; }
+    body[data-eco-theme="nuvia"] .about-horizon { padding-inline: 32px; gap: 36px; }
+    body[data-eco-theme="nuvia"] .about-horizon blockquote { font-size: 27px; }
+    body[data-eco-theme="nuvia"] .about-world__item { grid-template-columns: 34px minmax(0, .85fr) minmax(0, 1.15fr); gap: 12px 22px; }
+    body[data-eco-theme="nuvia"] .about-world__item h3 { font-size: 27px; }
+    body[data-eco-theme="nuvia"] .about-values__grid { gap: 32px 40px; }
+  }
+  @media (max-width: 859px) {
+    body[data-eco-theme="nuvia"].nuvia-unified .about-hero.nv-entry { min-height: 410px; }
+    body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__frame { min-height: 358px; }
+    body[data-eco-theme="nuvia"].nuvia-unified .about-hero h1 { font-size: 49px; }
+    body[data-eco-theme="nuvia"].nuvia-unified .about-hero .about-hero__lead { font-size: 18px; }
+    body[data-eco-theme="nuvia"] .about-hero .about-hero__art { top: 92px; height: 255px; border-radius: 95px 8px 95px 8px; }
+    body[data-eco-theme="nuvia"] .about-index { justify-content: space-between; gap: 8px 18px; }
+    body[data-eco-theme="nuvia"] .about-presentation :is(.about-manifesto, .about-purpose, .about-world, .about-values) { padding-block: 48px; }
+    body[data-eco-theme="nuvia"] .about-manifesto__statement { font-size: 30px; }
+    body[data-eco-theme="nuvia"] .about-manifesto__body { font-size: 16px; }
+    body[data-eco-theme="nuvia"] .about-purpose__grid { grid-template-columns: .7fr 1.3fr; gap: 34px; }
+    body[data-eco-theme="nuvia"] :is(.about-purpose h2, .about-world h2, .about-values h2) { font-size: 37px; }
+    body[data-eco-theme="nuvia"] .about-purpose__copy p { font-size: 16px; }
+    body[data-eco-theme="nuvia"] .about-horizon { gap: 28px; padding-block: 48px; }
+    body[data-eco-theme="nuvia"] .about-horizon blockquote { font-size: 24px; line-height: 1.35; }
+    body[data-eco-theme="nuvia"] .about-world__heading { gap: 15px 34px; }
+    body[data-eco-theme="nuvia"] .about-world__item { grid-template-columns: 34px minmax(0, 1fr); gap: 13px 22px; }
+    body[data-eco-theme="nuvia"] .about-world__item p { grid-column: 2; grid-row: 2; }
+    body[data-eco-theme="nuvia"] .nv-about-space-link { grid-column: 2; grid-row: 3; }
+    body[data-eco-theme="nuvia"] .about-values__heading { display: flex; gap: 24px; }
+    body[data-eco-theme="nuvia"] .about-value h3 { font-size: 28px; }
+    body[data-eco-theme="nuvia"] .about-principle p { font-size: 35px; }
+    body[data-eco-theme="nuvia"] .about-finale__welcome > strong { font-size: 42px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body[data-eco-theme="nuvia"] :is(.about-world__item, .about-finale__link > span) { transition: none; }
+    body[data-eco-theme="nuvia"] .about-finale__link:hover > span { transform: none; }
+  }
+}

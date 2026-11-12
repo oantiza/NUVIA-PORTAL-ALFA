@@ -6,7 +6,7 @@ import { access, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { readPageStylesSync } from '../scripts/read-page-styles.mjs';
 
-const root = resolve(import.meta.dirname, '..');
+const root = resolve(process.argv[2] ?? resolve(import.meta.dirname, '..'));
 const html = await readFile(resolve(root, 'academia.html'), 'utf8');
 const css = readPageStylesSync(root);
 
@@ -27,6 +27,16 @@ function check(label, condition) {
 }
 
 console.log('— Acceso directo a Academia NUVIA —');
+check('La portada y las vistas se resuelven en un único documento estático',
+  (html.match(/<x-dc\b/g) || []).length === 1
+  && (html.match(/<main\b/g) || []).length === 1
+  && html.includes('value="{{ esPortada }}"')
+  && html.includes('value="{{ esInteriorAcademia }}"')
+  && html.includes("return params.has('tab') ? 'inicio' : 'portada'"));
+check('La portada conserva un acceso directo al recorrido completo',
+  html.includes('href="academia.html?tab=inicio#ruta-aprendizaje"'));
+check('La aplicación de Academia no se incrusta en un iframe',
+  !/<iframe\b/i.test(html));
 check('Academia no contiene la capa ni controles de la entradilla',
   !html.includes('data-academy-intro')
   && !html.includes('Saltar introducción'));

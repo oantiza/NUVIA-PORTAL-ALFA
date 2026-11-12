@@ -1,0 +1,290 @@
+/* Colaboradores · retratos y voces del ecosistema.
+   Capa de presentación local: mismo contenido, orden, fotografía y enlaces.
+   Los colores proceden de los tokens NUVIA; la impresión conserva su CSS original. */
+@media screen {
+  body[data-eco-theme="colaboradores"] {
+    --eco-accent: var(--nv-bronze-700);
+    background: var(--nv-surface);
+    color: var(--nv-navy-900);
+    font-family: var(--nv-font-sans);
+  }
+
+  body[data-eco-theme="colaboradores"] main > .nv-hero.nv-entry {
+    padding-block: 22px 62px;
+    background: color-mix(in srgb, var(--nv-surface-editorial) 68%, var(--nv-surface));
+    border-bottom: 1px solid var(--nv-line);
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-breadcrumb {
+    margin-bottom: 34px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-hero__inner {
+    padding: 0;
+    min-height: 0;
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero__inner > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+    column-gap: 46px;
+    row-gap: 21px;
+    align-items: end;
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-eyebrow {
+    grid-column: 1 / -1;
+    color: var(--nv-bronze-700);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 14px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 {
+    max-width: none;
+    margin: 0;
+    font: 400 clamp(64px, 7.4vw, 106px)/.98 var(--nv-font-serif);
+    letter-spacing: -.055em;
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-hero__lead {
+    max-width: 40ch;
+    margin: 0 0 3px;
+    padding-left: 26px;
+    border-left: 1px solid var(--nv-bronze-500);
+    color: var(--nv-text-soft);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  body[data-eco-theme="colaboradores"] main > .nv-section {
+    padding-block: 62px 48px;
+    background: var(--nv-surface);
+  }
+  body[data-eco-theme="colaboradores"] .nv-section-heading {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 48px;
+    margin-bottom: 36px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-section-heading .nv-eyebrow {
+    color: var(--nv-bronze-700);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-section-heading h2 {
+    font: 400 38px/1.1 var(--nv-font-serif);
+    letter-spacing: -.035em;
+    margin-top: 12px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-section-heading > p {
+    max-width: 58ch;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--nv-text-soft);
+  }
+  body[data-eco-theme="colaboradores"] .nv-card-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--nv-line-strong);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas: "person bio" "person area";
+    column-gap: 48px;
+    row-gap: 14px;
+    align-items: start;
+    height: auto;
+    padding: 34px 0;
+    border: 0;
+    border-bottom: 1px solid var(--nv-line);
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--nv-surface);
+    scroll-margin-top: 40px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__header {
+    grid-area: person;
+    display: grid;
+    grid-template-columns: 108px minmax(0, 1fr);
+    align-items: center;
+    gap: 25px;
+    margin: 0;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__avatar {
+    width: 108px;
+    height: 128px;
+    border: 1px solid color-mix(in srgb, var(--nv-bronze-700) 16%, var(--nv-surface));
+    border-radius: 54px 54px 8px 8px;
+    background: var(--nv-surface-editorial);
+    color: var(--nv-bronze-700);
+    font: 400 42px/1 var(--nv-font-serif);
+    letter-spacing: -.05em;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador:nth-child(2) .nv-colaborador__avatar {
+    background: color-mix(in srgb, var(--nv-surface-technical) 58%, var(--nv-surface));
+    border-color: var(--nv-line);
+    color: var(--nv-navy-700);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador:nth-child(3) .nv-colaborador__avatar {
+    background: color-mix(in srgb, var(--nv-surface-editorial) 45%, var(--nv-surface));
+    color: var(--nv-navy-900);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__avatar--photo {
+    height: 142px;
+    border-radius: 10px 36px 10px 10px;
+    border-color: var(--nv-line);
+    background: var(--nv-green-100);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__avatar--photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    border-radius: 0;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__info h3 {
+    margin: 0;
+    color: var(--nv-navy-900);
+    font: 400 32px/1.08 var(--nv-font-serif);
+    letter-spacing: -.025em;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__rol {
+    display: block;
+    max-width: 34ch;
+    margin-top: 12px;
+    color: var(--nv-bronze-700);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador:nth-child(2) .nv-colaborador__rol,
+  body[data-eco-theme="colaboradores"] .nv-colaborador:nth-child(3) .nv-colaborador__rol {
+    color: var(--nv-navy-700);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador:has(.nv-colaborador__avatar--photo) .nv-colaborador__rol {
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__bio {
+    grid-area: bio;
+    max-width: 62ch;
+    margin: 0;
+    color: var(--nv-text-soft);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__tag {
+    grid-area: area;
+    display: block;
+    width: fit-content;
+    margin: 0;
+    padding: 10px 0 0;
+    border: 0;
+    color: var(--nv-text-soft);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__tag > span {
+    margin-right: 4px;
+    color: var(--nv-navy-900);
+    font-weight: 600;
+  }
+  body[data-eco-theme="colaboradores"] .nv-colaborador__tag a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: var(--nv-green-800);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+  }
+  body[data-eco-theme="colaboradores"] main a:focus-visible {
+    outline: 3px solid var(--nv-bronze-700);
+    outline-offset: 5px;
+    border-radius: 2px;
+  }
+  body[data-eco-theme="colaboradores"] .nv-note.nv-section-space {
+    max-width: none;
+    margin-top: 42px;
+    padding: 26px 32px;
+    background: var(--nv-surface-editorial);
+    border: 0;
+    border-left: 3px solid var(--nv-bronze-500);
+    border-radius: 0 16px 16px 0;
+    box-shadow: none;
+    color: var(--nv-text-soft);
+  }
+  body[data-eco-theme="colaboradores"] .nv-note.nv-section-space p {
+    max-width: 110ch;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  body[data-eco-theme="colaboradores"] .nv-note.nv-section-space strong {
+    color: var(--nv-navy-900);
+    font-weight: 600;
+  }
+
+  @media (max-width: 1120px) {
+    body[data-eco-theme="colaboradores"] .nv-hero__inner > div {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 {
+      font-size: 76px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-hero__lead {
+      max-width: 68ch;
+      margin-top: 8px;
+      padding-left: 0;
+      border-left: 0;
+    }
+    body[data-eco-theme="colaboradores"] .nv-section-heading,
+    body[data-eco-theme="colaboradores"] .nv-colaborador {
+      column-gap: 30px;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__header {
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 18px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__avatar {
+      width: 82px;
+      height: 104px;
+      font-size: 34px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__avatar--photo { height: 118px; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__info h3 { font-size: 28px; }
+  }
+
+  @media (max-width: 850px) {
+    body[data-eco-theme="colaboradores"] main > .nv-hero.nv-entry { padding-bottom: 40px; }
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-breadcrumb { margin-bottom: 24px; }
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 { font-size: 68px; }
+    body[data-eco-theme="colaboradores"] main > .nv-section { padding-block: 42px 32px; }
+    body[data-eco-theme="colaboradores"] .nv-section-heading {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-section-heading h2 { font-size: 34px; }
+    body[data-eco-theme="colaboradores"] .nv-section-heading > p { max-width: 72ch; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: "person" "bio" "area";
+      gap: 18px;
+      padding-block: 28px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__header {
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 24px;
+    }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__avatar { width: 92px; height: 108px; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__avatar--photo { height: 122px; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__info h3 { font-size: 32px; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__rol { max-width: 50ch; margin-top: 9px; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__bio { max-width: 72ch; }
+    body[data-eco-theme="colaboradores"] .nv-colaborador__tag { padding: 0; }
+    body[data-eco-theme="colaboradores"] .nv-note.nv-section-space { margin-top: 30px; padding: 22px 24px; }
+  }
+}

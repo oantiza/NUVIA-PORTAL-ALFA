@@ -5,13 +5,14 @@ export async function checkWellbeingEntry(page, route) {
   }
   if(route!=='bienestar.html') return [];
   const problems=[], start=page.url();
-  if(await page.locator('main h1').textContent()!=='Familia, Salud y Bienestar') problems.push('Nombre incorrecto del espacio');
+  if(await page.locator('main h1').textContent()!=='También importacómo vivimos.') problems.push('Apertura incorrecta de la web');
+  if(await page.locator('.web-name').textContent()!=='Familia, Salud y Bienestar') problems.push('Nombre incorrecto de la web');
   if(await page.locator('main input,main textarea,main form').count()) problems.push('Bienestar solicita datos');
-  const topicLinks=page.locator('#pilares-bienestar a.nv-space-tool-card');
+  const topicLinks=page.locator('#recursos .bi-topic a');
   if(await topicLinks.count()!==4) problems.push('Faltan los cuatro accesos a subsecciones');
   const destinations=await topicLinks.evaluateAll(links=>links.map(a=>a.getAttribute('href')));
   for(const destination of destinations) {
-    await page.locator('#pilares-bienestar a[href="'+destination+'"]').focus();
+    await page.locator('#recursos .bi-topic a[href="'+destination+'"]').focus();
     await page.keyboard.press('Enter');
     await page.waitForURL(new URL(destination,start).href);
     await page.locator('main h1').waitFor();
@@ -23,7 +24,7 @@ export async function checkWellbeingEntry(page, route) {
       await page.locator('.nv-breadcrumb a[href="respiracion-relajacion.html"]').click();
     }
     await page.locator('.nv-breadcrumb a[href="bienestar.html"]').click();
-    await page.locator('#pilares-bienestar').waitFor();
+    await page.locator('#recursos .bi-topic').first().waitFor();
   }
   if(await page.locator('.tm-breathing-essay').count()) problems.push('La portada contiene el artículo completo');
   const sources=page.locator('.bn-sources .tm-wellbeing-source__link');

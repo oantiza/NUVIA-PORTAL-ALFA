@@ -2,6 +2,14 @@
 
 **Qué es:** la portada del espacio, la página de Mercados y noticias, y los informes diario y semanal de mercado (generación con Gemini, contraste sin IA, revisión humana y publicación). Cartera y Empresas pertenecen al espacio pero son otro módulo: `docs/modulos/cartera-empresas.md`.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Economía y Finanzas es una de las cuatro webs del Ecosistema NUVIA; Lecturas con Criterio y Colaboradores son sus dos espacios comunes. La primera integración se realizó en el único repositorio ALFA, **sin publicar todavía**, conforme al [acta y prueba del §12](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). La nueva composición sustituye las prescripciones visuales anteriores de portada; se mantienen las órdenes editoriales y los controles de datos e informes.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+La portada se mantiene en `scripts/ecosistema/economia.mjs` y `estilos/ecosistema/economia.css`. Mercados y Cartera reciben su identidad desde `estilos/ecosistema/interiores-economia.css`, tras las hojas originales. La cáscara y `js/nuvia-ecosistema.js` pertenecen al Núcleo. Se conservan las rutas de Informes, Mercados, Cartera y Empresas, sus parámetros, lectores, descargas y motores; la regeneración de portadas no genera ni publica informes.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

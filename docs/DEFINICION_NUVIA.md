@@ -1,7 +1,35 @@
 ---
 documento: Definición canónica de NUVIA
 estado: Documento vivo, sujeto a retoques finales
-ultima_actualizacion: 2026-09-01
+ultima_actualizacion: 2026-11-12
+estructura_principal_20261112:
+  estado: Publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions
+  orden: Integrar la maqueta como nueva versión principal de NUVIA Portal Alfa, manteniendo todos los contenidos, calculadoras y funcionalidades, sin publicarla todavía
+  orden_posterior_publicacion: "Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes."
+  acta_publicacion: docs/PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md
+  alcance: Publicación autorizada de la versión integrada mediante GitHub Actions y GitHub Pages; el resultado se registra en el acta de publicación
+  portada_comun: Ecosistema NUVIA
+  webs:
+    - Economía y Finanzas
+    - Patrimonio
+    - Familia, Salud y Bienestar
+    - Academia NUVIA
+  espacios_comunes:
+    - Lecturas con Criterio
+    - Colaboradores
+  pagina_institucional: Qué es NUVIA
+  criterio: Las cuatro webs tienen identidad y navegación propias bajo una portada común; Lecturas con Criterio y Colaboradores son accesibles desde el conjunto del ecosistema
+  continuidad: Se conservan los contenidos, las calculadoras, las funcionalidades y la independencia de NUVIA; se mantiene el repositorio único y el alojamiento estático
+  copy_intro: >-
+    Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio,
+    Familia, Salud y Bienestar y Academia NUVIA. Lecturas con Criterio y
+    Colaboradores son espacios comunes, y Qué es NUVIA presenta el propósito,
+    los valores y los límites del proyecto.
+  copy_colaboradores: >-
+    Colaboradores: las personas que aportan conocimiento y perspectiva a
+    los contenidos y las herramientas de NUVIA, con vocación de servicio
+    a las familias.
+  presentacion_publica_vigente: La nueva agrupación define la versión principal; publicación autorizada por esta orden, con el resultado de cada despliegue registrado en GitHub Actions
 ---
 
 # ¿Qué es NUVIA?
@@ -18,6 +46,10 @@ Pensamos a largo plazo, como piensan las familias: comprender lo que se tiene, c
 
 ## Qué vas a encontrar
 
+Ecosistema NUVIA reúne cuatro webs: Economía y Finanzas, Patrimonio, Familia, Salud y Bienestar y Academia NUVIA. Lecturas con Criterio y Colaboradores son espacios comunes, y Qué es NUVIA presenta el propósito, los valores y los límites del proyecto.
+
+### Las cuatro webs
+
 **Economía y Finanzas**: economía, mercados y noticias explicados en lenguaje claro; qué significan la inflación, los tipos de interés o las cotizaciones, y cómo afectan a tu día a día. También incluye cartera y analítica descriptiva para comprender la composición, el riesgo y los escenarios, sin convertir el resultado en una recomendación.
 
 **Patrimonio**: guías y simuladores sobre vivienda y coste de vida, impuestos, jubilación y planificación patrimonial educativa, con los datos y los supuestos siempre a la vista.
@@ -26,7 +58,11 @@ Pensamos a largo plazo, como piensan las familias: comprender lo que se tiene, c
 
 **Academia NUVIA**: conocimientos esenciales, guías, vídeos, herramientas de aprendizaje y cursos para avanzar a tu ritmo, empieces desde donde empieces. Saber es patrimonio.
 
+### Espacios comunes
+
 **Lecturas con Criterio**: libros, informes y ensayos relacionados con la economía, el patrimonio, el comportamiento, el bienestar, el aprendizaje y las decisiones de largo plazo, seleccionados para leer con calma y desarrollar criterio propio.
+
+**Colaboradores**: las personas que aportan conocimiento y perspectiva a los contenidos y las herramientas de NUVIA, con vocación de servicio a las familias.
 
 ## Nuestro espíritu
 

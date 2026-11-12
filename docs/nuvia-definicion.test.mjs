@@ -49,8 +49,13 @@ for (const space of [
 ]) {
   assert.match(pageRaw, new RegExp(`<h3>${space}</h3>`), `Puerta canónica publicada: ${space}`);
 }
-assert.equal((pageRaw.match(/class="about-world__item"/g) || []).length, 5,
-  'La presentación conserva exactamente cinco espacios');
+assert.equal((pageRaw.match(/class="about-world__item"/g) || []).length, 6,
+  'La presentación conserva las cuatro webs y presenta los dos espacios comunes');
+const commonStart=pageRaw.indexOf('id="about-common-title"');
+assert.ok(commonStart>0,'Los espacios comunes tienen encabezado propio');
+assert.equal((pageRaw.slice(0,commonStart).match(/class="about-world__item"/g)||[]).length,4,'Exactamente cuatro webs antes de los espacios comunes');
+assert.match(pageRaw.slice(commonStart),/<h3>Lecturas con Criterio<\/h3>[\s\S]*<h3>Colaboradores<\/h3>/,'Los dos espacios comunes conservan su identidad');
+assert.doesNotMatch(pageRaw,/cinco espacios|Cinco puertas/,'La definición refleja el ecosistema aprobado');
 assert.doesNotMatch(pageRaw, /<h3>Analítica de cartera<\/h3>|<h3>Economía y mercados<\/h3>/,
   'Analítica está integrada y no quedan nombres anteriores como puertas');
 

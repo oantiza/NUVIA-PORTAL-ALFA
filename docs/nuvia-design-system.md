@@ -3,6 +3,25 @@
 Estado: estructura existente, revisada el 09-09-2026. Este documento describe
 dónde mantener los estilos actuales; no propone un rediseño ni modifica sus valores.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Por orden del fundador, el diseño aprobado del Ecosistema NUVIA es la versión principal: cuatro webs con identidad propia y dos espacios comunes, Lecturas con Criterio y Colaboradores. Se conserva un único repositorio ALFA y una sola compilación estática. La primera orden fue integrar esta versión sin publicarla todavía. El [acta de integración](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md) documenta la orden, los cambios, la prueba del §12 y la validación. Las descripciones anteriores se conservan como antecedente; esta nota actualiza la organización visual sin sustituir los límites regulatorios ni los controles funcionales.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+| Recurso principal | Responsabilidad vigente |
+| --- | --- |
+| `estilos/ecosistema/hub.css` | Composición propia de la portada común. |
+| `estilos/ecosistema/webs.css` | Cáscara compartida y base de las cuatro portadas. |
+| `estilos/ecosistema/{economia,patrimonio,bienestar,academia}.css` | Identidad de cada portada. |
+| `estilos/ecosistema/interiores.css` y `interiores-{economia,patrimonio,bienestar,academia}.css` | Adaptación de interiores, después de la cascada original. |
+| `estilos/ecosistema/interiores-{lecturas,colaboradores,nuvia}.css` | Identidad de los espacios comunes y las páginas institucionales. |
+| `estilos/ecosistema/interiores-empresas.css` | Última capa de presentación de la copia local de Empresas. |
+| `scripts/ecosistema/`, `_plantilla.html` y `js/nuvia-ecosistema.js` | Fuentes de portada, cáscara centralizada, navegación y compatibilidad de rutas. |
+| `src/assets/ecosistema/` | Imágenes principales del ecosistema; sin dependencia de `prototipos/`. |
+
+Los tokens y las fuentes autoalojadas siguen en `nuvia-tokens.css`. Los interiores se delimitan con `body[data-eco-theme]` y reglas de pantalla: no se les aplica `.web-page`, cuyo reinicio tipográfico y de SVG corresponde a las portadas. Se mantienen el orden relativo de las hojas originales, la impresión y el significado de gráficos, cifras y estados. La identidad distingue webs, no califica resultados financieros. Toda nueva regla sigue las comprobaciones de escritorio y tablet, contraste AA, foco, objetivos de 44 px y ausencia de desbordamientos.
+
 ## Capas del portal
 
 El portal ya dispone de un sistema CSS propio. Se amplía ese sistema conservando

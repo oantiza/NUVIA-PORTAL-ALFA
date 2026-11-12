@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Espacio de Economía y Finanzas en NUVIA: comprende la actualidad macroeconómica, explora carteras y analiza empresas con rigor y perspectiva familiar.">
+<title>NUVIA · Economía y Finanzas</title>
+<meta name="description" content="Actualidad económica, mercados y análisis para poner los datos en contexto y formar tu propio criterio.">
 <link rel="canonical" href="https://oantiza.github.io/NUVIA-PORTAL-ALFA/economia.html">
-
 <!-- NUVIA SOCIAL META: START -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="NUVIA">
 <meta property="og:title" content="NUVIA · Economía y Finanzas">
-<meta property="og:description" content="Espacio de Economía y Finanzas en NUVIA: comprende la actualidad macroeconómica, explora carteras y analiza empresas con rigor y perspectiva familiar.">
+<meta property="og:description" content="Actualidad económica, mercados y análisis para poner los datos en contexto y formar tu propio criterio.">
 <meta property="og:url" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/economia.html">
 <meta property="og:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta property="og:image:type" content="image/webp">
@@ -20,257 +20,84 @@
 <meta property="og:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NUVIA · Economía y Finanzas">
-<meta name="twitter:description" content="Espacio de Economía y Finanzas en NUVIA: comprende la actualidad macroeconómica, explora carteras y analiza empresas con rigor y perspectiva familiar.">
+<meta name="twitter:description" content="Actualidad económica, mercados y análisis para poner los datos en contexto y formar tu propio criterio.">
 <meta name="twitter:image" content="https://oantiza.github.io/NUVIA-PORTAL-ALFA/src/assets/social/nuvia-social-card-2026-v1.webp">
 <meta name="twitter:image:alt" content="NUVIA · Un lugar donde las familias aprenden a entender su dinero">
 <!-- NUVIA SOCIAL META: END -->
-
-<title>NUVIA · Economía y Finanzas</title>
-
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-48.png" type="image/png" sizes="48x48">
-<link rel="icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-favicon-32.png" type="image/png" sizes="32x32">
-<link rel="apple-touch-icon" href="src/assets/brand/nuvia-family-wealth-exact-2026-v2/nuvia-apple-touch-icon-180.png">
-
+<link rel="icon" href="favicon.svg">
 <link rel="stylesheet" href="estilos/nuvia-tokens.css">
 <link rel="stylesheet" href="estilos/nuvia-components.css">
 <link rel="stylesheet" href="estilos/nuvia-pages.css">
-<link rel="stylesheet" href="estilos/nuvia-market-reports.css?v=20261012">
-
-<script defer src="js/vendor/react.production.min.js"></script>
-<script defer src="js/vendor/react-dom.production.min.js"></script>
-<script defer src="support.js"></script>
-<script defer src="js/nuvia-market-reports.js"></script>
-<script defer src="nuvia-site-unified.js"></script>
+<link rel="stylesheet" href="estilos/nuvia-market-reports.css">
+<link rel="stylesheet" href="estilos/ecosistema/webs.css">
+<link rel="stylesheet" href="estilos/ecosistema/economia.css">
+<script defer src="js/nuvia-ecosistema.js"></script>
 </head>
-
-<body class="nuvia-design-lab nv-home-polish nv-space-page nv-space-page--economia">
-<x-dc>
-
-<a class="nv-skip-link" href="#contenido">Ir al contenido</a>
-
-<div class="nuvia-page">
-
-  <header data-screen-label="Header" class="nuvia-site-header">
-    <div class="nuvia-site-header__inner">
-      <a class="nuvia-site-header__brand" href="index.html" aria-label="Inicio de NUVIA">
-        <img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg"
-             alt="NUVIA Family Wealth" width="278" height="68" loading="lazy">
-      </a>
-            <nav class="nuvia-site-nav" data-nuvia-unified="true" aria-label="Navegación principal">
-        <details class="nuvia-site-nav__topics" data-nav-area="economia">
-          <summary>Economía y Finanzas</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="economia.html">Portada de Economía</a>
-            <a href="mercados.html?vista=informes#lectura-informe">Informes</a>
-            <a href="mercados.html">Mercados y noticias</a>
-            <a href="cartera.html">Cartera</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="patrimonio">
-          <summary>Patrimonio</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="patrimonio.html">Portada de Patrimonio</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="jubilacion.html">Jubilación</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="temas.html?topic=planificacion-patrimonial">Planificación patrimonial</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="bienestar">
-          <summary>Familia, Salud y Bienestar</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="bienestar.html">Portada de Bienestar</a>
-            <a href="respiracion-relajacion.html">Respiración y relajación</a>
-            <a href="movimiento-consciente.html">Movimiento consciente</a>
-            <a href="nutricion-equilibrada.html">Nutrición equilibrada</a>
-            <a href="descanso-limites-tiempo-propio.html">Descanso, límites y tiempo propio</a>
-          </div>
-        </details>
-        <details class="nuvia-site-nav__topics" data-nav-area="academy">
-          <summary>Academia NUVIA</summary>
-          <div class="nuvia-site-nav__menu">
-            <a href="academia.html">Portada de Academia</a>
-            <a href="academia.html?tab=esenciales">Conocimientos esenciales</a>
-            <a href="academia.html?tab=cursos">Cursos</a>
-          </div>
-        </details>
-        <a href="lecturas.html">Lecturas con Criterio</a>
-        <a class="nuvia-site-nav__secondary" href="colaboradores.html">Colaboradores</a>
-        <a class="nuvia-site-nav__secondary" href="que-es-nuvia.html">Qué es NUVIA</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="contenido">
-
-    <nav class="nv-container nv-breadcrumb nv-space-trail" aria-label="Ruta de navegación">
-      <ol><li><a href="index.html" data-main-menu-return>Inicio</a></li><li><span aria-current="page">Economía y Finanzas</span></li></ol>
-    </nav>
-    <section data-screen-label="Cabecera Economía y Finanzas" class="home26-plate home26-plate--bleed nv-space-entry nv-space-entry--economy" aria-labelledby="economia-title">
-      <div class="home26-plate__figure">
-        <img class="home26-plate__art" src="src/assets/home/economia-panoramica-20260909.webp" alt="" aria-hidden="true" width="2172" height="724" fetchpriority="high" decoding="async">
-      </div>
-      <div class="home26-plate__body">
-        <p class="nv-eyebrow nv-eyebrow--on-dark">Contexto y análisis</p>
-        <h1 id="economia-title" class="home26-plate__title">Economía y Finanzas</h1>
-        <p class="home26-plate__copy">Comprende cómo los tipos de interés, la inflación y los mercados se relacionan con el ahorro, la financiación y el poder adquisitivo de tu familia.</p>
-      </div>
-    </section>
-
-    <section class="nv-section nv-section--tight nv-reports-lead-section" aria-labelledby="economia-informes">
-      <div class="nv-container">
-        <div class="nv-section-heading"><div><p class="nv-eyebrow">Lectura periódica</p><h2 id="economia-informes">La economía, con perspectiva</h2></div><p>Cada sesión, el informe diario de NUVIA. Hechos, cifras y agenda para comprender el contexto; el semanal, justo debajo.</p></div>
-        <!-- NUVIA INFORMES destacado: START -->
-<div class="nv-report-lead">
-    <article class="nv-report-lead__main">
-      <div class="nv-report-lead__body">
-        <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe diario</p><span class="nv-report-lead__age" data-report-age="2026-09-14" data-report-type="DIARIO">Edición fechada</span><span class="nv-report-lead__date">14 de septiembre de 2026</span></div>
-        <h3 class="nv-report-lead__title"><a href="mercados.html?vista=informes&tipo=diario#lectura-informe">La subida de tipos en Europa y la inflación estadounidense marcan la sesión bursátil</a></h3>
-        <p class="nv-report-lead__text">El Banco Central Europeo ha elevado los tipos de interés al 2,50 % debido a las presiones inflacionistas de los altos costes energéticos. En Estados Unidos, la tasa subyacente de inflación ha avanzado un 0,3 % mensual, y los contratos de futuros descuentan otra subida de tipos en el país.</p>
-        <div class="nv-report-lead__bottom"><a class="nv-report-lead__cta" href="mercados.html?vista=informes&tipo=diario#lectura-informe">Leer el informe diario <span aria-hidden="true">→</span></a><span class="nv-report-lead__reading">5 min de lectura aprox.</span></div>
-      </div>
-      <dl class="nv-report-lead__figures"><div><dt>IPC general mensual de Estados Unidos (Agosto 2026)</dt><dd><span class="nv-report__number">+0,4 %</span></dd></div><div><dt>Tipo de la facilidad de depósito del BCE</dt><dd><span class="nv-report__number">2,50 %</span></dd></div><div><dt>Índice de Producción Industrial de España (julio 2026)</dt><dd><span class="nv-report__number">+2,6 %</span><span class="nv-report__unit">anual</span></dd></div></dl>
-      <div class="nv-report-lead__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
-    </article>
-    <aside class="nv-report-lead__aside">
-      <div class="nv-report-lead__body">
-        <div class="nv-report-lead__flag"><p class="nv-report__eyebrow">Informe semanal</p><span class="nv-report-lead__age" data-report-age="2026-09-14" data-report-type="SEMANAL">Edición fechada</span><span class="nv-report-lead__date">8 de septiembre de 2026 – 14 de septiembre de 2026</span></div>
-        <h3 class="nv-report-lead__subtitle"><a href="mercados.html?vista=informes&tipo=semanal#lectura-informe">El Banco Central Europeo sube los tipos y la energía presiona a la deuda</a></h3>
-        <p class="nv-report-lead__text">La semana bursátil ha estado dominada por la decisión del Banco Central Europeo de encarecer el precio del dinero. Paralelamente, las tensiones geopolíticas han disparado los precios del petróleo, contagiando a los bonos gubernamentales y empujando a la baja a las bolsas mundiales.</p>
-      </div>
-      <div class="nv-report-lead__bottom"><a class="nv-report-lead__cta" href="mercados.html?vista=informes&tipo=semanal#lectura-informe">Leer el semanal <span aria-hidden="true">→</span></a><span class="nv-report-lead__reading">6 min de lectura aprox.</span></div>
-      <div class="nv-report-lead__art" aria-hidden="true"><span></span><span></span><span></span><i></i></div>
-    </aside>
-  </div>
-<!-- NUVIA INFORMES destacado: END -->
-      </div>
-    </section>
-
-
-    <section id="recursos-economia" class="nv-section nv-section--tight nv-space-resources" aria-labelledby="titulo-recursos-economia">
-      <div class="nv-container">
-        <div class="nv-section-heading">
-          <div>
-            <p class="nv-eyebrow">Ámbitos de trabajo</p>
-            <h2 id="titulo-recursos-economia">Herramientas y análisis del espacio</h2>
-          </div>
-          <p>
-            Tres áreas conectadas para pasar del contexto macroeconómico a la comprensión
-            concreta de carteras y empresas cotizadas.
-          </p>
-        </div>
-
-        <div class="nv-card-grid">
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="mercados.html">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/economia-card-mercados-20260918.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg></span>
-            <span class="nv-space-tool-card__badge">Contexto y Actualidad</span>
-            <h3>Mercados y noticias</h3>
-            <p>
-              Noticias explicadas en lenguaje claro, indicadores macroeconómicos oficiales
-              (BCE, Eurostat, INE) y panel de cotizaciones con aviso de carácter ilustrativo.
-            </p>
-            <span class="nv-space-tool-card__action">Acceder a mercados <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="cartera.html">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/economia-card-cartera-20260918.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v9h9A9 9 0 0 0 12 3Z"/><path d="M8 4a9 9 0 1 0 12 12"/></svg></span>
-            <span class="nv-space-tool-card__badge">Laboratorio Cuantitativo</span>
-            <h3>Cartera y analítica</h3>
-            <p>
-              Comprende cómo se distribuye una cartera. Explora su composición, concentración,
-              solapamientos y comportamiento histórico, con los datos y supuestos a la vista.
-            </p>
-            <span class="nv-space-tool-card__action">Abrir laboratorio de cartera <span aria-hidden="true">→</span></span>
-          </a>
-
-          <a class="nv-space-tool-card nv-space-tool-card--photo" href="cartera.html?vista=companies">
-            <span class="nv-space-tool-card__media" aria-hidden="true"><img src="src/assets/home/economia-card-empresas-20260918.webp" alt="" width="1200" height="600" loading="lazy" decoding="async"></span>
-            <span class="nv-space-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21V4h10v17M14 9h6v12M2 21h20M7 8h4M7 12h4M7 16h4M17 13h1M17 17h1"/></svg></span>
-            <span class="nv-space-tool-card__badge">Análisis Fundamental</span>
-            <h3>Análisis y valoración de empresas</h3>
-            <p>
-              Acércate al negocio y a sus cifras: estados contables, ratios, dividendos
-              y evolución histórica. Consulta las fuentes, fechas y límites de cada análisis.
-            </p>
-            <span class="nv-space-tool-card__action">Consultar empresas <span aria-hidden="true">→</span></span>
-          </a>
-
-        </div>
-
-
-        <div class="nv-note nv-section-space" role="note">
-          <p>
-            <strong>Criterio de análisis independiente:</strong>
-            NUVIA calcula y explica métodos financieros académicos y modelos estadísticos, pero no emite
-            recomendaciones de compra, venta o mantenimiento, ni determina la idoneidad de ninguna inversión.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-
-    <nav class="nv-container nv-space-next" aria-label="Otros espacios de NUVIA">
-      <p>Sigue explorando NUVIA</p>
-      <a href="patrimonio.html">Patrimonio <span aria-hidden="true">→</span></a>
-      <a href="bienestar.html">Familia y bienestar <span aria-hidden="true">→</span></a>
-      <a href="academia.html">Academia <span aria-hidden="true">→</span></a>
-      <a href="lecturas.html">Lecturas <span aria-hidden="true">→</span></a>
-    </nav>
-  </main>
-
-    <footer data-screen-label="Footer" class="nuvia-site-footer">
-    <div class="nuvia-site-footer__inner">
-      <div class="nuvia-site-footer__grid">
-        <div class="nuvia-site-footer__brand">
-          <img src="src/assets/brand/nuvia-family-wealth-footer-reversed.svg"
-               alt="NUVIA Family Wealth" width="852" height="412" loading="lazy">
-          <p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Los cinco espacios</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="economia.html">Economía y Finanzas</a>
-            <a href="patrimonio.html">Patrimonio</a>
-            <a href="bienestar.html">Familia, Salud y Bienestar</a>
-            <a href="academia.html">Academia NUVIA</a>
-            <a href="lecturas.html">Lecturas con Criterio</a>
-          </div>
-        </div>
-        <div>
-          <h2 class="nuvia-site-footer__heading">Herramientas</h2>
-          <div class="nuvia-site-footer__links">
-            <a href="cartera.html">Cartera y analítica</a>
-            <a href="cartera.html?vista=companies">Análisis y valoración de empresas</a>
-            <a href="vivienda.html">Vivienda y coste de vida</a>
-            <a href="fiscalidad.html">Impuestos</a>
-            <a href="jubilacion.html">Jubilación</a>
-          </div>
-        </div>
-        <div class="nuvia-site-footer__info-column">
-          <h2 class="nuvia-site-footer__heading">Información</h2>
-          <div class="nuvia-site-footer__info">
-            <a href="colaboradores.html">Colaboradores</a>
-            <a href="que-es-nuvia.html">Qué es NUVIA</a>
-            <a href="metodologia.html">Metodología</a>
-            <a href="independencia.html">Independencia</a>
-            <span>Contenido educativo e informativo.</span>
-            <span>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</span>
-          </div>
-        </div>
-      </div>
-      <div class="nuvia-site-footer__legal">
-        <span>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</span>
-        <span>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</span>
+<body class="web-page web-page--economia">
+<a class="web-skip" href="#contenido">Saltar al contenido</a>
+<header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
+    <a class="web-brand" href="index.html" aria-label="NUVIA: portada del ecosistema"><img src="src/assets/brand/nuvia-family-wealth-exact-2026-v2/logo-rec-transp-web-04.svg" width="137" height="56" alt="NUVIA Family Wealth" loading="lazy"></a>
+    <a class="web-name" href="economia.html" aria-current="page">Economía y Finanzas</a>
+    <details class="eco-switch"><summary>Ecosistema NUVIA <span aria-hidden="true">⌄</span></summary><nav aria-label="Explorar el ecosistema"><a href="index.html">Portada del ecosistema</a><span class="eco-switch-label">Las cuatro webs</span><a href="economia.html" aria-current="page">Economía y Finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia, Salud y Bienestar</a><a href="academia.html">Academia NUVIA</a><span class="eco-switch-label">Espacios comunes</span><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><span class="eco-switch-label">Conoce NUVIA</span><a href="que-es-nuvia.html">Qué es NUVIA</a><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></details>
+  </div><nav class="web-local" data-nav-family="economia" aria-label="Navegación de Economía y Finanzas"><div class="web-wrap"><a href="economia.html" aria-current="page">Portada</a><a href="mercados.html?vista=informes#lectura-informe">Informes</a><a href="mercados.html">Mercados</a><a href="cartera.html">Cartera</a><a href="cartera.html?vista=companies">Empresas</a></div></nav></header>
+<main id="contenido" tabindex="-1"><section class="ec-opening web-wrap" aria-labelledby="ec-title">
+    <div class="ec-opening-copy">
+      <p class="ec-intro-line">Economía y Finanzas</p>
+      <h1 id="ec-title">Entender lo que<br>mueve el mundo.</h1>
+      <p class="ec-lead">Detrás de cada dato hay algo que cambia nuestra vida. Pon la actualidad, los mercados y tu dinero en perspectiva.</p>
+      <div class="ec-opening-actions">
+        <a class="web-button ec-primary" href="mercados.html?vista=informes#lectura-informe">Consultar informes <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a class="web-link ec-secondary" href="mercados.html">Ver mercados y noticias <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-  </footer>
+    <div class="ec-lens" aria-hidden="true">
+      <img src="src/assets/ecosistema/economia-perspectiva.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
+    </div>
+  </section>
 
-</div>
-</x-dc>
+  <section class="ec-observatory web-wrap" id="recursos" aria-label="Recursos de Economía y Finanzas">
+    <div class="ec-context" aria-labelledby="ec-context-title">
+      <div class="ec-section-intro">
+        <h2 id="ec-context-title">Seguir el contexto.</h2>
+        <p>Una lectura para situarte. Los datos para profundizar.</p>
+      </div>
+      <article class="ec-entry" id="informes">
+    <h3><a href="mercados.html?vista=informes#lectura-informe">Informes de mercado <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></h3>
+    <p>Consulta el diario, el semanal y el archivo de ediciones, con sus fuentes y fechas.</p>
+    <a class="ec-entry-action" href="mercados.html?vista=informes#lectura-informe">Consultar informes</a>
+  </article>
+      <article class="ec-entry" id="mercados">
+    <h3><a href="mercados.html">Mercados y noticias <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></h3>
+    <p>Noticias, indicadores y cotizaciones para entender qué está ocurriendo.</p>
+    <a class="ec-entry-action" href="mercados.html">Ver mercados y noticias</a>
+  </article>
+    </div>
+    <div class="ec-analysis" aria-labelledby="ec-analysis-title">
+      <div class="ec-section-intro">
+        <h2 id="ec-analysis-title">Explorar los datos.</h2>
+        <p>Herramientas para observar, comparar y comprender.</p>
+      </div>
+      <article class="ec-entry" id="cartera">
+    <h3><a href="cartera.html">Cartera y analítica <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></h3>
+    <p>Explora la composición y el riesgo de una cartera o consulta las carteras modelo. Los métodos y límites acompañan al análisis.</p>
+    <a class="ec-entry-action" href="cartera.html">Abrir el análisis de cartera</a>
+  </article>
+      <article class="ec-entry" id="empresas">
+    <h3><a href="cartera.html?vista=companies">Análisis y valoración de empresas <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></h3>
+    <p>Busca una empresa y consulta sus cuentas, ratios e históricos, con la procedencia y la fecha de los datos.</p>
+    <a class="ec-entry-action" href="cartera.html?vista=companies">Buscar una empresa</a>
+  </article>
+    </div>
+  </section>
+
+  <section class="ec-learning web-wrap" aria-labelledby="ec-learning-title">
+    <div>
+      <h2 id="ec-learning-title">El criterio también se aprende.</h2>
+      <p>Si aparece un concepto nuevo, Academia NUVIA te ayuda a empezar por las bases.</p>
+    </div>
+    <a class="web-link" href="academia.html">Ir a Academia NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </section>
+  <aside class="ec-note web-wrap"><p>Información y análisis descriptivo. Los cálculos no determinan qué comprar, vender o mantener ni la adecuación de una inversión para una persona.</p></aside></main>
+<footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Volver al ecosistema <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA Family Wealth. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Metodología</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
 </body>
 </html>

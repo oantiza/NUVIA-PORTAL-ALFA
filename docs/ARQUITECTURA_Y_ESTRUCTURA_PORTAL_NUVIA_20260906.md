@@ -1,5 +1,25 @@
 # NUVIA — Arquitectura y Estructura Global del Portal
 
+## Arquitectura vigente del Ecosistema NUVIA · 12-11-2026
+
+La primera orden del fundador fue integrar la maqueta del Ecosistema NUVIA como versión principal del repositorio, **sin publicarla todavía**. Esa fase queda documentada en el [acta de integración](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). La organización siguiente sustituye el mapa de cinco espacios de septiembre; el documento anterior se conserva debajo como antecedente.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+| Nivel | Destinos y rutas |
+|---|---|
+| Portada común | Ecosistema NUVIA, `index.html` |
+| Cuatro webs | Economía y Finanzas (`economia.html`), Patrimonio (`patrimonio.html`), Familia, Salud y Bienestar (`bienestar.html`), Academia NUVIA (`academia.html`) |
+| Contenido especializado | Todas las herramientas, guías, simuladores, artículos y vistas existentes, con sus URL y parámetros |
+| Espacios comunes | Lecturas con Criterio (`lecturas.html`) y Colaboradores (`colaboradores.html`) |
+| Identidad y criterios | Qué es NUVIA, Metodología e Independencia |
+
+Se mantiene un repositorio y un sitio estático. Las cuatro webs son ámbitos con identidad y navegación propias dentro del ecosistema. Academia muestra su portada sin parámetro y conserva las vistas de aprendizaje en `?tab=…`, incluida la ruta original en `?tab=inicio`. Los enlaces antiguos siguen siendo compatibles.
+
+La definición común de navegación y avisos vive en `_plantilla.html`; `scripts/ecosistema/shell.mjs` produce sus variantes y `npm run shell:sync` las sincroniza. La interfaz no depende de un servidor transformador de la maqueta. Implementación y pruebas: [Integración principal](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md).
+
+## Antecedente de septiembre de 2026
+
 **Subtítulo:** Home de entrada, 5 Homes de espacio, Colaboradores, Qué es NUVIA y Navegación dirigida  
 **Fecha:** 6 de septiembre de 2026  
 **Destinatario:** Fundador de NUVIA  

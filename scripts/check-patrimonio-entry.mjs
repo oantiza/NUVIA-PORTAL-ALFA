@@ -3,15 +3,15 @@ export async function checkPatrimonioEntry(page, route) {
   const problems=[];
   if (route==='temas.html') {
     const start=page.url();
-    const cards=page.locator('.nv-space-tool-card');
+    const cards=page.locator('.pa-area');
     if(await cards.count()!==4) return ['Patrimonio no muestra sus cuatro ámbitos'];
-    if(await page.locator('main h1').textContent()!=='Patrimonio') problems.push('La entrada de Patrimonio muestra otro tema');
+    if((await page.locator('main h1').textContent()).replace(/\s+/g,' ').trim()!=='Lo que construyes,con perspectiva.') problems.push('La entrada de Patrimonio no muestra su nueva portada');
     if(!new URL(start).pathname.endsWith('/patrimonio.html')) problems.push('El acceso antiguo no lleva a la Home canónica');
     if(await page.title()!=='NUVIA · Patrimonio') problems.push('Título de pestaña incorrecto para Patrimonio');
     if(await page.locator('main input,main textarea,main form').count()) problems.push('La portada solicita datos');
     const routes=[['vivienda','vivienda.html'],['impuestos','fiscalidad.html'],['jubilacion','jubilacion.html'],['planificacion','temas.html?topic=planificacion-patrimonial']];
     for (const [area,destination] of routes) {
-      const link=page.locator(`.nv-space-tool-card[href="${destination}"]`);
+      const link=page.locator(`.pa-area a[href="${destination}"]`).first();
       if(await link.getAttribute('href')!==destination) {problems.push(`Destino incorrecto: ${area}`);continue;}
       await link.click();
       await page.waitForURL(new URL(destination,start).href);
@@ -20,7 +20,7 @@ export async function checkPatrimonioEntry(page, route) {
       if(!await back.count()) {problems.push(`Sin regreso a Patrimonio: ${area}`);await page.goto(start);}
       else await back.click();
       await page.waitForURL(start);
-      await page.locator('.nv-space-tool-card').first().waitFor({state:'visible'});
+      await page.locator('.pa-area').first().waitFor({state:'visible'});
     }
     for (const [alias,target] of [['vivienda','vivienda.html'],['vivienda-coste-vida','vivienda.html'],['fiscalidad','fiscalidad.html'],['mis-impuestos','fiscalidad.html']]) {
       await page.goto(new URL('temas.html?topic='+alias,start).href);
@@ -28,7 +28,7 @@ export async function checkPatrimonioEntry(page, route) {
       await page.locator('main h1').waitFor({state:'visible'});
     }
     await page.goto(start);
-    await page.locator('.nv-space-tool-card').first().waitFor({state:'visible'});
+    await page.locator('.pa-area').first().waitFor({state:'visible'});
   }
   if(route==='temas.html?topic=planificacion-patrimonial') {
     if(await page.locator('.tm-overview__notice').count()!==1 || await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Planificación no conserva su estado en preparación');

@@ -2,6 +2,14 @@
 
 **Qué es:** la parte de NUVIA que es **software y datos**, no contenido: el laboratorio de cartera (`cartera.html`), la copia local del módulo de empresas (`company-analysis/`), la base propia de la alfa en Firebase (`nuvia-family-wealth`), el universo de instrumentos y los scripts de carga desde EODHD. Concentra la mitad de las pruebas del proyecto y la mayor exposición regulatoria. Es el único candidato a independizarse algún día como aplicación aparte.
 
+## Nota vigente · integración y publicación autorizada · 12-11-2026
+
+Cartera y Empresas permanecen dentro de Economía y Finanzas, una de las cuatro webs del Ecosistema NUVIA. Lecturas con Criterio y Colaboradores son los dos espacios comunes. La primera integración conservó un único repositorio ALFA y se realizó **sin publicar todavía**, según el [acta y prueba del §12](../INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md). No modifica las órdenes anteriores sobre cálculos, datos, separación profesional o autorización de Firebase, ni reclasifica las funciones existentes.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](../PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
+
+`cartera.html` añade `estilos/ecosistema/interiores.css` e `interiores-economia.css` después de su cascada original. La copia local de Empresas incorpora `estilos/ecosistema/interiores-empresas.css` como última capa visual en su compilación; no cambia el programa fuente externo. La cáscara del Núcleo y `js/nuvia-ecosistema.js` conservan las rutas y aliases de vistas. No se alteran motores, APIs, origen de datos, guardado local de carteras, estados financieros ni carga de Empresas por selección del usuario.
+
 ## Lectura obligatoria para trabajar aquí
 
 | Documento | Qué leer |

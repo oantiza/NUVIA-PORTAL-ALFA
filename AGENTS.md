@@ -6,6 +6,10 @@ Este archivo es la entrada única para cualquier persona, programa o asistente q
 
 ## Capa 0 · Siempre
 
+**Orden más reciente del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» Autoriza el commit de la integración revisada, su envío a `main` y la publicación por `.github/workflows/pages.yml`. Sustituye la restricción de no publicación de la orden inmediatamente anterior; no autoriza cambios en Firebase ni otros trabajos ajenos. Acta: `docs/PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md`.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora integra esta maqueta como la nueva versión principal de NUVIA Portal Alfa, manteniendo todos los contenidos, calculadoras y funcionalidades, sin publicarla todavía.» La versión principal local adopta Ecosistema NUVIA, cuatro webs y Lecturas/Colaboradores comunes; se conserva un solo repositorio y la construcción estática. Esta orden sustituye la organización visual anterior en lo incompatible, sin autorizar commit, push ni despliegue. Referencia operativa: `docs/INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md`.
+
 1. **Repositorio y carpeta únicos:** `https://github.com/oantiza/NUVIA-PORTAL-ALFA.git` y `C:\Users\oanti\Documents\NUVIA-PORTAL-ALFA`. `NUVIA-PORTAL-LAB` está cerrado: no se lee, modifica, sincroniza, ejecuta ni publica.
 2. **Producción:** GitHub Pages en `https://oantiza.github.io/NUVIA-PORTAL-ALFA/`. Cada actualización de `main` valida, compila `dist/` y publica mediante `.github/workflows/pages.yml`. Firebase Hosting no es canal oficial.
 3. **Escritorio y tablet solamente** (1440 → 768 px). Sin versión móvil salvo petición expresa.

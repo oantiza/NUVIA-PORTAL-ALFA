@@ -1,9 +1,13 @@
 # NUVIA Portal Alfa · Guía maestra de diseño y estructura
 
-**Versión:** 1.1 · 12-10-2026 (1.0 · 03-10-2026) · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
+**Versión:** 1.2 · 12-11-2026 (1.1 · 12-10-2026; 1.0 · 03-10-2026) · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
 **Carácter:** documento de obligado cumplimiento para toda tarea de diseño, estructura, contenido o código del portal. Si una petición entra en conflicto con esta guía, se consulta al fundador antes de actuar.
 
 Esta guía resume y ordena lo que ya está decidido y construido. Las referencias canónicas siguen siendo `AGENTS.md`, `docs/MARCO_REGULATORIO_OBLIGATORIO.md`, `docs/DEFINICION_NUVIA.md` y `docs/ARQUITECTURA_Y_ESTRUCTURA_PORTAL_NUVIA_20260906.md`; esta guía no las sustituye, las hace operativas.
+
+**Integración autorizada 12-11-2026:** la primera orden del fundador fue integrar la maqueta aprobada como versión principal local, sin publicación. El hub de cuatro piezas, las cuatro identidades y los espacios comunes sustituyen las composiciones anteriores en lo incompatible. Las reglas de contenido, independencia, accesibilidad y preservación funcional siguen vigentes. Las composiciones y sus escalas actuales residen en `estilos/ecosistema/` y `scripts/nuvia-visual-contract.mjs`; los patrones fotográficos anteriores de §3.6 describen el antecedente, no una obligación de restaurarlos. El acta [Integración principal](INTEGRACION_PRINCIPAL_ECOSISTEMA_20261112.md) registra los contratos sustituidos y sus pruebas equivalentes.
+
+**Orden posterior del fundador · 12-11-2026:** «Ahora publica esta nueva versión de NUVIA Portal Alfa en GitHub Pages, con la portada del ecosistema, las cuatro webs y los espacios comunes.» **Estado: publicación autorizada por esta orden; el resultado de cada despliegue se registra en GitHub Actions.** El [acta de publicación](PUBLICACION_ECOSISTEMA_GITHUB_PAGES_20261112.md) registra la ejecución y su resultado.
 
 ---
 
@@ -28,12 +32,13 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 | Nivel | Qué es | Páginas |
 |---|---|---|
-| 1 · Entrada | Home global: presenta NUVIA y distribuye a los cinco espacios | `index.html` |
-| 2 · Homes de espacio | Portada fotográfica de cada espacio, con entradilla y mapa de accesos | `economia.html`, `patrimonio.html`, `bienestar.html`, `academia.html`, `lecturas.html` |
+| 1 · Entrada | Ecosistema NUVIA: portada común que distribuye a cuatro webs | `index.html` |
+| 2 · Cuatro webs | Portadas con identidad propia y mapa de accesos | `economia.html`, `patrimonio.html`, `bienestar.html`, `academia.html` |
 | 3 · Páginas hijas | Herramientas, subsecciones, guías, cursos y artículos | `mercados.html`, `cartera.html`, `vivienda.html`, `jubilacion.html`, `fiscalidad.html`, `temas.html?topic=…`, `guia-*.html`, `curso.html`, subsecciones de Bienestar, artículos |
-| 4 · Institucional | Identidad y confianza | `colaboradores.html`, `que-es-nuvia.html`, `metodologia.html`, `independencia.html` |
+| Comunes | Lecturas con Criterio y Colaboradores, accesibles desde el conjunto del ecosistema | `lecturas.html`, `colaboradores.html` |
+| Institucional | Identidad y confianza | `que-es-nuvia.html`, `metodologia.html`, `independencia.html` |
 
-### 2.2 Los cinco espacios y sus hijas (mapa vigente)
+### 2.2 Las cuatro webs y los espacios comunes (mapa vigente)
 
 - **Economía y Finanzas** (`economia.html`): Informes (`mercados.html?vista=informes`), Mercados y noticias, Cartera, Análisis y valoración de empresas (`cartera.html?vista=companies`, módulo `company-analysis/`).
 - **Patrimonio** (`patrimonio.html`): Vivienda y coste de vida, Jubilación, Impuestos (`fiscalidad.html` y `guia-*.html`), Planificación patrimonial (`temas.html?topic=planificacion-patrimonial`).
@@ -43,11 +48,11 @@ Esta guía resume y ordena lo que ya está decidido y construido. Las referencia
 
 ### 2.3 Recorrido y jerarquía de una página hija
 
-`Inicio › Espacio › Página › [Artículo]`. Toda página hija lleva: ruta de navegación (`.nv-breadcrumb`), un único `<h1>`, una explicación breve y, si procede, controles o navegación local. No repite las tarjetas de bienvenida ni añade una segunda portada. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
+`Ecosistema NUVIA › Web › Página › [Artículo]`. Toda página hija lleva ruta de navegación (`.nv-breadcrumb`), un único `<h1>` visible, una explicación breve y, si procede, controles o navegación local. Academia contiene dos ramas excluyentes de plantilla, cada una con su título; el navegador muestra una sola. Los accesos antiguos (anclas, `?topic=`) se conservan con redirección o alias.
 
 ### 2.4 Cáscara común (cabecera y pie)
 
-La navegación y el pie son **un componente único** definido en `_plantilla.html` y sincronizado a todas las páginas con `npm run shell:sync` (`npm run shell:check` verifica). Nunca se edita la cabecera o el pie en una página suelta. El menú de cada espacio lista su portada y todas sus hijas (incluidas, en Bienestar, las cuatro subsecciones). El pie muestra los cinco espacios, las herramientas, la información de confianza y los avisos legales.
+La navegación y el pie parten de **una definición única** en `_plantilla.html`; `scripts/ecosistema/shell.mjs` genera las variantes del hub, las webs y las páginas comunes. Se sincronizan con `npm run shell:sync` y verifican con `npm run shell:check`. Nunca se editan en una página suelta. Cada web ofrece navegación local y un selector del ecosistema con cuatro webs, dos espacios comunes y páginas institucionales. El hub conserva su acceso único a Qué es NUVIA en la cabecera y presenta las cuatro webs y los dos espacios comunes en el cuerpo. Los avisos se mantienen en los pies de webs y contenidos.
 
 ### 2.5 Contenido de colaboradores
 

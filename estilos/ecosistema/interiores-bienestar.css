@@ -1,0 +1,160 @@
+/* Maqueta Ecosistema · interiores de Familia, Salud y Bienestar.
+   Se carga después de la hoja original; no afecta a impresión ni al contenido.
+   La fotografía propia de cada tema acompaña una lectura serena y continua. */
+@media screen {
+  body[data-eco-theme="bienestar"] main { background: var(--nv-surface); }
+
+  body[data-eco-theme="bienestar"] main .nv-entry {
+    background: color-mix(in srgb, var(--nv-green-100) 58%, var(--nv-surface));
+    border-bottom: 1px solid color-mix(in srgb, var(--nv-green-300) 56%, var(--nv-line));
+    padding-block: 20px 42px;
+  }
+  body[data-eco-theme="bienestar"] main .nv-entry.nv-sub-hero { padding-block: 20px 42px; }
+  body[data-eco-theme="bienestar"] main .nv-entry .nv-breadcrumb { margin-bottom: 26px; }
+  body[data-eco-theme="bienestar"] main .nv-entry :is(h1, .home26-plate__title) {
+    max-width: 18ch;
+    margin-block: 12px 17px;
+    font-family: var(--nv-font-serif);
+    font-size: clamp(42px, 4.2vw, 60px);
+    font-weight: 400;
+    line-height: 1.03;
+    letter-spacing: -.035em;
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="bienestar"] main .nv-entry :is(.nv-eyebrow, .nv-eyebrow--on-dark) {
+    color: var(--nv-green-800);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: .01em;
+  }
+  body[data-eco-theme="bienestar"] main .nv-entry .nv-hero__lead {
+    max-width: 56ch;
+    color: var(--nv-text-soft);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+  body[data-eco-theme="bienestar"] main .nv-entry.nv-sub-hero .nv-sub-hero__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+    gap: clamp(32px, 5vw, 72px);
+  }
+  body[data-eco-theme="bienestar"] main .nv-sub-hero__media { margin: 0; }
+  body[data-eco-theme="bienestar"] main .nv-sub-hero__media::before {
+    top: 15px;
+    right: 15px;
+    width: 64px;
+    height: 64px;
+    border-color: var(--nv-surface);
+    border-width: 1px;
+    border-top-right-radius: 0;
+    opacity: .65;
+  }
+  body[data-eco-theme="bienestar"] main .nv-sub-hero__img {
+    height: 290px;
+    border-radius: 3px 3px 64px 3px;
+    box-shadow: none;
+  }
+  body[data-eco-theme="bienestar"] main .bn-sub-hero__tags { margin-top: 20px; }
+  body[data-eco-theme="bienestar"] main .bn-sub-hero__tags .nv-tag {
+    border-color: color-mix(in srgb, var(--nv-green-800) 25%, transparent);
+    background: transparent;
+    color: var(--nv-green-800);
+    font-size: 12px;
+  }
+
+  /* Las publicaciones mantienen su orden y el formato de fila horizontal. */
+  body[data-eco-theme="bienestar"] main .nv-section--tight { padding-block: 42px 56px; }
+  body[data-eco-theme="bienestar"] main .nv-section-heading { margin-bottom: 28px; }
+  body[data-eco-theme="bienestar"] main .nv-section-heading h2 {
+    font-family: var(--nv-font-serif);
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -.025em;
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="bienestar"] main .bn-entries { border-top-color: var(--nv-line-strong); }
+  body[data-eco-theme="bienestar"] main .bn-entry__link {
+    grid-template-columns: 116px minmax(0, 1fr) 176px;
+    gap: 32px;
+    padding: 26px 20px;
+  }
+  body[data-eco-theme="bienestar"] main .bn-entry--latest .bn-entry__link { border-left-color: var(--nv-green-700); }
+  body[data-eco-theme="bienestar"] main .bn-entry__body h3 {
+    font-size: 29px;
+    font-weight: 400;
+    letter-spacing: -.02em;
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="bienestar"] main .bn-entry__body > p { max-width: 64ch; line-height: 1.7; }
+  body[data-eco-theme="bienestar"] main .bn-entry__thumb { border-radius: 3px 3px 24px 3px; box-shadow: none; }
+  body[data-eco-theme="bienestar"] main .bn-entry__kind .nv-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--nv-green-800);
+  }
+  body[data-eco-theme="bienestar"] main .bn-siblings { margin-top: 36px; gap: 12px; }
+  body[data-eco-theme="bienestar"] main .bn-siblings > a {
+    background: var(--nv-surface);
+    border-color: var(--nv-line-strong);
+    border-radius: 24px;
+    color: var(--nv-green-800);
+    min-height: 44px;
+  }
+  body[data-eco-theme="bienestar"] main .bn-siblings > a:hover { background: var(--nv-green-100); border-color: var(--nv-green-700); }
+
+  /* El texto firmado no cambia de orden, autoría ni estructura. */
+  body[data-eco-theme="bienestar"] main .bn-article { max-width: 720px; }
+  body[data-eco-theme="bienestar"] main .bn-article .bn-essay { padding-top: 26px; border-color: var(--nv-line-strong); }
+  body[data-eco-theme="bienestar"] main .bn-article .tm-breathing-essay__byline {
+    margin-bottom: 30px;
+    font-family: var(--nv-font-sans);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  body[data-eco-theme="bienestar"] main .bn-article .tm-breathing-essay__text {
+    font-family: var(--nv-font-serif);
+    font-size: 21px;
+    line-height: 1.7;
+    color: var(--nv-text);
+  }
+  body[data-eco-theme="bienestar"] main .bn-article .tm-breathing-essay__text p { margin-bottom: 24px; }
+  body[data-eco-theme="bienestar"] main .bn-essay__lead { font-size: 25px; line-height: 1.5; }
+  body[data-eco-theme="bienestar"] main .bn-article__video { margin-top: 44px; padding-top: 32px; }
+  body[data-eco-theme="bienestar"] main .bn-article__video h2 { font-size: 32px; font-weight: 400; color: var(--nv-green-800); }
+  body[data-eco-theme="bienestar"] main .bn-player { border-radius: 4px 4px 24px 4px; box-shadow: none; }
+  body[data-eco-theme="bienestar"] main .bn-editorial {
+    padding: 24px 26px;
+    background: color-mix(in srgb, var(--nv-green-100) 65%, var(--nv-surface));
+    border-top: 1px solid var(--nv-line);
+    border-radius: 3px 3px 24px 3px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  body[data-eco-theme="bienestar"] main .bn-series__link {
+    min-height: 64px;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border-color: var(--nv-line-strong);
+    background: var(--nv-surface);
+  }
+  body[data-eco-theme="bienestar"] main .bn-series__link strong { font-size: 23px; font-weight: 400; }
+  body[data-eco-theme="bienestar"] main .bn-series__link:hover { background: var(--nv-green-100); border-color: var(--nv-green-700); }
+  body[data-eco-theme="bienestar"] main .bn-article__return > a { min-height: 44px; display: inline-flex; align-items: center; }
+  body[data-eco-theme="bienestar"] main :is(.bn-entry__link, .bn-siblings > a, .bn-series__link):focus-visible {
+    outline: 2px solid var(--nv-green-800);
+    outline-offset: 4px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  body[data-eco-theme="bienestar"] main .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; }
+  body[data-eco-theme="bienestar"] main .nv-entry :is(h1, .home26-plate__title) { font-size: 44px; }
+  body[data-eco-theme="bienestar"] main .nv-sub-hero__img { height: 265px; border-bottom-right-radius: 48px; }
+  body[data-eco-theme="bienestar"] main .bn-entry__link { grid-template-columns: 92px minmax(0, 1fr) 140px; gap: 22px; padding-inline: 15px; }
+  body[data-eco-theme="bienestar"] main .bn-entry__body h3 { font-size: 26px; }
+  body[data-eco-theme="bienestar"] main .bn-entry__body > p { font-size: 15px; }
+  body[data-eco-theme="bienestar"] main .bn-entry__kind { grid-column: auto; flex-direction: column; align-items: flex-start; }
+  body[data-eco-theme="bienestar"] main .bn-article { max-width: 660px; }
+}

@@ -5,6 +5,7 @@ import '../theme.css';
 import '../theme-b.css';
 import '../../../estilos/nuvia-tokens.css';
 import './theme.css';
+import '../../../estilos/ecosistema/interiores-empresas.css';
 
 createRoot(document.getElementById('root')).render(<React.StrictMode><AlphaApp /></React.StrictMode>);
 // Solo comunica tamaño a su contenedor del mismo origen. No envía datos financieros.

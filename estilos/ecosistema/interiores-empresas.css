@@ -1,0 +1,16 @@
+/* Copia compilada Alfa en revisión: aspecto del análisis, sin colores de series. */
+@media screen {
+  body[data-eco-theme="economia"] { background: var(--nv-surface); }
+  body[data-eco-theme="economia"] .alpha-root { --paper: var(--nv-surface-page); --line: var(--nv-line); background: var(--nv-surface); }
+  body[data-eco-theme="economia"] .alpha-hero { border-bottom: 1px solid var(--nv-line); padding-bottom: 24px; }
+  body[data-eco-theme="economia"] .alpha-hero h1 { font-family: var(--nv-font-serif); font-weight: 400; font-size: 38px; letter-spacing: -.03em; line-height: 1.1; }
+  body[data-eco-theme="economia"] .alpha-company h2 { font-family: var(--nv-font-serif); font-weight: 400; }
+  body[data-eco-theme="economia"] .alpha-toolbar .tab { min-height: 44px; text-transform: none; letter-spacing: 0; }
+  body[data-eco-theme="economia"] .alpha-toolbar .tab.active { color: var(--nv-navy-900); border-bottom-color: var(--nv-navy-900); background: var(--nv-surface-page); }
+  body[data-eco-theme="economia"] :is(.alpha-table,.alpha-technical-chart,.alpha-technical-methods,.alpha-technical-data) { border-radius: 4px; box-shadow: none; border-color: var(--nv-line); }
+  body[data-eco-theme="economia"] .alpha-notice { background: var(--nv-surface-editorial); border-radius: 3px; }
+  body[data-eco-theme="economia"] .alpha-combobox__options { box-shadow: var(--nv-shadow-md); }
+  body[data-eco-theme="economia"] .alpha-technical-controls .alpha-button { min-height: 44px; border-radius: 4px; }
+  body[data-eco-theme="economia"] .alpha-technical-controls [aria-pressed="true"] { background: var(--nv-navy-900); color: var(--nv-text-on-dark); border-color: var(--nv-navy-900); }
+  body[data-eco-theme="economia"] .alpha-root .sec-title { font-family: var(--nv-font-serif); font-weight: 400; }
+}

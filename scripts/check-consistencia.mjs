@@ -94,7 +94,13 @@ for (const pagina of paginas) {
   /* ── 3 · Un solo H1 y jerarquía sin saltos ───────────────────────────── */
   const h1 = (markup.match(/<h1[\s>]/gi) ?? []).length;
   if (h1 === 0) en('no hay <h1>');
-  if (h1 > 1) en(`hay ${h1} <h1>, debe haber exactamente uno`);
+  // Academia es un documento estático con dos ramas excluyentes. El contrato
+  // de render recorre portada y todas las vistas y exige un único H1 visible.
+  const academyHome = pagina === 'academia.html' && markup.match(/<sc-if value="\{\{ esPortada \}\}"[^>]*>([\s\S]*?)<\/sc-if>/)?.[1];
+  const academyExclusive = academyHome && h1 === 2 && (academyHome.match(/<h1[\s>]/gi)||[]).length === 1
+    && markup.includes('<sc-if value="{{ esInteriorAcademia }}"')
+    && html.includes("esPortada: tab === 'portada', esInteriorAcademia: tab !== 'portada'");
+  if (h1 > 1 && !academyExclusive) en(`hay ${h1} <h1>, debe haber exactamente uno por vista`);
 
   const niveles = [...markup.matchAll(/<h([1-6])[\s>]/gi)].map((m) => Number(m[1]));
   for (let i = 0; i < niveles.length - 1; i++) {
@@ -155,8 +161,8 @@ for (const pagina of paginas) {
   const esMuestra = pagina === 'sistema-visual.html';
   const esRedireccion = REDIRECCIONES_COMPATIBILIDAD.has(pagina);
   if (!esMuestra && !esRedireccion) {
-    if (!/class=["']nuvia-site-header["']/.test(html)) ojo('no usa la cabecera común nuvia-site-header');
-    if (!/class=["']nuvia-site-footer["']/.test(html)) ojo('no usa el pie común nuvia-site-footer');
+    if (!/<header data-screen-label="Header" class="(?:hub-header|web-header(?: web-header--shared)?)"/.test(html)) en('no usa la cabecera contextual común del ecosistema');
+    if (!/<footer data-screen-label="Footer" class="(?:hub-footer|web-footer)"/.test(html)) en('no usa el pie común del ecosistema');
   }
   if (!/<main[\s>]/i.test(html)) en('falta <main>');
 

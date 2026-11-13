@@ -95,6 +95,22 @@
   }
   body[data-eco-theme="nuvia"] .about-index a:hover { color: var(--nv-green-800); border-bottom-color: var(--nv-green-800); }
 
+  /* Película institucional: reproducción voluntaria, cartel y lectura equivalente. */
+  body[data-eco-theme="nuvia"] .about-film { padding-block: 42px 36px; background: var(--nv-surface); }
+  body[data-eco-theme="nuvia"] .about-film__heading { display: flex; justify-content: space-between; align-items: end; gap: 24px 48px; margin-bottom: 26px; }
+  body[data-eco-theme="nuvia"] .about-film__heading .about-kicker { margin: 0 0 14px; }
+  body[data-eco-theme="nuvia"] .about-film__heading h2 { margin: 0; color: var(--nv-navy-900); font: 400 42px/1.12 var(--nv-font-serif); letter-spacing: -.03em; }
+  body[data-eco-theme="nuvia"] .about-film__heading > p { max-width: 42ch; margin: 0; color: var(--nv-text-soft); font-size: 16px; line-height: 1.7; }
+  body[data-eco-theme="nuvia"] .about-film__player { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); background: var(--nv-navy-950); color: var(--nv-white); }
+  body[data-eco-theme="nuvia"] .about-film__foot { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px 24px; margin-top: 8px; }
+  body[data-eco-theme="nuvia"] .about-film__foot p { margin: 0; color: var(--nv-text-muted); font-size: 13px; line-height: 1.6; }
+  body[data-eco-theme="nuvia"] .about-film__foot a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--nv-green-800); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+  body[data-eco-theme="nuvia"] .about-film__transcript { margin-top: 8px; border-top: 1px solid var(--nv-line); border-bottom: 1px solid var(--nv-line); }
+  body[data-eco-theme="nuvia"] .about-film__transcript summary { min-height: 44px; padding-block: 14px; color: var(--nv-navy-900); font-size: 14px; line-height: 1.6; cursor: pointer; }
+  body[data-eco-theme="nuvia"] .about-film__transcript > div { max-width: 76ch; padding: 0 0 12px; }
+  body[data-eco-theme="nuvia"] .about-film__transcript p { margin: 0 0 14px; color: var(--nv-text-soft); font-size: 16px; line-height: 1.75; }
+  body[data-eco-theme="nuvia"] .about-film :is(video, a, summary):focus-visible { outline: 3px solid var(--nv-green-600); outline-offset: 4px; }
+
   /* Las preguntas cotidianas llevan a recursos existentes, antes del manifiesto. */
   body[data-eco-theme="nuvia"] .about-start { padding-block: 36px 42px; background: var(--nv-surface); }
   body[data-eco-theme="nuvia"] .about-start-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 30px; margin-bottom: 24px; }
@@ -298,6 +314,9 @@
     body[data-eco-theme="nuvia"] .about-values__grid { gap: 32px 40px; }
   }
   @media (max-width: 859px) {
+    body[data-eco-theme="nuvia"] .about-film__heading { align-items: start; gap: 24px; }
+    body[data-eco-theme="nuvia"] .about-film__heading h2 { font-size: 35px; }
+    body[data-eco-theme="nuvia"] .about-film__heading > p { max-width: 32ch; font-size: 15px; }
     body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     body[data-eco-theme="nuvia"] .nv-trust-content .nv-card-grid { gap: 22px 28px; }
     body[data-eco-theme="nuvia"] :is(.about-start-grid, .nv-method-examples__grid) { grid-template-columns: 1fr; gap: 22px; }

@@ -47,6 +47,8 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/CORRECCION_SERIE_CIERRES_20261112.md` — comparación estable de versiones en Empresas, sin alterar datos ni perder la detección de cambios reales.
 - `docs/CORRECCION_ENLACES_OFICIALES_20261112.md` — recuperación de cuatro destinos oficiales, identidad de las fuentes e informes sincronizados.
 - `docs/PUBLICACION_CORRECCIONES_FUNCIONALES_20261112.md` — orden posterior de publicación de las correcciones y vídeos actualizados; alcance del commit, validación y comprobación en GitHub Pages, manteniendo el diseño.
+- `docs/VIDEO_QUE_ES_NUVIA_3D_20261112.md` — película institucional 3D con voz en español, música original y subtítulos; fuentes editables, integración, conservación de contenidos y validación.
+- `docs/PUBLICACION_VIDEO_QUE_ES_NUVIA_20261113.md` — orden de publicación del vídeo y su integración en «Qué es NUVIA», alcance y comprobación en GitHub Pages.
 
 ## 3. Documentos vigentes por módulo
 

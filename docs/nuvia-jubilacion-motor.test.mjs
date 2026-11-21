@@ -90,6 +90,46 @@ test('EPSV: estimación reglada sin certificado', () => {
   assert.equal(M.calcular({ tieneEpsv: true, epsvPost: 1000, epsvDesglose: 'estimacion', antiguedadConocida: false }).resumen.ratioEpsv, .25);
 });
 
+test('EPSV: una rentabilidad negativa antes de jubilarse no crea base ni impuesto (art. 37.e, 21-11-2026)', () => {
+  // Art. 37.e (NF 33/2013 de Álava, redacción de la NF 17/2025; mismo texto en la NF 3/2014 de Gipuzkoa; ficha KA-01878
+  // de la DFB para la NF 13/2013): el rendimiento es «la diferencia positiva» entre los derechos y lo aportado; el resto
+  // de la prestación es trabajo (art. 18.a) y nunca más que lo cobrado. Bizkaia, 100.000 € de derechos anteriores a 2026
+  // (70.000 aportados y 30.000 de rentabilidad), nada posterior, diez años hasta la jubilación al −2 %:
+  // derechos 100.000 × 0,98^10 = 81.707,28 €; la pérdida (−18.292,72) va al tramo posterior.
+  const derechos = 100000 * 0.98 ** 10;
+  cerca(derechos, 81707.28, .01);
+  const e = { pension: 0, liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0, edad: 57, edadJubilacion: 67, rentabilidad: -2,
+    tieneEpsv: true, epsvPre: 100000, epsvPreRent: 30000, epsvPost: 0, epsvCobro: 'capital' };
+  const c = M.calcular(e).capital;
+  cerca(c.bruto, derechos, .01);
+  // Régimen transitorio, con certificado: cuota 70.000 / 70.000 = 1 → la prestación entera al 60 %: 81.707,28 × 60 % =
+  // 49.024,37 a la base general y 0 al ahorro. Antes: 61.829,27 de base general (con 18.292,72 de aportación fantasma
+  // al 70 %) y −18.292,72 de ahorro.
+  cerca(c.transitorio.bases.detalle.tramoPre, derechos, .01);
+  cerca(c.transitorio.bases.detalle.tramoPost, 0, .01);
+  cerca(c.transitorio.bases.detalle.aportacion, 0, .01);
+  cerca(c.transitorio.bases.general, 49024.37, .01);
+  assert.equal(c.transitorio.bases.ahorro, 0);
+  // Régimen 2026: 81.707,28 − 70.000 = 11.707,28 al ahorro y 70.000 × 70 % = 49.000 a la general (ya salía bien).
+  cerca(c.nuevo.bases.ahorro, 11707.28, .01);
+  cerca(c.nuevo.bases.general, 49000, .01);
+  // Sin certificado: la cuota se estima con los derechos, 100.000 / 81.707,28 = 1,22, y se acota a 1 → los mismos
+  // 49.024,37 y 0 al ahorro (antes 100.000 × 60 % = 60.000 y −18.292,72).
+  const s = M.calcular(Object.assign({}, e, { epsvDesglose: 'estimacion' })).capital;
+  cerca(s.transitorio.bases.general, 49024.37, .01);
+  assert.equal(s.transitorio.bases.ahorro, 0);
+  // Si la pérdida se come toda la rentabilidad (5.000 de rentabilidad y 95.000 aportados) no hay diferencia positiva:
+  // régimen 2026, rendimiento 0 y los 81.707,28 cobrados, aportación al 70 % = 57.195,10. Antes eran 95.000 × 70 % =
+  // 66.500 de base general (más de lo cobrado) y −13.292,72 de ahorro.
+  const p = M.calcular(Object.assign({}, e, { epsvPreRent: 5000, regimen: 'nuevo' })).capital;
+  assert.equal(p.nuevo.bases.ahorro, 0);
+  cerca(p.nuevo.bases.general, 57195.10, .01);
+  // En renta, con el certificado: (5.000 − 18.292,72) / 81.707,28 < 0 → rentabilidad 0, todo el cobro es trabajo.
+  const r = M.calcular(Object.assign({}, e, { epsvPreRent: 5000, epsvCobro: 'renta' })).base.filas[0];
+  assert.equal(r.epsvRent, 0);
+  cerca(r.epsvTrabajo, r.retiradaEpsv, 1e-9);
+});
+
 test('Retirada creciente: agota el capital justo al final', () => {
   const W = M.retiradaCreciente(200000, .03, .02, 30);
   let b = 200000; for (let k = 1; k <= 30; k++) b = b * 1.03 - W * 1.02 ** (k - 1);

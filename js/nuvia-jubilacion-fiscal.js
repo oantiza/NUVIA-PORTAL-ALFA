@@ -598,18 +598,39 @@
     const rPre = certificado ? (ep.pre ? ep.preRent / ep.pre : 0) : ep.ratio;
     const rPost = certificado ? (ep.post ? ep.postRent / ep.post : 0) : ep.ratio;
     let detalle;
+    /* Con rentabilidad negativa antes de jubilarse, la pérdida se lleva al
+       tramo posterior (situacionInicial del motor) y sus derechos y su
+       rentabilidad pueden quedar en negativo. La norma no deja que eso cree
+       base: el rendimiento del capital mobiliario es solo «la diferencia
+       positiva entre los derechos económicos de la persona contribuyente y las
+       aportaciones y contribuciones realizadas» (art. 37.e NF 33/2013 de Álava,
+       redacción de la NF 17/2025, BOTHA n.º 145 de 22-12-2025,
+       https://www.araba.eus/botha/Boletines/2025/145/2025_145_03675_C.pdf; el
+       mismo texto en el art. 37.e NF 3/2014 de Gipuzkoa, redacción de la
+       NF 1/2025, BOG de 15-05-2025; la DFB lo explica igual para la
+       NF 13/2013 en su ficha KA-01878). El resto es prestación y tributa como
+       trabajo (art. 18.a), nunca por encima de lo cobrado: la cuota del
+       transitorio queda entre 0 y 1, la rentabilidad no baja de cero y, en el
+       régimen de 2026, no pasa de lo cobrado. Corregido el 21-11-2026, igual
+       que en la copia del Gestor de activos. */
     if (regimen === 'transitorio') {
-      /* Caso práctico DFB 2026: prestación × aportaciones previas / aportaciones totales. */
+      /* Caso práctico DFB 2026: prestación × aportaciones previas / aportaciones
+         totales. Es una proporción de la prestación: entre 0 y 1 (sin
+         certificado, la de los derechos pasaba de 1 si el tramo posterior
+         quedaba en negativo). */
       const apPre = ep.pre - ep.preRent, apPost = ep.post - ep.postRent;
-      const cuotaPre = certificado && apPre + apPost > 0 ? apPre / (apPre + apPost) : (ep.pre + ep.post ? ep.pre / (ep.pre + ep.post) : 0);
+      const cuotaBruta = certificado && apPre + apPost > 0 ? apPre / (apPre + apPost) : (ep.pre + ep.post ? ep.pre / (ep.pre + ep.post) : 0);
+      const cuotaPre = Math.max(0, Math.min(1, cuotaBruta));
       const tramoPre = bruto * cuotaPre, tramoPost = bruto - tramoPre;
-      const rentPost = Math.min(tramoPost, post * rPost), apTramoPost = tramoPost - rentPost;
+      const rentPost = Math.max(0, Math.min(tramoPost, post * rPost)), apTramoPost = tramoPost - rentPost;
       general += integrar(tramoPre, pv.capitalTransitorio);
       ahorro += rentPost;
       general += integrar(apTramoPost, pv.capital);
       detalle = { tramoPre, tramoPost, rentabilidad: rentPost, aportacion: apTramoPost };
     } else {
-      const rent = pre * rPre + post * rPost, aport = Math.max(0, bruto - rent);
+      /* La diferencia positiva del art. 37.e: con más aportado que cobrado no
+         hay rendimiento y todo es aportación. */
+      const rent = Math.max(0, Math.min(bruto, pre * rPre + post * rPost)), aport = Math.max(0, bruto - rent);
       ahorro = rent; general = integrar(aport, pv.capital);
       detalle = { rentabilidad: rent, aportacion: aport };
     }

@@ -236,9 +236,12 @@ test('Estatal · escala de referencia: gastos (art. 19.2.f), reducción (art. 20
   // Desde los 75: mínimo 8.100 → escala(8.100) = 769,50 → 2 × (2.982,75 − 769,50) = 4.426,50.
   cerca(M.irpf({ trabajo: 28000, edad: 75, territorio: 'estatal' }).total, 4426.5);
   cerca(M.irpf({ trabajo: 28000, edad: 74, territorio: 'estatal' }).total, 4692.5);
-  // 15.000 de trabajo a los 64: neto 13.000 → reducción 7.302 → base 5.698; estatal 541,31 − 527,25 = 14,06; total 28,12. A los 65 el mínimo (6.700) cubre toda la base: 0.
+  // 15.000 de trabajo a los 64. La reducción del art. 20 se mide antes de los 2.000 € de la letra f) (21-11-2026):
+  // 15.000 está en el tramo b) → 7.302 − 1,75 × (15.000 − 14.852) = 7.302 − 259 = 7.043. Base 15.000 − 2.000 − 7.043 = 5.957;
+  // estatal 5.957 × 9,5 % − 527,25 = 565,915 − 527,25 = 38,665; con la autonómica de referencia, idéntica, 77,33.
+  // A los 65 el mínimo (6.700) cubre toda la base: 0.
   const b = M.irpf({ trabajo: 15000, edad: 64, territorio: 'estatal' });
-  assert.equal(b.reduccionTrabajo, 7302); cerca(b.baseGeneral, 5698); cerca(b.total, 28.12);
+  cerca(b.reduccionTrabajo, 7043, 1e-9); cerca(b.baseGeneral, 5957, 1e-9); cerca(b.total, 77.33, 1e-9);
   cerca(M.irpf({ trabajo: 15000, edad: 65, territorio: 'estatal' }).total, 0);
   // Tramos b) y c) del art. 20: 16.000 → 7.302 − 1,75 × 1.148 = 5.293; 19.000 → 2.364,34 − 1,14 × 1.326,48 = 852,15.
   const P = F.configuracion('estatal').parametros;
@@ -247,6 +250,36 @@ test('Estatal · escala de referencia: gastos (art. 19.2.f), reducción (art. 20
   // Solo ahorro 10.000 €: 6.000 × 19 % + 4.000 × 21 % = 1.980; el mínimo (5.550) se aplica al ahorro: 1.054,50 → 925,50.
   cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: 'estatal' }).total, 925.5);
   assert.equal(JSON.stringify(F.escalaGeneralVisible(F.configuracion('estatal'))), JSON.stringify([[0, .19], [12450, .24], [20200, .30], [35200, .37], [60000, .45], [300000, .47]]));
+});
+
+test('Estatal: la reducción del art. 20 se mide antes de los 2.000 € de gastos de la letra f) (21-11-2026)', () => {
+  // Art. 20 LIRPF (redacción del RDL 4/2024): «el rendimiento neto del trabajo será el resultante de minorar el
+  // rendimiento íntegro en los gastos previstos en las letras a), b), c), d) y e) del artículo 19.2». Una pensión no
+  // tiene gastos de a) a e): la reducción se mide sobre la pensión íntegra; los 2.000 € se restan aparte y la reducción
+  // no puede dejar el saldo en negativo. Cada caso a los 64 años, sin otras rentas:
+  const caso = (trabajo) => M.irpf({ trabajo, edad: 64, territorio: 'estatal' });
+  // 14.852 (límite del tramo a): reducción 7.302; base 14.852 − 2.000 − 7.302 = 5.550.
+  cerca(caso(14852).reduccionTrabajo, 7302, 1e-9); cerca(caso(14852).baseGeneral, 5550, 1e-9);
+  // 15.000 (tramo b): 7.302 − 1,75 × 148 = 7.043; base 5.957 (antes, sobre 13.000: 7.302 y 5.698).
+  cerca(caso(15000).reduccionTrabajo, 7043, 1e-9); cerca(caso(15000).baseGeneral, 5957, 1e-9);
+  // 16.000 (tramo b): 7.302 − 1,75 × 1.148 = 5.293; base 16.000 − 2.000 − 5.293 = 8.707 (antes, sobre 14.000: 7.302 y 6.698).
+  cerca(caso(16000).reduccionTrabajo, 5293, 1e-9); cerca(caso(16000).baseGeneral, 8707, 1e-9);
+  // 18.000 (tramo c): 2.364,34 − 1,14 × (18.000 − 17.673,52) = 2.364,34 − 372,1872 = 1.992,1528;
+  // base 18.000 − 2.000 − 1.992,1528 = 14.007,8472 (antes, sobre 16.000: 5.293 y 10.707, 3.300,85 € menos de base).
+  cerca(caso(18000).reduccionTrabajo, 1992.1528, 1e-9); cerca(caso(18000).baseGeneral, 14007.8472, 1e-9);
+  // 19.747,50: solo reducen los rendimientos «inferiores a 19.747,5 euros» → 0; base 17.747,50.
+  assert.equal(caso(19747.5).reduccionTrabajo, 0); cerca(caso(19747.5).baseGeneral, 17747.5, 1e-9);
+  // 20.500: 0 (antes, sobre 18.500: 2.364,34 − 1,14 × 826,48 = 1.422,15); base 18.500.
+  assert.equal(caso(20500).reduccionTrabajo, 0); cerca(caso(20500).baseGeneral, 18500, 1e-9);
+  // 8.000: la reducción sería 7.302, pero el saldo tras los gastos es 6.000 y no puede quedar negativo → 6.000; base 0.
+  cerca(caso(8000).reduccionTrabajo, 6000, 1e-9); assert.equal(caso(8000).baseGeneral, 0);
+  // La frase de parámetros que ven «Cómo lo calculamos» y el informe lo dice.
+  assert.ok(F.resumenParametros(F.configuracion('estatal')).some((l) => l.includes('medidos sobre el rendimiento antes de los 2.000 € de gastos')));
+  // Pensión de 1.200 € × 14 = 16.800 € en Madrid, a los 65 y sin otras rentas: reducción 7.302 − 1,75 × (16.800 − 14.852)
+  // = 7.302 − 3.409 = 3.893; base 16.800 − 2.000 − 3.893 = 10.907. Estatal (10.907 − 6.700) × 9,5 % = 399,665;
+  // Madrid (10.907 − 7.190,91) × 8,5 % = 315,86765; total 715,53265. Antes: base 14.800 − 7.302 = 7.498 →
+  // 798 × 9,5 % + 307,09 × 8,5 % = 75,81 + 26,10265 = 101,91265.
+  cerca(M.irpf({ trabajo: 16800, edad: 65, territorio: 'estatal', ccaa: 'madrid' }).total, 715.53265, 1e-6);
 });
 
 test('Estatal: plan de pensiones en capital con el 40 % de la DT 12.ª solo sobre aportaciones anteriores a 2007', () => {
@@ -420,13 +453,14 @@ test('Fase 2: el mínimo autonómico en la base del ahorro (arts. 56.2, 66 y 76)
   // Madrid, solo ahorro 10.000 € a los 60: escala conjunta 6.000 × 19 % + 4.000 × 21 % = 1.980 (990 estatal + 990 autonómica).
   // Estatal: 990 − 5.550 × 9,5 % (527,25) = 462,75. Autonómica: 990 − 5.956,65 × 9,5 % (565,88175) = 424,11825. Total 886,86825.
   cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: 'estatal', ccaa: 'madrid' }).total, 886.86825, 1e-6);
-  // Base general 5.700 € (trabajo 15.002: 13.002 − 7.302) y 2.000 € de ahorro, Madrid a los 60.
-  // Estatal: el mínimo 5.550 cabe en la general → 5.700 × 9,5 % − 527,25 = 14,25; ahorro 2.000 × 9,5 % = 190.
-  // Autonómica: 5.700 del mínimo propio absorben toda la general (0) y 256,65 pasan al ahorro: 190 − 256,65 × 9,5 % = 165,61825.
-  const x = M.irpf({ trabajo: 15002, ahorro: 2000, edad: 60, territorio: 'estatal', ccaa: 'madrid' });
-  cerca(x.baseGeneral, 5700, 1e-9); cerca(x.cuotaGeneral, 14.25, 1e-6); cerca(x.cuotaAhorro, 190 + 165.61825, 1e-6); cerca(x.total, 369.86825, 1e-6);
-  // Con la escala de referencia el mismo caso da exactamente lo de antes: 14,25 × 2 + 2.000 × 19 % = 408,50.
-  cerca(M.irpf({ trabajo: 15002, ahorro: 2000, edad: 60, territorio: 'estatal' }).total, 408.5, 1e-9);
+  // Base general 5.682 € y 2.000 € de ahorro, Madrid a los 60. Trabajo 14.900: reducción del art. 20 sobre los 14.900
+  // (antes de los 2.000 € de la letra f; 21-11-2026) = 7.302 − 1,75 × 48 = 7.218 → base 14.900 − 2.000 − 7.218 = 5.682.
+  // Estatal: el mínimo 5.550 cabe en la general → 5.682 × 9,5 % − 527,25 = 539,79 − 527,25 = 12,54; ahorro 2.000 × 9,5 % = 190.
+  // Autonómica: 5.682 del mínimo propio absorben toda la general (0) y 274,65 pasan al ahorro: 190 − 274,65 × 9,5 % = 163,90825.
+  const x = M.irpf({ trabajo: 14900, ahorro: 2000, edad: 60, territorio: 'estatal', ccaa: 'madrid' });
+  cerca(x.baseGeneral, 5682, 1e-9); cerca(x.cuotaGeneral, 12.54, 1e-6); cerca(x.cuotaAhorro, 190 + 163.90825, 1e-6); cerca(x.total, 366.44825, 1e-6);
+  // Con la escala de referencia el mismo caso da 12,54 × 2 + 2.000 × 19 % = 405,08.
+  cerca(M.irpf({ trabajo: 14900, ahorro: 2000, edad: 60, territorio: 'estatal' }).total, 405.08, 1e-9);
   cerca(M.irpf({ trabajo: 0, ahorro: 10000, edad: 60, territorio: 'estatal' }).total, 925.5, 1e-9);
 });
 

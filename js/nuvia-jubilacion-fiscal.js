@@ -515,7 +515,19 @@
     const t = pos(trabajo), a = pos(ahorro);
     const gastos = Math.min(t, P.gastos);
     const rn = t - gastos;
-    const reduccion = Math.min(rn, reduccionTrabajoComun(P, rn, a));
+    /* Art. 20 LIRPF (redacción del RDL 4/2024, art. 3.1, con efectos desde el
+       1-1-2024): «A estos efectos, el rendimiento neto del trabajo será el
+       resultante de minorar el rendimiento íntegro en los gastos previstos en
+       las letras a), b), c), d) y e) del artículo 19.2», es decir, SIN los
+       2.000 € de «otros gastos» de la letra f). La AEAT lo aplica igual
+       (Manual práctico de Renta 2025, cap. 3). Una pensión no tiene gastos de
+       las letras a) a e): la reducción se mide sobre el íntegro, t. El último
+       párrafo del art. 20 («el saldo resultante no podrá ser negativo») sigue
+       acotándola a rn. Texto consolidado del BOE, consultado el 21-11-2026:
+       https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a20
+       Antes se medía sobre rn (corregido el 21-11-2026, igual que en la copia
+       del Gestor de activos). */
+    const reduccion = Math.min(rn, reduccionTrabajoComun(P, t, a));
     const baseGeneral = Math.max(0, rn - reduccion);
     const minimo = minimoPersonalComun(P, edad);
     const minimoA = minimoAutonomico ? minimoPersonalComun({ minimo: minimoAutonomico }, edad) : minimo;
@@ -667,7 +679,7 @@
     ];
     return [
       'Gastos deducibles del trabajo: ' + eur(P.gastos) + ' (art. 19.2.f).',
-      'Reducción por rendimientos del trabajo (art. 20): 7.302 € hasta 14.852 €, decreciente hasta desaparecer a 19.747,5 €; no se aplica si otras rentas superan 6.500 €.',
+      'Reducción por rendimientos del trabajo (art. 20): 7.302 € hasta 14.852 €, decreciente hasta desaparecer a 19.747,5 €, medidos sobre el rendimiento antes de los ' + eur(P.gastos) + ' de gastos; no se aplica si otras rentas superan 6.500 €.',
       cfg.minimoAutonomico
         ? 'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal. En la parte autonómica se aplica, también «a escala», el mínimo propio ' + deComunidad(cfg.ccaa) + ' (art. 56.3): ' + eurD(cfg.minimoAutonomico.base) + ' (' + eurD(cfg.minimoAutonomico.base + cfg.minimoAutonomico.edad65) + ' desde los 65 y ' + eurD(cfg.minimoAutonomico.base + cfg.minimoAutonomico.edad65 + cfg.minimoAutonomico.edad75) + ' desde los 75).'
         : 'Mínimo del contribuyente (art. 57): ' + eur(P.minimo.base) + ', más ' + eur(P.minimo.edad65) + ' desde el año en que se cumplen 65 y otros ' + eur(P.minimo.edad75) + ' desde los 75 (edad a 31 de diciembre); se aplica «a escala» en la parte estatal y en la autonómica.',

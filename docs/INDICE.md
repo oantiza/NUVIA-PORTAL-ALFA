@@ -65,6 +65,7 @@ Son los que fijan el estado actual de cada parte; cuando una ficha de fecha post
 - `docs/JUBILACION_FASE2_CCAA_20261005.md` — escalas autonómicas de las 15 comunidades (fase 2).
 - `docs/JUBILACION_MULTITERRITORIO_REVISION_20261004.md` — despliegue y revisión de parámetros.
 - `docs/JUBILACION_REDISENO_20260923.md` — auditoría de cálculo y rediseño del simulador.
+- `docs/JUBILACION_CORRECCION_FISCAL_ART20_EPSV_20261121.md` — corrección fiscal: reducción del art. 20 LIRPF antes de los 2.000 € de gastos y EPSV vasca con rentabilidad negativa. Sin publicar.
 - `docs/IMPUESTOS_DISENO_20260923.md` — diseño de Impuestos y guías.
 
 **Familia, Salud y Bienestar**

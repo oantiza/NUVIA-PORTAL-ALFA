@@ -1,6 +1,6 @@
 # NUVIA · Barra del ecosistema y pie con las cuatro webs
 
-**Estado:** cambio local para revisión del fundador. Sin commit y sin publicación.
+**Estado:** barra y pie, publicado el 22-11-2026 (commit `5a331b3`, despliegue n.º 186); pie en azul noche, publicado el 22-11-2026 (despliegue n.º 187; acta `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md`).
 
 ## Orden del fundador
 

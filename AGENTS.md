@@ -6,7 +6,7 @@ Este archivo es la entrada única para cualquier persona, programa o asistente q
 
 ## Capa 0 · Siempre
 
-**Portada rediseñada en local, sin publicar · 22-11-2026:** el fundador autoriza trabajar la portada y después la cabecera y el pie comunes, con una condición expresa: «no publiques nada hasta que yo no te lo diga». Los cambios de `index.html`, `estilos/ecosistema/hub.css`, tokens y contratos están solo en la carpeta local: sin commit, sin envío a `main` y sin despliegue hasta nueva orden. Acta: `docs/REDISENO_PORTADA_ESCALA_Y_FONDO_20261122.md`.
+**Portada rediseñada · 22-11-2026 (ya publicada: commit `5a331b3`, despliegue n.º 186):** el fundador autoriza trabajar la portada y después la cabecera y el pie comunes, con una condición expresa: «no publiques nada hasta que yo no te lo diga». Los cambios de `index.html`, `estilos/ecosistema/hub.css`, tokens y contratos estuvieron solo en la carpeta local hasta su publicación; la condición sigue vigente para cualquier cambio nuevo. Acta: `docs/REDISENO_PORTADA_ESCALA_Y_FONDO_20261122.md`.
 
 **Publicación de la película institucional autorizada · 13-11-2026:** «Súbelo y publica». Autoriza commit, envío a `main` y despliegue oficial del vídeo 3D de «Qué es NUVIA», sus subtítulos, póster e integración verificada. Sustituye el estado local sin publicar de esta pieza. Se mantienen el resto del diseño, contenidos y funcionalidades; se excluyen trabajos ajenos, incluidos los cambios locales de Jubilación, y Firebase. Acta: `docs/PUBLICACION_VIDEO_QUE_ES_NUVIA_20261113.md`.
 

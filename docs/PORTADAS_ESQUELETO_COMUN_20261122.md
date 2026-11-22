@@ -1,6 +1,6 @@
 # Portadas de las cuatro webs · esqueleto común
 
-**Fecha:** 22-11-2026. **Estado:** aplicado en local; sin commit ni publicación.
+**Fecha:** 22-11-2026. **Estado:** publicado el 22-11-2026 (despliegue n.º 187; acta `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md`).
 
 ## Orden del fundador
 

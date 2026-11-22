@@ -1,6 +1,6 @@
 # Jubilación · texto pequeño del simulador a 13 px
 
-**Fecha:** 22-11-2026. **Estado:** aplicado en local; sin commit ni publicación.
+**Fecha:** 22-11-2026. **Estado:** publicado el 22-11-2026 (despliegue n.º 187; acta `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md`).
 
 ## Orden del fundador
 
@@ -22,7 +22,9 @@ Solo en `jubilacion.html`, dentro de `main`. Cabecera y pie no cambian.
 - `estilos/nuvia-jubilacion.css`: `.nv-retirement main:has(.jb-stepper) { --nv-label: 13px; }`. El texto del simulador que iba a 12 px pasa a 13 px. 13 px ya figura en la escala de Patrimonio, así que no se modifica ninguna prueba.
 - Misma hoja, pestañas de pasos (`.jb-stepper__btn`): separación de 12 a 8 px y relleno lateral de 12 a 10 px, para que «65 años · 2.000 €/paga» entre entera a 1440 px.
 
-Las guías que comparten la hoja (`guia-fiscal.html`, `guia-planificacion.html` y las demás) no tienen simulador y no cambian.
+`guia-fiscal.html` no tiene pestañas de pasos y no cambia.
+
+**Corrección (22-11-2026, tras publicar):** `guia-planificacion.html` sí tiene pestañas de pasos (`.jb-stepper`), así que la regla le aplica y su texto pequeño también pasó de 12 a 13 px. Esta acta decía lo contrario; no se comprobó entonces. Consultado, el fundador respondió: «Déjala a 13». La guía de planificación se queda a 13 px.
 
 ## Medidas
 
@@ -44,3 +46,23 @@ Cambio de tamaño de letra. No altera cálculos, datos, textos ni enlaces. Sin e
 - `npm run validate`: código de salida 0; «51 páginas a 1440 px, sin fallos de contraste, tipografía, estructura, superficies, desborde ni fugas».
 - `node scripts/check-render.mjs . 1440,1280,1180,1024,900,820,768` sobre `jubilacion.html`, `jubilacion.html?territorio=estatal&ccaa=cataluna#resultados`, `guia-fiscal.html`, `academia.html?tab=fundamentos` y `sistema-visual.html`: 35 vistas de 35 correctas.
 - No se ha ejecutado `npm run build`.
+
+## Añadido · pestañas repartidas según su contenido
+
+**Orden del fundador:** medida la pestaña cortada a 1280 px y enseñado el arreglo, respondió «Sí, aplícalo». **Estado:** aplicado en local; sin commit ni publicación.
+
+- `estilos/nuvia-jubilacion.css`: `@media (min-width: 821px) { #simulador-pasos .jb-stepper { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, .9fr) minmax(0, 1fr); } }`. Solo el simulador; la guía de planificación conserva cuatro pestañas iguales. Hasta 820 px sigue la rejilla de dos columnas.
+- La pestaña ya se cortaba a 1280 px antes de subir el texto: a 12 px necesitaba 133 px y disponía de 123.
+
+| Ancho | Pestañas antes | Ahora |
+|---|---|---|
+| 1440 px | 4 iguales | 251 · 200 · 180 · 200 px |
+| 1280 px | 190 cada una; la primera cortada | 234 · 187 · 168 · 187 px; ninguna cortada |
+| 1180 px | 4 iguales | 216 · 173 · 155 · 173 px; ninguna cortada |
+| 820 y 768 px | 2 columnas | 2 columnas, sin cambio |
+
+Medido con los valores del ejemplo («65 años · 2.000 €/paga», «200.000 €», «Sin EPSV», «3,0 % · IPC 2,0 %»). No se ha probado con otros valores.
+
+Prueba regulatoria (§12): cambio de anchura de columnas; sin efecto regulatorio.
+
+Validación: `npm run validate` con código de salida 0 (51 páginas sin fallos); `node scripts/check-render.mjs . 1440,1280,1180,1024,900,820,768 jubilacion.html,guia-planificacion.html,guia-fiscal.html`: 21 vistas de 21 correctas. No se ha ejecutado `npm run build`.

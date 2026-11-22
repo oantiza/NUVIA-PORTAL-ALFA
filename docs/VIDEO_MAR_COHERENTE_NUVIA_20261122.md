@@ -1,6 +1,6 @@
 # NUVIA · Todo está conectado · Edición coherente sobre «Mar»
 
-**Estado:** aprobada por el fundador el 22-11-2026 («sí») y colocada en «Qué es NUVIA» en local. Sin commit y sin publicación.
+**Estado:** aprobada por el fundador el 22-11-2026 («sí») y colocada en «Qué es NUVIA»; publicado el 22-11-2026 (commit `5a331b3`, despliegue n.º 186).
 
 ## Encargo del fundador
 

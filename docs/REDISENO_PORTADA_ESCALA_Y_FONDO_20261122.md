@@ -1,6 +1,6 @@
 # Portada del ecosistema · escala, fondo marfil y color por puerta · 22-11-2026
 
-**Estado:** aplicado en local, **sin commit ni publicación**. El fundador indicó: «empieza por la portada y sigue con la cabecera y el pie comunes. Pero no publiques nada hasta que yo no te lo diga». La web publicada sigue con la versión anterior.
+**Estado:** publicado el 22-11-2026 (commit `5a331b3`, despliegue n.º 186); el ajuste del pliegue en portátil, publicado el 22-11-2026 (despliegue n.º 187; acta `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md`). Durante el trabajo estuvo en local, sin commit ni publicación. El fundador indicó: «empieza por la portada y sigue con la cabecera y el pie comunes. Pero no publiques nada hasta que yo no te lo diga».
 
 ## Orden del fundador
 

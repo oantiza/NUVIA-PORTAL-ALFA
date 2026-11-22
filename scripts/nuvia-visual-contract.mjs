@@ -23,7 +23,8 @@ export const SURFACE_CONTRACT = [
   ['body:not([data-eco-theme]) .nv-entry, body[data-eco-theme="economia"] .nv-entry, body[data-eco-theme="nuvia"] .nv-entry:not(.about-hero)', 'backgroundColor', 'var(--nv-surface)'],
   ['body[data-eco-theme]:not(.web-page), .web-page, .web-header, .web-footer', 'backgroundColor', 'var(--nv-surface)'],
   ['body[data-eco-theme="academia"] main, body[data-eco-theme="bienestar"] main, body[data-eco-theme="lecturas"] main, .about-presentation', 'backgroundColor', 'var(--nv-surface)'],
-  ['.hub-page, body[data-eco-theme="nuvia"] .about-hero.nv-entry', 'backgroundColor', 'color-mix(in srgb, var(--nv-surface-editorial) 38%, var(--nv-surface))'],
+  ['.hub-page', 'backgroundColor', 'var(--nv-surface-hub)'],
+  ['body[data-eco-theme="nuvia"] .about-hero.nv-entry', 'backgroundColor', 'color-mix(in srgb, var(--nv-surface-editorial) 38%, var(--nv-surface))'],
   ['.pa-opening, body[data-eco-theme="patrimonio"] .nv-entry', 'backgroundColor', 'color-mix(in srgb, var(--nv-surface-editorial) 72%, var(--nv-surface))'],
   ['body[data-eco-theme="academia"] .nv-entry, .ac-experiment', 'backgroundColor', 'var(--nv-surface-technical)'],
   ['body[data-eco-theme="bienestar"] .nv-entry', 'backgroundColor', 'color-mix(in srgb, var(--nv-green-100) 58%, var(--nv-surface))'],
@@ -48,7 +49,7 @@ export const SURFACE_CONTRACT = [
    el contrato anterior dejaba sin límite cualquier texto a partir de 40 px. */
 const BASE_SCALE = [12, 14, 16, 18, 22, 28, 36];
 export const TYPE_SCALES = [
-  ['.hub-page', [12, 13, 14, 15, 16, 21, 24, 27, 29, 30, 33]],
+  ['.hub-page', [13, 14, 15, 16, 17, 19, 21, 24, 26, 27, 29, 30, 33, 35, 38]],
   ['.web-page--economia', [12, 13, 14, 15, 16, 25, 29, 30, 31, 32, 35, 39]],
   ['.web-page--patrimonio', [12, 13, 14, 15, 17, 21, 23, 29, 33, 39, 41, 49]],
   ['.web-page--bienestar, .web-page--familia', [12, 13, 14, 15, 16, 26, 27, 28, 29, 30, 33, 39, 40, 49]],

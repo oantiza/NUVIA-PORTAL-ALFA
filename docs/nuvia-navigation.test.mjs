@@ -56,13 +56,14 @@ for (const name of expectedPages) {
     assert.deepEqual(linksIn(footer), institutional.slice(1), 'El hub mantiene acceso directo a Metodología e Independencia');
   } else {
     const family = Object.values(families).find(item => item.pages.includes(name));
-    const selector = part(header, 'details', 'class="eco-switch"');
+    const bar = part(header, 'nav', 'class="eco-bar"');
     const local = part(header, 'nav', 'class="web-local"');
-    assert.equal((header.match(/<details\b/g) || []).length, 1, `${name}: un selector nativo del ecosistema`);
-    assert.match(selector, /<summary>Explorar NUVIA <span aria-hidden="true">⌄<\/span><\/summary>/, `${name}: mismo nombre visible del selector en todos los interiores`);
-    assert.deepEqual(linksIn(selector), [['index.html', 'Inicio NUVIA'], ...webs, ...common, ...institutional], `${name}: cuatro webs y destinos globales`);
+    assert.equal((header.match(/<details\b/g) || []).length, 0, `${name}: la barra del ecosistema sustituye al desplegable`);
+    assert.match(bar, /aria-label="Las cuatro webs de NUVIA"/, `${name}: barra del ecosistema con nombre accesible`);
+    assert.deepEqual(linksIn(bar), [['index.html', 'Inicio NUVIA'], ...webs, ...common, institutional[0]], `${name}: cuatro webs a la vista y espacios comunes`);
+    assert.equal((bar.match(/data-eco-active/g) || []).length, family ? 1 : 0, `${name}: la barra señala la web en la que se está`);
     assert.deepEqual(linksIn(local), family ? family.links : [['index.html', 'Inicio NUVIA'], ...common, institutional[0]], `${name}: navegación contextual completa`);
-    assert.deepEqual(linksIn(footer).map(([href]) => href), ['index.html', ...common.map(([href]) => href), ...institutional.map(([href]) => href)], `${name}: regreso, dos espacios comunes e información institucional`);
+    assert.deepEqual(linksIn(footer).map(([href]) => href), [...webs.map(([href]) => href), 'index.html', ...common.map(([href]) => href), ...institutional.map(([href]) => href)], `${name}: cuatro webs, regreso, dos espacios comunes e información institucional`);
     for (const sentence of [
       'NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.',
       'Contenido educativo e informativo.', 'No constituye asesoramiento financiero, fiscal o jurídico personalizado.',

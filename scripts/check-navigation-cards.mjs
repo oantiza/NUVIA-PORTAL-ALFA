@@ -44,17 +44,21 @@ export async function checkNavigationAndCards(page, route) {
     if (!same(await hrefs(footer.locator('a')), institutional.slice(1))) problems.push('El pie del hub debe enlazar Metodología e Independencia');
     await checkControls(page.locator('.hub-header a, #webs .hub-door, .hub-connections a, .hub-footer a'));
   } else {
-    const groups = header.locator('details.eco-switch');
-    if (await groups.count() !== 1) return [...problems, 'Cada web o espacio común debe tener un selector nativo del ecosistema'];
-    const group = groups.first();
-    const summary = group.locator('summary');
+    const bars = header.locator('nav.eco-bar');
+    if (await bars.count() !== 1) return [...problems, 'Cada web o espacio común debe tener la barra del ecosistema'];
+    const bar = bars.first();
+    if (await header.locator('details').count()) problems.push('La barra del ecosistema sustituye al desplegable');
     const shared = await header.evaluate(el => el.classList.contains('web-header--shared'));
-    if (!same(await hrefs(group.locator('a')), ['index.html', ...webs, ...common, ...institutional])) problems.push('El selector no contiene las cuatro webs y los accesos globales previstos');
-    if (!(await summary.textContent()).startsWith('Explorar NUVIA')) problems.push('El selector global debe tener el mismo nombre en todas las páginas');
+    if (!same(await hrefs(bar.locator('a')), ['index.html', ...webs, ...common, 'que-es-nuvia.html'])) problems.push('La barra no contiene las cuatro webs y los accesos globales previstos');
+    if (await bar.locator('a[data-eco-active]').count() !== (shared ? 0 : 1)) problems.push('La barra debe señalar la web en la que se está');
+    for (const selector of ['.eco-bar-home', '.eco-bar-webs a']) {
+      for (const item of await bar.locator(selector).all()) if (!await item.isVisible()) problems.push('Las cuatro webs y el inicio deben verse siempre en la barra');
+    }
+    if (await bar.evaluate(el => el.querySelector('div').scrollWidth > el.querySelector('div').clientWidth + 1)) problems.push('La barra del ecosistema desborda el ancho visible');
     const local = header.locator('.web-local a');
     if (await local.count() !== (shared ? 4 : 5)) problems.push('La navegación contextual ha perdido destinos');
     if (shared && !same(await hrefs(local), ['index.html', ...common, 'que-es-nuvia.html'])) problems.push('Los espacios comunes deben ofrecer portada, Lecturas, Colaboradores y Qué es NUVIA');
-    if (!same(await hrefs(footer.locator('a')), ['index.html', ...common, ...institutional])) problems.push('El pie no conserva regreso, espacios comunes y páginas institucionales');
+    if (!same(await hrefs(footer.locator('a')), [...webs, 'index.html', ...common, ...institutional])) problems.push('El pie no conserva las cuatro webs, el regreso, los espacios comunes y las páginas institucionales');
     problems.push(...await page.evaluate(() => {
       const current = new URL(location.href);
       const file = current.pathname.split('/').pop();
@@ -94,28 +98,13 @@ export async function checkNavigationAndCards(page, route) {
         params.sort();
         return url.pathname + (params.size ? '?' + params : '');
       };
-      for (const link of document.querySelectorAll('.web-name, .eco-switch a, .web-footer a')) {
+      for (const link of document.querySelectorAll('.web-name, .eco-bar a, .web-footer a')) {
         const expected = pageLocation(new URL(link.href)) === pageLocation(current);
         if (link.hasAttribute('aria-current') !== expected) out.push(`${link.textContent.trim()}: aria-current identifica una portada distinta de la vista actual`);
       }
       return out;
     }));
-    await summary.focus();
-    await page.keyboard.press('Enter');
-    await page.waitForFunction(() => document.querySelector('.eco-switch')?.open);
-    problems.push(...await group.evaluate(el => {
-      const box = el.querySelector('nav').getBoundingClientRect();
-      const out = [];
-      if (box.left < -1 || box.right > document.documentElement.clientWidth + 1) out.push('Desplegable fuera del ancho visible');
-      if (document.querySelectorAll('.eco-switch[open]').length !== 1) out.push('Más de un desplegable abierto');
-      return out;
-    }));
-    await checkControls(header.locator('a, summary'));
-    await summary.focus();
-    await page.keyboard.press('Tab');
-    if (!await group.evaluate(el => el.querySelector('a') === document.activeElement)) problems.push('Tab no entra en el primer enlace del menú');
-    await page.keyboard.press('Escape');
-    if (!await group.evaluate(el => !el.open && el.querySelector('summary') === document.activeElement)) problems.push('Escape no cierra el menú y devuelve el foco');
+    await checkControls(header.locator('.eco-bar-home, .eco-bar-webs a, .web-brand, .web-name, .web-local a'));
     await checkControls(footer.locator('a'));
   }
   if (file === 'lecturas.html') {

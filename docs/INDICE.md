@@ -38,6 +38,12 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/CLARIDAD_EDITORIAL_Y_ESPACIOS_COMUNES_20261112.md` — contenidos disponibles antes del relato, con textos firmados íntegros.
 - `docs/CLARIDAD_PERIODOS_E_IDENTIDAD_EMPRESAS_20261112.md` — períodos y fuentes junto a cada indicador, identidad pendiente con trazabilidad íntegra.
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
+- `docs/VIDEO_EDICION_COHERENCIA_NUVIA_20261122.md` — edición de coherencia hecha sobre «Aros entrelazados»; descartada porque el fundador revisaba «Mar».
+- `docs/BARRA_ECOSISTEMA_Y_PIE_20261122.md` — barra con las cuatro webs en todas las páginas (sustituye al desplegable «Explorar NUVIA») y pie con las cuatro webs; local, para revisión.
+- `docs/VIDEO_MAR_COHERENTE_NUVIA_20261122.md` — edición coherente sobre «Mar»: aros de estudio con el vidrio del cierre, logotipo plano, fondo cálido, rótulos sin cruces y cierre tres segundos más largo; local, para revisión.
+- `docs/REDISENO_PORTADA_ESCALA_Y_FONDO_20261122.md` — portada con fondo marfil, escala mayor, color por puerta, cápsula «Qué es NUVIA» y ampliación en pantallas grandes; en local, sin publicar.
+- [Portada Arena cálida y logo Lateral XL](PORTADA_ARENA_CALIDA_Y_LOGO_LATERAL_20261122.md) — elección editorial del fundador y tamaño de los aros en tablet.
+- `docs/ENLACE_QUE_ES_NUVIA_PORTADA_20261114.md` — enlace institucional de la portada con tipografía Newsreader de mayor tamaño y flecha sobre un círculo azul NUVIA.
 - `docs/PUBLICACION_CLARIDAD_LOGO_NUVIA_20261112.md` — publicación autorizada de la versión revisada, textos originales y logo ampliado sin rótulo; alcance, validación y seguimiento del despliegue.
 - `docs/LOGO_COMUN_CABECERAS_NUVIA_20261112.md` — mismo logo oficial en las cuatro webs, interiores y espacios comunes; tamaños adaptados, sin cambios en el resto del diseño.
 - `docs/REVISION_PUBLICA_CABECERAS_Y_MENUS_20261112.md` — revisión de la web publicada: 28 páginas y diez vistas adicionales, 194 combinaciones de escritorio y tablet sin incidencias; diseño conservado.
@@ -49,6 +55,20 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/PUBLICACION_CORRECCIONES_FUNCIONALES_20261112.md` — orden posterior de publicación de las correcciones y vídeos actualizados; alcance del commit, validación y comprobación en GitHub Pages, manteniendo el diseño.
 - `docs/VIDEO_QUE_ES_NUVIA_3D_20261112.md` — película institucional 3D con voz en español, música original y subtítulos; fuentes editables, integración, conservación de contenidos y validación.
 - `docs/PUBLICACION_VIDEO_QUE_ES_NUVIA_20261113.md` — orden de publicación del vídeo y su integración en «Qué es NUVIA», alcance y comprobación en GitHub Pages.
+- `docs/VIDEO_NUVIA_AROS_EN_MOVIMIENTO_20261114.md` — coreografía de los cuatro aros, logo 3D, guion y máster local de un minuto con locución Charon, pendiente de revisión y sin publicar.
+- `docs/VIDEO_NUVIA_LOGO_HOJAS_20261115.md` — apertura con la firma oficial 3D, desprendimiento de sus tres hojas y transformación hacia los cuatro aros; conserva locución y cierre, sin publicar.
+- `docs/PELICULA_UNA_LLAVE_SOBRE_LA_MESA_20261117.md` — nueva película para revisión local de «Qué es NUVIA», con guion narrativo, miniaturas animadas y voz en español.
+- [Todo está conectado · Las cuatro webs de NUVIA](VIDEO_CUATRO_WEBS_CONECTADAS_20261117.md) — presentación audiovisual local de los recursos de las cuatro webs, los espacios comunes y los cursos previstos.
+- [Revisión de encuadres de «Todo está conectado»](VIDEO_ENCUADRES_CUATRO_WEBS_20261122.md) — ajuste de las pantallas del recorrido por NUVIA, proyecto de montaje y controles de la versión del 22 de noviembre.
+- [Todo está conectado · Firma y hojas](VIDEO_FIRMA_Y_HOJAS_NUVIA_20261122.md) — edición de la firma tridimensional, la transición de las hojas, los aros y los marcos de las nueve pantallas.
+- [Todo está conectado · El patrimonio familiar](LOCUCION_PATRIMONIO_FAMILIAR_20261122.md) — locución propuesta por el fundador, adaptación local de las imágenes y control de los cuatro aros y del cierre.
+- [Todo está conectado · Voz continua](VIDEO_VOZ_CONTINUA_NUVIA_20261122.md) — revisión de la interpretación, los tiempos de montaje y la escena de profesionales y docentes.
+- [Todo está conectado · Aros y escultura](VIDEO_AROS_Y_ESCULTURA_NUVIA_20261122.md) — nueva imagen de los aros y animación de su encuentro en la figura de la portada.
+- [Todo está conectado · Firma frontal, trayecto y cierre](VIDEO_FIRMA_TRAYECTO_FLUIDEZ_NUVIA_20261122.md) — entrada de la marca, ejemplo visual de la vivienda y continuidad de las cuatro piezas a 50 fotogramas por segundo.
+- [Todo está conectado · Ritmo y partitura](VIDEO_RITMO_Y_PARTITURA_NUVIA_20261122.md) — cadencia de la locución, acentos musicales y sincronización de la película.
+- [Todo está conectado · Olivar, música y unión](VIDEO_OLIVAR_MUSICA_Y_UNION_NUVIA_20261122.md) — tratamiento fotográfico, música de cámara y movimiento de las cuatro piezas.
+- [Todo está conectado · Hojas, mar y música](VIDEO_HOJAS_MAR_Y_MUSICA_NUVIA_20261122.md) — estabilidad de la firma inicial, composición del plano de respiración y nueva banda sonora.
+- `docs/CORRECCION_TEXTO_A_VOZ_CLAVE_20261114.md` — reparación autorizada de la credencial de Gemini en Texto a Voz, revisión del servicio y comprobación de síntesis.
 
 ## 3. Documentos vigentes por módulo
 
@@ -65,6 +85,7 @@ Son los que fijan el estado actual de cada parte; cuando una ficha de fecha post
 - `docs/JUBILACION_FASE2_CCAA_20261005.md` — escalas autonómicas de las 15 comunidades (fase 2).
 - `docs/JUBILACION_MULTITERRITORIO_REVISION_20261004.md` — despliegue y revisión de parámetros.
 - `docs/JUBILACION_REDISENO_20260923.md` — auditoría de cálculo y rediseño del simulador.
+- `docs/JUBILACION_CORRECCION_MAYORES_75_20261113.md` — corrección: jubilados de más de 75 años y frase de las escalas fijas. Sin publicar.
 - `docs/JUBILACION_CORRECCION_FISCAL_ART20_EPSV_20261121.md` — corrección fiscal: reducción del art. 20 LIRPF antes de los 2.000 € de gastos y EPSV vasca con rentabilidad negativa. Sin publicar.
 - `docs/IMPUESTOS_DISENO_20260923.md` — diseño de Impuestos y guías.
 
@@ -267,6 +288,8 @@ Actas, entregas, verificaciones, planes y fichas de fecha concreta. Registran c�
 | `REVISION_ENTREGA_LOCAL_20260903.md` | 2026-09-07 | NUVIA · Revisión de procedencia y entrega local |
 | `VERIFICACION_BASE_LISTA_20260902.md` | 2026-09-07 | Verificación de la base lista · NUVIA |
 | `VERIFICACION_ENTREGA_2B_CLAUDE_FABLE_5_1_20260902.md` | 2026-09-07 | NUVIA · Verificación independiente de la Entrega 2b (base propia de la alfa) · 2 de septie |
+- `CANON_VISUAL_NUVIA_ACADEMY_20261022.md` — fondo, tipografía y estructura de los vídeos del canal. Fijado; manda sobre cualquier otra referencia visual de vídeo.
+- `VIDEO_PRECIO_DINERO_PRODUCCION_V04_20261022.md` — acta de la producción audiovisual v04: imágenes generadas, Cavalry, Blender, montaje en Resolve y validación. La duración y los subtítulos quedan sujetos a la locución del autor.
 
 ## Antecedentes de la integración del ecosistema · 12-11-2026
 

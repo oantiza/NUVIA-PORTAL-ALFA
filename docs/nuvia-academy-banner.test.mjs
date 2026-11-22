@@ -52,7 +52,7 @@ assert.match(homeCss,/\.hub-page a:focus-visible\s*\{[^}]*outline:\s*3px/,'Foco 
 assert.match(homeCss,/\.hub-door-action\s*\{[^}]*min-height:\s*44px/);
 assert.match(homeCss,/\.hub-connections a\s*\{[^}]*min-height:\s*44px/);
 assert.match(homeCss,/\.hub-about\s*\{[^}]*min-height:\s*48px/);
-assert.match(homeCss,/\.hub-stage\s*\{[^}]*grid-template-columns:\s*290px 1fr 290px/,'Composición de escritorio alrededor de la pieza central');
+assert.match(homeCss,/\.hub-stage\s*\{[^}]*grid-template-columns:\s*345px 1fr 345px/,'Composición de escritorio alrededor de la pieza central');
 assert.match(homeCss,/@media\s*\(max-width:\s*859px\)[\s\S]*?grid-template-columns:\s*1fr 1fr/,'Composición de tablet sin tapar los accesos');
 assert.match(homeCss,/@media\s*\(prefers-reduced-motion:\s*reduce\)/);
 for(const limit of homeCss.matchAll(/@media\s*\(max-width:\s*(\d+)px\)/g)) assert.ok(Number(limit[1])>=768,'El alcance sigue siendo escritorio y tablet');

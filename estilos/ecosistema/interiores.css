@@ -20,7 +20,6 @@
   body[data-eco-theme] .web-return { font-size: 32px; }
   body[data-eco-theme] .web-footer-bottom, body[data-eco-theme] .web-prototype-note { color: var(--nv-text-muted); }
   body[data-eco-theme] :is(.web-header,.web-footer) :is(a,summary):focus-visible { outline: 3px solid var(--eco-accent); outline-offset: 5px; }
-  body[data-eco-theme] .eco-switch nav { z-index: 40; }
   body[data-eco-theme] .nv-breadcrumb { font-size: 13px; }
   body[data-eco-theme] .nv-breadcrumb a { min-height: 44px; display: inline-flex; align-items: center; }
   body[data-eco-theme] .nv-entry.nv-sub-hero { padding-block: 28px 36px; }

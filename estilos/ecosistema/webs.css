@@ -12,20 +12,22 @@
 .web-skip { position: fixed; z-index: 40; left: 24px; top: -90px; min-height: 48px; padding: 10px 20px; background: var(--nv-surface); border: 1px solid var(--nv-line-strong); }
 .web-skip:focus { top: 16px; }
 .web-header { position: relative; z-index: 10; background: var(--nv-surface); }
+/* Barra del ecosistema: las cuatro webs siempre a la vista (22-11-2026). */
+.eco-bar { background: var(--nv-surface-deep); color: var(--nv-text-on-dark-soft); font-size: 14px; }
+.eco-bar > div { display: flex; align-items: center; gap: 30px; }
+.eco-bar a { display: inline-flex; align-items: center; min-height: 46px; border-bottom: 2px solid transparent; white-space: nowrap; }
+.eco-bar a:is(:hover, :focus-visible), .eco-bar a[data-eco-active], .eco-bar a[aria-current] { color: var(--nv-text-on-dark); }
+.eco-bar a[data-eco-active] { border-bottom-color: var(--nv-bronze-500); }
+.eco-bar-home { padding-right: 30px; border-right: 1px solid var(--nv-line-on-dark); }
+.eco-bar-webs { display: flex; gap: 30px; }
+.eco-bar-common { display: flex; gap: 26px; margin-left: auto; }
+.web-page .eco-bar a:focus-visible { outline-color: var(--nv-bronze-200); outline-offset: -3px; }
+@media (max-width: 1239px) { .eco-bar > div, .eco-bar-webs { gap: 24px; } .eco-bar-home { padding-right: 24px; } .eco-bar-common { display: none; } }
+@media (max-width: 819px) { .eco-bar { font-size: 13px; } .eco-bar > div, .eco-bar-webs { gap: 16px; } .eco-bar-home { padding-right: 16px; } }
 .web-header-row { display: flex; align-items: center; gap: 27px; min-height: 100px; }
 .web-brand { display: flex; align-items: center; min-height: 56px; flex-shrink: 0; }
 .web-brand-logo { display: block; width: 240px; height: 60px; object-fit: contain; }
 .web-name { display: flex; align-items: center; min-height: 44px; padding-left: 27px; border-left: 1px solid var(--nv-line-strong); font: 400 25px/1.1 var(--nv-font-serif); }
-.eco-switch { position: relative; margin-left: auto; flex-shrink: 0; font-size: 14px; }
-.eco-switch summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 20px; min-height: 46px; padding: 0 16px; border: 1px solid var(--nv-line-strong); border-radius: 24px; }
-.eco-switch summary::-webkit-details-marker { display: none; }
-.eco-switch summary:hover { background: var(--nv-surface-page); }
-.eco-switch[open] summary { background: var(--nv-surface-page); }
-.eco-switch nav { position: absolute; top: calc(100% + 10px); right: 0; width: 300px; background: var(--nv-surface); padding: 10px; box-shadow: var(--nv-shadow-lg); border: 1px solid var(--nv-line); border-radius: 8px; }
-.eco-switch nav a { display: flex; align-items: center; min-height: 44px; padding: 8px 14px; }
-.eco-switch nav a:hover, .eco-switch nav a[aria-current] { background: var(--nv-surface-page); }
-.eco-switch nav { max-height: min(620px, calc(100vh - 115px)); overflow-y: auto; overscroll-behavior: contain; }
-.eco-switch-label { display: block; padding: 14px 14px 4px; color: var(--nv-text-muted); font-size: 12px; border-top: 1px solid var(--nv-line); margin-top: 6px; }
 .web-page .web-trust { border-top: 1px solid var(--nv-line); margin-top: 25px; padding-top: 12px; }
 .web-page .web-trust { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 36px; }
 .web-page .web-trust-copy { max-width: 85ch; font-size: 12px; line-height: 1.7; color: var(--nv-text-soft); }
@@ -42,6 +44,9 @@
 .web-button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 50px; padding: 12px 22px; border-radius: 4px; color: var(--nv-surface); background: var(--nv-navy-900); font-size: 14px; font-weight: 500; line-height: 1.5; }
 .web-button:hover { background: var(--nv-navy-800); }
 .web-footer { border-top: 1px solid var(--nv-line); padding: 35px 0 22px; background: var(--nv-surface); }
+.web-footer-webs { display: flex; flex-wrap: wrap; gap: 6px 34px; padding-bottom: 20px; margin-bottom: 26px; border-bottom: 1px solid var(--nv-line); }
+.web-footer-webs a { display: flex; align-items: center; min-height: 44px; font: 400 22px/1.2 var(--nv-font-serif); letter-spacing: -.02em; }
+.web-footer-webs a:hover { text-decoration: underline; text-underline-offset: 6px; }
 .web-footer-top, .web-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .web-return { display: block; font: 400 32px/1.2 var(--nv-font-serif); letter-spacing: -.03em; }
 .web-return > span { display: flex; align-items: center; min-height: 44px; gap: 16px; font: 13px/1.5 var(--nv-font-sans); letter-spacing: 0; }
@@ -63,7 +68,6 @@
   .web-header-row { gap: 17px; }
   .web-name { padding-left: 17px; font-size: 22px; max-width: 250px; }
   .web-brand-logo { width: 192px; height: 48px; }
-  .eco-switch summary { gap: 14px; padding-inline: 13px; }
   .web-local > div { gap: 28px; }
   .web-footer-top nav { max-width: 330px; }
 }

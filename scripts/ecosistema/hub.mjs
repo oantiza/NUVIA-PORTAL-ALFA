@@ -26,6 +26,7 @@ export function renderHub() {
         <span class="hub-door-action">${action} ${arrow}</span>
       </a>`).join('\n      ')}
     </nav>
+    <div class="hub-common">
     <section class="hub-connections" aria-label="Espacios comunes de NUVIA">
       <p>La curiosidad nos une.</p>
       <nav aria-label="Lecturas y colaboradores de NUVIA">
@@ -46,5 +47,6 @@ export function renderHub() {
         </nav>
       </details>
     </section>
+    </div>
   </main>`;
 }

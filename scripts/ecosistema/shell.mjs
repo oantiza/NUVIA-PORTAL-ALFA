@@ -103,24 +103,25 @@ function hubFooter(definition) {
   </footer>`;
 }
 
-function ecosystemMenu(definition, current) {
-  return `<nav aria-label="Explorar NUVIA">${link({ href: definition.brand.href, label: 'Inicio NUVIA' }, current)}<span class="eco-switch-label">Las cuatro webs</span>${definition.webs.map(site => link({ href: site.home, label: site.name }, current)).join('')}<span class="eco-switch-label">Espacios comunes</span>${definition.common.map(item => link(item, current)).join('')}<span class="eco-switch-label">Conoce NUVIA</span>${definition.institutional.map(item => link(item, current)).join('')}</nav>`;
+/** Barra del ecosistema: las cuatro webs a la vista en todas las páginas (orden del 22-11-2026). */
+function ecosystemBar(definition, current, activeKey = null) {
+  const about = definition.institutional.find(item => item.href === definition.hub.about.href);
+  const web = site => link({ href: site.home, label: site.name }, current, site.key === activeKey ? ' data-eco-active' : '');
+  return `<nav class="eco-bar" aria-label="Las cuatro webs de NUVIA"><div class="web-wrap">${link({ href: definition.brand.href, label: 'Inicio NUVIA' }, current, ' class="eco-bar-home"')}<span class="eco-bar-webs">${definition.webs.map(web).join('')}</span><span class="eco-bar-common">${[...definition.common, about].map(item => link(item, current)).join('')}</span></div></nav>`;
 }
 
 function webHeader(definition, site, current, section) {
-  return `<header data-screen-label="Header" class="web-header"><div class="web-wrap web-header-row">
+  return `<header data-screen-label="Header" class="web-header">${ecosystemBar(definition, current, site.key)}<div class="web-wrap web-header-row">
     <a class="web-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}">${brandImage(definition)}</a>
     ${link({ href: site.home, label: site.name }, current, ' class="web-name"')}
-    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary>${ecosystemMenu(definition, current)}</details>
   </div><nav class="web-local" data-nav-family="${escape(site.key)}" aria-label="Navegación de ${escape(site.name)}"><div class="web-wrap">${link({ href: site.home, label: 'Inicio' }, section, ` aria-label="Inicio de ${escape(site.name)}"`)}${site.nav.map(item => link(item, section)).join('')}</div></nav></header>`;
 }
 
 function sharedHeader(definition, current) {
   const about = definition.institutional.find(item => item.href === definition.hub.about.href);
-  return `<header data-screen-label="Header" class="web-header web-header--shared"><div class="web-wrap web-header-row">
+  return `<header data-screen-label="Header" class="web-header web-header--shared">${ecosystemBar(definition, current)}<div class="web-wrap web-header-row">
     <a class="web-brand" href="${escape(definition.brand.href)}" aria-label="${escape(definition.brand.label)}">${brandImage(definition)}</a>
     <a class="web-name" href="${escape(definition.brand.href)}">Espacios comunes</a>
-    <details class="eco-switch"><summary>Explorar NUVIA <span aria-hidden="true">⌄</span></summary>${ecosystemMenu(definition, current)}</details>
   </div><nav class="web-local" aria-label="Espacios compartidos de NUVIA"><div class="web-wrap">${link({ href: definition.brand.href, label: 'Inicio NUVIA' }, current)}${[...definition.common, about].map(item => link(item, current)).join('')}</div></nav></header>`;
 }
 
@@ -128,7 +129,7 @@ function webFooter(definition, current) {
   const footer = definition.footer;
   const about = definition.institutional.find(item => item.href === definition.hub.about.href);
   const criteria = definition.institutional.filter(item => item !== about);
-  return markCurrentLinks(`<footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-top"><a class="web-return" href="${escape(definition.brand.href)}">${escape(footer.returnTitle)}<span>${escape(footer.returnLabel)} ${arrow}</span></a><nav aria-label="Espacios comunes e información de NUVIA">${[...definition.common, about].map(item => link(item)).join('')}</nav></div><div class="web-trust"><div class="web-trust-copy">${footer.paragraphs.map(text => `<p>${escape(text)}</p>`).join('')}</div><nav aria-label="Criterios de NUVIA">${criteria.map(item => link(item)).join('')}</nav></div><div class="web-footer-bottom"><p>${escape(footer.motto)}</p></div><p class="web-prototype-note">${escape(footer.structureNote)}</p></div></footer>`, current);
+  return markCurrentLinks(`<footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><nav class="web-footer-webs" aria-label="Las cuatro webs de NUVIA">${definition.webs.map(site => link({ href: site.home, label: site.name })).join('')}</nav><div class="web-footer-top"><a class="web-return" href="${escape(definition.brand.href)}">${escape(footer.returnTitle)}<span>${escape(footer.returnLabel)} ${arrow}</span></a><nav aria-label="Espacios comunes e información de NUVIA">${[...definition.common, about].map(item => link(item)).join('')}</nav></div><div class="web-trust"><div class="web-trust-copy">${footer.paragraphs.map(text => `<p>${escape(text)}</p>`).join('')}</div><nav aria-label="Criterios de NUVIA">${criteria.map(item => link(item)).join('')}</nav></div><div class="web-footer-bottom"><p>${escape(footer.motto)}</p></div><p class="web-prototype-note">${escape(footer.structureNote)}</p></div></footer>`, current);
 }
 
 /** API pura para el generador de páginas y shell:sync. */

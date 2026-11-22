@@ -2,6 +2,8 @@
 
 **Claridad e identidad · 12-11-2026:** la orden «Sigue», posterior a la auditoría y a la libertad expresa para mejorar diseño y textos, aplica la marca pública **NUVIA** y el descriptor «Conocimiento para la vida en familia». «Explorar NUVIA» es el selector global único; «Inicio NUVIA», el regreso común. El acta [Aplicación de la auditoría](APLICACION_AUDITORIA_CLARIDAD_NUVIA_20261112.md) registra el alcance y las validaciones.
 
+**Barra del ecosistema · 22-11-2026:** por orden del fundador («ok a»), una barra con Inicio NUVIA y las cuatro webs sustituye al desplegable «Explorar NUVIA» en las 28 páginas con cabecera; Lecturas con Criterio, Colaboradores y Qué es NUVIA van a su derecha (desde 1240 px) y el pie añade una fila con las cuatro webs. La portada queda con escala contenida y fondo Arena. Detalle en `docs/BARRA_ECOSISTEMA_Y_PIE_20261122.md` y `docs/REDISENO_PORTADA_ESCALA_Y_FONDO_20261122.md`. Sin publicar hasta nueva orden.
+
 **Versión:** 1.2 · 12-11-2026 (1.1 · 12-10-2026; 1.0 · 03-10-2026) · **Destinatarios:** cualquier persona, programa o asistente que trabaje sobre la web, incluidos los externos.
 **Carácter:** documento de obligado cumplimiento para toda tarea de diseño, estructura, contenido o código del portal. Si una petición entra en conflicto con esta guía, se consulta al fundador antes de actuar.
 

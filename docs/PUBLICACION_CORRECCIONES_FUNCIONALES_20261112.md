@@ -44,3 +44,17 @@ La publicación no añade funciones ni transformaciones a la reparación validad
 Referencia inicial local y remota: `07e8ad408045bc00d5e7f0cd6fb288e34c90d52a`. Se enviará el commit sin forzar la historia, se identificará la ejecución por su SHA y se esperará su resultado final. Después se verificarán en la URL pública los cinco vídeos, la asociación del reproductor, TradingView, cierres anteriores, enlaces corregidos y conservación de recursos visuales. Los recibos se guardarán en `output/publicacion-correcciones-20261112/`.
 
 Esta sección registra la preparación autorizada; no declara éxito del despliegue antes de observarlo. El cierre efectivo se añadirá después de comprobar GitHub Actions y la web pública, sin provocar una segunda publicación solo documental.
+
+## Cierre de publicación comprobado
+
+- Commit enviado y publicado: `99fefce0bb8a2fe670719d33128ea2139df4e035`, 24 archivos autorizados; `main` local y remoto coinciden. Envío normal, sin forzar la historia.
+- [Ejecución 43268617483](https://github.com/oantiza/NUVIA-PORTAL-ALFA/actions/runs/43268617483): `completed / success`, con el SHA exacto. Construcción, validación, revisión de tablet y despliegue correctos.
+- Las 28 páginas públicas responden con HTTP 200. Sus 28 cabeceras coinciden con el commit aprobado; Inicio conserva íntegros sus textos y composición. Las 33 hojas de estilo, el logo, el favicon y las fuentes corregidas verificadas coinciden con el commit, normalizando únicamente los finales de línea: 44 recursos contrastados.
+- Los cinco vídeos nuevos reproducen realmente desde GitHub Pages en 1440, 1024 y 768 px. Las 18 comprobaciones audiovisuales, incluidos cambio de capítulo, Atrás y Adelante, terminan correctamente, sin errores JavaScript ni HTTP propios.
+- TradingView público: 3/3 tamaños correctos, gráfica y cotizaciones reales, plantilla inerte antes de la activación y pestañas Índices, Divisas y Materias primas operativas.
+- Empresas público: 15/15 consultas y reconsultas de cierres anteriores correctas, cinco por tamaño. Las respuestas reales variaron el orden de sus claves sin cambiar los datos, y ya no produjeron el falso aviso. Cero errores JavaScript, HTTP o escrituras remotas.
+- Las cuatro referencias oficiales corregidas están presentes en las fuentes públicas, incluidos los informes descargables y el lector integrado. Las cuatro referencias externas protegidas con 403 mantienen el límite de comprobación ya documentado; no se presentan como validadas.
+
+Evidencias en `output/publicacion-correcciones-20261112/`: `recibo-despliegue.json`, `verificacion-publica.json`, `academia/VERIFICACION_PUBLICA.md`, `academia/videos-actualizados.json`, `tradingview/resultado.json`, `empresas/smoke-publico.json` y sus capturas. La versión pública queda verificada; no se modifica el diseño ni Firebase.
+
+Este cierre se registra localmente tras comprobar producción. No genera una segunda publicación solo documental; los trabajos ajenos y sus referencias del índice permanecen intactos y fuera del commit.

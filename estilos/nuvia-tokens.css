@@ -195,6 +195,8 @@
   --nv-navy-800: #15365f;
   --nv-navy-700: #284c75;
   --nv-hero-photo-blue: #1c3a5e; /* Azul del degradado fotográfico de Inicio. */
+  --nv-sky-700: #35618c;    /* Azul claro de Academia · texto y enlaces (5,7:1 sobre marfil) */
+  --nv-sky-400: #86a9cc;    /* Azul claro de Academia · SOLO filete/icono */
 
   /* Verdes — acción, estado y progreso */
   --nv-green-900: #2c3817;
@@ -436,6 +438,14 @@
   --nv-surface-editorial: var(--nv-paper-light);
   --nv-surface-editorial-strong: var(--nv-paper);
   --nv-surface-deep: var(--nv-navy-900);
+  /* Portada del ecosistema: fondo Arena cálida y acabado Marino de la maqueta editorial. */
+  --nv-surface-hub: #efeae0;
+  --nv-surface-hub-light: #f7f3ea;
+  --nv-surface-hub-deep: #e5decf;
+  --nv-hub-button: #0f2640;
+  --nv-hub-button-hover: #163457;
+  --nv-hub-button-text: #faf8f4;
+  --nv-hub-button-accent: #c19a5b;
   --nv-surface-institutional:
     radial-gradient(circle at 88% 8%, rgba(124, 154, 68, .18), transparent 28rem),
     linear-gradient(135deg, var(--nv-navy-950), var(--nv-navy-800));

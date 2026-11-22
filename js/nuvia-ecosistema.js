@@ -76,17 +76,6 @@
   };
   requestAnimationFrame(restoreLegacyAnchor);
   window.addEventListener('hashchange', () => requestAnimationFrame(restoreLegacyAnchor));
-  document.addEventListener('keydown', (event) => {
-    const selector = document.querySelector('.eco-switch');
-    if (event.key === 'Escape' && selector?.open) {
-      selector.open = false;
-      selector.querySelector('summary').focus();
-    }
-  });
-  document.addEventListener('click', (event) => {
-    const selector = document.querySelector('.eco-switch');
-    if (selector && !selector.contains(event.target)) selector.open = false;
-  });
   // Refleja las vistas que el motor original cambia sin recargar el documento.
   if (document.body.dataset.ecoTheme) {
     const syncNavigation = () => {
@@ -135,7 +124,7 @@
         copy.searchParams.sort();
         return copy.pathname + copy.search;
       };
-      for (const link of document.querySelectorAll('.web-header-row a, .web-footer a')) {
+      for (const link of document.querySelectorAll('.eco-bar a, .web-header-row a, .web-footer a')) {
         if (locationKey(link.href) === locationKey(current)) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
       }

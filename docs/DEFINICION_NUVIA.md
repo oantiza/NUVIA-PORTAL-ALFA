@@ -7,7 +7,7 @@ nomenclatura_publica_20261112:
   contexto: Continuación de las propuestas de la auditoría integral, tras la libertad expresa para mejorar nombres, textos, diseño y herramientas
   marca: NUVIA
   descriptor: Conocimiento para la vida en familia
-  menu_global: Explorar NUVIA
+  menu_global: Barra del ecosistema (Inicio NUVIA y las cuatro webs)
   regreso_global: Inicio NUVIA
   bienestar: Familia y bienestar
   descriptor_bienestar: Salud, hábitos y vida cotidiana

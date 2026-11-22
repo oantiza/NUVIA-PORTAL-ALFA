@@ -21,7 +21,9 @@ export const SURFACE_CONTRACT = [
   ['.nv-hero--institutional:not(.nv-entry), .nuvia-analysis-hero:not(.nv-entry), .nv-guide-hero:not(.nv-entry)', 'backgroundImage', 'var(--nv-surface-institutional)'],
   ['.nv-entry', 'backgroundImage', 'none'],
   ['body:not([data-eco-theme]) .nv-entry, body[data-eco-theme="economia"] .nv-entry, body[data-eco-theme="nuvia"] .nv-entry:not(.about-hero)', 'backgroundColor', 'var(--nv-surface)'],
-  ['body[data-eco-theme]:not(.web-page), .web-page, .web-header, .web-footer', 'backgroundColor', 'var(--nv-surface)'],
+  ['body[data-eco-theme]:not(.web-page), .web-page, .web-header', 'backgroundColor', 'var(--nv-surface)'],
+  /* Pie en azul noche por orden del fundador (22-11-2026). */
+  ['.web-footer', 'backgroundColor', 'var(--nv-surface-deep)'],
   ['body[data-eco-theme="academia"] main, body[data-eco-theme="bienestar"] main, body[data-eco-theme="lecturas"] main, .about-presentation', 'backgroundColor', 'var(--nv-surface)'],
   ['.hub-page', 'backgroundColor', 'var(--nv-surface-hub)'],
   ['body[data-eco-theme="nuvia"] .about-hero.nv-entry', 'backgroundColor', 'color-mix(in srgb, var(--nv-surface-editorial) 38%, var(--nv-surface))'],

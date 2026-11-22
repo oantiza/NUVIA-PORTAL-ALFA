@@ -34,3 +34,13 @@ No cambian el logotipo, el nombre de la web, el menú propio de cada web, los av
 - La auditoría de la portada cubre también el ajuste de fondo, logotipo y cápsula hecho por el fundador esa tarde.
 
 El fundador dio la barra por buena a las 19:07 («todo ok»). La guía maestra, `AGENTS.md` y `DEFINICION_NUVIA.md` recogen ya la barra como navegación global.
+
+## Pie en azul noche (22-11-2026, noche)
+
+Al cerrar la sesión anterior el pie se dejó claro. Visto un ejemplo en el navegador, el fundador respondió «Sí, el pie».
+
+- `estilos/ecosistema/webs.css` e `interiores.css`: el pie de las 28 páginas pasa a `--nv-surface-deep` (azul NUVIA, el mismo de la barra superior), con texto en `--nv-text-on-dark`, textos legales en `--nv-text-on-dark-soft`, filetes en `--nv-line-on-dark` y foco en bronce claro. No cambian el contenido, los enlaces ni la altura (506 px en Jubilación a 1440 px).
+- **Contrato modificado:** en `scripts/nuvia-visual-contract.mjs`, `.web-footer` sale de la regla de superficie blanca y recibe una propia, `var(--nv-surface-deep)`. Es consecuencia directa de la orden; queda a la vista del fundador.
+- En los interiores, el margen de 40 px sobre el pie dejaba ver una franja blanca entre la última sección y el pie azul. Consultado, el fundador respondió «Sí, quítala»: el margen pasa a 0 en `interiores.css`. Medido en Jubilación y en Cómo trabajamos: 0 px entre el contenido y el pie.
+
+Validación: `npm run validate` con código de salida 0 («51 páginas a 1440 px, sin fallos de contraste, tipografía, estructura, superficies, desborde ni fugas»); `check-render` a 1440, 1024 y 768 px sobre `economia.html`, `jubilacion.html`, `lecturas.html`, `metodologia.html` e `index.html`, 15 vistas de 15. No se ha ejecutado `npm run build`. Sin commit ni publicación. Tras quitar la franja se repitió `npm run validate`: código de salida 0, 51 páginas sin fallos.

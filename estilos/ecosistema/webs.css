@@ -28,9 +28,9 @@
 .web-brand { display: flex; align-items: center; min-height: 56px; flex-shrink: 0; }
 .web-brand-logo { display: block; width: 240px; height: 60px; object-fit: contain; }
 .web-name { display: flex; align-items: center; min-height: 44px; padding-left: 27px; border-left: 1px solid var(--nv-line-strong); font: 400 25px/1.1 var(--nv-font-serif); }
-.web-page .web-trust { border-top: 1px solid var(--nv-line); margin-top: 25px; padding-top: 12px; }
+.web-page .web-trust { border-top: 1px solid var(--nv-line-on-dark); margin-top: 25px; padding-top: 12px; }
 .web-page .web-trust { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 36px; }
-.web-page .web-trust-copy { max-width: 85ch; font-size: 12px; line-height: 1.7; color: var(--nv-text-soft); }
+.web-page .web-trust-copy { max-width: 85ch; font-size: 12px; line-height: 1.7; color: var(--nv-text-on-dark-soft); }
 .web-page .web-trust-copy p + p { margin-top: 7px; }
 .web-page .web-trust nav { display: flex; gap: 24px; }
 .web-page .web-trust nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }
@@ -43,8 +43,10 @@
 .web-link:hover { text-decoration: underline; text-underline-offset: 5px; }
 .web-button { display: inline-flex; align-items: center; justify-content: center; gap: 18px; min-height: 50px; padding: 12px 22px; border-radius: 4px; color: var(--nv-surface); background: var(--nv-navy-900); font-size: 14px; font-weight: 500; line-height: 1.5; }
 .web-button:hover { background: var(--nv-navy-800); }
-.web-footer { border-top: 1px solid var(--nv-line); padding: 35px 0 22px; background: var(--nv-surface); }
-.web-footer-webs { display: flex; flex-wrap: wrap; gap: 6px 34px; padding-bottom: 20px; margin-bottom: 26px; border-bottom: 1px solid var(--nv-line); }
+/* Pie en azul noche (22-11-2026): cierra la página con el color de la barra superior. */
+.web-footer { padding: 35px 0 22px; background: var(--nv-surface-deep); color: var(--nv-text-on-dark); }
+.web-page .web-footer :is(a, summary):focus-visible { outline-color: var(--nv-bronze-200); }
+.web-footer-webs { display: flex; flex-wrap: wrap; gap: 6px 34px; padding-bottom: 20px; margin-bottom: 26px; border-bottom: 1px solid var(--nv-line-on-dark); }
 .web-footer-webs a { display: flex; align-items: center; min-height: 44px; font: 400 22px/1.2 var(--nv-font-serif); letter-spacing: -.02em; }
 .web-footer-webs a:hover { text-decoration: underline; text-underline-offset: 6px; }
 .web-footer-top, .web-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
@@ -54,9 +56,9 @@
 .web-footer-top nav { display: flex; gap: 24px; }
 .web-footer-top nav a, .web-footer-bottom a { min-height: 44px; display: flex; align-items: center; font-size: 13px; }
 .web-footer-top nav a:hover, .web-footer-bottom a:hover { text-decoration: underline; text-underline-offset: 5px; }
-.web-footer-bottom { border-top: 1px solid var(--nv-line); margin-top: 25px; padding-top: 12px; color: var(--nv-text-muted); }
+.web-footer-bottom { border-top: 1px solid var(--nv-line-on-dark); margin-top: 25px; padding-top: 12px; color: var(--nv-text-on-dark-soft); }
 .web-footer-bottom p, .web-footer-bottom a, .web-prototype-note { font-size: 12px; }
-.web-prototype-note { color: var(--nv-text-muted); }
+.web-prototype-note { color: var(--nv-text-on-dark-soft); }
 @media (max-width: 999px) {
   .web-header-row { gap: 20px; }
   .web-brand-logo { width: 216px; height: 54px; }

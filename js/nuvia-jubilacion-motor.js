@@ -87,7 +87,10 @@
     const vasco = !!pv && pv.modelo === 'vasco';
     o.edad = Math.round(clamp(s.edad, 40, 95));
     o.sexo = s.sexo === 'mujer' ? 'mujer' : 'hombre';
-    o.edadJubilacion = Math.round(clamp(s.edadJubilacion, o.edad, 75));
+    /* La jubilación no puede ser anterior a la edad de hoy, ni posterior a los 75 salvo que ya se hayan cumplido.
+       Sin esa salvedad, a quien tiene más de 75 se le empezaba el plan a los 75: años negativos hasta la jubilación,
+       pensión deflactada, IRPF a una edad que no era la suya y ahorros repartidos en más años (corregido el 13-11-2026). */
+    o.edadJubilacion = Math.round(clamp(s.edadJubilacion, o.edad, Math.max(o.edad, 75)));
     o.pension = pos(s.pension);
     o.horizonte = s.horizonte === 'esperanza' ? 'esperanza' : 'edad';
     o.margen = Math.round(clamp(s.margen, 0, 20));

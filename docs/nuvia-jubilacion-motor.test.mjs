@@ -173,6 +173,35 @@ test('Avisos y límites', () => {
   assert.equal(M.normalizar({ edad: 65, edadFin: 60 }).edadFin, 66);
 });
 
+test('Jubilados de más de 75 años: el plan empieza a su edad (13-11-2026)', () => {
+  // Antes la edad de jubilación se limitaba a 75 aunque la edad actual fuera mayor: años negativos hasta la jubilación,
+  // con la pensión y los ahorros deflactados y el IRPF calculado a los 75. Ahora el límite de 75 no baja de la edad actual.
+  const o = M.normalizar({ edad: 80, edadJubilacion: 80 });
+  assert.equal(o.edadJubilacion, 80); assert.equal(o.aniosHastaJubilacion, 0); assert.equal(o.aniosPlan, 15);
+  assert.equal(M.normalizar({ edad: 82 }).edadJubilacion, 82, 'Con una edad de jubilación anterior se usa la edad actual, como dice el aviso');
+  assert.equal(M.normalizar({ edad: 95, edadJubilacion: 95 }).edadJubilacion, 95);
+  // El límite de 75 sigue igual para quien aún no los ha cumplido.
+  assert.equal(M.normalizar({ edad: 60, edadJubilacion: 80 }).edadJubilacion, 75);
+  assert.equal(M.normalizar({ edad: 75, edadJubilacion: 80 }).edadJubilacion, 75);
+  // Bizkaia, 80 años, pensión de 2.000 € × 14 y sin ahorros: 28.000 € el primer año, sin deflactar.
+  // 28.000 − bonificación 3.000 = 25.000; 18.080 × 23 % + 6.920 × 28 % = 6.096; − 1.615 = 4.481;
+  // deducción por edad desde los 75: 714 × (30.000 − 25.000) / 10.000 = 357 → 4.124.
+  const sin = { liquidez: 0, fondos: 0, fondosCoste: 0, acciones: 0, accionesCoste: 0 };
+  const r = M.calcular(Object.assign({ edad: 80, edadJubilacion: 80, pension: 2000 }, sin));
+  assert.equal(r.anio1.edad, 80); assert.equal(r.anio1.deflactor, 1);
+  cerca(r.anio1.pension, 28000, 1e-9); cerca(r.anio1.impuesto, 4124, 1e-6);
+  cerca(r.resumen.netoMensual, (28000 - 4124) / 12, 1e-6);
+  // A los 90 años, lo mismo: pasados los 75, la edad no cambia la pensión ni la deducción.
+  const n = M.calcular(Object.assign({ edad: 90, edadJubilacion: 90, pension: 2000 }, sin));
+  assert.equal(n.anio1.edad, 90); cerca(n.anio1.pension, 28000, 1e-9); cerca(n.anio1.impuesto, 4124, 1e-6);
+  // Los ahorros se reparten entre los 15 años que quedan hasta los 95, no entre los 20 que habría desde los 75.
+  // Retirada que crece con el IPC (2 %) y agota 100.000 € al 3 % en 15 años: C × (r − i) / (1 − ((1 + i) / (1 + r))^15) = 7.345,47 €.
+  const a = M.calcular(Object.assign({ edad: 80, edadJubilacion: 80, pension: 0 }, sin, { liquidez: 100000 }));
+  assert.equal(a.resumen.patrimonioJubilacion, 100000); assert.equal(a.base.filas.length, 15);
+  cerca(a.anio1.retiradaAhorros, 100000 * (0.03 - 0.02) / (1 - (1.02 / 1.03) ** 15), 1e-6);
+  cerca(a.anio1.retiradaAhorros, 7345.47, 0.01);
+});
+
 /* ----------------------------------------------------- Regresión Bizkaia -- */
 test('Bizkaia: regresión exacta del motor (23-09-2026, refijada el 04-10-2026 por la regla de edad a 31-12)', () => {
   // La refactorización por territorios no movió ninguna cifra de Bizkaia (17 casos comparados campo a campo, 0 diferencias).

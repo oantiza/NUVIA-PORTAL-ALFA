@@ -748,7 +748,7 @@
       h('div', { className: 'jb-method__cols' },
         h('div', null, h('p', { className: 'jb-field__label' }, 'Qué no tiene en cuenta'),
           h('ul', { className: 'jb-bullets' },
-            h('li', null, 'Las escalas de ' + cfg.ejercicio + ' se mantienen fijas: si no se actualizan con el IPC, pagarías algo más de lo que muestra.'),
+            h('li', null, 'Las escalas de ' + cfg.ejercicio + ' se mantienen fijas todos los años, sin actualizarlas con el IPC: si se actualizan, pagarías menos de lo que muestra.'),
             ...limitesLi,
             h('li', null, 'No compensa pérdidas ni calcula ventas por lotes: usa el coste medio.'),
             h('li', null, 'No incluye otros ingresos (alquileres, trabajo), ni el IRPF de los años antes de jubilarte.'),

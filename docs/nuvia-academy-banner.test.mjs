@@ -67,10 +67,10 @@ for(const fg of ['navy-900','navy-700','green-800','green-700','bronze-700','cop
 }
 const assets=[
   ['index.html','conexiones.webp','f0ffd01c1d0573a703eae521fb58b922fa3a072b5dd19dc6aa6c69de8fe05436'],
-  ['economia.html','economia-perspectiva.webp','60477dfdf132265f8a3a58b65fa910ae41ae68c5a707cd419673a083d609e26f'],
+  ['economia.html','economia-mundo.webp','4bd39c833851b8eee4d69063acfa496d08ddecc174d2d4622074a71c3a13343a'],
   ['patrimonio.html','patrimonio-hogar.webp','d2ccac26e2c41579e049011553f8e8e1ac22b042a2f3658b3c82cd8438ddd19f'],
   ['bienestar.html','bienestar-paseo.webp','ac13c912c981b6d1847d06ddbb7ff3f35b6d049ea71a597d4687b7077fc9e174'],
-  ['academia.html','academia-ideas.webp','f002f277feef36983699569daa7a08a23ff00e7a718224a681caf419b79fd36b'],
+  ['academia.html','academia-abaco.webp','bb890e537e146e8eb3e5240cb9cbf2d48345580574278389294696a46642ee92'],
 ];
 for(const [page,name,expected]of assets){const asset='src/assets/ecosistema/'+name;assert.ok((await read(page)).includes(`src="${asset}"`),`${page}: imagen aprobada`);assert.equal(createHash('sha256').update(await readFile(resolve(root,asset))).digest('hex'),expected,`${asset}: contenido intacto`);}
 assert.match(academy,/class="nv-academia-home"/);

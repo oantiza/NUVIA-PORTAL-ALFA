@@ -1,13 +1,15 @@
 .web-page--patrimonio { --pa-accent: var(--nv-bronze-700); }
 .pa-opening { background: color-mix(in srgb, var(--nv-surface-editorial) 72%, var(--nv-surface)); }
-.pa-opening-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 80px; align-items: center; padding-block: 54px 56px; }
-.pa-name { color: var(--pa-accent); font-size: 14px; font-weight: 500; margin-bottom: 24px; }
-.pa-opening h1 { font-size: clamp(56px,5.4vw,79px); line-height: 1.04; letter-spacing: -.045em; }
-.pa-lead { margin-top: 25px; max-width: 42ch; font-size: 17px; line-height: 1.8; color: var(--nv-text-soft); }
+/* Apertura: esqueleto común de las cuatro webs (22-11-2026). */
+.pa-opening-inner { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 4.4vw, 64px); align-items: center; min-height: 580px; }
+.pa-opening-copy { align-self: start; padding: 72px 0 48px; }
+.pa-name { color: var(--pa-accent); font-size: 14px; line-height: 1.5; font-weight: 500; margin: 0 0 22px; }
+.pa-opening h1 { font-size: clamp(56px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -.045em; }
+.pa-lead { margin-top: 24px; max-width: 42ch; font-size: 17px; line-height: 1.75; color: var(--nv-text-soft); }
 .pa-start { background: var(--pa-accent); margin-top: 28px; }
 .pa-start:hover { background: var(--nv-bronze-800); }
-.pa-signature { margin-top: 36px; font: 400 23px/1.3 var(--nv-font-serif); color: var(--pa-accent); }
-.pa-photo { width: 100%; height: 494px; max-width: 458px; justify-self: end; border-radius: 48% 48% 5px 5px; overflow: hidden; }
+.pa-signature { margin-top: 28px; font: 400 23px/1.3 var(--nv-font-serif); color: var(--pa-accent); }
+.pa-photo { width: 100%; height: 460px; max-width: 430px; justify-self: end; border-radius: 48% 48% 5px 5px; overflow: hidden; }
 .pa-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
 .pa-areas { padding-block: 74px; display: grid; grid-template-columns: .7fr 1.3fr; gap: 90px; }
 .pa-areas-intro h2 { font-size: 49px; line-height: 1.06; }
@@ -27,17 +29,16 @@
 .pa-perspective .web-link { margin-top: 10px; color: var(--pa-accent); }
 .pa-note { padding-block: 27px 31px; font-size: 12px; color: var(--nv-text-muted); }
 @media (max-width: 1179px) {
-  .pa-opening-inner { gap: 45px; }
-  .pa-opening h1 { font-size: 65px; }
-  .pa-photo { height: 462px; }
   .pa-areas { gap: 46px; grid-template-columns: .65fr 1.35fr; }
   .pa-area { gap: 22px; }
 }
+@media (max-width: 1024px) {
+  .pa-opening-inner { min-height: 470px; }
+  .pa-opening-copy { padding: 48px 0 36px; }
+  .pa-photo { height: 380px; }
+}
 @media (max-width: 999px) {
-  .pa-opening-inner { grid-template-columns: 1.12fr .88fr; gap: 29px; padding-block: 40px; }
-  .pa-opening h1 { font-size: 54px; }
   .pa-lead { font-size: 15px; }
-  .pa-photo { height: 410px; }
   .pa-signature { font-size: 21px; margin-top: 25px; }
   .pa-areas { grid-template-columns: 1fr; gap: 32px; padding-block: 49px; }
   .pa-areas-intro { display: flex; gap: 38px; align-items: center; }

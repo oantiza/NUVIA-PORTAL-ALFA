@@ -1,12 +1,14 @@
 /* Academia: un taller luminoso, con papeles y espacios de aprendizaje.
    La paleta y las familias tipográficas proceden del sistema NUVIA. */
-.ac-opening { display: grid; grid-template-columns: 1.03fr 1fr; align-items: center; gap: clamp(36px, 5.3vw, 76px); padding-block: 42px 58px; }
-.ac-studio { position: relative; display: grid; place-items: center; min-width: 0; height: 465px; isolation: isolate; }
+/* Apertura: esqueleto común de las cuatro webs (22-11-2026); el texto va a la izquierda. */
+.ac-opening { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 4.4vw, 64px); align-items: center; min-height: 580px; }
+.ac-opening-copy { order: -1; align-self: start; padding: 72px 0 48px; }
+.ac-studio { position: relative; display: grid; place-items: center; min-width: 0; height: 460px; isolation: isolate; }
 .ac-studio-window { position: absolute; inset: 0 30px 0 0; border-radius: 50% 50% 0 0; background: color-mix(in srgb, var(--nv-surface-technical) 72%, var(--nv-surface)); z-index: -1; }
 .ac-studio img { display: block; width: 100%; max-width: 505px; height: 100%; object-fit: contain; filter: drop-shadow(0 16px 22px color-mix(in srgb, var(--nv-navy-900) 7%, transparent)); }
-.ac-opening-name { font-size: 14px; font-weight: 500; color: var(--nv-text-soft); margin: 0 0 24px; }
-.ac-opening h1 { font: 400 clamp(68px, 6.25vw, 90px)/.99 var(--nv-font-serif); letter-spacing: -.05em; color: var(--nv-navy-900); margin: 0; }
-.ac-opening-description { font-size: 16px; line-height: 1.75; max-width: 40ch; margin: 25px 0 24px; color: var(--nv-text-soft); }
+.ac-opening-name { font-size: 14px; line-height: 1.5; font-weight: 500; color: var(--nv-text-soft); margin: 0 0 22px; }
+.ac-opening h1 { font: 400 clamp(56px, 5.6vw, 80px)/1.02 var(--nv-font-serif); letter-spacing: -.045em; color: var(--nv-navy-900); margin: 0; }
+.ac-opening-description { font-size: 16px; line-height: 1.75; max-width: 42ch; margin: 24px 0 24px; color: var(--nv-text-soft); }
 .ac-start { font-size: 13px; min-height: 48px; }
 .ac-quiet-link { display: flex; align-items: center; gap: 17px; width: fit-content; min-height: 44px; margin-top: 8px; color: var(--nv-text-soft); font-size: 13px; text-decoration: none; }
 .ac-quiet-link:hover { color: var(--nv-green-800); text-decoration: underline; text-underline-offset: 5px; }
@@ -46,10 +48,6 @@
 .ac-note p { font-size: 12px; line-height: 1.75; color: var(--nv-text-muted); margin: 0; max-width: 95ch; }
 .ac-opening svg, .ac-workshop svg, .ac-experiment svg, .ac-deepen svg { display: block; width: 21px; height: 21px; stroke: currentColor; stroke-width: 1.4; flex: 0 0 auto; }
 @media (max-width: 1179px) {
-  .ac-opening { gap: 35px; padding-block: 32px 41px; }
-  .ac-studio { height: 405px; }
-  .ac-opening h1 { font-size: 72px; }
-  .ac-opening-name { margin-bottom: 19px; }
   .ac-opening-description { font-size: 15px; margin-block: 22px 20px; }
   .ac-start { max-width: 100%; font-size: 12px; }
   .ac-learning-desk { gap: 26px; }
@@ -63,11 +61,14 @@
   .ac-deepen { gap: 42px; }
   .ac-deepen nav { grid-template-columns: 1fr; gap: 6px; }
 }
+@media (max-width: 1024px) {
+  .ac-opening { min-height: 470px; }
+  .ac-opening-copy { padding: 48px 0 36px; }
+  .ac-studio { height: 380px; }
+}
 @media (max-width: 899px) {
-  .ac-opening { grid-template-columns: .9fr 1.1fr; gap: 22px; }
   .ac-studio { height: 355px; }
   .ac-studio-window { inset: 10px 0; }
-  .ac-opening h1 { font-size: 62px; }
   .ac-opening-description { font-size: 14px; margin-block: 17px; }
   .ac-start { padding-inline: 16px; }
   .ac-section-heading { gap: 28px; }

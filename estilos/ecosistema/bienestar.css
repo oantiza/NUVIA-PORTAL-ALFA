@@ -1,14 +1,16 @@
 .web-page--bienestar { --bi-accent: var(--nv-green-800); }
-.bi-opening { padding-top: 41px; }
-.bi-opening-heading { display: grid; grid-template-columns: 1.25fr 1fr; gap: 80px; align-items: end; padding-bottom: 35px; }
-.bi-name { font-size: 14px; color: var(--bi-accent); font-weight: 500; margin-bottom: 17px; }
-.bi-opening h1 { font-size: clamp(53px,5.3vw,76px); line-height: 1.03; letter-spacing: -.045em; color: var(--bi-accent); }
-.bi-opening-description { padding-bottom: 2px; }
-.bi-opening-description > p { font-size: 16px; max-width: 40ch; line-height: 1.8; color: var(--nv-text-soft); }
+/* Apertura: esqueleto común de las cuatro webs (22-11-2026). */
+.bi-opening { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 4.4vw, 64px); align-items: center; min-height: 580px; }
+.bi-opening-heading { align-self: start; padding: 72px 0 48px; }
+.bi-name { font-size: 14px; line-height: 1.5; color: var(--bi-accent); font-weight: 500; margin: 0 0 22px; }
+.bi-opening h1 { font-size: clamp(56px, 5.6vw, 80px); line-height: 1.02; letter-spacing: -.045em; color: var(--bi-accent); }
+.bi-opening-description { margin-top: 24px; }
+.bi-opening-description > p { font-size: 16px; max-width: 42ch; line-height: 1.75; color: var(--nv-text-soft); }
+.bi-opening-description > p:not(.bi-descriptor) { margin-top: 24px; }
 .bi-opening-description .web-link { margin-top: 16px; color: var(--bi-accent); }
 .bi-opening-description > .bi-descriptor { color: var(--bi-accent); font-size: 14px; font-weight: 500; margin-bottom: 10px; }
-.bi-photo { position: relative; width: 100%; height: 395px; border-radius: 4px 4px 130px 4px; overflow: hidden; }
-.bi-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+.bi-photo { position: relative; width: 100%; height: 460px; margin: 0; border-radius: 4px 4px 130px 4px; overflow: hidden; }
+.bi-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 74% 20%; }
 .bi-photo figcaption { position: absolute; left: 28px; bottom: 27px; background: var(--nv-surface); color: var(--bi-accent); padding: 15px 24px; font: 400 26px/1.2 var(--nv-font-serif); border-radius: 2px; }
 .bi-topics { padding-block: 61px 63px; }
 .bi-section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 30px; margin-bottom: 34px; }
@@ -57,19 +59,21 @@
 .bi-sources .bn-sources__list li > span { font-size: 12px; line-height: 1.7; color: var(--nv-text-muted); }
 .bi-sources .nv-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 @media (max-width: 1179px) {
-  .bi-opening-heading { gap: 45px; }
-  .bi-opening h1 { font-size: 62px; }
-  .bi-photo { height: 355px; }
   .bi-topics-grid { gap: 25px; }
   .bi-topic h3 { font-size: 27px; }
   .bi-reading-inner { gap: 65px; }
 }
+@media (max-width: 1024px) {
+  .bi-opening { min-height: 470px; }
+  .bi-opening-heading { padding: 48px 0 36px; }
+  .bi-photo { height: 380px; }
+  .bi-photo figcaption { left: 16px; right: 16px; bottom: 16px; padding: 10px 16px; }
+}
 @media (max-width: 999px) {
-  .bi-opening-heading { gap: 30px; grid-template-columns: 1.1fr 1fr; }
-  .bi-opening h1 { font-size: 48px; }
   .bi-opening-description > p { font-size: 15px; }
   .bi-opening-description .web-link { font-size: 13px; gap: 12px; }
-  .bi-photo { height: 327px; border-bottom-right-radius: 90px; }
+  .bi-photo { border-bottom-right-radius: 90px; }
+  .bi-photo img { object-position: 90% 20%; }
   .bi-topics-grid { grid-template-columns: 1fr 1fr; gap: 35px 50px; }
   .bi-topic h3 { min-height: 0; font-size: 29px; }
   .bi-topic > p { margin-top: 12px; }

@@ -9,5 +9,9 @@ Integradas en la versión principal local el 12-11-2026 por orden del fundador. 
 | `patrimonio-hogar.webp` | 215678 | Mismo documento de las cuatro webs |
 | `bienestar-paseo.webp` | 313858 | Mismo documento de las cuatro webs |
 | `academia-ideas.webp` | 118156 | Mismo documento de las cuatro webs |
+| `economia-mundo.webp` | 118708 | [Piezas modeladas en Blender](PROCEDENCIA_PIEZAS_BLENDER.md) |
+| `academia-abaco.webp` | 141698 | Mismo documento de las piezas de Blender |
+
+Desde el 22-11-2026 las portadas de Economía y Academia usan `economia-mundo.webp` y `academia-abaco.webp`, modeladas en Blender. `economia-perspectiva.webp` y `academia-ideas.webp` se conservan sin enlazar.
 
 Las fichas de generación y los prompts se versionan junto a los WebP. Los originales PNG permanecen en la carpeta histórica local de la maqueta. La compilación utiliza exclusivamente estos WebP locales, sin depender del servidor de la maqueta ni de un servicio externo de imágenes.

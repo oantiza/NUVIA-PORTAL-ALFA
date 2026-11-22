@@ -91,8 +91,9 @@ export const TITLE_CONTRACT = [
   ['body[data-eco-theme="lecturas"] .nv-space-editorial h1', 'clamp(48px, 4.7vw, 68px)', [[1179, '56px'], [899, '50px']]],
   ['body[data-eco-theme="academia"] #academy:not(.nv-entry) h1', '42px', [[1120, '36px']], 500],
   ['.hub-intro h1', 'clamp(58px, 7.25vw, 104px)', [[859, '66px']]],
-  ['.ec-opening h1', 'clamp(58px, 6.05vw, 86px)', [[1179, 'clamp(58px, 6.1vw, 74px)'], [959, '59px'], [819, '55px']]],
-  ['.pa-opening h1', 'clamp(56px, 5.4vw, 79px)', [[1179, '65px'], [999, '54px']]],
-  ['.bi-opening h1', 'clamp(53px, 5.3vw, 76px)', [[1179, '62px'], [999, '48px']]],
-  ['.ac-opening h1', 'clamp(68px, 6.25vw, 90px)', [[1179, '72px'], [899, '62px']]],
+  /* Esqueleto común de las cuatro portadas (orden del fundador, 22-11-2026): un mismo titular. */
+  ['.ec-opening h1', 'clamp(56px, 5.6vw, 80px)', []],
+  ['.pa-opening h1', 'clamp(56px, 5.6vw, 80px)', []],
+  ['.bi-opening h1', 'clamp(56px, 5.6vw, 80px)', []],
+  ['.ac-opening h1', 'clamp(56px, 5.6vw, 80px)', []],
 ];

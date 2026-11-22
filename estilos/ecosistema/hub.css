@@ -164,6 +164,20 @@ html:has(> .hub-page) { background-color: var(--nv-surface-hub); min-height: 100
   .hub-intro { padding-top: 14px; }
   .hub-stage { margin-top: 18px; }
 }
+/* Portátiles de 1280 × 720 y 1366 × 768: las cuatro puertas caben sobre el pliegue. */
+@media (min-width: 1025px) and (max-height: 800px) {
+  .hub-header { min-height: 84px; padding-block: 10px; }
+  .hub-intro { padding-top: 6px; }
+  .hub-intro h1 { font-size: clamp(58px, 6vw, 84px); margin-top: 10px; }
+  .hub-page .hub-intro-copy { margin-top: 10px; font-size: 18px; line-height: 1.5; }
+  .hub-stage { margin-top: 8px; padding-block: 16px 8px; row-gap: 18px; min-height: 0; }
+  .hub-art { --hub-art-size: 400px; }
+  .hub-door { padding-top: 16px; padding-bottom: 4px; }
+  .hub-door h2 { font-size: 32px; }
+  .hub-door p { margin-top: 8px; }
+  .hub-door-action { margin-top: 2px; }
+  .hub-common { margin-top: 20px; }
+}
 /* En tablet, el tamaño de la pieza y la altura del escenario se reducen juntos. */
 @media (max-width: 1024px) {
   .hub-stage { min-height: 380px; margin-top: 14px; padding-block: 16px 8px; row-gap: 20px; }

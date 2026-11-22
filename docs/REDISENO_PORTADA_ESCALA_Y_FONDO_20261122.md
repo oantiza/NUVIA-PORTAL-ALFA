@@ -73,3 +73,11 @@ Comparada en su pantalla con la portada publicada, el fundador siguió viendo la
 - Cabecera arriba, pie abajo y bloque central centrado en el aire sobrante (`.hub-page` en columna flexible); el fondo pierde el oscurecimiento inferior.
 
 Copia del estado anterior: `output/validacion-barra-20261122/hub-antes-de-reducir.css`.
+
+## Pliegue en portátil (22-11-2026, noche)
+
+Punto 4 del traspaso. A 1280 × 720 la segunda fila de puertas acababa en el píxel 779 (59 px bajo el pliegue); a 1366 × 768 se cortaba unos 11 px. Se enseñaron al fundador las capturas de antes y después y respondió «Sí, aplícala».
+
+Regla nueva en `estilos/ecosistema/hub.css`, solo para escritorio con 800 px de alto o menos (`min-width: 1025px` y `max-height: 800px`): titular `clamp(58px, 6vw, 84px)` (77 px a 1280; antes 93), escultura de 400 px (antes 460), nombre de puerta a 32 px (antes 35), frase del titular a 18 px, 18 px entre las dos filas de puertas (antes 32) y cabecera y márgenes más ajustados. No cambian la cápsula «Qué es NUVIA» ni las columnas de 345 px.
+
+Medido en navegador con la regla guardada: a 1280 × 720 la segunda fila acaba en 629 px y la franja común empieza en 657; en la prueba previa, 640 px a 1366 × 768 y 646 px a 1440 × 800. A 1440 × 900 la regla no actúa (titular a 104 px). `npm run validate:nucleo` termina sin errores. No se ha pasado `npm run validate` completo. Sin commit ni publicación.

@@ -22,7 +22,7 @@ export function renderEconomia(site) {
       </div>
     </div>
     <div class="ec-lens" aria-hidden="true">
-      <img src="src/assets/ecosistema/economia-perspectiva.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
+      <img src="src/assets/ecosistema/economia-mundo.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
     </div>
   </section>
 

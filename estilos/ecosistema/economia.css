@@ -1,16 +1,17 @@
 /* Economía · un observatorio editorial, conectado con la pieza del ecosistema. */
-.ec-opening { display: grid; grid-template-columns: minmax(0, 1.24fr) minmax(0, .76fr); align-items: center; gap: 18px; min-height: 492px; padding-block: 34px 42px; }
-.ec-opening-copy { position: relative; z-index: 1; }
-.ec-intro-line { font-size: 14px; color: var(--nv-text-soft); margin: 0 0 22px; }
-.ec-opening h1 { font: 400 clamp(58px, 6.05vw, 86px)/.99 var(--nv-font-serif); letter-spacing: -.052em; color: var(--nv-navy-900); margin: 0; }
-.ec-lead { font-size: 16px; line-height: 1.8; max-width: 47ch; color: var(--nv-text-soft); margin: 25px 0 0; }
+/* Apertura: esqueleto común de las cuatro webs (22-11-2026). */
+.ec-opening { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: clamp(28px, 4.4vw, 64px); align-items: center; min-height: 580px; }
+.ec-opening-copy { position: relative; z-index: 1; align-self: start; padding: 72px 0 48px; }
+.ec-intro-line { font-size: 14px; line-height: 1.5; font-weight: 500; color: var(--nv-text-soft); margin: 0 0 22px; }
+.ec-opening h1 { font: 400 clamp(56px, 5.6vw, 80px)/1.02 var(--nv-font-serif); letter-spacing: -.045em; color: var(--nv-navy-900); margin: 0; }
+.ec-lead { font-size: 16px; line-height: 1.75; max-width: 42ch; color: var(--nv-text-soft); margin: 24px 0 0; }
 .ec-opening-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 27px; }
 .ec-opening-actions a { margin: 0; }
 .ec-primary { background: var(--nv-navy-900); color: var(--nv-white); border-color: var(--nv-navy-900); }
 .ec-primary:hover { background: var(--nv-navy-800); color: var(--nv-white); }
 .ec-secondary { color: var(--nv-navy-900); }
 .ec-lens { display: grid; place-items: center; min-width: 0; }
-.ec-lens img { display: block; width: 100%; max-width: 452px; height: auto; filter: drop-shadow(0 20px 22px color-mix(in srgb, var(--nv-navy-900) 8%, transparent)); }
+.ec-lens img { display: block; width: 100%; max-width: 440px; height: auto; filter: drop-shadow(0 20px 22px color-mix(in srgb, var(--nv-navy-900) 8%, transparent)); }
 .ec-opening svg, .ec-entry svg, .ec-learning svg { width: 21px; height: 21px; flex: 0 0 auto; stroke: currentColor; stroke-width: 1.35; }
 .ec-observatory { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; padding-block: 24px 28px; }
 .ec-context { padding: 27px 0 21px; }
@@ -36,16 +37,16 @@
 .ec-note { color: var(--nv-text-muted); padding-bottom: 28px; }
 .ec-note p { max-width: 95ch; font-size: 12px; line-height: 1.7; margin: 0; }
 @media (max-width: 1179px) {
-  .ec-opening { min-height: 450px; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); }
-  .ec-opening h1 { font-size: clamp(58px, 6.1vw, 74px); }
   .ec-opening-actions { gap: 18px; }
   .ec-observatory { gap: 34px; }
   .ec-analysis { padding-inline: 27px; }
   .ec-section-intro h2 { font-size: 35px; }
 }
+@media (max-width: 1024px) {
+  .ec-opening { min-height: 470px; }
+  .ec-opening-copy { padding: 48px 0 36px; }
+}
 @media (max-width: 959px) {
-  .ec-opening { grid-template-columns: minmax(0, 1.38fr) minmax(0, .82fr); gap: 0; padding-block: 34px; min-height: 435px; }
-  .ec-opening h1 { font-size: 59px; }
   .ec-intro-line { margin-bottom: 17px; }
   .ec-lead { font-size: 15px; max-width: 40ch; margin-top: 20px; }
   .ec-lens { align-self: center; }
@@ -60,8 +61,6 @@
   .ec-learning h2 { font-size: 31px; }
 }
 @media (max-width: 819px) {
-  .ec-opening { grid-template-columns: minmax(0, 1.47fr) minmax(0, .73fr); }
-  .ec-opening h1 { font-size: 55px; }
   .ec-observatory { gap: 22px; }
   .ec-analysis { padding-inline: 21px; }
   .ec-section-intro h2 { font-size: 30px; }

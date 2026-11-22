@@ -39,6 +39,9 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/CLARIDAD_PERIODOS_E_IDENTIDAD_EMPRESAS_20261112.md` — períodos y fuentes junto a cada indicador, identidad pendiente con trazabilidad íntegra.
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/VIDEO_EDICION_COHERENCIA_NUVIA_20261122.md` — edición de coherencia hecha sobre «Aros entrelazados»; descartada porque el fundador revisaba «Mar».
+- `docs/TRASPASO_A_CLAUDE_CODE_20261122.md` — estado al cerrar la sesión del 22-11-2026, reglas vigentes y trabajo abierto, para seguir en Claude Code.
+- `docs/PIEZAS_BLENDER_ECONOMIA_ACADEMIA_20261122.md` — globo de vidrio en Economía y ábaco en Academia, modelados en Blender; sustituyen a las dos esculturas generadas; local, sin publicar.
+- `docs/PORTADAS_ESQUELETO_COMUN_20261122.md` — esqueleto común de las cuatro portadas: mismo titular, misma altura y texto a la izquierda; contrato de titulares actualizado; local, sin publicar.
 - `docs/BARRA_ECOSISTEMA_Y_PIE_20261122.md` — barra con las cuatro webs en todas las páginas (sustituye al desplegable «Explorar NUVIA») y pie con las cuatro webs; local, para revisión.
 - `docs/VIDEO_MAR_COHERENTE_NUVIA_20261122.md` — edición coherente sobre «Mar»: aros de estudio con el vidrio del cierre, logotipo plano, fondo cálido, rótulos sin cruces y cierre tres segundos más largo; local, para revisión.
 - `docs/REDISENO_PORTADA_ESCALA_Y_FONDO_20261122.md` — portada con fondo marfil, escala mayor, color por puerta, cápsula «Qué es NUVIA» y ampliación en pantallas grandes; en local, sin publicar.
@@ -86,6 +89,7 @@ Son los que fijan el estado actual de cada parte; cuando una ficha de fecha post
 - `docs/JUBILACION_MULTITERRITORIO_REVISION_20261004.md` — despliegue y revisión de parámetros.
 - `docs/JUBILACION_REDISENO_20260923.md` — auditoría de cálculo y rediseño del simulador.
 - `docs/JUBILACION_CORRECCION_MAYORES_75_20261113.md` — corrección: jubilados de más de 75 años y frase de las escalas fijas. Sin publicar.
+- `docs/JUBILACION_TEXTO_13PX_20261122.md` — el texto pequeño del simulador sube de 12 a 13 px, solo en esa página. Sin publicar.
 - `docs/JUBILACION_CORRECCION_FISCAL_ART20_EPSV_20261121.md` — corrección fiscal: reducción del art. 20 LIRPF antes de los 2.000 € de gastos y EPSV vasca con rentabilidad negativa. Sin publicar.
 - `docs/IMPUESTOS_DISENO_20260923.md` — diseño de Impuestos y guías.
 

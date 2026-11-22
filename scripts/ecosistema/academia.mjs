@@ -9,7 +9,7 @@ export function renderAcademia(site) {
   return `<section class="ac-opening web-wrap" aria-labelledby="ac-title">
     <div class="ac-studio" aria-hidden="true">
       <div class="ac-studio-window"></div>
-      <img src="src/assets/ecosistema/academia-ideas.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
+      <img src="src/assets/ecosistema/academia-abaco.webp" alt="" width="1000" height="1000" fetchpriority="high" decoding="async">
     </div>
     <div class="ac-opening-copy">
       <p class="ac-opening-name">Academia NUVIA</p>

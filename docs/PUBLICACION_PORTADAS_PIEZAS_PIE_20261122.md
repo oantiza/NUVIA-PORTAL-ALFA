@@ -26,4 +26,7 @@ Las notas «local, sin publicar» de esas actas describen el estado anterior a e
 
 ## Resultado del despliegue
 
-Se anota al terminar el flujo.
+- Envío: `5a331b3..2a1b377` en `main` (los dos commits y esta acta).
+- Flujo «Publicar NUVIA Portal Alfa en GitHub Pages» n.º 187 (ejecución 45070558431): correcto.
+- Comprobado en `https://oantiza.github.io/NUVIA-PORTAL-ALFA/` con descarga directa: `economia.html` enlaza `economia-mundo.webp` y `academia.html` enlaza `academia-abaco.webp`; las dos imágenes servidas tienen la huella SHA-256 registrada; `webs.css` lleva el pie en azul noche, `hub.css` la regla del pliegue y `nuvia-jubilacion.css` el texto a 13 px.
+- No se revisó la web publicada a ojo en un navegador.

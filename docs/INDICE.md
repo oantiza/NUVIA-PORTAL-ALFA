@@ -40,6 +40,7 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/VIDEO_EDICION_COHERENCIA_NUVIA_20261122.md` — edición de coherencia hecha sobre «Aros entrelazados»; descartada porque el fundador revisaba «Mar».
 - `docs/TRASPASO_A_CLAUDE_CODE_20261122.md` — estado al cerrar la sesión del 22-11-2026, reglas vigentes y trabajo abierto, para seguir en Claude Code.
+- `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md` — orden «Publica»: qué se envía a GitHub Pages, qué se descartó y resultado del despliegue.
 - `docs/PIEZAS_BLENDER_ECONOMIA_ACADEMIA_20261122.md` — globo de vidrio en Economía y ábaco en Academia, modelados en Blender; sustituyen a las dos esculturas generadas; local, sin publicar.
 - `docs/PORTADAS_ESQUELETO_COMUN_20261122.md` — esqueleto común de las cuatro portadas: mismo titular, misma altura y texto a la izquierda; contrato de titulares actualizado; local, sin publicar.
 - `docs/BARRA_ECOSISTEMA_Y_PIE_20261122.md` — barra con las cuatro webs en todas las páginas (sustituye al desplegable «Explorar NUVIA») y pie con las cuatro webs; local, para revisión.

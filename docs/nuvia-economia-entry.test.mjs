@@ -33,12 +33,22 @@ for(const [id,href] of [['portfolio','cartera.html?vista=portfolio#laboratorio']
 assert.match(portfolio,/data-src="company-analysis\/index.html"/);
 const code=markets.match(/<script type="text\/x-dc"[^>]*>([\s\S]*?)<\/script>/)?.[1];
 assert.ok(code,'Controlador de vistas conservado');
+// Título de pestaña y titular siguen a la vista elegida.
+const TEXTOS_VISTA={
+  portada:{title:'NUVIA · Mercados y noticias',h1:'Mercados y noticias'},
+  informes:{title:'NUVIA · Informes de mercado',h1:'Informes'},
+  cotizaciones:{title:'NUVIA · Mercados y cotizaciones',h1:'Mercados y cotizaciones'}
+};
 function controller(query='',actions=[]) {
-  const document={title:''};
+  const h1={textContent:'Mercados y noticias'};
+  const document={title:'',getElementById:id=>id==='mercados-titular'?h1:null};
   class DCLogic { setState(state){Object.assign(this.state,state);} }
   const Component=runInNewContext(code+'; Component',{DCLogic,document,URLSearchParams,window:{location:{search:query,reload:()=>actions.push('reload'),assign:url=>actions.push(url)},history:{replaceState:(_state,_title,url)=>actions.push(url)},scrollTo:()=>{}}});
   const c=new Component(); c.componentDidMount();
-  assert.equal(document.title,'NUVIA · Mercados y noticias');
+  const esperado=TEXTOS_VISTA[c.state.vista];
+  assert.equal(document.title,esperado.title,`Título tras montar: ${query||'portada'}`);
+  assert.equal(h1.textContent,esperado.h1,`Titular tras montar: ${query||'portada'}`);
+  c.document=document; c.h1=h1;
   return c;
 }
 for(const [query,view] of [['','portada'],['portada','portada'],['informes','informes'],['cotizaciones','cotizaciones'],['diario','portada'],['archivo','informes'],['semanal','cotizaciones'],['desconocido','portada']]) {
@@ -47,7 +57,12 @@ for(const [query,view] of [['','portada'],['portada','portada'],['informes','inf
   c.renderVals(); // Las tres vistas y los alias siguen pudiendo producir contenido.
 }
 const c=controller();
-for(const view of ['informes','cotizaciones','portada']) {c.ir(view);assert.equal(c.state.vista,view);c.renderVals();}
+for(const view of ['informes','cotizaciones','portada']) {
+  c.ir(view);assert.equal(c.state.vista,view);c.renderVals();
+  c.componentDidUpdate(); // React lo llama tras cada setState.
+  assert.equal(c.document.title,TEXTOS_VISTA[view].title,`Título al cambiar a ${view}`);
+  assert.equal(c.h1.textContent,TEXTOS_VISTA[view].h1,`Titular al cambiar a ${view}`);
+}
 for(const view of ['informes','cotizaciones']) {
   const actions=[], current=controller('',actions);
   current.ir(view); current.renderVals().abrirActualidad({preventDefault:()=>actions.push('prevent')});

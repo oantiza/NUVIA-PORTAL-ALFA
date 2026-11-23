@@ -436,34 +436,37 @@
   color: var(--nv-action-primary-text);
 }
 
+/* «Accent» ya no es otro color: es el principal de la web. */
 .nv-btn--accent {
-  background: var(--nv-action-accent-bg);
+  background: var(--nv-action-primary-bg);
   color: var(--nv-action-accent-text);
 }
 
 .nv-btn--accent:not(:disabled):hover {
-  background: var(--nv-green-700);
+  background: var(--nv-action-primary-bg-hover);
   color: var(--nv-action-accent-text);
 }
 
 .nv-btn--secondary {
-  border-color: var(--nv-action-secondary-border);
+  border-color: var(--nv-action-primary-bg);
   background: transparent;
-  color: var(--nv-action-secondary-text);
+  color: var(--nv-action-primary-bg);
 }
 
 .nv-btn--secondary:not(:disabled):hover {
-  background: var(--nv-action-secondary-bg-hover);
-  color: var(--nv-action-secondary-text);
+  background: color-mix(in srgb, var(--nv-action-primary-bg) 8%, var(--nv-surface));
+  color: var(--nv-action-primary-bg);
 }
 
-.nv-btn--soft {
+.nv-btn--soft,
+.nv-btn--outline {
   border-color: var(--nv-line);
   background: var(--nv-surface);
   color: var(--nv-text);
 }
 
-.nv-btn--soft:not(:disabled):hover { border-color: var(--nv-line-strong); color: var(--nv-text); }
+.nv-btn--soft:not(:disabled):hover,
+.nv-btn--outline:not(:disabled):hover { border-color: var(--nv-line-strong); color: var(--nv-text); }
 
 .nv-btn--text {
   min-height: var(--nv-control-height);

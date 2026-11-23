@@ -70,16 +70,13 @@
     <section id="mercados" data-screen-label="Cabecera Mercados y noticias" class="nv-hero nv-hero--institutional nv-entry nv-sub-hero">
       <div class="nv-container">
         <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-          <ol><li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li><li><a href="economia.html">Economía y finanzas</a></li><li><span aria-current="page">Mercados y noticias</span></li></ol>
+          <ol><li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li><li><a href="economia.html">Economía y finanzas</a></li><sc-if value="{{ esPortada }}" hint-placeholder-val="{{ true }}"><li><span aria-current="page">Mercados y noticias</span></li></sc-if><sc-if value="{{ noEsPortada }}" hint-placeholder-val="{{ false }}"><li><a href="mercados.html">Mercados y noticias</a></li><li><span aria-current="page">{{ vistaActual }}</span></li></sc-if></ol>
         </nav>
         <div class="nv-hero__inner nv-hero__inner--simple nv-sub-hero__grid">
           <div>
             <p class="nv-eyebrow nv-eyebrow--on-dark">Actualidad económica</p>
-            <h1>Mercados y noticias</h1>
-            <p class="nv-hero__lead">
-              Noticias, indicadores y cotizaciones para comprender la actualidad económica
-              y seguir la evolución de los mercados.
-            </p>
+            <h1 id="mercados-titular">Mercados y noticias</h1>
+            <p class="nv-hero__lead">{{ entrada }}</p>
             <div id="actualidad" class="markets-area-views">
               <p id="markets-views-label">Dentro de Mercados y noticias</p>
               <nav class="markets-viewnav" aria-label="Vistas de mercados" aria-describedby="markets-views-label">
@@ -653,7 +650,7 @@
     </sc-if>
 
   </main>
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><nav class="web-footer-webs" aria-label="Las cuatro webs de NUVIA"><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a></nav><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-main"><nav class="web-footer-webs" aria-label="Las cuatro webs de NUVIA"><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a></nav><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></div><div class="web-footer-links"><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-legal"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p></div></div></footer>
 
 </div>
 </x-dc>
@@ -662,12 +659,32 @@
 class Component extends DCLogic {
   state = { vista: 'portada', mercadoVista: 'cotizaciones', agendaPeriodo: 'dia', agendaImpacto: 'todos', empresaTipo: 'todos', indiceMercado: 'ibex', sectorMercado: 'Todos', busquedaMercado: '', temasOpen: false };
   componentDidMount() {
-    document.title = 'NUVIA · Mercados y noticias';
     const p = new URLSearchParams(window.location.search).get('vista');
     const legacy = { diario: 'portada', archivo: 'informes', semanal: 'cotizaciones' };
     const vista = legacy[p] || p;
-    if (vista && ['portada', 'informes', 'cotizaciones'].includes(vista)) this.setState({ vista });
+    const valida = vista && ['portada', 'informes', 'cotizaciones'].includes(vista);
+    // El título y el titular correctos se fijan al montar; setState es asíncrono.
+    this.titulo(valida ? vista : this.state.vista);
+    if (valida) this.setState({ vista });
   }
+  // Titular, texto de entrada, ruta y título de pestaña siguen a la vista elegida.
+  // «Noticias y contexto» es la vista base de la página y conserva el texto original.
+  textosVista(vista) {
+    const textos = {
+      portada: { vistaActual: 'Noticias y contexto', titular: 'Mercados y noticias', titulo: 'NUVIA · Mercados y noticias', entrada: 'Noticias, indicadores y cotizaciones para comprender la actualidad económica y seguir la evolución de los mercados.' },
+      informes: { vistaActual: 'Informes', titular: 'Informes', titulo: 'NUVIA · Informes de mercado', entrada: 'Dos ritmos para comprender la actualidad: la jornada en el diario y una mirada de siete días en el semanal.' },
+      cotizaciones: { vistaActual: 'Mercados y cotizaciones', titular: 'Mercados y cotizaciones', titulo: 'NUVIA · Mercados y cotizaciones', entrada: 'Consulta cotizaciones y revisa los acontecimientos económicos y empresariales que pueden mover los mercados.' },
+    };
+    return textos[vista] || textos.portada;
+  }
+  titulo(vista = this.state.vista) {
+    const t = this.textosVista(vista);
+    document.title = t.titulo;
+    // El titular estático (vista base) lo reescribe el controlador, como hace cartera.html.
+    const h1 = document.getElementById('mercados-titular');
+    if (h1 && h1.textContent !== t.titular) h1.textContent = t.titular;
+  }
+  componentDidUpdate() { this.titulo(); }
   ir(v) { this.setState({ vista: v }); window.scrollTo({ top: 0, behavior: 'smooth' }); }
   renderVals() {
     const vista = this.state.vista;
@@ -766,6 +783,8 @@ class Component extends DCLogic {
         claseTab: 'markets-viewnav__tab' + (id === vista ? ' is-active' : ''),
       })),
       esPortada: vista === 'portada',
+      noEsPortada: vista !== 'portada',
+      ...(({ vistaActual, entrada }) => ({ vistaActual, entrada }))(this.textosVista(vista)),
       abrirActualidad: (event) => {
         if (this.state.vista === 'portada' || window.location.search) return;
         // Las pestañas no actualizan la URL. Una recarga local permite que

@@ -7,8 +7,6 @@
 .ec-lead { font-size: 16px; line-height: 1.75; max-width: 42ch; color: var(--nv-text-soft); margin: 24px 0 0; }
 .ec-opening-actions { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; margin-top: 27px; }
 .ec-opening-actions a { margin: 0; }
-.ec-primary { background: var(--nv-navy-900); color: var(--nv-white); border-color: var(--nv-navy-900); }
-.ec-primary:hover { background: var(--nv-navy-800); color: var(--nv-white); }
 .ec-secondary { color: var(--nv-navy-900); }
 .ec-lens { display: grid; place-items: center; min-width: 0; }
 .ec-lens img { display: block; width: 100%; max-width: 440px; height: auto; filter: drop-shadow(0 20px 22px color-mix(in srgb, var(--nv-navy-900) 8%, transparent)); }

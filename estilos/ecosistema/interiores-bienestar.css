@@ -98,7 +98,7 @@
   body[data-eco-theme="bienestar"] main .bn-siblings > a {
     background: var(--nv-surface);
     border-color: var(--nv-line-strong);
-    border-radius: 24px;
+    border-radius: var(--nv-radius-pill);
     color: var(--nv-green-800);
     min-height: 44px;
   }
@@ -149,7 +149,7 @@
   body[data-eco-theme="bienestar"] main .bn-series__link {
     min-height: 64px;
     padding: 20px 24px;
-    border-radius: 4px;
+    border-radius: var(--nv-radius-md);
     border-color: var(--nv-line-strong);
     background: var(--nv-surface);
   }

@@ -36,7 +36,7 @@
   body[data-eco-theme="academia"] main .nv-campus-cover.nv-entry .ac-x04 button {
     min-height: 44px;
     padding-inline: 22px;
-    border-radius: 24px;
+    border-radius: var(--nv-radius-pill);
     border: 1px solid var(--nv-line-strong);
     background: var(--nv-surface);
     color: var(--nv-navy-900);
@@ -103,7 +103,7 @@
     letter-spacing: 0;
   }
   body[data-eco-theme="academia"] main .ac-x24 .ac-chip-outline { color: var(--nv-navy-900); border-color: var(--nv-line-strong); background: transparent; }
-  body[data-eco-theme="academia"] main .ac-x25 { min-height: 48px; border-radius: 26px; border: 1px solid var(--nv-navy-900); background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="academia"] main .ac-x25 { min-height: 48px; border-radius: var(--nv-radius-sm); border: 1px solid var(--nv-navy-900); background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
   body[data-eco-theme="academia"] main .ac-x25:hover { background: var(--nv-navy-800); }
   body[data-eco-theme="academia"] main .ac-x26 { background: var(--nv-surface-editorial); border-color: var(--nv-line); }
 
@@ -127,8 +127,8 @@
 
   /* Glosario: cada término sigue siendo un acordeón operable por teclado. */
   body[data-eco-theme="academia"] main .ac-x226 { padding: 12px 0 28px; text-align: left; }
-  body[data-eco-theme="academia"] main .ac-x227 { background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: 26px; padding: 4px; }
-  body[data-eco-theme="academia"] main .ac-x227 .ac-tab { min-height: 44px; padding-inline: 24px; border-radius: 22px; color: var(--nv-text-soft); }
+  body[data-eco-theme="academia"] main .ac-x227 { background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: var(--nv-radius-md); padding: 4px; }
+  body[data-eco-theme="academia"] main .ac-x227 .ac-tab { min-height: 44px; padding-inline: 24px; border-radius: var(--nv-radius-sm); color: var(--nv-text-soft); }
   body[data-eco-theme="academia"] main .ac-x227 .ac-tab.is-active { background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
   body[data-eco-theme="academia"] main .ac-glossary-index { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 16px 0 24px; border-bottom: 1px solid var(--nv-line); }
   body[data-eco-theme="academia"] main .ac-glossary-index a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
@@ -155,7 +155,7 @@
   body[data-eco-theme="academia"] main .curso-ruta__volver { display: inline-flex; align-items: center; min-height: 44px; background: var(--nv-navy-900); color: var(--nv-text-on-dark); }
   body[data-eco-theme="academia"] main .curso-ruta__actual { color: var(--nv-text-soft); }
   body[data-eco-theme="academia"] main .curso-programa { gap: 12px; }
-  body[data-eco-theme="academia"] main .curso-tab { min-height: 80px; padding: 18px 14px; background: var(--nv-surface); border-radius: 4px; }
+  body[data-eco-theme="academia"] main .curso-tab { min-height: 80px; padding: 18px 14px; background: var(--nv-surface); border-radius: var(--nv-radius-md); }
   body[data-eco-theme="academia"] main .curso-tab.is-active { border-color: var(--nv-navy-700); background: var(--nv-surface-technical); box-shadow: inset 0 -3px var(--nv-navy-700); }
   body[data-eco-theme="academia"] main .curso-tab:hover { transform: none; border-color: var(--nv-navy-700); }
   body[data-eco-theme="academia"] main .curso-cap { padding: 34px 40px; background: var(--nv-surface-technical); border: 1px solid var(--nv-line); border-radius: 4px 40px 4px 4px; box-shadow: none; }
@@ -179,7 +179,7 @@
   body[data-eco-theme="academia"] main .curso-prioridad { background: var(--nv-surface-editorial); border-color: var(--nv-line); }
   body[data-eco-theme="academia"] main .curso-prioridad > span { color: var(--nv-navy-700); }
   body[data-eco-theme="academia"] main .curso-prioridad p { margin: 8px 0 0; color: var(--nv-text-soft); font-size: 14px; line-height: 1.6; }
-  body[data-eco-theme="academia"] main :is(.curso-opcion, .curso-radio) { min-height: 48px; border-radius: 4px; }
+  body[data-eco-theme="academia"] main :is(.curso-opcion, .curso-radio) { min-height: 48px; border-radius: var(--nv-radius-md); }
   body[data-eco-theme="academia"] main :is(.curso-tab, .ac-essential-card, .ac-x229, .ac-tab):focus-visible { outline: 2px solid var(--nv-navy-700); outline-offset: 4px; }
 }
 

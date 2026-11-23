@@ -2792,12 +2792,12 @@
 
 /* Botón de "marcar como visto". Comparte estados con el de apuntes. */
 .curso-btn-marcar {
-  border: 1px solid var(--nv-green-600);
+  border: 1px solid var(--nv-action-primary-bg);
   background: transparent;
   color: var(--nv-text);
 }
 
-.curso-btn-marcar:not(:disabled):hover { background: var(--nv-green-100); }
+.curso-btn-marcar:not(:disabled):hover { background: color-mix(in srgb, var(--nv-action-primary-bg) 8%, var(--nv-surface)); }
 
 .curso-btn-marcar.is-done {
   border-color: color-mix(in srgb, var(--nv-positive) 40%, transparent);
@@ -3069,13 +3069,13 @@
    la paleta de NUVIA, resto de una plantilla ajena. */
 .curso-btn-calcular {
   width: 100%;
-  border: 1px solid var(--nv-green-600);
+  border: 1px solid var(--nv-action-primary-bg);
   background: transparent;
-  color: var(--nv-text-link);
+  color: var(--nv-action-primary-bg);
 }
 
 .curso-btn-calcular:not(:disabled):hover {
-  background: var(--nv-green-100);
+  background: color-mix(in srgb, var(--nv-action-primary-bg) 8%, var(--nv-surface));
 }
 
 .curso-resultados {
@@ -4251,8 +4251,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--nv-space-2);
-  border-radius: var(--nv-radius-pill);
-  background: var(--nv-action-accent-bg);
+  border-radius: var(--nv-radius-sm);
+  background: var(--nv-action-primary-bg);
   color: var(--nv-action-accent-text);
   font-size: var(--nv-body-sm);
   font-weight: var(--nv-weight-action);
@@ -4718,9 +4718,9 @@ ul.markets-archive { list-style: none; margin: 0; padding: 0; }
 }
 
 .markets-lab__chip[aria-pressed="true"] {
-  border-color: var(--nv-green-600);
-  background: color-mix(in srgb, var(--nv-green-500) 14%, var(--nv-surface));
-  color: var(--nv-ink);
+  border-color: var(--nv-action-selected-bg);
+  background: var(--nv-action-selected-bg);
+  color: var(--nv-action-selected-text);
 }
 
 .markets-lab__table {

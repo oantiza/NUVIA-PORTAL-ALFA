@@ -42,6 +42,7 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/TRASPASO_A_CLAUDE_CODE_20261122.md` — estado al cerrar la sesión del 22-11-2026, reglas vigentes y trabajo abierto, para seguir en Claude Code.
 - `docs/CABECERA_COMPACTA_20261123.md` — cabecera de 195 a 125 px: logotipo, nombre de la web y menú en una sola franja; barra azul y márgenes corregidos en tablet; local, sin publicar.
 - `docs/LIMPIEZA_Y_PUBLICACION_20261123.md` — publicación n.º 188 (pestañas de Jubilación y actas) y limpieza: vídeo anterior borrado, fuentes de Blender en git, `CLAUDE.md` registrado.
+- `docs/PIE_Y_CIERRE_QUE_ES_NUVIA_20261123.md` — pie de 496 a 317 px (1440) con el © al final y cierre de Qué es NUVIA sobre marfil; cambia el contrato visual de `.about-finale`; local, sin publicar.
 - `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md` — orden «Publica»: qué se envía a GitHub Pages, qué se descartó y resultado del despliegue.
 - `docs/PIEZAS_BLENDER_ECONOMIA_ACADEMIA_20261122.md` — globo de vidrio en Economía y ábaco en Academia, modelados en Blender; sustituyen a las dos esculturas generadas; publicado.
 - `docs/PORTADAS_ESQUELETO_COMUN_20261122.md` — esqueleto común de las cuatro portadas: mismo titular, misma altura y texto a la izquierda; contrato de titulares actualizado; publicado.
@@ -311,3 +312,5 @@ Estas actas documentan la maqueta previa y su [integración principal](INTEGRACI
 - [Rediseño de las cuatro webs](REDISENO_CUATRO_WEBS_ECOSISTEMA_20261112.md): personalidad de cada portada, imágenes originales, navegación común y validación de la maqueta.
 - [Adaptación de los interiores](ADAPTACION_INTERIORES_ECOSISTEMA_20261112.md): integración local de contenidos y motores originales en las cuatro identidades, navegación completa y pruebas de conservación.
 - [Espacios compartidos](ESPACIOS_COMPARTIDOS_ECOSISTEMA_20261112.md): Lecturas, Colaboradores y Qué es NUVIA adaptados al ecosistema, con contenido íntegro y validación de fichas, navegación e impresión.
+- `docs/ECONOMIA_TITULAR_SEGUN_VISTA_20261123.md` — en Mercados, titular, ruta y título de pestaña siguen a la vista (Informes, Mercados y cotizaciones); Carteras modelo suma un nivel a la ruta; cambian `check-economia-entry.mjs` y `docs/nuvia-economia-entry.test.mjs`; local, sin publicar.
+- `docs/BOTONES_Y_ESQUINAS_20261123.md` — regla única: botón principal con el acento de su web (azul, bronce, verde 700), opción elegida en azul noche y tres radios (6 px, 12 px, píldora); en tokens y componentes, sin tocar HTML; local, sin publicar.

@@ -272,33 +272,33 @@
   body[data-eco-theme="nuvia"] .about-principle p { max-width: 950px; font-size: 43px; line-height: 1.2; font-weight: 400; letter-spacing: -.03em; }
   body[data-eco-theme="nuvia"] .about-principle p > strong { color: var(--nv-green-800); font-weight: 400; font-style: normal; }
 
-  /* Cierre de marca sobrio; ambos destinos siguen siendo accesibles. */
-  body[data-eco-theme="nuvia"] .about-presentation .about-finale { padding-block: 58px; background: var(--nv-navy-900); }
-  body[data-eco-theme="nuvia"] .about-finale__halo { width: min(690px, 80%); box-shadow: none; border-color: var(--nv-line-on-dark); }
+  /* Cierre de marca sobrio sobre marfil (23-11-2026): ya no se funde con el pie azul noche; ambos destinos siguen siendo accesibles. */
+  body[data-eco-theme="nuvia"] .about-presentation .about-finale { padding-block: 58px; background: var(--nv-surface-hub); color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale__halo { display: none; }
   body[data-eco-theme="nuvia"] .about-finale__content { width: min(900px, calc(100% - 96px)); }
   body[data-eco-theme="nuvia"] .about-finale__logo { width: 240px; margin-bottom: 28px; }
-  body[data-eco-theme="nuvia"] .about-finale .about-kicker { color: var(--nv-text-on-dark); }
-  body[data-eco-theme="nuvia"] .about-finale .about-kicker > span { border-color: var(--nv-line-on-dark-strong); color: var(--nv-text-on-dark); }
-  body[data-eco-theme="nuvia"] .about-finale__welcome > strong { margin-top: 27px; font-size: 48px; line-height: 1.07; font-weight: 400; }
-  body[data-eco-theme="nuvia"] .about-finale__welcome > span { max-width: 64ch; margin-top: 24px; font-size: 16px; line-height: 1.8; }
+  body[data-eco-theme="nuvia"] .about-finale .about-kicker { color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale .about-kicker > span { border-color: var(--nv-navy-900); color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale__welcome > strong { margin-top: 27px; font-size: 48px; line-height: 1.07; font-weight: 400; color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale__welcome > span { max-width: 64ch; margin-top: 24px; font-size: 16px; line-height: 1.8; color: var(--nv-text-soft); }
   body[data-eco-theme="nuvia"] .about-finale__actions { gap: 18px; }
   body[data-eco-theme="nuvia"] .about-finale__link {
     min-height: 44px;
     margin-top: 28px;
     padding: 9px 18px;
-    border: 1px solid var(--nv-text-on-dark);
+    border: 1px solid var(--nv-surface-deep);
     border-radius: 6px;
-    background: var(--nv-surface);
-    color: var(--nv-navy-900);
+    background: var(--nv-surface-deep);
+    color: var(--nv-text-on-dark);
     font-size: 14px;
     letter-spacing: 0;
     text-transform: none;
   }
-  body[data-eco-theme="nuvia"] .about-finale__link--secondary { background: none; color: var(--nv-text-on-dark); border-color: var(--nv-line-on-dark-strong); }
-  body[data-eco-theme="nuvia"] .about-finale__link:hover { color: var(--nv-green-800); background: var(--nv-green-100); }
-  body[data-eco-theme="nuvia"] .about-finale__disclaimer { margin-top: 30px; color: var(--nv-text-on-dark); font-size: 12px; }
+  body[data-eco-theme="nuvia"] .about-finale__link--secondary { background: none; color: var(--nv-navy-900); border-color: var(--nv-navy-900); }
+  body[data-eco-theme="nuvia"] .about-finale__link:hover { color: var(--nv-green-800); background: var(--nv-green-100); border-color: var(--nv-green-800); }
+  body[data-eco-theme="nuvia"] .about-finale__disclaimer { margin-top: 30px; color: var(--nv-text-muted); font-size: 12px; }
   body[data-eco-theme="nuvia"] .about-presentation a:focus-visible { outline: 3px solid var(--nv-green-700); outline-offset: 5px; }
-  body[data-eco-theme="nuvia"] .about-finale a:focus-visible { outline-color: var(--nv-text-on-dark); }
+  body[data-eco-theme="nuvia"] .about-finale a:focus-visible { outline-color: var(--nv-green-700); }
 
   @media (max-width: 1119px) {
     body[data-eco-theme="nuvia"] .about-shell,

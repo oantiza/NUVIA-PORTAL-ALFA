@@ -456,11 +456,13 @@
   --nv-action-primary-bg: var(--nv-navy-900);
   --nv-action-primary-bg-hover: var(--nv-navy-800);
   --nv-action-primary-text: #ffffff;          /* 15,6:1 */
-  --nv-action-secondary-border: var(--nv-green-600);
-  --nv-action-secondary-text: var(--nv-green-700);
-  --nv-action-secondary-bg-hover: var(--nv-green-100);
-  --nv-action-accent-bg: var(--nv-green-600);  /* 4,9:1 con blanco · era 3,2:1 ❌ */
+  /* Regla única de botones (23-11-2026): el principal toma el acento de su web
+     (azul noche por defecto; bronce y verde en los bloques de más abajo) y el
+     secundario con contorno lo usa directamente en el componente. */
   --nv-action-accent-text: #ffffff;
+  /* Opción elegida: un solo color en todo el sitio. */
+  --nv-action-selected-bg: var(--nv-navy-900);
+  --nv-action-selected-text: #ffffff;
 
   /* Estados de interfaz, nunca juicios sobre resultados financieros. */
   --nv-control-bg: var(--nv-surface);
@@ -668,4 +670,21 @@ select option {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Acento de botón por web. Patrimonio y Lecturas, en bronce 700 (6,2:1 con blanco);
+   Bienestar y los espacios comunes, en verde 700 (7,3:1). Economía y Academia
+   conservan el azul noche de :root (15,6:1). */
+body[data-eco-theme="patrimonio"],
+body[data-eco-theme="lecturas"],
+.web-page--patrimonio {
+  --nv-action-primary-bg: var(--nv-bronze-700);
+  --nv-action-primary-bg-hover: var(--nv-bronze-800);
+}
+body[data-eco-theme="bienestar"],
+body[data-eco-theme="nuvia"],
+body[data-eco-theme="colaboradores"],
+.web-page--bienestar {
+  --nv-action-primary-bg: var(--nv-green-700);
+  --nv-action-primary-bg-hover: var(--nv-green-800);
 }

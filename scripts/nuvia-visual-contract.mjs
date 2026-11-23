@@ -35,7 +35,7 @@ export const SURFACE_CONTRACT = [
   ['.pa-perspective, body[data-eco-theme="lecturas"] #seleccion-lecturas, body[data-eco-theme="nuvia"] .about-purpose, body[data-eco-theme="nuvia"] .about-principle', 'backgroundColor', 'var(--nv-surface-editorial)'],
   ['.bi-reading, .ac-foundations', 'backgroundColor', 'var(--nv-green-100)'],
   ['body[data-eco-theme="nuvia"] .about-world', 'backgroundColor', 'color-mix(in srgb, var(--nv-surface-technical) 35%, var(--nv-surface))'],
-  ['body[data-eco-theme="nuvia"] .about-finale', 'backgroundColor', 'var(--nv-navy-900)'],
+  ['body[data-eco-theme="nuvia"] .about-finale', 'backgroundColor', 'var(--nv-surface-hub)'],
   ['.nuvia-analysis-hero', 'backgroundImage', 'none', '::before'],
   ['.nv-section--white', 'backgroundColor', 'var(--nv-surface)'],
   ['.nv-section--paper, .nv-hero--editorial', 'backgroundColor', 'var(--nv-surface-editorial)'],

@@ -67,7 +67,7 @@
         <div class="nuvia-analysis-hero__inner nv-sub-hero__grid">
           <div>
             <nav class="nv-breadcrumb" aria-label="Ruta de navegación">
-              <ol><li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li><li><a href="economia.html">Economía y finanzas</a></li><li><span id="analysis-current" aria-current="page">Análisis de cartera</span></li></ol>
+              <ol><li><a href="index.html" data-main-menu-return>Inicio NUVIA</a></li><li><a href="economia.html">Economía y finanzas</a></li><li id="analysis-parent" hidden><a href="cartera.html">Análisis de cartera</a></li><li><span id="analysis-current" aria-current="page">Análisis de cartera</span></li></ol>
             </nav>
             <p id="analysis-eyebrow" class="nuvia-analysis-eyebrow">Análisis de cartera</p>
             <h1 id="analysis-title">Análisis de cartera</h1>
@@ -188,7 +188,7 @@
     </div>
   </main>
 
-    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><nav class="web-footer-webs" aria-label="Las cuatro webs de NUVIA"><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a></nav><div class="web-footer-top"><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav></div><div class="web-trust"><div class="web-trust-copy"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p></div><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p></div></footer>
+    <footer data-screen-label="Footer" class="web-footer"><div class="web-wrap"><div class="web-footer-main"><nav class="web-footer-webs" aria-label="Las cuatro webs de NUVIA"><a href="economia.html">Economía y finanzas</a><a href="patrimonio.html">Patrimonio</a><a href="bienestar.html">Familia y bienestar</a><a href="academia.html">Academia NUVIA</a></nav><a class="web-return" href="index.html">Todo está conectado.<span>Inicio NUVIA <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></div><div class="web-footer-links"><nav aria-label="Espacios comunes e información de NUVIA"><a href="lecturas.html">Lecturas con Criterio</a><a href="colaboradores.html">Colaboradores</a><a href="que-es-nuvia.html">Qué es NUVIA</a></nav><nav aria-label="Criterios de NUVIA"><a href="metodologia.html">Cómo trabajamos</a><a href="independencia.html">Independencia</a></nav></div><div class="web-footer-legal"><p>NUVIA reúne información, formación y herramientas para comprender la economía familiar y pensar a largo plazo.</p><p>Contenido educativo e informativo.</p><p>No constituye asesoramiento financiero, fiscal o jurídico personalizado.</p><p>Las decisiones patrimoniales deben valorar las circunstancias personales de cada familia.</p></div><div class="web-footer-bottom"><p>NUVIA informa, explica y calcula. Tú comprendes y decides.</p><p class="web-prototype-note">Cuatro webs conectadas. Lecturas con Criterio y Colaboradores, comunes a todo NUVIA.</p><p>© 2026 NUVIA. Todos los derechos reservados.</p></div></div></footer>
 
 </div>
 </x-dc>
@@ -227,6 +227,8 @@ class Component extends DCLogic {
       document.getElementById('analysis-title').textContent = etiquetas[elegida];
       document.getElementById('analysis-eyebrow').textContent = elegida === 'companies' ? 'Análisis de empresas' : 'Análisis de cartera';
       document.getElementById('analysis-current').textContent = etiquetas[elegida];
+      const nivelPadre = document.getElementById('analysis-parent');
+      if (nivelPadre) nivelPadre.hidden = elegida !== 'models';
       document.getElementById('analysis-lead').textContent = {
         portfolio: 'Explora la composición, el riesgo y los escenarios de una cartera. Añade posiciones del catálogo y consulta los cálculos junto a sus fuentes y límites.',
         models: 'Explora composiciones publicadas por NUVIA con el mismo método de análisis de cartera. Compara su composición, comportamiento histórico y escenarios.',

@@ -57,9 +57,9 @@
 .nuvia-unified .nv-entry :is(.nv-hero__actions, .markets-area-views, .tm-wellbeing-nav, .nuvia-analysis-tabs) { margin-top: var(--nv-space-5); }
 .nuvia-unified .nv-entry :is(.viv-hero__rule, .nuvia-analysis-hero__divider) { display: none; }
 .nuvia-unified .nv-entry :is(.tm-wellbeing-nav a, .tm-back, .markets-area-views > p) { color: var(--nv-text-soft); }
-.nuvia-unified .nv-entry :is(.nv-btn--soft, .gt-print) { color: var(--nv-text-link); background: var(--nv-surface); border-color: var(--nv-line); }
+.nuvia-unified .nv-entry :is(.nv-btn--soft, .gt-print) { color: var(--nv-text); background: var(--nv-surface); border-color: var(--nv-line); }
 .nuvia-unified .nv-entry :is(.gt-chips li, .gu-tag-dark, .jub-tag-dark) { color: var(--nv-text); background: var(--nv-surface); border-color: var(--nv-line); }
-.nuvia-unified .nv-entry :is(.viv-pill--dark, .curso-ruta__volver, .curso-ruta__actual) { color: var(--nv-text-link); border-color: var(--nv-line); background: var(--nv-surface); }
+.nuvia-unified .nv-entry :is(.viv-pill--dark, .curso-ruta__volver, .curso-ruta__actual) { color: var(--nv-text); border-color: var(--nv-line); background: var(--nv-surface); }
 .nuvia-unified .nv-entry .viv-pill--dark:is(.is-active, [aria-pressed="true"], [aria-current="page"]) { color: var(--nv-text-on-dark); background: var(--nv-navy-900); border-color: var(--nv-navy-900); }
 .nuvia-unified .nv-entry .tm-pill__num { color: inherit; border-color: var(--nv-line); }
 

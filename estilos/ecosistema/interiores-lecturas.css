@@ -95,7 +95,7 @@
     color: var(--nv-text-soft);
     font-size: 14px;
   }
-  body[data-eco-theme="lecturas"] main .lecturas-filters button[aria-pressed="true"] { background: var(--nv-bronze-800); border-color: var(--nv-bronze-800); color: var(--nv-text-on-dark); }
+  body[data-eco-theme="lecturas"] main .lecturas-filters button[aria-pressed="true"] { background: var(--nv-action-selected-bg); border-color: var(--nv-action-selected-bg); color: var(--nv-action-selected-text); }
   body[data-eco-theme="lecturas"] main .lecturas-filters button:not([aria-pressed="true"]):hover { background: var(--nv-surface-editorial-strong); border-color: var(--nv-bronze-700); }
   body[data-eco-theme="lecturas"] main .lecturas-catalog-note { font-size: 13px; line-height: 1.65; }
   body[data-eco-theme="lecturas"] main .lecturas-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; margin-top: 24px; }

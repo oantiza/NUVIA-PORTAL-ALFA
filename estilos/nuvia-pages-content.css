@@ -85,9 +85,9 @@
 .viv-pill:hover { border-color: var(--nv-line-strong); }
 
 .viv-pill.is-active {
-  border-color: var(--nv-green-600);
-  background: color-mix(in srgb, var(--nv-green-500) 12%, transparent);
-  color: var(--nv-text-link);
+  border-color: var(--nv-action-selected-bg);
+  background: var(--nv-action-selected-bg);
+  color: var(--nv-action-selected-text);
 }
 
 /* Sobre el héroe oscuro */

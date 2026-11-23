@@ -111,14 +111,14 @@
   body[data-eco-theme="patrimonio"] .jg-route__btn.is-on,
   body[data-eco-theme="patrimonio"] .jg-route3 li.is-on > a,
   body[data-eco-theme="patrimonio"]:not(.jg-fiscal) .jg-route3 li.is-on {
-    border-color: var(--nv-bronze-700);
+    border-color: var(--nv-action-selected-bg);
     background: var(--nv-surface-editorial);
-    box-shadow: inset 3px 0 0 var(--nv-bronze-700);
+    box-shadow: inset 3px 0 0 var(--nv-action-selected-bg);
   }
   body[data-eco-theme="patrimonio"] .jg-route3 li.is-on .jg-route3__num,
   body[data-eco-theme="patrimonio"] .jb-stepper__btn.is-on .jb-stepper__num,
   body[data-eco-theme="patrimonio"] .jg-route__btn.is-on:not(.is-done) .jg-route__num {
-    background: var(--nv-bronze-700);
+    background: var(--nv-action-selected-bg);
     color: var(--nv-text-on-dark);
   }
 
@@ -138,9 +138,9 @@
   }
   body[data-eco-theme="patrimonio"] :is(.jb-choice, .viv-pill, .gt-selector__opcion) { min-height: 44px; }
   body[data-eco-theme="patrimonio"] :is(.jb-choice.is-on, .viv-pill.is-active, .gt-selector__opcion.is-active) {
-    border-color: var(--nv-bronze-700);
-    background: var(--nv-bronze-700);
-    color: var(--nv-text-on-dark);
+    border-color: var(--nv-action-selected-bg);
+    background: var(--nv-action-selected-bg);
+    color: var(--nv-action-selected-text);
   }
   body[data-eco-theme="patrimonio"] .jb-choice.is-on :is(strong, span, small) { color: inherit; }
   body[data-eco-theme="patrimonio"] .jb-choices--cards .jb-choice.is-on .jb-choice__text span { color: var(--nv-text-on-dark); }

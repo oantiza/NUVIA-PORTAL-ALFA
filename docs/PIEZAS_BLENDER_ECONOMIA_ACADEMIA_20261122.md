@@ -32,7 +32,7 @@ En negrita, las elegidas. Sobre la opción B de Economía se advirtió al fundad
 
 ## Fuentes de Blender
 
-En `output/piezas-webs-20261122/` (carpeta ignorada por git): `piezas.py`, `exportar_elegidas.py`, las escenas `.blend` y los renders. Detalle en `src/assets/ecosistema/PROCEDENCIA_PIEZAS_BLENDER.md`. Al estar fuera de git, no tienen copia en el repositorio.
+En `output/piezas-webs-20261122/` (carpeta ignorada por git): `piezas.py`, `exportar_elegidas.py`, las escenas `.blend` y los renders. Detalle en `src/assets/ecosistema/PROCEDENCIA_PIEZAS_BLENDER.md`. Desde el 23-11-2026 el guion, la exportación y las dos escenas elegidas tienen copia en `scripts/blender/piezas-webs-20261122/`.
 
 ## Prueba regulatoria (§12 del marco)
 

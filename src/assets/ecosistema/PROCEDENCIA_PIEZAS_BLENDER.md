@@ -23,7 +23,7 @@ Son imágenes decorativas (`alt=""`, contenedor con `aria-hidden`). No contienen
 
 ## Fuentes
 
-Viven en `output/piezas-webs-20261122/`, carpeta ignorada por git:
+Desde el 23-11-2026 hay copia en el repositorio, en `scripts/blender/piezas-webs-20261122/` (`piezas.py`, `exportar_elegidas.py`, `globo.blend`, `abaco.blend`); no se publica en la web. La carpeta de trabajo completa, con renders y las seis escenas, sigue en `output/piezas-webs-20261122/`, ignorada por git:
 
 - `piezas.py`: guion que modela, ilumina y renderiza las seis piezas propuestas (`globo`, `columnas`, `engranajes`, `abaco`, `libros`, `bloques`).
 - `exportar_elegidas.py`: exportación de las dos elegidas.

@@ -81,7 +81,7 @@ A la pregunta de si la daba por buena y se colocaba en «Qué es NUVIA», el fun
 - `src/assets/video/todo-esta-conectado-20261122.mp4`: copia para web (H.264 1080p a 50 fps, AAC, 18,9 MB; el máster de 107 MB supera el límite de GitHub).
 - `…-20261122.webp`: imagen de portada, el fotograma final con el lema.
 - `…-20261122.vtt`: 30 subtítulos con el texto y los tiempos de las catorce intervenciones (`revision-pulso-20261122/voz/marcas.json`).
-- `que-es-nuvia.html`: el reproductor, el enlace «Abrir el vídeo» y la transcripción (catorce párrafos) pasan a la película nueva. Los tres ficheros del vídeo anterior (`que-es-nuvia-20261112.*`) quedan en la carpeta sin enlazar.
+- `que-es-nuvia.html`: el reproductor, el enlace «Abrir el vídeo» y la transcripción (catorce párrafos) pasan a la película nueva. Los tres ficheros del vídeo anterior (`que-es-nuvia-20261112.*`) quedaron en la carpeta sin enlazar; se borraron el 23-11-2026 por decisión del fundador (`docs/LIMPIEZA_Y_PUBLICACION_20261123.md`).
 - `output/…/revision-mar-coherente-20261122/publicar_web.py` genera los tres ficheros.
 
 Comprobado en Chrome: el reproductor carga la película (96,44 s, 1920 × 1080), la portada y los 30 subtítulos.

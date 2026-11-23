@@ -316,6 +316,7 @@ Estas actas documentan la maqueta previa y su [integración principal](INTEGRACI
 - [Espacios compartidos](ESPACIOS_COMPARTIDOS_ECOSISTEMA_20261112.md): Lecturas, Colaboradores y Qué es NUVIA adaptados al ecosistema, con contenido íntegro y validación de fichas, navegación e impresión.
 - `docs/ECONOMIA_TITULAR_SEGUN_VISTA_20261123.md` — en Mercados, titular, ruta y título de pestaña siguen a la vista (Informes, Mercados y cotizaciones); Carteras modelo suma un nivel a la ruta; cambian `check-economia-entry.mjs` y `docs/nuvia-economia-entry.test.mjs`; local, sin publicar.
 - `docs/BOTONES_Y_ESQUINAS_20261123.md` — regla única: botón principal con el acento de su web (azul, bronce, verde 700), opción elegida en azul noche y tres radios (6 px, 12 px, píldora); en tokens y componentes, sin tocar HTML; local, sin publicar.
+- `docs/ACADEMIA_TARJETA_Y_CANAL_YOUTUBE_20261123.md` — título de la tarjeta destacada de Academia a 36 px y enlace al canal de YouTube en la portada y en Cursos; local, sin publicar.
 - `docs/MERCADOS_RELOJ_DE_ARENA_20261123.md` — la cabecera de Mercados cambia la fotografía por un reloj de arena de vidrio modelado en Blender; local, sin publicar.
 - `docs/QUE_ES_NUVIA_PRUDENTE_20261123.md` — Qué es NUVIA sin el lema como bloque propio, titulares alineados y vídeo que arranca sin subtítulos; local, sin publicar.
 - `docs/PORTADA_PUERTAS_INTERCAMBIADAS_20261123.md` — en escritorio, Academia sube y Patrimonio baja para que cada puerta quede junto al aro de su color; local, sin publicar.

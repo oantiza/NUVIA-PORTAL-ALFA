@@ -76,6 +76,7 @@ export function renderAcademia(site) {
     <nav aria-label="Más áreas de Academia">
       <a href="academia.html?tab=fundamentos">Fundamentos de inversión ${arrow}</a>
       <a href="academia.html?tab=activos">Activos financieros ${arrow}</a>
+      <a class="ac-external" href="https://www.youtube.com/@nuvia_academy" target="_blank" rel="noopener noreferrer">Vídeos de Academia en YouTube <span aria-hidden="true">↗</span></a>
     </nav>
   </section>
   <aside class="ac-note web-wrap" aria-label="Alcance educativo"><p>${escape(site.note)}</p></aside>`;

@@ -2149,9 +2149,9 @@
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--nv-green-700) 18%, transparent);
 }
 .nv-modelos__nombre { margin: 0; }
-.nv-modelos__tema { margin: 0; font-size: var(--nv-body-sm); }
+.nv-modelos__tema { margin: 0; font-size: var(--nv-body); }
 .nv-modelos__criterio { margin: 0; font-size: var(--nv-label); color: var(--nv-text-muted); }
-.nv-modelos__composicion { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 4px; font-size: var(--nv-body-sm); }
+.nv-modelos__composicion { margin: 0; padding-inline-start: 1.2em; display: grid; gap: 4px; font-size: var(--nv-body); }
 .nv-modelos__tarjeta .nv-btn { justify-self: start; }
 .nv-modelos__estado { margin: 0; color: var(--nv-text-soft); font-size: var(--nv-body-sm); }
 

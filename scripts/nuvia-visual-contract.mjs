@@ -53,7 +53,7 @@ const BASE_SCALE = [12, 14, 16, 18, 22, 28, 36];
 export const TYPE_SCALES = [
   ['.hub-page', [13, 14, 15, 16, 17, 19, 21, 24, 26, 27, 29, 30, 33, 35, 38]],
   ['.web-page--economia', [12, 13, 14, 15, 16, 25, 29, 30, 31, 32, 35, 39]],
-  ['.web-page--patrimonio', [12, 13, 14, 15, 17, 21, 23, 29, 33, 39, 41, 49]],
+  ['.web-page--patrimonio', [12, 13, 14, 15, 16, 17, 21, 23, 29, 33, 39, 41, 49]],
   ['.web-page--bienestar, .web-page--familia', [12, 13, 14, 15, 16, 26, 27, 28, 29, 30, 33, 39, 40, 49]],
   ['.web-page--academia', [12, 13, 14, 15, 16, 18, 29, 31, 33, 35, 36, 39, 40, 42, 45, 47]],
   ['body[data-eco-theme="economia"]:not(.web-page) main', [...BASE_SCALE, 13]],

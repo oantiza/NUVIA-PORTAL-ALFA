@@ -136,7 +136,7 @@
   body[data-eco-theme="academia"] main .ac-x229:hover { background: var(--nv-surface-technical); }
   body[data-eco-theme="academia"] main .ac-x229[aria-expanded="true"] { background: var(--nv-surface-technical); }
   body[data-eco-theme="academia"] main .ac-x231 { font-family: var(--nv-font-serif); font-size: 30px; line-height: 1.2; }
-  body[data-eco-theme="academia"] main .ac-x232 { font-size: 12px; text-transform: none; letter-spacing: 0; }
+  body[data-eco-theme="academia"] main .ac-x232 { font-size: 14px; text-transform: none; letter-spacing: 0; }
   body[data-eco-theme="academia"] main .ac-accordion__body { padding: 20px 24px 28px; }
   body[data-eco-theme="academia"] main .ac-x233 { background: var(--nv-surface-technical); border-radius: 4px; padding: 22px 24px; }
 

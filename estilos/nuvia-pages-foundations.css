@@ -3783,7 +3783,7 @@
 .markets-quotes__delta, .markets-quotes__ytd { font-size: var(--nv-body-sm); font-weight: var(--nv-weight-title); color: var(--nv-text-muted); }
 .markets-quotes__delta.is-up, .markets-quotes__ytd.is-up { color: var(--nv-positive); }
 .markets-quotes__delta.is-down, .markets-quotes__ytd.is-down { color: var(--nv-negative); }
-.markets-quotes__note { margin: var(--nv-space-3) 0 0; color: var(--nv-text-muted); font-size: 12px; line-height: 1.5; }
+.markets-quotes__note { margin: var(--nv-space-3) 0 0; color: var(--nv-text-muted); font-size: 14px; line-height: 1.5; }
 .markets-quotes__note a { color: var(--nv-text-link); }
 .markets-index-card__live-panel { margin-top: auto; border-top: 1px solid var(--nv-line); }
 .markets-index-card__live-panel > summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; padding: var(--nv-space-2) var(--nv-space-5); color: var(--nv-text-link); font-size: var(--nv-body-sm); font-weight: var(--nv-weight-action); }

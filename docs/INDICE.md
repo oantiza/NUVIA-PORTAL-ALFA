@@ -40,7 +40,9 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/VIDEO_EDICION_COHERENCIA_NUVIA_20261122.md` — edición de coherencia hecha sobre «Aros entrelazados»; descartada porque el fundador revisaba «Mar».
 - `docs/TRASPASO_A_CLAUDE_CODE_20261122.md` — estado al cerrar la sesión del 22-11-2026, reglas vigentes y trabajo abierto, para seguir en Claude Code.
+- `docs/PUBLICACION_CABECERA_Y_MEJORAS_20261123.md` — orden «pasa npm run build y publica»: despliegue n.º 190 con la cabecera compacta y las cuatro mejoras de la revisión.
 - `docs/CABECERA_COMPACTA_20261123.md` — cabecera de 195 a 125 px: logotipo, nombre de la web y menú en una sola franja; barra azul y márgenes corregidos en tablet; local, sin publicar.
+- `docs/TEXTO_LECTURA_16PX_20261123.md` — texto de lectura de Economía, Patrimonio y Bienestar a 16 px y notas a 14 px, regla por regla; cambia la escala de Patrimonio en `scripts/nuvia-visual-contract.mjs`; local, sin publicar.
 - `docs/LIMPIEZA_Y_PUBLICACION_20261123.md` — publicación n.º 188 (pestañas de Jubilación y actas) y limpieza: vídeo anterior borrado, fuentes de Blender en git, `CLAUDE.md` registrado.
 - `docs/PIE_Y_CIERRE_QUE_ES_NUVIA_20261123.md` — pie de 496 a 317 px (1440) con el © al final y cierre de Qué es NUVIA sobre marfil; cambia el contrato visual de `.about-finale`; local, sin publicar.
 - `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md` — orden «Publica»: qué se envía a GitHub Pages, qué se descartó y resultado del despliegue.

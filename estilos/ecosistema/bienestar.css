@@ -15,11 +15,11 @@
 .bi-topics { padding-block: 61px 63px; }
 .bi-section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 30px; margin-bottom: 34px; }
 .bi-section-heading h2 { font-size: 39px; }
-.bi-section-heading > p { font-size: 14px; color: var(--nv-text-soft); }
+.bi-section-heading > p { font-size: var(--nv-body); color: var(--nv-text-soft); }
 .bi-topics-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 34px; }
 .bi-topic { border-top: 1px solid var(--nv-line-strong); padding-top: 23px; display: flex; flex-direction: column; }
 .bi-topic h3 { font-size: 29px; min-height: 66px; margin-top: 21px; }
-.bi-topic > p { font-size: 14px; color: var(--nv-text-soft); line-height: 1.75; margin-top: 14px; margin-bottom: 19px; }
+.bi-topic > p { font-size: var(--nv-body); color: var(--nv-text-soft); line-height: 1.75; margin-top: 14px; margin-bottom: 19px; }
 .bi-status { font-size: 12px; color: var(--bi-accent); margin-top: auto; }
 .bi-topic .web-link { color: var(--bi-accent); font-size: 13px; justify-content: space-between; margin-top: 5px; }
 .bi-symbol { width: 45px; height: 45px; position: relative; color: var(--nv-green-700); }
@@ -48,11 +48,11 @@
 .bi-note p { font-size: 12px; line-height: 1.8; color: var(--nv-text-muted); }
 .bi-sources { padding-block: 0 42px; }
 .bi-sources-notice { padding-block: 20px; border-top: 1px solid var(--nv-line); }
-.bi-sources-notice p { max-width: 105ch; font-size: 13px; line-height: 1.75; color: var(--nv-text-soft); }
+.bi-sources-notice p { max-width: 105ch; font-size: 14px; line-height: 1.75; color: var(--nv-text-soft); }
 .bi-sources .bn-sources { display: grid; grid-template-columns: 1.15fr 1fr; align-items: start; gap: 64px; padding-top: 16px; scroll-margin-top: 24px; }
 .bi-sources .nv-eyebrow { margin: 0 0 10px; color: var(--bi-accent); font-size: 12px; font-weight: 500; }
 .bi-sources h3 { font: 400 30px/1.18 var(--nv-font-serif); letter-spacing: -.02em; margin: 0 0 14px; color: var(--bi-accent); }
-.bi-sources .bn-sources__text > p:last-child { max-width: 72ch; font-size: 14px; line-height: 1.75; color: var(--nv-text-soft); }
+.bi-sources .bn-sources__text > p:last-child { max-width: 72ch; font-size: var(--nv-body); line-height: 1.75; color: var(--nv-text-soft); }
 .bi-sources .bn-sources__list { display: grid; gap: 20px; margin: 0; padding: 0; list-style: none; }
 .bi-sources .bn-sources__list li { display: grid; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--nv-line); }
 .bi-sources .bn-sources__list a { display: block; min-height: 44px; font-size: 14px; line-height: 1.6; color: var(--bi-accent); text-decoration: underline; text-underline-offset: 4px; }

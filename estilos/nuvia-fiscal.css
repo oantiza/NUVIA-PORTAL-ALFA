@@ -539,7 +539,7 @@
 .fiscal-errores li:last-child { border-right: 0; }
 .fiscal-errores__num { display: block; color: var(--nv-bronze-500); font-family: var(--nv-font-serif); font-size: 44px; line-height: 1; }
 .fiscal-page .fiscal-errores h3 { margin: var(--nv-space-4) 0 var(--nv-space-2); color: var(--nv-ink); font-size: 18px; font-weight: var(--nv-weight-action); line-height: 1.35; }
-.fiscal-errores p { margin: 0; font-size: 14px; }
+.fiscal-errores p { margin: 0; font-size: var(--nv-body); }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 980px) {

@@ -193,7 +193,7 @@
 
 .nv-section-heading p {
   color: var(--nv-text-muted);
-  font-size: var(--nv-body-sm);
+  font-size: var(--nv-body);
 }
 
 
@@ -540,7 +540,7 @@
 .nv-card p {
   margin: 0;
   color: var(--nv-text-soft);
-  font-size: var(--nv-body-sm);
+  font-size: var(--nv-body);
 }
 
 .nv-card__icon {

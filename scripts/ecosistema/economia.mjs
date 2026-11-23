@@ -5,7 +5,8 @@ const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="
 export function renderEconomia(site) {
   const resources = Object.fromEntries(site.resources.map(resource => [resource[0], resource]));
   const url = key => `${escape(resources[key][4])}`;
-  const entry = (key, heading, description, action) => `<article class="ec-entry" id="${key}">
+  const entry = (key, kind, heading, description, action) => `<article class="ec-entry" id="${key}">
+    <p class="ec-kind">${kind}</p>
     <h3><a href="${url(key)}">${heading} ${arrow}</a></h3>
     <p>${description}</p>
     <a class="ec-entry-action" href="${url(key)}">${action}</a>
@@ -32,16 +33,16 @@ export function renderEconomia(site) {
         <h2 id="ec-context-title">Seguir el contexto.</h2>
         <p>Una lectura para situarte. Los datos para profundizar.</p>
       </div>
-      ${entry('informes', 'Informes de mercado', 'Consulta el diario, el semanal y el archivo de ediciones, con sus fuentes y fechas.', 'Consultar informes')}
-      ${entry('mercados', 'Mercados y noticias', 'Noticias, indicadores y cotizaciones para entender qué está ocurriendo.', 'Ver mercados y noticias')}
+      ${entry('informes', 'Contexto', 'Informes de mercado', 'Consulta el diario, el semanal y el archivo de ediciones, con sus fuentes y fechas.', 'Consultar informes')}
+      ${entry('mercados', 'Contexto', 'Mercados y noticias', 'Noticias, indicadores y cotizaciones para entender qué está ocurriendo.', 'Ver mercados y noticias')}
     </div>
     <div class="ec-analysis" aria-labelledby="ec-analysis-title">
       <div class="ec-section-intro">
         <h2 id="ec-analysis-title">Explorar los datos.</h2>
         <p>Herramientas para observar, comparar y comprender.</p>
       </div>
-      ${entry('cartera', 'Análisis de cartera', 'Explora la composición y el riesgo de una cartera o consulta las carteras modelo. Los métodos y límites acompañan al análisis.', 'Abrir el análisis de cartera')}
-      ${entry('empresas', 'Análisis y valoración de empresas', 'Busca una empresa y consulta sus cuentas, ratios e históricos, con la procedencia y la fecha de los datos.', 'Buscar una empresa')}
+      ${entry('cartera', 'Datos', 'Análisis de cartera', 'Explora la composición y el riesgo de una cartera o consulta las carteras modelo. Los métodos y límites acompañan al análisis.', 'Abrir el análisis de cartera')}
+      ${entry('empresas', 'Datos', 'Análisis y valoración de empresas', 'Busca una empresa y consulta sus cuentas, ratios e históricos, con la procedencia y la fecha de los datos.', 'Buscar una empresa')}
     </div>
   </section>
 

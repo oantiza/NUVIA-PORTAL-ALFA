@@ -4,6 +4,10 @@
   body[data-eco-theme="economia"] .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1.25fr) minmax(0,.75fr); gap: 54px; }
   body[data-eco-theme="economia"] .nv-sub-hero__img { height: 278px; border-radius: 3px 3px 75px 3px; }
   body[data-eco-theme="economia"] .nuvia-analysis-hero .nv-sub-hero__img { object-fit: contain; border-radius: 8px; background: var(--nv-surface-page); }
+  /* Pieza de vidrio de Mercados (reloj de arena): sin marco, sin sombra y sin recorte. Mide 340 px y
+     sobresale 31 px por arriba y por abajo para que la cabecera siga midiendo lo mismo que con la foto (278 px). */
+  body[data-eco-theme="economia"] .nv-sub-hero__media--pieza::before { display: none; }
+  body[data-eco-theme="economia"] .nv-sub-hero__img.nv-sub-hero__img--pieza { height: 340px; margin-block: -31px; object-fit: contain; border-radius: 0; box-shadow: none; pointer-events: none; }
   body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav,.nuvia-analysis-tabs) { background: var(--nv-surface-page); border-radius: var(--nv-radius-sm); padding: 3px; gap: 2px; }
   body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav button,.nuvia-analysis-tabs a) { padding: 9px 14px; font-size: 14px; }
   body[data-eco-theme="economia"] .nv-entry :is(.markets-viewnav button,.nuvia-analysis-tabs a):is([aria-current="page"],[aria-pressed="true"]) { background: var(--nv-navy-900); color: var(--nv-text-on-dark); border-radius: var(--nv-radius-sm); }
@@ -30,6 +34,7 @@
   @media (max-width: 999px) {
     body[data-eco-theme="economia"] .nv-entry.nv-sub-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1fr) minmax(0,.7fr); gap: 28px; }
     body[data-eco-theme="economia"] .nv-sub-hero__img { height: 232px; }
+    body[data-eco-theme="economia"] .nv-sub-hero__img.nv-sub-hero__img--pieza { height: 280px; margin-block: -24px; }
     body[data-eco-theme="economia"] .nuvia-analysis-hero .nv-sub-hero__grid { grid-template-columns: minmax(0,1fr); }
     body[data-eco-theme="economia"] .nv-entry .nuvia-analysis-tabs { width: 100%; }
   }

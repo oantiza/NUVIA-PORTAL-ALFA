@@ -39,7 +39,7 @@ for (const sentence of publicSentences) {
 assert.match(pageRaw, /<link rel="canonical" href="https:\/\/oantiza\.github\.io\/NUVIA-PORTAL-ALFA\/que-es-nuvia\.html">/,
   'La página pública mantiene la URL canónica oficial');
 assert.match(pageRaw, /NUVIA informa, explica y calcula\.[\s\S]*Tú comprendes y decides\./,
-  'El principio central canónico ocupa un bloque visible');
+  'El principio central canónico sigue en la página, en la última línea del pie');
 for (const space of [
   'Economía y finanzas',
   'Patrimonio',

@@ -1,4 +1,4 @@
-# Piezas de Economía y Academia modeladas en Blender
+# Piezas de Economía, Academia y Mercados modeladas en Blender
 
 Fecha: 22-11-2026. Sustituyen en las portadas a `economia-perspectiva.webp` y `academia-ideas.webp` por decisión del fundador.
 
@@ -36,3 +36,16 @@ Para rehacer una pieza:
 ```
 
 Las imágenes anteriores (`economia-perspectiva.webp`, `academia-ideas.webp`) siguen en esta carpeta, sin enlazar.
+
+## Reloj de arena de Mercados y noticias (23-11-2026)
+
+| Uso | Archivo web | Dimensiones | Bytes | SHA-256 |
+|---|---|---|---:|---|
+| Cabecera de Mercados y noticias | `mercados-reloj-arena.webp` | 1000 × 764, alfa | 51276 | `d0b91011ff922e7aa7d7e92d8b25b5cc08f19e230a1f8f3de614f64e1b264f8c` |
+
+Sustituye en la cabecera de `mercados.html` a la foto `src/assets/home/mercados-noticias-manana-20260923.webp` por decisión del fundador. Acta: `docs/MERCADOS_RELOJ_DE_ARENA_20261123.md`.
+
+- **Qué representa:** un reloj de arena de dos bulbos de vidrio azul claro, armazón de oro champán con tres varillas y arena azul marino a media caída. Habla de tiempo y de medir, no de subir ni de bajar. Sin cifras, textos, flechas, símbolos de moneda ni gráficos.
+- **Cómo se hizo:** igual que el globo (Blender 5.3, Cycles con OptiX, entorno `studio.exr`, cuatro cajas de luz y telón luminoso propios, fondo transparente). Render apaisado de 2000 × 1528 px, 800 muestras con reducción de ruido; exportación a WebP de 1000 × 764, calidad 90. Un fundido del 6 % en los márgenes deja el alfa del borde en 0 (sin velo).
+- **Imagen decorativa:** `alt=""` y contenedor con `aria-hidden`, como el globo.
+- **Fuentes:** `scripts/blender/piezas-webs-20261122/` (`piezas_mercados.py`, `exportar_mercados.py`, `reloj_arena.blend`; ver `LEEME.md`). El guion también contiene el barómetro, propuesto y no elegido.

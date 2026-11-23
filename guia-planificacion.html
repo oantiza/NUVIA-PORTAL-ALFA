@@ -121,7 +121,6 @@
 /* Estado de la hoja de ruta; la interfaz la construye window.NuviaGuiasJubilacion. */
 class Component extends DCLogic {
   state = { horizonte: null, listas: {}, revisadas: {}, hechas: {}, paso: 0, decision: 0, territorio: undefined, ccaa: undefined, avisoTerritorio: null };
-  componentDidMount() { document.title = 'Guía de planificación para la jubilación | NUVIA'; }
   renderVals() {
     const g = typeof window !== 'undefined' ? window.NuviaGuiasJubilacion : null;
     // ?territorio=…&ccaa=… llega del simulador o de la guía fiscal; se lee una vez.

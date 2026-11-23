@@ -38,9 +38,16 @@
   body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 {
     max-width: none;
     margin: 0;
-    font: 400 clamp(64px, 7.4vw, 106px)/.98 var(--nv-font-serif);
+    font: 400 clamp(48px, 4.7vw, 68px)/.98 var(--nv-font-serif);
     letter-spacing: -.055em;
     color: var(--nv-navy-900);
+  }
+  /* Misma escala que Lecturas con Criterio (espacios comunes). */
+  @media (max-width: 1179px) {
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 { font-size: 56px; }
+  }
+  @media (max-width: 899px) {
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 { font-size: 50px; }
   }
   body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-hero__lead {
     max-width: 40ch;
@@ -233,7 +240,7 @@
       gap: 18px;
     }
     body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 {
-      font-size: 76px;
+      font-size: 56px;
     }
     body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-hero__lead {
       max-width: 68ch;
@@ -262,7 +269,7 @@
   @media (max-width: 850px) {
     body[data-eco-theme="colaboradores"] main > .nv-hero.nv-entry { padding-bottom: 40px; }
     body[data-eco-theme="colaboradores"] .nv-hero.nv-entry .nv-breadcrumb { margin-bottom: 24px; }
-    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 { font-size: 68px; }
+    body[data-eco-theme="colaboradores"] .nv-hero.nv-entry h1 { font-size: 50px; }
     body[data-eco-theme="colaboradores"] main > .nv-section { padding-block: 42px 32px; }
     body[data-eco-theme="colaboradores"] .nv-section-heading {
       grid-template-columns: minmax(0, 1fr);

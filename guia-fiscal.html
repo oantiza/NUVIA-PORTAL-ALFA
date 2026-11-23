@@ -120,7 +120,6 @@
 /* Estado de la guía fiscal; la interfaz la construye window.NuviaGuiasJubilacion. */
 class Component extends DCLogic {
   state = { modo: 'capital', vistaDFB: 'transitorio', vistaCaso: null, check: {}, territorio: undefined, ccaa: undefined, avisoTerritorio: null };
-  componentDidMount() { document.title = 'Guía fiscal para la jubilación | NUVIA'; }
   renderVals() {
     const g = typeof window !== 'undefined' ? window.NuviaGuiasJubilacion : null;
     // ?territorio=…&ccaa=… llega del simulador o de la hoja de ruta; se lee una vez.

@@ -243,10 +243,10 @@ class Component extends DCLogic {
         if (boton) boton.setAttribute('aria-current', tab === elegida ? 'page' : 'false');
       });
       document.title = elegida === 'models'
-        ? 'Carteras modelo | NUVIA'
+        ? 'NUVIA · Carteras modelo'
         : elegida === 'companies'
-          ? 'Análisis y valoración de empresas | NUVIA'
-          : 'Análisis de cartera | NUVIA';
+          ? 'NUVIA · Análisis y valoración de empresas'
+          : 'NUVIA · Análisis de cartera';
       if (actualizaUrl) {
         const url = new URL(window.location.href);
         url.searchParams.set('vista', elegida);

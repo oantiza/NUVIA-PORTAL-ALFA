@@ -190,7 +190,6 @@
    window.NuviaJubilacionUI (js/nuvia-jubilacion-ui.js). */
 class Component extends DCLogic {
   state = { s: null, paso: 0, vista: 'hoy', sel: 0, avisoTerritorio: null };
-  componentDidMount() { document.title = 'Simulador de jubilación | NUVIA'; }
   renderVals() {
     const ui = typeof window !== 'undefined' ? window.NuviaJubilacionUI : null;
     if (ui && !this.state.s) {

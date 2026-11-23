@@ -7,6 +7,10 @@
     --nv-page-accent-soft: var(--nv-surface-editorial);
   }
 
+  /* Cuerpo de los interiores en marfil cálido (23-11-2026): la cabecera ya era papel y el cuerpo gris azulado.
+     No se edita .nuvia-design-lab main, que conserva el lienzo común de las demás páginas. */
+  body[data-eco-theme="patrimonio"] main { background: var(--nv-surface-hub-light); }
+
   /* Una apertura en papel, emparentada con la portada y más compacta. */
   body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry {
     padding-block: 28px 36px;

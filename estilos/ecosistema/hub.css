@@ -75,9 +75,9 @@ html:has(> .hub-page) { background-color: var(--nv-surface-hub); min-height: 100
 .hub-art-halo { position: absolute; inset: calc((100% - var(--hub-art-size) * .86) / 2); border-radius: 50%; background: radial-gradient(ellipse, color-mix(in srgb, var(--nv-surface) 55%, transparent), transparent 69%); transition: transform .65s ease; }
 .hub-door { --door-accent: var(--nv-navy-700); --door-mark: var(--nv-navy-800); position: relative; align-self: start; display: block; padding: 22px 0 9px; border-top: 1px solid var(--nv-line-strong); transition: transform .25s ease; }
 .hub-door--economia { grid-column: 1; grid-row: 1; }
-.hub-door--patrimonio { --door-accent: var(--nv-bronze-700); --door-mark: var(--nv-bronze-500); grid-column: 3; grid-row: 1; }
+.hub-door--patrimonio { --door-accent: var(--nv-bronze-700); --door-mark: var(--nv-bronze-500); grid-column: 3; grid-row: 2; }
 .hub-door--bienestar { --door-accent: var(--nv-green-700); --door-mark: var(--nv-green-500); grid-column: 1; grid-row: 2; }
-.hub-door--academia { --door-accent: var(--nv-sky-700); --door-mark: var(--nv-sky-400); grid-column: 3; grid-row: 2; }
+.hub-door--academia { --door-accent: var(--nv-sky-700); --door-mark: var(--nv-sky-400); grid-column: 3; grid-row: 1; }
 .hub-door-marker { position: absolute; top: -2px; left: 0; width: 44px; height: 3px; border-radius: 2px; background: var(--door-mark); transition: width .45s cubic-bezier(.2,.7,.2,1); }
 .hub-door h2 { font: 400 35px/1.08 var(--nv-font-serif); letter-spacing: -.03em; white-space: nowrap; }
 .hub-door p { font-size: 16px; line-height: 1.55; color: var(--nv-text-soft); max-width: 27ch; margin-top: 12px; }

@@ -104,7 +104,12 @@ export async function checkNavigationAndCards(page, route) {
       }
       return out;
     }));
-    await checkControls(header.locator('.eco-bar-home, .eco-bar-webs a, .web-brand, .web-name, .web-local a'));
+    /* Espacios comunes desde 1020 px: su menú no se pinta porque la barra ya ofrece esos enlaces
+       (autorizado el 23-11-2026). Se audita lo que el visitante puede usar, y debe poder usar uno de los dos. */
+    const menuVisible = await header.locator('.web-local').isVisible();
+    if (!menuVisible && !shared) problems.push('El menú de la web debe verse siempre');
+    if (!menuVisible) for (const item of await bar.locator('.eco-bar-common a').all()) if (!await item.isVisible()) problems.push('Sin menú propio, los espacios comunes deben verse en la barra');
+    await checkControls(header.locator('.eco-bar-home, .eco-bar-webs a, .web-brand, .web-name, ' + (menuVisible ? '.web-local a' : '.eco-bar-common a')));
     await checkControls(footer.locator('a'));
   }
   if (file === 'lecturas.html') {

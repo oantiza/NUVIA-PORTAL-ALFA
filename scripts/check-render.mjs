@@ -247,7 +247,7 @@ const MEDIR = ({ ESC, surfaces, typeScales, titleContract, numericSizes }) => {
   /* La cabecera puede envolver en tablet, pero ninguno de sus elementos
      visibles puede invadir a otro. Se miden cajas reales, no anchos teóricos. */
   const cabecera = [...document.querySelectorAll(
-    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details, .hub-brand, .hub-about, .web-header-row > .web-brand, .web-header-row > .web-name, .web-header-row > .eco-switch, .web-local a'
+    '.nuvia-site-header__brand, .nuvia-site-nav > a, .nuvia-site-nav > details, .hub-brand, .hub-about, .web-header-row > .web-brand, .web-header-row > .web-name, .web-header-row > .eco-switch, .web-local a, .web-header--shared .eco-bar-common a'
   )].filter((el) => {
     const r = el.getBoundingClientRect();
     const cs = getComputedStyle(el);
@@ -412,7 +412,9 @@ const MEDIR = ({ ESC, surfaces, typeScales, titleContract, numericSizes }) => {
     const box = el.getBoundingClientRect();
     if (!box.width || !box.height) continue;
     let expected = Math.min(1240, viewport * .9);
-    if (el.matches('.hub-stage')) expected = innerWidth <= 859 ? viewport * .83 : innerWidth <= 1179 ? viewport * .9 : Math.min(1240, viewport * .88);
+    /* Interiores: cabecera y pie comparten ancho y margen con .nv-container (autorizado el 23-11-2026). */
+    if (el.closest('.web-header, .web-footer') && document.body.matches('[data-eco-theme]:not([data-eco-view="portada"])')) expected = Math.min(1240, viewport - 2 * (innerWidth <= 1120 ? 28 : 48));
+    else if (el.matches('.hub-stage')) expected = innerWidth <= 859 ? viewport * .83 : innerWidth <= 1179 ? viewport * .9 : Math.min(1240, viewport * .88);
     else if (el.matches('.hub-footer')) expected = Math.min(1382, viewport * .9);
     else if (el.matches('.about-shell, .about-hero__frame')) expected = Math.min(1240, viewport - (innerWidth <= 1119 ? 64 : 96));
     if (Math.abs(box.width - expected) > 1 || Math.abs(box.left - (viewport - expected) / 2) > 1) salida.estructura.push(`${el.className}: ancho/borde ${box.width.toFixed(1)}/${box.left.toFixed(1)}; se esperan ${expected.toFixed(1)}/${((viewport - expected) / 2).toFixed(1)}`);

@@ -11,7 +11,7 @@
 .web-wrap { width: min(1240px,90%); margin-inline: auto; }
 .web-skip { position: fixed; z-index: 40; left: 24px; top: -90px; min-height: 48px; padding: 10px 20px; background: var(--nv-surface); border: 1px solid var(--nv-line-strong); }
 .web-skip:focus { top: 16px; }
-.web-header { position: relative; z-index: 10; background: var(--nv-surface); }
+.web-header { position: relative; z-index: 10; background: var(--nv-surface); border-bottom: 1px solid var(--nv-line); }
 /* Barra del ecosistema: las cuatro webs siempre a la vista (22-11-2026). */
 .eco-bar { background: var(--nv-surface-deep); color: var(--nv-text-on-dark-soft); font-size: 14px; }
 .eco-bar > div { display: flex; align-items: center; gap: 30px; }
@@ -22,20 +22,41 @@
 .eco-bar-webs { display: flex; gap: 30px; }
 .eco-bar-common { display: flex; gap: 26px; margin-left: auto; }
 .web-page .eco-bar a:focus-visible { outline-color: var(--nv-bronze-200); outline-offset: -3px; }
-@media (max-width: 1239px) { .eco-bar > div, .eco-bar-webs { gap: 24px; } .eco-bar-home { padding-right: 24px; } .eco-bar-common { display: none; } }
+@media (max-width: 1239px) { .eco-bar { font-size: 13px; } .eco-bar > div, .eco-bar-webs, .eco-bar-common { gap: 14px; } .eco-bar-home { padding-right: 14px; } }
+@media (max-width: 1019px) { .eco-bar-common { display: none; } }
 @media (max-width: 819px) { .eco-bar { font-size: 13px; } .eco-bar > div, .eco-bar-webs { gap: 16px; } .eco-bar-home { padding-right: 16px; } }
-.web-header-row { display: flex; align-items: center; gap: 27px; min-height: 100px; }
+.web-header-row { display: flex; align-items: center; gap: 24px; min-height: 78px; }
 .web-brand { display: flex; align-items: center; min-height: 56px; flex-shrink: 0; }
-.web-brand-logo { display: block; width: 240px; height: 60px; object-fit: contain; }
-.web-name { display: flex; align-items: center; min-height: 44px; padding-left: 27px; border-left: 1px solid var(--nv-line-strong); font: 400 25px/1.1 var(--nv-font-serif); }
+.web-brand-logo { display: block; width: 200px; height: 50px; object-fit: contain; }
+.web-name { display: flex; align-items: center; min-height: 44px; padding-left: 24px; border-left: 1px solid var(--nv-line-strong); font: 400 23px/1.1 var(--nv-font-serif); white-space: nowrap; }
 .web-page .web-trust { border-top: 1px solid var(--nv-line-on-dark); margin-top: 25px; padding-top: 12px; }
 .web-page .web-trust { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 36px; }
 .web-page .web-trust-copy { max-width: 85ch; font-size: 12px; line-height: 1.7; color: var(--nv-text-on-dark-soft); }
 .web-page .web-trust-copy p + p { margin-top: 7px; }
 .web-page .web-trust nav { display: flex; gap: 24px; }
 .web-page .web-trust nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 13px; }
-.web-local { border-block: 1px solid var(--nv-line); }
+/* Cabecera compacta (23-11-2026): desde 1020 px el menú comparte franja con el logotipo y el nombre de la web. */
+.web-local { border-top: 1px solid var(--nv-line); }
 .web-local > div { display: flex; gap: 32px; }
+@media (min-width: 1020px) {
+  .web-local { position: absolute; left: 0; right: 0; top: 46px; height: 78px; border-top: 0; pointer-events: none; }
+  .web-local > div { height: 100%; justify-content: flex-end; gap: 30px; }
+  .web-local a { pointer-events: auto; height: 100%; }
+  /* Espacios comunes: desde este ancho la barra azul ya ofrece sus cuatro enlaces; el menú los repetía. */
+  .web-header--shared .web-local { display: none; }
+}
+@media (min-width: 1020px) and (max-width: 1239px) {
+  .web-header-row { gap: 20px; }
+  .web-brand-logo { width: 184px; height: 46px; }
+  .web-name { padding-left: 20px; font-size: 22px; }
+  .web-local > div { gap: 24px; }
+}
+@media (max-width: 1019px) {
+  .web-header { border-bottom: 0; }
+  .web-header-row { min-height: 62px; }
+  .web-brand-logo { width: 176px; height: 44px; }
+  .web-local { border-bottom: 1px solid var(--nv-line); }
+}
 .web-local a { min-width: 44px; min-height: 47px; display: flex; align-items: center; font-size: 14px; border-bottom: 2px solid transparent; }
 .web-local a[aria-current] { border-bottom-color: var(--nv-green-700); }
 .web-local a:hover { color: var(--nv-green-800); }
@@ -60,16 +81,12 @@
 .web-footer-bottom p, .web-footer-bottom a, .web-prototype-note { font-size: 12px; }
 .web-prototype-note { color: var(--nv-text-on-dark-soft); }
 @media (max-width: 999px) {
-  .web-header-row { gap: 20px; }
-  .web-brand-logo { width: 216px; height: 54px; }
-  .web-name { padding-left: 20px; font-size: 23px; }
   .web-footer-top { align-items: flex-start; }
   .web-footer-top nav { gap: 12px; flex-wrap: wrap; max-width: 365px; justify-content: flex-end; }
 }
 @media (max-width: 819px) {
   .web-header-row { gap: 17px; }
-  .web-name { padding-left: 17px; font-size: 22px; max-width: 250px; }
-  .web-brand-logo { width: 192px; height: 48px; }
+  .web-name { padding-left: 17px; }
   .web-local > div { gap: 28px; }
   .web-footer-top nav { max-width: 330px; }
 }

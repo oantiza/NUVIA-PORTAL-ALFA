@@ -40,6 +40,7 @@ Entrada de lectura: `AGENTS.md` (capas) → ficha del módulo en `docs/modulos/`
 - `docs/LOGOS_OFICIALES_V0402_20261112.md` — cabecera de Inicio con firma lineal 11 ampliada, sin el rótulo repetido ECOSISTEMA por orden posterior; textos originales y resto conservados.
 - `docs/VIDEO_EDICION_COHERENCIA_NUVIA_20261122.md` — edición de coherencia hecha sobre «Aros entrelazados»; descartada porque el fundador revisaba «Mar».
 - `docs/TRASPASO_A_CLAUDE_CODE_20261122.md` — estado al cerrar la sesión del 22-11-2026, reglas vigentes y trabajo abierto, para seguir en Claude Code.
+- `docs/CABECERA_COMPACTA_20261123.md` — cabecera de 195 a 125 px: logotipo, nombre de la web y menú en una sola franja; barra azul y márgenes corregidos en tablet; local, sin publicar.
 - `docs/LIMPIEZA_Y_PUBLICACION_20261123.md` — publicación n.º 188 (pestañas de Jubilación y actas) y limpieza: vídeo anterior borrado, fuentes de Blender en git, `CLAUDE.md` registrado.
 - `docs/PUBLICACION_PORTADAS_PIEZAS_PIE_20261122.md` — orden «Publica»: qué se envía a GitHub Pages, qué se descartó y resultado del despliegue.
 - `docs/PIEZAS_BLENDER_ECONOMIA_ACADEMIA_20261122.md` — globo de vidrio en Economía y ábaco en Academia, modelados en Blender; sustituyen a las dos esculturas generadas; publicado.

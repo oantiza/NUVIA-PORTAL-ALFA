@@ -23,7 +23,12 @@
 .eco-bar-common { display: flex; gap: 26px; margin-left: auto; }
 .web-page .eco-bar a:focus-visible { outline-color: var(--nv-bronze-200); outline-offset: -3px; }
 @media (max-width: 1239px) { .eco-bar { font-size: 13px; } .eco-bar > div, .eco-bar-webs, .eco-bar-common { gap: 14px; } .eco-bar-home { padding-right: 14px; } }
-@media (max-width: 1019px) { .eco-bar-common { display: none; } }
+/* Tablet estrecha (23-11-2026): los tres espacios comunes pasan a una segunda línea de la barra, sin menú ni JavaScript. */
+@media (max-width: 1019px) {
+  .eco-bar > div { flex-wrap: wrap; }
+  .eco-bar-common { flex: 0 0 100%; margin-left: 0; gap: 22px; border-top: 1px solid var(--nv-line-on-dark); }
+  .eco-bar-common a { min-height: 44px; }
+}
 @media (max-width: 819px) { .eco-bar { font-size: 13px; } .eco-bar > div, .eco-bar-webs { gap: 16px; } .eco-bar-home { padding-right: 16px; } }
 .web-header-row { display: flex; align-items: center; gap: 24px; min-height: 78px; }
 .web-brand { display: flex; align-items: center; min-height: 56px; flex-shrink: 0; }
@@ -36,9 +41,9 @@
   .web-local { position: absolute; left: 0; right: 0; top: 46px; height: 78px; border-top: 0; pointer-events: none; }
   .web-local > div { height: 100%; justify-content: flex-end; gap: 30px; }
   .web-local a { pointer-events: auto; height: 100%; }
-  /* Espacios comunes: desde este ancho la barra azul ya ofrece sus cuatro enlaces; el menú los repetía. */
-  .web-header--shared .web-local { display: none; }
 }
+/* Espacios comunes: la barra azul ya ofrece sus enlaces (en una línea o en dos); el menú los repetía. */
+.web-header--shared .web-local { display: none; }
 @media (min-width: 1020px) and (max-width: 1239px) {
   .web-header-row { gap: 20px; }
   .web-brand-logo { width: 184px; height: 46px; }
@@ -66,7 +71,7 @@
 .web-footer-webs a { display: flex; align-items: center; min-height: 44px; font: 400 22px/1.2 var(--nv-font-serif); letter-spacing: -.02em; }
 .web-footer-webs a:hover { text-decoration: underline; text-underline-offset: 6px; }
 /* Las webs van primero en el código (orden de lectura y de pruebas); el regreso se muestra a la izquierda. */
-.web-return { order: -1; display: flex; align-items: center; gap: 18px; font: 400 32px/1.2 var(--nv-font-serif); letter-spacing: -.03em; }
+.web-return { display: flex; align-items: center; gap: 18px; font: 400 32px/1.2 var(--nv-font-serif); letter-spacing: -.03em; }
 .web-return > span { display: flex; align-items: center; min-height: 44px; gap: 16px; font: 13px/1.5 var(--nv-font-sans); letter-spacing: 0; }
 .web-return:hover > span { text-decoration: underline; text-underline-offset: 5px; }
 .web-footer-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0 28px; margin-top: 22px; border-top: 1px solid var(--nv-line-on-dark); }

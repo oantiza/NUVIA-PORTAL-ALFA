@@ -11,6 +11,12 @@
      No se edita .nuvia-design-lab main, que conserva el lienzo común de las demás páginas. */
   body[data-eco-theme="patrimonio"] main { background: var(--nv-surface-hub-light); }
 
+  /* Casillas en papel cálido (23-11-2026): el gris azulado --jb-canvas (#f4f6f9) de nuvia-jubilacion.css y
+     nuvia-guias-fiscales.css quedaba frío dentro de tarjetas blancas sobre marfil. Solo cambia el lienzo de
+     las casillas; --jb-accent-soft (avisos y estados informativos azules) y los colores de gráficos no se tocan. */
+  body[data-eco-theme="patrimonio"] { --jb-canvas: var(--nv-surface-editorial-strong); }
+  body[data-eco-theme="patrimonio"] .fiscal-sim__compare { background: var(--nv-surface-editorial-strong); }
+
   /* Una apertura en papel, emparentada con la portada y más compacta. */
   body[data-eco-theme="patrimonio"].nuvia-unified .nv-entry {
     padding-block: 28px 36px;

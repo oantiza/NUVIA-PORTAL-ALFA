@@ -203,10 +203,15 @@ html:has(> .hub-page) { background-color: var(--nv-surface-hub); min-height: 100
 
 /* Pantallas grandes: la composición de 1440 px se amplía por pasos. Cada paso
    exige también altura suficiente para que el escenario completo siga a la vista. */
-/* La portada mide unos 1.010 px a escala 1. Solo se amplía en ventanas muy grandes y siempre cabe entera. */
-@media (min-width: 1900px) and (min-height: 1400px) { .hub-page { zoom: 1.2; } }
-@media (min-width: 2300px) and (min-height: 1620px) { .hub-page { zoom: 1.4; } }
-@media (min-width: 2700px) and (min-height: 1850px) { .hub-page { zoom: 1.6; } }
+/* La portada mide unos 1.002 px a escala 1 y su contenido crece en proporción a la escala.
+   Cada paso exige 1.002 × escala + unos 40 px de aire en alto, de modo que nunca aparece
+   barra vertical; el ancho mínimo (≈ 1.230 × escala) evita desbordar en horizontal. */
+@media (min-width: 1900px) and (min-height: 1140px) { .hub-page { zoom: 1.1; } }
+@media (min-width: 1900px) and (min-height: 1245px) { .hub-page { zoom: 1.2; } }
+@media (min-width: 1900px) and (min-height: 1345px) { .hub-page { zoom: 1.3; } }
+@media (min-width: 1900px) and (min-height: 1445px) { .hub-page { zoom: 1.4; } }
+@media (min-width: 1900px) and (min-height: 1545px) { .hub-page { zoom: 1.5; } }
+@media (min-width: 2000px) and (min-height: 1645px) { .hub-page { zoom: 1.6; } }
 
 @media (prefers-reduced-motion: reduce) {
   .hub-page *, .hub-page *::before, .hub-page *::after { transition: none !important; animation: none !important; }

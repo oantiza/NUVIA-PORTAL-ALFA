@@ -31,7 +31,8 @@ export async function checkPatrimonioEntry(page, route) {
     await page.locator('.pa-area').first().waitFor({state:'visible'});
   }
   if(route==='temas.html?topic=planificacion-patrimonial') {
-    if(await page.locator('.tm-overview__notice').count()!==1 || await page.locator('.tm-card__tag.nv-tag--pending').count()!==3) problems.push('Planificación no conserva su estado en preparación');
+    if(await page.locator('.tm-overview__notice').count()!==1 || await page.locator('.tm-card__tag.nv-tag--pending').count()!==2) problems.push('Planificación no conserva dos ámbitos en preparación');
+    if(await page.locator('.tm-card__cta[href="guia-balance-patrimonial.html"]').count()!==1) problems.push('Planificación no enlaza la guía de balance patrimonial');
     if(await page.locator('main input,main textarea,main form').count()) problems.push('Planificación expone un formulario aplazado');
     if(await page.locator('.tm-back[href="patrimonio.html"]').count()!==1) problems.push('Planificación no ofrece regreso al espacio');
   }

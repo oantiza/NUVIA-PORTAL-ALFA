@@ -84,6 +84,7 @@
       const parentPages = {
         'guia-fiscal.html': 'jubilacion.html', 'guia-planificacion.html': 'jubilacion.html',
         'guia-ahorro.html': 'fiscalidad.html', 'guia-calendario.html': 'fiscalidad.html', 'guia-sucesiones.html': 'fiscalidad.html',
+        'guia-balance-patrimonial.html': 'temas.html?topic=planificacion-patrimonial',
         'la-respiracion-como-el-escultor-del-cerebro.html': 'respiracion-relajacion.html', 'que-es-meditar.html': 'respiracion-relajacion.html',
         'curso.html': 'academia.html?tab=cursos'
       };

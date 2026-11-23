@@ -75,6 +75,8 @@ export const PAGINAS = [
     tipo: 'editorial', excepcion: 'Cabecera institucional y panel de contexto.', publica: true, lastmod: '2026-11-12' },
   { archivo: 'guia-sucesiones.html', titulo: 'NUVIA · Sucesiones y donaciones', modulo: 'patrimonio', padre: 'patrimonio.html',
     tipo: 'editorial', excepcion: 'Cabecera institucional y panel de contexto.', publica: true, lastmod: '2026-11-12' },
+  { archivo: 'guia-balance-patrimonial.html', titulo: 'NUVIA · Balance patrimonial', modulo: 'patrimonio', padre: 'patrimonio.html',
+    tipo: 'editorial', excepcion: 'Guía corta de Planificación patrimonial, sin imagen de cabecera.', publica: true, lastmod: '2026-11-23' },
   // temas.html: Patrimonio por defecto; ?topic=bienestar regresa a Bienestar (caso tratado en check-page-hierarchy).
   { archivo: 'temas.html', titulo: 'NUVIA · Patrimonio', modulo: 'patrimonio', padre: 'patrimonio.html',
     tipo: 'espacio', excepcion: 'Vistas de Patrimonio y Bienestar sin cambiar rutas ni estados.', publica: true, lastmod: '2026-11-12' },

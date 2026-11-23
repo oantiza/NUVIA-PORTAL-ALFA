@@ -94,6 +94,7 @@ const CONTENIDO = {
   'guia-calendario.html':  [['.gt-title', 1]],
   'guia-ahorro.html':      [['.gt-title', 1]],
   'guia-sucesiones.html':  [['.gt-title', 1]],
+  'guia-balance-patrimonial.html': [['main h1', 1], ['.nv-prose h2', 6]],
   'guia-planificacion.html': [['.jb-stepper__btn', 4], ['.jg-ring', 1], ['.jg-route3 li', 3], ['.jb-terr', 1]],
   'guia-fiscal.html':      [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['.jb-terr', 1]],
   'guia-fiscal.html?territorio=estatal&ccaa=referencia': [['.gu-hero__title', 1], ['.jg-matrix', 1], ['.jg-bases__bar', 1], ['.jg-check', 8], ['#jg-terr-ccaa', 1]],

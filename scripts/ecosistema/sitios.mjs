@@ -28,7 +28,7 @@ export const sites = [
       ['vivienda', 'Vivienda y coste de vida', 'Guía y simulador', 'Explora los costes de la vivienda y su relación con el presupuesto familiar.', 'vivienda.html', 'Explorar vivienda'],
       ['jubilacion', 'Jubilación', 'Guías y simulador', 'Comprende los ingresos futuros y cómo cambian los escenarios bajo distintos supuestos.', 'jubilacion.html', 'Explorar jubilación'],
       ['impuestos', 'Impuestos', 'Guías y herramientas', 'Fiscalidad del ahorro, calendario fiscal, sucesiones y donaciones explicados con claridad.', 'fiscalidad.html', 'Comprender los impuestos'],
-      ['planificacion', 'Planificación patrimonial', 'Espacio en preparación', 'Relaciona las piezas de la economía familiar y las preguntas que surgen al mirar a largo plazo.', 'temas.html?topic=planificacion-patrimonial', 'Ver contenidos previstos'],
+      ['planificacion', 'Planificación patrimonial', 'Una guía disponible', 'Relaciona las piezas de la economía familiar y las preguntas que surgen al mirar a largo plazo.', 'temas.html?topic=planificacion-patrimonial', 'Ver los contenidos'],
     ],
     feature: ['Aprender a mirar los supuestos', 'Un escenario es una forma de explorar.', 'Las hipótesis ayudan a entender cómo cambia un resultado. No son una predicción ni una decisión tomada por ti.', 'metodologia.html', 'Cómo trabajamos'],
     note: 'Contenido educativo e informativo. Las guías y simulaciones no constituyen asesoramiento financiero, fiscal o jurídico personalizado.'

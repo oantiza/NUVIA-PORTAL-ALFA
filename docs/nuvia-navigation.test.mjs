@@ -25,7 +25,7 @@ const families = {
     links: [['economia.html', 'Inicio'], ['mercados.html?vista=informes#lectura-informe', 'Informes'], ['mercados.html', 'Mercados'], ['cartera.html', 'Cartera'], ['cartera.html?vista=companies', 'Empresas']]
   },
   patrimonio: {
-    pages: ['patrimonio.html', 'vivienda.html', 'jubilacion.html', 'fiscalidad.html', 'temas.html', 'guia-fiscal.html', 'guia-planificacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html'],
+    pages: ['patrimonio.html', 'vivienda.html', 'jubilacion.html', 'fiscalidad.html', 'temas.html', 'guia-fiscal.html', 'guia-planificacion.html', 'guia-ahorro.html', 'guia-calendario.html', 'guia-sucesiones.html', 'guia-balance-patrimonial.html'],
     links: [['patrimonio.html', 'Inicio'], ['vivienda.html', 'Vivienda'], ['jubilacion.html', 'Jubilación'], ['fiscalidad.html', 'Impuestos'], ['temas.html?topic=planificacion-patrimonial', 'Planificación']]
   },
   bienestar: {

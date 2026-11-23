@@ -326,3 +326,4 @@ Estas actas documentan la maqueta previa y su [integración principal](INTEGRACI
 - `docs/BARRA_TABLET_Y_ORDEN_PIE_20261123.md` — por debajo de 1020 px los espacios comunes pasan a una segunda línea de la barra; el pie tabula en el orden en que se ve.
 - `docs/AJUSTES_COHERENCIA_20261123.md` — cinco ajustes aplicados en local: titular de Colaboradores, fondo marfil de los interiores de Patrimonio, tinte propio de la tarjeta de Academia, botón de la portada de Bienestar y títulos de pestaña en «NUVIA · X»; sin publicar.
 - `docs/JUBILACION_AYUDAS_16PX_20261123.md` — ayudas, avisos y notas de pie del simulador de jubilación a 16 px (pie de fuentes a 14 px); solo `estilos/nuvia-jubilacion.css`, sin tocar pruebas; local, sin publicar.
+- `docs/GUIA_BALANCE_PATRIMONIAL_20261123.md` — guía «El balance patrimonial» firmada por NUVIA y sin fecha, enlazada desde Planificación patrimonial; dos ámbitos siguen en preparación; en local, sin publicar.

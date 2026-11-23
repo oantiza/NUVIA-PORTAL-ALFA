@@ -212,11 +212,19 @@
         <sc-if value="{{ esPlanificacion }}" hint-placeholder-val="{{ false }}">
           <div class="nv-notice tm-overview__notice">
             <h2 class="tm-legacy__heading">Contenidos en preparación</h2>
-            <p>Estos son los contenidos previstos. Todavía no puedes completar un cuestionario ni obtener un plan personal. Mientras tanto, puedes consultar las guías y los simuladores disponibles desde la <a href="patrimonio.html">portada de Patrimonio</a>.</p>
+            <p>Uno de los tres ámbitos ya está disponible, el <a href="guia-balance-patrimonial.html">balance patrimonial</a>; los otros dos son contenidos previstos. Todavía no puedes completar un cuestionario ni obtener un plan personal. Mientras tanto, puedes consultar las guías y los simuladores disponibles desde la <a href="patrimonio.html">portada de Patrimonio</a>.</p>
           </div>
         </sc-if>
         <div class="nv-card-grid">
-          <sc-for list="{{ recursos }}" as="r" hint-placeholder-count="3">
+          <sc-for list="{{ recursosPublicados }}" as="r" hint-placeholder-count="0">
+            <article class="nv-card tm-card">
+              <span class="nv-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
+              <h3 class="tm-card__title">{{ r.titulo }}</h3>
+              <p class="tm-card__text">{{ r.descripcion }}</p>
+              <a class="nv-btn nv-btn--secondary tm-card__cta" href="{{ r.enlace }}">Leer la guía →</a>
+            </article>
+          </sc-for>
+          <sc-for list="{{ recursosPendientes }}" as="r" hint-placeholder-count="3">
             <article class="nv-card tm-card">
               <span class="nv-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></span>
               <h3 class="tm-card__title">{{ r.titulo }}</h3>
@@ -328,7 +336,7 @@
 class Component extends DCLogic {
   state = { topic: null, temasOpen: false };
   temas() {
-    const R = (titulo, descripcion) => ({ titulo, descripcion });
+    const R = (titulo, descripcion, enlace) => ({ titulo, descripcion, enlace });
     return [
       { id: 'vivienda-coste-vida', num: '01', nombre: 'Vivienda y coste de vida', link: 'vivienda.html', intro: 'Decisiones de compra, alquiler, financiación y gasto familiar en un entorno de precios cambiantes.', tipo: 'recursos', recursos: [
         R('Compra o alquiler', 'Claves para comparar alternativas y medir el impacto patrimonial de cada decisión.'),
@@ -341,7 +349,7 @@ class Component extends DCLogic {
         R('Calma y gestión del estrés', 'Conceptos generales sobre estrés, respiración y relajación, con sus fuentes y límites.'),
         R('Descanso, límites y tiempo propio', 'Contenidos previstos sobre el descanso, los límites y el tiempo que reservamos para nosotros.') ] },
       { id: 'planificacion-patrimonial', num: '04', nombre: 'Planificación patrimonial', intro: 'Una visión de conjunto del patrimonio familiar: objetivos, activos, deudas, liquidez y transmisión.', tipo: 'recursos', recursos: [
-        R('Balance patrimonial', 'Cómo se organizan los activos, las deudas y la liquidez en una visión conjunta del patrimonio familiar.'),
+        R('Balance patrimonial', 'Cómo se organizan los activos, las deudas y la liquidez en una visión conjunta del patrimonio familiar.', 'guia-balance-patrimonial.html'),
         R('Objetivos y horizontes', 'La relación entre las necesidades familiares, los plazos y la incertidumbre a lo largo del tiempo.'),
         R('Documentación y continuidad familiar', 'Información y conceptos para comprender la titularidad y la transmisión del patrimonio.') ] },
     ];
@@ -403,6 +411,8 @@ class Component extends DCLogic {
       esRecursos: t.tipo === 'recursos',
       esBienestar,
       recursos: t.recursos || [],
+      recursosPublicados: (t.recursos || []).filter(r => r.enlace),
+      recursosPendientes: (t.recursos || []).filter(r => !r.enlace),
       irVivienda: () => this.ir('vivienda-coste-vida'),
       irJubilacion: () => this.ir('jubilacion'),
       irBienestar: () => this.ir('bienestar'),

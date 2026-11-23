@@ -68,7 +68,7 @@ Máster: `NUVIA-Todo-esta-conectado-Mar-coherente.mp4` (107.077.948 bytes, sha25
 
 Límites de la validación:
 
-- El sonido se ha medido pero no se ha escuchado; la cola es una resonancia sintética y falta la escucha del fundador.
+- El sonido se midió sin escucharlo; la cola es una resonancia sintética. El 23-11-2026 el fundador recibió los últimos 12 s y, preguntado por cómo sonaba la cola, respondió «Bien». Queda cerrado.
 - Los aros de la apertura no se han rodado de nuevo: son los de «Mar» con corrección de imagen, más finos que los del estudio.
 - El cruce de «Tú comprendes y decides.» con «Elegir una vivienda.» sigue como en «Mar».
 - El título del plano del mar conserva su forma (sin punto final), por ser el elegido por el fundador.

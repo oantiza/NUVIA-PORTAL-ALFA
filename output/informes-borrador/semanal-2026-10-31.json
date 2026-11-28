@@ -1,0 +1,353 @@
+{
+  "schema_version": "informe-mercado.v2",
+  "tipo": "SEMANAL",
+  "id": "semanal-2026-10-31",
+  "fecha": "2026-10-31",
+  "fechaIso": "2026-10-31T00:00:00.000Z",
+  "generadoIso": "2026-10-31T13:32:33.945Z",
+  "titular": "El sector tecnológico y las tensiones energéticas dominan una semana de inacción en los tipos de interés oficiales",
+  "entradilla": "Las autoridades monetarias dejaron sin cambios el coste del dinero ante un panorama económico heterogéneo. En el plano bursátil, las acciones cedieron terreno por el intenso nivel de gasto exigido a las firmas de tecnología y el encarecimiento de los fletes petroleros en Oriente Medio.",
+  "hechos": [
+    {
+      "texto": "El Banco Central Europeo dejó inalterado su tipo de facilidad de depósito (el interés que abona a los bancos) en el 2,50 % el 29 de octubre, argumentando que busca no endurecer las condiciones en países con tensiones presupuestarias.",
+      "fecha": "29 de octubre de 2026",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "texto": "El principal índice de la bolsa española, el IBEX 35, cerró la semana en los 18.652,90 puntos tras retroceder debido al contexto adverso arrastrado por los mercados internacionales.",
+      "fecha": "30 de octubre de 2026",
+      "fuentes": [
+        3
+      ]
+    },
+    {
+      "texto": "El índice estadounidense S&P 500 finalizó la sesión del viernes en los 7.580,07 puntos, acumulando descensos en medio del escepticismo sobre los beneficios empresariales en el sector computacional.",
+      "fecha": "30 de octubre de 2026",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "texto": "El tipo de cambio de referencia del euro se fijó oficialmente en 1,1172 dólares al cierre estadístico semanal.",
+      "fecha": "30 de octubre de 2026",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "texto": "El índice de volatilidad implícita VIX, que mide la expectativa de turbulencias en el mercado bursátil estadounidense a un mes, terminó el periodo con estabilidad en los 19,42 puntos.",
+      "fecha": "30 de octubre de 2026",
+      "fuentes": [
+        4
+      ]
+    }
+  ],
+  "indicadores": [
+    {
+      "etiqueta": "Facilidad de depósito del BCE",
+      "valor": "2,50 %",
+      "referencia": "29 de octubre, BCE",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "etiqueta": "Tipo de cambio EUR/USD",
+      "valor": "1,1172",
+      "referencia": "30 de octubre, BCE",
+      "fuentes": [
+        2
+      ]
+    },
+    {
+      "etiqueta": "Índice de volatilidad VIX",
+      "valor": "19,42 puntos",
+      "referencia": "30 de octubre, Cboe",
+      "fuentes": [
+        4
+      ]
+    },
+    {
+      "etiqueta": "PIB de España (3T)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación oficial en el listado",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Inflación PCE de EE. UU. (Septiembre)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación oficial en el listado",
+      "fuentes": []
+    },
+    {
+      "etiqueta": "Tasa de desempleo Eurozona (Septiembre)",
+      "valor": "Sin contrastar",
+      "referencia": "Falta publicación oficial en el listado",
+      "fuentes": []
+    }
+  ],
+  "agenda": [
+    {
+      "fecha": "2026-11-03",
+      "hora": "10:30",
+      "region": "España",
+      "que": "Subasta ordinaria de Letras del Tesoro a 6 meses y 12 meses",
+      "anterior": "3,482 % en letras a 12 meses",
+      "porQueImporta": "Fija la remuneración del ahorro a corto plazo de las familias en la deuda nacional.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": "16:00",
+      "region": "EEUU",
+      "que": "Encuesta de vacantes laborales JOLTS",
+      "anterior": "7,74 millones en agosto",
+      "porQueImporta": "Muestra la fortaleza de las empresas para asimilar nueva mano de obra y guía las políticas de la Reserva Federal.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-03",
+      "hora": null,
+      "region": "EEUU",
+      "que": "Elecciones legislativas de mitad de mandato",
+      "anterior": null,
+      "porQueImporta": "Define el control político del Congreso, lo que condicionará la aprobación de futuros presupuestos y la política fiscal.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-04",
+      "hora": "11:00",
+      "region": "Eurozona",
+      "que": "Estimación adelantada de la inflación IPCA",
+      "anterior": "+3,8 % interanual en septiembre",
+      "porQueImporta": "Es la variable principal que mirará el Banco Central Europeo para medir la estabilidad de precios.",
+      "fuentes": []
+    },
+    {
+      "fecha": "2026-11-06",
+      "hora": "14:30",
+      "region": "EEUU",
+      "que": "Informe oficial de creación de empleo",
+      "anterior": "Creación de 29.000 puestos y paro del 4,2 %",
+      "porQueImporta": "Es determinante para saber si la mayor economía del mundo genera trabajo a un ritmo equilibrado.",
+      "fuentes": []
+    }
+  ],
+  "cuerpo": [
+    {
+      "titulo": "La semana en una idea",
+      "parrafos": [
+        "La actividad financiera de la semana giró en torno a las resoluciones de política monetaria en Europa y Estados Unidos. Las máximas autoridades de la región decidieron dejar el coste de los préstamos sin alteraciones. De forma paralela, el foco bursátil se centró en el intenso gasto acometido por los gigantes tecnológicos, lo que desencadenó caídas en los principales parqués de manera generalizada."
+      ],
+      "fuentes": [
+        1,
+        5
+      ]
+    },
+    {
+      "titulo": "Economía y bancos centrales",
+      "parrafos": [
+        "El Banco Central Europeo determinó conservar su tipo principal, la facilidad de depósito (la retribución a los bancos comerciales), en el 2,50 %. La institución que preside Christine Lagarde argumentó la decisión en la ausencia de alertas por subidas salariales y con el fin de evitar restricciones severas a economías de la eurozona con tensiones presupuestarias en sus cuentas públicas.",
+        "En Estados Unidos, la Reserva Federal decretó igualmente una pausa en el encarecimiento del crédito, pero el acuerdo no fue unánime. Las dos posturas disidentes reflejan la inquietud del organismo al comprobar que la inflación, sostenida por el fuerte consumo de los hogares, se resiste a descender en los últimos informes. Mientras tanto, los datos globales revelan un crecimiento constante pero moderado del producto interior bruto a ambos lados del Atlántico."
+      ],
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "Mercados",
+      "parrafos": [
+        "Los índices de acciones han sufrido el impacto de unos resultados empresariales que exponen enormes necesidades de gasto en servidores e infraestructura computacional. Compañías informáticas de primera línea advirtieron que la generación de ingresos reales asociados a esas inversiones requerirá todavía varios años. Esta perspectiva alejó a los inversores del sector tecnológico y arrastró al índice S&P 500 y a la bolsa española hacia abajo.",
+        "El coste de financiación de los gobiernos (la rentabilidad del bono soberano) evolucionó de manera desigual en Europa. La deuda española exhibió mayor resistencia debido al perfil constructivo de sus finanzas públicas, a diferencia de la presión sufrida por los títulos emitidos por Francia. El diferencial, o prima de riesgo que separa el coste de ambos frente al emisor alemán de referencia, se ha decantado a favor de las cuentas nacionales.",
+        "En el ámbito de las materias primas, los problemas logísticos en el tránsito marítimo de Oriente Medio han tensionado las cotizaciones. Los incidentes en el estrecho de Ormuz impulsaron el coste del gas y sostuvieron el valor del crudo, en medio de un mercado que descuenta un escenario restrictivo y complejo ante la cercanía de la temporada invernal europea, para la que los inventarios apenas superan el setenta por ciento."
+      ],
+      "fuentes": [
+        3,
+        5
+      ]
+    },
+    {
+      "titulo": "Qué se publica ahora",
+      "parrafos": [
+        "La atención mundial estará centrada el próximo martes en los comicios para renovar el legislativo de Estados Unidos. El partido dominante en las cámaras dictará el futuro de los impuestos y la gestión de la enorme carga de deuda de la primera potencia económica mundial durante los siguientes años.",
+        "A lo largo de la semana también verán la luz estadísticas cruciales para calibrar el rumbo de los bancos centrales: los datos adelantados sobre el encarecimiento de la vida en la zona euro, así como la siempre determinante cifra oficial de creación de empleo en la economía estadounidense que se publicará el viernes."
+      ],
+      "fuentes": []
+    }
+  ],
+  "fuentes": [
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html"
+    },
+    {
+      "titulo": "Banco Central Europeo",
+      "url": "https://www.ecb.europa.eu/stats/shared/pdf/eurofxref.pdf?9eb4f2d29e2b5d12935385a426c6f020"
+    },
+    {
+      "titulo": "Bolsas y Mercados Españoles",
+      "url": "https://www.bolsasymercados.es/es/bme-exchange/indices/ibex/historico/ibex-35-es0si0000005.html"
+    },
+    {
+      "titulo": "Cboe (índice VIX)",
+      "url": "https://www.cboe.com/tradable-products/vix/"
+    },
+    {
+      "titulo": "morningstar.com",
+      "url": "https://www.morningstar.com/news/dow-jones/2026103010974/sp-500-falls-093-this-month-to-758007-data-talk"
+    },
+    {
+      "titulo": "cincodias.elpais.com",
+      "url": "https://cincodias.elpais.com/mercados/bolsa/ibex-35/"
+    },
+    {
+      "titulo": "elfinanciero.com.mx",
+      "url": "https://www.elfinanciero.com.mx/mercados/2026/10/30/bmv-wall-street-hoy-30-de-octubre-de-2026/"
+    },
+    {
+      "titulo": "edgeconsultancykw.com",
+      "url": "https://edgeconsultancykw.com/europe-market-wrap-23-october-2026/"
+    }
+  ],
+  "generacion": {
+    "modeloInvestigacion": "gemini-3.8-flash",
+    "modeloRedaccion": "gemini-3.1-pro-preview",
+    "versionPrompt": "nuvia-mercados-2026-09-r5",
+    "fuentesConsultadas": 8
+  },
+  "revision": {
+    "estado": "borrador",
+    "revisadoIso": null
+  },
+  "periodo": {
+    "desde": "2026-10-25",
+    "hasta": "2026-10-31",
+    "corteIso": "2026-10-31T13:32:33.945Z"
+  },
+  "limitaciones": "Este informe recoge datos publicados hasta la fecha de corte indicada. Las cifras que no se han podido contrastar con su publicador se señalan como tales y no se publican.",
+  "claves": [
+    {
+      "titulo": "Pausa generalizada del crédito",
+      "texto": "El Banco Central Europeo y la Reserva Federal estadounidense dejaron inalterados sus tipos de interés oficiales. En Estados Unidos la decisión mostró división interna por la resistencia a ceder de la inflación ligada al consumidor.",
+      "fuentes": [
+        1
+      ]
+    },
+    {
+      "titulo": "Dudas sobre la tecnología",
+      "texto": "Las grandes corporaciones tecnológicas retroceden en los parqués tras anunciar incrementos masivos en sus presupuestos de gasto de capital, necesarios para construir infraestructuras informáticas cuyo retorno financiero no será inmediato.",
+      "fuentes": [
+        5
+      ]
+    },
+    {
+      "titulo": "Tensión logística y energética",
+      "texto": "Los incidentes diplomáticos en el estrecho de Ormuz amenazan el transporte de gas y petróleo, encareciendo los costes energéticos globales de cara al próximo invierno europeo.",
+      "fuentes": []
+    }
+  ],
+  "mercados": [
+    {
+      "grupo": "Bolsas",
+      "filas": [
+        {
+          "nombre": "IBEX 35",
+          "nivel": "18.652,90 puntos",
+          "variacion": -1.77,
+          "variacionAnual": 8.95,
+          "nota": null,
+          "fuentes": [
+            3
+          ]
+        },
+        {
+          "nombre": "S&P 500",
+          "nivel": "7.580,07 puntos",
+          "variacion": -0.57,
+          "variacionAnual": 10.73,
+          "nota": "Sufrió descensos marcados por la caída del sector tecnológico",
+          "fuentes": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Deuda pública",
+      "filas": [
+        {
+          "nombre": "Bono español a 10 años",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Sin publicación oficial en la base factual",
+          "fuentes": []
+        },
+        {
+          "nombre": "Bono alemán a 10 años",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Sin publicación oficial en la base factual",
+          "fuentes": []
+        }
+      ]
+    },
+    {
+      "grupo": "Divisas",
+      "filas": [
+        {
+          "nombre": "EUR/USD",
+          "nivel": "1,1172",
+          "variacion": -0.19,
+          "variacionAnual": null,
+          "nota": null,
+          "fuentes": [
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "grupo": "Materias primas",
+      "filas": [
+        {
+          "nombre": "Brent",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Sin publicación oficial en la base factual",
+          "fuentes": []
+        },
+        {
+          "nombre": "Gas natural TTF",
+          "nivel": "Sin contrastar",
+          "variacion": null,
+          "variacionAnual": null,
+          "nota": "Sin publicación oficial en la base factual",
+          "fuentes": []
+        }
+      ]
+    }
+  ],
+  "glosario": [
+    {
+      "termino": "Facilidad de depósito",
+      "definicion": "Es el tipo de interés oficial que abona el Banco Central Europeo a los bancos comerciales por depositar sus fondos excedentes a un solo día en las cuentas de la institución."
+    },
+    {
+      "termino": "Gasto de capital",
+      "definicion": "Inversión masiva que realiza una empresa en activos físicos con vistas al largo plazo, como la construcción de nuevas instalaciones o la adquisición de servidores tecnológicos."
+    },
+    {
+      "termino": "Rentabilidad del bono",
+      "definicion": "Es el rendimiento financiero anual que ofrece un título de deuda pública a quien lo posee. Su nivel sube o baja como termómetro directo de la confianza en el país emisor."
+    },
+    {
+      "termino": "Prima de riesgo",
+      "definicion": "Es el sobreprecio o interés adicional que debe pagar un país para financiarse en los mercados de capital en comparación con la deuda de un emisor más seguro, que en Europa es Alemania."
+    }
+  ]
+}
